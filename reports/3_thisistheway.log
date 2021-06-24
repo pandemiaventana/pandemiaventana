@@ -1,0 +1,104 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 554, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Importando paquetes
+
+### Librería de manipulación de datos 
+import pandas as pd
+pd.set_option('use_inf_as_na', True)
+pd.options.display.float_format = '{:,.2f}'.format
+
+### Librería de álgebra
+import numpy as np
+
+### Librerías para graficar
+import plotly.graph_objects as go
+
+### Customizamos opciones de Plot.ly
+config = {'displayModeBar': False, 'showTips': False, 'scrollZoom': False}
+layout = go.Layout(dragmode=False, 
+    xaxis=dict(
+        showline=True,
+        showgrid=True,
+        showticklabels=True,
+        linecolor='rgb(204, 204, 204)',
+        linewidth=2,
+        ticks='outside',
+        tickfont=dict(
+            family='Arial',
+            size=12,
+            color='rgb(82, 82, 82)',
+        ),
+    ),
+    yaxis=dict(
+        showgrid=True,
+        showticklabels=True,
+    ),
+    autosize=True,
+    margin=dict(
+        autoexpand=True,
+        l=0,
+        r=0,
+        t=0,
+    ),
+    showlegend=True,
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    legend=dict(
+        itemclick="toggleothers",
+        itemdoubleclick="toggle",
+        orientation="h",
+        yanchor="bottom",
+        xanchor='right',
+        x=1,
+        y=1.02
+    )
+)
+
+### Librería BeautifulSoup para manipular HTML
+from bs4 import BeautifulSoup
+
+### Para formato local de fecha
+import locale
+locale.setlocale(locale.LC_TIME, '')
+
+### Otros paquetes
+import math
+import os, os.path
+import json as json
+import datetime
+import time
+from IPython.display import display, Markdown, HTML, Javascript, IFrame
+
+### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)
+import session_info
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-1-3072d4e62312>[0m in [0;36m<module>[0;34m[0m
+[1;32m      2[0m [0;34m[0m[0m
+[1;32m      3[0m [0;31m### Librería de manipulación de datos[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0mpd[0m[0;34m.[0m[0mset_option[0m[0;34m([0m[0;34m'use_inf_as_na'[0m[0;34m,[0m [0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mpd[0m[0;34m.[0m[0moptions[0m[0;34m.[0m[0mdisplay[0m[0;34m.[0m[0mfloat_format[0m [0;34m=[0m [0;34m'{:,.2f}'[0m[0;34m.[0m[0mformat[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'pandas'
+ModuleNotFoundError: No module named 'pandas'
+
