@@ -1875,7 +1875,7 @@ plt.show()
 # ## Información de sesión
 
 # %%
-#session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='./../../requirements.txt')
+session_info.show(cpu=True, write_req_file=True, req_file_name='./../../requirements.txt')
 
 # %%
 for string in [name for name in os.listdir('..//..')]:
