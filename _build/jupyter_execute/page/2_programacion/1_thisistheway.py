@@ -93,6 +93,9 @@ from io import StringIO
 ### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)
 import session_info
 
+### Pybtex
+import pybtex.plugin
+
 
 # ## Obtención de datos
 # 
@@ -1077,7 +1080,7 @@ print(desc2)
 # In[8]:
 
 
-get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb')
+get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb')
 
 
 # In[9]:
@@ -1159,7 +1162,7 @@ class graphPie:
         self.data = data
         self.color = color
         def absolute_value(val):
-            a  = np.int(np.round(val/100*(sum(data))))
+            a = np.int(np.round(val/100*(np.array(data).sum())))
             return a
         graph = plt.pie(self.data, autopct=absolute_value, shadow=True, colors=self.color, pctdistance=0.9, textprops={'color':'w', 'fontsize': 9}, explode=[0.02, 0.02, 0.02])
         self.path = path
@@ -1789,7 +1792,7 @@ plt.show()
 # In[21]:
 
 
-session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True)
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='./../../requirements.txt')
 
 
 # ## Bibliografía de esta página

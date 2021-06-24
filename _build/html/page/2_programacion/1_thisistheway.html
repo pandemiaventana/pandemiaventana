@@ -667,6 +667,9 @@
 
 <span class="c1">### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)</span>
 <span class="kn">import</span> <span class="nn">session_info</span>
+
+<span class="c1">### Pybtex</span>
+<span class="kn">import</span> <span class="nn">pybtex.plugin</span>
 </pre></div>
 </div>
 </div>
@@ -2493,6 +2496,9 @@
 
 <span class="c1">### Ejecutamos notebook 2</span>
 <span class="o">%</span><span class="n">run</span> <span class="mi">2</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span>
+
+<span class="c1">### Ejecutamos notebook 3</span>
+<span class="o">%</span><span class="n">run</span> <span class="mi">3</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span>
 </pre></div>
 </div>
 </div>
@@ -2541,19 +2547,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 24 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.444%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.632%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.638%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.071%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 54 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.29%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.198%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 38 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.518%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.571%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 49 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.054%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.122%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.016%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.98%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 80 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.887%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.277%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -2596,7 +2602,7 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
         <span class="k">def</span> <span class="nf">absolute_value</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-            <span class="n">a</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">val</span><span class="o">/</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">))))</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">val</span><span class="o">/</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())))</span>
             <span class="k">return</span> <span class="n">a</span>
         <span class="n">graph</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="n">absolute_value</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span> <span class="n">explode</span><span class="o">=</span><span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
@@ -3465,7 +3471,7 @@ La media general del error es de:  0.85 %
 <h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">req_file_name</span><span class="o">=</span><span class="s1">&#39;./../../requirements.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3484,6 +3490,8 @@ matplotlib          3.3.4
 numpy               1.19.2
 os                  NA
 pandas              1.2.3
+plotly              4.8.1
+pybtex              0.24.0
 scipy               1.6.2
 seaborn             0.11.1
 session_info        1.0.0
@@ -3629,6 +3637,7 @@ quopri              NA
 random              NA
 re                  2.2.1
 reprlib             NA
+retrying            NA
 ruamel              NA
 runpy               NA
 secrets             NA
@@ -3705,7 +3714,7 @@ Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
 Windows-10-10.0.19041-SP0
 12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 -----
-Session information updated at 2021-06-24 16:19
+Session information updated at 2021-06-24 17:20
 </pre>
 </details></div></div>
 </div>

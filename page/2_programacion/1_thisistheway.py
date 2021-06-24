@@ -106,6 +106,9 @@ from io import StringIO
 ### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)
 import session_info
 
+### Pybtex
+import pybtex.plugin
+
 # %% [markdown]
 # ## Obtención de datos
 #
@@ -1133,6 +1136,9 @@ print(desc2)
 ### Ejecutamos notebook 3
 # %run 3_thisistheway.ipynb
 
+### Ejecutamos notebook 4
+# %run ./../4_legado/1_legado.ipynb
+
 # %% code_folding=[]
 ### Cambios
 cambios = """• Ninguno"""
@@ -1869,7 +1875,7 @@ plt.show()
 # ## Información de sesión
 
 # %%
-session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True)
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='./../../requirements.txt')
 
 # %% [markdown]
 # ## Bibliografía de esta página

@@ -175,7 +175,7 @@ display(Markdown('<h2 style="font-size:60px;">REPORTE DIARIO</h2>'))
 display(Markdown('<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>'.format(data[0].last_valid_index().strftime('%d de %B de %Y'))))
 
 ### Recorremos el vector que almacena los DataFrames, uno a uno
-for df in data:
+for dataframe in data:
     
     ### Para guardar el número del gráfico (un poco ordinario el método, lo sé)
     
@@ -192,24 +192,24 @@ for df in data:
     
     ### Recorremos cada una de las columnas del DataFrame anterior
     
-    for col in df.columns:
+    for col in dataframe.columns:
         
         ### Vector de fechas desde primer y último dato válido por cada columna
         
-        index = df[col].first_valid_index()
-        index_ = df[col].last_valid_index()
+        index = dataframe[col].first_valid_index()
+        index_ = dataframe[col].last_valid_index()
             
         ### DataFrame según filtro de primer dato válido
         
-        _df = df[index:]
+        _df = dataframe[index:]
             
         ### Índice de DataFrame según filtro anterior
             
-        fecha = df[index:].index
+        fecha = dataframe[index:].index
     
         ### Columna específica
         
-        _col = df[index:][col]
+        _col = dataframe[index:][col]
         
         ### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y
         ### suavizamos por interpolación spline
@@ -234,9 +234,9 @@ for df in data:
         display(Markdown("""El mayor valor es de **{}**, registrado el {}. 
         Asimismo, la mediana es de **{}**.
         Respecto a la dispersión de los datos, la desviación estándar es del **{}**. """
-                         .format(df[col].max(), df[df[col] == df[col].max()].index[0].strftime('%d de %B de %Y'),
-                                 round(df[col].mean(), 2), round(df[col].std(), 2))))
-        display(Markdown('> El valor en base al último reporte diario o epidemiológico ({}) es de **{}**.'.format(df[index_:].index[0].strftime('%d de %B de %Y'), df[col][index_])))
+                         .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime('%d de %B de %Y'),
+                                 round(dataframe[col].mean(), 2), round(dataframe[col].std(), 2))))
+        display(Markdown('> El valor en base al último reporte diario o epidemiológico ({}) es de **{}**.'.format(dataframe[index_:].index[0].strftime('%d de %B de %Y'), dataframe[col][index_])))
     
     ### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado
     display(Markdown('<h4>Visualización del gráfico {}</h4> <br> El gráfico, visualizado en <a href="https://plotly.com/python/">Plot.ly</a>: <br>'.format(x)))
@@ -251,12 +251,12 @@ for df in data:
     <br> - Para aislar una curva, presionar en el nombre o color en la leyenda. 
     <br> - Para remover una curva, seguir instrucción anterior, con la diferencia de presionar dos veces.""".format(\
                     _df.index[0].strftime('%d de %B de %Y'),
-                    df[index_:].index[0].strftime('%d de %B de %Y'))))
+                    dataframe[index_:].index[0].strftime('%d de %B de %Y'))))
     display(Markdown('<h4>Información adicional sobre el gráfico {}</h4> <br>'.format(x)))
     display(Markdown(
     """<br>El **gráfico {}** utilizó los datos procesados en <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv">data{}.csv</a>.
     La tabla de datos resumida:""".format(x, x, x, x)))
-    display(df)
+    display(dataframe)
 
 
 # ### Automatizando salida para asistenciacovid19

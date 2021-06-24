@@ -9,6 +9,7 @@ numpy==1.19.2
 os
 pandas==1.2.3
 plotly==4.8.1
+pybtex==0.24.0
 scipy==1.6.2
 seaborn==0.11.1
 session_info==1.0.0
