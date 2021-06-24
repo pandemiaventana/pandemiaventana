@@ -1875,7 +1875,27 @@ plt.show()
 # ## Información de sesión
 
 # %%
-session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='./../../requirements.txt')
+#session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='./../../requirements.txt')
+
+# %%
+for string in [name for name in os.listdir('..//..')]:
+    if string == 'requirements.txt':
+        req = open('..//..//{}'.format(string))
+        edit = req.read()
+        fullreq = req
+
+
+# %%
+def prueba(palabra):
+    split_string = palabra.split("==", 1)
+    substring = split_string[0]
+    print(substring)
+
+for palabrita in edit.split('.'):
+    prueba(palabrita)
+
+# %%
+palabrita.find('==')
 
 # %% [markdown]
 # ## Bibliografía de esta página
