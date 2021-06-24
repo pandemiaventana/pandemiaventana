@@ -1918,17 +1918,20 @@ requirements = []
 for m in pkg_resources.working_set:
     if m.project_name in imports and m.project_name!="pip":
         requirements.append((m.project_name, m.version))
+        
 req = ''
 for r in requirements:
     req += """{}=={}
 """.format(*r)
-req += 'jupyter-book'
+req += """jupyter-book
+""" + 'session_info'
 
 ### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
 for string in [name for name in os.listdir('..//..')]:
     if string == 'requirements.txt':
         _string = open('..//..//{}'.format(string), 'w')
         _string.write(str(req))
+print(req)
 
 # %% [markdown]
 # ## Bibliografía de esta página
