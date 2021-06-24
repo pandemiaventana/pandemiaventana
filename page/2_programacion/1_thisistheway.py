@@ -1922,16 +1922,13 @@ req = ''
 for r in requirements:
     req += """{}=={}
 """.format(*r)
-req += 'jupyter-book>=0.7.0b'
+req += 'jupyter-book'
 
 ### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
 for string in [name for name in os.listdir('..//..')]:
     if string == 'requirements.txt':
         _string = open('..//..//{}'.format(string), 'w')
         _string.write(str(req))
-
-# %%
-req
 
 # %% [markdown]
 # ## Bibliografía de esta página
