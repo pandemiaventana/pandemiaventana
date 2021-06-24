@@ -278,7 +278,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pandemiaventana/pandemiaventana/master?urlpath=tree/gh-pages/page/4_legado/1_legado.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pandemiaventana/pandemiaventana/main?urlpath=tree/gh-pages/page/4_legado/1_legado.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -303,11 +303,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#archivos-csv">
    Archivos CSV
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#archivos-html">
-   Archivos HTML
   </a>
  </li>
 </ul>
@@ -964,99 +959,6 @@ memory usage: 527.8+ KB
 </pre></div>
 </div>
 <hr></div>
-</div>
-</div>
-<div class="section" id="archivos-html">
-<h2>Archivos HTML<a class="headerlink" href="#archivos-html" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Algo de Markdown</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Encontré las **siguientes gráficas interactivas en HTML**:&#39;</span><span class="p">))</span>
-    
-<span class="c1">### Mostrando gráficas HTML</span>
-<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;./../../out/site/graph&#39;</span><span class="p">)]:</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;- &lt;a href=&quot;../../../../out/site/graph/</span><span class="si">{}</span><span class="s1">&quot;&gt;&quot;</span><span class="si">{}</span><span class="s1">&quot;&lt;/a&gt;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<p>Encontré las <strong>siguientes gráficas interactivas en HTML</strong>:</p>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data1.html">&quot;data1.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data10.html">&quot;data10.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data11.html">&quot;data11.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data12.html">&quot;data12.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data13.html">&quot;data13.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data14.html">&quot;data14.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data15.html">&quot;data15.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data16.html">&quot;data16.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data17.html">&quot;data17.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data18.html">&quot;data18.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data19.html">&quot;data19.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data2.html">&quot;data2.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data20.html">&quot;data20.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data21.html">&quot;data21.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data22.html">&quot;data22.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data23.html">&quot;data23.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data24.html">&quot;data24.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data25.html">&quot;data25.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data3.html">&quot;data3.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data4.html">&quot;data4.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data5.html">&quot;data5.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data6.html">&quot;data6.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data7.html">&quot;data7.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data8.html">&quot;data8.html&quot;</a>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><a href="../../../../out/site/graph/data9.html">&quot;data9.html&quot;</a>.</p></li>
-</ul>
-</div>
 </div>
 </div>
 </div>
