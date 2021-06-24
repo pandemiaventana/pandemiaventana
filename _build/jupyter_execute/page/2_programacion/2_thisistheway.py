@@ -862,6 +862,18 @@ plt.show()
 df.loc[:, df.columns[df.columns.str.contains('Iquique', na=False)]]
 
 
+# In[12]:
+
+
+df.loc[:, df.columns[df.columns.str.contains('Iquique', na=False)]]
+
+
+# In[13]:
+
+
+df['Re Iquique'][df['Re Iquique'].last_valid_index()], df['Re Iquique'].last_valid_index()
+
+
 # Notar que:
 # 
 # ``df.loc[:, df.columns[df.columns.str.contains('{}'.format('Iquique'), na=False)]]`` 
@@ -880,7 +892,7 @@ df.loc[:, df.columns[df.columns.str.contains('Iquique', na=False)]]
 # 
 # ¿Qué tienen en común? Pues, que a partir de la posición 14 de la variable texto, siempre debería encontrarse el nombre de la comuna.
 
-# In[12]:
+# In[14]:
 
 
 ### La indexación en Python inicia desde el 0, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
@@ -892,7 +904,7 @@ df.loc[:, df.columns[df.columns.str.contains('Iquique', na=False)]]
 # 
 # Paralelamente, definiremos colores en un diccionario para cada una de las fases del plan Paso a Paso (*es para darle más belleza al Markdown que realizaremos después*).
 
-# In[13]:
+# In[15]:
 
 
 ### Extraemos nombres de comunas
@@ -929,7 +941,7 @@ print('Las comunas son: \n\n', comunas, '\n\nLas etiquetas del Paso a Paso:\n\n'
 # 
 # ### Gráficos de dispersión por comuna
 
-# In[14]:
+# In[16]:
 
 
 for comuna in comunas:
@@ -991,7 +1003,7 @@ for comuna in comunas:
 # 
 # - Entrenamos el algoritmo, almacenándolo en una variable aparte, por comuna, y además, almacenamos los resultados como variables de texto, *str*, en un vector. Este vector, al ser iterable, será recorrido por cada uno de sus elementos, separando por comuna, los resultados, los cuales serán introducidos en Markdown.
 
-# In[15]:
+# In[17]:
 
 
 results = []
@@ -1118,7 +1130,7 @@ es monitoreada por las autoridades del Ministerio de Salud'''))
 # 
 # ¿Cómo funcionará ante esta prueba? Por eso, estamos **validando** su entrenamiento.
 
-# In[16]:
+# In[18]:
 
 
 ### Un poco de Markdown
@@ -1182,7 +1194,7 @@ for comuna in comunas:
 # 
 # Una sección adelantada. ¡Habrá mayor detalle en el siguiente notebook!
 
-# In[17]:
+# In[19]:
 
 
 ### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
@@ -1216,7 +1228,7 @@ Javascript('''{
 
 # ## Información de sesión
 
-# In[18]:
+# In[20]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True)
