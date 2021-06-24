@@ -1130,6 +1130,9 @@ print(desc2)
 ### Ejecutamos notebook 2
 # %run 2_thisistheway.ipynb
 
+### Ejecutamos notebook 3
+# %run 3_thisistheway.ipynb
+
 # %% code_folding=[]
 ### Cambios
 cambios = """• Ninguno"""
@@ -1207,7 +1210,7 @@ class graphPie:
         self.data = data
         self.color = color
         def absolute_value(val):
-            a  = np.int(np.round(val/100*(sum(data))))
+            a = np.int(np.round(val/100*(np.array(data).sum())))
             return a
         graph = plt.pie(self.data, autopct=absolute_value, shadow=True, colors=self.color, pctdistance=0.9, textprops={'color':'w', 'fontsize': 9}, explode=[0.02, 0.02, 0.02])
         self.path = path
