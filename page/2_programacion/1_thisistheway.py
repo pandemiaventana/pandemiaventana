@@ -102,6 +102,8 @@ from IPython.display import display, HTML
 ### Solo de uso esporádico
 import csv
 from io import StringIO
+import pkg_resources
+import types
 
 ### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)
 import session_info
@@ -1875,27 +1877,61 @@ plt.show()
 # ## Información de sesión
 
 # %%
-session_info.show(cpu=True, write_req_file=True, req_file_name='./../../requirements.txt')
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
+
+
+# %% [markdown]
+# ## Requerimientos
 
 # %%
+### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
+
+def get_imports():
+    for name, val in globals().items():
+        if isinstance(val, types.ModuleType):
+            # Split ensures you get root package, 
+            # not just imported function
+            name = val.__name__.split(".")[0]
+
+        elif isinstance(val, type):
+            name = val.__module__.split(".")[0]
+
+        # Some packages are weird and have different
+        # imported names vs. system/pip names. Unfortunately,
+        # there is no systematic way to get pip names from
+        # a package's imported name. You'll have to add
+        # exceptions to this list manually!
+        poorly_named_packages = {
+            "PIL": "Pillow",
+            "sklearn": "scikit-learn"
+        }
+        if name in poorly_named_packages.keys():
+            name = poorly_named_packages[name]
+
+        yield name
+imports = list(set(get_imports()))
+
+# The only way I found to get the version of the root package
+# from only the name of the package is to cross-check the names 
+# of installed packages vs. imported packages
+requirements = []
+for m in pkg_resources.working_set:
+    if m.project_name in imports and m.project_name!="pip":
+        requirements.append((m.project_name, m.version))
+req = ''
+for r in requirements:
+    req += """{}=={}
+""".format(*r)
+req += 'jupyter-book'
+
+### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
 for string in [name for name in os.listdir('..//..')]:
     if string == 'requirements.txt':
-        req = open('..//..//{}'.format(string))
-        edit = req.read()
-        fullreq = req
-
+        _string = open('..//..//{}'.format(string), 'w')
+        _string.write(str(req))
 
 # %%
-def prueba(palabra):
-    split_string = palabra.split("==", 1)
-    substring = split_string[0]
-    print(substring)
-
-for palabrita in edit.split('.'):
-    prueba(palabrita)
-
-# %%
-palabrita.find('==')
+req
 
 # %% [markdown]
 # ## Bibliografía de esta página

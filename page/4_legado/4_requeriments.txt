@@ -1,0 +1,7 @@
+os
+pandas==1.2.3
+session_info==1.0.0
+IPython==7.23.1
+jupyter_client==6.1.12
+jupyter_core==4.7.1
+notebook==6.3.0
