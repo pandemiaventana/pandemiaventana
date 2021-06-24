@@ -1,7 +1,12 @@
 Pillow
 bs4
+datetime
+json
+locale
+math
 matplotlib
 numpy
+os
 pandas
 plotly
 pybtex
@@ -9,7 +14,9 @@ scipy
 seaborn
 session_info
 sklearn
+time
 IPython
 jupyter_client
 jupyter_core
 notebook
+jupyter-book
