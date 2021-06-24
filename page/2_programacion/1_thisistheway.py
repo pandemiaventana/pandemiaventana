@@ -1922,7 +1922,7 @@ req = ''
 for r in requirements:
     req += """{}=={}
 """.format(*r)
-req += 'jupyter-book'
+req += 'jupyter-book>=0.7.0b'
 
 ### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
 for string in [name for name in os.listdir('..//..')]:
