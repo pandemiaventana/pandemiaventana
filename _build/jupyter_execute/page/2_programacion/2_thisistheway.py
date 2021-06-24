@@ -6,7 +6,7 @@
 # ---
 # 
 # :::{figure-md} markdown-fig
-# <img src="../../img/page/2_cover.png" width="600px">
+# <img src="../../img/page/2_cover.png" width="80%">
 # 
 # **Ilustración realizada por Bernardo Dinamarca**.
 # :::
@@ -22,7 +22,7 @@
 # Según {cite}``sergio-montoro``, "*La percepción es la organización, identificación e interpretación de información sensorial con el propósito de representar y entender el entorno*".
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" width="500px">
+# <img src="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" width="50%">
 # 
 # **Fuente: Facebook. <a href="https://research.fb.com/blog/2016/08/learning-to-segment/">Learning to Segment</a>**.
 # :::
@@ -38,7 +38,7 @@
 # Imagina lo siguiente. Cuando estudias, ¿qué haces?
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://images.pexels.com/photos/3059691/pexels-photo-3059691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="300px">
+# <img src="https://images.pexels.com/photos/3059691/pexels-photo-3059691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="40%">
 # 
 # **Fotografía de Pexels. <a href="https://www.pexels.com/es-es/foto/foto-de-mujer-escribiendo-en-el-portatil-3059691/">Enlace aquí</a>**.
 # :::
@@ -48,7 +48,7 @@
 # A partir de allí, se contemplan distintos conceptos, como por ejemplo, el cómo medimos el error en los algoritmos, siendo nuestro objetivo minimizarlo. Y así, surgen y surgen los conceptos en el Machine Learning. Sin embargo, esa es la teoría básica. 
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://raw.githubusercontent.com/arvention/linear-regression/master/animation.gif" width="300px">
+# <img src="https://raw.githubusercontent.com/arvention/linear-regression/master/animation.gif" width="50%">
 # 
 # **GIF de arvention. El enlace en<a href="https://github.com/arvention/linear-regression"> GitHub</a>**.
 # :::
@@ -93,7 +93,7 @@
 
 # ## Importando paquetes
 # 
-# Introducidos los conceptos brevios, llega el momento de trabajar con un poco de código y algoritmos. No quise entrar en detalle matemático con respecto a los conceptos previos, puesto que se alargaría mucho el Notebook.
+# Introducidos los conceptos previos, llega el momento de trabajar con un poco de código y algoritmos. No quise entrar en detalle matemático con respecto a los conceptos previos, puesto que se alargaría mucho el Notebook.
 # 
 # Por cierto, además de las librerías del notebook anterior, deberemos trabajar con otras, de las que, hasta el momento, no tengo experiencia. Sin embargo, sí conozco los conceptos fundamentales detrás de la regresión lineal, logística, la estimación del error (función de costos), descenso del gradiente, entre otros.
 # 
@@ -102,7 +102,7 @@
 # - Scikit-learn. Librería de Machine Learning que nos permitirá implementar algoritmos de Machine Learning sin necesidad de escribirlos desde cero (lo que es un ahorro de dolor de cabeza, a ser sincero).
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png" width="400px">
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png" width="50%">
 # 
 # **Logo de la librería <a href="https://scikit-learn.org/stable/">Scikit-learn</a>**.
 # :::
@@ -230,7 +230,7 @@ df = pd.read_csv('../../out/site/csv/numeralab.csv', parse_dates=['Fecha'], inde
 # Visto lo que es la regresión logística, y en concreto, lo que son los problemas de clasificación, ya sabemos con lo que estamos lidiando. El inconveniente es el siguiente: Sé mucho sobre la teoría y poco de la práctica. Por ello, deberemos utilizar una planilla de Scikit-learn. ¡Sin embargo! Recordemos que tratamos con un **problema de clasificación**.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://scikit-learn.org/stable/_static/ml_map.png" width="600px">
+# <img src="https://scikit-learn.org/stable/_static/ml_map.png" width="70%">
 # 
 # **Guía para seleccionar un algoritmo**. Imagen de Scikit-learn {cite}``scikit-learn-modelselection``.
 # :::
@@ -341,7 +341,7 @@ for column in df.skew()[abs(df.skew()) < 0.05][df.skew() != 0].index:
 # En nuestro caso, sabemos que las comunas deben estar en Cuarentena, Transición, ..., etc. por lo que, lo que realizaremos, será, desarrollar un clasificador o algoritmo capaz de, a partir de las variables de entrada (que por ejemplo, pueden ser los casos acumulados o activos por comuna), clasificar en variables discretas categóricas. ¿Por qué variables discretas?  Porque nuestro conjunto de salida debe ser finito, ya que tenemos solo cinco posibles salidas que son las fases del Paso a Paso.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://images.pexels.com/photos/5063561/pexels-photo-5063561.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+# <img src="https://images.pexels.com/photos/5063561/pexels-photo-5063561.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="50%">
 # 
 # **Aprender**. Fotografía de Monstera en Pexels.
 # :::
@@ -365,7 +365,7 @@ for column in df.skew()[abs(df.skew()) < 0.05][df.skew() != 0].index:
 # ¿Qué clasificador funcionará mejor sobre el conjunto de prueba? ¡Espera! Algo se me olvidaba. En la imagen, puedes apreciar dos figuras, ¿no es así? **Pues, en el caso de las circunferencias azules pueden significar, supongamos, fotografías de perros, y en el caso de las cruces rojas, pueden referirse a fotografías de gatos**.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://images.pexels.com/photos/1909802/pexels-photo-1909802.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="500px">
+# <img src="https://images.pexels.com/photos/1909802/pexels-photo-1909802.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="50%">
 # 
 # **Un perro y un gato**. Fotografía de Sharon McCutcheon en Pexels.
 # :::
@@ -391,19 +391,19 @@ for column in df.skew()[abs(df.skew()) < 0.05][df.skew() != 0].index:
 # - En la tercera situación, el over-fitting se caracteriza por un clasificador que se sobreajusta a los datos, o dicho de otro modo, intenta, de sobremanera, ajustarse a la entrada que le brindes. Ésto implica que, al pasarle una imagen borrosa de un gato, puede pensar que es un perro, ya que, al ser borrosa, el algoritmo no estará entrenado para clasificar imágenes borrosas. ¿Por qué? **El clasificador se especializó en aprender a partir de imágenes nítidas, y el único hecho que le brindes una imagen borrosa implicará que no sabrá cómo actuar ante esa entrada**.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://miro.medium.com/proxy/1*oB3S5yHHhvougJkPXuc8og.gif" width="500px">
+# <img src="https://miro.medium.com/proxy/1*oB3S5yHHhvougJkPXuc8og.gif" width="70%">
 # 
 # **Clasificación a través de una red neuronal**. GIF de <a href="https://purnasaigudikandula.medium.com/recurrent-neural-networks-and-lstm-explained-7f51c7f6bbb9">purnasai gudikandula en Medium</a>.
 # :::
 # 
 # Recomiendo el siguiente vídeo del divulgador de Inteligencia Artificial, <a href="https://www.youtube.com/channel/UCy5znSnfMsDwaLlROnZ7Qbg">DOT.CSV</a>:
 # 
-# <center><iframe width="560" height="315" src="https://www.youtube.com/embed/7-6X3DTt3R8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></center>
+# <center><iframe src="https://www.youtube.com/embed/7-6X3DTt3R8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></center>
 # 
 # A modo de resumen del vídeo {cite}``DOTCSV``, se entiende que:
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="500px">
+# <img src="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="40%">
 # 
 # **Un estudiante copiando**. Fotografía de <a href="https://www.pexels.com/es-es/foto/hombre-escritura-colegio-libro-7092609/">RODNAE Productions en Pexels</a>.
 # :::
@@ -443,7 +443,7 @@ for column in df.skew()[abs(df.skew()) < 0.05][df.skew() != 0].index:
 # O bien, puedes encontrar otros en el <a href="https://github.com/adinamarca/notebooks/tree/main/PY/ML">siguiente enlace</a>. Es sumamente relevante tener ese conocimiento previo para comprender lo que realizaremos a continuación.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/1.png" width="500px">
+# <img src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/1.png" width="50%">
 # 
 # **Para la fuente, visitar el notebook que realicé. <a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb">Enlace aquí</a>**.
 # :::
@@ -528,7 +528,7 @@ plt.show()
 # 
 # En consideración con lo anterior, y de acuerdo a los valores que asignemos a los parámetros $\theta$, podremos obtener los límites de decisión a partir de la inecuación entre $0 \leq Z$ para el área positiva o $0 > Z$ para el área negativa {cite}`MLANDREWNG`. Ésto se puede apreciar en una imagen que capturé del curso de Andrew NG en Coursera, de la Universidad de Stanford. {footcite}`MLANDREWNG`
 # 
-# <center><a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb"><img src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/12.png" style="width:400px; margin:20px"></img></a></center>
+# <center><a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb"><img src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/12.png" style="width:60%; margin:20px"></img></a></center>
 # 
 # #### Descenso del gradiente resumido
 # 
@@ -539,7 +539,7 @@ plt.show()
 # Lo que quiero que comprendas es la finalidad del descenso del gradiente, **que es minimizar el error de nuestro modelo de Machine Learning**.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://ichi.pro/assets/images/max/724/1*laN3aseisIU3T9QTIlob4Q.gif" width="500px">
+# <img src="https://ichi.pro/assets/images/max/724/1*laN3aseisIU3T9QTIlob4Q.gif" width="60%">
 # 
 # **Algoritmo del descenso del gradiente. Ilustración de <a href="https://ichi.pro/es/gradient-descent-parte-2-las-matematicas-213513035934227">ICHIPRO</a>**.
 # :::
@@ -557,7 +557,7 @@ plt.show()
 # De acuerdo con {cite}``kernel-amat``, "*el identificar el tipo de distribución que tiene una variable es un paso fundamental en prácticamente todos los estudios que implican datos, desde los contrastes de hipótesis hasta la creación de modelos por aprendizaje estadístico y machine learning*" {footcite}``kernel-amat``.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="500px">
+# <img src="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="50%">
 # 
 # Fotografía de Burak Kepapci en Pexels.
 # :::
@@ -747,7 +747,7 @@ plt.show()
 # SVC hace referencia a **Support Vector Classification**, lo que en español significa **Clasificación por Vectores de Soporte**. Este tipo de algoritmo se basa en **solucionar problemas de clasificación**, lo que es separar entre dos o más clases (**tal como vimos en los conceptos previos**).
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" width="900px">
+# <img src="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" width="70%">
 # 
 # **Ilustración extraída del artículo "*Support Vector Machine Algorithm for Automatically Identifying Depositional Microfacies Using Well Logs*". El enlace en<a href="https://www.mdpi.com/2071-1050/11/7/1919"> MDPI</a>**.
 # :::
@@ -769,7 +769,7 @@ plt.show()
 # Supone, **dos seres vivos, Alejandro y María**. **Alejandro y María son dos esferas que viven en la tercera dimensión**, y son amantes. Por esas casualidades de la vida, **Alejandro es vílmente hechizado por una entidad, y se convierte en un ser vivo del plano XY** (cartesiano), en la segunda dimensión. Alejandro, desesperado, llama a su enamorada, la cual se encuentra a una distancia mayor que la del diámetro de la esfera. María, lo escucha, y recurre a su llamado, por lo que, se acerca al plano XY en el que vive Alejandro. **María, puede observar, sin inconvenientes, a Alejandro, convertido en un plano, y comprende plenamente qué es, dado que ella vive en la tercera dimensión**.
 # 
 # :::{figure-md} markdown-fig
-# <img src="../../img/page/4_alejandromaria.png" width="500px">
+# <img src="../../img/page/4_alejandromaria.png" width="60%">
 # 
 # Ilustración realizada en **<a href="https://www.geogebra.com">Geogebra</a>**.
 # :::
@@ -777,7 +777,7 @@ plt.show()
 # Por otro lado, Alejandro no puede ver a María en su totalidad, dado es una esfera, y solo puede observar las **intersecciones** de la esfera con el plano, las que a su vez, dividen su hogar, por lo que solo aprecia las circunferencias de María, y no comprende cómo puede observar una parte de María, sin ver a María en su totalidad.
 # 
 # :::{figure-md} markdown-fig
-# <img src="../../img/page/5_alejandromaria.png" width="500px">
+# <img src="../../img/page/5_alejandromaria.png" width="60%">
 # 
 # Ilustración realizada en **<a href="https://www.geogebra.com">Geogebra</a>**.
 # :::
@@ -795,7 +795,7 @@ plt.show()
 # ¡Muy bien! El hiperplano se encarga de realizar la separación. Pero en verdad, ¿cómo lo hace? Debemos recurrir nuevamente a {cite}``maquinas-soporte-jose``, en concreto, "*En el caso de que las clases sean linealmente separables, para hallar el hiperplano que las separa se toman un conjunto de casos, llamados vectores de soporte, y se elige el hiperplano que proporcione los mayores márgenes de distancia desde el hiperplano a los vectores de soporte más próximos. En el ejemplo, tanto el plano $Z_{1}$ como $Z_{2}$ podrían servir para distinguir las clases, pero $Z_{2}$ es mejor porque el margen es más amplio*" {footcite}``maquinas-soporte-jose``.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" width="500px">
+# <img src="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" width="50%">
 # 
 # Ilustración extraída desde **<a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a>**.
 # :::
@@ -803,7 +803,7 @@ plt.show()
 # Entre tanto, "*En el caso de que las clases no sean linealmente separables lo que se intenta hacer es proyectar los casos a un espacio de dimensión superior donde sí sean linealmente separables*" {footcite}``maquinas-soporte-jose``.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://lapastillaroja.net/wp-content/uploads/2015/02/InputAndfeatureSpaceSVM.png" width="500px">
+# <img src="https://lapastillaroja.net/wp-content/uploads/2015/02/InputAndfeatureSpaceSVM.png" width="50%">
 # 
 # Ilustración extraída desde **<a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a>**.
 # :::

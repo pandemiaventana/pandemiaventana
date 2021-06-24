@@ -27,7 +27,7 @@ for string in [name for name in os.listdir('./../../out/site/csv')]:
     
     ### Título
     
-    display(Markdown('<h3><a href="../../../../out/site/csv/{}">"{}"</a></h3>'.format(string, string)))
+    display(Markdown('<h3><a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/{}">"{}"</a></h3>'.format(string, string)))
     
     ### Leemos
     
@@ -40,17 +40,4 @@ for string in [name for name in os.listdir('./../../out/site/csv')]:
     display(csv.info(max_cols=len(csv.columns)))
     
     display(Markdown('<hr>'))
-
-
-# ## Archivos HTML
-
-# In[3]:
-
-
-### Algo de Markdown
-display(Markdown('Encontré las **siguientes gráficas interactivas en HTML**:'))
-    
-### Mostrando gráficas HTML
-for string in [name for name in os.listdir('./../../out/site/graph')]:
-    display(Markdown('- <a href="../../../../out/site/graph/{}">"{}"</a>.'.format(string, string)))
 

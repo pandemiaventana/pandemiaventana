@@ -6,7 +6,7 @@
 # ---
 # 
 # :::{figure-md} markdown-fig
-# <img src="../../img/page/2_cover.png">
+# <img src="../../img/page/2_cover.png" width="80%">
 # 
 # **Ilustración realizada por Bernardo Dinamarca**.
 # :::
@@ -32,7 +32,7 @@
 # - Plot.ly (librería de visualización dinámica e interactiva a partir de JavaScript).
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png" width="400px">
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png" width="50%">
 # 
 # **Logo de la librería <a href="https://plotly.com/python/">Plot.ly</a>**.
 # :::
@@ -40,7 +40,7 @@
 # - Beautiful Soup (librería de Python para extraer datos de archivos HTML y XML).
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024" width="400px">
+# <img src="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024" width="50%">
 # 
 # **Logo de la librería <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup">Beautiful Soup</a>**.
 # :::
@@ -254,7 +254,7 @@ for df in data:
                     df[index_:].index[0].strftime('%d de %B de %Y'))))
     display(Markdown('<h4>Información adicional sobre el gráfico {}</h4> <br>'.format(x)))
     display(Markdown(
-    """<br>El **gráfico {}** utilizó los datos procesados en <a href="../../../../out/site/csv/data{}.csv">data{}.csv</a>.
+    """<br>El **gráfico {}** utilizó los datos procesados en <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv">data{}.csv</a>.
     La tabla de datos resumida:""".format(x, x, x, x)))
     display(df)
 

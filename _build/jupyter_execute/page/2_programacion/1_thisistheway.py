@@ -6,7 +6,7 @@
 # ---
 # 
 # :::{figure-md} markdown-fig
-# <img src="../../img/page/2_cover.png" width="600px">
+# <img src="../../img/page/2_cover.png" width="80%">
 # 
 # **Ilustración realizada por Bernardo Dinamarca**.
 # :::
@@ -26,7 +26,7 @@
 # - Pandas (librería por especialidad de manipulación de datos). Permite leer y trabajar con distintos tipos de archivos.
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png" width="400px">
+# <img src="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png" width="50%">
 # 
 # **Logo de la librería <a href="https://pandas.pydata.org/">Pandas</a>**.
 # :::
@@ -34,7 +34,7 @@
 # - Numpy (librería de álgebra que trabaja en conjunto con Pandas).
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png" width="400px">
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png" width="50%">
 # 
 # **Logo de la librería <a href="https://numpy.org/">Numpy</a>**.
 # :::
@@ -1127,11 +1127,11 @@ display(Markdown(pred))
 # 
 # La mejor forma de resumir y entender la tendencia de datos es a partir de un gráfico. Un buen gráfico debe ser capaz de narrar sin complejizar, y por ello, son fundamentales en el data storytelling (que los datos den a conocer una historia). En este sentido, graficaremos con Matplotlib.
 # 
-# <center><a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg" style="width:400px"></img></a></center>
+# <center><a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg" style="width:50%"></img></a></center>
 # 
 # Existen otras librerías, como Seaborn (sns), que nos permite realizar gráficos más avanzados que Matplotlib con una sintaxis más simple. Sin embargo, Matplotlib tiene mayor versatilidad, y por ello, lo utilizaremos sobre Seaborn (sns viene con una sintaxis más simple pero menos manejable).
 # 
-# <center><a href="https://seaborn.pydata.org/"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" style="width:400px"></img></a></center>
+# <center><a href="https://seaborn.pydata.org/"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" style="width:50%"></img></a></center>
 # 
 # 
 # 
@@ -1595,7 +1595,7 @@ for i in x:
     elif i == 2 or i == 3:
         exec('vacuna{}.paste(graph{}, (50, 250), graph{})'.format(i, i, i))
     else:
-        exec('vacuna{}.paste(graph{}, (60, 250), graph{})'.format(i, i, i))
+        exec('vacuna{}.paste(graph{}, (60, 240), graph{})'.format(i, i, i))
     ### Guardamos
     exec('vacuna{}.save("..\\\\..\\\\out\\\\vacuna\\\{}.png")'.format(i, i))
     i += i
@@ -1641,7 +1641,7 @@ for i in x:
         txt.text((860, 35), '{}° ed.'.format(ed_indicador), fill='#b9b9b9', font=roboto_ed) # edicion
         txt.text((360, 380), '{}'.format(df.index[-1].strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         for val in resultado_prediccion:
-            txt.text((500, 512 + b), '{} para '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # fecha
+            txt.text((490, 512 + b), '{} '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # fecha
             txt.text((670, 512 + b), '{}'.format(val), fill=resultado_colores[co], font=roboto_data3) # fecha
             b += 72
             co += 1
