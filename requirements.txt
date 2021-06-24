@@ -1,4 +1,4 @@
-PIL
+Pillow
 bs4
 datetime
 json
