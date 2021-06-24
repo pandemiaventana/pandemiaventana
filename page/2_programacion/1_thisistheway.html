@@ -460,17 +460,17 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
+    <a class="reference internal nav-link" href="#id8">
      Reporte diario
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
+    <a class="reference internal nav-link" href="#id9">
      Balance de vacunas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
+    <a class="reference internal nav-link" href="#id10">
      Indicador de fase
     </a>
    </li>
@@ -572,6 +572,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#requerimientos">
+   Requerimientos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bibliografia-de-esta-pagina">
    Bibliografía de esta página
   </a>
@@ -590,10 +595,10 @@
   <div class="section" id="genesis">
 <h1>Génesis<a class="headerlink" href="#genesis" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>:::{figure-md} markdown-fig
-<img src="../../img/page/2_cover.png" width="80%"></p>
-<p><strong>Ilustración realizada por Bernardo Dinamarca</strong>.
-:::</p>
+<div class="figure align-default" id="markdown-fig">
+<a class="reference internal image-reference" href="../../_images/2_cover.png"><img alt="../../_images/2_cover.png" src="../../_images/2_cover.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text"><strong>Ilustración realizada por Bernardo Dinamarca</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>¡Hola! Comenzar, en primer lugar, con que el presente notebook es la mejora del primero que realicé. La primera versión del código era repetitiva y por tanto, poco eficiente. Me digne a mejorarla y este fue el resultado (aún no me convence, pero es trabajo honesto).</p>
 <p>Esta versión está hecha con un poco más de conocimiento, aunque cabe recalcar, no soy un maestro de la programación, y estoy bastante distante de serlo. Me considero un sobreviviente, y un constante aprendiz.</p>
 <p>Por otro lado, en algunas partes del texto se obvia la acentuación puesto que, en LATEX y especialmente, a la hora de manejar variables, no se utiliza codificación de carácteres UTF-16.</p>
@@ -604,17 +609,17 @@
 <ul class="simple">
 <li><p>Pandas (librería por especialidad de manipulación de datos). Permite leer y trabajar con distintos tipos de archivos.</p></li>
 </ul>
-<p>:::{figure-md} markdown-fig
-<img src="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png" width="50%"></p>
-<p><strong>Logo de la librería <a href="https://pandas.pydata.org/">Pandas</a></strong>.
-:::</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png"><img alt="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png" src="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text"><strong>Logo de la librería <a href="https://pandas.pydata.org/">Pandas</a></strong>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>Numpy (librería de álgebra que trabaja en conjunto con Pandas).</p></li>
 </ul>
-<p>:::{figure-md} markdown-fig
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png" width="50%"></p>
-<p><strong>Logo de la librería <a href="https://numpy.org/">Numpy</a></strong>.
-:::</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Logo de la librería <a href="https://numpy.org/">Numpy</a></strong>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>Y otras varias de Python base.</p></li>
 </ul>
@@ -664,23 +669,28 @@
 <span class="c1">### Solo de uso esporádico</span>
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="kn">import</span> <span class="nn">pkg_resources</span>
+<span class="kn">import</span> <span class="nn">types</span>
 
 <span class="c1">### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)</span>
 <span class="kn">import</span> <span class="nn">session_info</span>
+
+<span class="c1">### Pybtex</span>
+<span class="kn">import</span> <span class="nn">pybtex.plugin</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">b42f5751ca92</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">### Librería de manipulación de datos</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># default=&#39;warn&#39;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">d384eb127edb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> 
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="c1">### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)</span>
+<span class="ne">---&gt; </span><span class="mi">48</span> <span class="kn">import</span> <span class="nn">session_info</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> 
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="c1">### Pybtex</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;session_info&#39;
 </pre></div>
 </div>
 </div>
@@ -691,7 +701,7 @@
 <hr class="docutils" />
 <div class="section" id="micitec">
 <h3>MICITEC<a class="headerlink" href="#micitec" title="Permalink to this headline">¶</a></h3>
-<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span class="bibtex" id="id1">[MICITEC]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a href="#id2"><span class="problematic" id="id3">:footcite:`MICITEC`</span></a></p>
+<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span id="id3">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id3">MinisteriodCienciaTeInnovacion21</a>]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a class="footnote-reference brackets" href="#id5" id="id4">1</a></p>
 <ul class="simple">
 <li><p>Los archivos .CSV refieren a “comma separated values”, que en español significa “archivos separados por coma”, y si bien, parecieran tener una estructura desorganizada, en verdad tienen un orden por columna y fila, delimitando cada elemento por una coma. En Data Science son ampliamente utilizados, aunque, en secuencias de datos más amplias (y con mayor peso) se suele utilizar el lenguaje de consulta SQL, dado que la librería Pandas, en un archivo .CSV, debe leer uno y cada uno de los datos, por lo que a medida escala el número de datos, el proceso de lectura de un .CSV se torna ineficiente.</p></li>
 <li><p>Para ejemplo práctico, leer bloque de código (<a class="reference external" href="#ejemplo1">Ejemplo 1</a>).</p></li>
@@ -2035,7 +2045,7 @@
 <li><p><b>Indicador de fase</b></p></li>
 </ul>
 <p>El plan Paso a Paso y la capacidad de poder “predecirlo”. El indicador de fase surgió como una idea de saber, qué tan cerca o qué tan distantes se estaba de los avances o retrocesos de fase, en términos de confinamiento o desconfinamiento. La idea original la desarrollé un día por la noche, e hizo boom en redes sociales. El miembro del comité científico COVID-19 de la Universidad Arturo Prat, el Dr. Cristóbal Corral, fue capaz de explicarlo brevemente a los medios: Un termómetro del Paso a Paso.</p>
-<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span class="bibtex" id="id4">[NUMERALAB-INDICADORFASE]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a href="#id5"><span class="problematic" id="id6">:footcite:`NUMERALAB-INDICADORFASE`</span></a></p>
+<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id6">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id7">2</a></p>
 <p>La segunda versión de este reporte fue subida, inicialmente, el 02/05/2021, que fue la 37° edición. Fue procesada en el siguiente script (This is the way 2), y se basa en un problema de clasificación. Para mayor información del cómo funciona y  sus fundamentos, recomiendo ver el siguiente notebook.</p>
 <ul class="simple">
 <li><p><b>Reporte comunal</b></p></li>
@@ -2507,6 +2517,12 @@
 
 <span class="c1">### Ejecutamos notebook 2</span>
 <span class="o">%</span><span class="n">run</span> <span class="mi">2</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span>
+
+<span class="c1">### Ejecutamos notebook 3</span>
+<span class="o">%</span><span class="n">run</span> <span class="mi">3</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span>
+
+<span class="c1">### Ejecutamos notebook 4</span>
+<span class="o">%</span><span class="n">run</span> <span class="o">./../</span><span class="mi">4</span><span class="n">_legado</span><span class="o">/</span><span class="mi">1</span><span class="n">_legado</span><span class="o">.</span><span class="n">ipynb</span>
 </pre></div>
 </div>
 </div>
@@ -2555,19 +2571,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 24 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.404%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.269%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.657%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.828%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 54 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.204%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.178%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 38 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.58%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.639%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 49 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.248%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.314%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.138%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.008%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 80 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.536%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.617%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -2588,8 +2604,8 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 <center><a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg" style="width:50%"></img></a></center>
 <p>Existen otras librerías, como Seaborn (sns), que nos permite realizar gráficos más avanzados que Matplotlib con una sintaxis más simple. Sin embargo, Matplotlib tiene mayor versatilidad, y por ello, lo utilizaremos sobre Seaborn (sns viene con una sintaxis más simple pero menos manejable).</p>
 <center><a href="https://seaborn.pydata.org/"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" style="width:50%"></img></a></center>
-<div class="section" id="id7">
-<h3>Reporte diario<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Reporte diario<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para reporte diario ###</span>
@@ -2610,7 +2626,7 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
         <span class="k">def</span> <span class="nf">absolute_value</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-            <span class="n">a</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">val</span><span class="o">/</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">))))</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">val</span><span class="o">/</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())))</span>
             <span class="k">return</span> <span class="n">a</span>
         <span class="n">graph</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="n">absolute_value</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span> <span class="n">explode</span><span class="o">=</span><span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
@@ -2724,8 +2740,8 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 </div>
-<div class="section" id="id8">
-<h3>Balance de vacunas<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Balance de vacunas<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para balance vacunas ###</span>
@@ -2878,8 +2894,8 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 </div>
-<div class="section" id="id9">
-<h3>Indicador de fase<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Indicador de fase<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para indicador fase ###</span>
@@ -2977,9 +2993,9 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 <div class="section" id="generando-reportes">
 <h2>Generando reportes<a class="headerlink" href="#generando-reportes" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a href="#id10"><span class="problematic" id="id11">:footcite:`AlSweigart`</span></a> para generar las infografías.</p>
+<p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a class="footnote-reference brackets" href="#alsweigart" id="id11">3</a> para generar las infografías.</p>
 <p>El procedimiento manual implicaba exportar archivos .JSON, y a partir de ellos, rellenar manualmente los datos y gráficos en Photoshop, lo que es un proceso tedioso, y altamente susceptible a equivocaciones.</p>
-<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span class="bibtex" id="id12">[AlSweigart]</span>.</p>
+<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id12">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
 <p>Lo que tenemos que realizar consistirá en los siguientes pasos:</p>
 <ul class="simple">
 <li><p>Rellenar con datos las infografías prediseñadas en Photoshop.</p></li>
@@ -3441,18 +3457,18 @@ La media general del error es de:  0.85 %
 <span id="aclaracion"></span><h4>Casos activos confirmados<a class="headerlink" href="#casos-activos-confirmados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos activos confirmados del reporte diario del Minsal no calzan con los del reporte epidemiológico?</strong> Ésto se debe a que, el reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No contempla en la suma de activos confirmados, a los activos probables <a href="#id18"><span class="problematic" id="id19">:footcite:`b51-536`</span></a>, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No contempla en la suma de activos confirmados, a los activos probables <a class="footnote-reference brackets" href="#b51-536" id="id18">4</a>, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 </div>
 <div class="section" id="casos-confirmados-acumulados">
-<span id="id20"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
+<span id="id19"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos confirmados acumulados del reporte diario del Minsal no calzan con el total del reporte epidemiológico?</strong> Ésto se debe a dos situaciones con respecto al reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No se contemplan casos probables <a href="#id21"><span class="problematic" id="id22">:footcite:`b51-536`</span></a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos probables <a class="footnote-reference brackets" href="#b51-536" id="id20">4</a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>No se contemplan casos notificados por laboratorio <a href="#id23"><span class="problematic" id="id24">:footcite:`epi-04-06-2021`</span></a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos notificados por laboratorio <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id21">5</a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <p>Ésto implica que:</p>
 <div class="math notranslate nohighlight" id="equation-casos-epidemiologico">
@@ -3466,11 +3482,11 @@ La media general del error es de:  0.85 %
 <h4>Definiciones<a class="headerlink" href="#definiciones" title="Permalink to this headline">¶</a></h4>
 <p>Respecto a las definiciones de la nomenclatura:</p>
 <ul class="simple">
-<li><p>Los casos probables, por definición <a href="#id25"><span class="problematic" id="id26">:footcite:`b51-536`</span></a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span class="bibtex" id="id27">[b51-536]</span>.</p></li>
+<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id22">4</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id23">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>Los casos notificados por laboratorio, por definición <a href="#id28"><span class="problematic" id="id29">:footcite:`epi-04-06-2021`</span></a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span class="bibtex" id="id30">[epi-04-06-2021]</span>.</p></li>
+<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">5</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id25">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -3479,7 +3495,7 @@ La media general del error es de:  0.85 %
 <h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">req_file_name</span><span class="o">=</span><span class="s1">&#39;1_requeriments.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3490,6 +3506,7 @@ La media general del error es de:  0.85 %
 -----
 PIL                 8.2.0
 bs4                 4.9.3
+csv                 1.0
 datetime            NA
 json                2.0.9
 locale              NA
@@ -3498,11 +3515,15 @@ matplotlib          3.3.4
 numpy               1.19.2
 os                  NA
 pandas              1.2.3
+pip                 21.0.1
+plotly              4.8.1
+pybtex              0.24.0
 scipy               1.6.2
 seaborn             0.11.1
 session_info        1.0.0
 sklearn             0.24.1
 time                NA
+types               NA
 -----
 </pre>
 <details>
@@ -3534,11 +3555,11 @@ collections         NA
 colorama            0.4.3
 colorsys            NA
 concurrent          NA
+configparser        NA
 contextlib          NA
 contextvars         NA
 copy                NA
 copyreg             NA
-csv                 1.0
 ctypes              1.1.0
 cycler              0.10.0
 cython_runtime      NA
@@ -3611,6 +3632,7 @@ numbers             NA
 numexpr             2.7.3
 opcode              NA
 operator            NA
+optparse            1.5.3
 packaging           20.9
 parso               0.8.2
 pathlib             NA
@@ -3643,6 +3665,7 @@ quopri              NA
 random              NA
 re                  2.2.1
 reprlib             NA
+retrying            NA
 ruamel              NA
 runpy               NA
 secrets             NA
@@ -3682,7 +3705,6 @@ tokenize            NA
 tornado             6.1
 traceback           NA
 traitlets           5.0.5
-types               NA
 typing              NA
 typing_extensions   NA
 unicodedata         NA
@@ -3719,13 +3741,86 @@ Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
 Windows-10-10.0.19041-SP0
 12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 -----
-Session information updated at 2021-06-24 16:24
+Session information updated at 2021-06-24 18:49
 </pre>
 </details></div></div>
 </div>
 </div>
+<div class="section" id="requerimientos">
+<h2>Requerimientos<a class="headerlink" href="#requerimientos" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###</span>
+
+<span class="k">def</span> <span class="nf">get_imports</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">):</span>
+            <span class="c1"># Split ensures you get root package, </span>
+            <span class="c1"># not just imported function</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="vm">__module__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Some packages are weird and have different</span>
+        <span class="c1"># imported names vs. system/pip names. Unfortunately,</span>
+        <span class="c1"># there is no systematic way to get pip names from</span>
+        <span class="c1"># a package&#39;s imported name. You&#39;ll have to add</span>
+        <span class="c1"># exceptions to this list manually!</span>
+        <span class="n">poorly_named_packages</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;PIL&quot;</span><span class="p">:</span> <span class="s2">&quot;Pillow&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sklearn&quot;</span><span class="p">:</span> <span class="s2">&quot;scikit-learn&quot;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">poorly_named_packages</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">poorly_named_packages</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+        <span class="k">yield</span> <span class="n">name</span>
+<span class="n">imports</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">get_imports</span><span class="p">()))</span>
+
+<span class="c1"># The only way I found to get the version of the root package</span>
+<span class="c1"># from only the name of the package is to cross-check the names </span>
+<span class="c1"># of installed packages vs. imported packages</span>
+<span class="n">requirements</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">working_set</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">project_name</span> <span class="ow">in</span> <span class="n">imports</span> <span class="ow">and</span> <span class="n">m</span><span class="o">.</span><span class="n">project_name</span><span class="o">!=</span><span class="s2">&quot;pip&quot;</span><span class="p">:</span>
+        <span class="n">requirements</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">m</span><span class="o">.</span><span class="n">project_name</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
+<span class="n">req</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">requirements</span><span class="p">:</span>
+    <span class="n">req</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{}</span><span class="s2">==</span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">r</span><span class="p">)</span>
+<span class="n">req</span> <span class="o">+=</span> <span class="s1">&#39;jupyter-book&#39;</span>
+
+<span class="c1">### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;..//..&#39;</span><span class="p">)]:</span>
+    <span class="k">if</span> <span class="n">string</span> <span class="o">==</span> <span class="s1">&#39;requirements.txt&#39;</span><span class="p">:</span>
+        <span class="n">_string</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;..//..//</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">_string</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">req</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="bibliografia-de-esta-pagina">
 <h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">¶</a></h2>
+<p><dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>Ministerio de Ciencia, Tecnología e Innovación. Base de datos COVID-19. 2020, 2021. URL: <a class="reference external" href="https://github.com/MinCiencia/Datos-COVID19">https://github.com/MinCiencia/Datos-COVID19</a>.</p>
+</dd>
+<dt class="label" id="numeralab-indicadorfase"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dd><p>Alejandro Dinamarca. Indicador de fase, ed. 36°. 2021. URL: <a class="reference external" href="https://www.instagram.com/p/COyZiUcLUqu/">https://www.instagram.com/p/COyZiUcLUqu/</a>.</p>
+</dd>
+<dt class="label" id="alsweigart"><span class="brackets"><a class="fn-backref" href="#id11">3</a></span></dt>
+<dd><p>AlSweigart. Automate The Boring Stuff With Python. 2015. URL: <a class="reference external" href="https://automatetheboringstuff.com/chapter17/">https://automatetheboringstuff.com/chapter17/</a>.</p>
+</dd>
+<dt class="label" id="b51-536"><span class="brackets">4</span><span class="fn-backref">(<a href="#id18">1</a>,<a href="#id20">2</a>,<a href="#id22">3</a>)</span></dt>
+<dd><p>Subsecretaria de Salud Pública. Ordinario B51-536. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf">https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf</a>.</p>
+</dd>
+<dt class="label" id="epi-04-06-2021"><span class="brackets">5</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id24">2</a>)</span></dt>
+<dd><p>Departamento de Epidemiología. Informe epidemiológico N° 126. Enfermedad por SARS-CoV-2 (COVID-19). Chile 04-06-2021. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf">https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf</a>.</p>
+</dd>
+</dl>
+</p>
+<hr class="footnotes docutils" />
 </div>
 </div>
 

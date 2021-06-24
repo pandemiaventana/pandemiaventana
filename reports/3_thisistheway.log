@@ -93,12 +93,10 @@ import session_info
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
 [0;32m<ipython-input-1-3072d4e62312>[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [0;34m[0m[0m
-[1;32m      3[0m [0;31m### Librería de manipulación de datos[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 4[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      5[0m [0mpd[0m[0;34m.[0m[0mset_option[0m[0;34m([0m[0;34m'use_inf_as_na'[0m[0;34m,[0m [0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0mpd[0m[0;34m.[0m[0moptions[0m[0;34m.[0m[0mdisplay[0m[0;34m.[0m[0mfloat_format[0m [0;34m=[0m [0;34m'{:,.2f}'[0m[0;34m.[0m[0mformat[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mModuleNotFoundError[0m: No module named 'pandas'
-ModuleNotFoundError: No module named 'pandas'
+[1;32m     69[0m [0;34m[0m[0m
+[1;32m     70[0m [0;31m### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 71[0;31m [0;32mimport[0m [0msession_info[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mModuleNotFoundError[0m: No module named 'session_info'
+ModuleNotFoundError: No module named 'session_info'
 

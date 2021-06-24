@@ -310,6 +310,11 @@
    Salida para Markdown
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#informacion-de-sesion">
+   Información de sesión
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -330,18 +335,19 @@
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Javascript</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">session_info</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a6f942ddf01b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">os.path</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">f969c06c30e6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Javascript</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">session_info</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;session_info&#39;
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1022,7 @@ memory usage: 527.8+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_outputs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#cell_outputs[3]</span>
 </pre></div>
 </div>
 </div>
@@ -1029,18 +1035,18 @@ memory usage: 527.8+ KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###</span>
-<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;..//..&#39;</span><span class="p">)]:</span>
-    <span class="k">if</span> <span class="n">string</span> <span class="o">==</span> <span class="s1">&#39;README.md&#39;</span><span class="p">:</span>
-        <span class="n">md</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;..//..//</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
-        <span class="n">txt</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="n">full</span> <span class="o">=</span> <span class="n">txt</span> <span class="o">+</span> <span class="n">cell_outputs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1">#for string in [name for name in os.listdir(&#39;..//..&#39;)]:</span>
+<span class="c1">#    if string == &#39;README.md&#39;:</span>
+<span class="c1">#        md = open(&#39;..//..//{}&#39;.format(string))</span>
+<span class="c1">#        txt = md.read()</span>
+<span class="c1">#        full = txt + cell_outputs[3]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#full</span>
 </pre></div>
 </div>
 </div>
@@ -1052,7 +1058,7 @@ memory usage: 527.8+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">full</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#display(Markdown(full))</span>
 </pre></div>
 </div>
 </div>
@@ -1063,9 +1069,211 @@ memory usage: 527.8+ KB
 <p>Favor, cualquier sugerencia o comentario, hacerlo llegar mediante <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/issues/new">Issues de GitHub</a>.</p>
 <div class="system-message">
 <p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/pandemiaventana/pandemiaventana/page/4_legado/1_legado.ipynb</span>, line 9)</p>
-<p>Non-consecutive header level increase; 0 to 2</p>
+<p>Non-consecutive header level increase; 0 to 2 [myst.header]</p>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="informacion-de-sesion">
+<h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">req_file_name</span><span class="o">=</span><span class="s1">&#39;4_requeriments.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><details>
+<summary>Click to view session information</summary>
+<pre>
+-----
+os                  NA
+pandas              1.2.3
+session_info        1.0.0
+-----
+</pre>
+<details>
+<summary>Click to view modules imported as dependencies</summary>
+<pre>
+abc                 NA
+argparse            1.1
+array               NA
+ast                 NA
+asyncio             NA
+atexit              NA
+backcall            0.2.0
+base64              NA
+bdb                 NA
+binascii            NA
+bisect              NA
+bz2                 NA
+cProfile            NA
+calendar            NA
+cmath               NA
+cmd                 NA
+code                NA
+codecs              NA
+codeop              NA
+collections         NA
+colorama            0.4.3
+colorsys            NA
+concurrent          NA
+contextlib          NA
+contextvars         NA
+copy                NA
+copyreg             NA
+csv                 1.0
+ctypes              1.1.0
+cython_runtime      NA
+dataclasses         NA
+datetime            NA
+dateutil            2.8.1
+decimal             1.70
+decorator           5.0.6
+difflib             NA
+dis                 NA
+distutils           3.7.0
+email               NA
+encodings           NA
+enum                NA
+errno               NA
+faulthandler        NA
+filecmp             NA
+fnmatch             NA
+functools           NA
+gc                  NA
+genericpath         NA
+getopt              NA
+getpass             NA
+gettext             NA
+glob                NA
+google              NA
+gzip                NA
+hashlib             NA
+heapq               NA
+hmac                NA
+html                NA
+http                NA
+imp                 NA
+importlib           NA
+inspect             NA
+io                  NA
+ipykernel           5.3.4
+ipyparallel         6.3.0
+ipython_genutils    0.2.0
+itertools           NA
+jedi                0.18.0
+json                2.0.9
+keyword             NA
+linecache           NA
+locale              NA
+logging             0.5.1.2
+lzma                NA
+marshal             4
+math                NA
+mimetypes           NA
+mkl                 2.3.0
+mmap                NA
+mpl_toolkits        NA
+msvcrt              NA
+multiprocessing     NA
+nt                  NA
+ntpath              NA
+ntsecuritycon       NA
+nturl2path          NA
+numbers             NA
+numpy               1.19.2
+opcode              NA
+operator            NA
+parso               0.8.2
+pathlib             NA
+pdb                 NA
+pickle              NA
+pickleshare         0.7.5
+pkgutil             NA
+platform            1.0.8
+posixpath           NA
+pprint              NA
+profile             NA
+prompt_toolkit      3.0.17
+pstats              NA
+pydoc               NA
+pydoc_data          NA
+pygments            2.8.1
+pytz                2021.1
+queue               NA
+quopri              NA
+random              NA
+re                  2.2.1
+reprlib             NA
+ruamel              NA
+runpy               NA
+secrets             NA
+select              NA
+selectors           NA
+shlex               NA
+shutil              NA
+signal              NA
+site                NA
+six                 1.15.0
+socket              NA
+sphinxcontrib       NA
+sqlite3             2.6.0
+sre_compile         NA
+sre_constants       NA
+sre_parse           NA
+ssl                 NA
+stat                NA
+storemagic          NA
+string              NA
+stringprep          NA
+struct              NA
+subprocess          NA
+sys                 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+tarfile             0.9.0
+tempfile            NA
+textwrap            NA
+threading           NA
+time                NA
+timeit              NA
+token               NA
+tokenize            NA
+tornado             6.1
+traceback           NA
+traitlets           5.0.5
+types               NA
+typing              NA
+unicodedata         NA
+urllib              NA
+uu                  NA
+uuid                NA
+warnings            NA
+wcwidth             0.2.5
+weakref             NA
+win32api            NA
+win32security       NA
+winreg              NA
+xml                 NA
+zipfile             NA
+zipimport           NA
+zlib                1.0
+zmq                 20.0.0
+</pre>
+</details> <!-- seems like this ends pre, so might as well be explicit -->
+<pre>
+-----
+IPython             7.23.1
+jupyter_client      6.1.12
+jupyter_core        4.7.1
+notebook            6.3.0
+-----
+Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+Windows-10-10.0.19041-SP0
+12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+-----
+Session information updated at 2021-06-24 18:50
+</pre>
+</details></div></div>
 </div>
 </div>
 </div>

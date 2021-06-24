@@ -21,15 +21,16 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 import os, os.path
 from IPython.display import Markdown, HTML, Javascript
 import pandas as pd
+import session_info
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-1-a6f942ddf01b>[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [0;32mimport[0m [0mos[0m[0;34m,[0m [0mos[0m[0;34m.[0m[0mpath[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-1-f969c06c30e6>[0m in [0;36m<module>[0;34m[0m
 [1;32m      3[0m [0;32mfrom[0m [0mIPython[0m[0;34m.[0m[0mdisplay[0m [0;32mimport[0m [0mMarkdown[0m[0;34m,[0m [0mHTML[0m[0;34m,[0m [0mJavascript[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 4[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m [0;32mimport[0m [0msession_info[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;31mModuleNotFoundError[0m: No module named 'pandas'
-ModuleNotFoundError: No module named 'pandas'
+[0;31mModuleNotFoundError[0m: No module named 'session_info'
+ModuleNotFoundError: No module named 'session_info'
 
