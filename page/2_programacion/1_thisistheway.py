@@ -87,12 +87,15 @@ plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False}
 
 ### Para formato local
 import locale
+
 try:
     ### Windows
-    locale.setlocale(locale.LC_ALL, 'esp')
+    #locale.setlocale(locale.LC_ALL, 'esp')
+    locale.setlocale(locale.LC_ALL, '')
 except Exception:
     ### Ubuntu (para action)
-    locale.setlocale(locale.LC_ALL, 'es_ES.utf8')
+    #locale.setlocale(locale.LC_ALL, 'es_ES.utf8')
+    locale.setlocale(locale.LC_ALL, '')
 
 ### Otros paquetes
 import math
