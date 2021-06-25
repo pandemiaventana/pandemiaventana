@@ -1,3 +1,4 @@
+bs4==4.9.3
 os
 pandas==1.2.3
 session_info==1.0.0
