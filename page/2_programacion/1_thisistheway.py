@@ -87,15 +87,13 @@ plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False}
 
 ### Para formato local
 import locale
-
+### Según Windows o Ubuntu
 try:
     ### Windows
-    #locale.setlocale(locale.LC_ALL, 'esp')
-    locale.setlocale(locale.LC_ALL, '')
+    locale.setlocale(locale.LC_ALL, 'esp')
 except Exception:
-    ### Ubuntu (para action)
-    #locale.setlocale(locale.LC_ALL, 'es_ES.utf8')
-    locale.setlocale(locale.LC_ALL, '')
+    ### Ubuntu (action)
+    locale.setlocale(locale.LC_ALL, 'es_CL.UTF-8')
 
 ### Otros paquetes
 import math
@@ -1397,8 +1395,8 @@ graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],\
                    [[0], [0]], \
                    color=['gray', '#9ad5ff'], alpha=[1, 1], \
                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-vaccine = Image.open('..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
-pct_ = Image.open('..\\..\\in\\vacuna\\grafico\\1.png')
+vaccine = Image.open('.\\..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
+pct_ = Image.open('.\\..\\..\\in\\vacuna\\grafico\\1.png')
 background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
 background.paste(pct_, (135,359), pct_)
 background.paste(vaccine, (0, 0), vaccine)
