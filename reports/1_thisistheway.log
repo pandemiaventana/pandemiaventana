@@ -17,95 +17,144 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Importando paquetes
+### Graficando para balance vacunas ###
 
-### Librería de manipulación de datos 
-import pandas as pd
-pd.set_option('display.max_columns', 50)
-pd.options.mode.chained_assignment = None  # default='warn'
-pd.options.display.float_format = '{:,.2f}'.format
+### Últimas cifras de vacunación a población total/objetivo
+pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()], \
+          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()], \
+          poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
+pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()], \
+          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()], \
+          poblacion*0.8 - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
+labels = np.array(['Con 1° dosis \n (sin inmunidad)', 'Con 2° dosis \n (eventual inmunes)', 'Sin 2° dosis \n (sin inmunidad)'])
+vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
+vacunacion_pct.index = labels
+vacunacion_pct.columns = ['Población total', 'Población objetivo']
 
-### Librería de álgebra
-import numpy as np
+### Para gráficos de barra
+class graphBar:
+    """
+    Clase para gráfico de barra.
+    Args
+    ____
+    x: eje x
+    y: eje y
+    color: colores
+    path: dirección de guardado
+    alpha: transparencia
+    opt:'' sufijo de dato
+    uni:0 booleano (0 para color para todas las barras, 1 para color por cada barra)
+    w:4 (ancho)
+    l:3 (largo)
+    horizontal:0 (gráfico vertical u horizontal)
+    rot: rotacion para gráfico con uni=1
+    
+    """
+    def __init__(self, x, y, color, path, alpha, opt='', uni=0, w=4, l=3, horizontal=0, rot=0):
+        self.opt = opt
+        self.w = 4
+        self.l = 3
+        self.s = 0
+        fig, ax = plt.subplots(figsize=(w, l))
+        self.x = x
+        self.y = y
+        self.color = color
+        self.alpha = alpha
+        self.path = path
+        self.uni = uni
+        self.horizontal = 0
+        self.rot = rot
+        if horizontal == 0:
+            if uni == True:
+                for x in self.x:
+                    ax.bar(self.x[self.s], self.y[self.s], color=self.color, alpha=self.alpha[self.s])
+                for i,j in zip(self.x[self.s],self.y[self.s]):
+                    ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=9, horizontalalignment='center', verticalalignment='bottom')
+                self.s += 1
+                plt.xticks(rotation=self.rot)
+            else:
+                for x in self.x:
+                    ax.bar(self.x[self.s], self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
+                    for i,j in zip(self.x[self.s],self.y[self.s]):
+                        ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=4.5, horizontalalignment='center', verticalalignment='bottom')
+                    self.s += 1
+                    plt.xticks(rotation=15)
+        else:
+            for x in self.x:
+                ax.barh(width=self.x[self.s], y=self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
+                ax.axis('off')
+                fig.patch.set_visible(True)
+                self.s += 1
+        ax.tick_params(labelsize=5, colors='w', grid_color='w')
+        ax.get_yaxis().set_major_formatter(
+        mpl.ticker.FuncFormatter(lambda y, p: format(int(y), ',d')))
+        self.path = path
+        ax.spines['bottom'].set_color('white')
+        ax.spines['left'].set_color('white')
+        plt.savefig(self.path, bbox_inches = 'tight')
+        ax.tick_params(colors='#000', grid_color='#000')
+        ax.spines['bottom'].set_color('#000')
+        ax.spines['left'].set_color('#000')
+        plt.show()
+        print('Gráfico guardado.')
+        
+### Primer gráfico: Proporción objetivo vacunada
+graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],\
+                   [[0], [0]], \
+                   color=['gray', '#9ad5ff'], alpha=[1, 1], \
+                   path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
+vaccine = Image.open('..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
+pct_ = Image.open('..\\..\\in\\vacuna\\grafico\\1.png')
+background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
+background.paste(pct_, (135,359), pct_)
+background.paste(vaccine, (0, 0), vaccine)
+background = background.rotate(90).resize((400, 700), Image.ANTIALIAS)
+background.save('..\\..\\in\\vacuna\\grafico\\1.png')
 
-### Librerías para graficar
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import matplotlib as mpl
+### Segundo gráfico: Vacunas administradas (1° dosis)
+graph2 = graphBar([vacunacion_pct.index],\
+                   [vacunacion_pct['Población total']], \
+                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
+                   path='..\\..\\in\\vacuna\\grafico\\2.png', uni=1, w=3.5, l=2.5)
+        
+### Tercer gráfico: Vacunas administradas (1° dosis)
+graph3 = graphBar([vacunacion_pct.index],\
+                   [vacunacion_pct['Población objetivo']], \
+                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
+                   path='..\\..\\in\\vacuna\\grafico\\3.png', uni=1, w=3.5, l=2.5)
+        
+### Cuarto gráfico: Vacunas administradas (1° dosis)
+graph4 = graphBar([vacunacion_etaria.index]*2,\
+                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis']], \
+                   color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
+                   path='..\\..\\in\\vacuna\\grafico\\4.png')
 
-### Customizamos para tener fondos transparentes con alta resolución
-mpl.rcParams['figure.dpi']= 300
-mpl.rc("savefig", dpi=300)
-plt.rcParams.update({
-    "figure.facecolor":  (0.0, 0.0, 0.0, 0.0),
-    "axes.facecolor":    (0.0, 0.0, 0.0, 0.0),
-    "savefig.facecolor": (0.0, 0.0, 0.0, 0.0),
-})
-plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False})
+### Quinto gráfico: Vacunas administradas (2° dosis)
+graph5 = graphBar([vacunacion_etaria.index]*2,\
+                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis']], \
+                   color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
+                   path='..\\..\\in\\vacuna\\grafico\\5.png')
 
-### Para formato local
-import locale
-try:
-    ### Windows
-    locale.setlocale(locale.LC_ALL, 'esp')
-except Exception:
-    ### Ubuntu (para action)
-    locale.setlocale(locale.LC_ALL, 'es_ES.utf8')
-
-### Otros paquetes
-import math
-import os
-import json as json
-import datetime
-import time
-import IPython.display as display
-from PIL import Image, ImageDraw, ImageFont
-from IPython.display import display, HTML
-
-### Solo de uso esporádico
-import csv
-from io import StringIO
-import pkg_resources
-import types
-
-### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)
-import session_info
-
-### Pybtex
-import pybtex.plugin
+### ¿Todo ok?
+print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mError[0m                                     Traceback (most recent call last)
-[0;32m<ipython-input-1-23bde0c2f8d8>[0m in [0;36m<module>[0;34m[0m
-[1;32m     30[0m     [0;31m### Windows[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 31[0;31m     [0mlocale[0m[0;34m.[0m[0msetlocale[0m[0;34m([0m[0mlocale[0m[0;34m.[0m[0mLC_ALL[0m[0;34m,[0m [0;34m'esp'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     32[0m [0;32mexcept[0m [0mException[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-11-255e4debfd29>[0m in [0;36m<module>[0;34m[0m
+[1;32m     85[0m                    [0mcolor[0m[0;34m=[0m[0;34m[[0m[0;34m'gray'[0m[0;34m,[0m [0;34m'#9ad5ff'[0m[0;34m][0m[0;34m,[0m [0malpha[0m[0;34m=[0m[0;34m[[0m[0;36m1[0m[0;34m,[0m [0;36m1[0m[0;34m][0m[0;34m,[0m[0;31m [0m[0;31m\[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     86[0m                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
+[0;32m---> 87[0;31m [0mvaccine[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'..\\..\\in\\vacuna\\grafico\\vaccine.png'[0m[0;34m)[0m[0;34m.[0m[0mrotate[0m[0;34m([0m[0;34m-[0m[0;36m90[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     88[0m [0mpct_[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'..\\..\\in\\vacuna\\grafico\\1.png'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     89[0m [0mbackground[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mnew[0m[0;34m([0m[0;34m'RGBA'[0m[0;34m,[0m [0;34m([0m[0;36m1000[0m[0;34m,[0m [0;36m1000[0m[0;34m)[0m[0;34m,[0m [0;34m([0m[0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/locale.py[0m in [0;36msetlocale[0;34m(category, locale)[0m
-[1;32m    607[0m         [0mlocale[0m [0;34m=[0m [0mnormalize[0m[0;34m([0m[0m_build_localename[0m[0;34m([0m[0mlocale[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 608[0;31m     [0;32mreturn[0m [0m_setlocale[0m[0;34m([0m[0mcategory[0m[0;34m,[0m [0mlocale[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    609[0m [0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/Image.py[0m in [0;36mopen[0;34m(fp, mode, formats)[0m
+[1;32m   2910[0m [0;34m[0m[0m
+[1;32m   2911[0m     [0;32mif[0m [0mfilename[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2912[0;31m         [0mfp[0m [0;34m=[0m [0mbuiltins[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0;34m"rb"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2913[0m         [0mexclusive_fp[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2914[0m [0;34m[0m[0m
 
-[0;31mError[0m: unsupported locale setting
-
-During handling of the above exception, another exception occurred:
-
-[0;31mError[0m                                     Traceback (most recent call last)
-[0;32m<ipython-input-1-23bde0c2f8d8>[0m in [0;36m<module>[0;34m[0m
-[1;32m     32[0m [0;32mexcept[0m [0mException[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     33[0m     [0;31m### Ubuntu (para action)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 34[0;31m     [0mlocale[0m[0;34m.[0m[0msetlocale[0m[0;34m([0m[0mlocale[0m[0;34m.[0m[0mLC_ALL[0m[0;34m,[0m [0;34m'es_ES.utf8'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     35[0m [0;34m[0m[0m
-[1;32m     36[0m [0;31m### Otros paquetes[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/locale.py[0m in [0;36msetlocale[0;34m(category, locale)[0m
-[1;32m    606[0m         [0;31m# convert to string[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    607[0m         [0mlocale[0m [0;34m=[0m [0mnormalize[0m[0;34m([0m[0m_build_localename[0m[0;34m([0m[0mlocale[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 608[0;31m     [0;32mreturn[0m [0m_setlocale[0m[0;34m([0m[0mcategory[0m[0;34m,[0m [0mlocale[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    609[0m [0;34m[0m[0m
-[1;32m    610[0m [0;32mdef[0m [0mresetlocale[0m[0;34m([0m[0mcategory[0m[0;34m=[0m[0mLC_ALL[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mError[0m: unsupported locale setting
-Error: unsupported locale setting
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '..\\..\\in\\vacuna\\grafico\\vaccine.png'
+FileNotFoundError: [Errno 2] No such file or directory: '..\\..\\in\\vacuna\\grafico\\vaccine.png'
 
