@@ -32,6 +32,7 @@ html:
   favicon: img/page/0_favicon.ico
   use_issues_button: true
   use_repository_button: true
+  use_edit_page_button: true
   google_analytics_id: UA-169901790-2
   baseurl: https://pandemiaventana.github.io/pandemiaventana/
   extra_navbar: Realizado con <a href="https://jupyterbook.org">Jupyter Book</a>
