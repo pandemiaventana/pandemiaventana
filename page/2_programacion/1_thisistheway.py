@@ -85,9 +85,9 @@ plt.rcParams.update({
 })
 plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False})
 
-### Para formato local de fecha
+### Para formato local
 import locale
-locale.setlocale(locale.LC_TIME, '')
+locale.setlocale(locale.LC_ALL, 'esp')
 
 ### Otros paquetes
 import math
