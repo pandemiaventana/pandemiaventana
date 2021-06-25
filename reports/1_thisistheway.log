@@ -103,8 +103,8 @@ graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],\
                    [[0], [0]], \
                    color=['gray', '#9ad5ff'], alpha=[1, 1], \
                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-vaccine = Image.open('..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
-pct_ = Image.open('..\\..\\in\\vacuna\\grafico\\1.png')
+vaccine = Image.open('.\\..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
+pct_ = Image.open('.\\..\\..\\in\\vacuna\\grafico\\1.png')
 background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
 background.paste(pct_, (135,359), pct_)
 background.paste(vaccine, (0, 0), vaccine)
@@ -141,11 +141,11 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-11-255e4debfd29>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-11-a6d10cd9e1b1>[0m in [0;36m<module>[0;34m[0m
 [1;32m     85[0m                    [0mcolor[0m[0;34m=[0m[0;34m[[0m[0;34m'gray'[0m[0;34m,[0m [0;34m'#9ad5ff'[0m[0;34m][0m[0;34m,[0m [0malpha[0m[0;34m=[0m[0;34m[[0m[0;36m1[0m[0;34m,[0m [0;36m1[0m[0;34m][0m[0;34m,[0m[0;31m [0m[0;31m\[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     86[0m                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-[0;32m---> 87[0;31m [0mvaccine[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'..\\..\\in\\vacuna\\grafico\\vaccine.png'[0m[0;34m)[0m[0;34m.[0m[0mrotate[0m[0;34m([0m[0;34m-[0m[0;36m90[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     88[0m [0mpct_[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'..\\..\\in\\vacuna\\grafico\\1.png'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 87[0;31m [0mvaccine[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'.\\..\\..\\in\\vacuna\\grafico\\vaccine.png'[0m[0;34m)[0m[0;34m.[0m[0mrotate[0m[0;34m([0m[0;34m-[0m[0;36m90[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     88[0m [0mpct_[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'.\\..\\..\\in\\vacuna\\grafico\\1.png'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     89[0m [0mbackground[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mnew[0m[0;34m([0m[0;34m'RGBA'[0m[0;34m,[0m [0;34m([0m[0;36m1000[0m[0;34m,[0m [0;36m1000[0m[0;34m)[0m[0;34m,[0m [0;34m([0m[0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/Image.py[0m in [0;36mopen[0;34m(fp, mode, formats)[0m
@@ -155,6 +155,6 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 [0m[1;32m   2913[0m         [0mexclusive_fp[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
 [1;32m   2914[0m [0;34m[0m[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '..\\..\\in\\vacuna\\grafico\\vaccine.png'
-FileNotFoundError: [Errno 2] No such file or directory: '..\\..\\in\\vacuna\\grafico\\vaccine.png'
+[0;31mFileNotFoundError[0m: [Errno 2] No existe el archivo o el directorio: '.\\..\\..\\in\\vacuna\\grafico\\vaccine.png'
+FileNotFoundError: [Errno 2] No existe el archivo o el directorio: '.\\..\\..\\in\\vacuna\\grafico\\vaccine.png'
 
