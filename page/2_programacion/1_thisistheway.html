@@ -655,9 +655,9 @@
 <span class="p">})</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes.spines&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;bottom&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">})</span>
 
-<span class="c1">### Para formato local de fecha</span>
+<span class="c1">### Para formato local</span>
 <span class="kn">import</span> <span class="nn">locale</span>
-<span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_TIME</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
 
 <span class="c1">### Otros paquetes</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -680,6 +680,27 @@
 
 <span class="c1">### Pybtex</span>
 <span class="kn">import</span> <span class="nn">pybtex.plugin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">Error</span><span class="g g-Whitespace">                                     </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a747efd07dc9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="c1">### Para formato local</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">import</span> <span class="nn">locale</span>
+<span class="ne">---&gt; </span><span class="mi">29</span> <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> 
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="c1">### Otros paquetes</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/locale.py</span> in <span class="ni">setlocale</span><span class="nt">(category, locale)</span>
+<span class="g g-Whitespace">    </span><span class="mi">606</span>         <span class="c1"># convert to string</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span>         <span class="n">locale</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">_build_localename</span><span class="p">(</span><span class="n">locale</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">608</span>     <span class="k">return</span> <span class="n">_setlocale</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">locale</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span> 
+<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="k">def</span> <span class="nf">resetlocale</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">LC_ALL</span><span class="p">):</span>
+
+<span class="ne">Error</span>: unsupported locale setting
 </pre></div>
 </div>
 </div>
@@ -2410,7 +2431,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 24 de June de 2021 🕑. 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 24 de junio de 2021 🕑. 
 
 • Infectados 52 casos nuevos de los cuales 39 con síntomas, 13 sin síntomas y 0 sin notificar, dando un total de 38,637 casos confirmados. Adicionalmente, 10 casos nuevos confirmados por antígeno y 38 casos totales con sospecha de reinfección. 🦠
 • Recuperadas 61 personas, sumando 37,439 recuperados totales. 💪
@@ -2479,7 +2500,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 24 de June de 2021. 🕑 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 24 de junio de 2021. 🕑 
 
 • El 54% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 165,910 personas innoculadas con segunda dosis.
 
@@ -2558,21 +2579,21 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Indicador FASE, 24 de June de 2021. 🕑</p>
+<p>Indicador FASE, 24 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.397%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.528%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.74%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.663%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 54 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.194%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.249%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 38 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.405%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.704%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 49 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.102%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.012%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.622%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.145%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 80 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.39%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.425%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -2861,23 +2882,23 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mf">255e4</span><span class="n">debfd29</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span>                    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;#9ad5ff&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> \
-<span class="g g-Whitespace">     </span><span class="mi">86</span>                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">in</span><span class="se">\\</span><span class="s1">vacuna</span><span class="se">\\</span><span class="s1">grafico</span><span class="se">\\</span><span class="s1">1.png&#39;</span><span class="p">,</span> <span class="n">uni</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">1.68</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">horizontal</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">87</span> <span class="n">vaccine</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">in</span><span class="se">\\</span><span class="s1">vacuna</span><span class="se">\\</span><span class="s1">grafico</span><span class="se">\\</span><span class="s1">vaccine.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="n">pct_</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">in</span><span class="se">\\</span><span class="s1">vacuna</span><span class="se">\\</span><span class="s1">grafico</span><span class="se">\\</span><span class="s1">1.png&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="n">background</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<img alt="../../_images/1_thisistheway_25_2.png" src="../../_images/1_thisistheway_25_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_25_4.png" src="../../_images/1_thisistheway_25_4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_25_6.png" src="../../_images/1_thisistheway_25_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_25_8.png" src="../../_images/1_thisistheway_25_8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/Image.py</span> in <span class="ni">open</span><span class="nt">(fp, mode, formats)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2910</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2911</span>     <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2912</span>         <span class="n">fp</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2913</span>         <span class="n">exclusive_fp</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">2914</span> 
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;..\\..\\in\\vacuna\\grafico\\vaccine.png&#39;
+ 
+ Gráficos del balance de vacunas guardados de forma exitosa.
 </pre></div>
 </div>
 </div>
@@ -3503,7 +3524,6 @@ matplotlib          3.3.4
 numpy               1.19.2
 os                  NA
 pandas              1.2.3
-pip                 21.0.1
 pkg_resources       NA
 plotly              4.8.1
 pybtex              0.24.0
@@ -3524,7 +3544,7 @@ array               NA
 ast                 NA
 asyncio             NA
 atexit              NA
-attr                21.2.0
+attr                20.3.0
 backcall            0.2.0
 base64              NA
 bdb                 NA
@@ -3544,7 +3564,6 @@ collections         NA
 colorama            0.4.3
 colorsys            NA
 concurrent          NA
-configparser        NA
 contextlib          NA
 contextvars         NA
 copy                NA
@@ -3588,14 +3607,12 @@ importlib           NA
 importlib_metadata  NA
 inspect             NA
 io                  NA
-ipaddress           1.0
 ipykernel           5.3.4
 ipyparallel         6.3.0
 ipython_genutils    0.2.0
 ipywidgets          7.6.3
 itertools           NA
 jedi                0.18.0
-jinja2              2.11.3
 joblib              1.0.1
 jsonschema          3.2.0
 keyword             NA
@@ -3604,7 +3621,6 @@ linecache           NA
 logging             0.5.1.2
 lxml                4.6.3
 lzma                NA
-markupsafe          1.1.1
 marshal             4
 matplotlib_inline   NA
 mimetypes           NA
@@ -3622,7 +3638,6 @@ numbers             NA
 numexpr             2.7.3
 opcode              NA
 operator            NA
-optparse            1.5.3
 packaging           20.9
 parso               0.8.2
 pathlib             NA
@@ -3635,7 +3650,6 @@ plistlib            NA
 posixpath           NA
 pprint              NA
 profile             NA
-prometheus_client   NA
 prompt_toolkit      3.0.17
 pstats              NA
 psutil              5.8.0
@@ -3660,7 +3674,6 @@ runpy               NA
 secrets             NA
 select              NA
 selectors           NA
-send2trash          NA
 shlex               NA
 shutil              NA
 signal              NA
@@ -3685,7 +3698,6 @@ sys                 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (A
 sysconfig           NA
 tarfile             0.9.0
 tempfile            NA
-terminado           0.9.5
 textwrap            NA
 threading           NA
 timeit              NA
@@ -3708,9 +3720,7 @@ webbrowser          NA
 win32api            NA
 win32com            NA
 win32security       NA
-winpty              0.5.7
 winreg              NA
-wsgiref             NA
 xml                 NA
 zipfile             NA
 zipimport           NA
@@ -3730,7 +3740,7 @@ Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
 Windows-10-10.0.19041-SP0
 12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 -----
-Session information updated at 2021-06-24 19:27
+Session information updated at 2021-06-25 09:36
 </pre>
 </details></div></div>
 </div>

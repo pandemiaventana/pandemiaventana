@@ -21,27 +21,58 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 
 ### Librería de manipulación de datos 
 import pandas as pd
-pd.set_option('display.max_columns', 50)
-pd.options.mode.chained_assignment = None  # default='warn'
+pd.set_option('use_inf_as_na', True)
 pd.options.display.float_format = '{:,.2f}'.format
 
 ### Librería de álgebra
 import numpy as np
 
 ### Librerías para graficar
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import matplotlib as mpl
+import plotly.graph_objects as go
 
-### Customizamos para tener fondos transparentes con alta resolución
-mpl.rcParams['figure.dpi']= 300
-mpl.rc("savefig", dpi=300)
-plt.rcParams.update({
-    "figure.facecolor":  (0.0, 0.0, 0.0, 0.0),
-    "axes.facecolor":    (0.0, 0.0, 0.0, 0.0),
-    "savefig.facecolor": (0.0, 0.0, 0.0, 0.0),
-})
-plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False})
+### Customizamos opciones de Plot.ly
+config = {'displayModeBar': False, 'showTips': False, 'scrollZoom': False}
+layout = go.Layout(dragmode=False, 
+    xaxis=dict(
+        showline=True,
+        showgrid=True,
+        showticklabels=True,
+        linecolor='rgb(204, 204, 204)',
+        linewidth=2,
+        ticks='outside',
+        tickfont=dict(
+            family='Arial',
+            size=12,
+            color='rgb(82, 82, 82)',
+        ),
+    ),
+    yaxis=dict(
+        showgrid=True,
+        showticklabels=True,
+    ),
+    autosize=True,
+    margin=dict(
+        autoexpand=True,
+        l=0,
+        r=0,
+        t=0,
+    ),
+    showlegend=True,
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    legend=dict(
+        itemclick="toggleothers",
+        itemdoubleclick="toggle",
+        orientation="h",
+        yanchor="bottom",
+        xanchor='right',
+        x=1,
+        y=1.02
+    )
+)
+
+### Librería BeautifulSoup para manipular HTML
+from bs4 import BeautifulSoup
 
 ### Para formato local
 import locale
@@ -49,35 +80,24 @@ locale.setlocale(locale.LC_ALL, 'esp')
 
 ### Otros paquetes
 import math
-import os
+import os, os.path
 import json as json
 import datetime
 import time
-import IPython.display as display
-from PIL import Image, ImageDraw, ImageFont
-from IPython.display import display, HTML
-
-### Solo de uso esporádico
-import csv
-from io import StringIO
-import pkg_resources
-import types
+from IPython.display import display, Markdown, HTML, Javascript, IFrame
 
 ### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)
 import session_info
-
-### Pybtex
-import pybtex.plugin
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mError[0m                                     Traceback (most recent call last)
-[0;32m<ipython-input-1-a747efd07dc9>[0m in [0;36m<module>[0;34m[0m
-[1;32m     27[0m [0;31m### Para formato local[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     28[0m [0;32mimport[0m [0mlocale[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 29[0;31m [0mlocale[0m[0;34m.[0m[0msetlocale[0m[0;34m([0m[0mlocale[0m[0;34m.[0m[0mLC_ALL[0m[0;34m,[0m [0;34m'esp'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     30[0m [0;34m[0m[0m
-[1;32m     31[0m [0;31m### Otros paquetes[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-1-b065038c8c97>[0m in [0;36m<module>[0;34m[0m
+[1;32m     58[0m [0;31m### Para formato local[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     59[0m [0;32mimport[0m [0mlocale[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 60[0;31m [0mlocale[0m[0;34m.[0m[0msetlocale[0m[0;34m([0m[0mlocale[0m[0;34m.[0m[0mLC_ALL[0m[0;34m,[0m [0;34m'esp'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     61[0m [0;34m[0m[0m
+[1;32m     62[0m [0;31m### Otros paquetes[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/locale.py[0m in [0;36msetlocale[0;34m(category, locale)[0m
 [1;32m    606[0m         [0;31m# convert to string[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
