@@ -330,12 +330,23 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 #
 # #### Días por fase del plan Paso a Paso
 #
-# Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna.
-
-# %% [markdown]
-# ---
+# Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un "*reset*" de días por de fase en el Paso a Paso.
 #
-# El siguiente bloque de código, limpia los datos que necesitamos y extrae los pertinentes.
+# ### Limpieza de datos
+#
+# En toda recolección de información, se quiera o no, existirá inconsistencia. Algunos días, se genera inconsistencia producto de:
+#
+# - Cambios de criterio.
+#
+# - Suma de cifras de otros días en un día específico (**ajustes históricos considerables**).
+#
+# Ésto afecta las tendencias y las curvas de los datos cumulativos. 
+#
+# #### Tratamiento
+#
+# Nuestro trabajo es, dentro de lo posible, limpiar esa inconsistencia. Por lo que, a lo largo del código, se optará por reemplazar los **outliers** (datos atípicos) con cifras del día anterior, **pero, solo en las cifras cumulativas, de modo de no generar descuadre con respecto al Minsal en las cifras acumulativas**.
+#
+# ### Manipulando (*ahora sí*)
 
 # %%
 # Manipulando datos
@@ -393,6 +404,8 @@ casos_sin_notificar = casos_detalle[casos_detalle['Categoria'] == 'Casos nuevos 
 casos_recuperados = casos_detalle[casos_detalle['Categoria'] == 'Casos confirmados recuperados'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
 casos_recuperados['2020-04-07':'2020-06-28'] = recuperados_rescatados
 casos_recuperados_cumulativos = casos_recuperados - casos_recuperados.shift(1)
+### Limpieza de outlier de 981 (solo en cifras cumulativas para no descuadrar cifra acumulada)
+casos_recuperados_cumulativos['2020-06-29'] = casos_recuperados_cumulativos['2020-06-28']
 casos_activos = casos_detalle[casos_detalle['Categoria'] == 'Casos activos confirmados'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
 casos_activos['2020-03-23':'2020-06-20'] = activos_rescatados
 casos_activos_probables = casos_detalle[casos_detalle['Categoria'] == 'Casos activos probables'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
