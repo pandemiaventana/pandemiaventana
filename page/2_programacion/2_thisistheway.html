@@ -720,7 +720,7 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="c1">### Windows</span>
     <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">Error</span><span class="p">:</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="c1">### Ubuntu (para action)</span>
     <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;es_ES.utf8&#39;</span><span class="p">)</span>
 
@@ -744,10 +744,10 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">Error</span><span class="g g-Whitespace">                                     </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">df09697fbb8b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">56</span><span class="n">c0dd44e130</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="c1">### Windows</span>
 <span class="ne">---&gt; </span><span class="mi">36</span>     <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">except</span> <span class="n">Error</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/locale.py</span> in <span class="ni">setlocale</span><span class="nt">(category, locale)</span>
 <span class="g g-Whitespace">    </span><span class="mi">607</span>         <span class="n">locale</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">_build_localename</span><span class="p">(</span><span class="n">locale</span><span class="p">))</span>
@@ -758,15 +758,22 @@
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">df09697fbb8b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="c1">### Windows</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">37</span> <span class="k">except</span> <span class="n">Error</span><span class="p">:</span>
+<span class="ne">Error</span><span class="g g-Whitespace">                                     </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">56</span><span class="n">c0dd44e130</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="c1">### Ubuntu (para action)</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;es_ES.utf8&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;es_ES.utf8&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span> 
+<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="c1">### Otros paquetes</span>
 
-<span class="ne">NameError</span>: name &#39;Error&#39; is not defined
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/locale.py</span> in <span class="ni">setlocale</span><span class="nt">(category, locale)</span>
+<span class="g g-Whitespace">    </span><span class="mi">606</span>         <span class="c1"># convert to string</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span>         <span class="n">locale</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">_build_localename</span><span class="p">(</span><span class="n">locale</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">608</span>     <span class="k">return</span> <span class="n">_setlocale</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">locale</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span> 
+<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="k">def</span> <span class="nf">resetlocale</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">LC_ALL</span><span class="p">):</span>
+
+<span class="ne">Error</span>: unsupported locale setting
 </pre></div>
 </div>
 </div>
@@ -2203,7 +2210,7 @@ Sus colores:
 </div>
 <div class="cell_output docutils container">
 <h2 style="font-size:60px">INDICADOR DE FASE</h2><h3 style="font-size:20px;">Región de Tarapacá, 24 de junio de 2021</h3><h3>Resultado para Alto Hospicio</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.487%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.405%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2241,7 +2248,7 @@ Actualmente, la comuna registra 38 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Alto Hospicio</p></li>
 </ul>
 <h3>Resultado para Camiña</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.796%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.067%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 54 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2276,7 +2283,7 @@ Actualmente, la comuna registra 54 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Camiña</p></li>
 </ul>
 <h3>Resultado para Colchane</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.321%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.165%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 38 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2311,7 +2318,7 @@ Actualmente, la comuna registra 38 días en <b style="color:dodgerblue">Apertura
 <li><p>Paso a Paso (dias) Colchane</p></li>
 </ul>
 <h3>Resultado para Huara</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>99.704%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.809%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 49 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2349,7 +2356,7 @@ Actualmente, la comuna registra 49 días en <b style="color:gold">Preparación</
 <li><p>Paso a Paso (dias) Huara</p></li>
 </ul>
 <h3>Resultado para Iquique</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.121%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.063%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2387,7 +2394,7 @@ Actualmente, la comuna registra 38 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Iquique</p></li>
 </ul>
 <h3>Resultado para Pica</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.992%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.72%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 80 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2425,7 +2432,7 @@ Actualmente, la comuna registra 80 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Pica</p></li>
 </ul>
 <h3>Resultado para Pozo Almonte</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.535%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.539%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2906,7 +2913,7 @@ Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
 Windows-10-10.0.19041-SP0
 12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 -----
-Session information updated at 2021-06-25 09:50
+Session information updated at 2021-06-25 09:58
 </pre>
 </details></div></div>
 </div>
