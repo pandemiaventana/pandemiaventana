@@ -17,136 +17,164 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-### Graficando para balance vacunas ###
+### Generando reporte diario ###
 
-### Últimas cifras de vacunación a población total/objetivo
-pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()], \
-          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()], \
-          poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
-pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()], \
-          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()], \
-          poblacion*0.8 - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
-labels = np.array(['Con 1° dosis \n (sin inmunidad)', 'Con 2° dosis \n (eventual inmunes)', 'Sin 2° dosis \n (sin inmunidad)'])
-vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
-vacunacion_pct.index = labels
-vacunacion_pct.columns = ['Población total', 'Población objetivo']
+### Abriendo gráficos guardados
+x = range(1, 7)
+for i in x:
+    image_path = '..\\..\\in\\diario\\grafico\\{}.png'.format(i)
+    exec('graph{} = Image.open(image_path)'.format(i))
+    i += i
 
-### Para gráficos de barra
-class graphBar:
-    """
-    Clase para gráfico de barra.
-    Args
-    ____
-    x: eje x
-    y: eje y
-    color: colores
-    path: dirección de guardado
-    alpha: transparencia
-    opt:'' sufijo de dato
-    uni:0 booleano (0 para color para todas las barras, 1 para color por cada barra)
-    w:4 (ancho)
-    l:3 (largo)
-    horizontal:0 (gráfico vertical u horizontal)
-    rot: rotacion para gráfico con uni=1
+### Cargando imagenes
+x = range(1, 11)
+for i in x:
+    image_path = '..\\..\\in\\diario\\{}.png'.format(i)
+    exec('diario_{} = Image.open(image_path)'.format(i))
+    exec('diario{} = diario_{}.copy()'.format(i, i))
+    i += i
     
-    """
-    def __init__(self, x, y, color, path, alpha, opt='', uni=0, w=4, l=3, horizontal=0, rot=0):
-        self.opt = opt
-        self.w = 4
-        self.l = 3
-        self.s = 0
-        fig, ax = plt.subplots(figsize=(w, l))
-        self.x = x
-        self.y = y
-        self.color = color
-        self.alpha = alpha
-        self.path = path
-        self.uni = uni
-        self.horizontal = 0
-        self.rot = rot
-        if horizontal == 0:
-            if uni == True:
-                for x in self.x:
-                    ax.bar(self.x[self.s], self.y[self.s], color=self.color, alpha=self.alpha[self.s])
-                for i,j in zip(self.x[self.s],self.y[self.s]):
-                    ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=9, horizontalalignment='center', verticalalignment='bottom')
-                self.s += 1
-                plt.xticks(rotation=self.rot)
-            else:
-                for x in self.x:
-                    ax.bar(self.x[self.s], self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
-                    for i,j in zip(self.x[self.s],self.y[self.s]):
-                        ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=4.5, horizontalalignment='center', verticalalignment='bottom')
-                    self.s += 1
-                    plt.xticks(rotation=15)
-        else:
-            for x in self.x:
-                ax.barh(width=self.x[self.s], y=self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
-                ax.axis('off')
-                fig.patch.set_visible(True)
-                self.s += 1
-        ax.tick_params(labelsize=5, colors='w', grid_color='w')
-        ax.get_yaxis().set_major_formatter(
-        mpl.ticker.FuncFormatter(lambda y, p: format(int(y), ',d')))
-        self.path = path
-        ax.spines['bottom'].set_color('white')
-        ax.spines['left'].set_color('white')
-        plt.savefig(self.path, bbox_inches = 'tight')
-        ax.tick_params(colors='#000', grid_color='#000')
-        ax.spines['bottom'].set_color('#000')
-        ax.spines['left'].set_color('#000')
-        plt.show()
-        print('Gráfico guardado.')
-        
-### Primer gráfico: Proporción objetivo vacunada
-graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],\
-                   [[0], [0]], \
-                   color=['gray', '#9ad5ff'], alpha=[1, 1], \
-                   path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-vaccine = Image.open('.\\..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
-pct_ = Image.open('.\\..\\..\\in\\vacuna\\grafico\\1.png')
-background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
-background.paste(pct_, (135,359), pct_)
-background.paste(vaccine, (0, 0), vaccine)
-background = background.rotate(90).resize((400, 700), Image.ANTIALIAS)
-background.save('..\\..\\in\\vacuna\\grafico\\1.png')
+### Cargando texto
+roboto = 'Roboto-Regular.ttf'
+coolvetica = 'coolvetica rg.ttf'
+fontsFolder = '\\Windows\\Fonts.'
+roboto_ed = ImageFont.truetype(os.path.join(fontsFolder, roboto), 50)
+roboto_data0 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 20)
+roboto_data1 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 28)
+roboto_data2 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 30)
+roboto_data3 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 40)
+coolvetica_data0 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 30)
+coolvetica_data1 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 70)
+coolvetica_data2 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 150)
+coolvetica_data3 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 100)
+coolvetica_data4 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 180)
 
-### Segundo gráfico: Vacunas administradas (1° dosis)
-graph2 = graphBar([vacunacion_pct.index],\
-                   [vacunacion_pct['Población total']], \
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
-                   path='..\\..\\in\\vacuna\\grafico\\2.png', uni=1, w=3.5, l=2.5)
-        
-### Tercer gráfico: Vacunas administradas (1° dosis)
-graph3 = graphBar([vacunacion_pct.index],\
-                   [vacunacion_pct['Población objetivo']], \
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
-                   path='..\\..\\in\\vacuna\\grafico\\3.png', uni=1, w=3.5, l=2.5)
-        
-### Cuarto gráfico: Vacunas administradas (1° dosis)
-graph4 = graphBar([vacunacion_etaria.index]*2,\
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis']], \
-                   color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
-                   path='..\\..\\in\\vacuna\\grafico\\4.png')
+### Manipulando primera imagen
+txt = ImageDraw.Draw(diario1)
 
-### Quinto gráfico: Vacunas administradas (2° dosis)
-graph5 = graphBar([vacunacion_etaria.index]*2,\
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis']], \
-                   color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
-                   path='..\\..\\in\\vacuna\\grafico\\5.png')
+### Textos
+txt.text((860, 35), '{}° ed.'.format(ed_hoy), fill='#b9b9b9', font=roboto_ed) # edicion
+txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+txt.text((650, 435), '{}'.format(casos_hoy), fill='#dfdede', font=coolvetica_data1) # casos nuevos
+txt.text((820, 510), '{}'.format(recuperados_hoy), fill='#dfdede', font=coolvetica_data1) # recuperados nuevos
+txt.text((745, 585), '{}'.format(fallecidosnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # fallecidos nuevos
+txt.text((825, 660), '{}'.format(activos_hoy), fill='#dfdede', font=coolvetica_data1) # activos
+txt.text((760, 735), '{}'.format(activosprobables_hoy), fill='#dfdede', font=coolvetica_data1) # activos probables
+txt.text((700, 810), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # pcr nuevos
+txt.text((695, 890), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data1) # positividad diaria
+txt.text((750, 965), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data1) # residencias sanitarias
+txt.text((725, 1035), '{}'.format(ucidiaria_hoy), fill='#dfdede', font=coolvetica_data1) # uci diaria
 
+### Guardamos
+diario1.save('..\\..\\out\\diario\\1.png')
+
+### Manipulando segunda imagen
+txt = ImageDraw.Draw(diario2)
+
+### Textos (a diferencia de los textos anteriores, debemos centrar a medida se añaden carácteres con 'anchor')
+txt.text((190, 680), '{}'.format(consintomas_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((190, 750), 'Ayer: {}'.format(consintomas_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
+txt.text((540, 680), '{}'.format(sinsintomas_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 750), 'Ayer: {}'.format(sinsintomas_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((890, 680), '{}'.format(porlaboratorio_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((890, 750), 'Ayer: {}'.format(porlaboratorio_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
+txt.text((350, 910), '{} casos nuevos confirmados por antígeno.'.format(antigeno_hoy), fill='#b9b9b9', font=roboto_data1) # nuevos antigeno
+txt.text((350, 960), '{} casos del total están con sospecha de reinfección.'.format(reinfeccion_hoy), fill='#b9b9b9', font=roboto_data1) # reinfeccion
+ 
+### Gráficos
+diario2.paste(graph1, (570, 50), graph1)
+
+### Guardamos
+diario2.save('..\\..\\out\\diario\\2.png')
+
+### Manipulando tercera imagen
+txt = ImageDraw.Draw(diario3)
+
+### Textos
+txt.text((190, 680), '{}'.format(casos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((190, 750), 'Ayer: {}'.format(casos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
+txt.text((540, 680), '{}'.format(recuperados_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 750), 'Ayer: {}'.format(recuperados_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((890, 680), '{}'.format(fallecidosnuevos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((890, 750), 'Ayer: {}'.format(fallecidosnuevos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
+txt.text((190, 860), 'Acumulado: {}'.format(casosacumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
+txt.text((540, 860), 'Acumulado: {}'.format(recuperadosacumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # reinfeccion
+txt.text((890, 860), 'Acumulado: {}'.format(fallecidosacumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # reinfeccion
+
+### Gráficos
+diario3.paste(graph2, (570, 50), graph2)
+
+### Guardamos
+diario3.save('..\\..\\out\\diario\\3.png')
+
+### Manipulando cuarta imagen
+txt = ImageDraw.Draw(diario4)
+
+### Textos
+txt.text((780, 50), '{}'.format(reregional_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((190, 680), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((190, 750), 'Ayer: {}'.format(pcrnuevos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
+txt.text((540, 680), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 750), 'Ayer: {}'.format(residenciasusuarios_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((890, 680), '{}'.format(activos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((890, 750), 'Ayer: {}'.format(activos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
+txt.text((190, 860), 'Acumulado: {}'.format(pcracumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
+
+### Guardamos
+diario4.save('..\\..\\out\\diario\\4.png')
+
+### Manipulando quinta imagen
+txt = ImageDraw.Draw(diario5)
+
+### Textos
+txt.text((780, 50), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
+txt.text((540, 680), '{}%'.format(procesovacunacion_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 750), 'Ayer: {}%'.format(procesovacunacion_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((890, 680), '{}'.format(me_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
+txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
+
+### Guardamos
+diario5.save('..\\..\\out\\diario\\5.png')
+
+### Manipulando sexta imagen
+txt = ImageDraw.Draw(diario6)
+
+### Textos
+txt.text((780, 50), '{}'.format(tasanuevos_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((280, 680), '{}'.format(activosprobables_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((280, 750), 'Ayer: {}'.format(activosprobables_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
+txt.text((800, 680), '{}%'.format(uciaprox_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((800, 750), 'Error aprox.: ±{}%'.format(errorabs_hoy), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+
+### Guardamos
+diario6.save('..\\..\\out\\diario\\6.png')
+
+### Manipulando séptima, octava, novena y décima imagen
+x = range(7, 11)
+for i in x:
+    ### Gráficos
+    exec('diario{}.paste(graph{}, (-55, 155), graph{})'.format(i, i-4, i-4))
+    ### Guardamos
+    exec('diario{}.save("..\\..\\out\\diario\\\{}.png")'.format(i, i))
+    i += i
+    
 ### ¿Todo ok?
-print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
+print('Todas las imágenes del reporte diario han sido correctamente exportadas.')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-11-a6d10cd9e1b1>[0m in [0;36m<module>[0;34m[0m
-[1;32m     85[0m                    [0mcolor[0m[0;34m=[0m[0;34m[[0m[0;34m'gray'[0m[0;34m,[0m [0;34m'#9ad5ff'[0m[0;34m][0m[0;34m,[0m [0malpha[0m[0;34m=[0m[0;34m[[0m[0;36m1[0m[0;34m,[0m [0;36m1[0m[0;34m][0m[0;34m,[0m[0;31m [0m[0;31m\[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     86[0m                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-[0;32m---> 87[0;31m [0mvaccine[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'.\\..\\..\\in\\vacuna\\grafico\\vaccine.png'[0m[0;34m)[0m[0;34m.[0m[0mrotate[0m[0;34m([0m[0;34m-[0m[0;36m90[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     88[0m [0mpct_[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0;34m'.\\..\\..\\in\\vacuna\\grafico\\1.png'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     89[0m [0mbackground[0m [0;34m=[0m [0mImage[0m[0;34m.[0m[0mnew[0m[0;34m([0m[0;34m'RGBA'[0m[0;34m,[0m [0;34m([0m[0;36m1000[0m[0;34m,[0m [0;36m1000[0m[0;34m)[0m[0;34m,[0m [0;34m([0m[0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m,[0m [0;36m0[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-13-adb7b24fb1c6>[0m in [0;36m<module>[0;34m[0m
+[1;32m     12[0m [0;32mfor[0m [0mi[0m [0;32min[0m [0mx[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     13[0m     [0mimage_path[0m [0;34m=[0m [0;34m'..\\..\\in\\diario\\{}.png'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 14[0;31m     [0mexec[0m[0;34m([0m[0;34m'diario_{} = Image.open(image_path)'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     15[0m     [0mexec[0m[0;34m([0m[0;34m'diario{} = diario_{}.copy()'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m,[0m [0mi[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     16[0m     [0mi[0m [0;34m+=[0m [0mi[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<string>[0m in [0;36m<module>[0;34m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/Image.py[0m in [0;36mopen[0;34m(fp, mode, formats)[0m
 [1;32m   2910[0m [0;34m[0m[0m
@@ -155,6 +183,6 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 [0m[1;32m   2913[0m         [0mexclusive_fp[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
 [1;32m   2914[0m [0;34m[0m[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No existe el archivo o el directorio: '.\\..\\..\\in\\vacuna\\grafico\\vaccine.png'
-FileNotFoundError: [Errno 2] No existe el archivo o el directorio: '.\\..\\..\\in\\vacuna\\grafico\\vaccine.png'
+[0;31mFileNotFoundError[0m: [Errno 2] No existe el archivo o el directorio: '..\\..\\in\\diario\\1.png'
+FileNotFoundError: [Errno 2] No existe el archivo o el directorio: '..\\..\\in\\diario\\1.png'
 
