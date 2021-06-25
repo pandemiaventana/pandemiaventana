@@ -90,7 +90,7 @@ import locale
 try:
     ### Windows
     locale.setlocale(locale.LC_ALL, 'esp')
-except Error:
+except Exception:
     ### Ubuntu (para action)
     locale.setlocale(locale.LC_ALL, 'es_ES.utf8')
 
