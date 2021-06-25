@@ -12,7 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
+    
+    # Para set de español en locale (ubuntu)
+    - name: setLocale
+      run: |
+        sudo apt-get update
+        sudo apt-get install language-pack-es
+    
     # Install dependencies
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
