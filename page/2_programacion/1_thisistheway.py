@@ -97,6 +97,7 @@ except Exception:
 
 ### Otros paquetes
 import math
+import requests
 import os
 import json as json
 import datetime
@@ -1395,8 +1396,8 @@ graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],\
                    [[0], [0]], \
                    color=['gray', '#9ad5ff'], alpha=[1, 1], \
                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-vaccine = Image.open('.\\..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
-pct_ = Image.open('.\\..\\..\\in\\vacuna\\grafico\\1.png')
+vaccine = Image.open(requests.get('https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/in/vacuna/grafico/vaccine.png', stream=True).raw).rotate(-90)
+pct_ = Image.open('..\\..\\in\\vacuna\\grafico\\1.png')
 background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
 background.paste(pct_, (135,359), pct_)
 background.paste(vaccine, (0, 0), vaccine)
@@ -1837,6 +1838,7 @@ plt.plot(df.index[df['UCI ocupacion media movil real'] != 0], \
 plt.legend()
 plt.show()
 
+
 # %% [markdown]
 # ## Aclaraciones
 
@@ -1880,18 +1882,13 @@ plt.show()
 # - Los casos notificados por laboratorio, por definición {footcite}``epi-04-06-2021``, "<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>" según {cite}``epi-04-06-2021``.
 
 # %% [markdown]
-# ## Información de sesión
-
-# %%
-session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
-
+# ## Requerimientos
 
 # %% [markdown]
-# ## Requerimientos
+# Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
 # %%
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
-
 def get_imports():
     for name, val in globals().items():
         if isinstance(val, types.ModuleType):
@@ -1921,20 +1918,28 @@ imports = list(set(get_imports()))
 # from only the name of the package is to cross-check the names 
 # of installed packages vs. imported packages
 requirements = []
+req = ''
 for m in pkg_resources.working_set:
     if m.project_name in imports and m.project_name!="pip":
         requirements.append((m.project_name, m.version))
         
-req = ''
+
 for r in requirements:
     req += """{}=={}
 """.format(*r)
 req += """jupyter-book
 """ + 'session_info'
 
-### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
-_string = open('..//..//requirements.txt', 'w')
-_string.write(req)
+### Abrimos y modificamos requirements.txt
+with open('..//..//requirements.txt', 'w') as f:
+    f.write(req)
+    # ...
+
+# %% [markdown]
+# ## Información de sesión
+
+# %%
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
 
 # %% [markdown]
 # ## Bibliografía de esta página
