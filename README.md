@@ -6,6 +6,16 @@ La pandemia por la ventana es un sitio, realizado con formato de *libro* gracias
 
 Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de GitHub](https://github.com/pandemiaventana/pandemiaventana/issues/new).
 
+## Funcionamiento
+
+Básicamente, a través de Notebooks de Jupyter y un poco de Markdown. Python, por contraparte, genera los CSV, y Jupyter Books se encarga de generar la página web a partir de los Notebooks y el Markdown.
+
+El despliegue del libro en [gh-pages](https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages) se realiza cada vez que desencadeno un cambio en [main](https://github.com/pandemiaventana/pandemiaventana) a través del action [deploy-book](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml).
+
+## Estado
+
+[![deploy-book](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg)](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml)
+
 ## Archivos CSV generados
 
 Disponibles en [el siguiente enlace](https://github.com/pandemiaventana/pandemiaventana/tree/main/out/site/csv), los cuales se adjuntan a continuación:
