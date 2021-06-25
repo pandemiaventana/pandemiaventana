@@ -32,8 +32,10 @@ html:
   favicon: img/page/0_favicon.ico
   use_issues_button: true
   use_repository_button: true
-  google_analytics_id: "G-NF719SFZ9M"
-  baseurl: "https://pandemiaventana.github.io/pandemiaventana/"
+  google_analytics_id: G-CCDL103W4M
+  baseurl: https://pandemiaventana.github.io/pandemiaventana/
+  extra_navbar: Realizado con <a href="https://jupyterbook.org">Jupyter Book</a>
+  extra_footer: Por Alejandro Dinamarca, <a href="https://www.linkedin.com/in/alejandrodinamarca/">Linkedin</a>
   comments:
     hypothesis: false
     utterances: false
