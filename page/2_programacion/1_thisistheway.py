@@ -87,7 +87,12 @@ plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False}
 
 ### Para formato local
 import locale
-locale.setlocale(locale.LC_ALL, 'esp')
+try:
+    ### Windows
+    locale.setlocale(locale.LC_ALL, 'esp')
+except Error:
+    ### Ubuntu (para action)
+    locale.setlocale(locale.LC_ALL, 'es_ES.utf8')
 
 ### Otros paquetes
 import math
@@ -1927,11 +1932,8 @@ req += """jupyter-book
 """ + 'session_info'
 
 ### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
-for string in [name for name in os.listdir('..//..')]:
-    if string == 'requirements.txt':
-        _string = open('..//..//{}'.format(string), 'w')
-        _string.write(str(req))
-print(req)
+_string = open('..//..//requirements.txt', 'w')
+_string.write(req)
 
 # %% [markdown]
 # ## Bibliografía de esta página
