@@ -384,6 +384,27 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limpieza-de-datos">
+     Limpieza de datos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tratamiento">
+       Tratamiento
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulando-ahora-si">
+     Manipulando (
+     <em>
+      ahora sí
+     </em>
+     )
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -922,9 +943,24 @@
 </div>
 <div class="section" id="dias-por-fase-del-plan-paso-a-paso">
 <h4>Días por fase del plan Paso a Paso<a class="headerlink" href="#dias-por-fase-del-plan-paso-a-paso" title="Permalink to this headline">¶</a></h4>
-<p>Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna.</p>
-<hr class="docutils" />
-<p>El siguiente bloque de código, limpia los datos que necesitamos y extrae los pertinentes.</p>
+<p>Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un “<em>reset</em>” de días por de fase en el Paso a Paso.</p>
+</div>
+</div>
+<div class="section" id="limpieza-de-datos">
+<h3>Limpieza de datos<a class="headerlink" href="#limpieza-de-datos" title="Permalink to this headline">¶</a></h3>
+<p>En toda recolección de información, se quiera o no, existirá inconsistencia. Algunos días, se genera inconsistencia producto de:</p>
+<ul class="simple">
+<li><p>Cambios de criterio.</p></li>
+<li><p>Suma de cifras de otros días en un día específico (<strong>ajustes históricos considerables</strong>).</p></li>
+</ul>
+<p>Ésto afecta las tendencias y las curvas de los datos cumulativos.</p>
+<div class="section" id="tratamiento">
+<h4>Tratamiento<a class="headerlink" href="#tratamiento" title="Permalink to this headline">¶</a></h4>
+<p>Nuestro trabajo es, dentro de lo posible, limpiar esa inconsistencia. Por lo que, a lo largo del código, se optará por reemplazar los <strong>outliers</strong> (datos atípicos) con cifras del día anterior, <strong>pero, solo en las cifras cumulativas, de modo de no generar descuadre con respecto al Minsal en las cifras acumulativas</strong>.</p>
+</div>
+</div>
+<div class="section" id="manipulando-ahora-si">
+<h3>Manipulando (<em>ahora sí</em>)<a class="headerlink" href="#manipulando-ahora-si" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manipulando datos</span>
@@ -982,6 +1018,8 @@
 <span class="n">casos_recuperados</span> <span class="o">=</span> <span class="n">casos_detalle</span><span class="p">[</span><span class="n">casos_detalle</span><span class="p">[</span><span class="s1">&#39;Categoria&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Casos confirmados recuperados&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;2020-03-03&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">casos_recuperados</span><span class="p">[</span><span class="s1">&#39;2020-04-07&#39;</span><span class="p">:</span><span class="s1">&#39;2020-06-28&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">recuperados_rescatados</span>
 <span class="n">casos_recuperados_cumulativos</span> <span class="o">=</span> <span class="n">casos_recuperados</span> <span class="o">-</span> <span class="n">casos_recuperados</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">### Limpieza de outlier de 981 (solo en cifras cumulativas para no descuadrar cifra acumulada)</span>
+<span class="n">casos_recuperados_cumulativos</span><span class="p">[</span><span class="s1">&#39;2020-06-29&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">casos_recuperados_cumulativos</span><span class="p">[</span><span class="s1">&#39;2020-06-28&#39;</span><span class="p">]</span>
 <span class="n">casos_activos</span> <span class="o">=</span> <span class="n">casos_detalle</span><span class="p">[</span><span class="n">casos_detalle</span><span class="p">[</span><span class="s1">&#39;Categoria&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Casos activos confirmados&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;2020-03-03&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">casos_activos</span><span class="p">[</span><span class="s1">&#39;2020-03-23&#39;</span><span class="p">:</span><span class="s1">&#39;2020-06-20&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">activos_rescatados</span>
 <span class="n">casos_activos_probables</span> <span class="o">=</span> <span class="n">casos_detalle</span><span class="p">[</span><span class="n">casos_detalle</span><span class="p">[</span><span class="s1">&#39;Categoria&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Casos activos probables&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;2020-03-03&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1166,7 +1204,6 @@
 <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pasopaso_comuna</span><span class="p">:</span>
     <span class="n">pasopaso_comuna</span><span class="p">[</span><span class="s1">&#39;Paso a Paso (dias) &#39;</span> <span class="o">+</span> <span class="n">col</span><span class="p">[</span><span class="mi">5</span><span class="p">:]]</span> <span class="o">=</span> <span class="n">pasopaso_comuna</span><span class="o">.</span><span class="n">groupby</span><span class="p">((</span><span class="n">pasopaso_comuna</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">!=</span> <span class="n">pasopaso_comuna</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">cumsum</span><span class="p">())</span><span class="o">.</span><span class="n">cumcount</span><span class="p">()</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -2567,19 +2604,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 25 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.691%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.415%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.737%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.736%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 54 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.307%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.302%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 38 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.657%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.478%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 49 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.242%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.252%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.906%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.092%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 80 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.477%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.162%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -2706,27 +2743,27 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_23_0.png" src="../../_images/1_thisistheway_23_0.png" />
+<img alt="../../_images/1_thisistheway_22_0.png" src="../../_images/1_thisistheway_22_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_2.png" src="../../_images/1_thisistheway_23_2.png" />
+<img alt="../../_images/1_thisistheway_22_2.png" src="../../_images/1_thisistheway_22_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_4.png" src="../../_images/1_thisistheway_23_4.png" />
+<img alt="../../_images/1_thisistheway_22_4.png" src="../../_images/1_thisistheway_22_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_6.png" src="../../_images/1_thisistheway_23_6.png" />
+<img alt="../../_images/1_thisistheway_22_6.png" src="../../_images/1_thisistheway_22_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_8.png" src="../../_images/1_thisistheway_23_8.png" />
+<img alt="../../_images/1_thisistheway_22_8.png" src="../../_images/1_thisistheway_22_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_10.png" src="../../_images/1_thisistheway_23_10.png" />
+<img alt="../../_images/1_thisistheway_22_10.png" src="../../_images/1_thisistheway_22_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -2864,23 +2901,23 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_25_0.png" src="../../_images/1_thisistheway_25_0.png" />
+<img alt="../../_images/1_thisistheway_24_0.png" src="../../_images/1_thisistheway_24_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_2.png" src="../../_images/1_thisistheway_25_2.png" />
+<img alt="../../_images/1_thisistheway_24_2.png" src="../../_images/1_thisistheway_24_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_4.png" src="../../_images/1_thisistheway_25_4.png" />
+<img alt="../../_images/1_thisistheway_24_4.png" src="../../_images/1_thisistheway_24_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_6.png" src="../../_images/1_thisistheway_25_6.png" />
+<img alt="../../_images/1_thisistheway_24_6.png" src="../../_images/1_thisistheway_24_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_8.png" src="../../_images/1_thisistheway_25_8.png" />
+<img alt="../../_images/1_thisistheway_24_8.png" src="../../_images/1_thisistheway_24_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -2951,31 +2988,31 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_27_0.png" src="../../_images/1_thisistheway_27_0.png" />
+<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_2.png" src="../../_images/1_thisistheway_27_2.png" />
+<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_4.png" src="../../_images/1_thisistheway_27_4.png" />
+<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_6.png" src="../../_images/1_thisistheway_27_6.png" />
+<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_8.png" src="../../_images/1_thisistheway_27_8.png" />
+<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_10.png" src="../../_images/1_thisistheway_27_10.png" />
+<img alt="../../_images/1_thisistheway_26_10.png" src="../../_images/1_thisistheway_26_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_12.png" src="../../_images/1_thisistheway_27_12.png" />
+<img alt="../../_images/1_thisistheway_26_12.png" src="../../_images/1_thisistheway_26_12.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -3307,16 +3344,16 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_37_0.png" src="../../_images/1_thisistheway_37_0.png" />
-<img alt="../../_images/1_thisistheway_37_1.png" src="../../_images/1_thisistheway_37_1.png" />
-<img alt="../../_images/1_thisistheway_37_2.png" src="../../_images/1_thisistheway_37_2.png" />
-<img alt="../../_images/1_thisistheway_37_3.png" src="../../_images/1_thisistheway_37_3.png" />
-<img alt="../../_images/1_thisistheway_37_4.png" src="../../_images/1_thisistheway_37_4.png" />
-<img alt="../../_images/1_thisistheway_37_5.png" src="../../_images/1_thisistheway_37_5.png" />
-<img alt="../../_images/1_thisistheway_37_6.png" src="../../_images/1_thisistheway_37_6.png" />
-<img alt="../../_images/1_thisistheway_37_7.png" src="../../_images/1_thisistheway_37_7.png" />
-<img alt="../../_images/1_thisistheway_37_8.png" src="../../_images/1_thisistheway_37_8.png" />
-<img alt="../../_images/1_thisistheway_37_9.png" src="../../_images/1_thisistheway_37_9.png" />
+<img alt="../../_images/1_thisistheway_36_0.png" src="../../_images/1_thisistheway_36_0.png" />
+<img alt="../../_images/1_thisistheway_36_1.png" src="../../_images/1_thisistheway_36_1.png" />
+<img alt="../../_images/1_thisistheway_36_2.png" src="../../_images/1_thisistheway_36_2.png" />
+<img alt="../../_images/1_thisistheway_36_3.png" src="../../_images/1_thisistheway_36_3.png" />
+<img alt="../../_images/1_thisistheway_36_4.png" src="../../_images/1_thisistheway_36_4.png" />
+<img alt="../../_images/1_thisistheway_36_5.png" src="../../_images/1_thisistheway_36_5.png" />
+<img alt="../../_images/1_thisistheway_36_6.png" src="../../_images/1_thisistheway_36_6.png" />
+<img alt="../../_images/1_thisistheway_36_7.png" src="../../_images/1_thisistheway_36_7.png" />
+<img alt="../../_images/1_thisistheway_36_8.png" src="../../_images/1_thisistheway_36_8.png" />
+<img alt="../../_images/1_thisistheway_36_9.png" src="../../_images/1_thisistheway_36_9.png" />
 </div>
 </div>
 </div>
@@ -3333,11 +3370,11 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_39_0.png" src="../../_images/1_thisistheway_39_0.png" />
-<img alt="../../_images/1_thisistheway_39_1.png" src="../../_images/1_thisistheway_39_1.png" />
-<img alt="../../_images/1_thisistheway_39_2.png" src="../../_images/1_thisistheway_39_2.png" />
-<img alt="../../_images/1_thisistheway_39_3.png" src="../../_images/1_thisistheway_39_3.png" />
-<img alt="../../_images/1_thisistheway_39_4.png" src="../../_images/1_thisistheway_39_4.png" />
+<img alt="../../_images/1_thisistheway_38_0.png" src="../../_images/1_thisistheway_38_0.png" />
+<img alt="../../_images/1_thisistheway_38_1.png" src="../../_images/1_thisistheway_38_1.png" />
+<img alt="../../_images/1_thisistheway_38_2.png" src="../../_images/1_thisistheway_38_2.png" />
+<img alt="../../_images/1_thisistheway_38_3.png" src="../../_images/1_thisistheway_38_3.png" />
+<img alt="../../_images/1_thisistheway_38_4.png" src="../../_images/1_thisistheway_38_4.png" />
 </div>
 </div>
 </div>
@@ -3354,15 +3391,15 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_41_0.png" src="../../_images/1_thisistheway_41_0.png" />
-<img alt="../../_images/1_thisistheway_41_1.png" src="../../_images/1_thisistheway_41_1.png" />
-<img alt="../../_images/1_thisistheway_41_2.png" src="../../_images/1_thisistheway_41_2.png" />
-<img alt="../../_images/1_thisistheway_41_3.png" src="../../_images/1_thisistheway_41_3.png" />
-<img alt="../../_images/1_thisistheway_41_4.png" src="../../_images/1_thisistheway_41_4.png" />
-<img alt="../../_images/1_thisistheway_41_5.png" src="../../_images/1_thisistheway_41_5.png" />
-<img alt="../../_images/1_thisistheway_41_6.png" src="../../_images/1_thisistheway_41_6.png" />
-<img alt="../../_images/1_thisistheway_41_7.png" src="../../_images/1_thisistheway_41_7.png" />
-<img alt="../../_images/1_thisistheway_41_8.png" src="../../_images/1_thisistheway_41_8.png" />
+<img alt="../../_images/1_thisistheway_40_0.png" src="../../_images/1_thisistheway_40_0.png" />
+<img alt="../../_images/1_thisistheway_40_1.png" src="../../_images/1_thisistheway_40_1.png" />
+<img alt="../../_images/1_thisistheway_40_2.png" src="../../_images/1_thisistheway_40_2.png" />
+<img alt="../../_images/1_thisistheway_40_3.png" src="../../_images/1_thisistheway_40_3.png" />
+<img alt="../../_images/1_thisistheway_40_4.png" src="../../_images/1_thisistheway_40_4.png" />
+<img alt="../../_images/1_thisistheway_40_5.png" src="../../_images/1_thisistheway_40_5.png" />
+<img alt="../../_images/1_thisistheway_40_6.png" src="../../_images/1_thisistheway_40_6.png" />
+<img alt="../../_images/1_thisistheway_40_7.png" src="../../_images/1_thisistheway_40_7.png" />
+<img alt="../../_images/1_thisistheway_40_8.png" src="../../_images/1_thisistheway_40_8.png" />
 </div>
 </div>
 </div>
@@ -3458,7 +3495,7 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 La media general del error es de:  0.85 %
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_46_1.png" src="../../_images/1_thisistheway_46_1.png" />
+<img alt="../../_images/1_thisistheway_45_1.png" src="../../_images/1_thisistheway_45_1.png" />
 </div>
 </div>
 </div>
@@ -3806,7 +3843,7 @@ Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
 Windows-10-10.0.19041-SP0
 12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
 -----
-Session information updated at 2021-06-25 13:22
+Session information updated at 2021-06-25 17:55
 </pre>
 </details></div></div>
 </div>
