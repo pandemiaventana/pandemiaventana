@@ -296,8 +296,18 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tabla-de-contenidos">
-   Tabla de contenidos
+  <a class="reference internal nav-link" href="#tabla-de-contenido">
+   Tabla de contenido
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funcionamiento">
+   Funcionamiento
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estado">
+   Estado
   </a>
  </li>
 </ul>
@@ -313,23 +323,24 @@
                 
   <div class="section" id="bienvenido">
 <h1>Bienvenido 📉<a class="headerlink" href="#bienvenido" title="Permalink to this headline">¶</a></h1>
-<p>La pandemia por la ventana es una página web, con formato de libro que recopila el trabajo del tío Numeral (apodado en Instagram), Alejandro Dinamarca, en <a class="reference external" href="https://www.instagram.com/numeral.lab">Numeral.lab</a> en tiempos de pandemia.</p>
+<p>La pandemia por la ventana es un sitio, elaborado con formato de <em>libro</em> gracias a Jupyter Books, realizado por Alejandro Dinamarca, que recaba el trabajo en Numeral.lab en la Región de Tarapacá.</p>
+<p>Favor, cualquier sugerencia o comentario, hacerlo llegar mediante <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/issues/new">Issues de GitHub</a>.</p>
 <div class="figure align-default" id="markdown-fig">
 <img alt="../../_images/2_cover.png" src="../../_images/2_cover.png" />
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><strong>Ilustración realizada por Bernardo Dinamarca</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
 </div>
-<p>El libro está dividido en distintas secciones, algunas respecto a las experiencias personales y otras en código de programación (hecho con cariño).</p>
+<p>El libro está dividido en distintas secciones, algunas respecto a las experiencias personales y otras con código de programación (hecho con cariño).</p>
 </div>
 <div class="section" id="notas-del-autor">
 <h1>Notas del autor<a class="headerlink" href="#notas-del-autor" title="Permalink to this headline">¶</a></h1>
 <p><em>Como siempre he recalcado, todo el trabajo realizado en pandemia fue en post de un bien común. Una especie de anhelo de devolver, en parte, una mano, a todo el mundo que me ha rodeado y del cual he aprendido, y espero seguir aprendiendo como un eterno aprendiz.</em></p>
 <p><em>Este pequeño libro está dedicado a mis padres, a mis hermanos, familia y a mi amor. No sería nada sin ellos.</em></p>
 <p><em>Dar las gracias al Dr. Cristóbal Corral y la Universidad Arturo Prat por el apoyo recibido, como también, por acojerme como estudiante y darme la posibilidad de desarrollar una idea que surgió desde el polvo.</em></p>
-<p><em>Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato se utilizarán algunas frases coloquiales.</em></p>
+<p><em>Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato, se utilizarán algunas frases coloquiales.</em></p>
 </div>
-<div class="section" id="tabla-de-contenidos">
-<h1>Tabla de contenidos<a class="headerlink" href="#tabla-de-contenidos" title="Permalink to this headline">¶</a></h1>
-<p>La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta página web) se encuentra a la izquierda, dividido por secciones, y a la derecha, encontrarás los apartados de cada una de las secciones. Las secciones, omitiendo la introducción, son:</p>
+<div class="section" id="tabla-de-contenido">
+<h1>Tabla de contenido<a class="headerlink" href="#tabla-de-contenido" title="Permalink to this headline">¶</a></h1>
+<p>La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta página web) se encuentra a la izquierda:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../1_experiencia/0_experiencia.html">Experiencia 💭</a><ul>
@@ -357,6 +368,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../5_bibliografia/0_bibliografia.html">Bibliografía 📰</a></li>
 </ul>
 </div>
+</div>
+<div class="section" id="funcionamiento">
+<h1>Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permalink to this headline">¶</a></h1>
+<p>Básicamente, a través de Notebooks de Jupyter y un poco de Markdown. Python, por contraparte, genera los CSV, y Jupyter Books se encarga de generar la página web a partir de los Notebooks y el Markdown.</p>
+<p>El despliegue del libro en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages">gh-pages</a> se realiza cada vez que desencadeno un cambio en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana">main</a> a través del action <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml">actualiza_libro</a>.</p>
+</div>
+<div class="section" id="estado">
+<h1>Estado<a class="headerlink" href="#estado" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img alt="deploy-book" src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" /></a></p>
 </div>
 
     <script type="text/x-thebe-config">
