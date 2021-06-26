@@ -10,17 +10,16 @@
 
 ### Los paquetes amigos
 import os, os.path
-from IPython.display import Markdown, HTML, Javascript
+from IPython.display import Markdown, HTML, Javascript, IFrame
 import pandas as pd
+import session_info
+from bs4 import BeautifulSoup
 
 
 # ## Archivos CSV
 
 # In[2]:
 
-
-### Algo de Markdown
-display(Markdown('Encontré los **siguientes archivos CSV**:'))
 
 ### Mostrando archivos CSV
 for string in [name for name in os.listdir('./../../out/site/csv')]:
@@ -37,7 +36,7 @@ for string in [name for name in os.listdir('./../../out/site/csv')]:
     
     display(Markdown('Tiene las siguientes columnas (**{}** sin el índice):'.format(len(csv.columns) - 1)))
     
-    display(csv.info(max_cols=len(csv.columns)))
+    csv.info(max_cols=len(csv.columns), memory_usage='deep')
     
     display(Markdown('<hr>'))
 
@@ -46,6 +45,32 @@ for string in [name for name in os.listdir('./../../out/site/csv')]:
 
 # In[3]:
 
+
+txt = '''# La pandemia por la ventana \n
+
+![Ilustración por Bernardo Dinamarca](https://github.com/pandemiaventana/pandemiaventana/blob/main/img/page/2_cover.png?raw=true)
+
+** Ilustración por Bernardo Dinamarca **
+
+La pandemia por la ventana es un sitio, realizado con formato de *libro* gracias a Jupyter Books, hecho por Alejandro Dinamarca, que recaba el trabajo de Numeral.lab en la Región de Tarapacá.
+
+Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de GitHub](https://github.com/pandemiaventana/pandemiaventana/issues/new).
+
+## Funcionamiento
+
+Básicamente, a través de Notebooks de Jupyter y un poco de Markdown. Python, por contraparte, genera los CSV, y Jupyter Books se encarga de generar la página web a partir de los Notebooks y el Markdown.
+
+El despliegue del libro en [gh-pages](https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages) se realiza cada vez que desencadeno un cambio en [main](https://github.com/pandemiaventana/pandemiaventana) a través del action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml).
+
+## Estado
+
+[![deploy-book](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg)](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml)
+
+## Archivos CSV generados
+
+Disponibles en [el siguiente enlace](https://github.com/pandemiaventana/pandemiaventana/tree/main/out/site/csv), los cuales se adjuntan a continuación:
+
+'''
 
 ### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
 Javascript('''{
@@ -59,35 +84,21 @@ Javascript('''{
         }
     )
     
-    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs)) 
+    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs))
+    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[3])")
+    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
+    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
+    IPython.notebook.kernel.execute("soup = str(soup)")   
+    IPython.notebook.kernel.execute("op = open('..//..//README.md' , 'w', encoding='utf-16')")
+    IPython.notebook.kernel.execute("full = txt + soup")
+    IPython.notebook.kernel.execute("op.writelines(full)")
 }''')
 
+
+# ## Información de sesión
 
 # In[4]:
 
 
-cell_outputs[3]
-
-
-# In[58]:
-
-
-### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
-for string in [name for name in os.listdir('..//..')]:
-    if string == 'README.md':
-        md = open('..//..//{}'.format(string))
-        txt = md.read()
-        full = txt + cell_outputs[3]
-
-
-# In[55]:
-
-
-full
-
-
-# In[56]:
-
-
-display(Markdown(full))
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='4_requeriments.txt')
 

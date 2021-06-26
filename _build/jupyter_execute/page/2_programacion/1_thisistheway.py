@@ -72,12 +72,19 @@ plt.rcParams.update({
 })
 plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False})
 
-### Para formato local de fecha
+### Para formato local
 import locale
-locale.setlocale(locale.LC_TIME, '')
+### Según Windows o Ubuntu
+try:
+    ### Windows
+    locale.setlocale(locale.LC_ALL, 'esp')
+except Exception:
+    ### Ubuntu (action)
+    locale.setlocale(locale.LC_ALL, 'es_CL.UTF-8')
 
 ### Otros paquetes
 import math
+import requests
 import os
 import json as json
 import datetime
@@ -89,6 +96,8 @@ from IPython.display import display, HTML
 ### Solo de uso esporádico
 import csv
 from io import StringIO
+import pkg_resources
+import types
 
 ### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)
 import session_info
@@ -309,11 +318,23 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # #### Días por fase del plan Paso a Paso
 # 
-# Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna.
-
-# ---
+# Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un "*reset*" de días por cambio de fase de la comuna en el Paso a Paso.
 # 
-# El siguiente bloque de código, limpia los datos que necesitamos y extrae los pertinentes.
+# ### Limpieza de datos
+# 
+# En toda recolección de información, se quiera o no, existirá inconsistencia. Algunos días, se genera inconsistencia producto de:
+# 
+# - Cambios de criterio.
+# 
+# - Suma de cifras de otros días en un día específico (**ajustes históricos considerables**).
+# 
+# Ésto afecta las tendencias y las curvas de los datos cumulativos. 
+# 
+# #### Tratamiento
+# 
+# Nuestro trabajo es, dentro de lo posible, limpiar esa inconsistencia. Por lo que, a lo largo del código, se optará por reemplazar los **outliers** (datos atípicos) con cifras del día anterior, **pero, solo en las cifras cumulativas, de modo de no generar descuadre con respecto al Minsal en las cifras acumulativas**.
+# 
+# ### Manipulando (*ahora sí*)
 
 # In[3]:
 
@@ -373,6 +394,8 @@ casos_sin_notificar = casos_detalle[casos_detalle['Categoria'] == 'Casos nuevos 
 casos_recuperados = casos_detalle[casos_detalle['Categoria'] == 'Casos confirmados recuperados'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
 casos_recuperados['2020-04-07':'2020-06-28'] = recuperados_rescatados
 casos_recuperados_cumulativos = casos_recuperados - casos_recuperados.shift(1)
+### Limpieza de outlier de 981 (solo en cifras cumulativas para no descuadrar cifra acumulada)
+casos_recuperados_cumulativos['2020-06-29'] = casos_recuperados_cumulativos['2020-06-28']
 casos_activos = casos_detalle[casos_detalle['Categoria'] == 'Casos activos confirmados'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
 casos_activos['2020-03-23':'2020-06-20'] = activos_rescatados
 casos_activos_probables = casos_detalle[casos_detalle['Categoria'] == 'Casos activos probables'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
@@ -1080,7 +1103,7 @@ print(desc2)
 # In[8]:
 
 
-get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb')
+get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
 # In[9]:
@@ -1314,7 +1337,7 @@ class graphBar:
         
 ### Primer gráfico: Proporción objetivo vacunada
 graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],                   [[0], [0]],                    color=['gray', '#9ad5ff'], alpha=[1, 1],                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-vaccine = Image.open('..\\..\\in\\vacuna\\grafico\\vaccine.png').rotate(-90)
+vaccine = Image.open(requests.get('https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/in/vacuna/grafico/vaccine.png', stream=True).raw).rotate(-90)
 pct_ = Image.open('..\\..\\in\\vacuna\\grafico\\1.png')
 background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
 background.paste(pct_, (135,359), pct_)
@@ -1557,7 +1580,23 @@ for i in x:
     i += i
     
 ### ¿Todo ok?
-print('Todas las imágenes del reporte diario han sido correctamente exportadas.')
+display(Markdown('> Todas las imágenes del reporte diario han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 11):
+    exec('pdfs += [diario{}]'.format(i))
+
+### Histórico
+diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
+                                                 df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 
 # ### Balance de vacunas
@@ -1604,7 +1643,23 @@ for i in x:
     i += i
 
 ### ¿Todo ok?
-print('Todas las imágenes del balance de vacunas han sido correctamente exportadas.')
+display(Markdown('> Todas las imágenes del balance de vacunas han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 6):
+    exec('pdfs += [vacuna{}]'.format(i))
+
+### Histórico    
+vacuna1.convert('RGB').save('..\\..\\out\\vacuna\\pdf\\{}.pdf'.format(df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d'),
+                                                 df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+vacuna1.convert('RGB').save('..\\..\\out\\vacuna\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 
 # ### Indicador de fase
@@ -1657,7 +1712,22 @@ for i in x:
     i += i
 
 ### ¿Todo ok?
-print('Todas las imágenes del indicador de fase han sido correctamente exportadas.')
+display(Markdown('> Todas las imágenes del indicador de fase han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 10):
+    exec('pdfs += [indicadorfase{}]'.format(i))
+    
+### Histórico
+indicadorfase1.convert('RGB').save('..\\..\\out\\indicadorfase\\pdf\\{}.pdf'.format(df['Casos acumulados en Alto Hospicio'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+indicadorfase1.convert('RGB').save('..\\..\\out\\indicadorfase\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 
 # ## Resultado
@@ -1787,12 +1857,67 @@ plt.show()
 # 
 # - Los casos notificados por laboratorio, por definición {footcite}``epi-04-06-2021``, "<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>" según {cite}``epi-04-06-2021``.
 
-# ## Información de sesión
+# ## Requerimientos
+
+# Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
 # In[21]:
 
 
-session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='./../../requirements.txt')
+### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
+def get_imports():
+    for name, val in globals().items():
+        if isinstance(val, types.ModuleType):
+            # Split ensures you get root package, 
+            # not just imported function
+            name = val.__name__.split(".")[0]
+
+        elif isinstance(val, type):
+            name = val.__module__.split(".")[0]
+
+        # Some packages are weird and have different
+        # imported names vs. system/pip names. Unfortunately,
+        # there is no systematic way to get pip names from
+        # a package's imported name. You'll have to add
+        # exceptions to this list manually!
+        poorly_named_packages = {
+            "PIL": "Pillow",
+            "sklearn": "scikit-learn"
+        }
+        if name in poorly_named_packages.keys():
+            name = poorly_named_packages[name]
+
+        yield name
+imports = list(set(get_imports()))
+
+# The only way I found to get the version of the root package
+# from only the name of the package is to cross-check the names 
+# of installed packages vs. imported packages
+requirements = []
+req = ''
+for m in pkg_resources.working_set:
+    if m.project_name in imports and m.project_name!="pip":
+        requirements.append((m.project_name, m.version))
+        
+
+for r in requirements:
+    req += """{}=={}
+""".format(*r)
+req += """jupyter-book
+""" + 'session_info'
+
+### Abrimos y modificamos requirements.txt
+with open('..//..//requirements.txt', 'w') as f:
+    f.write(req)
+    # ...
+
+
+# ## Información de sesión
+
+# In[22]:
+
+
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
 
 
 # ## Bibliografía de esta página

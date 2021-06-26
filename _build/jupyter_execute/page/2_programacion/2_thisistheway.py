@@ -141,9 +141,15 @@ import seaborn as sns
 mpl.rcParams['figure.dpi']= 300
 mpl.rc("savefig", dpi=300)
 
-### Para formato local de fecha
+### Para formato local
 import locale
-locale.setlocale(locale.LC_TIME, '')
+### Según Windows o Ubuntu
+try:
+    ### Windows
+    locale.setlocale(locale.LC_ALL, 'esp')
+except Exception:
+    ### Ubuntu (action)
+    locale.setlocale(locale.LC_ALL, 'es_CL.UTF-8')
 
 ### Otros paquetes
 import math
@@ -1231,7 +1237,7 @@ Javascript('''{
 # In[20]:
 
 
-session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True)
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='2_requeriments.txt')
 
 
 # ## Bibliografía de esta página

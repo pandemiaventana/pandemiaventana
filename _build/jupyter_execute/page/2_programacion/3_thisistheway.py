@@ -105,9 +105,15 @@ layout = go.Layout(dragmode=False,
 ### Librería BeautifulSoup para manipular HTML
 from bs4 import BeautifulSoup
 
-### Para formato local de fecha
+### Para formato local
 import locale
-locale.setlocale(locale.LC_TIME, '')
+### Según Windows o Ubuntu
+try:
+    ### Windows
+    locale.setlocale(locale.LC_ALL, 'esp')
+except Exception:
+    ### Ubuntu (action)
+    locale.setlocale(locale.LC_ALL, 'es_CL.UTF-8')
 
 ### Otros paquetes
 import math
@@ -149,6 +155,12 @@ for i in x:
 # El problema es que, al ser Instagram, una plataforma homogénea, el storytelling debe ser accesible para todo público (con estudios matemáticos o no). De esa forma, los reportes tenían una alta presencia de tendencias a través de gráficas, y no así de estadísticos (a excepción de medias móviles semanales).
 # 
 # La comprensión de la pandemia debía partir desde el mejor storytelling (el contar una historia detrás de los datos). El tomar una idea, o un incidente, y contarla como una historia: Cada día particular de la pandemia es una hoja de esa historia (<i>una hoja del "libro" COVID-19 en Tarapacá</i>). Por esa razón, desarrollamos el reporte diario no solo con datos duros, sino también con gráficas de tendencia semanal.
+# 
+# ### Cifras significativas
+# 
+# Las tablas y gráficos visualizados en la presente sección **tienen una a dos cifras significativas**. Cualquier sugerencia es bienvenida.
+# 
+# > **Para los datos, descargar los archivos .CSV procesados**. Éstos están disponibles en el propio libro (sección **Legado** 🔀), o bien, en el [repositorio](https://github.com/pandemiaventana/pandemiaventana).
 
 # ### ¿Cuántos gráficos se visualizarán?
 
@@ -235,7 +247,7 @@ for dataframe in data:
         Asimismo, la mediana es de **{}**.
         Respecto a la dispersión de los datos, la desviación estándar es del **{}**. """
                          .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime('%d de %B de %Y'),
-                                 round(dataframe[col].mean(), 2), round(dataframe[col].std(), 2))))
+                                 round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))
         display(Markdown('> El valor en base al último reporte diario o epidemiológico ({}) es de **{}**.'.format(dataframe[index_:].index[0].strftime('%d de %B de %Y'), dataframe[col][index_])))
     
     ### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado
@@ -376,7 +388,7 @@ Javascript('''{
 # In[7]:
 
 
-session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True)
+session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='3_requeriments.txt')
 
 
 # ## Bibliografía de esta página

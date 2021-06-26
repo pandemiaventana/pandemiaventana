@@ -1,6 +1,8 @@
 ## Bienvenido 📉
 
-La pandemia por la ventana es una página web, con formato de libro que recopila el trabajo del tío Numeral (apodado en Instagram), Alejandro Dinamarca, en [Numeral.lab](https://www.instagram.com/numeral.lab) en tiempos de pandemia.
+La pandemia por la ventana es un sitio, elaborado con formato de *libro* gracias a Jupyter Books, realizado por Alejandro Dinamarca, que recaba el trabajo en Numeral.lab en la Región de Tarapacá.
+
+Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de GitHub](https://github.com/pandemiaventana/pandemiaventana/issues/new).
 
 :::{figure-md} markdown-fig
 <img src="../../img/page/2_cover.png">
@@ -8,7 +10,7 @@ La pandemia por la ventana es una página web, con formato de libro que recopila
 **Ilustración realizada por Bernardo Dinamarca**.
 :::
 
-El libro está dividido en distintas secciones, algunas respecto a las experiencias personales y otras en código de programación (hecho con cariño).
+El libro está dividido en distintas secciones, algunas respecto a las experiencias personales y otras con código de programación (hecho con cariño).
 
 ## Notas del autor
 
@@ -18,11 +20,21 @@ El libro está dividido en distintas secciones, algunas respecto a las experienc
 
 *Dar las gracias al Dr. Cristóbal Corral y la Universidad Arturo Prat por el apoyo recibido, como también, por acojerme como estudiante y darme la posibilidad de desarrollar una idea que surgió desde el polvo.*
 
-*Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato se utilizarán algunas frases coloquiales.*
+*Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato, se utilizarán algunas frases coloquiales.*
 
-## Tabla de contenidos
+## Tabla de contenido
 
-La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta página web) se encuentra a la izquierda, dividido por secciones, y a la derecha, encontrarás los apartados de cada una de las secciones. Las secciones, omitiendo la introducción, son:
+La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta página web) se encuentra a la izquierda:
 
 ```{tableofcontents}
 ```
+
+## Funcionamiento
+
+Básicamente, a través de Notebooks de Jupyter y un poco de Markdown. Python, por contraparte, genera los CSV, y Jupyter Books se encarga de generar la página web a partir de los Notebooks y el Markdown.
+
+El despliegue del libro en [gh-pages](https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages) se realiza cada vez que desencadeno un cambio en [main](https://github.com/pandemiaventana/pandemiaventana) a través del action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml).
+
+## Estado
+
+[![deploy-book](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg)](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml)
