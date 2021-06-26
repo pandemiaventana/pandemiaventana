@@ -5,6 +5,7 @@ on:
   push:
     branches:
     - main
+
 # Para actualizar periódicamente desde las 11:30 hrs. hasta las 20:30 hrs. (hora en Chile)
   schedule:
     - cron: '30 15-24 * * *'
