@@ -5,9 +5,9 @@ on:
   push:
     branches:
     - main
-  # Para actualizar, desde las 11:30 hrs. a 20:30 hrs. de Chile (tiempos en los que suele actualizar el repo del Min. Ciencia)
+  # Para actualizar a las 11, 12, 13, 14, 16 y 20 hrs. con 30 min. de Chile (tiempos en los que suele actualizar el repo del Min. Ciencia)
   schedule:
-    - cron: '30 15-24 * * *'
+    - cron: '30 15,16,17,18,20,24 * * *'
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
