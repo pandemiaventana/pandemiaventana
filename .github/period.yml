@@ -1,14 +1,13 @@
-name: actualiza_libro
+name: actualiza_datos
 
-# Only run this when the master branch changes
 on:
-  push:
-    branches:
-    - main
+  # Para actualizar, desde las 11:30 hrs. a 20:30 hrs. de Chile (tiempos en los que suele actualizar el repo del Min. Ciencia)
+  schedule:
+    - cron: '30 15-24 * * *'
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
-  actualiza_libro:
+  actualiza_datos:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
