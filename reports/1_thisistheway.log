@@ -22,14 +22,14 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ### Abriendo gráficos guardados
 x = range(1, 7)
 for i in x:
-    image_path = '..\\..\\in\\diario\\grafico\\{}.png'.format(i)
+    image_path = '../../in/diario/grafico/{}.png'.format(i)
     exec('graph{} = Image.open(image_path)'.format(i))
     i += i
 
 ### Cargando imagenes
 x = range(1, 11)
 for i in x:
-    image_path = '..\\..\\in\\diario\\{}.png'.format(i)
+    image_path = '../../in/diario/{}.png'.format(i)
     exec('diario_{} = Image.open(image_path)'.format(i))
     exec('diario{} = diario_{}.copy()'.format(i, i))
     i += i
@@ -66,7 +66,7 @@ txt.text((750, 965), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=
 txt.text((725, 1035), '{}'.format(ucidiaria_hoy), fill='#dfdede', font=coolvetica_data1) # uci diaria
 
 ### Guardamos
-diario1.save('..\\..\\out\\diario\\1.png')
+diario1.save('../../out/diario/1.png')
 
 ### Manipulando segunda imagen
 txt = ImageDraw.Draw(diario2)
@@ -85,7 +85,7 @@ txt.text((350, 960), '{} casos del total están con sospecha de reinfección.'.f
 diario2.paste(graph1, (570, 50), graph1)
 
 ### Guardamos
-diario2.save('..\\..\\out\\diario\\2.png')
+diario2.save('../../out/diario/2.png')
 
 ### Manipulando tercera imagen
 txt = ImageDraw.Draw(diario3)
@@ -105,7 +105,7 @@ txt.text((890, 860), 'Acumulado: {}'.format(fallecidosacumulados_hoy), fill='#98
 diario3.paste(graph2, (570, 50), graph2)
 
 ### Guardamos
-diario3.save('..\\..\\out\\diario\\3.png')
+diario3.save('../../out/diario/3.png')
 
 ### Manipulando cuarta imagen
 txt = ImageDraw.Draw(diario4)
@@ -121,7 +121,7 @@ txt.text((890, 750), 'Ayer: {}'.format(activos_ayer), fill='#989898', font=robot
 txt.text((190, 860), 'Acumulado: {}'.format(pcracumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 
 ### Guardamos
-diario4.save('..\\..\\out\\diario\\4.png')
+diario4.save('../../out/diario/4.png')
 
 ### Manipulando quinta imagen
 txt = ImageDraw.Draw(diario5)
@@ -137,7 +137,7 @@ txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_dat
 txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 
 ### Guardamos
-diario5.save('..\\..\\out\\diario\\5.png')
+diario5.save('../../out/diario/5.png')
 
 ### Manipulando sexta imagen
 txt = ImageDraw.Draw(diario6)
@@ -150,7 +150,7 @@ txt.text((800, 680), '{}%'.format(uciaprox_hoy), fill='#dfdede', font=coolvetica
 txt.text((800, 750), 'Error aprox.: ±{}%'.format(errorabs_hoy), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
 
 ### Guardamos
-diario6.save('..\\..\\out\\diario\\6.png')
+diario6.save('../../out/diario/6.png')
 
 ### Manipulando séptima, octava, novena y décima imagen
 x = range(7, 11)
@@ -158,7 +158,7 @@ for i in x:
     ### Gráficos
     exec('diario{}.paste(graph{}, (-55, 155), graph{})'.format(i, i-4, i-4))
     ### Guardamos
-    exec('diario{}.save("..\\..\\out\\diario\\\{}.png")'.format(i, i))
+    exec('diario{}.save("../../out/diario/{}.png")'.format(i, i))
     i += i
     
 ### ¿Todo ok?
@@ -170,35 +170,47 @@ for i in range(2, 11):
     exec('pdfs += [diario{}]'.format(i))
 
 ### Histórico
-diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
+diario1.convert('RGB').save('../../out/diario/pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
                                                  df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### Última actualización
-diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+diario1.convert('RGB').save('../../out/diario/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### ¿Todo ok?
 display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-13-89017a4ba025>[0m in [0;36m<module>[0;34m[0m
-[1;32m     12[0m [0;32mfor[0m [0mi[0m [0;32min[0m [0mx[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     13[0m     [0mimage_path[0m [0;34m=[0m [0;34m'..\\..\\in\\diario\\{}.png'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 14[0;31m     [0mexec[0m[0;34m([0m[0;34m'diario_{} = Image.open(image_path)'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     15[0m     [0mexec[0m[0;34m([0m[0;34m'diario{} = diario_{}.copy()'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m,[0m [0mi[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     16[0m     [0mi[0m [0;34m+=[0m [0mi[0m[0;34m[0m[0;34m[0m[0m
+[0;31mOSError[0m                                   Traceback (most recent call last)
+[0;32m<ipython-input-13-182e97d9775d>[0m in [0;36m<module>[0;34m[0m
+[1;32m     20[0m [0mcoolvetica[0m [0;34m=[0m [0;34m'coolvetica rg.ttf'[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     21[0m [0mfontsFolder[0m [0;34m=[0m [0;34m'\\Windows\\Fonts.'[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 22[0;31m [0mroboto_ed[0m [0;34m=[0m [0mImageFont[0m[0;34m.[0m[0mtruetype[0m[0;34m([0m[0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mjoin[0m[0;34m([0m[0mfontsFolder[0m[0;34m,[0m [0mroboto[0m[0;34m)[0m[0;34m,[0m [0;36m50[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     23[0m [0mroboto_data0[0m [0;34m=[0m [0mImageFont[0m[0;34m.[0m[0mtruetype[0m[0;34m([0m[0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mjoin[0m[0;34m([0m[0mfontsFolder[0m[0;34m,[0m [0mroboto[0m[0;34m)[0m[0;34m,[0m [0;36m20[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     24[0m [0mroboto_data1[0m [0;34m=[0m [0mImageFont[0m[0;34m.[0m[0mtruetype[0m[0;34m([0m[0mos[0m[0;34m.[0m[0mpath[0m[0;34m.[0m[0mjoin[0m[0;34m([0m[0mfontsFolder[0m[0;34m,[0m [0mroboto[0m[0;34m)[0m[0;34m,[0m [0;36m28[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m<string>[0m in [0;36m<module>[0;34m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/ImageFont.py[0m in [0;36mtruetype[0;34m(font, size, index, encoding, layout_engine)[0m
+[1;32m    851[0m [0;34m[0m[0m
+[1;32m    852[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 853[0;31m         [0;32mreturn[0m [0mfreetype[0m[0;34m([0m[0mfont[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    854[0m     [0;32mexcept[0m [0mOSError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    855[0m         [0;32mif[0m [0;32mnot[0m [0misPath[0m[0;34m([0m[0mfont[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/Image.py[0m in [0;36mopen[0;34m(fp, mode, formats)[0m
-[1;32m   2910[0m [0;34m[0m[0m
-[1;32m   2911[0m     [0;32mif[0m [0mfilename[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 2912[0;31m         [0mfp[0m [0;34m=[0m [0mbuiltins[0m[0;34m.[0m[0mopen[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0;34m"rb"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   2913[0m         [0mexclusive_fp[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2914[0m [0;34m[0m[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/ImageFont.py[0m in [0;36mfreetype[0;34m(font)[0m
+[1;32m    848[0m [0;34m[0m[0m
+[1;32m    849[0m     [0;32mdef[0m [0mfreetype[0m[0;34m([0m[0mfont[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 850[0;31m         [0;32mreturn[0m [0mFreeTypeFont[0m[0;34m([0m[0mfont[0m[0;34m,[0m [0msize[0m[0;34m,[0m [0mindex[0m[0;34m,[0m [0mencoding[0m[0;34m,[0m [0mlayout_engine[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    851[0m [0;34m[0m[0m
+[1;32m    852[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No existe el archivo o el directorio: '..\\..\\in\\diario\\1.png'
-FileNotFoundError: [Errno 2] No existe el archivo o el directorio: '..\\..\\in\\diario\\1.png'
+[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/PIL/ImageFont.py[0m in [0;36m__init__[0;34m(self, font, size, index, encoding, layout_engine)[0m
+[1;32m    208[0m                     [0;32mreturn[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    209[0m             self.font = core.getfont(
+[0;32m--> 210[0;31m                 [0mfont[0m[0;34m,[0m [0msize[0m[0;34m,[0m [0mindex[0m[0;34m,[0m [0mencoding[0m[0;34m,[0m [0mlayout_engine[0m[0;34m=[0m[0mlayout_engine[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    211[0m             )
+[1;32m    212[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mOSError[0m: cannot open resource
+OSError: cannot open resource
 
