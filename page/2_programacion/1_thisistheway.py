@@ -330,7 +330,7 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 #
 # #### Días por fase del plan Paso a Paso
 #
-# Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un "*reset*" de días por de fase en el Paso a Paso.
+# Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un "*reset*" de días por cambio de fase de la comuna en el Paso a Paso.
 #
 # ### Limpieza de datos
 #
@@ -1672,7 +1672,23 @@ for i in x:
     i += i
     
 ### ¿Todo ok?
-print('Todas las imágenes del reporte diario han sido correctamente exportadas.')
+display(Markdown('> Todas las imágenes del reporte diario han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 11):
+    exec('pdfs += [diario{}]'.format(i))
+
+### Histórico
+diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
+                                                 df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # %% [markdown]
 # ### Balance de vacunas
@@ -1717,7 +1733,23 @@ for i in x:
     i += i
 
 ### ¿Todo ok?
-print('Todas las imágenes del balance de vacunas han sido correctamente exportadas.')
+display(Markdown('> Todas las imágenes del balance de vacunas han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 6):
+    exec('pdfs += [vacuna{}]'.format(i))
+
+### Histórico    
+vacuna1.convert('RGB').save('..\\..\\out\\vacuna\\pdf\\{}.pdf'.format(df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d'),
+                                                 df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+vacuna1.convert('RGB').save('..\\..\\out\\vacuna\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # %% [markdown]
 # ### Indicador de fase
@@ -1768,7 +1800,22 @@ for i in x:
     i += i
 
 ### ¿Todo ok?
-print('Todas las imágenes del indicador de fase han sido correctamente exportadas.')
+display(Markdown('> Todas las imágenes del indicador de fase han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 10):
+    exec('pdfs += [indicadorfase{}]'.format(i))
+    
+### Histórico
+indicadorfase1.convert('RGB').save('..\\..\\out\\indicadorfase\\pdf\\{}.pdf'.format(df['Casos acumulados en Alto Hospicio'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+indicadorfase1.convert('RGB').save('..\\..\\out\\indicadorfase\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # %% [markdown]
 # ## Resultado
