@@ -194,11 +194,6 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../5_bibliografia/0_bibliografia.html">
-   Bibliografía 📰
-  </a>
- </li>
 </ul>
 
     </div>
@@ -718,7 +713,7 @@
 <hr class="docutils" />
 <div class="section" id="micitec">
 <h3>MICITEC<a class="headerlink" href="#micitec" title="Permalink to this headline">¶</a></h3>
-<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span id="id3">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id3">MinisteriodCienciaTeInnovacion21</a>]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a class="footnote-reference brackets" href="#id5" id="id4">1</a></p>
+<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span id="id3">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id3">MinisteriodCienciaTeInnovacion21</a>]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a class="footnote-reference brackets" href="#id5" id="id4">1</a></p>
 <ul class="simple">
 <li><p>Los archivos .CSV refieren a “comma separated values”, que en español significa “archivos separados por coma”, y si bien, parecieran tener una estructura desorganizada, en verdad tienen un orden por columna y fila, delimitando cada elemento por una coma. En Data Science son ampliamente utilizados, aunque, en secuencias de datos más amplias (y con mayor peso) se suele utilizar el lenguaje de consulta SQL, dado que la librería Pandas, en un archivo .CSV, debe leer uno y cada uno de los datos, por lo que a medida escala el número de datos, el proceso de lectura de un .CSV se torna ineficiente.</p></li>
 <li><p>Para ejemplo práctico, leer bloque de código (<a class="reference external" href="#ejemplo1">Ejemplo 1</a>).</p></li>
@@ -943,7 +938,7 @@
 </div>
 <div class="section" id="dias-por-fase-del-plan-paso-a-paso">
 <h4>Días por fase del plan Paso a Paso<a class="headerlink" href="#dias-por-fase-del-plan-paso-a-paso" title="Permalink to this headline">¶</a></h4>
-<p>Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un “<em>reset</em>” de días por de fase en el Paso a Paso.</p>
+<p>Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un “<em>reset</em>” de días por cambio de fase de la comuna en el Paso a Paso.</p>
 </div>
 </div>
 <div class="section" id="limpieza-de-datos">
@@ -2078,7 +2073,7 @@
 <li><p><b>Indicador de fase</b></p></li>
 </ul>
 <p>El plan Paso a Paso y la capacidad de poder “predecirlo”. El indicador de fase surgió como una idea de saber, qué tan cerca o qué tan distantes se estaba de los avances o retrocesos de fase, en términos de confinamiento o desconfinamiento. La idea original la desarrollé un día por la noche, e hizo boom en redes sociales. El miembro del comité científico COVID-19 de la Universidad Arturo Prat, el Dr. Cristóbal Corral, fue capaz de explicarlo brevemente a los medios: Un termómetro del Paso a Paso.</p>
-<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id6">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id7">2</a></p>
+<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id6">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id7">2</a></p>
 <p>La segunda versión de este reporte fue subida, inicialmente, el 02/05/2021, que fue la 37° edición. Fue procesada en el siguiente script (This is the way 2), y se basa en un problema de clasificación. Para mayor información del cómo funciona y  sus fundamentos, recomiendo ver el siguiente notebook.</p>
 <ul class="simple">
 <li><p><b>Reporte comunal</b></p></li>
@@ -2604,19 +2599,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 25 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.467%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.409%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.682%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.917%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 54 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.302%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.367%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 38 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.744%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.741%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 49 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.275%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.396%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 38 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.196%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.333%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 80 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.134%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.121%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -3028,7 +3023,7 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
 <hr class="docutils" />
 <p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a class="footnote-reference brackets" href="#alsweigart" id="id11">3</a> para generar las infografías.</p>
 <p>El procedimiento manual implicaba exportar archivos .JSON, y a partir de ellos, rellenar manualmente los datos y gráficos en Photoshop, lo que es un proceso tedioso, y altamente susceptible a equivocaciones.</p>
-<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id12">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
+<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id12">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
 <p>Lo que tenemos que realizar consistirá en los siguientes pasos:</p>
 <ul class="simple">
 <li><p>Rellenar con datos las infografías prediseñadas en Photoshop.</p></li>
@@ -3184,14 +3179,30 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
     <span class="n">i</span> <span class="o">+=</span> <span class="n">i</span>
     
 <span class="c1">### ¿Todo ok?</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Todas las imágenes del reporte diario han sido correctamente exportadas.&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Todas las imágenes del reporte diario han sido correctamente exportadas.&#39;</span><span class="p">))</span>
+
+<span class="c1">### Guardamos a PDF</span>
+<span class="n">pdfs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;pdfs += [diario</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="c1">### Histórico</span>
+<span class="n">diario1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">out</span><span class="se">\\</span><span class="s1">diario</span><span class="se">\\</span><span class="s1">pdf</span><span class="se">\\</span><span class="si">{}</span><span class="s1">.pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span>
+                                                 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+                                             <span class="p">),</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### Última actualización</span>
+<span class="n">diario1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">out</span><span class="se">\\</span><span class="s1">diario</span><span class="se">\\</span><span class="s1">pdf</span><span class="se">\\</span><span class="s1">ult</span><span class="se">\\</span><span class="s1">ult.pdf&#39;</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### ¿Todo ok?</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El PDF del reporte diario ha sido exportado.&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">adb7b24fb1c6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">89017</span><span class="n">a4ba025</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">image_path</span> <span class="o">=</span> <span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">in</span><span class="se">\\</span><span class="s1">diario</span><span class="se">\\</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">14</span>     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;diario_</span><span class="si">{}</span><span class="s1"> = Image.open(image_path)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
@@ -3256,14 +3267,33 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
     <span class="n">i</span> <span class="o">+=</span> <span class="n">i</span>
 
 <span class="c1">### ¿Todo ok?</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Todas las imágenes del balance de vacunas han sido correctamente exportadas.&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Todas las imágenes del balance de vacunas han sido correctamente exportadas.&#39;</span><span class="p">))</span>
+
+<span class="c1">### Guardamos a PDF</span>
+<span class="n">pdfs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;pdfs += [vacuna</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="c1">### Histórico    </span>
+<span class="n">vacuna1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">out</span><span class="se">\\</span><span class="s1">vacuna</span><span class="se">\\</span><span class="s1">pdf</span><span class="se">\\</span><span class="si">{}</span><span class="s1">.pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span>
+                                                 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+                                             <span class="p">),</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### Última actualización</span>
+<span class="n">vacuna1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">out</span><span class="se">\\</span><span class="s1">vacuna</span><span class="se">\\</span><span class="s1">pdf</span><span class="se">\\</span><span class="s1">ult</span><span class="se">\\</span><span class="s1">ult.pdf&#39;</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### ¿Todo ok?</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El PDF del balance de vacunas ha sido exportado.&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Todas las imágenes del balance de vacunas han sido correctamente exportadas.
-</pre></div>
-</div>
+<blockquote>
+<div><p>Todas las imágenes del balance de vacunas han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del balance de vacunas ha sido exportado.</p>
+</div></blockquote>
 </div>
 </div>
 </div>
@@ -3316,14 +3346,32 @@ Actualmente, la comuna registra 35 días en <b style="color:gold">Preparación</
     <span class="n">i</span> <span class="o">+=</span> <span class="n">i</span>
 
 <span class="c1">### ¿Todo ok?</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Todas las imágenes del indicador de fase han sido correctamente exportadas.&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Todas las imágenes del indicador de fase han sido correctamente exportadas.&#39;</span><span class="p">))</span>
+
+<span class="c1">### Guardamos a PDF</span>
+<span class="n">pdfs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;pdfs += [indicadorfase</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    
+<span class="c1">### Histórico</span>
+<span class="n">indicadorfase1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">out</span><span class="se">\\</span><span class="s1">indicadorfase</span><span class="se">\\</span><span class="s1">pdf</span><span class="se">\\</span><span class="si">{}</span><span class="s1">.pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos acumulados en Alto Hospicio&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+                                             <span class="p">),</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### Última actualización</span>
+<span class="n">indicadorfase1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;..</span><span class="se">\\</span><span class="s1">..</span><span class="se">\\</span><span class="s1">out</span><span class="se">\\</span><span class="s1">indicadorfase</span><span class="se">\\</span><span class="s1">pdf</span><span class="se">\\</span><span class="s1">ult</span><span class="se">\\</span><span class="s1">ult.pdf&#39;</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### ¿Todo ok?</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El PDF del indicador de fase ha sido exportado.&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Todas las imágenes del indicador de fase han sido correctamente exportadas.
-</pre></div>
-</div>
+<blockquote>
+<div><p>Todas las imágenes del indicador de fase han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del indicador de fase ha sido exportado.</p>
+</div></blockquote>
 </div>
 </div>
 </div>
@@ -3533,11 +3581,11 @@ La media general del error es de:  0.85 %
 <h4>Definiciones<a class="headerlink" href="#definiciones" title="Permalink to this headline">¶</a></h4>
 <p>Respecto a las definiciones de la nomenclatura:</p>
 <ul class="simple">
-<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id22">4</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id23">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
+<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id22">4</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id23">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">5</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id25">[<a class="reference internal" href="../5_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
+<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">5</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id25">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
 </ul>
 </div>
 </div>

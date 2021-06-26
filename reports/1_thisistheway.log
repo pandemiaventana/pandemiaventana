@@ -162,12 +162,28 @@ for i in x:
     i += i
     
 ### ¿Todo ok?
-print('Todas las imágenes del reporte diario han sido correctamente exportadas.')
+display(Markdown('> Todas las imágenes del reporte diario han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 11):
+    exec('pdfs += [diario{}]'.format(i))
+
+### Histórico
+diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
+                                                 df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-13-adb7b24fb1c6>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-13-89017a4ba025>[0m in [0;36m<module>[0;34m[0m
 [1;32m     12[0m [0;32mfor[0m [0mi[0m [0;32min[0m [0mx[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     13[0m     [0mimage_path[0m [0;34m=[0m [0;34m'..\\..\\in\\diario\\{}.png'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 14[0;31m     [0mexec[0m[0;34m([0m[0;34m'diario_{} = Image.open(image_path)'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
