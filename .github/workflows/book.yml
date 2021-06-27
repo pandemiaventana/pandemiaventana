@@ -1,6 +1,6 @@
 name: actualiza_libro
 
-# Only run this when the master branch changes
+# Ejecutar cuando se realiza un cambio o en determinadas horas
 on:
   push:
     branches:
