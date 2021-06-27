@@ -40,10 +40,10 @@ for i in x:
         txt = ImageDraw.Draw(vacuna1)
         txt.text((860, 35), '{}° ed.'.format(ed_vacuna), fill='#b9b9b9', font=roboto_ed) # edicion
         txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
-        txt.text((610, 480), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
+        txt.text((610, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
         txt.text((420, 670), 'Se ha vacunado con 2° dosis', fill='white', font=roboto_data3) # texto1
         txt.text((420, 710), 'de la población objetivo', fill='white', font=roboto_data3) # texto2
-        txt.text((400, 780), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
+        txt.text((380, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
         txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
         txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
         exec('vacuna{}.paste(graph{}, (100, 410), graph{})'.format(i, i, i))
@@ -77,7 +77,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-14-71609492313a>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-14-65d0a663b3c9>[0m in [0;36m<module>[0;34m[0m
 [1;32m     11[0m [0;32mfor[0m [0mi[0m [0;32min[0m [0mx[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     12[0m     [0mimage_path[0m [0;34m=[0m [0;34m'..\\..\\in\\vacuna\\{}.png'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 13[0;31m     [0mexec[0m[0;34m([0m[0;34m'vacuna{} = Image.open(image_path)'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mi[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
