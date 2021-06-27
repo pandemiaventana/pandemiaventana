@@ -9,35 +9,35 @@ on:
   schedule:
     - cron: "30 15-23 * * *"
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
+# Ejecutamos Jupyter Books, push a main y luego a gh-pages
 jobs:
   actualiza_libro:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     
-    # Para set de español en locale (ubuntu)
-    - name: setLocale
+    # Ubuntu idioma español (para tener bien el formateado de fechas y otros)
+    - name: Colocar idioma Español
       run: |
         sudo apt-get update
         sudo apt-get install language-pack-es
     
-    # Instalando Python
-    - name: Set up Python 3.7
+    # Python 3.7
+    - name: Instalando Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
         
     # Instalando dependencias
-    - name: Install dependencies
+    - name: Instalando dependencias
       run: |
         pip install -r requirements.txt
-    # Build the book
-    - name: Build the book
+    # Construcción de libro
+    - name: Procesando libro
       run: |
         jupyter-book build .
-    # Push the book's HTML to github-pages
-    - name: GitHub Pages action
+    # Push de outputs de Jupyter Books HTML a gh-pages
+    - name: Push a GitHub-Pages (branch: gh-pages)
       uses: peaceiris/actions-gh-pages@v3.5.9
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
