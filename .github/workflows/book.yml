@@ -1,13 +1,13 @@
 name: actualiza_libro
 
-# Ejecutar cuando se realiza un cambio o en determinadas horas
+# Ejecutar cuando se realiza un cambio en main o a determinadas horas
 on:
   push:
     branches:
     - main
-# Actualizar periódicamente desde las 11:30 hrs. hasta las 19:30 hrs. (hora en Chile)
+# Para actualizar periódicamente desde las 11:30 hrs. hasta las 19:30 hrs. (hora en Chile)
   schedule:
-    - cron: "30 15-23 * * *"
+    - cron: "30 15-00 * * *"
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
@@ -22,29 +22,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install language-pack-es
     
-    # Instalando Python 3.7
+    # Instalando Python
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
-    # Ejecutando primer notebook (en cadena, segundo y tercero) gracias a https://github.com/marketplace/actions/run-notebook#example-1---executing-notebook-with-parameters
-    - uses: yaananth/run-notebook@v1
-      env: 
-        RUNNER: ${{ toJson(runner) }}
-        SECRETS: ${{ toJson(secrets) }}
-        GITHUB: ${{ toJson(github) }}
-      with:
-        notebook: "page/2_programacion/1_thisistheway.ipynb"
-        params: "page/2_programacion/params.json"
-        isReport: False
-        poll: True
-    - uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: output
-        path: ${{ RUNNER.temp }}/nb-runner
-      env:
-        RUNNER: ${{ toJson(runner) }}
         
     # Instalando dependencias
     - name: Install dependencies
