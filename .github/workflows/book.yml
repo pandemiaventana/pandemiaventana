@@ -48,8 +48,11 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -m "🤖 Actualización de repositorio" -a
-        git pull origin main
-        git push origin main
+    - name: Actualizando main
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
         
     # Push a gh-pages
     - name: Actualizando gh-pages
