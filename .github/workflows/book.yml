@@ -22,12 +22,30 @@ jobs:
         sudo apt-get update
         sudo apt-get install language-pack-es
     
-    # Install dependencies
+    # Instalando Python 3.7
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
-
+    # Ejecutando primer notebook (en cadena, segundo y tercero) gracias a https://github.com/marketplace/actions/run-notebook#example-1---executing-notebook-with-parameters
+    - uses: yaananth/run-notebook@v1
+      env: 
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "https://github.com/pandemiaventana/pandemiaventana/raw/main/page/2_programacion/1_thisistheway.ipynb"
+        isReport: False
+        poll: True
+    - uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: output
+        path: ${{ RUNNER.temp }}/nb-runner
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        
+    # Instalando dependencias
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
