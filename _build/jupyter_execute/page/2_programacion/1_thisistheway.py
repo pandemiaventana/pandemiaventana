@@ -43,12 +43,6 @@
 # 
 # En el siguiente bloque de código (1), importaremos las librerías necesarias.
 
-# In[ ]:
-
-
-
-
-
 # In[1]:
 
 
@@ -1607,7 +1601,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[14]:
+# In[30]:
 
 
 ### Generando balance de vacunas ###
@@ -1670,7 +1664,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[15]:
+# In[27]:
 
 
 ### Indicador de fase ###
@@ -1742,7 +1736,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[16]:
+# In[31]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1754,7 +1748,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[17]:
+# In[32]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -1766,7 +1760,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[18]:
+# In[33]:
 
 
 ### Mostramos las imágenes del indicador de fase
