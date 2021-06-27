@@ -15,29 +15,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false 
+        fetch-depth: 0 
     
-    # Ubuntu idioma español (para tener bien el formateado de fechas y otros)
-    - name: Colocar idioma Español
+    # Para correcto formateado en español (ubuntu)
+    - name: Instalando paquete español
       run: |
         sudo apt-get update
         sudo apt-get install language-pack-es
     
     # Python 3.7
-    - name: Instalando Python 3.7
+    - name: Inicializando Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
         
     # Instalando dependencias
-    - name: Instalando dependencias
+    - name: Instalando dependencias de Python
       run: |
         pip install -r requirements.txt
-    # Construcción de libro
+    # Jupyter Book
     - name: Procesando libro
       run: |
         jupyter-book build .
-    # Push de outputs de Jupyter Books HTML a gh-pages
-    - name: Push a GitHub-Pages
+
+    - name: Commit
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Add changes" -a
+    - name: Actualizando main
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+        
+    # Push a gh-pages
+    - name: Actualizando gh-pages
       uses: peaceiris/actions-gh-pages@v3.5.9
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
