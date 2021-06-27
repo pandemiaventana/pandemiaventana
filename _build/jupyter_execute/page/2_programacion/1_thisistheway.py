@@ -43,6 +43,12 @@
 # 
 # En el siguiente bloque de código (1), importaremos las librerías necesarias.
 
+# In[ ]:
+
+
+
+
+
 # In[1]:
 
 
@@ -1440,14 +1446,14 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 ### Abriendo gráficos guardados
 x = range(1, 7)
 for i in x:
-    image_path = '..\\..\\in\\diario\\grafico\\{}.png'.format(i)
+    image_path = '../../in/diario/grafico/{}.png'.format(i)
     exec('graph{} = Image.open(image_path)'.format(i))
     i += i
 
 ### Cargando imagenes
 x = range(1, 11)
 for i in x:
-    image_path = '..\\..\\in\\diario\\{}.png'.format(i)
+    image_path = '../../in/diario/{}.png'.format(i)
     exec('diario_{} = Image.open(image_path)'.format(i))
     exec('diario{} = diario_{}.copy()'.format(i, i))
     i += i
@@ -1484,7 +1490,7 @@ txt.text((750, 965), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=
 txt.text((725, 1035), '{}'.format(ucidiaria_hoy), fill='#dfdede', font=coolvetica_data1) # uci diaria
 
 ### Guardamos
-diario1.save('..\\..\\out\\diario\\1.png')
+diario1.save('../../out/diario/1.png')
 
 ### Manipulando segunda imagen
 txt = ImageDraw.Draw(diario2)
@@ -1503,7 +1509,7 @@ txt.text((350, 960), '{} casos del total están con sospecha de reinfección.'.f
 diario2.paste(graph1, (570, 50), graph1)
 
 ### Guardamos
-diario2.save('..\\..\\out\\diario\\2.png')
+diario2.save('../../out/diario/2.png')
 
 ### Manipulando tercera imagen
 txt = ImageDraw.Draw(diario3)
@@ -1523,7 +1529,7 @@ txt.text((890, 860), 'Acumulado: {}'.format(fallecidosacumulados_hoy), fill='#98
 diario3.paste(graph2, (570, 50), graph2)
 
 ### Guardamos
-diario3.save('..\\..\\out\\diario\\3.png')
+diario3.save('../../out/diario/3.png')
 
 ### Manipulando cuarta imagen
 txt = ImageDraw.Draw(diario4)
@@ -1539,7 +1545,7 @@ txt.text((890, 750), 'Ayer: {}'.format(activos_ayer), fill='#989898', font=robot
 txt.text((190, 860), 'Acumulado: {}'.format(pcracumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 
 ### Guardamos
-diario4.save('..\\..\\out\\diario\\4.png')
+diario4.save('../../out/diario/4.png')
 
 ### Manipulando quinta imagen
 txt = ImageDraw.Draw(diario5)
@@ -1555,7 +1561,7 @@ txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_dat
 txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 
 ### Guardamos
-diario5.save('..\\..\\out\\diario\\5.png')
+diario5.save('../../out/diario/5.png')
 
 ### Manipulando sexta imagen
 txt = ImageDraw.Draw(diario6)
@@ -1568,7 +1574,7 @@ txt.text((800, 680), '{}%'.format(uciaprox_hoy), fill='#dfdede', font=coolvetica
 txt.text((800, 750), 'Error aprox.: ±{}%'.format(errorabs_hoy), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
 
 ### Guardamos
-diario6.save('..\\..\\out\\diario\\6.png')
+diario6.save('../../out/diario/6.png')
 
 ### Manipulando séptima, octava, novena y décima imagen
 x = range(7, 11)
@@ -1576,7 +1582,7 @@ for i in x:
     ### Gráficos
     exec('diario{}.paste(graph{}, (-55, 155), graph{})'.format(i, i-4, i-4))
     ### Guardamos
-    exec('diario{}.save("..\\..\\out\\diario\\\{}.png")'.format(i, i))
+    exec('diario{}.save("../../out/diario/{}.png")'.format(i, i))
     i += i
     
 ### ¿Todo ok?
@@ -1588,12 +1594,12 @@ for i in range(2, 11):
     exec('pdfs += [diario{}]'.format(i))
 
 ### Histórico
-diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
+diario1.convert('RGB').save('../../out/diario/pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
                                                  df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### Última actualización
-diario1.convert('RGB').save('..\\..\\out\\diario\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+diario1.convert('RGB').save('../../out/diario/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### ¿Todo ok?
 display(Markdown('> El PDF del reporte diario ha sido exportado.'))
@@ -1626,7 +1632,7 @@ for i in x:
     if i == 1:
         txt = ImageDraw.Draw(vacuna1)
         txt.text((860, 35), '{}° ed.'.format(ed_vacuna), fill='#b9b9b9', font=roboto_ed) # edicion
-        txt.text((380, 357), '{}'.format(df.index[-1].strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+        txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         txt.text((610, 480), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
         txt.text((420, 670), 'Se ha vacunado con 2° dosis', fill='white', font=roboto_data3) # texto1
         txt.text((420, 710), 'de la población objetivo', fill='white', font=roboto_data3) # texto2
@@ -1697,7 +1703,7 @@ for i in x:
     if i == 1:
         txt = ImageDraw.Draw(indicadorfase1)
         txt.text((860, 35), '{}° ed.'.format(ed_indicador), fill='#b9b9b9', font=roboto_ed) # edicion
-        txt.text((360, 380), '{}'.format(df.index[-1].strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+        txt.text((360, 380), '{}'.format(df['Casos acumulados en Iquique'].last_valid_index().strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         for val in resultado_prediccion:
             txt.text((490, 512 + b), '{} '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # fecha
             txt.text((670, 512 + b), '{}'.format(val), fill=resultado_colores[co], font=roboto_data3) # fecha
@@ -1907,7 +1913,7 @@ req += """jupyter-book
 """ + 'session_info'
 
 ### Abrimos y modificamos requirements.txt
-with open('..//..//requirements.txt', 'w') as f:
+with open('../../requirements.txt', 'w') as f:
     f.write(req)
     # ...
 
