@@ -5,6 +5,7 @@ on:
   push:
     branches:
     - main
+    
 # Para actualizar periódicamente desde las 11:30 hrs. hasta las 19:30 hrs. (hora en Chile)
   schedule:
     - cron: "30 15-23 * * *"
@@ -35,16 +36,18 @@ jobs:
     - name: Instalando dependencias de Python
       run: |
         pip install -r requirements.txt
+        
     # Jupyter Book
     - name: Procesando libro
       run: |
         jupyter-book build .
-
+        
+    # Push a main
     - name: Commit
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git commit -m "Add changes" -a
+        git commit -m "Actualización de repositorio" -a
     - name: Actualizando main
       uses: ad-m/github-push-action@master
       with:
