@@ -1461,9 +1461,9 @@ roboto_data0 = ImageFont.truetype(BytesIO(roboto.content), 20)
 roboto_data1 = ImageFont.truetype(BytesIO(roboto.content), 28)
 roboto_data2 = ImageFont.truetype(BytesIO(roboto.content), 30)
 roboto_data3 = ImageFont.truetype(BytesIO(roboto.content), 40)
-coolvetica_data0 = ImageFont.truetype(BytesIO(coolvetica.content), 30)
-coolvetica_data1 = ImageFont.truetype(BytesIO(coolvetica.content), 70)
-coolvetica_data2 = ImageFont.truetype(BytesIO(coolvetica.content), 150)
+coolvetica_data0 = ImageFont.truetype(BytesIO(coolvetica.content), 43)
+coolvetica_data1 = ImageFont.truetype(BytesIO(coolvetica.content), 75)
+coolvetica_data2 = ImageFont.truetype(BytesIO(coolvetica.content), 135)
 coolvetica_data3 = ImageFont.truetype(BytesIO(coolvetica.content), 100)
 coolvetica_data4 = ImageFont.truetype(BytesIO(coolvetica.content), 180)
 
@@ -1529,7 +1529,7 @@ diario3.save('../../out/diario/3.png')
 txt = ImageDraw.Draw(diario4)
 
 ### Textos
-txt.text((780, 50), '{}'.format(reregional_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((780, 70), '{}'.format(reregional_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
 txt.text((190, 680), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}'.format(pcrnuevos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((540, 680), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
@@ -1545,7 +1545,7 @@ diario4.save('../../out/diario/4.png')
 txt = ImageDraw.Draw(diario5)
 
 ### Textos
-txt.text((780, 50), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((780, 70), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
 txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((540, 680), '{}%'.format(procesovacunacion_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
@@ -1561,7 +1561,7 @@ diario5.save('../../out/diario/5.png')
 txt = ImageDraw.Draw(diario6)
 
 ### Textos
-txt.text((780, 50), '{}'.format(tasanuevos_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((780, 70), '{}'.format(tasanuevos_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
 txt.text((280, 680), '{}'.format(activosprobables_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((280, 750), 'Ayer: {}'.format(activosprobables_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((800, 680), '{}%'.format(uciaprox_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
@@ -1627,10 +1627,10 @@ for i in x:
         txt = ImageDraw.Draw(vacuna1)
         txt.text((860, 35), '{}° ed.'.format(ed_vacuna), fill='#b9b9b9', font=roboto_ed) # edicion
         txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
-        txt.text((610, 480), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
+        txt.text((610, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
         txt.text((420, 670), 'Se ha vacunado con 2° dosis', fill='white', font=roboto_data3) # texto1
         txt.text((420, 710), 'de la población objetivo', fill='white', font=roboto_data3) # texto2
-        txt.text((400, 780), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
+        txt.text((380, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
         txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
         txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
         exec('vacuna{}.paste(graph{}, (100, 410), graph{})'.format(i, i, i))
@@ -1736,7 +1736,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[16]:
+# In[41]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1748,7 +1748,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[17]:
+# In[52]:
 
 
 ### Mostramos las imágenes del balance de vacunas
