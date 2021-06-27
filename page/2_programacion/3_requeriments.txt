@@ -4,8 +4,12 @@ datetime
 json==2.0.9
 locale
 math
+<<<<<<< HEAD
 matplotlib==3.3.4
 numpy==1.19.2
+=======
+numpy==1.19.5
+>>>>>>> 5a7fc4017ba85375d7528e2fc4da9fd8f48476ca
 os
 pandas==1.2.3
 pkg_resources
@@ -17,8 +21,12 @@ seaborn==0.11.1
 session_info==1.0.0
 sklearn==0.24.1
 time
+<<<<<<< HEAD
 types
 IPython==7.23.1
+=======
+IPython==7.25.0
+>>>>>>> 5a7fc4017ba85375d7528e2fc4da9fd8f48476ca
 jupyter_client==6.1.12
 jupyter_core==4.7.1
-notebook==6.3.0
+notebook==6.4.0

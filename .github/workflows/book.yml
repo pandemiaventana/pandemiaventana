@@ -5,39 +5,57 @@ on:
   push:
     branches:
     - main
+    
 # Para actualizar periódicamente desde las 11:30 hrs. hasta las 19:30 hrs. (hora en Chile)
   schedule:
     - cron: "30 15-23 * * *"
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
+# Ejecutamos Jupyter Books, push a main y luego a gh-pages
 jobs:
   actualiza_libro:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false 
+        fetch-depth: 0 
     
-    # Para set de español en locale (ubuntu)
-    - name: setLocale
+    # Para correcto formateado en español (ubuntu)
+    - name: Instalando paquete español
       run: |
         sudo apt-get update
         sudo apt-get install language-pack-es
     
-    # Instalando Python
-    - name: Set up Python 3.7
+    # Python 3.7
+    - name: Inicializando Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
         
     # Instalando dependencias
-    - name: Install dependencies
+    - name: Instalando dependencias de Python
       run: |
         pip install -r requirements.txt
-    # Build the book
-    - name: Build the book
+        
+    # Jupyter Book
+    - name: Procesando libro
       run: |
         jupyter-book build .
-    # Push the book's HTML to github-pages
-    - name: GitHub Pages action
+        
+    # Push a main
+    - name: Commit
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Actualización de repositorio" -a
+    - name: Actualizando main
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+        
+    # Push a gh-pages
+    - name: Actualizando gh-pages
       uses: peaceiris/actions-gh-pages@v3.5.9
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
