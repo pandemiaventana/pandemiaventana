@@ -37,7 +37,7 @@ jobs:
       run: |
         jupyter-book build .
     # Push de outputs de Jupyter Books HTML a gh-pages
-    - name: Push a GitHub-Pages (branch: gh-pages)
+    - name: Push a GitHub-Pages
       uses: peaceiris/actions-gh-pages@v3.5.9
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
