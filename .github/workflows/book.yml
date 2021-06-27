@@ -35,7 +35,7 @@ jobs:
         GITHUB: ${{ toJson(github) }}
       with:
         notebook: "https://github.com/pandemiaventana/pandemiaventana/raw/main/page/2_programacion/1_thisistheway.ipynb"
-        params: "https://github.com/pandemiaventana/pandemiaventana/raw/main/page/2_programacion/params.json"
+        params: "https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/page/2_programacion/params.json"
         isReport: False
         poll: True
     - uses: actions/upload-artifact@master
