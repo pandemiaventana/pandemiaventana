@@ -1716,7 +1716,7 @@ for i in x:
     if i == 1:
         txt = ImageDraw.Draw(vacuna1)
         txt.text((860, 35), '{}° ed.'.format(ed_vacuna), fill='#b9b9b9', font=roboto_ed) # edicion
-        txt.text((380, 357), '{}'.format(df.index[-1].strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+        txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         txt.text((610, 480), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
         txt.text((420, 670), 'Se ha vacunado con 2° dosis', fill='white', font=roboto_data3) # texto1
         txt.text((420, 710), 'de la población objetivo', fill='white', font=roboto_data3) # texto2
@@ -1785,7 +1785,7 @@ for i in x:
     if i == 1:
         txt = ImageDraw.Draw(indicadorfase1)
         txt.text((860, 35), '{}° ed.'.format(ed_indicador), fill='#b9b9b9', font=roboto_ed) # edicion
-        txt.text((360, 380), '{}'.format(df.index[-1].strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+        txt.text((360, 380), '{}'.format(df['Casos acumulados en Iquique'].last_valid_index().strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         for val in resultado_prediccion:
             txt.text((490, 512 + b), '{} '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # fecha
             txt.text((670, 512 + b), '{}'.format(val), fill=resultado_colores[co], font=roboto_data3) # fecha
