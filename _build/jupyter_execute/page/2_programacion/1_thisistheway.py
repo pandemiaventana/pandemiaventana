@@ -43,12 +43,6 @@
 # 
 # En el siguiente bloque de código (1), importaremos las librerías necesarias.
 
-# In[ ]:
-
-
-
-
-
 # In[1]:
 
 

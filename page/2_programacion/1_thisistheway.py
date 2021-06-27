@@ -109,6 +109,7 @@ from IPython.display import display, HTML
 ### Solo de uso esporádico
 import csv
 from io import StringIO
+from io import BytesIO
 import pkg_resources
 import types
 
@@ -1544,20 +1545,19 @@ for i in x:
     exec('diario{} = diario_{}.copy()'.format(i, i))
     i += i
     
-### Cargando texto
-roboto = 'Roboto-Regular.ttf'
-coolvetica = 'coolvetica rg.ttf'
-fontsFolder = '\\Windows\\Fonts.'
-roboto_ed = ImageFont.truetype(os.path.join(fontsFolder, roboto), 50)
-roboto_data0 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 20)
-roboto_data1 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 28)
-roboto_data2 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 30)
-roboto_data3 = ImageFont.truetype(os.path.join(fontsFolder, roboto), 40)
-coolvetica_data0 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 30)
-coolvetica_data1 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 70)
-coolvetica_data2 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 150)
-coolvetica_data3 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 100)
-coolvetica_data4 = ImageFont.truetype(os.path.join(fontsFolder, coolvetica), 180)
+### Cargando texto (gracias a Google Fonts y shoes)
+roboto = requests.get("https://github.com/googlefonts/roboto/raw/main/src/hinted/Roboto-Regular.ttf")
+coolvetica = requests.get("https://github.com/shoes/brown_shoes/blob/main/fonts/Coolvetica.ttf?raw=true")
+roboto_ed = ImageFont.truetype(BytesIO(roboto.content), 50)
+roboto_data0 = ImageFont.truetype(BytesIO(roboto.content), 20)
+roboto_data1 = ImageFont.truetype(BytesIO(roboto.content), 28)
+roboto_data2 = ImageFont.truetype(BytesIO(roboto.content), 30)
+roboto_data3 = ImageFont.truetype(BytesIO(roboto.content), 40)
+coolvetica_data0 = ImageFont.truetype(BytesIO(coolvetica.content), 30)
+coolvetica_data1 = ImageFont.truetype(BytesIO(coolvetica.content), 70)
+coolvetica_data2 = ImageFont.truetype(BytesIO(coolvetica.content), 150)
+coolvetica_data3 = ImageFont.truetype(BytesIO(coolvetica.content), 100)
+coolvetica_data4 = ImageFont.truetype(BytesIO(coolvetica.content), 180)
 
 ### Manipulando primera imagen
 txt = ImageDraw.Draw(diario1)
