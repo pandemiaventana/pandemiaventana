@@ -1991,7 +1991,7 @@ req += """jupyter-book
 """ + 'session_info'
 
 ### Abrimos y modificamos requirements.txt
-with open('..//..//requirements.txt', 'w') as f:
+with open('../../requirements.txt', 'w') as f:
     f.write(req)
     # ...
 
