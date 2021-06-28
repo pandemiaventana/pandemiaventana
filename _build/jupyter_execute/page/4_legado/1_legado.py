@@ -95,7 +95,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
-    IPython.notebook.kernel.execute("op = open('..//..//README.md' , 'w', encoding='utf-16')")
+    IPython.notebook.kernel.execute("op = open('../../README.md' , 'w', encoding='utf-16')")
     IPython.notebook.kernel.execute("full = txt + soup")
     IPython.notebook.kernel.execute("op.writelines(full)")
 }''')
