@@ -1609,13 +1609,13 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 ### Abriendo gráficos guardados
 x = range(1, 6)
 for i in x:
-    image_path = '..\\..\\in\\vacuna\\grafico\\{}.png'.format(i)
+    image_path = '../../in/vacuna/grafico/{}.png'.format(i)
     exec('graph{} = Image.open(image_path)'.format(i))
     i += i
 
 ### Cargando imagenes
 for i in x:
-    image_path = '..\\..\\in\\vacuna\\{}.png'.format(i)
+    image_path = '../../in/vacuna/{}.png'.format(i)
     exec('vacuna{} = Image.open(image_path)'.format(i))
     exec('vacuna{} = vacuna{}.copy()'.format(i, i))
     i += i
@@ -1639,7 +1639,7 @@ for i in x:
     else:
         exec('vacuna{}.paste(graph{}, (60, 240), graph{})'.format(i, i, i))
     ### Guardamos
-    exec('vacuna{}.save("..\\\\..\\\\out\\\\vacuna\\\{}.png")'.format(i, i))
+    exec('vacuna{}.save("../../out/vacuna/{}.png")'.format(i, i))
     i += i
 
 ### ¿Todo ok?
@@ -1651,12 +1651,12 @@ for i in range(2, 6):
     exec('pdfs += [vacuna{}]'.format(i))
 
 ### Histórico    
-vacuna1.convert('RGB').save('..\\..\\out\\vacuna\\pdf\\{}.pdf'.format(df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d'),
+vacuna1.convert('RGB').save('../../out/vacuna/pdf/{}.pdf'.format(df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d'),
                                                  df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d')
                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### Última actualización
-vacuna1.convert('RGB').save('..\\..\\out\\vacuna\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+vacuna1.convert('RGB').save('../../out/vacuna/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### ¿Todo ok?
 display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
@@ -1672,14 +1672,14 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 ### Abriendo gráficos guardados
 x = range(1, 8)
 for i in x:
-    image_path = '..\\..\\in\\indicadorfase\\grafico\\{}.png'.format(i)
+    image_path = '../../in/indicadorfase/grafico/{}.png'.format(i)
     exec('graph{} = Image.open(image_path)'.format(i))
     i += i
 
 ### Cargando imagenes
 x = range(1, 10)
 for i in x:
-    image_path = '..\\..\\in\\indicadorfase\\{}.png'.format(i)
+    image_path = '../../in/indicadorfase/{}.png'.format(i)
     exec('indicadorfase{} = Image.open(image_path)'.format(i))
     exec('indicadorfase{} = indicadorfase{}.copy()'.format(i, i))
     i += i
@@ -1708,7 +1708,7 @@ for i in x:
     else:
         exec('indicadorfase{}.paste(graph{}, (60, 250), graph{})'.format(i, i-2, i-2))
     ### Guardamos
-    exec('indicadorfase{}.save("..\\\\..\\\\out\\\\indicadorfase\\\{}.png")'.format(i, i))
+    exec('indicadorfase{}.save("../../out/indicadorfase/{}.png")'.format(i, i))
     i += i
 
 ### ¿Todo ok?
@@ -1720,11 +1720,11 @@ for i in range(2, 10):
     exec('pdfs += [indicadorfase{}]'.format(i))
     
 ### Histórico
-indicadorfase1.convert('RGB').save('..\\..\\out\\indicadorfase\\pdf\\{}.pdf'.format(df['Casos acumulados en Alto Hospicio'].last_valid_index().strftime('%Y.%m.%d')
+indicadorfase1.convert('RGB').save('../../out/indicadorfase/pdf/{}.pdf'.format(df['Casos acumulados en Alto Hospicio'].last_valid_index().strftime('%Y.%m.%d')
                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### Última actualización
-indicadorfase1.convert('RGB').save('..\\..\\out\\indicadorfase\\pdf\\ult\\ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+indicadorfase1.convert('RGB').save('../../out/indicadorfase/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### ¿Todo ok?
 display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
@@ -1736,25 +1736,25 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[41]:
+# In[16]:
 
 
 ### Mostramos las imágenes del reporte diario
 x = range(1, 11)
 for i in x:
-    exec('diario{} = Image.open("..\\..\\out\\diario\\\{}.png")'.format(i, i))
+    exec('diario{} = Image.open("../../out/diario/{}.png")'.format(i, i))
     exec('display(diario{})'.format(i))
 
 
 # ### Balance vacunas
 
-# In[52]:
+# In[17]:
 
 
 ### Mostramos las imágenes del balance de vacunas
 x = range(1, 6)
 for i in x:
-    exec('diario{} = Image.open("..\\\\..\\\\out\\\\vacuna\\\{}.png")'.format(i, i))
+    exec('diario{} = Image.open("../../out/vacuna/{}.png")'.format(i, i))
     exec('display(vacuna{})'.format(i))
 
 
@@ -1766,7 +1766,7 @@ for i in x:
 ### Mostramos las imágenes del indicador de fase
 x = range(1, 10)
 for i in x:
-    exec('diario{} = Image.open("..\\\\..\\\\out\\\\indicadorfase\\\{}.png")'.format(i, i))
+    exec('diario{} = Image.open("../../out/indicadorfase/{}.png")'.format(i, i))
     exec('display(indicadorfase{})'.format(i))
 
 
