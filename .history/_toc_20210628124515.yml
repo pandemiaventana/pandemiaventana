@@ -30,6 +30,6 @@ parts:
   - file: page/5_reportes/1_reportes
   - file: page/5_reportes/2_reportes
   - file: page/5_reportes/3_reportes
-  - caption: BIBLIOGRAFÍA Y AGRADECIMIENTO
+  - caption: BIBLIOGRAFÍA
     chapters:
   - file: page/6_bibliografia/0_bibliografia
