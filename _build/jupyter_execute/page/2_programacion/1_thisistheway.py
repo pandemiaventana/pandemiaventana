@@ -177,6 +177,9 @@ csv81_edad1 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-CO
 ### csv81 (vacunación por edad 2° dosis), producto 81
 csv81_edad2 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto81/vacunacion_comuna_edad_2daDosis.csv')
 
+### csv81 (vacunación por edad única dosis), producto 81
+csv81_edadunica = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto81/vacunacion_comuna_edad_UnicaDosis.csv')
+
 ### csv87 (antígenos por región)
 csv87 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto87/Ag.csv')
 
@@ -321,6 +324,35 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un "*reset*" de días por cambio de fase de la comuna en el Paso a Paso.
 # 
+# #### Inmunizaciones
+# 
+# Para cálculo de personas personas inmunizadas consideraremos una metodología particular. La razón de la metodología es a razón de ahorrar mayor trabajo en calcular los intervalos de tiempo por inmunización:
+# 
+# - Puntualmente, entiéndase por inmunización - *para este cálculo particular* -, **la suma de inmunizaciones eventuales** para aquellas personas con menos de dos semanas de innoculadas con 2° dosis o única (según el laboratorio de la vacuna) **e inmunizaciones completas** para personas con más de dos semanas de innoculadas con 2° dosis o única.
+# 
+# $$
+# \begin{align}
+# \Large Inmunizadas_{total} = Poblacion - Innoculaciones_{2° \ dosis} - Innoculaciones_{unica \ dosis}
+# \end{align}
+# $$ (inmunizadas_total)
+# 
+# $$
+# \begin{align}
+# \Large Inmunizadas_{objetivo} = Poblacion*0.8 - Innoculaciones_{2° \ dosis} - Innoculaciones_{unica \ dosis}
+# \end{align}
+# $$ (inmunizadas_objetivo)
+# 
+# $$
+# \begin{align}
+# \Large Sin_{inmunizar \ o \ con \ proteccion \ parcial} = Poblacion - Innoculaciones_{1° \ dosis}
+# \end{align}
+# $$ (sin_inmunizar)
+# 
+# 
+# 
+# 
+# 
+# 
 # ### Limpieza de datos
 # 
 # En toda recolección de información, se quiera o no, existirá inconsistencia. Algunos días, se genera inconsistencia producto de:
@@ -431,7 +463,7 @@ r_provincial_tam = r_provincial[r_provincial['Provincia'] == 'Tamarugal']['r.est
 vacunacion = csv76[csv76['Region'] == 'Tarapacá'].transpose()
 vacunacion = vacunacion.drop('Dosis').drop('Region')
 vacunacion.index, vacunacion = pd.to_datetime(vacunacion.index), vacunacion.astype(int)
-vacunacion.columns = ['1° Dosis', '2° Dosis', 'Unica']
+vacunacion.columns = ['1° Dosis', '2° Dosis', 'Unica dosis']
 
 ### Obteniendo vacunación por edades (dataframe aparte)
 x = np.arange(5, 70, 10)
@@ -441,8 +473,9 @@ for i in x:
                                csv81_edad1[csv81_edad1['Region'] == 'Tarapaca'].iloc[:, i:i+10].columns[-1])] \
     = [csv81_poblacionedad[csv81_poblacionedad['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum(),
        csv81_edad1[csv81_edad1['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum(), 
-      csv81_edad2[csv81_edad2['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum()]
-vacunacion_etaria.index = ['Poblacion', '1° Dosis', '2° Dosis']
+      csv81_edad2[csv81_edad2['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum(),
+      csv81_edadunica[csv81_edad2['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum()]
+vacunacion_etaria.index = ['Poblacion', '1° Dosis', '2° Dosis', 'Unica dosis']
 vacunacion_etaria = vacunacion_etaria.transpose()
 
 ### Antígenos en la región
@@ -952,8 +985,10 @@ else:
         situacioncurva_hoy = "curva de contagios al alza"
 
 ### Proceso de vacunación a población objetivo objetivo
-procesovacunacion_hoy = int(round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()])/(poblacion*0.8), 2)*100)
-procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()])
+procesovacunacion_2dosis = int(round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()])/(poblacion*0.8), 2)*100)
+procesovacunacion_unica = int(round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion*0.8), 2)*100)
+procesovacunacion_hoy = procesovacunacion_2dosis + procesovacunacion_unica
+procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]) + int(df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])
 
 ### Número de edición
 d1 = datetime.datetime(2020,6,27)
@@ -1007,7 +1042,10 @@ positividad_ayer = df['Positividad diaria'][weekend_datay]
 me_ayer = df['Mortalidad especifica *'][weekend_datay]
 
 ### Proceso de vacunación de población objetivo
-procesovacunacion_ayer = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion*0.8), 2)*100)
+procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion*0.8), 2)*100)
+procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion*0.8), 2)*100)
+procesovacunacion_ayer = procesovacunacion_ayer_unica + procesovacunacion_ayer_2
+
 
 ### Valores de ayer a integer
 casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, recuperados_ayer, fallecidosnuevos_ayer, pcrnuevos_ayer, residenciasusuarios_ayer, activos_ayer, activosprobables_ayer, ucidiaria_ayer, positividad_ayer, me_ayer, procesovacunacion_ayer= [ format(int(i), ',d') for i in [
@@ -1035,7 +1073,7 @@ desc1 = """Reporte DIARIO, {} 🕑. \n
 • De cada cien mil habitantes en la región, {} fallecen por COVID-19. 😵
 • El Re Regional corresponde a {}. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a {}. 💦
-• En el proceso de vacunación, {}% vacunados de la población objetivo (el valor de personas inoculadas con segunda dosis es de {} personas). 💦
+• En el proceso de vacunación, {}% vacunados de la población objetivo (al menos, {} personas con cuadro de vacunación completo). 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
@@ -1081,7 +1119,7 @@ ed_vacuna = int(int(ed_hoy)/7 + 1)
 ### Descripción
 desc2 = """Balance VACUNAS, {}. 🕑 
 
-• El {}% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de {} personas innoculadas con segunda dosis.
+• El {}% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de {} personas con cuadros de vacunación completo.
 
 *Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
 
@@ -1232,23 +1270,23 @@ class graphLine:
         print('Gráfico guardado.')
 
 ### Primer gráfico: Detalle de casos nuevos
-graph1 = graphPie([df['Casos nuevos con sintomas'][weekend_data], df['Casos nuevos sin sintomas'][weekend_data], df['Casos nuevos por laboratorio'][weekend_data]],          ['#a688f1', '#ca6e8f', '#a8ca55'], '..\\..\\in\\diario\\grafico\\1.png')
+graph1 = graphPie([df['Casos nuevos con sintomas'][weekend_data], df['Casos nuevos sin sintomas'][weekend_data], df['Casos nuevos por laboratorio'][weekend_data]],          ['#a688f1', '#ca6e8f', '#a8ca55'], '../../in/diario/grafico/1.png')
 
 ### Segundo gráfico: Balance diario
-graph2 = graphPie([df['Casos nuevos'][weekend_data], df['Casos recuperados nuevos'][weekend_data], df['Casos fallecidos nuevos'][weekend_data]],          ['#b68b41', '#43bb48', '#fe4747'], '..\\..\\in\\diario\\grafico\\2.png')
+graph2 = graphPie([df['Casos nuevos'][weekend_data], df['Casos recuperados nuevos'][weekend_data], df['Casos fallecidos nuevos'][weekend_data]],          ['#b68b41', '#43bb48', '#fe4747'], '../../in/diario/grafico/2.png')
 
 
 ### Tercer gráfico: Balance semanal
-graph3 = graphLine([df[weekstart_data:weekend_data].index]*3,                   [df['Casos nuevos'][weekstart_data:weekend_data], df['Casos recuperados nuevos'][weekstart_data:weekend_data], df['Casos fallecidos nuevos'][weekstart_data:weekend_data]],                    color=['#b68b40', '#43bb47', '#fe4747'],                    path='..\\..\\in\\diario\\grafico\\3.png')
+graph3 = graphLine([df[weekstart_data:weekend_data].index]*3,                   [df['Casos nuevos'][weekstart_data:weekend_data], df['Casos recuperados nuevos'][weekstart_data:weekend_data], df['Casos fallecidos nuevos'][weekstart_data:weekend_data]],                    color=['#b68b40', '#43bb47', '#fe4747'],                    path='../../in/diario/grafico/3.png')
 
 ### Cuarto gráfico: Activos semanales
-graph4 = graphLine([df[weekstart_data:weekend_data].index]*2,                   [df['Casos activos confirmados'][weekstart_data:weekend_data], df['Casos activos probables'][weekstart_data:weekend_data]],                    color=['#edf01c', '#9585dc'],                    path='..\\..\\in\\diario\\grafico\\4.png',)
+graph4 = graphLine([df[weekstart_data:weekend_data].index]*2,                   [df['Casos activos confirmados'][weekstart_data:weekend_data], df['Casos activos probables'][weekstart_data:weekend_data]],                    color=['#edf01c', '#9585dc'],                    path='../../in/diario/grafico/4.png',)
 
 ## Quinto gráfico: Positividad
-graph5 = graphLine([df[weekstart_data:weekend_data].index]*2,                   [df['Positividad diaria'][weekstart_data:weekend_data], df['Positividad media movil *'][weekstart_data:weekend_data]],                    color=['#f052d0', '#f5e7d0'],                    path='..\\..\\in\\diario\\grafico\\5.png', opt='%')
+graph5 = graphLine([df[weekstart_data:weekend_data].index]*2,                   [df['Positividad diaria'][weekstart_data:weekend_data], df['Positividad media movil *'][weekstart_data:weekend_data]],                    color=['#f052d0', '#f5e7d0'],                    path='../../in/diario/grafico/5.png', opt='%')
 
 ### Sexto gráfico: Residencias sanitarias
-graph6 = graphLine([df[weekstart_data:weekend_data].index]*2,                   [df['Cupos en residencias'][weekstart_data:weekend_data], df['Usuarios en residencias'][weekstart_data:weekend_data]],                    color=['#4c4c4c', '#1efde2'],                    path='..\\..\\in\\diario\\grafico\\6.png')
+graph6 = graphLine([df[weekstart_data:weekend_data].index]*2,                   [df['Cupos en residencias'][weekstart_data:weekend_data], df['Usuarios en residencias'][weekstart_data:weekend_data]],                    color=['#4c4c4c', '#1efde2'],                    path='../../in/diario/grafico/6.png')
     
 ### ¿Todo ok?
 print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
@@ -1262,9 +1300,9 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 ### Graficando para balance vacunas ###
 
 ### Últimas cifras de vacunación a población total/objetivo
-pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()],           poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
-pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()],           poblacion*0.8 - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
-labels = np.array(['Con 1° dosis \n (sin inmunidad)', 'Con 2° dosis \n (eventual inmunes)', 'Sin 2° dosis \n (sin inmunidad)'])
+pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()]])
+pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           poblacion*0.8 - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()]])
+labels = np.array(['Con 1° dosis \n (sin inmunidad o parcial)', 'Con cuadro completo \n (eventual inmunes)', 'Sin cuadro completo \n (sin inmunidad)'])
 vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
 vacunacion_pct.index = labels
 vacunacion_pct.columns = ['Población total', 'Población objetivo']
@@ -1337,26 +1375,26 @@ class graphBar:
         print('Gráfico guardado.')
         
 ### Primer gráfico: Proporción objetivo vacunada
-graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],                   [[0], [0]],                    color=['gray', '#9ad5ff'], alpha=[1, 1],                    path='..\\..\\in\\vacuna\\grafico\\1.png', uni=1, w=1.68, l=0.6, horizontal=1)
+graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],                   [[0], [0]],                    color=['gray', '#9ad5ff'], alpha=[1, 1],                    path='../../in/vacuna/grafico/1.png', uni=1, w=1.68, l=0.6, horizontal=1)
 vaccine = Image.open(requests.get('https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/in/vacuna/grafico/vaccine.png', stream=True).raw).rotate(-90)
-pct_ = Image.open('..\\..\\in\\vacuna\\grafico\\1.png')
+pct_ = Image.open('../../in/vacuna/grafico/1.png')
 background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
 background.paste(pct_, (135,359), pct_)
 background.paste(vaccine, (0, 0), vaccine)
 background = background.rotate(90).resize((400, 700), Image.ANTIALIAS)
-background.save('..\\..\\in\\vacuna\\grafico\\1.png')
+background.save('../../in/vacuna/grafico/1.png')
 
 ### Segundo gráfico: Vacunas administradas (1° dosis)
-graph2 = graphBar([vacunacion_pct.index],                   [vacunacion_pct['Población total']],                    color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],                    path='..\\..\\in\\vacuna\\grafico\\2.png', uni=1, w=3.5, l=2.5)
+graph2 = graphBar([vacunacion_pct.index],                   [vacunacion_pct['Población total']],                    color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],                    path='../../in/vacuna/grafico/2.png', uni=1, w=3.5, l=2.5)
         
 ### Tercer gráfico: Vacunas administradas (1° dosis)
-graph3 = graphBar([vacunacion_pct.index],                   [vacunacion_pct['Población objetivo']],                    color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],                    path='..\\..\\in\\vacuna\\grafico\\3.png', uni=1, w=3.5, l=2.5)
+graph3 = graphBar([vacunacion_pct.index],                   [vacunacion_pct['Población objetivo']],                    color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],                    path='../../in/vacuna/grafico/3.png', uni=1, w=3.5, l=2.5)
         
 ### Cuarto gráfico: Vacunas administradas (1° dosis)
-graph4 = graphBar([vacunacion_etaria.index]*2,                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis']],                    color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5,                    path='..\\..\\in\\vacuna\\grafico\\4.png')
+graph4 = graphBar([vacunacion_etaria.index]*2,                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis']],                    color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5,                    path='../../in/vacuna/grafico/4.png')
 
 ### Quinto gráfico: Vacunas administradas (2° dosis)
-graph5 = graphBar([vacunacion_etaria.index]*2,                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis']],                    color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5,                    path='..\\..\\in\\vacuna\\grafico\\5.png')
+graph5 = graphBar([vacunacion_etaria.index]*2,                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis'] + vacunacion_etaria['Unica dosis']],                    color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5,                    path='../../in/vacuna/grafico/5.png')
 
 ### ¿Todo ok?
 print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
@@ -1370,31 +1408,31 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 ### Graficando para indicador fase ###
 
 ### Primer gráfico: Días por fase por comuna
-graph1 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],                   [df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].loc[pasopaso_comuna.index[-1]]],                    color=resultado_colores, alpha=[1],                    path='..\\..\\in\\indicadorfase\\grafico\\1.png', uni=1, w=3.5, l=2.5, rot=15)
+graph1 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],                   [df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].loc[pasopaso_comuna.index[-1]]],                    color=resultado_colores, alpha=[1],                    path='../../in/indicadorfase/grafico/1.png', uni=1, w=3.5, l=2.5, rot=15)
 
 ### Segundo gráfico: Activos al último informe epidemiológico por comuna
 graph2 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],                   [(df.loc[:, df.columns.str.contains('Casos activos en')].
 loc[casoscomuna_activos.last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000)[:7]], \
                    color=resultado_colores + ['white'], alpha=[1], \
-                   path='..\\..\\in\\indicadorfase\\grafico\\2.png', uni=1, w=3.5, l=2.5, rot=15)
+                   path='../../in/indicadorfase/grafico/2.png', uni=1, w=3.5, l=2.5, rot=15)
 
 ### Tercer gráfico: Fallecidos al último informe epidemiológico por comuna
 graph3 = graphBar([df.loc[:, df.columns.str.contains('confirmados DEIS', regex=False)].columns.str[28:]],                   [df.loc[:, df.columns.str.contains('confirmados DEIS', regex=False)].loc
                     [casoscomuna_activos.index[-1]].reset_index(drop=True).divide(poblaciones_comunales)*100000], \
                    color=resultado_colores, alpha=[1], \
-                   path='..\\..\\in\\indicadorfase\\grafico\\3.png', uni=1, w=3.5, l=2.5, rot=15)
+                   path='../../in/indicadorfase/grafico/3.png', uni=1, w=3.5, l=2.5, rot=15)
 
 ### Cuarto gráfico: Notificación PCR por comuna
 graph4 = graphBar([df.loc[:, df.columns.str.contains('Notificacion PCR', regex=False)].columns.str[17:]],                   [df.loc[:, df.columns.str.contains('Notificacion PCR ', regex=False)]
                     .loc[positividad_comuna.last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000], \
                    color=resultado_colores, alpha=[1], \
-                   path='..\\..\\in\\indicadorfase\\grafico\\4.png', uni=1, w=3.5, l=2.5, rot=15)
+                   path='../../in/indicadorfase/grafico/4.png', uni=1, w=3.5, l=2.5, rot=15)
 
 ### Quinto gráfico: Casos acumulados por comuna
 graph5 = graphBar([df.loc[:, df.columns.str.contains('Casos acumulados en', regex=False)].columns.str[20:][:7]],                   [(df.loc[:, df.columns.str.contains('Casos acumulados en')].
 loc[casoscomuna_activos.last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000)[:7]], \
                    color=resultado_colores, alpha=[1], \
-                   path='..\\..\\in\\indicadorfase\\grafico\\5.png', uni=1, w=3.5, l=2.5, rot=15)
+                   path='../../in/indicadorfase/grafico/5.png', uni=1, w=3.5, l=2.5, rot=15)
 
 ### Sexto gráfico: Positividad por comuna
 graph6 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],                   [df.loc[:, df.columns.str.contains('Positividad ', regex=False) & 
@@ -1402,10 +1440,10 @@ graph6 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex
                    ~df.columns.str.contains('movil', regex=False) &
                    ~df.columns.str.contains('antigeno', regex=False)].loc[positividad_comuna.last_valid_index()]], \
                    color=resultado_colores + ['white'], alpha=[1], \
-                   path='..\\..\\in\\indicadorfase\\grafico\\6.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
+                   path='../../in/indicadorfase/grafico/6.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
 
 ### Séptimo gráfico: BAC por comuna
-graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].columns.str[4:]],                   [df.loc[:, df.columns.str.contains('BAC ', regex=False)].loc[positividad_comuna.last_valid_index()]],                    color=resultado_colores, alpha=[1],                    path='..\\..\\in\\indicadorfase\\grafico\\7.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
+graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].columns.str[4:]],                   [df.loc[:, df.columns.str.contains('BAC ', regex=False)].loc[positividad_comuna.last_valid_index()]],                    color=resultado_colores, alpha=[1],                    path='../../in/indicadorfase/grafico/7.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
 
 ### ¿Todo ok?
 print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
@@ -1588,7 +1626,7 @@ for i in range(2, 11):
     exec('pdfs += [diario{}]'.format(i))
 
 ### Histórico
-diario1.convert('RGB').save('../../out/diario/pdf\\{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
+diario1.convert('RGB').save('../../out/diario/pdf/{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d'),
                                                  df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
@@ -1628,8 +1666,8 @@ for i in x:
         txt.text((860, 35), '{}° ed.'.format(ed_vacuna), fill='#b9b9b9', font=roboto_ed) # edicion
         txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         txt.text((610, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
-        txt.text((420, 670), 'Se ha vacunado con 2° dosis', fill='white', font=roboto_data3) # texto1
-        txt.text((420, 710), 'de la población objetivo', fill='white', font=roboto_data3) # texto2
+        txt.text((420, 670), 'Con esquema de vacunación', fill='white', font=roboto_data3) # texto1
+        txt.text((420, 710), 'completo (2° y única dosis)', fill='white', font=roboto_data3) # texto2
         txt.text((380, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
         txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
         txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
