@@ -1,0 +1,35 @@
+format: jb-book
+root: page/0_intro/0_introduccion
+defaults:
+  - caption: CONTEXTO
+    chapters:
+  - file: page/1_experiencia/0_experiencia
+  - file: page/1_experiencia/1_experiencia
+  - file: page/1_experiencia/2_experiencia
+  - caption: FUNCIONAMIENTO
+    chapters:
+  - file: page/2_programacion/0_programacion
+  - file: page/2_programacion/1_thisistheway
+  - file: page/2_programacion/2_thisistheway
+  - file: page/2_programacion/3_thisistheway
+  - caption: APORTE
+    chapters:
+  - file: page/3_reconocimiento/0_reconocimiento
+  - file: page/3_reconocimiento/1_reconocimiento
+  - file: page/3_reconocimiento/2_reconocimiento
+  - file: page/3_reconocimiento/3_reconocimiento
+  - caption: BASES DE DATOS
+    chapters:
+  - file: page/4_legado/0_legado
+  - file: page/4_legado/1_legado
+  - file: page/4_legado/2_legado
+  - file: page/4_legado/3_legado
+  - caption: INFOGRAFÍAS
+    chapters:
+  - file: page/5_reportes/0_reportes
+  - file: page/5_reportes/1_reportes
+  - file: page/5_reportes/2_reportes
+  - file: page/5_reportes/3_reportes
+  - caption: BIBLIOGRAFÍA Y AGRADECIMIENTO
+    chapters:
+  - file: page/6_bibliografia/0_bibliografia
