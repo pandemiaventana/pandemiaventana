@@ -31,14 +31,9 @@ La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta p
 
 ## Plataforma de comentarios
 
-Cualquier sugerencia, duda o consulta, siente la libertad de realizarla a continuación, gracias a la plataforma <a href="https://talk.hyvor.com/">Hyvor</a>.
+Cualquier sugerencia, duda o consulta, siente la libertad de realizarla a continuación, gracias a la plataforma de comentarios de Facebook.
 
-<div id="hyvor-talk-view"></div>
-<script type="text/javascript">
-    var HYVOR_TALK_WEBSITE = 4462;
-    var HYVOR_TALK_CONFIG = {
-        url: false,
-        id: "pandemia-ventana"
-    };
-</script>
-<script async type="text/javascript" src="//talk.hyvor.com/web-api/embed.js"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0&appId=622897735241867&autoLogAppEvents=1" nonce="WWXzJVWK"></script>
+
+<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="1000" data-numposts="30"></div>
