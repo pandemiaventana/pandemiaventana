@@ -405,10 +405,17 @@
 <div class="section" id="funcionamiento">
 <h1>Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permalink to this headline">¶</a></h1>
 <p>Básicamente, a través de Notebooks de Jupyter y un poco de Markdown. Python, por contraparte, genera los CSV, y Jupyter Books se encarga de generar la página web a partir de los Notebooks y el Markdown.</p>
-<p>El despliegue del libro en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages">gh-pages</a> se realiza cada vez que desencadeno un cambio en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana">main</a> a través del action <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml">actualiza_libro</a>.</p>
+<p>El despliegue del libro en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages">gh-pages</a> se realiza con GitHub Actions:</p>
+<ul class="simple">
+<li><p>Cada vez que desencadeno un cambio en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana">main</a>.</p></li>
+<li><p>Iteradamente, por hora, desde las 11:30 hrs. a las 19:30 hrs. (horario de Santiago de Chile).</p></li>
+</ul>
+<p>A través del action <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml">actualiza_libro</a>. Ésto permite tener, en primer lugar, el repositorio actualizado, lo que implica, Notebooks, archivos, imágenes y reportes actualizados según disponibilidad de datos en el <a class="reference external" href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación</a>.</p>
+<p>A partir de las 19:30 hrs., el repositorio descansa y duerme.</p>
 </div>
 <div class="section" id="estado">
 <h1>Estado<a class="headerlink" href="#estado" title="Permalink to this headline">¶</a></h1>
+<p>La actualización del libro depende de GitHub Actions, los que, en caso de estar funcionando correctamente (en otras palabras, <em>sin errores</em>), debería aparecer “<em>passing</em>” en verde (en español, “<strong>pasando</strong>”, de estar actualizado). En caso contrario, aparece “<em>failing</em>” (de “fallando”), en rojo, y en tal caso, avisar mediante <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/issues/new">Issues de GitHub</a>.</p>
 <p><a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img alt="deploy-book" src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" /></a></p>
 </div>
 
