@@ -1433,7 +1433,7 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[40]:
+# In[13]:
 
 
 ### Generando reporte diario ###
@@ -1601,7 +1601,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[55]:
+# In[14]:
 
 
 ### Generando balance de vacunas ###
@@ -1664,7 +1664,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[58]:
+# In[15]:
 
 
 ### Indicador de fase ###
@@ -1736,7 +1736,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[41]:
+# In[16]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1748,7 +1748,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[57]:
+# In[17]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -1760,7 +1760,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[56]:
+# In[18]:
 
 
 ### Mostramos las imágenes del indicador de fase
