@@ -50,7 +50,7 @@ txt = '''# La pandemia por la ventana \n
 
 ![Ilustración por Bernardo Dinamarca](https://github.com/pandemiaventana/pandemiaventana/blob/main/img/page/2_cover.png?raw=true)
 
-** Ilustración por Bernardo Dinamarca **
+**Ilustración por Bernardo Dinamarca**
 
 La pandemia por la ventana es un sitio, realizado con formato de *libro* gracias a Jupyter Books, hecho por Alejandro Dinamarca, que recaba el trabajo de Numeral.lab en la Región de Tarapacá.
 

@@ -6,7 +6,7 @@
 # ---
 # 
 # :::{figure-md} markdown-fig
-# <img src="../../img/page/2_cover.png" width="80%">
+# <img src="../../img/page/2_cover.png">
 # 
 # **Ilustración realizada por Bernardo Dinamarca**.
 # :::
@@ -32,7 +32,7 @@
 # - Plot.ly (librería de visualización dinámica e interactiva a partir de JavaScript).
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png" width="50%">
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png">
 # 
 # **Logo de la librería <a href="https://plotly.com/python/">Plot.ly</a>**.
 # :::
@@ -40,7 +40,7 @@
 # - Beautiful Soup (librería de Python para extraer datos de archivos HTML y XML).
 # 
 # :::{figure-md} markdown-fig
-# <img src="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024" width="50%">
+# <img src="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024">
 # 
 # **Logo de la librería <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup">Beautiful Soup</a>**.
 # :::
