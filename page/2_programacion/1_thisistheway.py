@@ -20,7 +20,7 @@
 # ---
 #
 # :::{figure-md} markdown-fig
-# <img src="../../img/page/2_cover.png" width="80%">
+# <img src="../../img/page/2_cover.png">
 #
 # **Ilustración realizada por Bernardo Dinamarca**.
 # :::
@@ -41,7 +41,7 @@
 # - Pandas (librería por especialidad de manipulación de datos). Permite leer y trabajar con distintos tipos de archivos.
 #
 # :::{figure-md} markdown-fig
-# <img src="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png" width="50%">
+# <img src="https://www.adictosaltrabajo.com/wp-content/uploads/2020/12/1200px-Pandas_logo.svg_.png">
 #
 # **Logo de la librería <a href="https://pandas.pydata.org/">Pandas</a>**.
 # :::
@@ -49,7 +49,7 @@
 # - Numpy (librería de álgebra que trabaja en conjunto con Pandas).
 #
 # :::{figure-md} markdown-fig
-# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png" width="50%">
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/NumPy_logo_2020.svg/1280px-NumPy_logo_2020.svg.png">
 #
 # **Logo de la librería <a href="https://numpy.org/">Numpy</a>**.
 # :::
@@ -1246,11 +1246,11 @@ display(Markdown(pred))
 #
 # La mejor forma de resumir y entender la tendencia de datos es a partir de un gráfico. Un buen gráfico debe ser capaz de narrar sin complejizar, y por ello, son fundamentales en el data storytelling (que los datos den a conocer una historia). En este sentido, graficaremos con Matplotlib.
 #
-# <center><a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg" style="width:50%"></img></a></center>
+# <center><a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg"></img></a></center>
 #
 # Existen otras librerías, como Seaborn (sns), que nos permite realizar gráficos más avanzados que Matplotlib con una sintaxis más simple. Sin embargo, Matplotlib tiene mayor versatilidad, y por ello, lo utilizaremos sobre Seaborn (sns viene con una sintaxis más simple pero menos manejable).
 #
-# <center><a href="https://seaborn.pydata.org/"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" style="width:50%"></img></a></center>
+# <center><a href="https://seaborn.pydata.org/"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg"></img></a></center>
 #
 #
 #
