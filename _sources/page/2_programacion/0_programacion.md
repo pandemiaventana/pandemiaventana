@@ -18,7 +18,13 @@ Respecto a la estructura, limpieza o claridad del script, debo declarar que me c
 **The Mandalorian**. Todos los créditos a Disney+ (sí, es mi forma de evitar Copyright).
 :::
 
-Si habrás notado, los archivos de Notebook de Jupyter están nombrados como "**i_thisistheway.ipynb**".
+Si habrás notado, los archivos de Notebook de Jupyter están nombrados como:
+
+- [1_**thisistheway**.ipynb](https://github.com/pandemiaventana/pandemiaventana/blob/main/page/2_programacion/1_thisistheway.ipynb).
+
+- [2_**thisistheway**.ipynb](https://github.com/pandemiaventana/pandemiaventana/blob/main/page/2_programacion/2_thisistheway.ipynb).
+
+- [3_**thisistheway**.ipynb](https://github.com/pandemiaventana/pandemiaventana/blob/main/page/2_programacion/3_thisistheway.ipynb).
 
 En la serie The Mandalorian, existe una frase célebre del protagonista y de su especie, cuyo significado en español es "esta es la forma", o "este es el camino de hacer las cosas". Encontré una buena opción utilizarla, ¿por qué? Bueno, soy un creyente de que toda contribución debe ir desde adentro hacia afuera: Construirse uno mismo para construir hacia afuera. La experiencia que adquirí en este proyecto fue enorme, y asimismo fueron los reconocimientos de parte de instituciones públicas y de la ciudadanía. Ese reconocimiento no es vano, por el contrario, es un reconocimiento al aporte comunitario, que es el camino que deberíamos seguir. ¡Todos tenemos algo que aportar! Y ese es el camino.
 
