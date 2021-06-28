@@ -60,7 +60,13 @@ Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de Git
 
 Básicamente, a través de Notebooks de Jupyter y un poco de Markdown. Python, por contraparte, genera los CSV, y Jupyter Books se encarga de generar la página web a partir de los Notebooks y el Markdown.
 
-El despliegue del libro en [gh-pages](https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages) se realiza cada vez que desencadeno un cambio en [main](https://github.com/pandemiaventana/pandemiaventana) a través del action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml).
+El despliegue del libro en [gh-pages](https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages) se realiza cada vez que:
+
+- Desencadeno un cambio en [main](https://github.com/pandemiaventana/pandemiaventana)
+
+- Periódicamente desde las 11:30 hrs. a las 19:30 hrs. (hora de Santiago de Chile).
+
+A través del action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml).
 
 ## Estado
 
