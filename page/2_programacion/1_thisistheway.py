@@ -1757,7 +1757,7 @@ for i in x:
         txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         txt.text((610, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
         txt.text((420, 670), 'Con esquema de vacunación', fill='white', font=roboto_data3) # texto1
-        txt.text((420, 710), 'completo (2° y única dosis)', fill='white', font=roboto_data3) # texto2
+        txt.text((420, 710), 'completo (2° o única dosis)', fill='white', font=roboto_data3) # texto2
         txt.text((380, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
         txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
         txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
@@ -1779,8 +1779,7 @@ for i in range(2, 6):
     exec('pdfs += [vacuna{}]'.format(i))
 
 ### Histórico    
-vacuna1.convert('RGB').save('../../out/vacuna/pdf/{}.pdf'.format(df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d'),
-                                                 df['Vacunados acumulados 1° dosis'].last_valid_index().strftime('%Y.%m.%d')
+vacuna1.convert('RGB').save('../../out/vacuna/pdf/{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
 
 ### Última actualización
