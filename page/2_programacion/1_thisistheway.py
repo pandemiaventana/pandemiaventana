@@ -2025,7 +2025,8 @@ for r in requirements:
     req += """{}=={}
 """.format(*r)
 req += """jupyter-book
-""" + 'session_info'
+""" + """session_info
+""" + """markdownify"""
 
 ### Abrimos y modificamos requirements.txt
 with open('../../requirements.txt', 'w') as f:

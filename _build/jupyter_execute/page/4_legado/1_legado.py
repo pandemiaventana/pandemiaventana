@@ -15,6 +15,7 @@ import pandas as pd
 import session_info
 from bs4 import BeautifulSoup
 import numpy as np
+from markdownify import markdownify as md
 
 
 # ## Archivos CSV
@@ -97,7 +98,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../../README.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = txt1 + soup")
+    IPython.notebook.kernel.execute("full = txt1 + md(soup)")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }''')
@@ -155,7 +156,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = txt2 + soup")
+    IPython.notebook.kernel.execute("full = txt2 + md(soup)")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }''')

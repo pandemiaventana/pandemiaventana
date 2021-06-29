@@ -10,3 +10,4 @@ numpy==1.19.5
 matplotlib==3.3.4
 jupyter-book
 session_info
+markdownify
