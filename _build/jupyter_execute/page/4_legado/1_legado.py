@@ -47,7 +47,7 @@ for string in [name for name in os.listdir('./../../out/site/csv')]:
 # In[3]:
 
 
-txt = '''# La pandemia por la ventana \n
+txt1 = '''# La pandemia por la ventana \n
 
 ![Ilustración por Bernardo Dinamarca](https://github.com/pandemiaventana/pandemiaventana/blob/main/img/page/2_cover.png?raw=true)
 
@@ -97,7 +97,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../../README.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = txt + soup")
+    IPython.notebook.kernel.execute("full = txt1 + soup")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }''')
@@ -126,7 +126,7 @@ for reporte in dirr:
         display(Markdown("- <a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true'>" + ipdf + "</a>"))'''.format(reporte))
     p += 1
     
-txt = """# Reportes históricos
+txt2 = """# Reportes históricos
 
 """
 
@@ -155,7 +155,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = txt + soup")
+    IPython.notebook.kernel.execute("full = txt2 + soup")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }''')

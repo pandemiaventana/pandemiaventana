@@ -140,7 +140,7 @@ for string in [name for name in os.listdir('../../out/site/csv/')]:
     sum_ += string.count('data')
 
 ## Cargamos cada uno de los csv (basado en el primer notebook)
-x = range(1, sum+1)
+x = range(1, sum_+1)
 data = []
 for i in x:
     exec('data += [pd.read_csv("../../out/site/csv/data{}.csv", parse_dates=["Fecha"], index_col=["Fecha"])]'.format(i, i))
@@ -164,7 +164,7 @@ for i in x:
 
 # ### ¿Cuántos gráficos se visualizarán?
 
-# In[11]:
+# In[3]:
 
 
 display(Markdown('> Se visualizarán un total de **{} gráficos**.'.format(sum_)))
@@ -178,7 +178,7 @@ display(Markdown('> Se visualizarán un total de **{} gráficos**.'.format(sum_)
 # 
 # - La fecha de inicio y fin del gráfico.
 
-# In[12]:
+# In[4]:
 
 
 x = 0
@@ -339,7 +339,7 @@ for dataframe in data:
 #     IPython.notebook.kernel.execute("soup = str(soup)")
 # ```
 
-# In[13]:
+# In[5]:
 
 
 ### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
@@ -375,7 +375,7 @@ Javascript('''{
 # 
 # Si hubiésemos utilizado solo Python, habríamos tenido el siguiente error (descomentar la línea de código).
 
-# In[14]:
+# In[6]:
 
 
 #html = open('balance.html','w')
@@ -385,7 +385,7 @@ Javascript('''{
 
 # ## Información de sesión
 
-# In[15]:
+# In[7]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='3_requeriments.txt')
