@@ -758,11 +758,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="obtencion-de-datos">
@@ -2645,6 +2640,83 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">2</span><span class="n">_programacion</span><span class="o">/</span><span class="mi">3</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1">## Cargamos cada uno de los csv (basado en el primer notebook)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">sum</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;builtin_function_or_method&#39; and &#39;int&#39;
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">d5f8a011f293</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">### Ejecutamos notebook 3</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;3_thisistheway.ipynb&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">### Ejecutamos notebook 4</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2346</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2347</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2348</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2349</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2350</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> 
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/magics/execution.py</span> in <span class="ni">run</span><span class="nt">(self, parameter_s, runner, file_finder)</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span>             <span class="k">with</span> <span class="n">preserve_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">723</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span><span class="p">[</span><span class="s1">&#39;__file__&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+<span class="ne">--&gt; </span><span class="mi">724</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">safe_execfile_ipy</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">raise_exceptions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>             <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">726</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">safe_execfile_ipy</span><span class="nt">(self, fname, shell_futures, raise_exceptions)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2833</span>                     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_cell</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shell_futures</span><span class="o">=</span><span class="n">shell_futures</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2834</span>                     <span class="k">if</span> <span class="n">raise_exceptions</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2835</span>                         <span class="n">result</span><span class="o">.</span><span class="n">raise_error</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">2836</span>                     <span class="k">elif</span> <span class="ow">not</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2837</span>                         <span class="k">break</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">raise_error</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_before_exec</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_in_exec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">331</span>             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_in_exec</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> 
+<span class="g g-Whitespace">    </span><span class="mi">333</span>     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">1</span> <span class="n">frame</span><span class="p">]</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">e7a31bc96861</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1">## Cargamos cada uno de los csv (basado en el primer notebook)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">sum</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;builtin_function_or_method&#39; and &#39;int&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2690,19 +2762,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 28 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>99.057%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.453%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.45%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.986%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 59 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.489%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.498%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 43 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.73%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.763%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 54 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.704%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.91%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.688%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.9%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 85 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.811%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.949%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 40 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -3328,7 +3400,7 @@ Actualmente, la comuna registra 40 días en <b style="color:gold">Preparación</
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">380</span><span class="p">,</span> <span class="mi">357</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">weekend_data</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">)</span> <span class="c1"># fecha</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">610</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#9ad5ff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1"># avance</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">670</span><span class="p">),</span> <span class="s1">&#39;Con esquema de vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto1</span>
-        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">710</span><span class="p">),</span> <span class="s1">&#39;completo (2° y única dosis)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto2</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">710</span><span class="p">),</span> <span class="s1">&#39;completo (2° o única dosis)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto2</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">380</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vacunacion_pct</span><span class="p">[</span><span class="s1">&#39;Población objetivo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1">#restante</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">990</span><span class="p">),</span> <span class="s1">&#39;Personas deben iniciar o&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto3</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">1030</span><span class="p">),</span> <span class="s1">&#39;completar su vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto4</span>
@@ -3350,8 +3422,7 @@ Actualmente, la comuna registra 40 días en <b style="color:gold">Preparación</
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;pdfs += [vacuna</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 
 <span class="c1">### Histórico    </span>
-<span class="n">vacuna1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../../out/vacuna/pdf/</span><span class="si">{}</span><span class="s1">.pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span>
-                                                 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">vacuna1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../../out/vacuna/pdf/</span><span class="si">{}</span><span class="s1">.pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
                                              <span class="p">),</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
 
 <span class="c1">### Última actualización</span>
@@ -3887,7 +3958,6 @@ La media general del error es de:  0.85 %
             re                  2.2.1
             reprlib             NA
             resource            NA
-            retrying            NA
             runpy               NA
             secrets             NA
             select              NA
@@ -3898,7 +3968,6 @@ La media general del error es de:  0.85 %
             site                NA
             six                 1.16.0
             socket              NA
-            socketserver        0.4
             soupsieve           2.2.1
             sphinxcontrib       NA
             sqlite3             2.6.0
@@ -3938,7 +4007,6 @@ La media general del error es de:  0.85 %
             warnings            NA
             wcwidth             0.2.5
             weakref             NA
-            webbrowser          NA
             xml                 NA
             zipfile             NA
             zipimport           NA
@@ -3958,7 +4026,7 @@ La media general del error es de:  0.85 %
             Linux-5.8.0-1033-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-29 00:36
+            Session information updated at 2021-06-29 01:47
             </pre>
             </details></div></div>
 </div>

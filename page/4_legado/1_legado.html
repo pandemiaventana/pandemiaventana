@@ -355,6 +355,16 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#archivos-pdf">
+   Archivos PDF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#salida-de-archivos-pdf">
+   Salida de archivos PDF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#informacion-de-sesion">
    Información de sesión
   </a>
@@ -381,6 +391,7 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">session_info</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -1018,6 +1029,126 @@ memory usage: 46.9 KB
 }</script></div>
 </div>
 </div>
+<div class="section" id="archivos-pdf">
+<h2>Archivos PDF<a class="headerlink" href="#archivos-pdf" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###</span>
+<span class="n">sum_</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">dirr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;diario&#39;</span><span class="p">,</span> <span class="s1">&#39;vacuna&#39;</span><span class="p">,</span> <span class="s1">&#39;indicadorfase&#39;</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Reporte diario&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance de vacunas&#39;</span><span class="p">,</span> <span class="s1">&#39;Indicador de Fase&#39;</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;# Reportes históricos&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">reporte</span> <span class="ow">in</span> <span class="n">dirr</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;## </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">p</span><span class="p">])))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Encontré los siguientes PDF:&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">p</span><span class="p">])))</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> = []&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;../../out/</span><span class="si">{}</span><span class="s1">/pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))]:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;../../out/diario/pdf/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">)):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> += [string]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;for ipdf in sum_</span><span class="si">{}</span><span class="s1">:</span>
+<span class="s1">        display(Markdown(&quot;- &lt;a href=&#39;https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/&quot; + reporte + &quot;/pdf/&quot; + ipdf + &quot;&amp;embedded=true&#39;&gt;&quot; + ipdf + &quot;&lt;/a&gt;&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/pandemiaventana/pandemiaventana/page/4_legado/1_legado.ipynb</span>, line 1)</p>
+<p>Non-consecutive header level increase; 0 to 2 [myst.header]</p>
+</div>
+<p>Encontré los siguientes PDF:</p>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.27.pdf&embedded=true'>2021.06.27.pdf</a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p></li>
+</ul>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/pandemiaventana/pandemiaventana/page/4_legado/1_legado.ipynb</span>, line 1)</p>
+<p>Non-consecutive header level increase; 0 to 2 [myst.header]</p>
+</div>
+<p>Encontré los siguientes PDF:</p>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.27.pdf&embedded=true'>2021.06.27.pdf</a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p></li>
+</ul>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/pandemiaventana/pandemiaventana/page/4_legado/1_legado.ipynb</span>, line 1)</p>
+<p>Non-consecutive header level increase; 0 to 2 [myst.header]</p>
+</div>
+<p>Encontré los siguientes PDF:</p>
+<ul class="simple">
+<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="salida-de-archivos-pdf">
+<h2>Salida de archivos PDF<a class="headerlink" href="#salida-de-archivos-pdf" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###</span>
+
+<span class="n">Javascript</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;{</span>
+<span class="s1">    let outputs=[...document.querySelectorAll(&quot;.cell&quot;)].map(</span>
+<span class="s1">        cell=&gt; {</span>
+<span class="s1">            let output=cell.querySelector(&quot;.output&quot;)</span>
+<span class="s1">            if(output) return output.innerHTML</span>
+<span class="s1">            output=cell.querySelector(&quot;.rendered_html&quot;)</span>
+<span class="s1">            if(output) return output.innerHTML</span>
+<span class="s1">            return &quot;&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">    )</span>
+
+<span class="s1">    IPython.notebook.kernel.execute(&quot;cell_outputs=&quot;+JSON.stringify(outputs))</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;soup = BeautifulSoup(cell_outputs[7])&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;removals = soup.find_all(attrs={&#39;class&#39;: &#39;prompt&#39;})&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;for removal in removals: removal.decompose()&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)   </span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;op = open(&#39;../5_reportes/4_reportes.md&#39; , &#39;w&#39;, encoding=&#39;utf-16&#39;)&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;full = soup&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;op.writelines(full)&quot;)</span>
+<span class="s1">}&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">{
+    let outputs=[...document.querySelectorAll(".cell")].map(
+        cell=> {
+            let output=cell.querySelector(".output")
+            if(output) return output.innerHTML
+            output=cell.querySelector(".rendered_html")
+            if(output) return output.innerHTML
+            return ""
+        }
+    )
+
+    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs))
+    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[7])")
+    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
+    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
+    IPython.notebook.kernel.execute("soup = str(soup)")   
+    IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
+    IPython.notebook.kernel.execute("full = soup")
+    IPython.notebook.kernel.execute("op.writelines(full)")
+}</script></div>
+</div>
+</div>
 <div class="section" id="informacion-de-sesion">
 <h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -1032,6 +1163,7 @@ memory usage: 46.9 KB
             <pre>
             -----
             bs4                 4.9.3
+            numpy               1.19.5
             os                  NA
             pandas              1.2.3
             session_info        1.0.0
@@ -1124,7 +1256,6 @@ memory usage: 46.9 KB
             multiprocessing     NA
             ntpath              NA
             numbers             NA
-            numpy               1.19.5
             opcode              NA
             operator            NA
             parso               0.8.2
@@ -1219,7 +1350,7 @@ memory usage: 46.9 KB
             Linux-5.8.0-1033-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-29 00:36
+            Session information updated at 2021-06-29 01:47
             </pre>
             </details></div></div>
 </div>
