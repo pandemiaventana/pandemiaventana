@@ -99,6 +99,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("op = open('../../README.md' , 'w', encoding='utf-16')")
     IPython.notebook.kernel.execute("full = txt + soup")
     IPython.notebook.kernel.execute("op.writelines(full)")
+    IPython.notebook.kernel.execute("op.close()")
 }''')
 
 
@@ -112,9 +113,9 @@ sum_ = []
 dirr = ['diario', 'vacuna', 'indicadorfase']
 names = ['Reporte diario', 'Balance de vacunas', 'Indicador de Fase']
 p = 0
-display(Markdown('# Reportes históricos'))
+display(Markdown('<h1>Reportes históricos</h1>'))
 for reporte in dirr:
-    display(Markdown('## {}'.format(names[p])))
+    display(Markdown('<h2>{}</h2>'.format(names[p])))
     display(Markdown('Encontré los siguientes PDF:'.format(names[p])))
     exec('sum_{} = []'.format(reporte))
     for string in [name for name in os.listdir('../../out/{}/pdf'.format(reporte))]:
@@ -153,6 +154,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
     IPython.notebook.kernel.execute("full = soup")
     IPython.notebook.kernel.execute("op.writelines(full)")
+    IPython.notebook.kernel.execute("op.close()")
 }''')
 
 
