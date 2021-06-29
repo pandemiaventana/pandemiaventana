@@ -113,7 +113,6 @@ sum_ = []
 dirr = ['diario', 'vacuna', 'indicadorfase']
 names = ['Reporte diario', 'Balance de vacunas', 'Indicador de Fase']
 p = 0
-display(Markdown('<h1>Reportes históricos</h1>'))
 for reporte in dirr:
     display(Markdown('<h2>{}</h2>'.format(names[p])))
     display(Markdown('Encontré los siguientes PDF:'.format(names[p])))
@@ -126,6 +125,10 @@ for reporte in dirr:
     exec('''for ipdf in sum_{}:
         display(Markdown("- <a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true'>" + ipdf + "</a>"))'''.format(reporte))
     p += 1
+    
+txt = """ # Reportes históricos
+
+"""
 
 
 # ## Salida de archivos PDF
@@ -152,7 +155,7 @@ Javascript('''{
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = soup")
+    IPython.notebook.kernel.execute("full = txt + soup")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }''')
