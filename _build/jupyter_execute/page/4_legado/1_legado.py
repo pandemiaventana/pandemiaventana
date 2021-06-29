@@ -14,6 +14,7 @@ from IPython.display import Markdown, HTML, Javascript, IFrame
 import pandas as pd
 import session_info
 from bs4 import BeautifulSoup
+import numpy as np
 
 
 # ## Archivos CSV
@@ -101,9 +102,63 @@ Javascript('''{
 }''')
 
 
-# ## Información de sesión
+# ## Archivos PDF
 
 # In[4]:
+
+
+### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
+sum_ = []
+dirr = ['diario', 'vacuna', 'indicadorfase']
+names = ['Reporte diario', 'Balance de vacunas', 'Indicador de Fase']
+p = 0
+display(Markdown('# Reportes históricos'))
+for reporte in dirr:
+    display(Markdown('## {}'.format(names[p])))
+    display(Markdown('Encontré los siguientes PDF:'.format(names[p])))
+    exec('sum_{} = []'.format(reporte))
+    for string in [name for name in os.listdir('../../out/{}/pdf'.format(reporte))]:
+        if os.path.isdir('../../out/diario/pdf/{}'.format(string)):
+            pass
+        else:
+            exec('sum_{} += [string]'.format(reporte))
+    exec('''for ipdf in sum_{}:
+        display(Markdown("- <a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true'>" + ipdf + "</a>"))'''.format(reporte))
+    p += 1
+
+
+# ## Salida de archivos PDF
+
+# In[5]:
+
+
+### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
+
+Javascript('''{
+    let outputs=[...document.querySelectorAll(".cell")].map(
+        cell=> {
+            let output=cell.querySelector(".output")
+            if(output) return output.innerHTML
+            output=cell.querySelector(".rendered_html")
+            if(output) return output.innerHTML
+            return ""
+        }
+    )
+
+    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs))
+    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[7])")
+    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
+    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
+    IPython.notebook.kernel.execute("soup = str(soup)")   
+    IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
+    IPython.notebook.kernel.execute("full = soup")
+    IPython.notebook.kernel.execute("op.writelines(full)")
+}''')
+
+
+# ## Información de sesión
+
+# In[6]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='4_requeriments.txt')

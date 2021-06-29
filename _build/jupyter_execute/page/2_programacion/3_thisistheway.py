@@ -135,15 +135,15 @@ import session_info
 
 
 ### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
-sum = 0
-for string in [name for name in os.listdir('..//..//out//site//csv//')]:
-    sum += string.count('data')
+sum_ = 0
+for string in [name for name in os.listdir('../../out/site/csv/')]:
+    sum_ += string.count('data')
 
 ## Cargamos cada uno de los csv (basado en el primer notebook)
 x = range(1, sum+1)
 data = []
 for i in x:
-    exec('data += [pd.read_csv("..//..//out//site//csv//data{}.csv", parse_dates=["Fecha"], index_col=["Fecha"])]'.format(i, i))
+    exec('data += [pd.read_csv("../../out/site/csv/data{}.csv", parse_dates=["Fecha"], index_col=["Fecha"])]'.format(i, i))
 
 
 # ## Visualizando los datos
@@ -164,10 +164,10 @@ for i in x:
 
 # ### ¿Cuántos gráficos se visualizarán?
 
-# In[3]:
+# In[11]:
 
 
-display(Markdown('> Se visualizarán un total de **{} gráficos**.'.format(sum)))
+display(Markdown('> Se visualizarán un total de **{} gráficos**.'.format(sum_)))
 
 
 # ### Automatizando salida de gráficos
@@ -178,7 +178,7 @@ display(Markdown('> Se visualizarán un total de **{} gráficos**.'.format(sum))
 # 
 # - La fecha de inicio y fin del gráfico.
 
-# In[4]:
+# In[12]:
 
 
 x = 0
@@ -339,7 +339,7 @@ for dataframe in data:
 #     IPython.notebook.kernel.execute("soup = str(soup)")
 # ```
 
-# In[5]:
+# In[13]:
 
 
 ### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
@@ -375,7 +375,7 @@ Javascript('''{
 # 
 # Si hubiésemos utilizado solo Python, habríamos tenido el siguiente error (descomentar la línea de código).
 
-# In[6]:
+# In[14]:
 
 
 #html = open('balance.html','w')
@@ -385,7 +385,7 @@ Javascript('''{
 
 # ## Información de sesión
 
-# In[7]:
+# In[15]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='3_requeriments.txt')
