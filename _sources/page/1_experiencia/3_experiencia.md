@@ -7,9 +7,9 @@ Algo que se me había ido: Presentarme.
 Pues, el autor del libro es Alejandro Fabián Dinamarca Cáceres, iquiqueño de nacimiento. Constantemente, he estado manteniendo Numeral.lab, por lo menos, desde junio del año pasado. Estudio Ingeniería Civil Industrial en la Universidad Arturo Prat - *de momento, dado estoy en proceso de mudarme de ciudad* -, y poseo cuatro años de estudio en dicha Institución.
 
 :::{figure-md} markdown-fig
-<img src="../../img/page/reconocimiento/publica/6.jpg">
+<img src="../../img/page/experiencia/2.jpg">
 
-**Sí, ese soy yo** (*posiblemente me retarán por colocar esa foto, pero me gustó*)
+**Sí, ese soy yo** (*me retarán por colocar esa foto*)
 :::
 
 Me considero un apasionado, y *aspirante* a ser Científico de Datos - *algún día* -, dado que, me interesa, de sobremanera, el manejo de datos, la generación de inteligencia a partir de ellos, entre otros. 
