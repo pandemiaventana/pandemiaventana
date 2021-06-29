@@ -231,6 +231,11 @@
      Indicador de fase
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_reportes/4_reportes.html">
+     Reportes históricos
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -392,6 +397,7 @@
 <span class="kn">import</span> <span class="nn">session_info</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">markdownify</span> <span class="kn">import</span> <span class="n">markdownify</span> <span class="k">as</span> <span class="n">md</span>
 </pre></div>
 </div>
 </div>
@@ -1000,7 +1006,7 @@ memory usage: 46.9 KB
 <span class="s1">    IPython.notebook.kernel.execute(&quot;for removal in removals: removal.decompose()&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)   </span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op = open(&#39;../../README.md&#39; , &#39;w&#39;, encoding=&#39;utf-16&#39;)&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;full = txt1 + soup&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;full = txt1 + md(soup)&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op.writelines(full)&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op.close()&quot;)</span>
 <span class="s1">}&#39;&#39;&#39;</span><span class="p">)</span>
@@ -1025,7 +1031,7 @@ memory usage: 46.9 KB
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../../README.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = txt1 + soup")
+    IPython.notebook.kernel.execute("full = txt1 + md(soup)")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }</script></div>
@@ -1081,9 +1087,6 @@ memory usage: 46.9 KB
 <li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p></li>
 </ul>
 <ul class="simple">
-<li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.27.pdf&embedded=true'>2021.06.27.pdf</a></p></li>
-</ul>
-<ul class="simple">
 <li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p></li>
 </ul>
 <ul class="simple">
@@ -1119,7 +1122,7 @@ memory usage: 46.9 KB
 <span class="s1">    IPython.notebook.kernel.execute(&quot;for removal in removals: removal.decompose()&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)   </span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op = open(&#39;../5_reportes/4_reportes.md&#39; , &#39;w&#39;, encoding=&#39;utf-16&#39;)&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;full = txt2 + soup&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;full = txt2 + md(soup)&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op.writelines(full)&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op.close()&quot;)</span>
 <span class="s1">}&#39;&#39;&#39;</span><span class="p">)</span>
@@ -1144,7 +1147,7 @@ memory usage: 46.9 KB
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = txt2 + soup")
+    IPython.notebook.kernel.execute("full = txt2 + md(soup)")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }</script></div>
@@ -1164,6 +1167,7 @@ memory usage: 46.9 KB
             <pre>
             -----
             bs4                 4.9.3
+            markdownify         NA
             numpy               1.19.5
             os                  NA
             pandas              1.2.3
@@ -1351,7 +1355,7 @@ memory usage: 46.9 KB
             Linux-5.8.0-1033-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-29 21:50
+            Session information updated at 2021-06-29 22:06
             </pre>
             </details></div></div>
 </div>
