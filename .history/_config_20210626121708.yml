@@ -42,5 +42,8 @@ html:
 
 sphinx:
   config:
+    #html_theme: ""
     html_js_files:
     - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+  #extra_extensions:
+  #  - "sphinx_rtd_theme"
