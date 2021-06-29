@@ -36,4 +36,4 @@ Cualquier sugerencia, duda o consulta, siente la libertad de realizarla a contin
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0&appId=622897735241867&autoLogAppEvents=1" nonce="WWXzJVWK"></script>
 
-<div class="fb-comments" data-href="https://pandemiaventana.github.io/pandemiaventana" data-width="1000" data-numposts="10"></div>
+<div class="fb-comments" data-href="https://pandemiaventana.github.io/pandemiaventana" data-width="100%" data-numposts="10"></div>
