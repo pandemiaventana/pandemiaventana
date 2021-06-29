@@ -28,8 +28,7 @@ for string in [name for name in os.listdir('./../../out/site/csv')]:
     
     ### Título
     
-    display(Markdown('<h3><a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/{}">"{}"</a></h3>'.format(string, string)))
-    
+    display(Markdown('<a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/{}">"{}"</a>'.format(string, string.upper())))
     ### Leemos
     
     csv = pd.read_csv('./../../out/site/csv/{}'.format(string))
@@ -124,7 +123,7 @@ for reporte in dirr:
         else:
             exec('sum_{} += [string]'.format(reporte))
     exec('''for ipdf in sum_{}:
-        display(Markdown("- <a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true'>" + ipdf + "</a>"))'''.format(reporte))
+        display(Markdown(" <a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true'>" + ipdf + "</a>"))'''.format(reporte))
     p += 1
     
 txt2 = """# Reportes históricos
