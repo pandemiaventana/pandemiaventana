@@ -43,12 +43,14 @@ jobs:
         jupyter-book build .
         
     # Push a main
-    - name: Actualizando main
+    - name: Pull main
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "Numeral.lab actions bot 🤖"
         git commit -m "🤖 Actualización de repositorio" -a
-    - name: Actualizando main
+        git pull
+        
+    - name: Push main
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
