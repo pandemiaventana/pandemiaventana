@@ -1040,7 +1040,6 @@ memory usage: 46.9 KB
 <span class="n">dirr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;diario&#39;</span><span class="p">,</span> <span class="s1">&#39;vacuna&#39;</span><span class="p">,</span> <span class="s1">&#39;indicadorfase&#39;</span><span class="p">]</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Reporte diario&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance de vacunas&#39;</span><span class="p">,</span> <span class="s1">&#39;Indicador de Fase&#39;</span><span class="p">]</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;Reportes históricos&lt;/h1&gt;&#39;</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">reporte</span> <span class="ow">in</span> <span class="n">dirr</span><span class="p">:</span>
     <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h2&gt;</span><span class="si">{}</span><span class="s1">&lt;/h2&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">p</span><span class="p">])))</span>
     <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Encontré los siguientes PDF:&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">p</span><span class="p">])))</span>
@@ -1053,11 +1052,15 @@ memory usage: 46.9 KB
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;for ipdf in sum_</span><span class="si">{}</span><span class="s1">:</span>
 <span class="s1">        display(Markdown(&quot;- &lt;a href=&#39;https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/&quot; + reporte + &quot;/pdf/&quot; + ipdf + &quot;&amp;embedded=true&#39;&gt;&quot; + ipdf + &quot;&lt;/a&gt;&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
     <span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot; # Reportes históricos</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<h1>Reportes históricos</h1><h2>Reporte diario</h2><p>Encontré los siguientes PDF:</p>
+<h2>Reporte diario</h2><p>Encontré los siguientes PDF:</p>
 <ul class="simple">
 <li><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p></li>
 </ul>
@@ -1110,7 +1113,7 @@ memory usage: 46.9 KB
 <span class="s1">    IPython.notebook.kernel.execute(&quot;for removal in removals: removal.decompose()&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)   </span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op = open(&#39;../5_reportes/4_reportes.md&#39; , &#39;w&#39;, encoding=&#39;utf-16&#39;)&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;full = soup&quot;)</span>
+<span class="s1">    IPython.notebook.kernel.execute(&quot;full = txt + soup&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op.writelines(full)&quot;)</span>
 <span class="s1">    IPython.notebook.kernel.execute(&quot;op.close()&quot;)</span>
 <span class="s1">}&#39;&#39;&#39;</span><span class="p">)</span>
@@ -1135,7 +1138,7 @@ memory usage: 46.9 KB
     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
     IPython.notebook.kernel.execute("soup = str(soup)")   
     IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-16')")
-    IPython.notebook.kernel.execute("full = soup")
+    IPython.notebook.kernel.execute("full = txt + soup")
     IPython.notebook.kernel.execute("op.writelines(full)")
     IPython.notebook.kernel.execute("op.close()")
 }</script></div>
@@ -1342,7 +1345,7 @@ memory usage: 46.9 KB
             Linux-5.8.0-1033-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-29 02:04
+            Session information updated at 2021-06-29 02:12
             </pre>
             </details></div></div>
 </div>
