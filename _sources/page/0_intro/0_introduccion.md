@@ -37,7 +37,7 @@ Información adicional sobre el libro **La pandemia por la ventana**.
 
 ### Licencia
 
-El código [está bajo licencia](https://github.com/pandemiaventana/pandemiaventana/LICENSE.md) **MIT LICENSE**.
+El código [está bajo licencia](https://github.com/pandemiaventana/pandemiaventana/blob/main/LICENSE.md) **MIT LICENSE**.
 
 ### Citar como
 
