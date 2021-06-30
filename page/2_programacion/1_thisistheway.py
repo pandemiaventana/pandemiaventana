@@ -2004,7 +2004,8 @@ for r in requirements:
 """.format(*r)
 req += """jupyter-book
 """ + """session_info
-""" + """markdownify"""
+""" + """markdownify
+""" + """bs4"""
 
 ### Abrimos y modificamos requirements.txt
 with open('../../requirements.txt', 'w') as f:
