@@ -723,33 +723,17 @@ df
 #
 # ---
 #
-# Ahora, deberemos exportar la información que trabajamos, y para ello, utilizaremos:
+# Deberemos exportar la información que trabajamos, y para ello, utilizaremos:
 #
-# - Archivos .JSON (archivos ampliamente utilizados en web para intercambiar información entre distintos sitios).
+# - Archivos .CSV (sí, generaremos una serie de archivos).
 #
-# - Archivos .CSV (sí, generaremos un .CSV de datos específico de la Región de Tarapacá a partir de otros .CSV que recopilan datos a nivel nacional).
-#
-# - Infografías (archivos de imagen); se abordarán a modo explicativo en la presente sección.
+# - Infografías (archivos de imagen).
 #
 # - Descripciones regionales.
 #
-# - Gráficos. Permiten entender una tendencia en segundos; los abordaremos en la siguiente sección.
+# - Gráficos (para entender una tendencia en segundos).
 #
 # - Entre otros.
-#
-# A continuación, se detalla cada uno de los output (salidas) exportadas (archivos):
-#
-# ### Archivos .JSON
-#
-# - <b>0_dia.json</b> 
-#
-# Resumen de la región del día, con referencia a los últimos registros de todas las variables del DataFrame.
-#
-# ### Archivos .CSV
-#
-# - <b>numeralab.csv</b>
-#
-# Tabla de datos con todas las variables y registros.
 #
 # ### Infografías generadas
 #
