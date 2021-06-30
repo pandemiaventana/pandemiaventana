@@ -256,7 +256,7 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # $$
 # \begin{align}
-# \Large POSITIVIDAD_{diaria} = \frac{(casos \ nuevos \ totales) - (casos \ por \ antigeno)}{examenes \ pcr \ informados}
+# \Large POSITIVIDAD_{diaria} = \frac{(casos \ nuevos \ totales) - (casos \ por \ antígeno)}{exámenes \ pcr \ informados}
 # \end{align}
 # $$ (positividad_diaria)
 # 
@@ -286,7 +286,7 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # $$ 
 # \begin{align}
-# \Large MORTALIDAD_{específica} = \frac{fallecidos \ acumulados}{poblacion}*100000 
+# \Large MORTALIDAD_{específica} = \frac{fallecidos \ acumulados}{población}*100000 
 # \end{align}
 # $$ (mortalidad_especifica)
 # 
@@ -314,7 +314,7 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # $$
 # \begin{align}
-# \Large Tasa_{casos \ nuevos} = \frac{100000}{7*poblacion}\sum_{i=1}^{7} Dato_{i}
+# \Large Tasa_{casos \ nuevos} = \frac{100000}{7*población}\sum_{i=1}^{7} Dato_{i}
 # \end{align}
 # $$ (tasa_casos)
 # 
@@ -345,10 +345,6 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # \Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
 # \end{align}
 # $$ (sin_inmunizar)
-# 
-# 
-# 
-# 
 # 
 # 
 # ### Limpieza de datos

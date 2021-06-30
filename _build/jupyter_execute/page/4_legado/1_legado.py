@@ -126,7 +126,7 @@ for reporte in dirr:
         display(Markdown(" <a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true'>" + ipdf + "</a>"))'''.format(reporte))
     p += 1
     
-txt2 = """# Reportes históricos
+txt2 = """# Archivo
 
 """
 
