@@ -4,7 +4,7 @@ Algo que se me había ido: Presentarme.
 
 ## Un poco de mi
 
-Pues, el autor del libro es Alejandro Fabián Dinamarca Cáceres, iquiqueño de nacimiento. Constantemente, he estado manteniendo Numeral.lab, por lo menos, desde junio del año pasado. Estudio Ingeniería Civil Industrial en la Universidad Arturo Prat - *de momento, dado estoy en proceso de mudarme de ciudad* -, y poseo cuatro años de estudio en dicha Institución.
+Pues, el autor del libro es [Alejandro Fabián Dinamarca Cáceres](https://www.linkedin.com/in/alejandrodinamarca/), iquiqueño de nacimiento. Constantemente, he estado manteniendo Numeral.lab, por lo menos, desde junio del año pasado. Estudio Ingeniería Civil Industrial en la Universidad Arturo Prat - *de momento, dado estoy en proceso de mudarme de ciudad* -, y poseo cuatro años de estudio en dicha Institución.
 
 :::{figure-md} markdown-fig
 <img src="../../img/page/experiencia/2.png">
