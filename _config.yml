@@ -35,7 +35,7 @@ html:
   google_analytics_id: UA-169901790-2
   baseurl: https://pandemiaventana.github.io/pandemiaventana/
   extra_navbar: Realizado con <a href="https://jupyterbook.org">Jupyter Book</a>
-  extra_footer: Por Alejandro Dinamarca, <a href="https://www.linkedin.com/in/alejandrodinamarca/">Linkedin</a>
+  extra_footer: Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Dinamarca Cáceres</a>. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609) [![deploy-book](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg)](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml)
   comments:
     hypothesis: false
     utterances: false

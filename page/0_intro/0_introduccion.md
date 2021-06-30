@@ -1,6 +1,6 @@
 ## Bienvenido 📉
 
-La pandemia por la ventana es un sitio, elaborado con formato de *libro* gracias a Jupyter Books, realizado por Alejandro Dinamarca, que recaba el trabajo en Numeral.lab en la Región de Tarapacá.
+La pandemia por la ventana es un sitio, elaborado con formato de *libro* gracias a Jupyter Books [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4539666.svg)](https://doi.org/10.5281/zenodo.4539666), realizado por [Alejandro Dinamarca Cáceres](https://www.linkedin.com/in/alejandrodinamarca/), que recaba el trabajo en Numeral.lab en la Región de Tarapacá.
 
 Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de GitHub](https://github.com/pandemiaventana/pandemiaventana/issues/new).
 
@@ -24,6 +24,20 @@ El libro está dividido en distintas secciones, algunas respecto a las experienc
 
 *Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato, se utilizarán algunas frases coloquiales.*
 
+## Licencia
+
+El código [está bajo licencia](https://github.com/pandemiaventana/pandemiaventana/LICENSE.md) **MIT LICENSE**.
+
+## Citar como
+
+El libro debe ser citado como:
+
+*Alejandro Dinamarca Cáceres, & La pandemia por la ventana. (2021). La pandemia por la ventana (Version v1.0). Zenodo.* http://doi.org/10.5281/zenodo.5044609
+
+## DOI
+
+El libro está identificado con el **DOI 10.5281** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609).
+
 ## Tabla de contenido
 
 La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta página web) se encuentra a la izquierda:
@@ -39,3 +53,38 @@ Cualquier sugerencia, duda o consulta, siente la libertad de realizarla a contin
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0&appId=622897735241867&autoLogAppEvents=1" nonce="WWXzJVWK"></script>
 
 <div class="fb-comments" data-href="https://pandemiaventana.github.io/pandemiaventana" data-width="100%" data-numposts="10"></div>
+
+## Versión
+
+### Génesis
+
+[Release v1.0](https://github.com/pandemiaventana/pandemiaventana/releases/tag/v1.0) apodado "*Génesis*" del libro dinámico. 
+
+> El *release*, o *lanzamiento* en español, es la primera versión del código.
+
+![image](https://user-images.githubusercontent.com/63689583/123892754-2c985780-d929-11eb-85e1-a0681a3eb387.png)
+
+[La pandemia por la ventana](https://pandemiaventana.github.io/pandemiaventana/) es una página web, enfocada al seguimiento de la pandemia en la Región de Tarapacá, Chile. Posee formato de libro, con **actualización dinámica**, según datos recabados a través del [repositorio del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (MICITEC)](https://github.com/MinCiencia/Datos-COVID19/). 
+
+![image](https://user-images.githubusercontent.com/63689583/123894565-60c14780-d92c-11eb-8f86-c76ac1647fda.png)
+
+> El tiempo aproximado de desarrollo fue **de 2 a 3 semanas**.
+
+La página posee los siguientes ejes:
+
+* Reunir antecedentes del trabajo de Numeral.lab en la Región de Tarapacá en la pandemia del COVID-19.
+
+* Recopilar experiencias personales de Alejandro Dinamarca en el trabajo voluntario en Numeral.lab.
+
+* Monitoreo de la pandemia del COVID-19 en la Región de Tarapacá de forma automática.
+
+    - Recabar información del repositorio del MICITEC en GitHub, específicamente, de la Región de Tarapacá.
+
+    - Procesar datos recabados.
+
+    - Generar informes (epidemiológicos, avance en campaña de vacunación y predictor de fase del Paso a Paso).
+
+* Generar concientización en ciudadanía bajo tendencias de la pandemia.
+
+> Agradecimientos al Equipo Futuro del MICITEC por la democratización de los datos de la pandemia en Chile, a los desarrolladores de Jupyter Notebook, Jupyter Book y a todas las librerías de Python implicadas en los scripts, como también, a los propios desarrolladores de Python.
+
