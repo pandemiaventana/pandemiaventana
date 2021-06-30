@@ -24,20 +24,6 @@ El libro está dividido en distintas secciones, algunas respecto a las experienc
 
 *Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato, se utilizarán algunas frases coloquiales.*
 
-## Licencia
-
-El código [está bajo licencia](https://github.com/pandemiaventana/pandemiaventana/LICENSE.md) **MIT LICENSE**.
-
-## Citar como
-
-El libro debe ser citado como:
-
-*Alejandro Dinamarca Cáceres, & La pandemia por la ventana. (2021). La pandemia por la ventana (Version v1.0). Zenodo.* http://doi.org/10.5281/zenodo.5044609
-
-## DOI
-
-El libro está identificado con el **DOI 10.5281** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609).
-
 ## Tabla de contenido
 
 La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta página web) se encuentra a la izquierda:
@@ -54,9 +40,27 @@ Cualquier sugerencia, duda o consulta, siente la libertad de realizarla a contin
 
 <div class="fb-comments" data-href="https://pandemiaventana.github.io/pandemiaventana" data-width="100%" data-numposts="10"></div>
 
-## Versión
+## Sobre el libro
 
-### Génesis
+Información adicional sobre el libro **La pandemia por la ventana**.
+
+### Licencia
+
+El código [está bajo licencia](https://github.com/pandemiaventana/pandemiaventana/LICENSE.md) **MIT LICENSE**.
+
+### Citar como
+
+El libro debe ser citado como:
+
+*Alejandro Dinamarca Cáceres, & La pandemia por la ventana. (2021). La pandemia por la ventana (Version v1.0). Zenodo.* http://doi.org/10.5281/zenodo.5044609
+
+### DOI
+
+El libro está identificado con el **DOI 10.5281** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609).
+
+### Versión
+
+#### Génesis
 
 [Release v1.0](https://github.com/pandemiaventana/pandemiaventana/releases/tag/v1.0) apodado "*Génesis*" del libro dinámico. 
 
@@ -87,4 +91,3 @@ La página posee los siguientes ejes:
 * Generar concientización en ciudadanía bajo tendencias de la pandemia.
 
 > Agradecimientos al Equipo Futuro del MICITEC por la democratización de los datos de la pandemia en Chile, a los desarrolladores de Jupyter Notebook, Jupyter Book y a todas las librerías de Python implicadas en los scripts, como también, a los propios desarrolladores de Python.
-
