@@ -56,7 +56,7 @@ El libro debe ser citado como:
 
 ### DOI
 
-El libro está identificado con el **DOI 10.5281** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609).
+El libro está identificado con el **DOI 10.5281**. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609)
 
 ### Versión
 
