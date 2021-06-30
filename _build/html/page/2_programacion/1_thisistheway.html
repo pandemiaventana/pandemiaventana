@@ -233,6 +233,11 @@
      Indicador de fase
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_reportes/4_reportes.html">
+     Reportes históricos
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -471,16 +476,6 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#archivos-json">
-     Archivos .JSON
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#archivos-csv">
-     Archivos .CSV
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#infografias-generadas">
      Infografías generadas
     </a>
@@ -671,7 +666,7 @@
 </div>
 <p>¡Hola! Comenzar, en primer lugar, con que el presente notebook es la mejora del primero que realicé. La primera versión del código era repetitiva y por tanto, poco eficiente. Me digne a mejorarla y este fue el resultado (aún no me convence, pero es trabajo honesto).</p>
 <p>Esta versión está hecha con un poco más de conocimiento, aunque cabe recalcar, no soy un maestro de la programación, y estoy bastante distante de serlo. Me considero un sobreviviente, y un constante aprendiz.</p>
-<p>Por otro lado, en algunas partes del texto se obvia la acentuación puesto que, en LATEX y especialmente, a la hora de manejar variables, no se utiliza codificación de carácteres UTF-16.</p>
+<p>Por otro lado, en algunas partes del texto se obvia la acentuación puesto que, en LATEX, arroja problemas.</p>
 <div class="section" id="importando-paquetes">
 <h2>Importando paquetes<a class="headerlink" href="#importando-paquetes" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
@@ -941,7 +936,7 @@
 <div class="math notranslate nohighlight" id="equation-positividad-movil">
 <span class="eqno">(2)<a class="headerlink" href="#equation-positividad-movil" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large POSITIVIDAD_{movil \ semanal} = \frac{1}{7}\sum_{i=1}^{7} Dato_{i}
+\Large POSITIVIDAD_{móvil \ semanal} = \frac{1}{7}\sum_{i=1}^{7} Dato_{i}
 \end{align}
 \]</div>
 </div>
@@ -2107,30 +2102,14 @@
 <div class="section" id="exportando-informacion">
 <h2>Exportando información<a class="headerlink" href="#exportando-informacion" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>Ahora, deberemos exportar la información que trabajamos, y para ello, utilizaremos:</p>
+<p>Deberemos exportar la información que trabajamos, y para ello, utilizaremos:</p>
 <ul class="simple">
-<li><p>Archivos .JSON (archivos ampliamente utilizados en web para intercambiar información entre distintos sitios).</p></li>
-<li><p>Archivos .CSV (sí, generaremos un .CSV de datos específico de la Región de Tarapacá a partir de otros .CSV que recopilan datos a nivel nacional).</p></li>
-<li><p>Infografías (archivos de imagen); se abordarán a modo explicativo en la presente sección.</p></li>
+<li><p>Archivos .CSV (sí, generaremos una serie de archivos).</p></li>
+<li><p>Infografías (archivos de imagen).</p></li>
 <li><p>Descripciones regionales.</p></li>
-<li><p>Gráficos. Permiten entender una tendencia en segundos; los abordaremos en la siguiente sección.</p></li>
+<li><p>Gráficos (para entender una tendencia en segundos).</p></li>
 <li><p>Entre otros.</p></li>
 </ul>
-<p>A continuación, se detalla cada uno de los output (salidas) exportadas (archivos):</p>
-<div class="section" id="archivos-json">
-<h3>Archivos .JSON<a class="headerlink" href="#archivos-json" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><b>0_dia.json</b></p></li>
-</ul>
-<p>Resumen de la región del día, con referencia a los últimos registros de todas las variables del DataFrame.</p>
-</div>
-<div class="section" id="archivos-csv">
-<h3>Archivos .CSV<a class="headerlink" href="#archivos-csv" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><b>numeralab.csv</b></p></li>
-</ul>
-<p>Tabla de datos con todas las variables y registros.</p>
-</div>
 <div class="section" id="infografias-generadas">
 <h3>Infografías generadas<a class="headerlink" href="#infografias-generadas" title="Permalink to this headline">¶</a></h3>
 <p>Por lo general, todas las infografías las considero una “burbuja regional”. Mi forma de verlas, desde un principio, fue desarrollar a nivel de la Región de Tarapacá, y luego, en otras regiones. Definitivamente, la contribución hubiese sido enorme si lo hubiese desarrollado a nivel interregional. Sin embargo, la primera versión del código era incapaz de actualizarse (había mucha dependencia en las líneas de código, y hasta incluso, código repetido), por lo que la modificación de una sola línea estropeaba todo el script.</p>
@@ -2685,19 +2664,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 29 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.511%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.477%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.103%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.026%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 59 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.49%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.476%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 43 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.626%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.403%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 54 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.547%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.083%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.207%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.422%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 85 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.542%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.0%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 40 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -3725,238 +3704,247 @@ La media general del error es de:  0.84 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">            <details>
-            <summary>Click to view session information</summary>
-            <pre>
-            -----
-            PIL                 8.2.0
-            bs4                 4.9.3
-            datetime            NA
-            json                2.0.9
-            locale              NA
-            markdownify         NA
-            math                NA
-            matplotlib          3.3.4
-            numpy               1.19.5
-            os                  NA
-            pandas              1.2.3
-            pkg_resources       NA
-            plotly              4.8.1
-            pybtex              0.24.0
-            requests            2.25.1
-            scipy               1.6.2
-            seaborn             0.11.1
-            session_info        1.0.0
-            sklearn             0.24.1
-            time                NA
-            types               NA
-            -----
-            </pre>
-            <details>
-            <summary>Click to view modules imported as dependencies</summary>
-            <pre>
-            abc                 NA
-            argparse            1.1
-            array               NA
-            ast                 NA
-            asyncio             NA
-            atexit              NA
-            attr                20.3.0
-            backcall            0.2.0
-            base64              NA
-            bdb                 NA
-            binascii            NA
-            bisect              NA
-            bz2                 NA
-            cProfile            NA
-            calendar            NA
-            certifi             2021.05.30
-            cffi                1.14.5
-            chardet             4.0.0
-            cmath               NA
-            cmd                 NA
-            code                NA
-            codecs              NA
-            codeop              NA
-            collections         NA
-            colorama            0.4.4
-            colorsys            NA
-            concurrent          NA
-            contextlib          NA
-            contextvars         NA
-            copy                NA
-            copyreg             NA
-            csv                 1.0
-            ctypes              1.1.0
-            curses              NA
-            cycler              0.10.0
-            cython_runtime      NA
-            dataclasses         NA
-            dateutil            2.8.1
-            decimal             1.70
-            decorator           5.0.9
-            difflib             NA
-            dis                 NA
-            distutils           3.7.10
-            email               NA
-            encodings           NA
-            enum                NA
-            errno               NA
-            faulthandler        NA
-            fcntl               NA
-            filecmp             NA
-            fnmatch             NA
-            fractions           NA
-            functools           NA
-            gc                  NA
-            genericpath         NA
-            getopt              NA
-            getpass             NA
-            gettext             NA
-            glob                NA
-            grp                 NA
-            gzip                NA
-            hashlib             NA
-            heapq               NA
-            hmac                NA
-            html                NA
-            http                NA
-            idna                2.10
-            imp                 NA
-            importlib           NA
-            importlib_metadata  NA
-            inspect             NA
-            io                  NA
-            ipykernel           5.5.5
-            ipython_genutils    0.2.0
-            ipywidgets          7.6.3
-            itertools           NA
-            jedi                0.18.0
-            joblib              1.0.1
-            jsonschema          3.2.0
-            keyword             NA
-            kiwisolver          1.3.1
-            linecache           NA
-            logging             0.5.1.2
-            lzma                NA
-            marshal             4
-            mimetypes           NA
-            mmap                NA
-            mpl_toolkits        NA
-            multiprocessing     NA
-            nbformat            5.1.3
-            netrc               NA
-            ntpath              NA
-            numbers             NA
-            opcode              NA
-            operator            NA
-            packaging           20.9
-            parso               0.8.2
-            pathlib             NA
-            pdb                 NA
-            pexpect             4.8.0
-            pickle              NA
-            pickleshare         0.7.5
-            pkgutil             NA
-            platform            1.0.8
-            plistlib            NA
-            posix               NA
-            posixpath           NA
-            pprint              NA
-            profile             NA
-            prompt_toolkit      3.0.19
-            pstats              NA
-            pty                 NA
-            ptyprocess          0.7.0
-            pvectorc            NA
-            pwd                 NA
-            pydoc               NA
-            pydoc_data          NA
-            pyexpat             NA
-            pygments            2.9.0
-            pyparsing           2.4.7
-            pyrsistent          NA
-            pytz                2021.1
-            queue               NA
-            quopri              NA
-            random              NA
-            re                  2.2.1
-            reprlib             NA
-            resource            NA
-            retrying            NA
-            runpy               NA
-            secrets             NA
-            select              NA
-            selectors           NA
-            shlex               NA
-            shutil              NA
-            signal              NA
-            site                NA
-            six                 1.16.0
-            socket              NA
-            socketserver        0.4
-            soupsieve           2.2.1
-            sphinxcontrib       NA
-            sqlite3             2.6.0
-            sre_compile         NA
-            sre_constants       NA
-            sre_parse           NA
-            ssl                 NA
-            stat                NA
-            storemagic          NA
-            string              NA
-            stringprep          NA
-            struct              NA
-            subprocess          NA
-            sys                 3.7.10 (default, Feb 16 2021, 12:01:19) 
-[GCC 9.3.0]
-            sysconfig           NA
-            tarfile             0.9.0
-            tempfile            NA
-            termios             NA
-            textwrap            NA
-            threading           NA
-            timeit              NA
-            token               NA
-            tokenize            NA
-            tornado             6.1
-            traceback           NA
-            traitlets           5.0.5
-            tty                 NA
-            typing              NA
-            typing_extensions   NA
-            unicodedata         NA
-            unittest            NA
-            urllib              NA
-            urllib3             1.26.6
-            uu                  NA
-            uuid                NA
-            warnings            NA
-            wcwidth             0.2.5
-            weakref             NA
-            webbrowser          NA
-            xml                 NA
-            zipfile             NA
-            zipimport           NA
-            zipp                NA
-            zlib                1.0
-            zmq                 22.1.0
-            </pre>
-            </details> <!-- seems like this ends pre, so might as well be explicit -->
-            <pre>
-            -----
-            IPython             7.25.0
-            jupyter_client      6.1.12
-            jupyter_core        4.7.1
-            notebook            6.4.0
-            -----
-            Python 3.7.10 (default, Feb 16 2021, 12:01:19) [GCC 9.3.0]
-            Linux-5.8.0-1033-azure-x86_64-with-debian-bullseye-sid
-            2 logical CPU cores, x86_64
-            -----
-            Session information updated at 2021-06-30 00:24
-            </pre>
-            </details></div></div>
+<div class="output text_html"><details>
+<summary>Click to view session information</summary>
+<pre>
+-----
+PIL                 8.2.0
+bs4                 4.9.3
+datetime            NA
+json                2.0.9
+locale              NA
+markdownify         NA
+math                NA
+matplotlib          3.3.4
+numpy               1.19.2
+os                  NA
+pandas              1.2.3
+pkg_resources       NA
+plotly              4.8.1
+pybtex              0.24.0
+requests            2.25.1
+scipy               1.6.2
+seaborn             0.11.1
+session_info        1.0.0
+sklearn             0.24.1
+time                NA
+types               NA
+-----
+</pre>
+<details>
+<summary>Click to view modules imported as dependencies</summary>
+<pre>
+abc                 NA
+argparse            1.1
+array               NA
+ast                 NA
+asyncio             NA
+atexit              NA
+attr                20.3.0
+backcall            0.2.0
+base64              NA
+bdb                 NA
+binascii            NA
+bisect              NA
+brotli              NA
+bz2                 NA
+cProfile            NA
+calendar            NA
+certifi             2020.12.05
+cffi                1.14.5
+chardet             4.0.0
+cmath               NA
+cmd                 NA
+code                NA
+codecs              NA
+codeop              NA
+collections         NA
+colorama            0.4.3
+colorsys            NA
+concurrent          NA
+contextlib          NA
+contextvars         NA
+copy                NA
+copyreg             NA
+csv                 1.0
+ctypes              1.1.0
+cycler              0.10.0
+cython_runtime      NA
+dataclasses         NA
+dateutil            2.8.1
+decimal             1.70
+decorator           5.0.6
+difflib             NA
+dis                 NA
+distutils           3.7.0
+email               NA
+encodings           NA
+enum                NA
+errno               NA
+faulthandler        NA
+filecmp             NA
+fnmatch             NA
+fractions           NA
+functools           NA
+gc                  NA
+genericpath         NA
+getopt              NA
+getpass             NA
+gettext             NA
+glob                NA
+google              NA
+gzip                NA
+hashlib             NA
+heapq               NA
+hmac                NA
+html                NA
+http                NA
+idna                2.10
+imp                 NA
+importlib           NA
+importlib_metadata  NA
+inspect             NA
+io                  NA
+ipykernel           5.3.4
+ipyparallel         6.3.0
+ipython_genutils    0.2.0
+ipywidgets          7.6.3
+itertools           NA
+jedi                0.18.0
+joblib              1.0.1
+jsonschema          3.2.0
+keyword             NA
+kiwisolver          1.3.1
+linecache           NA
+logging             0.5.1.2
+lxml                4.6.3
+lzma                NA
+marshal             4
+matplotlib_inline   NA
+mimetypes           NA
+mkl                 2.3.0
+mmap                NA
+mpl_toolkits        NA
+msvcrt              NA
+multiprocessing     NA
+nbformat            5.1.3
+netrc               NA
+nt                  NA
+ntpath              NA
+ntsecuritycon       NA
+nturl2path          NA
+numbers             NA
+numexpr             2.7.3
+olefile             0.46
+opcode              NA
+operator            NA
+packaging           20.9
+parso               0.8.2
+pathlib             NA
+pdb                 NA
+pickle              NA
+pickleshare         0.7.5
+pkgutil             NA
+platform            1.0.8
+plistlib            NA
+posixpath           NA
+pprint              NA
+profile             NA
+prompt_toolkit      3.0.17
+pstats              NA
+psutil              5.8.0
+pvectorc            NA
+pydoc               NA
+pydoc_data          NA
+pyexpat             NA
+pygments            2.8.1
+pyparsing           2.4.7
+pyrsistent          NA
+pythoncom           NA
+pytz                2021.1
+pywintypes          NA
+queue               NA
+quopri              NA
+random              NA
+re                  2.2.1
+reprlib             NA
+retrying            NA
+ruamel              NA
+runpy               NA
+secrets             NA
+select              NA
+selectors           NA
+shlex               NA
+shutil              NA
+signal              NA
+site                NA
+six                 1.15.0
+socket              NA
+socketserver        0.4
+socks               1.7.1
+soupsieve           2.2.1
+sphinxcontrib       NA
+sqlite3             2.6.0
+sre_compile         NA
+sre_constants       NA
+sre_parse           NA
+ssl                 NA
+stat                NA
+storemagic          NA
+string              NA
+stringprep          NA
+struct              NA
+subprocess          NA
+sys                 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+sysconfig           NA
+tarfile             0.9.0
+tempfile            NA
+textwrap            NA
+threading           NA
+timeit              NA
+token               NA
+tokenize            NA
+tornado             6.1
+traceback           NA
+traitlets           5.0.5
+typing              NA
+typing_extensions   NA
+unicodedata         NA
+unittest            NA
+urllib              NA
+urllib3             1.26.4
+uu                  NA
+uuid                NA
+warnings            NA
+wcwidth             0.2.5
+weakref             NA
+webbrowser          NA
+win32api            NA
+win32com            NA
+win32security       NA
+winreg              NA
+xml                 NA
+zipfile             NA
+zipimport           NA
+zipp                NA
+zlib                1.0
+zmq                 20.0.0
+</pre>
+</details> <!-- seems like this ends pre, so might as well be explicit -->
+<pre>
+-----
+IPython             7.23.1
+jupyter_client      6.1.12
+jupyter_core        4.7.1
+notebook            6.3.0
+-----
+Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+Windows-10-10.0.19041-SP0
+12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+-----
+Session information updated at 2021-06-29 20:57
+</pre>
+</details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
@@ -3996,7 +3984,7 @@ La media general del error es de:  0.84 %
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./page/2_programacion"
+            path: "./page\2_programacion"
         },
         predefinedOutput: true
     }

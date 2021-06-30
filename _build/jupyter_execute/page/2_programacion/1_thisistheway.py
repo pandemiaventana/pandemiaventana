@@ -15,7 +15,7 @@
 # 
 # Esta versión está hecha con un poco más de conocimiento, aunque cabe recalcar, no soy un maestro de la programación, y estoy bastante distante de serlo. Me considero un sobreviviente, y un constante aprendiz.
 # 
-# Por otro lado, en algunas partes del texto se obvia la acentuación puesto que, en LATEX y especialmente, a la hora de manejar variables, no se utiliza codificación de carácteres UTF-16.
+# Por otro lado, en algunas partes del texto se obvia la acentuación puesto que, en LATEX, arroja problemas.
 
 # ## Importando paquetes
 # 
@@ -268,7 +268,7 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # $$
 # \begin{align}
-# \Large POSITIVIDAD_{movil \ semanal} = \frac{1}{7}\sum_{i=1}^{7} Dato_{i}
+# \Large POSITIVIDAD_{móvil \ semanal} = \frac{1}{7}\sum_{i=1}^{7} Dato_{i}
 # \end{align}
 # $$ (positividad_movil)
 # 
@@ -691,33 +691,17 @@ df
 # 
 # ---
 # 
-# Ahora, deberemos exportar la información que trabajamos, y para ello, utilizaremos:
+# Deberemos exportar la información que trabajamos, y para ello, utilizaremos:
 # 
-# - Archivos .JSON (archivos ampliamente utilizados en web para intercambiar información entre distintos sitios).
+# - Archivos .CSV (sí, generaremos una serie de archivos).
 # 
-# - Archivos .CSV (sí, generaremos un .CSV de datos específico de la Región de Tarapacá a partir de otros .CSV que recopilan datos a nivel nacional).
-# 
-# - Infografías (archivos de imagen); se abordarán a modo explicativo en la presente sección.
+# - Infografías (archivos de imagen).
 # 
 # - Descripciones regionales.
 # 
-# - Gráficos. Permiten entender una tendencia en segundos; los abordaremos en la siguiente sección.
+# - Gráficos (para entender una tendencia en segundos).
 # 
 # - Entre otros.
-# 
-# A continuación, se detalla cada uno de los output (salidas) exportadas (archivos):
-# 
-# ### Archivos .JSON
-# 
-# - <b>0_dia.json</b> 
-# 
-# Resumen de la región del día, con referencia a los últimos registros de todas las variables del DataFrame.
-# 
-# ### Archivos .CSV
-# 
-# - <b>numeralab.csv</b>
-# 
-# Tabla de datos con todas las variables y registros.
 # 
 # ### Infografías generadas
 # 
