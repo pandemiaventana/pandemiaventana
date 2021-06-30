@@ -233,6 +233,11 @@
      Indicador de fase
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_reportes/4_reportes.html">
+     Reportes históricos
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -661,7 +666,6 @@
 </div>
 <p>¡Hola! Comenzar, en primer lugar, con que el presente notebook es la mejora del primero que realicé. La primera versión del código era repetitiva y por tanto, poco eficiente. Me digne a mejorarla y este fue el resultado (aún no me convence, pero es trabajo honesto).</p>
 <p>Esta versión está hecha con un poco más de conocimiento, aunque cabe recalcar, no soy un maestro de la programación, y estoy bastante distante de serlo. Me considero un sobreviviente, y un constante aprendiz.</p>
-<p>Por otro lado, en algunas partes del texto se obvia la acentuación puesto que, en LATEX y especialmente, a la hora de manejar variables, no se utiliza codificación de carácteres UTF-16.</p>
 <div class="section" id="importando-paquetes">
 <h2>Importando paquetes<a class="headerlink" href="#importando-paquetes" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
@@ -931,7 +935,7 @@
 <div class="math notranslate nohighlight" id="equation-positividad-movil">
 <span class="eqno">(2)<a class="headerlink" href="#equation-positividad-movil" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large POSITIVIDAD_{movil \ semanal} = \frac{1}{7}\sum_{i=1}^{7} Dato_{i}
+\Large POSITIVIDAD_{móvil \ semanal} = \frac{1}{7}\sum_{i=1}^{7} Dato_{i}
 \end{align}
 \]</div>
 </div>
@@ -951,7 +955,7 @@
 <div class="math notranslate nohighlight" id="equation-mortalidad-especifica">
 <span class="eqno">(4)<a class="headerlink" href="#equation-mortalidad-especifica" title="Permalink to this equation">¶</a></span>\[ 
 \begin{align}
-\Large MORTALIDAD_{especifica} = \frac{fallecidos \ acumulados}{poblacion}*100000 
+\Large MORTALIDAD_{específica} = \frac{fallecidos \ acumulados}{poblacion}*100000 
 \end{align}
 \]</div>
 </div>
@@ -994,19 +998,19 @@
 <div class="math notranslate nohighlight" id="equation-inmunizadas-total">
 <span class="eqno">(7)<a class="headerlink" href="#equation-inmunizadas-total" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large Inmunizadas_{total} = Poblacion - Innoculaciones_{2° \ dosis} - Innoculaciones_{unica \ dosis}
+\Large Inmunizadas_{total} = Población - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
 \end{align}
 \]</div>
 <div class="math notranslate nohighlight" id="equation-inmunizadas-objetivo">
 <span class="eqno">(8)<a class="headerlink" href="#equation-inmunizadas-objetivo" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large Inmunizadas_{objetivo} = Poblacion*0.8 - Innoculaciones_{2° \ dosis} - Innoculaciones_{unica \ dosis}
+\Large Inmunizadas_{objetivo} = Población*0.8 - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
 \end{align}
 \]</div>
 <div class="math notranslate nohighlight" id="equation-sin-inmunizar">
 <span class="eqno">(9)<a class="headerlink" href="#equation-sin-inmunizar" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large Sin_{inmunizar \ o \ con \ proteccion \ parcial} = Poblacion - Innoculaciones_{1° \ dosis}
+\Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
 \end{align}
 \]</div>
 </div>
@@ -2659,19 +2663,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 29 de junio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.504%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.784%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.822%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.875%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 59 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>97.514%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.486%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 43 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>99.727%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.442%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 54 días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.211%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.76%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.877%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.853%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 85 días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <strong>98.353%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.536%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 40 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -3928,7 +3932,7 @@ La media general del error es de:  0.84 %
             Linux-5.8.0-1033-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-30 00:48
+            Session information updated at 2021-06-30 01:14
             </pre>
             </details></div></div>
 </div>

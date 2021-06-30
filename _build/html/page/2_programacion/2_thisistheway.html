@@ -233,6 +233,11 @@
      Indicador de fase
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_reportes/4_reportes.html">
+     Reportes históricos
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -700,7 +705,7 @@
 \end{align}
 \]</div>
 <p>Donde <span class="math notranslate nohighlight">\(h_{x}\)</span> representa nuestra hipótesis. Esta hipótesis <strong>recibirá una entrada <span class="math notranslate nohighlight">\(X\)</span> (años de experiencia laboral)</strong> a la cual se le asignará cierto <strong>peso</strong> (o nivel de relevancia), y deberá predecir, con cierto error (idealmente mínimo), <strong>la salida <span class="math notranslate nohighlight">\(Y\)</span> (salario)</strong>.</p>
-<p>Evidentemente, tendremos que alimentar este modelo con datos (de otra forma, no podríamos hacer absolutamente nada). De esta forma, contamos con los datos de entrada <span class="math notranslate nohighlight">\(X\)</span>, y sus respectivas salidas <span class="math notranslate nohighlight">\(Y\)</span>. Entonces, nuestra hipótesis debe ser capaz de predecir, aproximadamente, y para cada <span class="math notranslate nohighlight">\(X_{i}\)</span>, el salario <span class="math notranslate nohighlight">\(Y_{i}\)</span>. En otras palabras, es lo que llamamos <strong>Aprendizaje Supervisado</strong>, puesto que, el modelo se ve constantemente supervisado por los datos reales. ¿Cómo? <strong>El contraste se realiza entre la salida real y la salida hipotética</strong>, donde, aproximadamente, <span class="math notranslate nohighlight">\(Y_{real} = Y_{hipotetica}\)</span> (<em>falta el tilde, sin embargo, este entorno de LATEX no permite acentuar</em>).</p>
+<p>Evidentemente, tendremos que alimentar este modelo con datos (de otra forma, no podríamos hacer absolutamente nada). De esta forma, contamos con los datos de entrada <span class="math notranslate nohighlight">\(X\)</span>, y sus respectivas salidas <span class="math notranslate nohighlight">\(Y\)</span>. Entonces, nuestra hipótesis debe ser capaz de predecir, aproximadamente, y para cada <span class="math notranslate nohighlight">\(X_{i}\)</span>, el salario <span class="math notranslate nohighlight">\(Y_{i}\)</span>. En otras palabras, es lo que llamamos <strong>Aprendizaje Supervisado</strong>, puesto que, el modelo se ve constantemente supervisado por los datos reales. ¿Cómo? <strong>El contraste se realiza entre la salida real y la salida hipotética</strong>, donde, aproximadamente, <span class="math notranslate nohighlight">\(Y_{real} = Y_{hipotética}\)</span>.</p>
 <p>Entonces, supongamos nuestra función <span class="math notranslate nohighlight">\(h_{x}\)</span> no es capaz de predecir de forma correcta, <strong>a partir de los años de experiencia laboral <span class="math notranslate nohighlight">\(X\)</span></strong>, <strong>el salario <span class="math notranslate nohighlight">\(Y\)</span> que debería recibir una persona</strong>.</p>
 <p>¡Nuestro modelo se está equivocando! ¿Cómo medimos ese error? Para ello, introducimos un nuevo concepto, <strong>la función de costo</strong> (recuerda el <strong>contraste</strong> que mencionamos), que en estricto rigor, nos cuantifica el error que tiene la hipótesis en torno a la salida real.</p>
 <p>Un ejemplo de una función de costo podría ser el <a href="https://es.wikipedia.org/wiki/Error_cuadr%C3%A1tico_medio">error cuadrático medio</a> (por cierto, tengo un <a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/1_regresion_lineal/notebook.ipynb">Notebook</a> basado, exclusivamente, en este tema, por si lo deseas profundizar). Con ella, y hablando de forma macro, estamos utilizando la <strong>Estadística</strong>.</p>
@@ -2216,7 +2221,7 @@ Sus colores:
 </div>
 <div class="cell_output docutils container">
 <h2 style="font-size:60px">INDICADOR DE FASE</h2><h3 style="font-size:20px;">Región de Tarapacá, 29 de junio de 2021</h3><h3>Resultado para Alto Hospicio</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.37%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.495%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2254,7 +2259,7 @@ Actualmente, la comuna registra 43 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Alto Hospicio</p></li>
 </ul>
 <h3>Resultado para Camiña</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.873%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.833%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 59 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2289,7 +2294,7 @@ Actualmente, la comuna registra 59 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Camiña</p></li>
 </ul>
 <h3>Resultado para Colchane</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.488%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.494%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 43 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2332,7 +2337,7 @@ Actualmente, la comuna registra 43 días en <b style="color:dodgerblue">Apertura
 </pre></div>
 </div>
 <h3>Resultado para Huara</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>99.691%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.547%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 54 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2370,7 +2375,7 @@ Actualmente, la comuna registra 54 días en <b style="color:gold">Preparación</
 <li><p>Paso a Paso (dias) Huara</p></li>
 </ul>
 <h3>Resultado para Iquique</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.789%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.996%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 43 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2408,7 +2413,7 @@ Actualmente, la comuna registra 43 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Iquique</p></li>
 </ul>
 <h3>Resultado para Pica</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.832%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.027%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 85 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2446,7 +2451,7 @@ Actualmente, la comuna registra 85 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Pica</p></li>
 </ul>
 <h3>Resultado para Pozo Almonte</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>99.047%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.69%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 40 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2920,7 +2925,7 @@ weighted avg       0.95      0.93      0.93        56
             Linux-5.8.0-1033-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-30 00:49
+            Session information updated at 2021-06-30 01:14
             </pre>
             </details></div></div>
 </div>

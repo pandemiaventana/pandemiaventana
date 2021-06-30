@@ -75,7 +75,7 @@
 # 
 # Donde $h_{x}$ representa nuestra hipótesis. Esta hipótesis **recibirá una entrada $X$ (años de experiencia laboral)** a la cual se le asignará cierto **peso** (o nivel de relevancia), y deberá predecir, con cierto error (idealmente mínimo), **la salida $Y$ (salario)**.
 # 
-# Evidentemente, tendremos que alimentar este modelo con datos (de otra forma, no podríamos hacer absolutamente nada). De esta forma, contamos con los datos de entrada $X$, y sus respectivas salidas $Y$. Entonces, nuestra hipótesis debe ser capaz de predecir, aproximadamente, y para cada $X_{i}$, el salario $Y_{i}$. En otras palabras, es lo que llamamos **Aprendizaje Supervisado**, puesto que, el modelo se ve constantemente supervisado por los datos reales. ¿Cómo? **El contraste se realiza entre la salida real y la salida hipotética**, donde, aproximadamente, $Y_{real} = Y_{hipotetica}$ (*falta el tilde, sin embargo, este entorno de LATEX no permite acentuar*).
+# Evidentemente, tendremos que alimentar este modelo con datos (de otra forma, no podríamos hacer absolutamente nada). De esta forma, contamos con los datos de entrada $X$, y sus respectivas salidas $Y$. Entonces, nuestra hipótesis debe ser capaz de predecir, aproximadamente, y para cada $X_{i}$, el salario $Y_{i}$. En otras palabras, es lo que llamamos **Aprendizaje Supervisado**, puesto que, el modelo se ve constantemente supervisado por los datos reales. ¿Cómo? **El contraste se realiza entre la salida real y la salida hipotética**, donde, aproximadamente, $Y_{real} = Y_{hipotética}$.
 # 
 # Entonces, supongamos nuestra función $h_{x}$ no es capaz de predecir de forma correcta, **a partir de los años de experiencia laboral $X$**, **el salario $Y$ que debería recibir una persona**.
 # 

@@ -14,8 +14,6 @@
 # ¡Hola! Comenzar, en primer lugar, con que el presente notebook es la mejora del primero que realicé. La primera versión del código era repetitiva y por tanto, poco eficiente. Me digne a mejorarla y este fue el resultado (aún no me convence, pero es trabajo honesto). 
 # 
 # Esta versión está hecha con un poco más de conocimiento, aunque cabe recalcar, no soy un maestro de la programación, y estoy bastante distante de serlo. Me considero un sobreviviente, y un constante aprendiz.
-# 
-# Por otro lado, en algunas partes del texto se obvia la acentuación puesto que, en LATEX, arroja problemas.
 
 # ## Importando paquetes
 # 
@@ -288,7 +286,7 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # $$ 
 # \begin{align}
-# \Large MORTALIDAD_{especifica} = \frac{fallecidos \ acumulados}{poblacion}*100000 
+# \Large MORTALIDAD_{específica} = \frac{fallecidos \ acumulados}{poblacion}*100000 
 # \end{align}
 # $$ (mortalidad_especifica)
 # 
@@ -332,19 +330,19 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # $$
 # \begin{align}
-# \Large Inmunizadas_{total} = Poblacion - Innoculaciones_{2° \ dosis} - Innoculaciones_{unica \ dosis}
+# \Large Inmunizadas_{total} = Población - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
 # \end{align}
 # $$ (inmunizadas_total)
 # 
 # $$
 # \begin{align}
-# \Large Inmunizadas_{objetivo} = Poblacion*0.8 - Innoculaciones_{2° \ dosis} - Innoculaciones_{unica \ dosis}
+# \Large Inmunizadas_{objetivo} = Población*0.8 - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
 # \end{align}
 # $$ (inmunizadas_objetivo)
 # 
 # $$
 # \begin{align}
-# \Large Sin_{inmunizar \ o \ con \ proteccion \ parcial} = Poblacion - Innoculaciones_{1° \ dosis}
+# \Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
 # \end{align}
 # $$ (sin_inmunizar)
 # 
