@@ -31,15 +31,6 @@ La tabla de contenido de Jupyter Books (plataforma con la que se realizó esta p
 ```{tableofcontents}
 ```
 
-## Plataforma de comentarios
-
-Cualquier sugerencia, duda o consulta, siente la libertad de realizarla a continuación, gracias a la plataforma de comentarios de Facebook.
-
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0&appId=622897735241867&autoLogAppEvents=1" nonce="WWXzJVWK"></script>
-
-<div class="fb-comments" data-href="https://pandemiaventana.github.io/pandemiaventana" data-width="100%" data-numposts="10"></div>
-
 ## Sobre el libro
 
 Información adicional sobre el libro **La pandemia por la ventana**.
@@ -91,3 +82,12 @@ La página posee los siguientes ejes:
 * Generar concientización en ciudadanía bajo tendencias de la pandemia.
 
 > Agradecimientos al Equipo Futuro del MICITEC por la democratización de los datos de la pandemia en Chile, a los desarrolladores de Jupyter Notebook, Jupyter Book y a todas las librerías de Python implicadas en los scripts, como también, a los propios desarrolladores de Python.
+
+## Plataforma de comentarios
+
+Cualquier sugerencia, duda o consulta, siente la libertad de realizarla a continuación, gracias a la plataforma de comentarios de Facebook.
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0&appId=622897735241867&autoLogAppEvents=1" nonce="WWXzJVWK"></script>
+
+<div class="fb-comments" data-href="https://pandemiaventana.github.io/pandemiaventana" data-width="100%" data-numposts="10"></div>
