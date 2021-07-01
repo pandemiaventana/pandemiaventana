@@ -3,7 +3,6 @@ bs4==4.9.3
 datetime
 json==2.0.9
 locale
-markdownify
 math
 matplotlib==3.3.4
 numpy==1.19.5

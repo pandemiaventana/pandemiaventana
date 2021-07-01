@@ -67,11 +67,11 @@ Tiene las siguientes columnas (**8** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 9 columns):
  #   Column                                  Non-Null Count  Dtype  
 ---  ------                                  --------------  -----  
- 0   Fecha                                   484 non-null    object 
+ 0   Fecha                                   486 non-null    object 
  1   Casos acumulados en Alto Hospicio       132 non-null    float64
  2   Casos acumulados en Camiña              132 non-null    float64
  3   Casos acumulados en Colchane            132 non-null    float64
@@ -81,7 +81,7 @@ Data columns (total 9 columns):
  7   Casos acumulados en Pozo Almonte        132 non-null    float64
  8   Casos acumulados en Comuna desconocida  106 non-null    float64
 dtypes: float64(8), object(1)
-memory usage: 62.0 KB
+memory usage: 62.3 KB
 
 ```
 
@@ -97,11 +97,11 @@ Tiene las siguientes columnas (**7** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 8 columns):
  #   Column                     Non-Null Count  Dtype  
 ---  ------                     --------------  -----  
- 0   Fecha                      484 non-null    object 
+ 0   Fecha                      486 non-null    object 
  1   Positividad Alto Hospicio  302 non-null    float64
  2   Positividad Camiña         302 non-null    float64
  3   Positividad Colchane       302 non-null    float64
@@ -110,7 +110,7 @@ Data columns (total 8 columns):
  6   Positividad Pica           302 non-null    float64
  7   Positividad Pozo Almonte   302 non-null    float64
 dtypes: float64(7), object(1)
-memory usage: 58.3 KB
+memory usage: 58.5 KB
 
 ```
 
@@ -126,11 +126,11 @@ Tiene las siguientes columnas (**8** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 9 columns):
  #   Column                               Non-Null Count  Dtype  
 ---  ------                               --------------  -----  
- 0   Fecha                                484 non-null    object 
+ 0   Fecha                                486 non-null    object 
  1   Casos activos en Alto Hospicio       126 non-null    float64
  2   Casos activos en Camiña              126 non-null    float64
  3   Casos activos en Colchane            126 non-null    float64
@@ -140,7 +140,7 @@ Data columns (total 9 columns):
  7   Casos activos en Pozo Almonte        126 non-null    float64
  8   Casos activos en Comuna desconocida  106 non-null    float64
 dtypes: float64(8), object(1)
-memory usage: 62.0 KB
+memory usage: 62.3 KB
 
 ```
 
@@ -156,11 +156,11 @@ Tiene las siguientes columnas (**9** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 10 columns):
  #   Column                         Non-Null Count  Dtype  
 ---  ------                         --------------  -----  
- 0   Fecha                          484 non-null    object 
+ 0   Fecha                          486 non-null    object 
  1   Fallecidos Alto Hospicio       379 non-null    float64
  2   Fallecidos Camiña              379 non-null    float64
  3   Fallecidos Colchane            379 non-null    float64
@@ -171,7 +171,7 @@ Data columns (total 10 columns):
  8   Fallecidos Comuna desconocida  372 non-null    float64
  9   Fallecidos total comunal       379 non-null    float64
 dtypes: float64(9), object(1)
-memory usage: 65.8 KB
+memory usage: 66.1 KB
 
 ```
 
@@ -187,11 +187,11 @@ Tiene las siguientes columnas (**7** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 8 columns):
  #   Column                                     Non-Null Count  Dtype  
 ---  ------                                     --------------  -----  
- 0   Fecha                                      484 non-null    object 
+ 0   Fecha                                      486 non-null    object 
  1   Fallecidos confirmados DEIS Alto Hospicio  292 non-null    float64
  2   Fallecidos confirmados DEIS Camiña         292 non-null    float64
  3   Fallecidos confirmados DEIS Colchane       292 non-null    float64
@@ -200,7 +200,7 @@ Data columns (total 8 columns):
  6   Fallecidos confirmados DEIS Pica           292 non-null    float64
  7   Fallecidos confirmados DEIS Pozo Almonte   292 non-null    float64
 dtypes: float64(7), object(1)
-memory usage: 58.3 KB
+memory usage: 58.5 KB
 
 ```
 
@@ -216,11 +216,11 @@ Tiene las siguientes columnas (**7** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 8 columns):
  #   Column                                   Non-Null Count  Dtype  
 ---  ------                                   --------------  -----  
- 0   Fecha                                    484 non-null    object 
+ 0   Fecha                                    486 non-null    object 
  1   Fallecidos probables DEIS Alto Hospicio  292 non-null    float64
  2   Fallecidos probables DEIS Camiña         292 non-null    float64
  3   Fallecidos probables DEIS Colchane       292 non-null    float64
@@ -229,7 +229,7 @@ Data columns (total 8 columns):
  6   Fallecidos probables DEIS Pica           292 non-null    float64
  7   Fallecidos probables DEIS Pozo Almonte   292 non-null    float64
 dtypes: float64(7), object(1)
-memory usage: 58.3 KB
+memory usage: 58.5 KB
 
 ```
 
@@ -245,15 +245,15 @@ Tiene las siguientes columnas (**2** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 3 columns):
  #   Column                                   Non-Null Count  Dtype  
 ---  ------                                   --------------  -----  
- 0   Fecha                                    484 non-null    object 
+ 0   Fecha                                    486 non-null    object 
  1   Media móvil real de ocupación UCI        436 non-null    float64
- 2   Media móvil hipotética de ocupación UCI  436 non-null    float64
+ 2   Media móvil hipotética de ocupación UCI  437 non-null    float64
 dtypes: float64(2), object(1)
-memory usage: 39.4 KB
+memory usage: 39.5 KB
 
 ```
 
@@ -269,15 +269,15 @@ Tiene las siguientes columnas (**2** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 3 columns):
  #   Column                   Non-Null Count  Dtype  
 ---  ------                   --------------  -----  
- 0   Fecha                    484 non-null    object 
- 1   Cupos en residencias     396 non-null    float64
- 2   Usuarios en residencias  396 non-null    float64
+ 0   Fecha                    486 non-null    object 
+ 1   Cupos en residencias     397 non-null    float64
+ 2   Usuarios en residencias  397 non-null    float64
 dtypes: float64(2), object(1)
-memory usage: 39.4 KB
+memory usage: 39.5 KB
 
 ```
 
@@ -293,15 +293,15 @@ Tiene las siguientes columnas (**2** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 3 columns):
  #   Column                                        Non-Null Count  Dtype  
 ---  ------                                        --------------  -----  
- 0   Fecha                                         484 non-null    object 
- 1   PCR informados nuevos                         439 non-null    float64
- 2   Media móvil semanal de PCR informados nuevos  432 non-null    float64
+ 0   Fecha                                         486 non-null    object 
+ 1   PCR informados nuevos                         440 non-null    float64
+ 2   Media móvil semanal de PCR informados nuevos  433 non-null    float64
 dtypes: float64(2), object(1)
-memory usage: 39.4 KB
+memory usage: 39.5 KB
 
 ```
 
@@ -317,15 +317,15 @@ Tiene las siguientes columnas (**2** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 3 columns):
  #   Column                                              Non-Null Count  Dtype  
 ---  ------                                              --------------  -----  
- 0   Fecha                                               484 non-null    object 
- 1   Antígenos informados nuevos                         25 non-null     float64
- 2   Media móvil semanal de antígenos informados nuevos  19 non-null     float64
+ 0   Fecha                                               486 non-null    object 
+ 1   Antígenos informados nuevos                         26 non-null     float64
+ 2   Media móvil semanal de antígenos informados nuevos  20 non-null     float64
 dtypes: float64(2), object(1)
-memory usage: 39.4 KB
+memory usage: 39.5 KB
 
 ```
 
@@ -365,17 +365,17 @@ Tiene las siguientes columnas (**4** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 5 columns):
  #   Column                        Non-Null Count  Dtype  
 ---  ------                        --------------  -----  
- 0   Fecha                         484 non-null    object 
- 1   Casos nuevos con síntomas     484 non-null    float64
- 2   Casos nuevos sin síntomas     427 non-null    float64
- 3   Casos nuevos por laboratorio  377 non-null    float64
- 4   Casos nuevos por antígeno     125 non-null    float64
+ 0   Fecha                         486 non-null    object 
+ 1   Casos nuevos con síntomas     485 non-null    float64
+ 2   Casos nuevos sin síntomas     428 non-null    float64
+ 3   Casos nuevos por laboratorio  378 non-null    float64
+ 4   Casos nuevos por antígeno     126 non-null    float64
 dtypes: float64(4), object(1)
-memory usage: 46.9 KB
+memory usage: 47.1 KB
 
 ```
 
@@ -391,14 +391,14 @@ Tiene las siguientes columnas (**1** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 2 columns):
  #   Column                             Non-Null Count  Dtype  
 ---  ------                             --------------  -----  
- 0   Fecha                              484 non-null    object 
- 1   Casos con sospecha de reinfección  125 non-null    float64
+ 0   Fecha                              486 non-null    object 
+ 1   Casos con sospecha de reinfección  126 non-null    float64
 dtypes: float64(1), object(1)
-memory usage: 35.6 KB
+memory usage: 35.7 KB
 
 ```
 
@@ -414,14 +414,14 @@ Tiene las siguientes columnas (**1** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 2 columns):
  #   Column                                                        Non-Null Count  Dtype  
 ---  ------                                                        --------------  -----  
- 0   Fecha                                                         484 non-null    object 
- 1   Tasa de casos nuevos de casos nuevos por cien mil habitantes  478 non-null    float64
+ 0   Fecha                                                         486 non-null    object 
+ 1   Tasa de casos nuevos de casos nuevos por cien mil habitantes  479 non-null    float64
 dtypes: float64(1), object(1)
-memory usage: 35.6 KB
+memory usage: 35.7 KB
 
 ```
 
@@ -437,14 +437,14 @@ Tiene las siguientes columnas (**1** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 2 columns):
  #   Column                                         Non-Null Count  Dtype  
 ---  ------                                         --------------  -----  
- 0   Fecha                                          484 non-null    object 
- 1   Mortalidad específica por cien mil habitantes  465 non-null    float64
+ 0   Fecha                                          486 non-null    object 
+ 1   Mortalidad específica por cien mil habitantes  466 non-null    float64
 dtypes: float64(1), object(1)
-memory usage: 35.6 KB
+memory usage: 35.7 KB
 
 ```
 
@@ -460,11 +460,11 @@ Tiene las siguientes columnas (**7** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 8 columns):
  #   Column                                         Non-Null Count  Dtype  
 ---  ------                                         --------------  -----  
- 0   Fecha                                          484 non-null    object 
+ 0   Fecha                                          486 non-null    object 
  1   Mortalidad especifica comunal Alto Hospicio *  292 non-null    float64
  2   Mortalidad especifica comunal Camiña *         292 non-null    float64
  3   Mortalidad especifica comunal Colchane *       292 non-null    float64
@@ -473,7 +473,7 @@ Data columns (total 8 columns):
  6   Mortalidad especifica comunal Pica *           292 non-null    float64
  7   Mortalidad especifica comunal Pozo Almonte *   292 non-null    float64
 dtypes: float64(7), object(1)
-memory usage: 58.3 KB
+memory usage: 58.5 KB
 
 ```
 
@@ -489,16 +489,16 @@ Tiene las siguientes columnas (**3** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 4 columns):
  #   Column                            Non-Null Count  Dtype  
 ---  ------                            --------------  -----  
- 0   Fecha                             484 non-null    object 
- 1   Vacunados acumulados 1° dosis     187 non-null    float64
- 2   Vacunados acumulados 2° dosis     187 non-null    float64
- 3   Vacunados acumulados unica dosis  187 non-null    float64
+ 0   Fecha                             486 non-null    object 
+ 1   Vacunados acumulados 1° dosis     188 non-null    float64
+ 2   Vacunados acumulados 2° dosis     188 non-null    float64
+ 3   Vacunados acumulados unica dosis  188 non-null    float64
 dtypes: float64(3), object(1)
-memory usage: 43.1 KB
+memory usage: 43.3 KB
 
 ```
 
@@ -514,16 +514,16 @@ Tiene las siguientes columnas (**3** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 4 columns):
  #   Column                         Non-Null Count  Dtype  
 ---  ------                         --------------  -----  
- 0   Fecha                          484 non-null    object 
- 1   Casos nuevos históricos        484 non-null    float64
- 2   Recuperados nuevos históricos  448 non-null    float64
- 3   Fallecidos nuevos históricos   464 non-null    float64
+ 0   Fecha                          486 non-null    object 
+ 1   Casos nuevos históricos        485 non-null    float64
+ 2   Recuperados nuevos históricos  449 non-null    float64
+ 3   Fallecidos nuevos históricos   465 non-null    float64
 dtypes: float64(3), object(1)
-memory usage: 43.1 KB
+memory usage: 43.3 KB
 
 ```
 
@@ -539,15 +539,15 @@ Tiene las siguientes columnas (**2** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 374 entries, 0 to 373
+RangeIndex: 376 entries, 0 to 375
 Data columns (total 3 columns):
  #   Column                     Non-Null Count  Dtype  
 ---  ------                     --------------  -----  
- 0   Fecha                      374 non-null    object 
- 1   Casos activos confirmados  374 non-null    float64
- 2   Casos activos probables    374 non-null    float64
+ 0   Fecha                      376 non-null    object 
+ 1   Casos activos confirmados  375 non-null    float64
+ 2   Casos activos probables    375 non-null    float64
 dtypes: float64(2), object(1)
-memory usage: 30.4 KB
+memory usage: 30.6 KB
 
 ```
 
@@ -563,17 +563,17 @@ Tiene las siguientes columnas (**4** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 5 columns):
  #   Column                        Non-Null Count  Dtype  
 ---  ------                        --------------  -----  
- 0   Fecha                         484 non-null    object 
- 1   Casos confirmados acumulados  484 non-null    float64
- 2   Casos recuperados acumulados  449 non-null    float64
- 3   Casos activos confirmados     464 non-null    float64
- 4   Casos fallecidos acumulados   465 non-null    float64
+ 0   Fecha                         486 non-null    object 
+ 1   Casos confirmados acumulados  485 non-null    float64
+ 2   Casos recuperados acumulados  450 non-null    float64
+ 3   Casos activos confirmados     465 non-null    float64
+ 4   Casos fallecidos acumulados   466 non-null    float64
 dtypes: float64(4), object(1)
-memory usage: 46.9 KB
+memory usage: 47.1 KB
 
 ```
 
@@ -589,16 +589,16 @@ Tiene las siguientes columnas (**3** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 4 columns):
  #   Column                                     Non-Null Count  Dtype  
 ---  ------                                     --------------  -----  
- 0   Fecha                                      484 non-null    object 
- 1   Media móvil semanal de casos nuevos        478 non-null    float64
- 2   Media móvil semanal de recuperados nuevos  442 non-null    float64
- 3   Media móvil semanal de fallecidos nuevos   458 non-null    float64
+ 0   Fecha                                      486 non-null    object 
+ 1   Media móvil semanal de casos nuevos        479 non-null    float64
+ 2   Media móvil semanal de recuperados nuevos  443 non-null    float64
+ 3   Media móvil semanal de fallecidos nuevos   459 non-null    float64
 dtypes: float64(3), object(1)
-memory usage: 43.1 KB
+memory usage: 43.3 KB
 
 ```
 
@@ -614,15 +614,15 @@ Tiene las siguientes columnas (**2** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 3 columns):
  #   Column                     Non-Null Count  Dtype  
 ---  ------                     --------------  -----  
- 0   Fecha                      484 non-null    object 
- 1   Positividad diaria         439 non-null    float64
- 2   Positividad media movil *  421 non-null    float64
+ 0   Fecha                      486 non-null    object 
+ 1   Positividad diaria         440 non-null    float64
+ 2   Positividad media movil *  422 non-null    float64
 dtypes: float64(2), object(1)
-memory usage: 39.4 KB
+memory usage: 39.5 KB
 
 ```
 
@@ -638,16 +638,16 @@ Tiene las siguientes columnas (**3** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 4 columns):
  #   Column        Non-Null Count  Dtype  
 ---  ------        --------------  -----  
- 0   Fecha         484 non-null    object 
- 1   Re regional   469 non-null    float64
- 2   Re Iquique    466 non-null    float64
- 3   Re Tamarugal  466 non-null    float64
+ 0   Fecha         486 non-null    object 
+ 1   Re regional   476 non-null    float64
+ 2   Re Iquique    469 non-null    float64
+ 3   Re Tamarugal  469 non-null    float64
 dtypes: float64(3), object(1)
-memory usage: 43.1 KB
+memory usage: 43.3 KB
 
 ```
 
@@ -663,15 +663,15 @@ Tiene las siguientes columnas (**2** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 3 columns):
  #   Column                 Non-Null Count  Dtype  
 ---  ------                 --------------  -----  
- 0   Fecha                  484 non-null    object 
- 1   Crecimiento diario *   463 non-null    float64
- 2   Crecimiento semanal *  464 non-null    float64
+ 0   Fecha                  486 non-null    object 
+ 1   Crecimiento diario *   464 non-null    float64
+ 2   Crecimiento semanal *  465 non-null    float64
 dtypes: float64(2), object(1)
-memory usage: 39.4 KB
+memory usage: 39.5 KB
 
 ```
 
@@ -687,42 +687,42 @@ Tiene las siguientes columnas (**140** sin el índice):
 
 ```
 <class 'pandas.core.frame.DataFrame'>
-RangeIndex: 484 entries, 0 to 483
+RangeIndex: 486 entries, 0 to 485
 Data columns (total 141 columns):
  #    Column                                         Non-Null Count  Dtype  
 ---   ------                                         --------------  -----  
- 0    Fecha                                          484 non-null    object 
- 1    Casos confirmados acumulados                   484 non-null    float64
- 2    Casos recuperados acumulados                   449 non-null    float64
- 3    Casos fallecidos acumulados                    465 non-null    float64
- 4    Casos activos confirmados                      464 non-null    float64
- 5    Casos activos probables                        374 non-null    float64
- 6    Casos nuevos                                   484 non-null    float64
- 7    Casos nuevos con sintomas                      484 non-null    float64
- 8    Casos nuevos sin sintomas                      427 non-null    float64
- 9    Casos nuevos por laboratorio                   377 non-null    float64
- 10   Casos nuevos por antigeno                      125 non-null    float64
- 11   Casos con sospecha de reinfeccion              125 non-null    float64
- 12   Casos recuperados nuevos                       448 non-null    float64
- 13   Casos fallecidos nuevos                        464 non-null    float64
- 14   Antigenos informados nuevos                    25 non-null     float64
- 15   Antigenos informados acumulados                25 non-null     float64
- 16   PCR informados nuevos                          439 non-null    float64
- 17   PCR informados acumulados                      439 non-null    float64
- 18   Cupos en residencias                           396 non-null    float64
- 19   Usuarios en residencias                        396 non-null    float64
- 20   Numero de residencias                          396 non-null    float64
+ 0    Fecha                                          486 non-null    object 
+ 1    Casos confirmados acumulados                   485 non-null    float64
+ 2    Casos recuperados acumulados                   450 non-null    float64
+ 3    Casos fallecidos acumulados                    466 non-null    float64
+ 4    Casos activos confirmados                      465 non-null    float64
+ 5    Casos activos probables                        375 non-null    float64
+ 6    Casos nuevos                                   485 non-null    float64
+ 7    Casos nuevos con sintomas                      485 non-null    float64
+ 8    Casos nuevos sin sintomas                      428 non-null    float64
+ 9    Casos nuevos por laboratorio                   378 non-null    float64
+ 10   Casos nuevos por antigeno                      126 non-null    float64
+ 11   Casos con sospecha de reinfeccion              126 non-null    float64
+ 12   Casos recuperados nuevos                       449 non-null    float64
+ 13   Casos fallecidos nuevos                        465 non-null    float64
+ 14   Antigenos informados nuevos                    26 non-null     float64
+ 15   Antigenos informados acumulados                26 non-null     float64
+ 16   PCR informados nuevos                          440 non-null    float64
+ 17   PCR informados acumulados                      440 non-null    float64
+ 18   Cupos en residencias                           397 non-null    float64
+ 19   Usuarios en residencias                        397 non-null    float64
+ 20   Numero de residencias                          397 non-null    float64
  21   UCI habilitadas                                442 non-null    float64
- 22   UCI ocupadas por confirmados                   455 non-null    float64
+ 22   UCI ocupadas por confirmados                   456 non-null    float64
  23   UCI ocupadas por no confirmados                442 non-null    float64
  24   UCI ocupacion media movil real                 436 non-null    float64
- 25   Re regional                                    469 non-null    float64
- 26   Re Iquique                                     466 non-null    float64
- 27   Re Tamarugal                                   466 non-null    float64
- 28   Positividad diaria                             439 non-null    float64
- 29   Vacunados acumulados 1° dosis                  187 non-null    float64
- 30   Vacunados acumulados 2° dosis                  187 non-null    float64
- 31   Vacunados acumulados unica dosis               187 non-null    float64
+ 25   Re regional                                    476 non-null    float64
+ 26   Re Iquique                                     469 non-null    float64
+ 27   Re Tamarugal                                   469 non-null    float64
+ 28   Positividad diaria                             440 non-null    float64
+ 29   Vacunados acumulados 1° dosis                  188 non-null    float64
+ 30   Vacunados acumulados 2° dosis                  188 non-null    float64
+ 31   Vacunados acumulados unica dosis               188 non-null    float64
  32   Casos acumulados en Alto Hospicio              132 non-null    float64
  33   Casos acumulados en Camiña                     132 non-null    float64
  34   Casos acumulados en Colchane                   132 non-null    float64
@@ -739,20 +739,20 @@ Data columns (total 141 columns):
  45   Casos activos en Pica                          126 non-null    float64
  46   Casos activos en Pozo Almonte                  126 non-null    float64
  47   Casos activos en Comuna desconocida            106 non-null    float64
- 48   Paso a Paso Alto Hospicio                      337 non-null    float64
- 49   Paso a Paso Camiña                             337 non-null    float64
- 50   Paso a Paso Colchane                           337 non-null    float64
- 51   Paso a Paso Huara                              337 non-null    float64
- 52   Paso a Paso Iquique                            337 non-null    float64
- 53   Paso a Paso Pica                               337 non-null    float64
- 54   Paso a Paso Pozo Almonte                       337 non-null    float64
- 55   Paso a Paso (dias) Alto Hospicio               337 non-null    float64
- 56   Paso a Paso (dias) Camiña                      337 non-null    float64
- 57   Paso a Paso (dias) Colchane                    337 non-null    float64
- 58   Paso a Paso (dias) Huara                       337 non-null    float64
- 59   Paso a Paso (dias) Iquique                     337 non-null    float64
- 60   Paso a Paso (dias) Pica                        337 non-null    float64
- 61   Paso a Paso (dias) Pozo Almonte                337 non-null    float64
+ 48   Paso a Paso Alto Hospicio                      339 non-null    float64
+ 49   Paso a Paso Camiña                             339 non-null    float64
+ 50   Paso a Paso Colchane                           339 non-null    float64
+ 51   Paso a Paso Huara                              339 non-null    float64
+ 52   Paso a Paso Iquique                            339 non-null    float64
+ 53   Paso a Paso Pica                               339 non-null    float64
+ 54   Paso a Paso Pozo Almonte                       339 non-null    float64
+ 55   Paso a Paso (dias) Alto Hospicio               339 non-null    float64
+ 56   Paso a Paso (dias) Camiña                      339 non-null    float64
+ 57   Paso a Paso (dias) Colchane                    339 non-null    float64
+ 58   Paso a Paso (dias) Huara                       339 non-null    float64
+ 59   Paso a Paso (dias) Iquique                     339 non-null    float64
+ 60   Paso a Paso (dias) Pica                        339 non-null    float64
+ 61   Paso a Paso (dias) Pozo Almonte                339 non-null    float64
  62   Movilidad Iquique                              435 non-null    float64
  63   Movilidad Pica                                 435 non-null    float64
  64   Movilidad Alto Hospicio                        435 non-null    float64
@@ -816,15 +816,15 @@ Data columns (total 141 columns):
  122  Fallecidos probables DEIS Iquique              292 non-null    float64
  123  Fallecidos probables DEIS Pica                 292 non-null    float64
  124  Fallecidos probables DEIS Pozo Almonte         292 non-null    float64
- 125  Positividad media movil *                      421 non-null    float64
- 126  Mortalidad especifica *                        465 non-null    float64
- 127  Crecimiento semanal *                          464 non-null    float64
- 128  Crecimiento diario *                           463 non-null    float64
- 129  UCI ocupacion media movil aprox *              436 non-null    float64
+ 125  Positividad media movil *                      422 non-null    float64
+ 126  Mortalidad especifica *                        466 non-null    float64
+ 127  Crecimiento semanal *                          465 non-null    float64
+ 128  Crecimiento diario *                           464 non-null    float64
+ 129  UCI ocupacion media movil aprox *              437 non-null    float64
  130  UCI error abs *                                436 non-null    float64
- 131  Tasa casos nuevos *                            478 non-null    float64
- 132  Positividad antigeno *                         25 non-null     float64
- 133  Positividad antigeno media movil *             19 non-null     float64
+ 131  Tasa casos nuevos *                            479 non-null    float64
+ 132  Positividad antigeno *                         26 non-null     float64
+ 133  Positividad antigeno media movil *             20 non-null     float64
  134  Mortalidad especifica comunal Alto Hospicio *  292 non-null    float64
  135  Mortalidad especifica comunal Camiña *         292 non-null    float64
  136  Mortalidad especifica comunal Colchane *       292 non-null    float64
@@ -833,7 +833,7 @@ Data columns (total 141 columns):
  139  Mortalidad especifica comunal Pica *           292 non-null    float64
  140  Mortalidad especifica comunal Pozo Almonte *   292 non-null    float64
 dtypes: float64(140), object(1)
-memory usage: 561.2 KB
+memory usage: 563.5 KB
 
 ```
 

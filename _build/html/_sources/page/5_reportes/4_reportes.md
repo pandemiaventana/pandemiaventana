@@ -21,6 +21,9 @@ Encontré los siguientes PDF:
  [2021.06.29.pdf](https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.29.pdf&embedded=true)
 
 
+ [2021.06.30.pdf](https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.30.pdf&embedded=true)
+
+
 Balance de vacunas
 ------------------
 
@@ -34,6 +37,9 @@ Encontré los siguientes PDF:
 
 
  [2021.06.29.pdf](https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.29.pdf&embedded=true)
+
+
+ [2021.06.30.pdf](https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.30.pdf&embedded=true)
 
 
 Indicador de Fase

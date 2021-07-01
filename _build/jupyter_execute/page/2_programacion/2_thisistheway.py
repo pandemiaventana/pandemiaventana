@@ -995,124 +995,15 @@ for comuna in comunas:
 # - Separamos observaciones en conjuntos de entrenamiento y prueba, considerando que trabajamos con series de tiempo.
 # 
 # - Entrenamos el algoritmo, almacenándolo en una variable aparte, por comuna, y además, almacenamos los resultados como variables de texto, *str*, en un vector. Este vector, al ser iterable, será recorrido por cada uno de sus elementos, separando por comuna, los resultados, los cuales serán introducidos en Markdown.
+# 
+# ### ¿Dónde estará la salida?
+# 
+# > La estará disponible en "**Visualización** 📊".
 
 # In[15]:
 
 
-results = []
-i = 0
-resultado_colores = []
-resultado_prediccion = []
-resultado_prob = []
-report = []
-display(Markdown('<h2 style="font-size:60px">INDICADOR DE FASE</h2>'))
-display(Markdown('<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>'.format(df['Casos acumulados en Iquique'].last_valid_index().strftime('%d de %B de %Y'))))
-
-for comuna in comunas:
-    
-    ### Fase y días en dicha fase de la comuna
-    
-    fase = df.loc[:, df.columns[df.columns.str.contains('Paso a Paso {}'.format(comuna), na=False, regex=False)]]
-    fase = fase.loc[fase.last_valid_index()]
-    dias = df.loc[:, df.columns[df.columns.str.contains('Paso a Paso (dias) {}'.format(comuna), na=False, regex=False)]]
-    dias_ = dias.loc[dias.last_valid_index()]
-    
-    ### Manejo de variables (en X añadimos el Re dependiendo de la comuna y provincia)
-    
-    if comuna in ['Alto Hospicio', 'Iquique']:
-        x = df.loc[:, df.columns[df.columns.str.contains('{}'.format(comuna), na=False) &                            ~(df.columns.str.contains('Paso a Paso', na=False)) &                            ~(df.columns.str.contains('DEIS', na=False)) &                            ~(df.columns.str.contains('especifica', na=False)) &                                   ~(df.columns.str.contains('Re', na=False))]].join(                            df.loc[:, df.columns.str.contains('Re Iquique')]).join(                            dias)
-    else:
-        x = df.loc[:, df.columns[df.columns.str.contains('{}'.format(comuna), na=False) &                            ~(df.columns.str.contains('DEIS', na=False)) &                            ~(df.columns.str.contains('especifica', na=False)) &                            ~(df.columns.str.contains('Paso a Paso', na=False))]].join(                            df.loc[:, df.columns.str.contains('Re Tamarugal')]).join(                            dias)
-        
-    ### Guardamos las columnas utilizadas
-    
-    cols = x.columns
-    
-    
-    ### Escalamos y rellenamos valores faltantes
-    
-    for col in x:
-        x[col] = x[col]/x[col].max()
-        x[col] = x[col].fillna(method="ffill")
-        x[col] = x[col].fillna(method="bfill")
-        x[col] = x[col].fillna(x[col].mean())
-        x[col] = x[col].fillna(0)
-        
-    ### Primer índice válido
-    
-    ind = df['Paso a Paso {}'.format(comuna)].first_valid_index()
-    
-    ### Último índice válido
-    
-    ind_ = df['Paso a Paso {}'.format(comuna)].last_valid_index()
-        
-    ### Variables a array de Numpy (X desde primer índice válido); formato necesario para Scikit-learn
-    
-    x_ = x.iloc[-1, :].to_numpy().reshape(1, -1)
-    x = x[ind:].to_numpy()
-    
-    ### Variables a array de Numpy (Y desde primer índice válido); formato necesario para Scikit-learn
-    
-    y = df['Paso a Paso {}'.format(comuna)]
-    y[y.last_valid_index():] = y[y.last_valid_index()]
-    y = y[ind:].apply(lambda x: fases[x]).to_numpy()
-    
-    ### Separamos data aprox. 80% para entrenamiento y 20% para prueba
-    
-    tscv = TimeSeriesSplit(n_splits=5)
-    for train_index, test_index in tscv.split(x):
-
-         X_train, X_test = x[train_index], x[test_index]
-         exec('X_train_{}, X_test_{} = X_train, X_test'.format(comuna[:3], comuna[:3]))
-         y_train, y_test = y[train_index], y[test_index]
-         exec('y_train_{}, y_test_{} = y_train, y_test'.format(comuna[:3], comuna[:3]))
-        
-    ### Entrenamos
-    
-    clf = make_pipeline(StandardScaler(), SVC(gamma='scale', probability=True, kernel='rbf'))
-    clf.fit(x, y)
-    
-    report += [classification_report(y_test, clf.predict(X_test))]
-    
-    ### Para cada comuna
-    
-    exec('clf_{} = clf'.format(comuna[:3]))
-    
-    ### Almacenamos los resultados
-    
-    results += ['''- De acuerdo al algoritmo, y con un **{}%** de probabilidad, **{}** debería estar en <b style="color:{}">{}</b>.
-    Actualmente, la comuna registra {} días en <b style="color:{}">{}</b>.'''\
-            .format((-np.sort(-clf.predict_proba(x_))[0][0]*100).round(3), comuna,\
-            [paleta[letter] for letter in clf.predict(x_)][0],\
-            clf.predict(x_)[0], int(dias_[0]),
-            [paleta[letter] for letter in fase.apply(lambda x: fases[x])][0],
-            fase.apply(lambda x: fases[x])[0]
-            )]
-    
-    resultado_colores += [[paleta[letter] for letter in fase.apply(lambda x: fases[x])][0]]
-    resultado_prediccion += [clf.predict(x_)[0]]
-    resultado_prob += [(-np.sort(-clf.predict_proba(x_))[0][0]*100).round(3)]
-    
-    ### Encabezado (Markdown)
-    
-    display(Markdown('<h3>Resultado para {}</h3>'.format(comuna)))
-    display(Markdown(results[i]))
-    
-    ### Información sobre algoritmo (Markdown)
-    
-    display(Markdown('Se utilizaron las siguientes columnas:'))
-    
-    for col in cols:
-        display(Markdown('- {}'.format(col)))
-    i += 1
-    
-### Consideraciones del algoritmo (Markdown)
-
-display(Markdown('<h3>Consideraciones</h3>'))
-display(Markdown('> Los datos históricos contemplan desde el **{}** hasta el **{}**.'.format(ind.strftime('%d de %B de %Y'),            ind_.strftime('%d de %B de %Y'))))
-
-display(Markdown('''> El resultado del algoritmo **no implica un cambio de fase**. La evolución del Paso a Paso
-es monitoreada por las autoridades del Ministerio de Salud'''))
+get_ipython().run_cell_magic('capture', 'indicadorfase', '\nresults = []\ni = 0\nresultado_colores = []\nresultado_prediccion = []\nresultado_prob = []\nreport = []\ndisplay(Markdown(\'<h2 style="font-size:60px">INDICADOR DE FASE</h2>\'))\ndisplay(Markdown(\'<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>\'.format(df[\'Casos acumulados en Iquique\'].last_valid_index().strftime(\'%d de %B de %Y\'))))\n\nfor comuna in comunas:\n    \n    ### Fase y días en dicha fase de la comuna\n    \n    fase = df.loc[:, df.columns[df.columns.str.contains(\'Paso a Paso {}\'.format(comuna), na=False, regex=False)]]\n    fase = fase.loc[fase.last_valid_index()]\n    dias = df.loc[:, df.columns[df.columns.str.contains(\'Paso a Paso (dias) {}\'.format(comuna), na=False, regex=False)]]\n    dias_ = dias.loc[dias.last_valid_index()]\n    \n    ### Manejo de variables (en X añadimos el Re dependiendo de la comuna y provincia)\n    \n    if comuna in [\'Alto Hospicio\', \'Iquique\']:\n        x = df.loc[:, df.columns[df.columns.str.contains(\'{}\'.format(comuna), na=False) &\\\n                            ~(df.columns.str.contains(\'Paso a Paso\', na=False)) &\\\n                            ~(df.columns.str.contains(\'DEIS\', na=False)) &\\\n                            ~(df.columns.str.contains(\'especifica\', na=False)) &\\\n                                   ~(df.columns.str.contains(\'Re\', na=False))]].join(\\\n                            df.loc[:, df.columns.str.contains(\'Re Iquique\')]).join(\\\n                            dias)\n    else:\n        x = df.loc[:, df.columns[df.columns.str.contains(\'{}\'.format(comuna), na=False) &\\\n                            ~(df.columns.str.contains(\'DEIS\', na=False)) &\\\n                            ~(df.columns.str.contains(\'especifica\', na=False)) &\\\n                            ~(df.columns.str.contains(\'Paso a Paso\', na=False))]].join(\\\n                            df.loc[:, df.columns.str.contains(\'Re Tamarugal\')]).join(\\\n                            dias)\n        \n    ### Guardamos las columnas utilizadas\n    \n    cols = x.columns\n    \n    \n    ### Escalamos y rellenamos valores faltantes\n    \n    for col in x:\n        x[col] = x[col]/x[col].max()\n        x[col] = x[col].fillna(method="ffill")\n        x[col] = x[col].fillna(method="bfill")\n        x[col] = x[col].fillna(x[col].mean())\n        x[col] = x[col].fillna(0)\n        \n    ### Primer índice válido\n    \n    ind = df[\'Paso a Paso {}\'.format(comuna)].first_valid_index()\n    \n    ### Último índice válido\n    \n    ind_ = df[\'Paso a Paso {}\'.format(comuna)].last_valid_index()\n        \n    ### Variables a array de Numpy (X desde primer índice válido); formato necesario para Scikit-learn\n    \n    x_ = x.iloc[-1, :].to_numpy().reshape(1, -1)\n    x = x[ind:].to_numpy()\n    \n    ### Variables a array de Numpy (Y desde primer índice válido); formato necesario para Scikit-learn\n    \n    y = df[\'Paso a Paso {}\'.format(comuna)]\n    y[y.last_valid_index():] = y[y.last_valid_index()]\n    y = y[ind:].apply(lambda x: fases[x]).to_numpy()\n    \n    ### Separamos data aprox. 80% para entrenamiento y 20% para prueba\n    \n    tscv = TimeSeriesSplit(n_splits=5)\n    for train_index, test_index in tscv.split(x):\n\n         X_train, X_test = x[train_index], x[test_index]\n         exec(\'X_train_{}, X_test_{} = X_train, X_test\'.format(comuna[:3], comuna[:3]))\n         y_train, y_test = y[train_index], y[test_index]\n         exec(\'y_train_{}, y_test_{} = y_train, y_test\'.format(comuna[:3], comuna[:3]))\n        \n    ### Entrenamos\n    \n    clf = make_pipeline(StandardScaler(), SVC(gamma=\'scale\', probability=True, kernel=\'rbf\'))\n    clf.fit(x, y)\n    \n    report += [classification_report(y_test, clf.predict(X_test))]\n    \n    ### Para cada comuna\n    \n    exec(\'clf_{} = clf\'.format(comuna[:3]))\n    \n    ### Almacenamos los resultados\n    \n    results += [\'\'\'- De acuerdo al algoritmo, y con un <b>{}%</b> de probabilidad, <b>{}</b> debería estar en <b style="color:{}">{}</b>.\n    Actualmente, la comuna registra <b>{}</b> días en <b style="color:{}">{}</b>.\'\'\'\\\n            .format((-np.sort(-clf.predict_proba(x_))[0][0]*100).round(3), comuna,\\\n            [paleta[letter] for letter in clf.predict(x_)][0],\\\n            clf.predict(x_)[0], int(dias_[0]),\n            [paleta[letter] for letter in fase.apply(lambda x: fases[x])][0],\n            fase.apply(lambda x: fases[x])[0]\n            )]\n    \n    resultado_colores += [[paleta[letter] for letter in fase.apply(lambda x: fases[x])][0]]\n    resultado_prediccion += [clf.predict(x_)[0]]\n    resultado_prob += [(-np.sort(-clf.predict_proba(x_))[0][0]*100).round(3)]\n    \n    ### Encabezado (Markdown)\n    \n    display(Markdown(\'<h3>Resultado para {}</h3>\'.format(comuna)))\n    display(Markdown(results[i]))\n    \n    ### Información sobre algoritmo (Markdown)\n    \n    display(Markdown(\'Se utilizaron las siguientes columnas:\'))\n    \n    for col in cols:\n        display(Markdown(\'- {}\'.format(col)))\n    i += 1\n    \n### Consideraciones del algoritmo (Markdown)\n\ndisplay(Markdown(\'<h3>Consideraciones</h3>\'))\ndisplay(Markdown(\'> Los datos históricos contemplan desde el <b>{}</b> hasta el <b>{}</b>.\'.format(ind.strftime(\'%d de %B de %Y\'),\\\n            ind_.strftime(\'%d de %B de %Y\'))))\n\ndisplay(Markdown(\'\'\'> El resultado del algoritmo <b>no implica un cambio de fase</b>. La evolución del Paso a Paso\nes monitoreada por las autoridades del Ministerio de Salud\'\'\'))')
 
 
 # ## Validación
@@ -1190,33 +1081,70 @@ for comuna in comunas:
 # In[17]:
 
 
-### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
-Javascript('''{
-    let outputs=[...document.querySelectorAll(".cell")].map(
-        cell=> {
-            let output=cell.querySelector(".output")
-            if(output) return output.innerHTML
-            output=cell.querySelector(".rendered_html")
-            if(output) return output.innerHTML
-            return ""
-        }
-    )
-    
-    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs)) 
-    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[48])")
-    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
-    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
-    IPython.notebook.kernel.execute("soup = str(soup)")   
-    IPython.notebook.kernel.execute("html = open('../../out/site/indicador.html','w')")
-    IPython.notebook.kernel.execute("html.write(\
-    '<html><head><link rel={} href={}><link rel={} href={}><link rel={} href={}><script src={}></script><script src={}></script></head><body>'\
-    .format('stylesheet', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', \
-    'stylesheet', './style.min.css', \
-    'stylesheet', './ipython.min.css', \
-    'https://cdn.plot.ly/plotly-latest.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js')\
-    + soup +'</body></html>')")
-    IPython.notebook.kernel.execute("html.close()")
-}''')
+outputs_ = indicadorfase.outputs
+
+vec_out = []
+for outs_ in outputs_:
+    ### Convertimos a lista los outputs
+    vec_out += list(outs_.data.values())
+
+### Nuestro string
+vec_ = ''
+### Recorremos la lista de outputs
+for vec in vec_out:
+    vec = str(vec)
+    ### Quitamos configuración de Plot.ly
+    if vec.startswith("{'config':"):
+        pass
+    else:
+        ### Quitamos el str de datos de tabla sin formato
+        if vec.startswith("            "):
+            pass
+        else:
+            ### Quitamos el str del tipo de variable
+            vec = vec.replace('<IPython.core.display.Markdown object>', '')
+            ### Finalmente, añadimos al vector
+            vec_ += '<div class="row"><br><div class="col text-light">' + vec + '</div></div>'
+
+### Abrimos y modificamos el HTML
+with open('../../_build/html/dinamic/indicadorfase.html', 'w') as f:
+    f.write('''<html>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js">
+    </script>
+    </head>
+    <body>
+    <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+    <img src="../../img/page/0_base.png" width="35" height="35" class="d-inline-block align-top" alt="">
+    Numeral.lab
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="#">Reporte diario <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="#">Indicador de fase <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/">La pandemia por la ventana</a>
+    </div>
+    </div>
+    </nav>
+    <div class="container-fluid bg-dark text-light">''' 
+    + vec_ + 
+    '''</div>
+    </body>
+    </html>''')
 
 
 # ## Información de sesión

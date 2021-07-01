@@ -63,7 +63,7 @@ import plotly.graph_objects as go
 
 ### Customizamos opciones de Plot.ly
 config = {'displayModeBar': False, 'showTips': False, 'scrollZoom': False}
-layout = go.Layout(dragmode=False, 
+layout = go.Layout(dragmode=False, font=dict(color='white'),
     xaxis=dict(
         showline=True,
         showgrid=True,
@@ -146,7 +146,7 @@ for i in x:
     exec('data += [pd.read_csv("../../out/site/csv/data{}.csv", parse_dates=["Fecha"], index_col=["Fecha"])]'.format(i, i))
 
 
-# ## Visualizando los datos
+# ## Tendencia
 # 
 # La diferencia de nuestras publicaciones (en contraste a la forma en que se entregaba información en otras páginas informativas en Instagram) se basaban en la visualización de datos, y en particular, en las tendencias semanales. También, se agregaban cálculos o datos que, en los reportes del Minsal, no se encontraban procesados.
 # 
@@ -162,12 +162,12 @@ for i in x:
 # 
 # > **Para los datos, descargar los archivos .CSV procesados**. Éstos están disponibles en el propio libro (sección **Legado** 🔀), o bien, en el [repositorio](https://github.com/pandemiaventana/pandemiaventana).
 
-# ### ¿Cuántos gráficos se visualizarán?
+# ### ¿Cuántos gráficos se exportarán?
 
 # In[3]:
 
 
-display(Markdown('> Se visualizarán un total de **{} gráficos**.'.format(sum_)))
+display(Markdown('> Se exportarán un total de **{} gráficos**.'.format(sum_)))
 
 
 # ### Automatizando salida de gráficos
@@ -181,99 +181,18 @@ display(Markdown('> Se visualizarán un total de **{} gráficos**.'.format(sum_)
 # In[4]:
 
 
-x = 0
-### Título y otras cosas
-display(Markdown('<h2 style="font-size:60px;">REPORTE DIARIO</h2>'))
-display(Markdown('<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>'.format(data[0].last_valid_index().strftime('%d de %B de %Y'))))
-
-### Recorremos el vector que almacena los DataFrames, uno a uno
-for dataframe in data:
-    
-    ### Para guardar el número del gráfico (un poco ordinario el método, lo sé)
-    
-    x += 1
-    
-    ### Definimos una nueva figura
-    
-    fig = go.Figure(layout=layout)
-    
-    ### Algunos datos y título
-    
-    display(Markdown('<h3> Gráfico {}</h3>'.format(x)))
-    display(Markdown('El gráfico contiene las siguientes **columnas**: '))
-    
-    ### Recorremos cada una de las columnas del DataFrame anterior
-    
-    for col in dataframe.columns:
-        
-        ### Vector de fechas desde primer y último dato válido por cada columna
-        
-        index = dataframe[col].first_valid_index()
-        index_ = dataframe[col].last_valid_index()
-            
-        ### DataFrame según filtro de primer dato válido
-        
-        _df = dataframe[index:]
-            
-        ### Índice de DataFrame según filtro anterior
-            
-        fecha = dataframe[index:].index
-    
-        ### Columna específica
-        
-        _col = dataframe[index:][col]
-        
-        ### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y
-        ### suavizamos por interpolación spline
-        
-        fig.add_trace(go.Scatter(x=_df.index.strftime('%d %b %Y'),
-                                 y=_col,
-                    mode='lines',
-                    name=col,
-                    connectgaps=True,
-                    line_shape='linear',
-                    hovertemplate =
-                    '<b>{}</b>: '.format(col) + '%{y:.2f}'+'<br><b>Fecha</b>: %{x}<br>' + "<extra></extra>"))
-        
-        ### Para colocar en 35° las etiquetas del eje X, con el número de etiquetas proporcional al número de meses
-        ### desde el primer dato válido
-        
-        fig.update_layout(xaxis = go.layout.XAxis(tickangle = 35,
-                                                  nticks=len(_df.index.month.unique())))
-        ### Más datos
-        
-        display(Markdown(' - <b>{}</b>.'.format(col)))
-        display(Markdown("""El mayor valor es de **{}**, registrado el {}. 
-        Asimismo, la mediana es de **{}**.
-        Respecto a la dispersión de los datos, la desviación estándar es del **{}**. """
-                         .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime('%d de %B de %Y'),
-                                 round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))
-        display(Markdown('> El valor en base al último reporte diario o epidemiológico ({}) es de **{}**.'.format(dataframe[index_:].index[0].strftime('%d de %B de %Y'), dataframe[col][index_])))
-    
-    ### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado
-    display(Markdown('<h4>Visualización del gráfico {}</h4> <br> El gráfico, visualizado en <a href="https://plotly.com/python/">Plot.ly</a>: <br>'.format(x)))
-    fig.show(config=config)
-    
-    ### Exportamos el gráfico a HTML
-    fig.write_html("..//..//out//site//graph//data{}.html".format(x), config=config)
-    
-    
-    display(Markdown("""> **Notas**: 
-    <br> - El gráfico **inicia en el {}** y **termina el {}** en base a los datos disponibles.
-    <br> - Para aislar una curva, presionar en el nombre o color en la leyenda. 
-    <br> - Para remover una curva, seguir instrucción anterior, con la diferencia de presionar dos veces.""".format(\
-                    _df.index[0].strftime('%d de %B de %Y'),
-                    dataframe[index_:].index[0].strftime('%d de %B de %Y'))))
-    display(Markdown('<h4>Información adicional sobre el gráfico {}</h4> <br>'.format(x)))
-    display(Markdown(
-    """<br>El **gráfico {}** utilizó los datos procesados en <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv">data{}.csv</a>.
-    La tabla de datos resumida:""".format(x, x, x, x)))
-    display(dataframe)
+get_ipython().run_cell_magic('capture', 'reportediario', 'x = 0\n### Título y otras cosas\ndisplay(Markdown(\'<h2 style="font-size:60px;">REPORTE DIARIO</h2>\'))\ndisplay(Markdown(\'<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>\'.format(data[0].last_valid_index().strftime(\'%d de %B de %Y\'))))\n\n### Recorremos el vector que almacena los DataFrames, uno a uno\nfor dataframe in data:\n    \n    ### Para guardar el número del gráfico (un poco ordinario el método, lo sé)\n    \n    x += 1\n    \n    ### Definimos una nueva figura\n    \n    fig = go.Figure(layout=layout)\n    \n    ### Algunos datos y título\n    \n    display(Markdown(\'<h3> Gráfico {}</h3>\'.format(x)))\n    display(Markdown(\'El gráfico contiene las siguientes <b>columnas</b>: \'))\n    \n    ### Recorremos cada una de las columnas del DataFrame anterior\n    \n    for col in dataframe.columns:\n        \n        ### Vector de fechas desde primer y último dato válido por cada columna\n        \n        index = dataframe[col].first_valid_index()\n        index_ = dataframe[col].last_valid_index()\n            \n        ### DataFrame según filtro de primer dato válido\n        \n        _df = dataframe[index:]\n            \n        ### Índice de DataFrame según filtro anterior\n            \n        fecha = dataframe[index:].index\n    \n        ### Columna específica\n        \n        _col = dataframe[index:][col]\n        \n        ### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y\n        ### suavizamos por interpolación spline\n        \n        fig.add_trace(go.Scatter(x=_df.index.strftime(\'%d %b %Y\'),\n                                 y=_col,\n                    mode=\'lines\',\n                    name=col,\n                    connectgaps=True,\n                    line_shape=\'linear\',\n                    hovertemplate =\n                    \'<b>{}</b>: \'.format(col) + \'%{y:.2f}\'+\'<br><b>Fecha</b>: %{x}<br>\' + "<extra></extra>"))\n        \n        ### Para colocar en 35° las etiquetas del eje X, con el número de etiquetas proporcional al número de meses\n        ### desde el primer dato válido\n        \n        fig.update_layout(xaxis = go.layout.XAxis(tickangle = 35,\n                                                  nticks=len(_df.index.month.unique())))\n        ### Más datos\n        \n        display(Markdown(\' - <b>{}</b>.\'.format(col)))\n        display(Markdown("""El mayor valor es de <b>{}</b>, registrado el <b>{}</b>. \n        Asimismo, la mediana es de <b>{}</b>.\n        Respecto a la dispersión de los datos, la desviación estándar es del <b>{}</b>. """\n                         .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime(\'%d de %B de %Y\'),\n                                 round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))\n        display(Markdown(\'> El valor en base al último reporte diario o epidemiológico ({}) es de <b>{}</b>.\'.format(dataframe[index_:].index[0].strftime(\'%d de %B de %Y\'), dataframe[col][index_])))\n    \n    ### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado\n    display(Markdown(\'<h4>Visualización del gráfico {}</h4> <br> El gráfico, visualizado en <a href="https://plotly.com/python/">Plot.ly</a>: <br>\'.format(x)))\n    fig.show(config=config)\n    \n    ### Exportamos el gráfico a HTML\n    fig.write_html("..//..//out//site//graph//data{}.html".format(x), config=config)\n    \n    \n    display(Markdown("""> <b>Notas</b>: \n    <br> - El gráfico <b>inicia en el {}</b> y <b>termina el {}</b> en base a los datos disponibles.\n    <br> - Para aislar una curva, presionar en el nombre o color en la leyenda. \n    <br> - Para remover una curva, seguir instrucción anterior, con la diferencia de presionar dos veces.""".format(\\\n                    _df.index[0].strftime(\'%d de %B de %Y\'),\n                    dataframe[index_:].index[0].strftime(\'%d de %B de %Y\'))))\n    display(Markdown(\'<h4>Información adicional sobre el gráfico {}</h4> <br>\'.format(x)))\n    display(Markdown(\n    """El <b>gráfico {}</b> utilizó los datos procesados en <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv">data{}.csv</a>.\n    La tabla de datos resumida:""".format(x, x, x, x)))\n    display(dataframe)')
 
 
-# ### Automatizando salida para asistenciacovid19
+# ## Automatizando salida para asistenciacovid19
 # 
-# En razón de brindar una página web que se pueda incrustar en el sitio de la Universidad Arturo Prat, generamos las siguientes líneas de codigo. ¿Cómo funciona?
+# En razón de brindar una página web que se pueda incrustar en el sitio de la Universidad Arturo Prat, como también en el presente sitio, generamos las siguientes líneas de codigo.
+# 
+# ### ¿Dónde estará la salida?
+# 
+# > Dicha salida estará disponible en "**Visualización** 📊".
+# 
+# ### ¿Cómo funciona?
 # 
 # - La salida completa de la celda anterior es capturada como lenguaje HTML, pero solo el cuerpo de la página {cite}```benvida```.
 # 
@@ -297,7 +216,7 @@ for dataframe in data:
 # 
 # ```
 
-# ### Inconvenientes
+# ### Inconveniente
 # 
 # En primer lugar, el lenguaje de marcado (HTML) solo brinda la estructura básica del sitio, que se compone de texto, imágenes y scripts. Para que funcionen los scripts, en este caso, Plot.ly, se tienen múltiples dependencias de otras librerías de JavaScript.
 # 
@@ -309,17 +228,25 @@ for dataframe in data:
 # 
 # En analogía, y para simple comprensión, **HTML es el esqueleto (estructura), JS es la musculación (animaciones y movimiento) y CSS es la apariencia externa (piel y atributos físicos)**.
 # 
-# ### Algunos arreglos
+# #### Algunos arreglos
 # 
 # - La función por BenVida es ejecutada una vez se terminó de ejecutar todas las celdas, y por ende, los outputs no son recopilados hasta que el Kernel culmina su ejecución.
 # 
-# Aquí se nos genera el siguiente problema: La variable ```cell_outputs``` no es asignada hasta que el Kernel termina su ejecución, por lo que si deséaramos actualizar el archivo HTML, en base a la celda anterior de código (donde están los gráficos Plot.ly), no podríamos, porque la variable ```cell_outputs```, y en concreto, ```cell_outputs[9]``` todavía no está asignada. ¿La solución? Ejecutar el código Python tras la ejecución del código JavaScript, y de esta forma, no tenemos inconvenientes. Para ello, utilizaremos la misma función que utilizó BenVida, `IPython.notebook.kernel.execute("")` donde en ```" "``` debe ir el código Python.
+# ```
+# 
+# html = open('balance.html','w')
+# html.write('''<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><script src='https://cdn.plot.ly/plotly-latest.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js'></script></head><body>''' +cell_outputs[9] +'''</body></html>''')
+# html.close()
+# 
+# ```
+# 
+# Aquí se nos genera el siguiente problema: La variable ```cell_outputs``` no es asignada hasta que el Kernel termina su ejecución, por lo que si deséaramos actualizar el archivo HTML, en base a la celda anterior de código (donde están los gráficos Plot.ly), no podríamos, porque la variable ```cell_outputs``` todavía no está asignada. ¿La solución? Ejecutar el código Python tras la ejecución del código JavaScript, y de esta forma, no tenemos inconvenientes. Para ello, utilizaremos la misma función que utilizó BenVida, `IPython.notebook.kernel.execute("")` donde en ```" "``` debe ir el código Python.
 # 
 # Por otro lado, al ser código JavaScript con Python, ¡se debe tener cuidado al utilizar comillas sobre doble comillas o viceversa! De otra forma, tendremos un error. Por esta razón, utilizamos la función ```format()``` de Python (ya que las URL deben ir entre comillas, le decimos a Python que se encargue de esa situación, sin que el input de JavaScript nos resulte en error).
 # 
-# ### Detalles
+# #### Detalles
 # 
-# El sitio se encuentra en el directorio ``./file/site``. Respecto al funcionamiento del código para procesarlo:
+# El sitio se encuentra en el directorio ``./out/site``. Respecto al funcionamiento del código para procesarlo:
 # 
 # - Modificamos al función para no solamente obtener el texto, sino que todo el HTML.
 # 
@@ -338,54 +265,139 @@ for dataframe in data:
 #     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
 #     IPython.notebook.kernel.execute("soup = str(soup)")
 # ```
+# 
+# #### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
+# Javascript('''{
+#     let outputs=[...document.querySelectorAll(".cell")].map(
+#         cell=> {
+#             let output=cell.querySelector(".output")
+#             if(output) return output.innerHTML
+#             output=cell.querySelector(".rendered_html")
+#             if(output) return output.innerHTML
+#             return ""
+#         }
+#     )
+#     
+#     IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs)) 
+#     IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[9])")
+#     IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
+#     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
+#     IPython.notebook.kernel.execute("soup = str(soup)")   
+#     IPython.notebook.kernel.execute("html = open('../../out/site/balance.html','w')")
+#     IPython.notebook.kernel.execute("html.write(\
+#     '<html><head><link rel={} href={}><link rel={} href={}><link rel={} href={}><script src={}></script><script src={}></script></head><body>'\
+#     .format('stylesheet', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', \
+#     'stylesheet', './style.min.css', \
+#     'stylesheet', './ipython.min.css', \
+#     'https://cdn.plot.ly/plotly-latest.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js')\
+#     + soup +'</body></html>')")
+#     IPython.notebook.kernel.execute("html.close()")
+# }''')
+
+# #### Nuevo inconveniente
+# 
+# Al automatizar el código en GitHub, logré apreciar que el código Python a través de JavaScript no es ejecutado. Ésto produce que los archivos no se actualicen.
+# 
+# Por ello, tuve que aproximar otra solución.
+# 
+# > Con el comando mágico de Jupyter Notebook, ``%%capture``, capturamos la salida de una celda específica. 
+# 
+# En este caso puntual, almacenamos la salida en la variable ``reportediario`` con el comando mágico ``%%capture``. Esa salida debemos convertirla a texto, o **string** en inglés, el problema es que, al ser un output de una celda, posee algunos textos que no deseamos:
+# 
+# - El tipo de variable que se está imprimiendo.
+# 
+# - Configuración de Plot.ly en diccionario.
+# 
+# - Datos de tabla sin formato.
+# 
+# En las siguientes líneas de código:
+# 
+# - Limpieza de textos.
+# 
+# - Damos formato de documento HTML.
+# 
+# - Añadimos [Bootstrap](https://getbootstrap.com/) {footcite}``bootstrap`` para que el documento HTML no quede plano, añadiendo código desde sus Docs {cite}``bootstrap``.
+# 
+# - Entre otros.
 
 # In[5]:
 
 
-### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
-Javascript('''{
-    let outputs=[...document.querySelectorAll(".cell")].map(
-        cell=> {
-            let output=cell.querySelector(".output")
-            if(output) return output.innerHTML
-            output=cell.querySelector(".rendered_html")
-            if(output) return output.innerHTML
-            return ""
-        }
-    )
-    
-    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs)) 
-    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[9])")
-    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
-    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
-    IPython.notebook.kernel.execute("soup = str(soup)")   
-    IPython.notebook.kernel.execute("html = open('../../out/site/balance.html','w')")
-    IPython.notebook.kernel.execute("html.write(\
-    '<html><head><link rel={} href={}><link rel={} href={}><link rel={} href={}><script src={}></script><script src={}></script></head><body>'\
-    .format('stylesheet', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', \
-    'stylesheet', './style.min.css', \
-    'stylesheet', './ipython.min.css', \
-    'https://cdn.plot.ly/plotly-latest.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js')\
-    + soup +'</body></html>')")
-    IPython.notebook.kernel.execute("html.close()")
-}''')
+outputs_ = reportediario.outputs
 
+vec_out = []
+for outs_ in outputs_:
+    ### Convertimos a lista los outputs
+    vec_out += list(outs_.data.values())
 
-# ### Peligro
-# 
-# Si hubiésemos utilizado solo Python, habríamos tenido el siguiente error (descomentar la línea de código).
+### Nuestro string
+vec_ = ''
+### Recorremos la lista de outputs
+for vec in vec_out:
+    vec = str(vec)
+    ### Quitamos configuración de Plot.ly
+    if vec.startswith("{'config':"):
+        pass
+    else:
+        ### Quitamos el str de datos de tabla sin formato
+        if vec.startswith("            "):
+            pass
+        else:
+            ### Quitamos el str del tipo de variable
+            vec = vec.replace('<IPython.core.display.Markdown object>', '')
+            ### Damos formato a tablas
+            if vec.startswith('<div>\n<style scoped>'):
+                vec = BeautifulSoup(vec, 'html.parser').find('table')
+                for tabla in soup: 
+                    vec['class'] = vec.get('class', []) + [' table table-dark table-striped table-hover table-sm table-responsive-lg']
+                    vec = str(vec)
+            ### Finalmente, añadimos al vector
+            vec_ += '<div class="row"><br><div class="col text-light">' + vec + '</div></div>'
 
-# In[6]:
-
-
-#html = open('balance.html','w')
-#html.write('''<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><script src='https://cdn.plot.ly/plotly-latest.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js'></script></head><body>''' +cell_outputs[9] +'''</body></html>''')
-#html.close()
+### Abrimos y modificamos el HTML
+with open('../../_build/html/dinamic/balance.html', 'w') as f:
+    f.write('''<html>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js">
+    </script>
+    </head>
+    <body>
+    <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+    <img src="../../img/page/0_base.png" width="35" height="35" class="d-inline-block align-top" alt="">
+    Numeral.lab
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Reporte diario <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Indicador de fase</a>
+      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/">La pandemia por la ventana</a>
+    </div>
+    </div>
+    </nav>
+    <div class="container-fluid bg-dark text-light">''' 
+    + vec_ + 
+    '''</div>
+    </body>
+    </html>''')
 
 
 # ## Información de sesión
 
-# In[7]:
+# In[26]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='3_requeriments.txt')
