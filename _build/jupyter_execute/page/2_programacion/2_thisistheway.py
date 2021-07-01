@@ -1127,7 +1127,7 @@ with open('../../_build/html/dinamic/indicadorfase.html', 'w', encoding='UTF-8')
     </head>
     <body>
     <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="https://pandemiaventana.github.io/pandemiaventana/">
     <img src="./logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
     Numeral.lab
       </a>
@@ -1136,7 +1136,7 @@ with open('../../_build/html/dinamic/indicadorfase.html', 'w', encoding='UTF-8')
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Reporte diario <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/balance.html">Reporte diario</a>
       <a class="nav-item nav-link active" href="#">Indicador de fase <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/">La pandemia por la ventana</a>
     </div>
