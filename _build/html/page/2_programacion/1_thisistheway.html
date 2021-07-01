@@ -1232,15 +1232,18 @@
 
 <span class="c1">### Datos calculados ###</span>
 
-<span class="c1">### Positividad diaria PCR</span>
-<span class="n">positividad_diaria</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">casos_cumulativos</span> <span class="o">-</span> <span class="n">casos_cumulativos_antigeno</span><span class="p">)</span><span class="o">/</span><span class="n">pcr_cumulativos</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1">### Positividad PCR sin redondear</span>
+<span class="n">positividad_diaria</span> <span class="o">=</span> <span class="p">((</span><span class="n">casos_cumulativos</span> <span class="o">-</span> <span class="n">casos_cumulativos_antigeno</span><span class="p">)</span><span class="o">/</span><span class="n">pcr_cumulativos</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
 <span class="c1">### Rellenamos datos anteriores al primer registro de los antígenos</span>
-<span class="n">positividad_diaria</span> <span class="o">=</span> <span class="n">positividad_diaria</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">casos_cumulativos</span><span class="p">)</span><span class="o">/</span><span class="n">pcr_cumulativos</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">positividad_diaria</span> <span class="o">=</span> <span class="n">positividad_diaria</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">casos_cumulativos</span><span class="p">)</span><span class="o">/</span><span class="n">pcr_cumulativos</span><span class="p">)</span>
 
-<span class="c1">### Positividad media móvil</span>
+<span class="c1">### Positividad media móvil redondeada</span>
 <span class="n">positividad_media_movil</span> <span class="o">=</span> <span class="n">positividad_diaria</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1">### Rellenamos datos anteriores al primer registro de los antígenos</span>
 <span class="n">positividad_media_movil</span> <span class="o">=</span> <span class="n">positividad_diaria</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">casos_cumulativos</span><span class="p">)</span><span class="o">/</span><span class="n">pcr_cumulativos</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">## Positividad PCR redondeada</span>
+<span class="n">positividad_diaria</span> <span class="o">=</span> <span class="n">positividad_diaria</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">### Positividad diaria ANTÍGENO</span>
 <span class="n">positividad_antigeno</span> <span class="o">=</span> <span class="p">(</span><span class="n">casos_cumulativos_antigeno</span><span class="p">[</span><span class="n">antigenos</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">/</span>
@@ -2084,7 +2087,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>4.00</td>
+      <td>3.00</td>
       <td>191.50</td>
       <td>0.84</td>
       <td>1.17</td>
@@ -2533,7 +2536,7 @@
 • Se reportaron 336 casos activos y 161 activos probables. 🧪
 • La tasa de crecimiento es del 1.17: curva de contagios al alza.
 • Hasta ayer, 47 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 92.3% ± 1.4%. 🆘
-• La positividad de casos PCR fue del 2%. Asimismo, una positividad media móvil semanal del 4%. 😷
+• La positividad de casos PCR fue del 2%. Asimismo, una positividad media móvil semanal del 3%. 😷
 • De cada cien mil habitantes en la región, 191 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 0.86. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 14.4. 💦
@@ -2673,19 +2676,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 01 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.365%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.526%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>45</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.644%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.862%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>61</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.648%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.467%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>45</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.931%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.951%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>56</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.275%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.317%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>45</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.173%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.074%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>87</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>95.355%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.195%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>42</b> días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 38° EDICION ⚙️ ]</p>
@@ -3945,7 +3948,7 @@ La media general del error es de:  0.84 %
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-01 19:02
+            Session information updated at 2021-07-01 19:21
             </pre>
             </details></div></div>
 </div>

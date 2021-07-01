@@ -543,15 +543,18 @@ uciocupacion_nacional = round(((int(csv58[(csv58['Region'] == 'Total') & (csv58[
 
 ### Datos calculados ###
 
-### Positividad diaria PCR
-positividad_diaria = (100*(casos_cumulativos - casos_cumulativos_antigeno)/pcr_cumulativos).round(0)
+### Positividad PCR sin redondear
+positividad_diaria = ((casos_cumulativos - casos_cumulativos_antigeno)/pcr_cumulativos)*100
 ### Rellenamos datos anteriores al primer registro de los antígenos
-positividad_diaria = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos).round(0)
+positividad_diaria = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos)
 
-### Positividad media móvil
+### Positividad media móvil redondeada
 positividad_media_movil = positividad_diaria.rolling(7).mean().round(0)
 ### Rellenamos datos anteriores al primer registro de los antígenos
 positividad_media_movil = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos).rolling(7).mean().round(0)
+
+## Positividad PCR redondeada
+positividad_diaria = positividad_diaria.round(0)
 
 ### Positividad diaria ANTÍGENO
 positividad_antigeno = (casos_cumulativos_antigeno[antigenos.first_valid_index():].transpose()/
