@@ -1,6 +1,10 @@
 format: jb-article
 root: page/0_intro/0_introduccion
 sections:
+- url: https://pandemiaventana.github.io/pandemiaventana/dinamic/balance.html
+  title: Balance histórico
+- url: https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html
+  title: Indicador de fase
 - file: page/1_experiencia/0_experiencia
   sections:
   - file: page/1_experiencia/1_experiencia
