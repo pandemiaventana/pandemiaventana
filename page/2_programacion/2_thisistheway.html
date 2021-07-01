@@ -792,7 +792,7 @@
 <span class="kn">import</span> <span class="nn">json</span> <span class="k">as</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Javascript</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Javascript</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
 <span class="c1">### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)</span>
@@ -1834,7 +1834,7 @@ Sus colores:
 <div class="section" id="donde-estara-la-salida">
 <h3>¿Dónde estará la salida?<a class="headerlink" href="#donde-estara-la-salida" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>La estará disponible en <a class="reference external" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html">“<strong>Indicador de fase</strong> 📆”</a>.</p>
+<div><p>La salida estará disponible en <a class="reference external" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html">“<strong>Indicador de fase</strong> 📆”</a>.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1970,6 +1970,281 @@ Sus colores:
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Salida real</span>
+<span class="k">for</span> <span class="n">capturado</span> <span class="ow">in</span> <span class="n">indicadorfase</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">capturado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<h2 style="font-size:60px">INDICADOR DE FASE</h2><h3 style="font-size:20px;">Región de Tarapacá, 28 de junio de 2021</h3><h3>Resultado para Alto Hospicio</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>98.499%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:orange">Transición</b>.
+Actualmente, la comuna registra <b>45</b> días en <b style="color:orange">Transición</b>.</p></li>
+</ul>
+<p>Se utilizaron las siguientes columnas:</p>
+<ul class="simple">
+<li><p>Casos acumulados en Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Alto Hospicio</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Alto Hospicio</p></li>
+</ul>
+<h3>Resultado para Camiña</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>97.759%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:orange">Transición</b>.
+Actualmente, la comuna registra <b>61</b> días en <b style="color:orange">Transición</b>.</p></li>
+</ul>
+<p>Se utilizaron las siguientes columnas:</p>
+<ul class="simple">
+<li><p>Casos acumulados en Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Camiña</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Tamarugal</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Camiña</p></li>
+</ul>
+<h3>Resultado para Colchane</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>97.466%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>45</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+</ul>
+<p>Se utilizaron las siguientes columnas:</p>
+<ul class="simple">
+<li><p>Casos acumulados en Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Colchane</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Tamarugal</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Colchane</p></li>
+</ul>
+<h3>Resultado para Huara</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>99.921%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>56</b> días en <b style="color:gold">Preparación</b>.</p></li>
+</ul>
+<p>Se utilizaron las siguientes columnas:</p>
+<ul class="simple">
+<li><p>Casos acumulados en Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Huara</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Tamarugal</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Huara</p></li>
+</ul>
+<h3>Resultado para Iquique</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>98.398%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:orange">Transición</b>.
+Actualmente, la comuna registra <b>45</b> días en <b style="color:orange">Transición</b>.</p></li>
+</ul>
+<p>Se utilizaron las siguientes columnas:</p>
+<ul class="simple">
+<li><p>Casos acumulados en Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Iquique</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Iquique</p></li>
+</ul>
+<h3>Resultado para Pica</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>98.465%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+Actualmente, la comuna registra <b>87</b> días en <b style="color:orange">Transición</b>.</p></li>
+</ul>
+<p>Se utilizaron las siguientes columnas:</p>
+<ul class="simple">
+<li><p>Casos acumulados en Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Pica</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Tamarugal</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Pica</p></li>
+</ul>
+<h3>Resultado para Pozo Almonte</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>95.837%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>42</b> días en <b style="color:gold">Preparación</b>.</p></li>
+</ul>
+<p>Se utilizaron las siguientes columnas:</p>
+<ul class="simple">
+<li><p>Casos acumulados en Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Pozo Almonte</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Tamarugal</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Pozo Almonte</p></li>
+</ul>
+<h3>Consideraciones</h3><blockquote>
+<div><p>Los datos históricos contemplan desde el <b>28 de julio de 2020</b> hasta el <b>01 de julio de 2021</b>.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El resultado del algoritmo <b>no implica un cambio de fase</b>. La evolución del Paso a Paso
+es monitoreada por las autoridades del Ministerio de Salud</p>
+</div></blockquote>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="validacion">
@@ -2035,7 +2310,7 @@ Sus colores:
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_6.png" src="../../_images/2_thisistheway_50_6.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_6.png" src="../../_images/2_thisistheway_51_6.png" />
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2046,7 +2321,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_12.png" src="../../_images/2_thisistheway_51_12.png" />
 <h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
@@ -2058,7 +2333,7 @@ Apertura Inicial       1.00      1.00      1.00        46
     weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_18.png" src="../../_images/2_thisistheway_51_18.png" />
 <h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2069,7 +2344,7 @@ Apertura Inicial       1.00      1.00      1.00        46
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_24.png" src="../../_images/2_thisistheway_51_24.png" />
 <h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2081,7 +2356,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_30.png" src="../../_images/2_thisistheway_51_30.png" />
 <h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2092,7 +2367,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_36.png" src="../../_images/2_thisistheway_51_36.png" />
 <h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>92.85714285714286%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2105,7 +2380,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       0.95      0.93      0.93        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_42.png" src="../../_images/2_thisistheway_51_42.png" />
 </div>
 </div>
 <div class="section" id="ruido">
@@ -2420,7 +2695,7 @@ weighted avg       0.95      0.93      0.93        56
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-01 04:42
+            Session information updated at 2021-07-01 05:14
             </pre>
             </details></div></div>
 </div>
