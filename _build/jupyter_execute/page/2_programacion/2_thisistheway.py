@@ -1122,11 +1122,13 @@ with open('../../_build/html/dinamic/indicadorfase.html', 'w') as f:
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js">
     </script>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8">
     </head>
     <body>
     <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-    <img src="../../img/page/0_base.png" width="35" height="35" class="d-inline-block align-top" alt="">
+    <img src="./logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
     Numeral.lab
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

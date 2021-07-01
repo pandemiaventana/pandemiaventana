@@ -370,6 +370,8 @@ with open('../../_build/html/dinamic/balance.html', 'w') as f:
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js">
     </script>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8">
     </head>
     <body>
     <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
