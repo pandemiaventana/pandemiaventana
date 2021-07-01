@@ -998,7 +998,7 @@ for comuna in comunas:
 # 
 # ### ¿Dónde estará la salida?
 # 
-# > La estará disponible en "**Visualización** 📊".
+# > La estará disponible en ["**Indicador de fase** 📆"](https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html).
 
 # In[15]:
 

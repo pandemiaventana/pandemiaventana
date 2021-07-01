@@ -190,7 +190,7 @@ get_ipython().run_cell_magic('capture', 'reportediario', 'x = 0\n### Título y o
 # 
 # ### ¿Dónde estará la salida?
 # 
-# > Dicha salida estará disponible en "**Visualización** 📊".
+# > La salida estará disponible en ["**Balance histórico** 📊"](https://pandemiaventana.github.io/pandemiaventana/dinamic/balance.html).
 # 
 # ### ¿Cómo funciona?
 # 
@@ -375,7 +375,7 @@ with open('../../_build/html/dinamic/balance.html', 'w', encoding='UTF-8') as f:
     <body>
     <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-    <img src="../../img/page/logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
+    <img src="./logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
     Numeral.lab
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
