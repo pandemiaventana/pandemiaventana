@@ -348,14 +348,13 @@ for vec in vec_out:
             ### Damos formato a tablas
             if vec.startswith('<div>\n<style scoped>'):
                 vec = BeautifulSoup(vec, 'html.parser').find('table')
-                for tabla in soup: 
-                    vec['class'] = vec.get('class', []) + [' table table-dark table-striped table-hover table-sm table-responsive-lg']
-                    vec = str(vec)
+                vec['class'] = vec.get('class', []) + [' table table-dark table-striped table-hover table-sm table-responsive-lg']
+                vec = str(vec)
             ### Finalmente, añadimos al vector
             vec_ += '<div class="row"><br><div class="col text-light">' + vec + '</div></div>'
 
 ### Abrimos y modificamos el HTML
-with open('../../_build/html/dinamic/balance.html', 'w') as f:
+with open('../../_build/html/dinamic/balance.html', 'w', encoding='UTF-8') as f:
     f.write('''<html>
     <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -376,7 +375,7 @@ with open('../../_build/html/dinamic/balance.html', 'w') as f:
     <body>
     <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-    <img src="../../img/page/0_base.png" width="35" height="35" class="d-inline-block align-top" alt="">
+    <img src="../../img/page/logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
     Numeral.lab
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -399,7 +398,7 @@ with open('../../_build/html/dinamic/balance.html', 'w') as f:
 
 # ## Información de sesión
 
-# In[26]:
+# In[6]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='3_requeriments.txt')

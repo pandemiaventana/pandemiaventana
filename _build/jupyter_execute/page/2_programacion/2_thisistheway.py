@@ -1107,7 +1107,7 @@ for vec in vec_out:
             vec_ += '<div class="row"><br><div class="col text-light">' + vec + '</div></div>'
 
 ### Abrimos y modificamos el HTML
-with open('../../_build/html/dinamic/indicadorfase.html', 'w') as f:
+with open('../../_build/html/dinamic/indicadorfase.html', 'w', encoding='UTF-8') as f:
     f.write('''<html>
     <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
