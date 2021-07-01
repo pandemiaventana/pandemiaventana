@@ -460,10 +460,10 @@ Data columns (total 5 columns):
  #   Column                        Non-Null Count  Dtype  
 ---  ------                        --------------  -----  
  0   Fecha                         486 non-null    object 
- 1   Casos nuevos con síntomas     485 non-null    float64
- 2   Casos nuevos sin síntomas     428 non-null    float64
- 3   Casos nuevos por laboratorio  378 non-null    float64
- 4   Casos nuevos por antígeno     126 non-null    float64
+ 1   Casos nuevos con síntomas     486 non-null    float64
+ 2   Casos nuevos sin síntomas     429 non-null    float64
+ 3   Casos nuevos por laboratorio  379 non-null    float64
+ 4   Casos nuevos por antígeno     127 non-null    float64
 dtypes: float64(4), object(1)
 memory usage: 47.1 KB
 </pre></div>
@@ -495,8 +495,8 @@ Data columns (total 3 columns):
  #   Column                     Non-Null Count  Dtype  
 ---  ------                     --------------  -----  
  0   Fecha                      376 non-null    object 
- 1   Casos activos confirmados  375 non-null    float64
- 2   Casos activos probables    375 non-null    float64
+ 1   Casos activos confirmados  376 non-null    float64
+ 2   Casos activos probables    376 non-null    float64
 dtypes: float64(2), object(1)
 memory usage: 30.6 KB
 </pre></div>
@@ -509,7 +509,7 @@ Data columns (total 2 columns):
  #   Column                             Non-Null Count  Dtype  
 ---  ------                             --------------  -----  
  0   Fecha                              486 non-null    object 
- 1   Casos con sospecha de reinfección  126 non-null    float64
+ 1   Casos con sospecha de reinfección  127 non-null    float64
 dtypes: float64(1), object(1)
 memory usage: 35.7 KB
 </pre></div>
@@ -522,10 +522,10 @@ Data columns (total 5 columns):
  #   Column                        Non-Null Count  Dtype  
 ---  ------                        --------------  -----  
  0   Fecha                         486 non-null    object 
- 1   Casos confirmados acumulados  485 non-null    float64
- 2   Casos recuperados acumulados  450 non-null    float64
- 3   Casos activos confirmados     465 non-null    float64
- 4   Casos fallecidos acumulados   466 non-null    float64
+ 1   Casos confirmados acumulados  486 non-null    float64
+ 2   Casos recuperados acumulados  451 non-null    float64
+ 3   Casos activos confirmados     466 non-null    float64
+ 4   Casos fallecidos acumulados   467 non-null    float64
 dtypes: float64(4), object(1)
 memory usage: 47.1 KB
 </pre></div>
@@ -558,7 +558,7 @@ Data columns (total 3 columns):
 ---  ------                                   --------------  -----  
  0   Fecha                                    486 non-null    object 
  1   Media móvil real de ocupación UCI        436 non-null    float64
- 2   Media móvil hipotética de ocupación UCI  437 non-null    float64
+ 2   Media móvil hipotética de ocupación UCI  438 non-null    float64
 dtypes: float64(2), object(1)
 memory usage: 39.5 KB
 </pre></div>
@@ -571,8 +571,8 @@ Data columns (total 3 columns):
  #   Column                                        Non-Null Count  Dtype  
 ---  ------                                        --------------  -----  
  0   Fecha                                         486 non-null    object 
- 1   PCR informados nuevos                         440 non-null    float64
- 2   Media móvil semanal de PCR informados nuevos  433 non-null    float64
+ 1   PCR informados nuevos                         441 non-null    float64
+ 2   Media móvil semanal de PCR informados nuevos  434 non-null    float64
 dtypes: float64(2), object(1)
 memory usage: 39.5 KB
 </pre></div>
@@ -604,7 +604,7 @@ Data columns (total 2 columns):
  #   Column                                                        Non-Null Count  Dtype  
 ---  ------                                                        --------------  -----  
  0   Fecha                                                         486 non-null    object 
- 1   Tasa de casos nuevos de casos nuevos por cien mil habitantes  479 non-null    float64
+ 1   Tasa de casos nuevos de casos nuevos por cien mil habitantes  480 non-null    float64
 dtypes: float64(1), object(1)
 memory usage: 35.7 KB
 </pre></div>
@@ -646,8 +646,8 @@ Data columns (total 3 columns):
  #   Column                                              Non-Null Count  Dtype  
 ---  ------                                              --------------  -----  
  0   Fecha                                               486 non-null    object 
- 1   Antígenos informados nuevos                         26 non-null     float64
- 2   Media móvil semanal de antígenos informados nuevos  20 non-null     float64
+ 1   Antígenos informados nuevos                         27 non-null     float64
+ 2   Media móvil semanal de antígenos informados nuevos  21 non-null     float64
 dtypes: float64(2), object(1)
 memory usage: 39.5 KB
 </pre></div>
@@ -660,8 +660,8 @@ Data columns (total 3 columns):
  #   Column                   Non-Null Count  Dtype  
 ---  ------                   --------------  -----  
  0   Fecha                    486 non-null    object 
- 1   Cupos en residencias     397 non-null    float64
- 2   Usuarios en residencias  397 non-null    float64
+ 1   Cupos en residencias     398 non-null    float64
+ 2   Usuarios en residencias  398 non-null    float64
 dtypes: float64(2), object(1)
 memory usage: 39.5 KB
 </pre></div>
@@ -674,37 +674,37 @@ Data columns (total 141 columns):
  #    Column                                         Non-Null Count  Dtype  
 ---   ------                                         --------------  -----  
  0    Fecha                                          486 non-null    object 
- 1    Casos confirmados acumulados                   485 non-null    float64
- 2    Casos recuperados acumulados                   450 non-null    float64
- 3    Casos fallecidos acumulados                    466 non-null    float64
- 4    Casos activos confirmados                      465 non-null    float64
- 5    Casos activos probables                        375 non-null    float64
- 6    Casos nuevos                                   485 non-null    float64
- 7    Casos nuevos con sintomas                      485 non-null    float64
- 8    Casos nuevos sin sintomas                      428 non-null    float64
- 9    Casos nuevos por laboratorio                   378 non-null    float64
- 10   Casos nuevos por antigeno                      126 non-null    float64
- 11   Casos con sospecha de reinfeccion              126 non-null    float64
- 12   Casos recuperados nuevos                       449 non-null    float64
- 13   Casos fallecidos nuevos                        465 non-null    float64
- 14   Antigenos informados nuevos                    26 non-null     float64
- 15   Antigenos informados acumulados                26 non-null     float64
- 16   PCR informados nuevos                          440 non-null    float64
- 17   PCR informados acumulados                      440 non-null    float64
- 18   Cupos en residencias                           397 non-null    float64
- 19   Usuarios en residencias                        397 non-null    float64
- 20   Numero de residencias                          397 non-null    float64
+ 1    Casos confirmados acumulados                   486 non-null    float64
+ 2    Casos recuperados acumulados                   451 non-null    float64
+ 3    Casos fallecidos acumulados                    467 non-null    float64
+ 4    Casos activos confirmados                      466 non-null    float64
+ 5    Casos activos probables                        376 non-null    float64
+ 6    Casos nuevos                                   486 non-null    float64
+ 7    Casos nuevos con sintomas                      486 non-null    float64
+ 8    Casos nuevos sin sintomas                      429 non-null    float64
+ 9    Casos nuevos por laboratorio                   379 non-null    float64
+ 10   Casos nuevos por antigeno                      127 non-null    float64
+ 11   Casos con sospecha de reinfeccion              127 non-null    float64
+ 12   Casos recuperados nuevos                       450 non-null    float64
+ 13   Casos fallecidos nuevos                        466 non-null    float64
+ 14   Antigenos informados nuevos                    27 non-null     float64
+ 15   Antigenos informados acumulados                27 non-null     float64
+ 16   PCR informados nuevos                          441 non-null    float64
+ 17   PCR informados acumulados                      441 non-null    float64
+ 18   Cupos en residencias                           398 non-null    float64
+ 19   Usuarios en residencias                        398 non-null    float64
+ 20   Numero de residencias                          398 non-null    float64
  21   UCI habilitadas                                442 non-null    float64
- 22   UCI ocupadas por confirmados                   456 non-null    float64
+ 22   UCI ocupadas por confirmados                   457 non-null    float64
  23   UCI ocupadas por no confirmados                442 non-null    float64
  24   UCI ocupacion media movil real                 436 non-null    float64
  25   Re regional                                    476 non-null    float64
  26   Re Iquique                                     469 non-null    float64
  27   Re Tamarugal                                   469 non-null    float64
- 28   Positividad diaria                             440 non-null    float64
- 29   Vacunados acumulados 1° dosis                  187 non-null    float64
- 30   Vacunados acumulados 2° dosis                  187 non-null    float64
- 31   Vacunados acumulados unica dosis               187 non-null    float64
+ 28   Positividad diaria                             441 non-null    float64
+ 29   Vacunados acumulados 1° dosis                  188 non-null    float64
+ 30   Vacunados acumulados 2° dosis                  188 non-null    float64
+ 31   Vacunados acumulados unica dosis               188 non-null    float64
  32   Casos acumulados en Alto Hospicio              133 non-null    float64
  33   Casos acumulados en Camiña                     133 non-null    float64
  34   Casos acumulados en Colchane                   133 non-null    float64
@@ -798,15 +798,15 @@ Data columns (total 141 columns):
  122  Fallecidos probables DEIS Iquique              295 non-null    float64
  123  Fallecidos probables DEIS Pica                 295 non-null    float64
  124  Fallecidos probables DEIS Pozo Almonte         295 non-null    float64
- 125  Positividad media movil *                      422 non-null    float64
- 126  Mortalidad especifica *                        466 non-null    float64
- 127  Crecimiento semanal *                          465 non-null    float64
- 128  Crecimiento diario *                           464 non-null    float64
- 129  UCI ocupacion media movil aprox *              437 non-null    float64
+ 125  Positividad media movil *                      423 non-null    float64
+ 126  Mortalidad especifica *                        467 non-null    float64
+ 127  Crecimiento semanal *                          466 non-null    float64
+ 128  Crecimiento diario *                           465 non-null    float64
+ 129  UCI ocupacion media movil aprox *              438 non-null    float64
  130  UCI error abs *                                436 non-null    float64
- 131  Tasa casos nuevos *                            479 non-null    float64
- 132  Positividad antigeno *                         26 non-null     float64
- 133  Positividad antigeno media movil *             20 non-null     float64
+ 131  Tasa casos nuevos *                            480 non-null    float64
+ 132  Positividad antigeno *                         27 non-null     float64
+ 133  Positividad antigeno media movil *             21 non-null     float64
  134  Mortalidad especifica comunal Alto Hospicio *  295 non-null    float64
  135  Mortalidad especifica comunal Camiña *         295 non-null    float64
  136  Mortalidad especifica comunal Colchane *       295 non-null    float64
@@ -826,7 +826,7 @@ Data columns (total 2 columns):
  #   Column                                         Non-Null Count  Dtype  
 ---  ------                                         --------------  -----  
  0   Fecha                                          486 non-null    object 
- 1   Mortalidad específica por cien mil habitantes  466 non-null    float64
+ 1   Mortalidad específica por cien mil habitantes  467 non-null    float64
 dtypes: float64(1), object(1)
 memory usage: 35.7 KB
 </pre></div>
@@ -839,8 +839,8 @@ Data columns (total 3 columns):
  #   Column                     Non-Null Count  Dtype  
 ---  ------                     --------------  -----  
  0   Fecha                      486 non-null    object 
- 1   Positividad diaria         440 non-null    float64
- 2   Positividad media movil *  422 non-null    float64
+ 1   Positividad diaria         441 non-null    float64
+ 2   Positividad media movil *  423 non-null    float64
 dtypes: float64(2), object(1)
 memory usage: 39.5 KB
 </pre></div>
@@ -853,9 +853,9 @@ Data columns (total 4 columns):
  #   Column                         Non-Null Count  Dtype  
 ---  ------                         --------------  -----  
  0   Fecha                          486 non-null    object 
- 1   Casos nuevos históricos        485 non-null    float64
- 2   Recuperados nuevos históricos  449 non-null    float64
- 3   Fallecidos nuevos históricos   465 non-null    float64
+ 1   Casos nuevos históricos        486 non-null    float64
+ 2   Recuperados nuevos históricos  450 non-null    float64
+ 3   Fallecidos nuevos históricos   466 non-null    float64
 dtypes: float64(3), object(1)
 memory usage: 43.3 KB
 </pre></div>
@@ -889,8 +889,8 @@ Data columns (total 3 columns):
  #   Column                 Non-Null Count  Dtype  
 ---  ------                 --------------  -----  
  0   Fecha                  486 non-null    object 
- 1   Crecimiento diario *   464 non-null    float64
- 2   Crecimiento semanal *  465 non-null    float64
+ 1   Crecimiento diario *   465 non-null    float64
+ 2   Crecimiento semanal *  466 non-null    float64
 dtypes: float64(2), object(1)
 memory usage: 39.5 KB
 </pre></div>
@@ -903,9 +903,9 @@ Data columns (total 4 columns):
  #   Column                                     Non-Null Count  Dtype  
 ---  ------                                     --------------  -----  
  0   Fecha                                      486 non-null    object 
- 1   Media móvil semanal de casos nuevos        479 non-null    float64
- 2   Media móvil semanal de recuperados nuevos  443 non-null    float64
- 3   Media móvil semanal de fallecidos nuevos   459 non-null    float64
+ 1   Media móvil semanal de casos nuevos        480 non-null    float64
+ 2   Media móvil semanal de recuperados nuevos  444 non-null    float64
+ 3   Media móvil semanal de fallecidos nuevos   460 non-null    float64
 dtypes: float64(3), object(1)
 memory usage: 43.3 KB
 </pre></div>
@@ -957,9 +957,9 @@ Data columns (total 4 columns):
  #   Column                            Non-Null Count  Dtype  
 ---  ------                            --------------  -----  
  0   Fecha                             486 non-null    object 
- 1   Vacunados acumulados 1° dosis     187 non-null    float64
- 2   Vacunados acumulados 2° dosis     187 non-null    float64
- 3   Vacunados acumulados unica dosis  187 non-null    float64
+ 1   Vacunados acumulados 1° dosis     188 non-null    float64
+ 2   Vacunados acumulados 2° dosis     188 non-null    float64
+ 3   Vacunados acumulados unica dosis  188 non-null    float64
 dtypes: float64(3), object(1)
 memory usage: 43.3 KB
 </pre></div>
@@ -1112,11 +1112,13 @@ memory usage: 62.3 KB
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
 <h2>Balance de vacunas</h2><p>Encontré los siguientes PDF:</p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.30.pdf&embedded=true'>2021.06.30.pdf</a></p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
 <h2>Indicador de Fase</h2><p>Encontré los siguientes PDF:</p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
 <p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
@@ -1380,7 +1382,7 @@ memory usage: 62.3 KB
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-01 17:46
+            Session information updated at 2021-07-01 19:03
             </pre>
             </details></div></div>
 </div>
