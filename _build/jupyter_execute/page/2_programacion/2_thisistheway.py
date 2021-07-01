@@ -864,20 +864,7 @@ plt.show()
 
 
 ### Variables por la comuna de Iquique
-
 df.loc[:, df.columns[df.columns.str.contains('Iquique', na=False)]]
-
-
-# In[12]:
-
-
-df.loc[:, df.columns[df.columns.str.contains('Iquique', na=False)]]
-
-
-# In[13]:
-
-
-df['Re Iquique'][df['Re Iquique'].last_valid_index()], df['Re Iquique'].last_valid_index()
 
 
 # Notar que:
@@ -898,7 +885,7 @@ df['Re Iquique'][df['Re Iquique'].last_valid_index()], df['Re Iquique'].last_val
 # 
 # ¿Qué tienen en común? Pues, que a partir de la posición 14 de la variable texto, siempre debería encontrarse el nombre de la comuna.
 
-# In[14]:
+# In[12]:
 
 
 ### La indexación en Python inicia desde el 0, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
@@ -910,7 +897,7 @@ df['Re Iquique'][df['Re Iquique'].last_valid_index()], df['Re Iquique'].last_val
 # 
 # Paralelamente, definiremos colores en un diccionario para cada una de las fases del plan Paso a Paso (*es para darle más belleza al Markdown que realizaremos después*).
 
-# In[15]:
+# In[13]:
 
 
 ### Extraemos nombres de comunas
@@ -947,7 +934,7 @@ print('Las comunas son: \n\n', comunas, '\n\nLas etiquetas del Paso a Paso:\n\n'
 # 
 # ### Gráficos de dispersión por comuna
 
-# In[16]:
+# In[14]:
 
 
 for comuna in comunas:
@@ -1009,7 +996,7 @@ for comuna in comunas:
 # 
 # - Entrenamos el algoritmo, almacenándolo en una variable aparte, por comuna, y además, almacenamos los resultados como variables de texto, *str*, en un vector. Este vector, al ser iterable, será recorrido por cada uno de sus elementos, separando por comuna, los resultados, los cuales serán introducidos en Markdown.
 
-# In[17]:
+# In[15]:
 
 
 results = []
@@ -1019,7 +1006,7 @@ resultado_prediccion = []
 resultado_prob = []
 report = []
 display(Markdown('<h2 style="font-size:60px">INDICADOR DE FASE</h2>'))
-display(Markdown('<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>'.format(df['Casos nuevos'].last_valid_index().strftime('%d de %B de %Y'))))
+display(Markdown('<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>'.format(df['Casos acumulados en Iquique'].last_valid_index().strftime('%d de %B de %Y'))))
 
 for comuna in comunas:
     
@@ -1136,7 +1123,7 @@ es monitoreada por las autoridades del Ministerio de Salud'''))
 # 
 # ¿Cómo funcionará ante esta prueba? Por eso, estamos **validando** su entrenamiento.
 
-# In[18]:
+# In[16]:
 
 
 ### Un poco de Markdown
@@ -1200,7 +1187,7 @@ for comuna in comunas:
 # 
 # Una sección adelantada. ¡Habrá mayor detalle en el siguiente notebook!
 
-# In[19]:
+# In[17]:
 
 
 ### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
@@ -1234,7 +1221,7 @@ Javascript('''{
 
 # ## Información de sesión
 
-# In[20]:
+# In[18]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='2_requeriments.txt')

@@ -943,7 +943,7 @@
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
  <h3> Para la columna Casos acumulados en Pica </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>0.025589718370190535</strong></p>
+<div><p>El valor de la curtosis es de <strong>0.0277168316168468</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
  <h3> Para la columna Paso a Paso Pozo Almonte </h3><blockquote>
@@ -1407,7 +1407,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Variables por la comuna de Iquique</span>
-
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Iquique&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]]</span>
 </pre></div>
 </div>
@@ -1588,16 +1587,16 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>499.00</td>
+      <td>504.00</td>
+      <td>68.00</td>
+      <td>225.54</td>
     </tr>
     <tr>
       <th>2021-06-28</th>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>27,896.00</td>
+      <td>313.00</td>
       <td>2.00</td>
       <td>42.00</td>
       <td>NaN</td>
@@ -1606,10 +1605,10 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>507.00</td>
+      <td>513.00</td>
+      <td>68.00</td>
+      <td>229.57</td>
     </tr>
     <tr>
       <th>2021-06-29</th>
@@ -1669,282 +1668,6 @@
 </table>
 <p>486 rows × 15 columns</p>
 </div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Iquique&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Re Iquique</th>
-      <th>Casos acumulados en Iquique</th>
-      <th>Casos activos en Iquique</th>
-      <th>Paso a Paso Iquique</th>
-      <th>Paso a Paso (dias) Iquique</th>
-      <th>Movilidad Iquique</th>
-      <th>Notificacion PCR Iquique</th>
-      <th>BAC Iquique</th>
-      <th>Positividad Iquique</th>
-      <th>Cobertura de testeo Iquique</th>
-      <th>Oportunidad en notificacion Iquique</th>
-      <th>Fallecidos Iquique</th>
-      <th>Fallecidos confirmados DEIS Iquique</th>
-      <th>Fallecidos probables DEIS Iquique</th>
-      <th>Mortalidad especifica comunal Iquique *</th>
-    </tr>
-    <tr>
-      <th>Fecha</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2020-03-03</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.99</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-04</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.99</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-05</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.99</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-06</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.99</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-07</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.02</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2021-06-27</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>41.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2021-06-28</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>42.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2021-06-29</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>43.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2021-06-30</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>44.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2021-07-01</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>45.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>486 rows × 15 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re Iquique&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re Iquique&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re Iquique&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.93, Timestamp(&#39;2021-06-19 00:00:00&#39;))
-</pre></div>
-</div>
-</div>
 </div>
 <p>Notar que:</p>
 <p><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">df.columns[df.columns.str.contains('{}'.format('Iquique'),</span> <span class="pre">na=False)]]</span></code></p>
@@ -2040,13 +1763,13 @@ Sus colores:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2_thisistheway_48_0.png" src="../../_images/2_thisistheway_48_0.png" />
-<img alt="../../_images/2_thisistheway_48_1.png" src="../../_images/2_thisistheway_48_1.png" />
-<img alt="../../_images/2_thisistheway_48_2.png" src="../../_images/2_thisistheway_48_2.png" />
-<img alt="../../_images/2_thisistheway_48_3.png" src="../../_images/2_thisistheway_48_3.png" />
-<img alt="../../_images/2_thisistheway_48_4.png" src="../../_images/2_thisistheway_48_4.png" />
-<img alt="../../_images/2_thisistheway_48_5.png" src="../../_images/2_thisistheway_48_5.png" />
-<img alt="../../_images/2_thisistheway_48_6.png" src="../../_images/2_thisistheway_48_6.png" />
+<img alt="../../_images/2_thisistheway_46_0.png" src="../../_images/2_thisistheway_46_0.png" />
+<img alt="../../_images/2_thisistheway_46_1.png" src="../../_images/2_thisistheway_46_1.png" />
+<img alt="../../_images/2_thisistheway_46_2.png" src="../../_images/2_thisistheway_46_2.png" />
+<img alt="../../_images/2_thisistheway_46_3.png" src="../../_images/2_thisistheway_46_3.png" />
+<img alt="../../_images/2_thisistheway_46_4.png" src="../../_images/2_thisistheway_46_4.png" />
+<img alt="../../_images/2_thisistheway_46_5.png" src="../../_images/2_thisistheway_46_5.png" />
+<img alt="../../_images/2_thisistheway_46_6.png" src="../../_images/2_thisistheway_46_6.png" />
 </div>
 </div>
 <p>Se puede apreciar como el indicador - <em>prácticamente</em> - no tiene incidencia. Es innecesario considerar las variables regionales (o incluso nacionales como la ocupación UCI nacional). Está zanjada la respuesta a la primera pregunta.</p>
@@ -2101,7 +1824,7 @@ Sus colores:
 <span class="n">resultado_prob</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">report</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h2 style=&quot;font-size:60px&quot;&gt;INDICADOR DE FASE&lt;/h2&gt;&#39;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h3 style=&quot;font-size:20px;&quot;&gt;Región de Tarapacá, </span><span class="si">{}</span><span class="s1">&lt;/h3&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">))))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h3 style=&quot;font-size:20px;&quot;&gt;Región de Tarapacá, </span><span class="si">{}</span><span class="s1">&lt;/h3&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos acumulados en Iquique&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">))))</span>
 
 <span class="k">for</span> <span class="n">comuna</span> <span class="ow">in</span> <span class="n">comunas</span><span class="p">:</span>
     
@@ -2224,8 +1947,8 @@ Sus colores:
 </div>
 </div>
 <div class="cell_output docutils container">
-<h2 style="font-size:60px">INDICADOR DE FASE</h2><h3 style="font-size:20px;">Región de Tarapacá, 30 de junio de 2021</h3><h3>Resultado para Alto Hospicio</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.832%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
+<h2 style="font-size:60px">INDICADOR DE FASE</h2><h3 style="font-size:20px;">Región de Tarapacá, 28 de junio de 2021</h3><h3>Resultado para Alto Hospicio</h3><ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <strong>98.474%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 45 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2263,7 +1986,7 @@ Actualmente, la comuna registra 45 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Alto Hospicio</p></li>
 </ul>
 <h3>Resultado para Camiña</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.867%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.842%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 61 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2298,7 +2021,7 @@ Actualmente, la comuna registra 61 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Camiña</p></li>
 </ul>
 <h3>Resultado para Colchane</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.632%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.635%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra 45 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2333,7 +2056,7 @@ Actualmente, la comuna registra 45 días en <b style="color:dodgerblue">Apertura
 <li><p>Paso a Paso (dias) Colchane</p></li>
 </ul>
 <h3>Resultado para Huara</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>99.661%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>99.914%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 56 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2371,7 +2094,7 @@ Actualmente, la comuna registra 56 días en <b style="color:gold">Preparación</
 <li><p>Paso a Paso (dias) Huara</p></li>
 </ul>
 <h3>Resultado para Iquique</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.436%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>97.783%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 45 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2409,7 +2132,7 @@ Actualmente, la comuna registra 45 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Iquique</p></li>
 </ul>
 <h3>Resultado para Pica</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.758%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.348%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra 87 días en <b style="color:orange">Transición</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2447,7 +2170,7 @@ Actualmente, la comuna registra 87 días en <b style="color:orange">Transición<
 <li><p>Paso a Paso (dias) Pica</p></li>
 </ul>
 <h3>Resultado para Pozo Almonte</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.266%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <strong>98.641%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra 42 días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>Se utilizaron las siguientes columnas:</p>
@@ -2555,7 +2278,7 @@ es monitoreada por las autoridades del Ministerio de Salud</p>
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_52_6.png" src="../../_images/2_thisistheway_52_6.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_6.png" src="../../_images/2_thisistheway_50_6.png" />
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2566,7 +2289,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_52_12.png" src="../../_images/2_thisistheway_52_12.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
 <h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
@@ -2578,7 +2301,7 @@ Apertura Inicial       1.00      1.00      1.00        46
     weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_52_18.png" src="../../_images/2_thisistheway_52_18.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
 <h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2589,7 +2312,7 @@ Apertura Inicial       1.00      1.00      1.00        46
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_52_24.png" src="../../_images/2_thisistheway_52_24.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
 <h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2601,7 +2324,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_52_30.png" src="../../_images/2_thisistheway_52_30.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
 <h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2612,7 +2335,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_52_36.png" src="../../_images/2_thisistheway_52_36.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
 <h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>92.85714285714286%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2625,7 +2348,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       0.95      0.93      0.93        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_52_42.png" src="../../_images/2_thisistheway_52_42.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
 </div>
 </div>
 <div class="section" id="ruido">
@@ -2922,7 +2645,7 @@ weighted avg       0.95      0.93      0.93        56
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-30 17:57
+            Session information updated at 2021-06-30 23:47
             </pre>
             </details></div></div>
 </div>
