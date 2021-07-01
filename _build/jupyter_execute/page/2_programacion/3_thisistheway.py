@@ -384,7 +384,7 @@ with open('../../_build/html/dinamic/balance.html', 'w', encoding='UTF-8') as f:
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="#">Reporte diario <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Indicador de fase</a>
+      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html">Indicador de fase</a>
       <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/">La pandemia por la ventana</a>
     </div>
     </div>
