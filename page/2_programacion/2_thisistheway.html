@@ -610,6 +610,11 @@
      Código
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#donde-estara-la-salida">
+     ¿Dónde estará la salida?
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1582,11 +1587,11 @@
       <td>2.00</td>
       <td>41.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>6,341.00</td>
+      <td>79.40</td>
+      <td>4.80</td>
+      <td>97.00</td>
+      <td>99.30</td>
       <td>499.00</td>
       <td>504.00</td>
       <td>68.00</td>
@@ -1600,11 +1605,11 @@
       <td>2.00</td>
       <td>42.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>5,693.00</td>
+      <td>81.00</td>
+      <td>3.60</td>
+      <td>96.70</td>
+      <td>100.00</td>
       <td>507.00</td>
       <td>513.00</td>
       <td>68.00</td>
@@ -1815,9 +1820,17 @@ Sus colores:
 <li><p>Separamos observaciones en conjuntos de entrenamiento y prueba, considerando que trabajamos con series de tiempo.</p></li>
 <li><p>Entrenamos el algoritmo, almacenándolo en una variable aparte, por comuna, y además, almacenamos los resultados como variables de texto, <em>str</em>, en un vector. Este vector, al ser iterable, será recorrido por cada uno de sus elementos, separando por comuna, los resultados, los cuales serán introducidos en Markdown.</p></li>
 </ul>
+</div>
+<div class="section" id="donde-estara-la-salida">
+<h3>¿Dónde estará la salida?<a class="headerlink" href="#donde-estara-la-salida" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>La estará disponible en “<strong>Visualización</strong> 📊”.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> indicadorfase
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">resultado_colores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">resultado_prediccion</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1909,8 +1922,8 @@ Sus colores:
     
     <span class="c1">### Almacenamos los resultados</span>
     
-    <span class="n">results</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;&#39;&#39;- De acuerdo al algoritmo, y con un **</span><span class="si">{}</span><span class="s1">%** de probabilidad, **</span><span class="si">{}</span><span class="s1">** debería estar en &lt;b style=&quot;color:</span><span class="si">{}</span><span class="s1">&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;.</span>
-<span class="s1">    Actualmente, la comuna registra </span><span class="si">{}</span><span class="s1"> días en &lt;b style=&quot;color:</span><span class="si">{}</span><span class="s1">&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;.&#39;&#39;&#39;</span>\
+    <span class="n">results</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;&#39;&#39;- De acuerdo al algoritmo, y con un &lt;b&gt;</span><span class="si">{}</span><span class="s1">%&lt;/b&gt; de probabilidad, &lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt; debería estar en &lt;b style=&quot;color:</span><span class="si">{}</span><span class="s1">&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;.</span>
+<span class="s1">    Actualmente, la comuna registra &lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt; días en &lt;b style=&quot;color:</span><span class="si">{}</span><span class="s1">&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;.&#39;&#39;&#39;</span>\
             <span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="o">-</span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">comuna</span><span class="p">,</span>\
             <span class="p">[</span><span class="n">paleta</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_</span><span class="p">)][</span><span class="mi">0</span><span class="p">],</span>\
             <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">dias_</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
@@ -1938,279 +1951,13 @@ Sus colores:
 <span class="c1">### Consideraciones del algoritmo (Markdown)</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h3&gt;Consideraciones&lt;/h3&gt;&#39;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Los datos históricos contemplan desde el **</span><span class="si">{}</span><span class="s1">** hasta el **</span><span class="si">{}</span><span class="s1">**.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">),</span>\
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Los datos históricos contemplan desde el &lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt; hasta el &lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">),</span>\
             <span class="n">ind_</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">))))</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&gt; El resultado del algoritmo **no implica un cambio de fase**. La evolución del Paso a Paso</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&gt; El resultado del algoritmo &lt;b&gt;no implica un cambio de fase&lt;/b&gt;. La evolución del Paso a Paso</span>
 <span class="s1">es monitoreada por las autoridades del Ministerio de Salud&#39;&#39;&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<h2 style="font-size:60px">INDICADOR DE FASE</h2><h3 style="font-size:20px;">Región de Tarapacá, 28 de junio de 2021</h3><h3>Resultado para Alto Hospicio</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.474%</strong> de probabilidad, <strong>Alto Hospicio</strong> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra 45 días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Alto Hospicio</p></li>
-</ul>
-<h3>Resultado para Camiña</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.842%</strong> de probabilidad, <strong>Camiña</strong> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra 61 días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Camiña</p></li>
-</ul>
-<h3>Resultado para Colchane</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.635%</strong> de probabilidad, <strong>Colchane</strong> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
-Actualmente, la comuna registra 45 días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Colchane</p></li>
-</ul>
-<h3>Resultado para Huara</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>99.914%</strong> de probabilidad, <strong>Huara</strong> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra 56 días en <b style="color:gold">Preparación</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Huara</p></li>
-</ul>
-<h3>Resultado para Iquique</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>97.783%</strong> de probabilidad, <strong>Iquique</strong> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra 45 días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Iquique</p></li>
-</ul>
-<h3>Resultado para Pica</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.348%</strong> de probabilidad, <strong>Pica</strong> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra 87 días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Pica</p></li>
-</ul>
-<h3>Resultado para Pozo Almonte</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <strong>98.641%</strong> de probabilidad, <strong>Pozo Almonte</strong> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra 42 días en <b style="color:gold">Preparación</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Pozo Almonte</p></li>
-</ul>
-<h3>Consideraciones</h3><blockquote>
-<div><p>Los datos históricos contemplan desde el <strong>28 de julio de 2020</strong> hasta el <strong>01 de julio de 2021</strong>.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El resultado del algoritmo <strong>no implica un cambio de fase</strong>. La evolución del Paso a Paso
-es monitoreada por las autoridades del Ministerio de Salud</p>
-</div></blockquote>
 </div>
 </div>
 </div>
@@ -2372,57 +2119,73 @@ weighted avg       0.95      0.93      0.93        56
 <p>Una sección adelantada. ¡Habrá mayor detalle en el siguiente notebook!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###</span>
-<span class="n">Javascript</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;{</span>
-<span class="s1">    let outputs=[...document.querySelectorAll(&quot;.cell&quot;)].map(</span>
-<span class="s1">        cell=&gt; {</span>
-<span class="s1">            let output=cell.querySelector(&quot;.output&quot;)</span>
-<span class="s1">            if(output) return output.innerHTML</span>
-<span class="s1">            output=cell.querySelector(&quot;.rendered_html&quot;)</span>
-<span class="s1">            if(output) return output.innerHTML</span>
-<span class="s1">            return &quot;&quot;</span>
-<span class="s1">        }</span>
-<span class="s1">    )</span>
-<span class="s1">    </span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;cell_outputs=&quot;+JSON.stringify(outputs)) </span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;soup = BeautifulSoup(cell_outputs[48])&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;removals = soup.find_all(attrs={&#39;class&#39;: &#39;prompt&#39;})&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;for removal in removals: removal.decompose()&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)   </span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;html = open(&#39;../../out/site/indicador.html&#39;,&#39;w&#39;)&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;html.write(</span><span class="se">\</span>
-<span class="s1">    &#39;&lt;html&gt;&lt;head&gt;&lt;link rel=</span><span class="si">{}</span><span class="s1"> href=</span><span class="si">{}</span><span class="s1">&gt;&lt;link rel=</span><span class="si">{}</span><span class="s1"> href=</span><span class="si">{}</span><span class="s1">&gt;&lt;link rel=</span><span class="si">{}</span><span class="s1"> href=</span><span class="si">{}</span><span class="s1">&gt;&lt;script src=</span><span class="si">{}</span><span class="s1">&gt;&lt;/script&gt;&lt;script src=</span><span class="si">{}</span><span class="s1">&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&#39;</span><span class="se">\</span>
-<span class="s1">    .format(&#39;stylesheet&#39;, &#39;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css&#39;, </span><span class="se">\</span>
-<span class="s1">    &#39;stylesheet&#39;, &#39;./style.min.css&#39;, </span><span class="se">\</span>
-<span class="s1">    &#39;stylesheet&#39;, &#39;./ipython.min.css&#39;, </span><span class="se">\</span>
-<span class="s1">    &#39;https://cdn.plot.ly/plotly-latest.min.js&#39;, &#39;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js&#39;)</span><span class="se">\</span>
-<span class="s1">    + soup +&#39;&lt;/body&gt;&lt;/html&gt;&#39;)&quot;)</span>
-<span class="s1">    IPython.notebook.kernel.execute(&quot;html.close()&quot;)</span>
-<span class="s1">}&#39;&#39;&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputs_</span> <span class="o">=</span> <span class="n">indicadorfase</span><span class="o">.</span><span class="n">outputs</span>
+
+<span class="n">vec_out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">outs_</span> <span class="ow">in</span> <span class="n">outputs_</span><span class="p">:</span>
+    <span class="c1">### Convertimos a lista los outputs</span>
+    <span class="n">vec_out</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outs_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1">### Nuestro string</span>
+<span class="n">vec_</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="c1">### Recorremos la lista de outputs</span>
+<span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="n">vec_out</span><span class="p">:</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="c1">### Quitamos configuración de Plot.ly</span>
+    <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;{&#39;config&#39;:&quot;</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">### Quitamos el str de datos de tabla sin formato</span>
+        <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;            &quot;</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">### Quitamos el str del tipo de variable</span>
+            <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;IPython.core.display.Markdown object&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="c1">### Finalmente, añadimos al vector</span>
+            <span class="n">vec_</span> <span class="o">+=</span> <span class="s1">&#39;&lt;div class=&quot;row&quot;&gt;&lt;br&gt;&lt;div class=&quot;col text-light&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">vec</span> <span class="o">+</span> <span class="s1">&#39;&lt;/div&gt;&lt;/div&gt;&#39;</span>
+
+<span class="c1">### Abrimos y modificamos el HTML</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../_build/html/dinamic/indicadorfase.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;html&gt;</span>
+<span class="s1">    &lt;head&gt;</span>
+<span class="s1">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&quot; integrity=&quot;sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://code.jquery.com/jquery-3.2.1.slim.min.js&quot; integrity=&quot;sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js&quot; integrity=&quot;sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js&quot; integrity=&quot;sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://cdn.plot.ly/plotly-latest.min.js&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;/head&gt;</span>
+<span class="s1">    &lt;body&gt;</span>
+<span class="s1">    &lt;nav class=&quot;navbar nnavbar-expand-lg navbar-dark bg-dark&quot;&gt;</span>
+<span class="s1">      &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;</span>
+<span class="s1">    &lt;img src=&quot;../../img/page/0_base.png&quot; width=&quot;35&quot; height=&quot;35&quot; class=&quot;d-inline-block align-top&quot; alt=&quot;&quot;&gt;</span>
+<span class="s1">    Numeral.lab</span>
+<span class="s1">      &lt;/a&gt;</span>
+<span class="s1">      &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarNavAltMarkup&quot; aria-controls=&quot;navbarNavAltMarkup&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</span>
+<span class="s1">    &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</span>
+<span class="s1">    &lt;/button&gt;</span>
+<span class="s1">    &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarNavAltMarkup&quot;&gt;</span>
+<span class="s1">    &lt;div class=&quot;navbar-nav&quot;&gt;</span>
+<span class="s1">      &lt;a class=&quot;nav-item nav-link&quot; href=&quot;#&quot;&gt;Reporte diario &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;</span>
+<span class="s1">      &lt;a class=&quot;nav-item nav-link active&quot; href=&quot;#&quot;&gt;Indicador de fase &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;</span>
+<span class="s1">      &lt;a class=&quot;nav-item nav-link&quot; href=&quot;https://pandemiaventana.github.io/pandemiaventana/&quot;&gt;La pandemia por la ventana&lt;/a&gt;</span>
+<span class="s1">    &lt;/div&gt;</span>
+<span class="s1">    &lt;/div&gt;</span>
+<span class="s1">    &lt;/nav&gt;</span>
+<span class="s1">    &lt;div class=&quot;container-fluid bg-dark text-light&quot;&gt;&#39;&#39;&#39;</span> 
+    <span class="o">+</span> <span class="n">vec_</span> <span class="o">+</span> 
+    <span class="sd">&#39;&#39;&#39;&lt;/div&gt;</span>
+<span class="sd">    &lt;/body&gt;</span>
+<span class="sd">    &lt;/html&gt;&#39;&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/javascript">{
-    let outputs=[...document.querySelectorAll(".cell")].map(
-        cell=> {
-            let output=cell.querySelector(".output")
-            if(output) return output.innerHTML
-            output=cell.querySelector(".rendered_html")
-            if(output) return output.innerHTML
-            return ""
-        }
-    )
-    
-    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs)) 
-    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[48])")
-    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
-    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
-    IPython.notebook.kernel.execute("soup = str(soup)")   
-    IPython.notebook.kernel.execute("html = open('../../out/site/indicador.html','w')")
-    IPython.notebook.kernel.execute("html.write(    '<html><head><link rel={} href={}><link rel={} href={}><link rel={} href={}><script src={}></script><script src={}></script></head><body>'    .format('stylesheet', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css',     'stylesheet', './style.min.css',     'stylesheet', './ipython.min.css',     'https://cdn.plot.ly/plotly-latest.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js')    + soup +'</body></html>')")
-    IPython.notebook.kernel.execute("html.close()")
-}</script></div>
 </div>
 </div>
 <div class="section" id="informacion-de-sesion">
@@ -2645,7 +2408,7 @@ weighted avg       0.95      0.93      0.93        56
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-06-30 23:47
+            Session information updated at 2021-07-01 03:31
             </pre>
             </details></div></div>
 </div>
