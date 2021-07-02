@@ -167,7 +167,7 @@ for vec in vec_out:
 ### Abrimos y modificamos el MD
 with open('../../page/5_reportes/4_reportes.md', 'w', encoding='UTF-8') as f:
     f.write('''# Reportes históricos
-
+A continuación, dispongo los reportes históricos a partir de la fecha de publicación de la página. En caso de requerir otras ediciones, consultar <a href="https://www.instagram.com/numeral.lab/">Instagram</a>.
 ''' + vec_)
 
 
