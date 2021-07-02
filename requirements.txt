@@ -13,4 +13,4 @@ jupyter-book
 session_info
 markdownify
 bs4
-natsorted
+natsort
