@@ -127,7 +127,7 @@ with open('../../README.md', 'w', encoding='UTF-8') as f:
 # In[5]:
 
 
-get_ipython().run_cell_magic('capture', 'archivopdf', '\n### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###\nsum_ = []\ndirr = [\'diario\', \'vacuna\', \'indicadorfase\']\nnames = [\'Reporte diario\', \'Balance de vacunas\', \'Indicador de Fase\']\np = 0\nfor reporte in dirr:\n    display(Markdown(\'<h2>{}</h2>\'.format(names[p])))\n    display(Markdown(\'Encontré los siguientes PDF:\'.format(names[p])))\n    exec(\'sum_{} = []\'.format(reporte))\n    for string in [name for name in os.listdir(\'../../out/{}/pdf\'.format(reporte))]:\n        if os.path.isdir(\'../../out/diario/pdf/{}\'.format(string)):\n            pass\n        else:\n            exec(\'sum_{} += [string]\'.format(reporte))\n    exec(\'\'\'for ipdf in sum_{}:\n        display(Markdown(" > <a href=\'https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true\'>" + ipdf + "</a>"))\'\'\'.format(reporte))\n    p += 1\n    \ntxt2 = """# Archivo\n\n"""')
+get_ipython().run_cell_magic('capture', 'archivopdf', '\n### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###\nsum_ = []\ndirr = [\'diario\', \'vacuna\', \'indicadorfase\']\nnames = [\'Reporte diario\', \'Balance de vacunas\', \'Indicador de Fase\']\np = 0\nfor reporte in dirr:\n    display(Markdown(\'<h2>{}</h2>\'.format(names[p])))\n    display(Markdown(\'Encontré los siguientes PDF:\'.format(names[p])))\n    exec(\'sum_{} = []\'.format(reporte))\n    for string in [name for name in os.listdir(\'../../out/{}/pdf\'.format(reporte))]:\n        if os.path.isdir(\'../../out/diario/pdf/{}\'.format(string)):\n            pass\n        else:\n            exec(\'sum_{} += [string]\'.format(reporte))\n    exec(\'\'\'for ipdf in sum_{}:\n        display(Markdown(" <a href=\'https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true\'>" + ipdf + "</a>"))\'\'\'.format(reporte))\n    p += 1\n    \ntxt2 = """# Archivo\n\n"""')
 
 
 # In[6]:
@@ -164,9 +164,9 @@ for vec in vec_out:
         ### Finalmente, añadimos al vector
         vec_ += '<br>' + vec
 
-### Abrimos y modificamos el HTML
+### Abrimos y modificamos el MD
 with open('../../page/5_reportes/4_reportes.md', 'w', encoding='UTF-8') as f:
-    f.write('# Reportes históricos' + vec_)
+    f.write('<h1>Reportes históricos</h1>' + vec_)
 
 
 # ## Información de sesión

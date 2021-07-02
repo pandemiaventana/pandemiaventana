@@ -241,119 +241,6 @@
      Indicador de fase
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5_reportes/4_reportes.html">
-     Reportes históricos
-     <br/>
-     <br/>
-     <h2>
-      Reporte diario
-     </h2>
-     <br/>
-     <br/>
-     Encontré los siguientes PDF:
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.30.pdf&amp;embedded=true">
-      2021.06.30.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.29.pdf&amp;embedded=true">
-      2021.06.29.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.27.pdf&amp;embedded=true">
-      2021.06.27.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.25.pdf&amp;embedded=true">
-      2021.06.25.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.28.pdf&amp;embedded=true">
-      2021.06.28.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.26.pdf&amp;embedded=true">
-      2021.06.26.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.01.pdf&amp;embedded=true">
-      2021.07.01.pdf
-     </a>
-     <br/>
-     <br/>
-     <h2>
-      Balance de vacunas
-     </h2>
-     <br/>
-     <br/>
-     Encontré los siguientes PDF:
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.30.pdf&amp;embedded=true">
-      2021.06.30.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.29.pdf&amp;embedded=true">
-      2021.06.29.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.28.pdf&amp;embedded=true">
-      2021.06.28.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.26.pdf&amp;embedded=true">
-      2021.06.26.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.01.pdf&amp;embedded=true">
-      2021.07.01.pdf
-     </a>
-     <br/>
-     <br/>
-     <h2>
-      Indicador de Fase
-     </h2>
-     <br/>
-     <br/>
-     Encontré los siguientes PDF:
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.25.pdf&amp;embedded=true">
-      2021.06.25.pdf
-     </a>
-     <br/>
-     <br/>
-     &gt;
-     <a href="https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.28.pdf&amp;embedded=true">
-      2021.06.28.pdf
-     </a>
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -1513,7 +1400,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> += [string]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;for ipdf in sum_</span><span class="si">{}</span><span class="s1">:</span>
-<span class="s1">        display(Markdown(&quot; &gt; &lt;a href=&#39;https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/&quot; + reporte + &quot;/pdf/&quot; + ipdf + &quot;&amp;embedded=true&#39;&gt;&quot; + ipdf + &quot;&lt;/a&gt;&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+<span class="s1">        display(Markdown(&quot; &lt;a href=&#39;https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/&quot; + reporte + &quot;/pdf/&quot; + ipdf + &quot;&amp;embedded=true&#39;&gt;&quot; + ipdf + &quot;&lt;/a&gt;&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
     <span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
     
 <span class="n">txt2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;# Archivo</span>
@@ -1533,50 +1420,22 @@
 </div>
 <div class="cell_output docutils container">
 <h2>Reporte diario</h2><p>Encontré los siguientes PDF:</p>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.30.pdf&embedded=true'>2021.06.30.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.27.pdf&embedded=true'>2021.06.27.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
-</div></blockquote>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.30.pdf&embedded=true'>2021.06.30.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.27.pdf&embedded=true'>2021.06.27.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
 <h2>Balance de vacunas</h2><p>Encontré los siguientes PDF:</p>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.30.pdf&embedded=true'>2021.06.30.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
-</div></blockquote>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.30.pdf&embedded=true'>2021.06.30.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
 <h2>Indicador de Fase</h2><p>Encontré los siguientes PDF:</p>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
-</div></blockquote>
-<blockquote>
-<div><p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
-</div></blockquote>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
 </div>
 </div>
 </div>
@@ -1605,9 +1464,9 @@
         <span class="c1">### Finalmente, añadimos al vector</span>
         <span class="n">vec_</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&#39;</span> <span class="o">+</span> <span class="n">vec</span>
 
-<span class="c1">### Abrimos y modificamos el HTML</span>
+<span class="c1">### Abrimos y modificamos el MD</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../page/5_reportes/4_reportes.md&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# Reportes históricos&#39;</span> <span class="o">+</span> <span class="n">vec_</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;Reportes históricos&lt;/h1&gt;&#39;</span> <span class="o">+</span> <span class="n">vec_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1817,7 +1676,7 @@
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-02 15:59
+            Session information updated at 2021-07-02 16:11
             </pre>
             </details></div></div>
 </div>
