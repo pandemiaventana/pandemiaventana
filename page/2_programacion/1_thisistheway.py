@@ -227,6 +227,14 @@ csv38 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 ### csv61 (casos fallecidos por comuna, procesados por DEIS)
 csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto61/serie_fallecidos_comuna.csv')
 
+### csv69 (tasa de incidencia provincial, por cada cien mil habitantes, de casos confirmados, calculada por ICOVID Chile)
+#falta por agregar (por lata)
+#csv69 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.provincial.ajustada.csv')
+
+### csv18 (tasa de incidencia histórica acumulada)
+#falta por agregar (por lata)
+#csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv')
+
 # %% [markdown]
 # ## Análisis y manipulación de datos
 #
@@ -256,7 +264,19 @@ csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 #
 # Todo ésto es parte de lo que se denomina limpieza de datos, que deberemos realizarlo con anterioridad al análisis exploratorio.
 #
-# A continuación, y una vez la data limpia, como también, reconocidas las variables que nos pueden ser útiles, debemos utilizar nuestra creatividad, y generar, a partir de la información que tenemos, nuevas variables que permitan resumir o acotar otras, dando a explicar, de mejor forma, los datos de la pandemia. 
+# A continuación, y una vez la data limpia, como también, reconocidas las variables que nos pueden ser útiles, debemos utilizar nuestra creatividad, y generar, a partir de la información que tenemos, nuevas variables que permitan resumir o acotar otras, dando a explicar, de mejor forma, los datos de la pandemia.
+#
+# ### Datos por agregar
+#
+# Por tiempo, falta añadir las siguientes variables (*si se requieren, abrir un Issue o solicitarlo directamente*):
+#
+# - Tasa de incidencia histórica por comuna.
+#
+# - Tasa de incidencia histórica por provincia.
+#
+# - Tasa de incidencia histórica en región.
+#
+# - Tasa de incidencia acumulada (*en caso de estar disponible*).
 #
 # ### Datos calculados
 #
@@ -2008,7 +2028,8 @@ for r in requirements:
 req += """jupyter-book
 """ + """session_info
 """ + """markdownify
-""" + """bs4"""
+""" + """bs4
+""" + """natsorted"""
 
 ### Abrimos y modificamos requirements.txt
 with open('../../requirements.txt', 'w') as f:

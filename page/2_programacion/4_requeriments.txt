@@ -6,7 +6,8 @@ locale
 markdownify
 math
 matplotlib==3.3.4
-numpy==1.19.5
+natsort==7.1.1
+numpy==1.19.2
 os
 pandas==1.2.3
 pkg_resources
@@ -19,7 +20,7 @@ session_info==1.0.0
 sklearn==0.24.1
 time
 types
-IPython==7.25.0
+IPython==7.23.1
 jupyter_client==6.1.12
 jupyter_core==4.7.1
-notebook==6.4.0
+notebook==6.3.0

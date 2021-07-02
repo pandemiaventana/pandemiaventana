@@ -1,10 +1,12 @@
 bs4==4.9.3
+io
 markdownify
-numpy==1.19.5
+natsort==7.1.1
+numpy==1.19.2
 os
 pandas==1.2.3
 session_info==1.0.0
-IPython==7.25.0
+IPython==7.23.1
 jupyter_client==6.1.12
 jupyter_core==4.7.1
-notebook==6.4.0
+notebook==6.3.0

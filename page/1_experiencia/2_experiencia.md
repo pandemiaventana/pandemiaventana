@@ -1,4 +1,4 @@
-# Del desorden a el orden
+# Del desorden al orden
 
 Varias veces que me encontré desarrollando ideas para brindar información y ayudar en plena pandemia, eran recurrente los siguientes pensamientos:
 
