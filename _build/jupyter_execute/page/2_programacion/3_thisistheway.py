@@ -348,7 +348,6 @@ for vec in vec_out:
             ### Damos formato a tablas
             if vec.startswith('<div>\n<style scoped>'):
                 vec = vec.replace('NaN', 'Sin datos')
-                print(vec)
                 vec = BeautifulSoup(vec, 'html.parser').find('table')
                 vec['class'] = vec.get('class', []) + [' table table-dark table-striped table-hover table-sm']
                 vec = '<div class="table-responsive">' + str(vec) + '</div>'
