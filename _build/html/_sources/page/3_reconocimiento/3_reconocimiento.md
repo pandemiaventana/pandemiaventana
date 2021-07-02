@@ -162,6 +162,36 @@ Octava aparición, sumado a una aparición simultánea del Dr. Corral.
 
 Puntualmente, comenté acerca del "*posible*" avance a Preparación por parte de las comunas de Iquique y Alto Hospicio, lo que, de acuerdo al plan Paso a Paso y los indicadores epidemiológicos - *de ese entonces* -, no era posible. Además, aproveché de explayar la situación del Hospital Regional de Iquique a lo largo del 2020 y 2021, altamente demandado en la pandemia del COVID-19 en Unidades de Cuidados Intensivos en la Región de Tarapacá, y cómo ello incide en la ocupación UCI.
 
+#### Julio, 1
+
+“*Tarapacá registra cifra más baja de casos activos en lo que va del año*” {cite}`Estrella-iquique13`, realizada por *Pamela Castillo Vergara*, del diario La Estrella de Iquique {footcite}`Estrella-iquique13`.
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/prensa/tiny/14.jpg">
+
+**Tarapacá registra cifra más baja de casos activos en lo que va del año**. Imagen de <a href="https://www.estrellaiquique.cl/impresa/2021/07/01/full/cuerpo-principal/2/">La Estrella de Iquique</a>.
+:::
+
+Novena aparición, sumado a una aparición simultánea del Dr. Corral. 
+
+Relaté la situación de las curvas por media móvil semanal de casos confirmados y recuperados nuevos. En concreto, contrasté la disminución de la cantidad de infectados a la semana, y cómo, a partir del 17 de abril, la curva de casos nuevos disminuyó por bajo la de recuperados nuevos, incidiendo con la disminución progresiva de activos.
+
+#### Julio, 2
+
+“*Iquique avanza a Preparación y Alto Hospicio se mantiene en fase 2*” {cite}`Estrella-iquique14`, realizada por *Patricio Iglesias P.*, del diario La Estrella de Iquique {footcite}`Estrella-iquique14`.
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/prensa/tiny/15.jpg">
+
+**Iquique avanza a Preparación y Alto Hospicio se mantiene en fase 2**. Imagen de <a href="https://www.estrellaiquique.cl/impresa/2021/07/02/full/cuerpo-principal/2/">La Estrella de Iquique</a>.
+:::
+
+Décima aparición.
+
+Comenté el por qué del avance a Preparación de la comuna de Iquique, en contraste con Alto Hospicio que se mantuvo en Transición. 
+
+Para comprensión de todos, expliqué la tasa de incidencia de activos en torno a la velocidad de ocurriencia de infectados, mencionando los valores de ambas comunas, siendo ligeramente mayor la de Alto Hospicio, y cómo ello, probablemente, puede incidir en el número de hospitalizaciones que puede necesitar dicha comuna, contrastando con la limitada capacidad hospitalaria de ese entonces.
+
 ### Notas faltantes
 
 Tengo entendido, existe mayor número de apariciones por parte del Dr. Cristóbal Corral, las cuales no están recabadas aquí. Por otro lado, desconozco si aparecí mayor número de veces en el diario La Estrella de Iquique. **La memoria es frágil**.

@@ -347,6 +347,8 @@ for vec in vec_out:
             vec = vec.replace('<IPython.core.display.Markdown object>', '')
             ### Damos formato a tablas
             if vec.startswith('<div>\n<style scoped>'):
+                vec = vec.replace('NaN', 'Sin datos')
+                print(vec)
                 vec = BeautifulSoup(vec, 'html.parser').find('table')
                 vec['class'] = vec.get('class', []) + [' table table-dark table-striped table-hover table-sm']
                 vec = '<div class="table-responsive">' + str(vec) + '</div>'
@@ -371,6 +373,7 @@ with open('../../_build/html/dinamic/balance.html', 'w', encoding='UTF-8') as f:
     </script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
     <meta charset="UTF-8">
+    <title>Balance histórico 📊 &#8212; La pandemia por la ventana</title>
     </head>
     <body>
     <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">

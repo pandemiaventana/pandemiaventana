@@ -1168,6 +1168,7 @@ with open('../../_build/html/dinamic/indicadorfase.html', 'w', encoding='UTF-8')
     </script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
     <meta charset="UTF-8">
+    <title>Indicador de fase 📆 &#8212; La pandemia por la ventana</title>
     </head>
     <body>
     <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
