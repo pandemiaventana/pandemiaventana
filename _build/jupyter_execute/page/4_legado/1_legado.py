@@ -166,7 +166,7 @@ for vec in vec_out:
 
 ### Abrimos y modificamos el HTML
 with open('../../page/5_reportes/4_reportes.md', 'w', encoding='UTF-8') as f:
-    f.write(vec_)
+    f.write('# Reportes históricos' + vec_)
 
 
 # ## Información de sesión
