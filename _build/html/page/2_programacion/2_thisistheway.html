@@ -122,7 +122,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../1_experiencia/2_experiencia.html">
-     Del desorden a el orden
+     Del desorden al orden
     </a>
    </li>
    <li class="toctree-l2">
@@ -241,11 +241,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../5_reportes/3_reportes.html">
      Indicador de fase
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../5_reportes/4_reportes.html">
-     Archivo
     </a>
    </li>
   </ul>
@@ -771,6 +766,50 @@
 <span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1">### Librerías para graficar</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="c1">### Customizamos opciones de Plot.ly</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displayModeBar&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;showTips&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;scrollZoom&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">dragmode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">),</span>
+    <span class="n">xaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">showline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">showgrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">showticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;rgb(204, 204, 204)&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;outside&#39;</span><span class="p">,</span>
+        <span class="n">tickfont</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(82, 82, 82)&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">yaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">showgrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">showticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">autosize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">autoexpand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">showlegend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+    <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">itemclick</span><span class="o">=</span><span class="s2">&quot;toggleothers&quot;</span><span class="p">,</span>
+        <span class="n">itemdoubleclick</span><span class="o">=</span><span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
+        <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span>
+        <span class="n">yanchor</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
+        <span class="n">xanchor</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
 <span class="c1">### Customizamos para tener fondos transparentes con alta resolución</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span><span class="o">=</span> <span class="mi">300</span>
@@ -1951,7 +1990,46 @@ Sus colores:
     <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Se utilizaron las siguientes columnas:&#39;</span><span class="p">))</span>
     
     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+        
         <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;- </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">)))</span>
+        
+        <span class="c1">### Grafica de líneas si no es días del paso a paso</span>
+    
+        <span class="k">if</span> <span class="s1">&#39;Paso a Paso (dias)&#39;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">:</span>
+            
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Para el Paso a Paso histórico, [revisitar los siguientes gráficos](https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/2_thisistheway.html#graficos-de-dispersion-por-comuna).&#39;</span><span class="p">))</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="c1">### Vector de fechas desde primer y último dato válido por cada columna</span>
+
+            <span class="n">inicio</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">()</span>
+            <span class="n">fin</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span>
+
+            <span class="c1">### Visualizamos con Plotly</span>
+
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+            <span class="c1">### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y</span>
+
+            <span class="c1">### suavizamos por interpolación spline</span>
+
+            <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">inicio</span><span class="p">:</span><span class="n">fin</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> %b %Y&#39;</span><span class="p">),</span>
+                                     <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">inicio</span><span class="p">:</span><span class="n">fin</span><span class="p">][</span><span class="n">col</span><span class="p">],</span>
+                        <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+                        <span class="n">connectgaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">line_shape</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+                        <span class="n">hovertemplate</span> <span class="o">=</span>
+                        <span class="s1">&#39;&lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;: &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;%</span><span class="si">{y:.2f}</span><span class="s1">&#39;</span><span class="o">+</span><span class="s1">&#39;&lt;br&gt;&lt;b&gt;Fecha&lt;/b&gt;: %</span><span class="si">{x}</span><span class="s1">&lt;br&gt;&#39;</span> <span class="o">+</span> <span class="s2">&quot;&lt;extra&gt;&lt;/extra&gt;&quot;</span><span class="p">))</span>
+
+            <span class="c1">### Para colocar en 35° las etiquetas del eje X, con el número de etiquetas proporcional al número de meses</span>
+            <span class="c1">### desde el primer dato válido</span>
+
+            <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">xaxis</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">XAxis</span><span class="p">(</span><span class="n">tickangle</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span>
+                                                      <span class="n">nticks</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">inicio</span><span class="p">:</span><span class="n">fin</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">unique</span><span class="p">())))</span>
+
+            <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
     
 <span class="c1">### Consideraciones del algoritmo (Markdown)</span>
@@ -1964,281 +2042,6 @@ Sus colores:
 <span class="s1">es monitoreada por las autoridades del Ministerio de Salud&#39;&#39;&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Salida real</span>
-<span class="k">for</span> <span class="n">capturado</span> <span class="ow">in</span> <span class="n">indicadorfase</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">capturado</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<h2 style="font-size:60px">INDICADOR DE FASE</h2><h3 style="font-size:20px;">Región de Tarapacá, 28 de junio de 2021</h3><h3>Resultado para Alto Hospicio</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.539%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra <b>45</b> días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Alto Hospicio</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Alto Hospicio</p></li>
-</ul>
-<h3>Resultado para Camiña</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.649%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra <b>61</b> días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Camiña</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Camiña</p></li>
-</ul>
-<h3>Resultado para Colchane</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.464%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
-Actualmente, la comuna registra <b>45</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Colchane</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Colchane</p></li>
-</ul>
-<h3>Resultado para Huara</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>99.929%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>56</b> días en <b style="color:gold">Preparación</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Huara</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Huara</p></li>
-</ul>
-<h3>Resultado para Iquique</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.818%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra <b>45</b> días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Iquique</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Iquique</p></li>
-</ul>
-<h3>Resultado para Pica</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.445%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra <b>87</b> días en <b style="color:orange">Transición</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Movilidad Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Pica</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Pica</p></li>
-</ul>
-<h3>Resultado para Pozo Almonte</h3><ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>95.035%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>42</b> días en <b style="color:gold">Preparación</b>.</p></li>
-</ul>
-<p>Se utilizaron las siguientes columnas:</p>
-<ul class="simple">
-<li><p>Casos acumulados en Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Casos activos en Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Notificacion PCR Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>BAC Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Positividad Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Cobertura de testeo Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Oportunidad en notificacion Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Fallecidos Pozo Almonte</p></li>
-</ul>
-<ul class="simple">
-<li><p>Re Tamarugal</p></li>
-</ul>
-<ul class="simple">
-<li><p>Paso a Paso (dias) Pozo Almonte</p></li>
-</ul>
-<h3>Consideraciones</h3><blockquote>
-<div><p>Los datos históricos contemplan desde el <b>28 de julio de 2020</b> hasta el <b>01 de julio de 2021</b>.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El resultado del algoritmo <b>no implica un cambio de fase</b>. La evolución del Paso a Paso
-es monitoreada por las autoridades del Ministerio de Salud</p>
-</div></blockquote>
 </div>
 </div>
 </div>
@@ -2306,7 +2109,7 @@ es monitoreada por las autoridades del Ministerio de Salud</p>
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_6.png" src="../../_images/2_thisistheway_51_6.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_6.png" src="../../_images/2_thisistheway_50_6.png" />
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2317,7 +2120,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_12.png" src="../../_images/2_thisistheway_51_12.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
 <h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
@@ -2329,7 +2132,7 @@ Apertura Inicial       1.00      1.00      1.00        46
     weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_18.png" src="../../_images/2_thisistheway_51_18.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
 <h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2340,7 +2143,7 @@ Apertura Inicial       1.00      1.00      1.00        46
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_24.png" src="../../_images/2_thisistheway_51_24.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
 <h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2352,7 +2155,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_30.png" src="../../_images/2_thisistheway_51_30.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
 <h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2363,7 +2166,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       1.00      1.00      1.00        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_36.png" src="../../_images/2_thisistheway_51_36.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
 <h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>92.85714285714286%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2376,7 +2179,7 @@ weighted avg       1.00      1.00      1.00        56
 weighted avg       0.95      0.93      0.93        56
 </pre></div>
 </div>
-<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_51_42.png" src="../../_images/2_thisistheway_51_42.png" />
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
 </div>
 </div>
 <div class="section" id="ruido">
@@ -2493,6 +2296,7 @@ weighted avg       0.95      0.93      0.93        56
             numpy               1.19.5
             os                  NA
             pandas              1.2.3
+            plotly              4.8.1
             scipy               1.6.2
             seaborn             0.11.1
             session_info        1.0.0
@@ -2510,6 +2314,7 @@ weighted avg       0.95      0.93      0.93        56
             ast                 NA
             asyncio             NA
             atexit              NA
+            attr                20.3.0
             backcall            0.2.0
             base64              NA
             bdb                 NA
@@ -2569,8 +2374,10 @@ weighted avg       0.95      0.93      0.93        56
             hmac                NA
             html                NA
             http                NA
+            idna                2.10
             imp                 NA
             importlib           NA
+            importlib_metadata  NA
             inspect             NA
             io                  NA
             ipykernel           6.0.0
@@ -2579,6 +2386,7 @@ weighted avg       0.95      0.93      0.93        56
             itertools           NA
             jedi                0.18.0
             joblib              1.0.1
+            jsonschema          3.2.0
             keyword             NA
             kiwisolver          1.3.1
             linecache           NA
@@ -2590,6 +2398,7 @@ weighted avg       0.95      0.93      0.93        56
             mmap                NA
             mpl_toolkits        NA
             multiprocessing     NA
+            nbformat            5.1.3
             ntpath              NA
             numbers             NA
             opcode              NA
@@ -2612,12 +2421,14 @@ weighted avg       0.95      0.93      0.93        56
             pstats              NA
             pty                 NA
             ptyprocess          0.7.0
+            pvectorc            NA
             pwd                 NA
             pydoc               NA
             pydoc_data          NA
             pyexpat             NA
             pygments            2.9.0
             pyparsing           2.4.7
+            pyrsistent          NA
             pytz                2021.1
             queue               NA
             quopri              NA
@@ -2625,6 +2436,7 @@ weighted avg       0.95      0.93      0.93        56
             re                  2.2.1
             reprlib             NA
             resource            NA
+            retrying            NA
             runpy               NA
             secrets             NA
             select              NA
@@ -2635,6 +2447,7 @@ weighted avg       0.95      0.93      0.93        56
             site                NA
             six                 1.16.0
             socket              NA
+            socketserver        0.4
             soupsieve           2.2.1
             sphinxcontrib       NA
             sqlite3             2.6.0
@@ -2673,9 +2486,11 @@ weighted avg       0.95      0.93      0.93        56
             warnings            NA
             wcwidth             0.2.5
             weakref             NA
+            webbrowser          NA
             xml                 NA
             zipfile             NA
             zipimport           NA
+            zipp                NA
             zlib                1.0
             zmq                 22.1.0
             </pre>
@@ -2691,7 +2506,7 @@ weighted avg       0.95      0.93      0.93        56
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-01 23:47
+            Session information updated at 2021-07-02 02:31
             </pre>
             </details></div></div>
 </div>

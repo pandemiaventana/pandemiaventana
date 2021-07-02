@@ -16,6 +16,7 @@ import session_info
 from bs4 import BeautifulSoup
 import numpy as np
 from markdownify import markdownify as md
+from natsort import natsorted
 
 
 # ## Archivos CSV
@@ -23,37 +24,49 @@ from markdownify import markdownify as md
 # In[2]:
 
 
-### Mostrando archivos CSV
-for string in [name for name in os.listdir('./../../out/site/csv')]:
-    
-    ### Título
-    
-    display(Markdown('<a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/{}">"{}"</a>'.format(string, string.upper())))
-    ### Leemos
-    
-    csv = pd.read_csv('./../../out/site/csv/{}'.format(string))
-    
-    ### Info de pandas
-    
-    display(Markdown('Tiene las siguientes columnas (**{}** sin el índice):'.format(len(csv.columns) - 1)))
-    
-    csv.info(max_cols=len(csv.columns), memory_usage='deep')
-    
-    display(Markdown('<hr>'))
+get_ipython().run_cell_magic('capture', 'archivocsv', '\n### Mostrando archivos CSV\n\n### Ser perfeccionista es terrible ###\ndatas = [name for name in os.listdir(\'./../../out/site/csv\')]\ndatas = natsorted(datas)\ndatas = datas[-1:] + datas[:-1]\n\nfor string in datas:\n    \n    ### Título\n    \n    display(Markdown(\'<a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/{}">"{}"</a>\'.format(string, string.upper())))\n    ### Leemos\n    \n    csv = pd.read_csv(\'./../../out/site/csv/{}\'.format(string))\n    \n    ### Info de pandas\n    \n    display(Markdown(\'Tiene las siguientes columnas (**{}** sin el índice):\'.format(len(csv.columns) - 1)))\n    \n    for col in csv.columns:\n        \n        display(Markdown(\'- \' + col + \' con **{}** datos válidos.\'.format(len(csv.index) - csv[col].isnull().sum())))\n    \n    display(Markdown(\'<hr>\'))')
+
+
+# In[3]:
+
+
+### Visualizamos
+for outputs in archivocsv.outputs:
+    display(outputs)
 
 
 # ## Salida para Markdown
 
-# In[3]:
+# In[4]:
 
 
 txt1 = '''# La pandemia por la ventana \n
 
 ![Ilustración por Bernardo Dinamarca](https://github.com/pandemiaventana/pandemiaventana/blob/main/img/page/2_cover.png?raw=true)
 
-**Ilustración por Bernardo Dinamarca**
+*Ilustración por Bernardo Dinamarca*
 
-La pandemia por la ventana es un sitio, realizado con formato de *libro* gracias a Jupyter Books, hecho por Alejandro Dinamarca, que recaba el trabajo de Numeral.lab en la Región de Tarapacá.
+## Intro
+
+[La pandemia por la ventana es un sitio](https://pandemiaventana.github.io/pandemiaventana/), realizado con formato de *libro* gracias a Jupyter Books, hecho por Alejandro Dinamarca, que recaba el trabajo de Numeral.lab en la Región de Tarapacá.
+
+La página posee los siguientes ejes:
+
+- Reunir antecedentes del trabajo de Numeral.lab en la Región de Tarapacá en la pandemia del COVID-19.
+
+- Recopilar experiencias personales de Alejandro Dinamarca en el trabajo voluntario en Numeral.lab.
+
+- Monitoreo de la pandemia del COVID-19 en la Región de Tarapacá de forma automática.
+
+- Recabar información del repositorio del MICITEC en GitHub, específicamente, de la Región de Tarapacá.
+
+- Procesar datos recabados.
+
+- Generar informes (epidemiológicos, avance en campaña de vacunación y predictor de fase del Paso a Paso).
+
+- Generar concientización en ciudadanía bajo tendencias de la pandemia.
+
+> Agradecimientos al Equipo Futuro del MICITEC por la democratización de los datos de la pandemia en Chile, a los desarrolladores de Jupyter Notebook, Jupyter Book y a todas las librerías de Python implicadas en los scripts, como también, a los propios desarrolladores de Python.
 
 Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de GitHub](https://github.com/pandemiaventana/pandemiaventana/issues/new).
 
@@ -83,91 +96,82 @@ Disponibles en [el siguiente enlace](https://github.com/pandemiaventana/pandemia
 
 '''
 
-### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
-Javascript('''{
-    let outputs=[...document.querySelectorAll(".cell")].map(
-        cell=> {
-            let output=cell.querySelector(".output")
-            if(output) return output.innerHTML
-            output=cell.querySelector(".rendered_html")
-            if(output) return output.innerHTML
-            return ""
-        }
-    )
-    
-    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs))
-    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[3])")
-    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
-    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
-    IPython.notebook.kernel.execute("soup = str(soup)")   
-    IPython.notebook.kernel.execute("op = open('../../README.md' , 'w', encoding='utf-8')")
-    IPython.notebook.kernel.execute("full = txt1 + md(soup)")
-    IPython.notebook.kernel.execute("op.writelines(full)")
-    IPython.notebook.kernel.execute("op.close()")
-}''')
+outputs_ = archivocsv.outputs
+
+vec_out = []
+for outs_ in outputs_:
+    ### Convertimos a lista los outputs
+    vec_out += list(outs_.data.values())
+
+### Nuestro string
+vec_ = ''
+### Recorremos la lista de outputs
+for vec in vec_out:
+    vec = str(vec)
+    ### Quitamos el str de datos de tabla sin formato
+    if vec.startswith("            "):
+        pass
+    else:
+        ### Quitamos el str del tipo de variable
+        vec = vec.replace('<IPython.core.display.Markdown object>', '')
+        ### Finalmente, añadimos al vector
+        vec_ += '<br>' + vec
+
+### Abrimos y modificamos el HTML
+with open('../../README.md', 'w', encoding='UTF-8') as f:
+    f.write(txt1 + vec_)
 
 
 # ## Archivos PDF
 
-# In[4]:
+# In[5]:
 
 
-### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###
-sum_ = []
-dirr = ['diario', 'vacuna', 'indicadorfase']
-names = ['Reporte diario', 'Balance de vacunas', 'Indicador de Fase']
-p = 0
-for reporte in dirr:
-    display(Markdown('<h2>{}</h2>'.format(names[p])))
-    display(Markdown('Encontré los siguientes PDF:'.format(names[p])))
-    exec('sum_{} = []'.format(reporte))
-    for string in [name for name in os.listdir('../../out/{}/pdf'.format(reporte))]:
-        if os.path.isdir('../../out/diario/pdf/{}'.format(string)):
-            pass
-        else:
-            exec('sum_{} += [string]'.format(reporte))
-    exec('''for ipdf in sum_{}:
-        display(Markdown(" <a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true'>" + ipdf + "</a>"))'''.format(reporte))
-    p += 1
-    
-txt2 = """# Archivo
+get_ipython().run_cell_magic('capture', 'archivopdf', '\n### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###\nsum_ = []\ndirr = [\'diario\', \'vacuna\', \'indicadorfase\']\nnames = [\'Reporte diario\', \'Balance de vacunas\', \'Indicador de Fase\']\np = 0\nfor reporte in dirr:\n    display(Markdown(\'<h2>{}</h2>\'.format(names[p])))\n    display(Markdown(\'Encontré los siguientes PDF:\'.format(names[p])))\n    exec(\'sum_{} = []\'.format(reporte))\n    for string in [name for name in os.listdir(\'../../out/{}/pdf\'.format(reporte))]:\n        if os.path.isdir(\'../../out/diario/pdf/{}\'.format(string)):\n            pass\n        else:\n            exec(\'sum_{} += [string]\'.format(reporte))\n    exec(\'\'\'for ipdf in sum_{}:\n        display(Markdown(" > <a href=\'https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true\'>" + ipdf + "</a>"))\'\'\'.format(reporte))\n    p += 1\n    \ntxt2 = """# Archivo\n\n"""')
 
-"""
+
+# In[6]:
+
+
+### Visualizamos
+for outputs in archivopdf.outputs:
+    display(outputs)
 
 
 # ## Salida de archivos PDF
 
-# In[5]:
+# In[7]:
 
 
-### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
+outputs_ = archivopdf.outputs
 
-Javascript('''{
-    let outputs=[...document.querySelectorAll(".cell")].map(
-        cell=> {
-            let output=cell.querySelector(".output")
-            if(output) return output.innerHTML
-            output=cell.querySelector(".rendered_html")
-            if(output) return output.innerHTML
-            return ""
-        }
-    )
+vec_out = []
+for outs_ in outputs_:
+    ### Convertimos a lista los outputs
+    vec_out += list(outs_.data.values())
 
-    IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs))
-    IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[7])")
-    IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
-    IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
-    IPython.notebook.kernel.execute("soup = str(soup)")   
-    IPython.notebook.kernel.execute("op = open('../5_reportes/4_reportes.md' , 'w', encoding='utf-8')")
-    IPython.notebook.kernel.execute("full = md(txt2) + md(soup)")
-    IPython.notebook.kernel.execute("op.writelines(full)")
-    IPython.notebook.kernel.execute("op.close()")
-}''')
+### Nuestro string
+vec_ = ''
+### Recorremos la lista de outputs
+for vec in vec_out:
+    vec = str(vec)
+    ### Quitamos el str de datos de tabla sin formato
+    if vec.startswith("            "):
+        pass
+    else:
+        ### Quitamos el str del tipo de variable
+        vec = vec.replace('<IPython.core.display.Markdown object>', '')
+        ### Finalmente, añadimos al vector
+        vec_ += '<br>' + vec
+
+### Abrimos y modificamos el HTML
+with open('../../page/5_reportes/4_reportes.md', 'w', encoding='UTF-8') as f:
+    f.write(vec_)
 
 
 # ## Información de sesión
 
-# In[6]:
+# In[8]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='4_requeriments.txt')
