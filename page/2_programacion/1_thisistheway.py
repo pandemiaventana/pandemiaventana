@@ -2029,7 +2029,7 @@ req += """jupyter-book
 """ + """session_info
 """ + """markdownify
 """ + """bs4
-""" + """natsorted"""
+""" + """natsort"""
 
 ### Abrimos y modificamos requirements.txt
 with open('../../requirements.txt', 'w') as f:
