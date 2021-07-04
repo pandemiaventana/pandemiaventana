@@ -22,7 +22,7 @@ El libro está dividido en distintas secciones, algunas respecto a las experienc
 
 *Dar las gracias al Dr. Cristóbal Corral y la Universidad Arturo Prat por el apoyo recibido, como también, por acojerme como estudiante y darme la posibilidad de desarrollar una idea que surgió desde el polvo.*
 
-*Asimismo, agradecer la enorme contribución del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación a la comunidad en democratización de datos de la pandemia [a partir de su repositorio en GitHub](https://github.com/MinCiencia/Datos-COVID19). Puntualmente a las personas con las que he tenido la oportunidad de comunicarme, a Demián Arancibia y Carlos Ávila, como también, a los responsables del repositorio de datos COVID-19 que no se encuentran mencionados; sin su enorme labor y constancia, nunca hubiese logrado desarrollar Numeral.lab.*
+*Asimismo, agradecer la enorme contribución del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación a la comunidad en democratización de datos de la pandemia [a partir de su repositorio en GitHub](https://github.com/MinCiencia/Datos-COVID19). Puntualmente a los encargados con las que he tenido la oportunidad de comunicarme, a Demián Arancibia y Carlos Ávila, como también, a los responsables del repositorio de datos COVID-19 que no se encuentran mencionados; sin su enorme labor y constancia, nunca hubiese logrado desarrollar Numeral.lab.*
 
 *Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato, se utilizarán algunas frases coloquiales.*
 
