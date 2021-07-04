@@ -14,13 +14,15 @@ El libro está dividido en distintas secciones, algunas respecto a las experienc
 
 ## Notas del autor
 
+*Numeral.lab es un aporte, con mucho cariño, a toda la comunidad de Tarapacá.*
+
 *Como siempre he recalcado, todo el trabajo realizado en pandemia fue en post de un bien común. Una especie de anhelo de devolver, en parte, una mano, a todo el mundo que me ha rodeado y del cual he aprendido, y espero seguir aprendiendo como un eterno aprendiz.*
 
 *Este pequeño libro está dedicado a mis padres, a mis hermanos, familia y a mi amor. No sería nada sin ellos.*
 
 *Dar las gracias al Dr. Cristóbal Corral y la Universidad Arturo Prat por el apoyo recibido, como también, por acojerme como estudiante y darme la posibilidad de desarrollar una idea que surgió desde el polvo.*
 
-*Asimismo, agradecer la enorme contribución del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación a la comunidad. Puntualmente, en democratización de datos de la pandemia [a partir de su repositorio en GitHub](https://github.com/MinCiencia/Datos-COVID19).*
+*Asimismo, agradecer la enorme contribución del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación a la comunidad en democratización de datos de la pandemia [a partir de su repositorio en GitHub](https://github.com/MinCiencia/Datos-COVID19). Puntualmente a las personas con las que he tenido la oportunidad de comunicarme, a Demián Arancibia y Carlos Ávila, como también, a los responsables del repositorio de datos COVID-19 que no se encuentran mencionados; sin su enorme labor y constancia, nunca hubiese logrado desarrollar Numeral.lab.*
 
 *Si bien este librito parece ser bastante serio, tiene un componente humano. Por lo que, a veces, en el relato, se utilizarán algunas frases coloquiales.*
 
@@ -50,6 +52,30 @@ El libro debe ser citado como:
 El libro está identificado con el **DOI 10.5281**. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609)
 
 ### Versión
+
+#### Salida
+
+[Release v1.1](https://github.com/pandemiaventana/pandemiaventana/releases/tag/v1.1) apodado "*Salida*" del libro dinámico. 
+
+![image](https://user-images.githubusercontent.com/86389753/124312780-e2d48a80-db3d-11eb-9e99-90597e25d7bd.png)
+
+##### Cambios/mejoras
+
+* Se añaden dos nuevas secciones con actualización automática, el "**Balance histórico** 📊" e "**Indicador de fase** 📆". Las dos nuevas secciones se construyen con manejo de HTML, Plot.ly y Bootstrap a través de Python. El código de generación mediante JavaScript (anterior) se traslada a Python para permitir la actualización periódica.
+
+* Se añade sección de reportes históricos, donde se encontrarán todos los reportes generados (*similar a la forma en que lo hace el Minsal en su portal*).
+
+* Se añaden nuevas apariciones en la prensa.
+
+* Se suprimen varios archivos HTML generados a través de Plot.ly que no se estaban usando, lo que disminuye considerablemente el tamaño del repo y agiliza la ejecución de los Actions por parte de GitHub.
+
+* Entre otras mejoras varias.
+
+##### Falta por añadir
+
+* Tasas de incidencia.
+
+* Indexación en Google.
 
 #### Génesis
 
