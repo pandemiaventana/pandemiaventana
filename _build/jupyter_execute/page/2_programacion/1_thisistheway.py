@@ -618,6 +618,9 @@ tasa_casosnuevos = ((casos_cumulativos.rolling(window=7).mean()/poblacion)*10000
 for col in pasopaso_comuna:
     pasopaso_comuna['Paso a Paso (dias) ' + col[5:]] = pasopaso_comuna.groupby((pasopaso_comuna[col] != pasopaso_comuna[col].shift(1)).cumsum()).cumcount()
 
+### Población yomevacuno
+poblacion_yomevacuno = 286597
+
 
 # ## Uniendo en una sola tabla
 # 
@@ -986,8 +989,8 @@ else:
         situacioncurva_hoy = "curva de contagios al alza"
 
 ### Proceso de vacunación a población objetivo objetivo
-procesovacunacion_2dosis = int(round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()])/(poblacion*0.8), 2)*100)
-procesovacunacion_unica = int(round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion*0.8), 2)*100)
+procesovacunacion_2dosis = int(round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()])/(poblacion_yomevacuno), 2)*100)
+procesovacunacion_unica = int(round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion_yomevacuno), 2)*100)
 procesovacunacion_hoy = procesovacunacion_2dosis + procesovacunacion_unica
 procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]) + int(df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])
 
@@ -1043,8 +1046,8 @@ positividad_ayer = df['Positividad diaria'][weekend_datay]
 me_ayer = df['Mortalidad especifica *'][weekend_datay]
 
 ### Proceso de vacunación de población objetivo
-procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion*0.8), 2)*100)
-procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion*0.8), 2)*100)
+procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion_yomevacuno), 2)*100)
+procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion_yomevacuno), 2)*100)
 procesovacunacion_ayer = procesovacunacion_ayer_unica + procesovacunacion_ayer_2
 
 
@@ -1302,7 +1305,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 ### Últimas cifras de vacunación a población total/objetivo
 pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()]])
-pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           poblacion*0.8 - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()]])
+pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           poblacion_yomevacuno - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()]])
 labels = np.array(['Con 1° dosis \n (sin inmunidad o parcial)', 'Con cuadro completo \n (eventual inmunes)', 'Sin cuadro completo \n (sin inmunidad)'])
 vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
 vacunacion_pct.index = labels
