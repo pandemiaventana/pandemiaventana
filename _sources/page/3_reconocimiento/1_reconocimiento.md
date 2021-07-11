@@ -18,6 +18,8 @@ En el <a href="https://minciencia.gob.cl/comunidad-covid19/">siguiente enlace</a
 
 La primera aparición fue a raíz de un correo que envié al MICITEC, siendo respondido días después con la positiva de añadir la página de Numeral.lab - *en ese entonces, adinamarca.github.io* - a su sitio web {footcite}``minciencia``.
 
+El correo fue respondido por Carlos Avila, asesor del Equipo Futuro (le estoy sumamente agradecido).
+
 :::{figure-md} markdown-fig
 <img src="../../img/page/reconocimiento/publica/4.jpg">
 
@@ -28,10 +30,24 @@ La primera aparición fue a raíz de un correo que envié al MICITEC, siendo res
 
 La segunda aparición fue a raíz de un nuevo correo que envié al MICITEC, esta vez, aludiendo a una mejora en la visualización de los datos gracias a la plataforma Infogram, siendo respondido días después con la positiva de añadir la página de la Universidad Arturo Prat - *asistenciacovid19.cl* - a su sitio web {footcite}``minciencia``.
 
+El correo también fue respondido por Carlos Avila.
+
 :::{figure-md} markdown-fig
 <img src="../../img/page/reconocimiento/publica/5.jpg">
 
 **Asistencia COVID19**. Imagen del <a href="https://minciencia.gob.cl/comunidad-covid19/">sitio web del MICITEC</a>.
+:::
+
+##### La pandemia por la ventana
+
+La tercera aparición fue a raíz de otro correo que envié, apariciendo el presente *librito* en el portal del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación {footcite}``minciencia``. 
+
+El correo fue respondido por Demián Arancibia, a cargo del Equipo Futuro, a quién le tengo mucha admiración por su constante trabajo en democratización de datos (recíproco para todos los colaboradores del repositorio del Ministerio).
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/publica/8.jpg">
+
+**Captura**. Imagen del <a href="https://minciencia.gob.cl/comunidad-covid19/">sitio web del MICITEC</a>.
 :::
 
 ## Gobierno Regional de Tarapacá
