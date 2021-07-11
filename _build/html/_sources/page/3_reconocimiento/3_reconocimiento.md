@@ -192,6 +192,20 @@ Comenté el por qué del avance a Preparación de la comuna de Iquique, en contr
 
 Para comprensión de todos, expliqué la tasa de incidencia de activos en torno a la velocidad de ocurriencia de infectados, mencionando los valores de ambas comunas, siendo ligeramente mayor la de Alto Hospicio, y cómo ello, probablemente, puede incidir en el número de hospitalizaciones que puede necesitar dicha comuna, contrastando con la limitada capacidad hospitalaria de ese entonces.
 
+#### Julio, 9
+
+“*Experto asegura que los casos seguirán bajando hasta agosto*” {cite}`Estrella-iquique15`, realizada por *Pamela Castillo*, del diario La Estrella de Iquique {footcite}`Estrella-iquique15`.
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/prensa/tiny/16.jpg">
+
+**Experto asegura que los casos seguirán bajando hasta agosto**. Imagen de <a href="https://www.estrellaiquique.cl/impresa/2021/07/09/full/cuerpo-principal/3/">La Estrella de Iquique</a>.
+:::
+
+Onceava aparición.
+
+En aquella oportunidad, expliqué la terminología detrás del número de reproducción efectivo, de la mano de un artículo buenísimo por Marcel Salathé (epidemiólogo) y Nicky Case (encargado del código) en <a href="https://vrruiz.github.io/covid-19/">"¿Qué pasará ahora? Los futuros de la COVID-19 explicados con simulaciones"</a>.
+
 ### Notas faltantes
 
 Tengo entendido, existe mayor número de apariciones por parte del Dr. Cristóbal Corral, las cuales no están recabadas aquí. Por otro lado, desconozco si aparecí mayor número de veces en el diario La Estrella de Iquique. **La memoria es frágil**.
