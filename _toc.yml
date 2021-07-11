@@ -1,6 +1,8 @@
 format: jb-article
 root: page/0_intro/0_introduccion
 sections:
+- url: https://www.instagram.com/numeral.lab/
+  title: Instagram 📷
 - url: https://pandemiaventana.github.io/pandemiaventana/dinamic/balance.html
   title: Balance histórico 📊
 - url: https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html
