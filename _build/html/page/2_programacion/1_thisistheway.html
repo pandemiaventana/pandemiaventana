@@ -2206,39 +2206,25 @@
 
 <span class="c1">### Cifras región</span>
 
-<span class="c1">### Balance semanal de casos ###</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos&#39;</span><span class="p">][</span><span class="n">weekstart_data</span><span class="p">:</span><span class="n">weekend_data</span><span class="p">],</span>
-              <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">][</span><span class="n">weekstart_data</span><span class="p">:</span><span class="n">weekend_data</span><span class="p">],</span>
-              <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos fallecidos nuevos&#39;</span><span class="p">][</span><span class="n">weekstart_data</span><span class="p">:</span><span class="n">weekend_data</span><span class="p">]</span>
-              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Casos nuevos últimos siete días&#39;</span><span class="p">,</span> <span class="s1">&#39;Recuperados nuevos últimos siete días&#39;</span><span class="p">,</span> 
-                        <span class="s1">&#39;Fallecidos nuevos últimos siete días&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data1.csv&#39;</span><span class="p">)</span>
-
-<span class="c1">### Balance semanal de activos ###</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos confirmados&#39;</span><span class="p">][</span><span class="n">weekstart_data</span><span class="p">:</span><span class="n">weekend_data</span><span class="p">],</span>
-              <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos probables&#39;</span><span class="p">][</span><span class="n">weekstart_data</span><span class="p">:</span><span class="n">weekend_data</span><span class="p">]</span>
-             <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Casos activos confirmados últimos siete días&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos probables últimos siete días&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data2.csv&#39;</span><span class="p">)</span>
-
 <span class="c1">### Balance histórico de casos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos fallecidos nuevos&#39;</span><span class="p">]</span>
               <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Casos nuevos históricos&#39;</span><span class="p">,</span> <span class="s1">&#39;Recuperados nuevos históricos&#39;</span><span class="p">,</span> 
                         <span class="s1">&#39;Fallecidos nuevos históricos&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data3.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data1.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Balance histórico de activos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos confirmados&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos probables&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos probables&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos probables&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data4.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data2.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Balance histórico de casos acumulados ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos confirmados acumulados&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados acumulados&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos confirmados&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos fallecidos acumulados&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data5.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data3.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Tendencia región</span>
 
@@ -2248,57 +2234,57 @@
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos fallecidos nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
               <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Media móvil semanal de casos nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Media móvil semanal de recuperados nuevos&#39;</span><span class="p">,</span> 
                         <span class="s1">&#39;Media móvil semanal de fallecidos nuevos&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data6.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data4.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Positividad ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Positividad diaria&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Positividad media movil *&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data7.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data5.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Número de reproducción efectivo ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re regional&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re Iquique&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re Tamarugal&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data8.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data6.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Tasa de crecimiento diaria y media móvil semanal ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crecimiento diario *&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crecimiento semanal *&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data9.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data7.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Por comuna</span>
 
 <span class="c1">### Histórico de casos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Casos acumulados en&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data10.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data8.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Positividad ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Positividad&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;diaria&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;movil&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;antigeno&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data11.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data9.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Activos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;activos&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;confirmados&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;probables&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data12.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data10.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Fallecidos no procesados por DEIS ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos&#39;</span><span class="p">)</span> 
       <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos confirmados&#39;</span><span class="p">)</span>
-      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data13.csv&#39;</span><span class="p">)</span>
+      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data11.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Fallecidos procesados por DEIS, confirmados ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos&#39;</span><span class="p">)</span> 
       <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos confirmados&#39;</span><span class="p">)</span>
-      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data14.csv&#39;</span><span class="p">)</span>
+      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data12.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Fallecidos procesados por DEIS, probables ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos&#39;</span><span class="p">)</span> 
       <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos confirmados&#39;</span><span class="p">)</span>
-      <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data15.csv&#39;</span><span class="p">)</span>
+      <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data13.csv&#39;</span><span class="p">)</span>
 
 
 <span class="c1">### Red asistencial</span>
@@ -2307,11 +2293,11 @@
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI ocupacion media movil real&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI ocupacion media movil aprox *&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Media móvil real de ocupación UCI&#39;</span><span class="p">,</span> <span class="s1">&#39;Media móvil hipotética de ocupación UCI&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data16.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data14.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Residencias sanitarias ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;residencias&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Numero&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data17.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data15.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Detalle de muestra y otros datos segregados</span>
 
@@ -2319,13 +2305,13 @@
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Media móvil semanal de PCR informados nuevos&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data18.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data16.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Antígeno ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Antigenos informados nuevos&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Antigenos informados nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Antígenos informados nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Media móvil semanal de antígenos informados nuevos&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data19.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data17.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Detalle de casos nuevos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos con sintomas&#39;</span><span class="p">],</span>
@@ -2334,31 +2320,31 @@
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos por antigeno&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Casos nuevos con síntomas&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos sin síntomas&#39;</span><span class="p">,</span>
                         <span class="s1">&#39;Casos nuevos por laboratorio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos por antígeno&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data20.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data18.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Detalle de casos nuevos con sospecha de reinfección ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos con sospecha de reinfeccion&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Casos con sospecha de reinfección&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data21.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data19.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Tasa de casos nuevos por cien mil habitantes en media móvil semanal ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa casos nuevos *&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tasa de casos nuevos de casos nuevos por cien mil habitantes&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data22.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data20.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Mortalidad específica ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mortalidad especifica *&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Mortalidad específica por cien mil habitantes&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data23.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data21.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Mortalidad específica por comuna ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Mortalidad especifica comunal *&#39;</span><span class="p">)])</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data24.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data22.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Vacunación ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data25.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data23.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2707,19 +2693,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 12 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.154%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.077%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>92.839%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>95.66%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.989%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.971%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>56</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.894%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.924%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>67</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>94.19%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>92.073%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.422%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.231%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>98</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>95.848%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>95.171%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -3981,7 +3967,7 @@ La media general del error es de:  0.82 %
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-12 23:42
+            Session information updated at 2021-07-13 00:41
             </pre>
             </details></div></div>
 </div>
