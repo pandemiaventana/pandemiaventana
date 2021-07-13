@@ -812,39 +812,25 @@ weekstart2_data = df['Casos nuevos'].last_valid_index() - datetime.timedelta(13)
 
 ### Cifras región
 
-### Balance semanal de casos ###
-pd.DataFrame([df['Casos nuevos'][weekstart_data:weekend_data],
-              df['Casos recuperados nuevos'][weekstart_data:weekend_data],
-              df['Casos fallecidos nuevos'][weekstart_data:weekend_data]
-              ], index=['Casos nuevos últimos siete días', 'Recuperados nuevos últimos siete días', 
-                        'Fallecidos nuevos últimos siete días']
-              ).transpose().to_csv('../../out/site/csv/data1.csv')
-
-### Balance semanal de activos ###
-pd.DataFrame([df['Casos activos confirmados'][weekstart_data:weekend_data],
-              df['Casos activos probables'][weekstart_data:weekend_data]
-             ], index=['Casos activos confirmados últimos siete días', 'Casos activos probables últimos siete días']
-              ).transpose().to_csv('../../out/site/csv/data2.csv')
-
 ### Balance histórico de casos ###
 pd.DataFrame([df['Casos nuevos'],
               df['Casos recuperados nuevos'],
               df['Casos fallecidos nuevos']
               ], index=['Casos nuevos históricos', 'Recuperados nuevos históricos', 
                         'Fallecidos nuevos históricos']
-              ).transpose().to_csv('../../out/site/csv/data3.csv')
+              ).transpose().to_csv('../../out/site/csv/data1.csv')
 
 ### Balance histórico de activos ###
 pd.DataFrame([df['Casos activos confirmados'][df['Casos activos probables'].first_valid_index():],
               df['Casos activos probables'][df['Casos activos probables'].first_valid_index():]]
-              ).transpose().to_csv('../../out/site/csv/data4.csv')
+              ).transpose().to_csv('../../out/site/csv/data2.csv')
 
 ### Balance histórico de casos acumulados ###
 pd.DataFrame([df['Casos confirmados acumulados'],
               df['Casos recuperados acumulados'],
               df['Casos activos confirmados'],
               df['Casos fallecidos acumulados']]
-              ).transpose().to_csv('../../out/site/csv/data5.csv')
+              ).transpose().to_csv('../../out/site/csv/data3.csv')
 
 ### Tendencia región
 
@@ -854,57 +840,57 @@ pd.DataFrame([df['Casos nuevos'].rolling(7).mean(),
               df['Casos fallecidos nuevos'].rolling(7).mean()
               ], index=['Media móvil semanal de casos nuevos', 'Media móvil semanal de recuperados nuevos', 
                         'Media móvil semanal de fallecidos nuevos']
-              ).transpose().round(2).to_csv('../../out/site/csv/data6.csv')
+              ).transpose().round(2).to_csv('../../out/site/csv/data4.csv')
 
 ### Positividad ###
 pd.DataFrame([df['Positividad diaria'],
               df['Positividad media movil *']]
-              ).transpose().to_csv('../../out/site/csv/data7.csv')
+              ).transpose().to_csv('../../out/site/csv/data5.csv')
 
 ### Número de reproducción efectivo ###
 pd.DataFrame([df['Re regional'],
               df['Re Iquique'],
               df['Re Tamarugal']]
-              ).transpose().to_csv('../../out/site/csv/data8.csv')
+              ).transpose().to_csv('../../out/site/csv/data6.csv')
 
 ### Tasa de crecimiento diaria y media móvil semanal ###
 pd.DataFrame([df['Crecimiento diario *'],
               df['Crecimiento semanal *']]
-              ).transpose().to_csv('../../out/site/csv/data9.csv')
+              ).transpose().to_csv('../../out/site/csv/data7.csv')
 
 ### Por comuna
 
 ### Histórico de casos ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Casos acumulados en')]
-              ).to_csv('../../out/site/csv/data10.csv')
+              ).to_csv('../../out/site/csv/data8.csv')
 
 ### Positividad ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Positividad') &
                     ~df.columns.str.contains('diaria') &
                     ~df.columns.str.contains('movil') &
                     ~df.columns.str.contains('antigeno')]
-              ).to_csv('../../out/site/csv/data11.csv')
+              ).to_csv('../../out/site/csv/data9.csv')
 
 ### Activos ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('activos') &
                     ~df.columns.str.contains('confirmados') &
                     ~df.columns.str.contains('probables')]
-              ).to_csv('../../out/site/csv/data12.csv')
+              ).to_csv('../../out/site/csv/data10.csv')
 
 ### Fallecidos no procesados por DEIS ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos') 
       & ~df.columns.str.contains('Fallecidos confirmados')
-      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data13.csv')
+      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data11.csv')
 
 ### Fallecidos procesados por DEIS, confirmados ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos') 
       & df.columns.str.contains('Fallecidos confirmados')
-      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data14.csv')
+      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data12.csv')
 
 ### Fallecidos procesados por DEIS, probables ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos') 
       & ~df.columns.str.contains('Fallecidos confirmados')
-      & df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data15.csv')
+      & df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data13.csv')
 
 
 ### Red asistencial
@@ -913,11 +899,11 @@ pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos')
 pd.DataFrame([df['UCI ocupacion media movil real'],
               df['UCI ocupacion media movil aprox *']
              ], index=['Media móvil real de ocupación UCI', 'Media móvil hipotética de ocupación UCI']
-              ).transpose().to_csv('../../out/site/csv/data16.csv')
+              ).transpose().to_csv('../../out/site/csv/data14.csv')
 
 ### Residencias sanitarias ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('residencias') & ~df.columns.str.contains('Numero')]
-              ).to_csv('../../out/site/csv/data17.csv')
+              ).to_csv('../../out/site/csv/data15.csv')
 
 ### Detalle de muestra y otros datos segregados
 
@@ -925,13 +911,13 @@ pd.DataFrame(df.loc[:, df.columns.str.contains('residencias') & ~df.columns.str.
 pd.DataFrame([df['PCR informados nuevos'],
               df['PCR informados nuevos'].rolling(7).mean()
              ], index=['PCR informados nuevos', 'Media móvil semanal de PCR informados nuevos']
-              ).transpose().to_csv('../../out/site/csv/data18.csv')
+              ).transpose().to_csv('../../out/site/csv/data16.csv')
 
 ### Antígeno ###
 pd.DataFrame([df['Antigenos informados nuevos'],
               df['Antigenos informados nuevos'].rolling(7).mean()
              ], index=['Antígenos informados nuevos', 'Media móvil semanal de antígenos informados nuevos']
-              ).transpose().to_csv('../../out/site/csv/data19.csv')
+              ).transpose().to_csv('../../out/site/csv/data17.csv')
 
 ### Detalle de casos nuevos ###
 pd.DataFrame([df['Casos nuevos con sintomas'],
@@ -940,31 +926,31 @@ pd.DataFrame([df['Casos nuevos con sintomas'],
               df['Casos nuevos por antigeno']
              ], index=['Casos nuevos con síntomas', 'Casos nuevos sin síntomas',
                         'Casos nuevos por laboratorio', 'Casos nuevos por antígeno']
-              ).transpose().to_csv('../../out/site/csv/data20.csv')
+              ).transpose().to_csv('../../out/site/csv/data18.csv')
 
 ### Detalle de casos nuevos con sospecha de reinfección ###
 pd.DataFrame([df['Casos con sospecha de reinfeccion']
              ], index=['Casos con sospecha de reinfección']
-              ).transpose().to_csv('../../out/site/csv/data21.csv')
+              ).transpose().to_csv('../../out/site/csv/data19.csv')
 
 ### Tasa de casos nuevos por cien mil habitantes en media móvil semanal ###
 pd.DataFrame([df['Tasa casos nuevos *']
              ], index=['Tasa de casos nuevos de casos nuevos por cien mil habitantes']
-              ).transpose().to_csv('../../out/site/csv/data22.csv')
+              ).transpose().to_csv('../../out/site/csv/data20.csv')
 
 ### Mortalidad específica ###
 pd.DataFrame([df['Mortalidad especifica *']
              ], index=['Mortalidad específica por cien mil habitantes']
-              ).transpose().to_csv('../../out/site/csv/data23.csv')
+              ).transpose().to_csv('../../out/site/csv/data21.csv')
 
 ### Mortalidad específica por comuna ###
 pd.DataFrame(pd.DataFrame(df.loc[:, df.columns.str.contains('Mortalidad especifica comunal *')])
-              ).to_csv('../../out/site/csv/data24.csv')
+              ).to_csv('../../out/site/csv/data22.csv')
 
 ### Vacunación ###
 pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2° dosis'],
               df['Vacunados acumulados unica dosis']]
-              ).transpose().to_csv('../../out/site/csv/data25.csv')
+              ).transpose().to_csv('../../out/site/csv/data23.csv')
 
 # %% [markdown]
 # ### Reporte diario
