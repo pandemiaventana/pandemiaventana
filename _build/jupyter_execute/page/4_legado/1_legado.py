@@ -127,7 +127,7 @@ with open('../../README.md', 'w', encoding='UTF-8') as f:
 # In[5]:
 
 
-get_ipython().run_cell_magic('capture', 'archivopdf', '\n### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###\nsum_ = []\ndirr = [\'diario\', \'vacuna\', \'indicadorfase\']\nnames = [\'Reporte diario\', \'Balance de vacunas\', \'Indicador de Fase\']\np = 0\nfor reporte in dirr:\n    display(Markdown(\'<h2>{}</h2>\'.format(names[p])))\n    display(Markdown(\'Encontré los siguientes PDF:\'.format(names[p])))\n    exec(\'sum_{} = []\'.format(reporte))\n    for string in [name for name in os.listdir(\'../../out/{}/pdf\'.format(reporte))]:\n        if os.path.isdir(\'../../out/diario/pdf/{}\'.format(string)):\n            pass\n        else:\n            exec(\'sum_{} += [string]\'.format(reporte))\n    exec(\'\'\'for ipdf in sum_{}:\n        display(Markdown(" <a href=\'https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true\'>" + ipdf + "</a>"))\'\'\'.format(reporte))\n    p += 1\n    \ntxt2 = """# Archivo\n\n"""')
+get_ipython().run_cell_magic('capture', 'archivopdf', '\n### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###\nsum_ = []\ndirr = [\'diario\', \'vacuna\', \'indicadorfase\']\nnames = [\'Reporte diario\', \'Balance de vacunas\', \'Indicador de Fase\']\np = 0\nfor reporte in dirr:\n    display(Markdown(\'<h2>{}</h2>\'.format(names[p])))\n    display(Markdown(\'Encontré los siguientes PDF:\'.format(names[p])))\n    exec(\'sum_{} = []\'.format(reporte))\n    for string in [name for name in os.listdir(\'../../out/{}/pdf\'.format(reporte))]:\n        if os.path.isdir(\'../../out/diario/pdf/{}\'.format(string)):\n            pass\n        else:\n            exec(\'sum_{} += [string]\'.format(reporte))\n            exec(\'sum_{} = natsorted(sum_{})\'.format(reporte, reporte))\n    exec(\'\'\'for ipdf in sum_{}:\n        display(Markdown(" <a href=\'https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true\'>" + ipdf + "</a>"))\'\'\'.format(reporte))\n    p += 1\n    \ntxt2 = """# Archivo\n\n"""')
 
 
 # In[6]:
@@ -171,15 +171,9 @@ A continuación, dispongo los reportes históricos a partir de la fecha de publi
 ''' + vec_)
 
 
-# In[8]:
-
-
-vec_
-
-
 # ## Información de sesión
 
-# In[9]:
+# In[8]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='4_requeriments.txt')
