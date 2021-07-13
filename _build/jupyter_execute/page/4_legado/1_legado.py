@@ -171,9 +171,15 @@ A continuación, dispongo los reportes históricos a partir de la fecha de publi
 ''' + vec_)
 
 
+# In[8]:
+
+
+vec_
+
+
 # ## Información de sesión
 
-# In[8]:
+# In[9]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='4_requeriments.txt')
