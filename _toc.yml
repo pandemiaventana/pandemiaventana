@@ -35,4 +35,8 @@ sections:
   - file: page/5_reportes/2_reportes
   - file: page/5_reportes/3_reportes
   - file: page/5_reportes/4_reportes
+- file: page/5_reportes/infografias/0_infografias
+  sections:
+  - file: page/5_reportes/infografias/1_infografias
+  - file: page/5_reportes/infografias/2_infografias
 - file: page/6_bibliografia/0_bibliografia
