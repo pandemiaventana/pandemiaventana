@@ -228,12 +228,16 @@ csv38 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 csv61 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto61/serie_fallecidos_comuna.csv')
 
 ### csv69 (tasa de incidencia provincial, por cada cien mil habitantes, de casos confirmados, calculada por ICOVID Chile)
-#falta por agregar (por lata)
-#csv69 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.provincial.ajustada.csv')
+csv69_provincial = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.provincial.ajustada.csv')
+
+### csv69 (tasa de incidencia regional, por cada cien mil habitantes, de casos confirmados, calculada por ICOVID Chile)
+csv69_regional = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.regional.ajustada.csv')
 
 ### csv18 (tasa de incidencia histórica acumulada)
-#falta por agregar (por lata)
-#csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv')
+csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv')
+
+# %%
+csv18[csv18.Region == 'Tarapaca'].transpose().loc['Comuna', :], 
 
 # %% [markdown]
 # ## Análisis y manipulación de datos
@@ -575,6 +579,12 @@ for csv in csvs:
         [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()]\
         .fillna(method="ffill", inplace=False)'.format(var[i], var[i], var[i], var[i], var[i], var[i], var[i]))
     i += 1
+
+### Incidencia acumulada por comuna
+incidencia_acumulada = csv18[csv18.Region == 'Tarapaca'].transpose().drop(['Region', 'Codigo region', 'Comuna',
+                                                                       'Codigo comuna', 'Poblacion'])
+incidencia_acumulada.columns = 'Incidencia acumulada ' + csv18[
+    csv18.Region == 'Tarapaca'].transpose().loc['Comuna', :].replace('Total', 'regional')
     
 ### Otras cifras
 poblacion = csv7.loc[1, 'Tarapacá']
@@ -583,6 +593,21 @@ uciocupacion_nacional = round(((int(csv58[(csv58['Region'] == 'Total') & (csv58[
                          .transpose().iloc[-1]))/csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI habilitadas')]\
                          .transpose().iloc[-1])[16] * 100, 0)
 
+### Tasa de incidencia (tasa de casos nuevos pero sin media móvil sem., i. e. casos nuevos por cien mil hab.)
+### Regional
+incidencia_regional = csv69_regional[csv69_regional.Region == 'Tarapacá'].drop(
+    ['Codigo region', 'carga.liminf', 'carga.lisup', 'Region'], axis=1)
+incidencia_regional.index = incidencia_regional.fecha
+incidencia_regional.drop(['fecha'], axis=1, inplace=True)
+### Provincial
+incidencia_provincial = csv69_provincial[csv69_provincial['Region'] == 'Tarapacá'][['fecha','carga.estimada', 'Provincia']]
+incidencia_provincial.index = incidencia_provincial['fecha']
+incidencia_provincial_iqq = incidencia_provincial[incidencia_provincial['Provincia'] == 'Iquique']['carga.estimada']
+incidencia_provincial_tam = incidencia_provincial[incidencia_provincial['Provincia'] == 'Tamarugal']['carga.estimada']
+
+### Tasa de casos nuevos por provincia
+tasacasosnuevos_provincial_iqq = incidencia_provincial_iqq.rolling(window=7).mean()
+tasacasosnuevos_provincial_tam = incidencia_provincial_tam.rolling(window=7).mean()
 
 ### Datos calculados ###
 
@@ -662,68 +687,76 @@ poblacion_yomevacuno = 286597
 # Uniendo datos
 
 ### Tabla de todos los datos
-dfs = [casos_acumulativos, casos_recuperados, fallecidos_acumulativos, \
-       casos_activos, casos_activos_probables, casos_cumulativos, casos_con_sintomas, \
-       casos_sin_sintomas, casos_sin_notificar, casos_cumulativos_antigeno, \
-       casos_acumulativos_reinfeccion, casos_recuperados_cumulativos, fallecidos_diarios, antigenos, antigenos_acumulativos,\
-       pcr_cumulativos, pcr_acumulativos, residencias_cupos, residencias_usuarios, \
-       residencias_numero, uci_habilitadas, uci_diaria, uci_ocupadas_nocovid, uci_real, r_regional, \
+dfs = [casos_acumulativos, casos_recuperados, fallecidos_acumulativos,
+       casos_activos, casos_activos_probables, casos_cumulativos, casos_con_sintomas,
+       casos_sin_sintomas, casos_sin_notificar, casos_cumulativos_antigeno,
+       casos_acumulativos_reinfeccion, casos_recuperados_cumulativos, fallecidos_diarios, antigenos, antigenos_acumulativos,
+       pcr_cumulativos, pcr_acumulativos, residencias_cupos, residencias_usuarios,
+       residencias_numero, uci_habilitadas, uci_diaria, uci_ocupadas_nocovid, uci_real, r_regional,
        r_provincial_iqq, r_provincial_tam, positividad_diaria, vacunacion, casoscomuna_acumulativos, 
-       casoscomuna_activos, pasopaso_comuna, movilidad, notificacion_comuna, bac_comuna, positividad_comuna,\
-       cobertura_comuna, oportunidad_comuna, fallecidos_comuna, fallecidosdeis_conf_comuna, fallecidosdeis_prob_comuna,\
-       positividad_media_movil, mortalidad_especifica,\
-       crecimiento, crecimientodiario, uci_aprox, error_abs, tasa_casosnuevos, positividad_antigeno,\
+       casoscomuna_activos, pasopaso_comuna, movilidad, notificacion_comuna, bac_comuna, positividad_comuna,
+       cobertura_comuna, oportunidad_comuna, fallecidos_comuna, fallecidosdeis_conf_comuna, fallecidosdeis_prob_comuna,
+       incidencia_regional, incidencia_provincial_iqq, incidencia_provincial_tam, tasacasosnuevos_provincial_iqq,
+       tasacasosnuevos_provincial_tam, incidencia_acumulada,
+       positividad_media_movil, mortalidad_especifica,
+       crecimiento, crecimientodiario, uci_aprox, error_abs, tasa_casosnuevos, positividad_antigeno,
        positividad_antigeno_media_movil, me_comuna]
 
 ### Unimos a la tabla anterior y rellenamos valores NaN (Not a Number o no definido)
 df = pd.concat(dfs, join='outer', axis=1)
 
 ### Asignamos nombres de columnas y formateamos datos
-df.columns = ['Casos confirmados acumulados', 'Casos recuperados acumulados', 'Casos fallecidos acumulados',\
-              'Casos activos confirmados', 'Casos activos probables', 'Casos nuevos', 'Casos nuevos con sintomas',\
-              'Casos nuevos sin sintomas', 'Casos nuevos por laboratorio', 'Casos nuevos por antigeno',\
-              'Casos con sospecha de reinfeccion', 'Casos recuperados nuevos', 'Casos fallecidos nuevos',\
+df.columns = ['Casos confirmados acumulados', 'Casos recuperados acumulados', 'Casos fallecidos acumulados',
+              'Casos activos confirmados', 'Casos activos probables', 'Casos nuevos', 'Casos nuevos con sintomas',
+              'Casos nuevos sin sintomas', 'Casos nuevos por laboratorio', 'Casos nuevos por antigeno',
+              'Casos con sospecha de reinfeccion', 'Casos recuperados nuevos', 'Casos fallecidos nuevos',
               'Antigenos informados nuevos', 'Antigenos informados acumulados','PCR informados nuevos', 
               'PCR informados acumulados', 'Cupos en residencias',\
-              'Usuarios en residencias', 'Numero de residencias', 'UCI habilitadas', 'UCI ocupadas por confirmados',\
-              'UCI ocupadas por no confirmados', 'UCI ocupacion media movil real', 'Re regional', 'Re Iquique',\
-              'Re Tamarugal', 'Positividad diaria', 'Vacunados acumulados 1° dosis', 'Vacunados acumulados 2° dosis',\
-              'Vacunados acumulados unica dosis', 'Casos acumulados en Alto Hospicio', 'Casos acumulados en Camiña',\
-              'Casos acumulados en Colchane',\
-              'Casos acumulados en Huara', 'Casos acumulados en Iquique', 'Casos acumulados en Pica',\
+              'Usuarios en residencias', 'Numero de residencias', 'UCI habilitadas', 'UCI ocupadas por confirmados',
+              'UCI ocupadas por no confirmados', 'UCI ocupacion media movil real', 'Re regional', 'Re Iquique',
+              'Re Tamarugal', 'Positividad diaria', 'Vacunados acumulados 1° dosis', 'Vacunados acumulados 2° dosis',
+              'Vacunados acumulados unica dosis', 'Casos acumulados en Alto Hospicio', 'Casos acumulados en Camiña',
+              'Casos acumulados en Colchane',
+              'Casos acumulados en Huara', 'Casos acumulados en Iquique', 'Casos acumulados en Pica',
               'Casos acumulados en Pozo Almonte', 'Casos acumulados en Comuna desconocida', 
-              'Casos activos en Alto Hospicio', 'Casos activos en Camiña', 'Casos activos en Colchane',\
-              'Casos activos en Huara', 'Casos activos en Iquique', 'Casos activos en Pica', \
-              'Casos activos en Pozo Almonte', 'Casos activos en Comuna desconocida' ,'Paso a Paso Alto Hospicio',\
-              'Paso a Paso Camiña', 'Paso a Paso Colchane', 'Paso a Paso Huara', 'Paso a Paso Iquique',\
-              'Paso a Paso Pica', 'Paso a Paso Pozo Almonte', 'Paso a Paso (dias) Alto Hospicio',\
-              'Paso a Paso (dias) Camiña', 'Paso a Paso (dias) Colchane', 'Paso a Paso (dias) Huara',\
-              'Paso a Paso (dias) Iquique', 'Paso a Paso (dias) Pica', 'Paso a Paso (dias) Pozo Almonte', \
-              'Movilidad Iquique', 'Movilidad Pica', 'Movilidad Alto Hospicio',\
-              'Movilidad Pozo almonte', 'Movilidad Huara', 'Notificacion PCR Alto Hospicio',\
-              'Notificacion PCR Camiña', 'Notificacion PCR Colchane', 'Notificacion PCR Huara',\
-              'Notificacion PCR Iquique', 'Notificacion PCR Pica', 'Notificacion PCR Pozo Almonte',\
-              'BAC Alto Hospicio', 'BAC Camiña', 'BAC Colchane', 'BAC Huara', 'BAC Iquique', 'BAC Pica',\
-              'BAC Pozo Almonte', 'Positividad Alto Hospicio', 'Positividad Camiña', 'Positividad Colchane',\
-              'Positividad Huara', 'Positividad Iquique', 'Positividad Pica', 'Positividad Pozo Almonte',\
-              'Cobertura de testeo Alto Hospicio', 'Cobertura de testeo Camiña', 'Cobertura de testeo Colchane',\
-              'Cobertura de testeo Huara', 'Cobertura de testeo Iquique', 'Cobertura de testeo Pica',\
-              'Cobertura de testeo Pozo Almonte', 'Oportunidad en notificacion Alto Hospicio',\
-              'Oportunidad en notificacion Camiña', 'Oportunidad en notificacion Colchane',\
-              'Oportunidad en notificacion Huara', 'Oportunidad en notificacion Iquique',\
-              'Oportunidad en notificacion Pica', 'Oportunidad en notificacion Pozo Almonte', 'Fallecidos Alto Hospicio',\
-              'Fallecidos Camiña', 'Fallecidos Colchane', 'Fallecidos Huara', 'Fallecidos Iquique', 'Fallecidos Pica',\
-              'Fallecidos Pozo Almonte', 'Fallecidos Comuna desconocida', 'Fallecidos total comunal',\
-              'Fallecidos confirmados DEIS Alto Hospicio','Fallecidos confirmados DEIS Camiña',\
-              'Fallecidos confirmados DEIS Colchane','Fallecidos confirmados DEIS Huara',\
-              'Fallecidos confirmados DEIS Iquique','Fallecidos confirmados DEIS Pica',\
-              'Fallecidos confirmados DEIS Pozo Almonte', 'Fallecidos probables DEIS Alto Hospicio',\
-              'Fallecidos probables DEIS Camiña','Fallecidos probables DEIS Colchane', 'Fallecidos probables DEIS Huara',\
+              'Casos activos en Alto Hospicio', 'Casos activos en Camiña', 'Casos activos en Colchane',
+              'Casos activos en Huara', 'Casos activos en Iquique', 'Casos activos en Pica', 
+              'Casos activos en Pozo Almonte', 'Casos activos en Comuna desconocida' ,'Paso a Paso Alto Hospicio',
+              'Paso a Paso Camiña', 'Paso a Paso Colchane', 'Paso a Paso Huara', 'Paso a Paso Iquique',
+              'Paso a Paso Pica', 'Paso a Paso Pozo Almonte', 'Paso a Paso (dias) Alto Hospicio',
+              'Paso a Paso (dias) Camiña', 'Paso a Paso (dias) Colchane', 'Paso a Paso (dias) Huara',
+              'Paso a Paso (dias) Iquique', 'Paso a Paso (dias) Pica', 'Paso a Paso (dias) Pozo Almonte', 
+              'Movilidad Iquique', 'Movilidad Pica', 'Movilidad Alto Hospicio',
+              'Movilidad Pozo almonte', 'Movilidad Huara', 'Notificacion PCR Alto Hospicio',
+              'Notificacion PCR Camiña', 'Notificacion PCR Colchane', 'Notificacion PCR Huara',
+              'Notificacion PCR Iquique', 'Notificacion PCR Pica', 'Notificacion PCR Pozo Almonte',
+              'BAC Alto Hospicio', 'BAC Camiña', 'BAC Colchane', 'BAC Huara', 'BAC Iquique', 'BAC Pica',
+              'BAC Pozo Almonte', 'Positividad Alto Hospicio', 'Positividad Camiña', 'Positividad Colchane',
+              'Positividad Huara', 'Positividad Iquique', 'Positividad Pica', 'Positividad Pozo Almonte',
+              'Cobertura de testeo Alto Hospicio', 'Cobertura de testeo Camiña', 'Cobertura de testeo Colchane',
+              'Cobertura de testeo Huara', 'Cobertura de testeo Iquique', 'Cobertura de testeo Pica',
+              'Cobertura de testeo Pozo Almonte', 'Oportunidad en notificacion Alto Hospicio',
+              'Oportunidad en notificacion Camiña', 'Oportunidad en notificacion Colchane',
+              'Oportunidad en notificacion Huara', 'Oportunidad en notificacion Iquique',
+              'Oportunidad en notificacion Pica', 'Oportunidad en notificacion Pozo Almonte', 'Fallecidos Alto Hospicio',
+              'Fallecidos Camiña', 'Fallecidos Colchane', 'Fallecidos Huara', 'Fallecidos Iquique', 'Fallecidos Pica',
+              'Fallecidos Pozo Almonte', 'Fallecidos Comuna desconocida', 'Fallecidos total comunal',
+              'Fallecidos confirmados DEIS Alto Hospicio','Fallecidos confirmados DEIS Camiña',
+              'Fallecidos confirmados DEIS Colchane','Fallecidos confirmados DEIS Huara',
+              'Fallecidos confirmados DEIS Iquique','Fallecidos confirmados DEIS Pica',
+              'Fallecidos confirmados DEIS Pozo Almonte', 'Fallecidos probables DEIS Alto Hospicio',
+              'Fallecidos probables DEIS Camiña','Fallecidos probables DEIS Colchane', 'Fallecidos probables DEIS Huara',
               'Fallecidos probables DEIS Iquique', 'Fallecidos probables DEIS Pica',\
-              'Fallecidos probables DEIS Pozo Almonte',\
-              'Positividad media movil *', 'Mortalidad especifica *', 'Crecimiento semanal *', 'Crecimiento diario *',\
-              'UCI ocupacion media movil aprox *', 'UCI error abs *','Tasa casos nuevos *', 'Positividad antigeno *',\
-              'Positividad antigeno media movil *', 'Mortalidad especifica comunal Alto Hospicio *', 'Mortalidad especifica comunal Camiña *',\
+              'Fallecidos probables DEIS Pozo Almonte', 
+              'Incidencia regional estimada', 'Incidencia Iquique estimada', 'Incidencia Tamarugal estimada',
+              'Tasa de casos nuevos Iquique estimada', 'Tasa de casos nuevos Tamarugal estimada', 
+              'Incidencia acumulada Alto Hospicio', 'Incidencia acumulada Camina',
+              'Incidencia acumulada Colchane', 'Incidencia acumulada Huara',
+              'Incidencia acumulada Iquique', 'Incidencia acumulada Pica',
+              'Incidencia acumulada Pozo Almonte', 'Incidencia acumulada regional',
+              'Positividad media movil *', 'Mortalidad especifica *', 'Crecimiento semanal *', 'Crecimiento diario *',
+              'UCI ocupacion media movil aprox *', 'UCI error abs *','Tasa casos nuevos *', 'Positividad antigeno *',
+              'Positividad antigeno media movil *', 'Mortalidad especifica comunal Alto Hospicio *', 'Mortalidad especifica comunal Camiña *',
               'Mortalidad especifica comunal Colchane *', 'Mortalidad especifica comunal Huara *',
               'Mortalidad especifica comunal Iquique *', 'Mortalidad especifica comunal Pica *',
               'Mortalidad especifica comunal Pozo Almonte *']
@@ -853,45 +886,58 @@ pd.DataFrame([df['Re regional'],
               df['Re Tamarugal']]
               ).transpose().to_csv('../../out/site/csv/data6.csv')
 
+### Incidencia acumulada por provincia ###
+pd.DataFrame(df.loc[:, df.columns.str.contains('Incidencia') 
+      & df.columns.str.contains('acumulada')]).to_csv('../../out/site/csv/data7.csv')
+
+### Incidencia por provincia diaria ###
+pd.DataFrame(df.loc[:, df.columns.str.contains('Incidencia') 
+      & ~df.columns.str.contains('acumulada')]).to_csv('../../out/site/csv/data8.csv')
+
+### Tasa de casos nuevos por provincia ###
+pd.DataFrame(df.loc[:, df.columns.str.contains('Tasa de casos nuevos') 
+      & ~df.columns.str.contains('acumulada')]).to_csv('../../out/site/csv/data9.csv')
+
+
+
 ### Tasa de crecimiento diaria y media móvil semanal ###
 pd.DataFrame([df['Crecimiento diario *'],
               df['Crecimiento semanal *']]
-              ).transpose().to_csv('../../out/site/csv/data7.csv')
+              ).transpose().to_csv('../../out/site/csv/data10.csv')
 
 ### Por comuna
 
 ### Histórico de casos ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Casos acumulados en')]
-              ).to_csv('../../out/site/csv/data8.csv')
+              ).to_csv('../../out/site/csv/data11.csv')
 
 ### Positividad ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Positividad') &
                     ~df.columns.str.contains('diaria') &
                     ~df.columns.str.contains('movil') &
                     ~df.columns.str.contains('antigeno')]
-              ).to_csv('../../out/site/csv/data9.csv')
+              ).to_csv('../../out/site/csv/data12.csv')
 
 ### Activos ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('activos') &
                     ~df.columns.str.contains('confirmados') &
                     ~df.columns.str.contains('probables')]
-              ).to_csv('../../out/site/csv/data10.csv')
+              ).to_csv('../../out/site/csv/data13.csv')
 
 ### Fallecidos no procesados por DEIS ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos') 
       & ~df.columns.str.contains('Fallecidos confirmados')
-      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data11.csv')
+      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data14.csv')
 
 ### Fallecidos procesados por DEIS, confirmados ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos') 
       & df.columns.str.contains('Fallecidos confirmados')
-      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data12.csv')
+      & ~df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data15.csv')
 
 ### Fallecidos procesados por DEIS, probables ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos') 
       & ~df.columns.str.contains('Fallecidos confirmados')
-      & df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data13.csv')
-
+      & df.columns.str.contains('Fallecidos probables')]).to_csv('../../out/site/csv/data16.csv')
 
 ### Red asistencial
 
@@ -899,11 +945,11 @@ pd.DataFrame(df.loc[:, df.columns.str.contains('Fallecidos')
 pd.DataFrame([df['UCI ocupacion media movil real'],
               df['UCI ocupacion media movil aprox *']
              ], index=['Media móvil real de ocupación UCI', 'Media móvil hipotética de ocupación UCI']
-              ).transpose().to_csv('../../out/site/csv/data14.csv')
+              ).transpose().to_csv('../../out/site/csv/data17.csv')
 
 ### Residencias sanitarias ###
 pd.DataFrame(df.loc[:, df.columns.str.contains('residencias') & ~df.columns.str.contains('Numero')]
-              ).to_csv('../../out/site/csv/data15.csv')
+              ).to_csv('../../out/site/csv/data18.csv')
 
 ### Detalle de muestra y otros datos segregados
 
@@ -911,13 +957,13 @@ pd.DataFrame(df.loc[:, df.columns.str.contains('residencias') & ~df.columns.str.
 pd.DataFrame([df['PCR informados nuevos'],
               df['PCR informados nuevos'].rolling(7).mean()
              ], index=['PCR informados nuevos', 'Media móvil semanal de PCR informados nuevos']
-              ).transpose().to_csv('../../out/site/csv/data16.csv')
+              ).transpose().to_csv('../../out/site/csv/data19.csv')
 
 ### Antígeno ###
 pd.DataFrame([df['Antigenos informados nuevos'],
               df['Antigenos informados nuevos'].rolling(7).mean()
              ], index=['Antígenos informados nuevos', 'Media móvil semanal de antígenos informados nuevos']
-              ).transpose().to_csv('../../out/site/csv/data17.csv')
+              ).transpose().to_csv('../../out/site/csv/data20.csv')
 
 ### Detalle de casos nuevos ###
 pd.DataFrame([df['Casos nuevos con sintomas'],
@@ -926,31 +972,31 @@ pd.DataFrame([df['Casos nuevos con sintomas'],
               df['Casos nuevos por antigeno']
              ], index=['Casos nuevos con síntomas', 'Casos nuevos sin síntomas',
                         'Casos nuevos por laboratorio', 'Casos nuevos por antígeno']
-              ).transpose().to_csv('../../out/site/csv/data18.csv')
+              ).transpose().to_csv('../../out/site/csv/data21.csv')
 
 ### Detalle de casos nuevos con sospecha de reinfección ###
 pd.DataFrame([df['Casos con sospecha de reinfeccion']
              ], index=['Casos con sospecha de reinfección']
-              ).transpose().to_csv('../../out/site/csv/data19.csv')
+              ).transpose().to_csv('../../out/site/csv/data22.csv')
 
 ### Tasa de casos nuevos por cien mil habitantes en media móvil semanal ###
 pd.DataFrame([df['Tasa casos nuevos *']
              ], index=['Tasa de casos nuevos de casos nuevos por cien mil habitantes']
-              ).transpose().to_csv('../../out/site/csv/data20.csv')
+              ).transpose().to_csv('../../out/site/csv/data23.csv')
 
 ### Mortalidad específica ###
 pd.DataFrame([df['Mortalidad especifica *']
              ], index=['Mortalidad específica por cien mil habitantes']
-              ).transpose().to_csv('../../out/site/csv/data21.csv')
+              ).transpose().to_csv('../../out/site/csv/data24.csv')
 
 ### Mortalidad específica por comuna ###
 pd.DataFrame(pd.DataFrame(df.loc[:, df.columns.str.contains('Mortalidad especifica comunal *')])
-              ).to_csv('../../out/site/csv/data22.csv')
+              ).to_csv('../../out/site/csv/data25.csv')
 
 ### Vacunación ###
 pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2° dosis'],
               df['Vacunados acumulados unica dosis']]
-              ).transpose().to_csv('../../out/site/csv/data23.csv')
+              ).transpose().to_csv('../../out/site/csv/data26.csv')
 
 # %% [markdown]
 # ### Reporte diario
