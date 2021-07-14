@@ -1036,6 +1036,10 @@
 <div><p>El valor de la curtosis es de <strong>0.011674197843603018</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_14.png" src="../../_images/2_thisistheway_19_14.png" />
+ <h3> Para la columna Incidencia acumulada Pica </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>0.028851894125037657</strong></p>
+</div></blockquote>
+<img alt="../../_images/2_thisistheway_19_17.png" src="../../_images/2_thisistheway_19_17.png" />
 </div>
 </div>
 <p>Prácticamente, no existe normalidad, y las pocas columnas que son, <em>aproximadamente normales</em>, se deben a datos de comunas con baja población, o que contienen bajo número de observaciones (a raíz de ser añadidas hace poco tiempo al <a href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Min. Ciencia</a>). <strong>Estas columnas las descartamos al asignar que la curtosis sea distinta de cero</strong>.</p>
@@ -1526,10 +1530,16 @@
       <th>Fallecidos Iquique</th>
       <th>Fallecidos confirmados DEIS Iquique</th>
       <th>Fallecidos probables DEIS Iquique</th>
+      <th>Incidencia Iquique estimada</th>
+      <th>Tasa de casos nuevos Iquique estimada</th>
+      <th>Incidencia acumulada Iquique</th>
       <th>Mortalidad especifica comunal Iquique *</th>
     </tr>
     <tr>
       <th>Fecha</th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1565,6 +1575,9 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2020-03-04</th>
@@ -1574,6 +1587,9 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>0.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1601,6 +1617,9 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2020-03-06</th>
@@ -1610,6 +1629,9 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>0.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1637,9 +1659,15 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1672,6 +1700,9 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>7.15</td>
+      <td>9.73</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -1681,6 +1712,9 @@
       <td>NaN</td>
       <td>3.00</td>
       <td>6.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1709,9 +1743,15 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2021-07-13</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1745,10 +1785,13 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>499 rows × 15 columns</p>
+<p>499 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2538,7 +2581,7 @@ weighted avg       0.99      0.98      0.98        58
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-14 19:41
+            Session information updated at 2021-07-14 20:19
             </pre>
             </details></div></div>
 </div>
