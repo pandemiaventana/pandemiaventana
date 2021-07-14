@@ -1,4 +1,4 @@
-# Agradecimientos 🎉
+# Agradecimientos
 
 ¡Nuestro profundo agradecimiento a la comunidad!
 
