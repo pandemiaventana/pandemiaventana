@@ -1,4 +1,4 @@
-# Informativos 📘
+# Informativos
 
 Vamos con las infografías informativas.
 
