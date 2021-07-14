@@ -902,12 +902,33 @@
 <span class="n">csv61</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto61/serie_fallecidos_comuna.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### csv69 (tasa de incidencia provincial, por cada cien mil habitantes, de casos confirmados, calculada por ICOVID Chile)</span>
-<span class="c1">#falta por agregar (por lata)</span>
-<span class="c1">#csv69 = pd.read_csv(&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.provincial.ajustada.csv&#39;)</span>
+<span class="n">csv69_provincial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.provincial.ajustada.csv&#39;</span><span class="p">)</span>
+
+<span class="c1">### csv69 (tasa de incidencia regional, por cada cien mil habitantes, de casos confirmados, calculada por ICOVID Chile)</span>
+<span class="n">csv69_regional</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.regional.ajustada.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### csv18 (tasa de incidencia histórica acumulada)</span>
-<span class="c1">#falta por agregar (por lata)</span>
-<span class="c1">#csv18 = pd.read_csv(&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv&#39;)</span>
+<span class="n">csv18</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">csv18</span><span class="p">[</span><span class="n">csv18</span><span class="o">.</span><span class="n">Region</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Comuna&#39;</span><span class="p">,</span> <span class="p">:],</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5     Alto Hospicio
+ 6            Camina
+ 7          Colchane
+ 8             Huara
+ 9           Iquique
+ 10             Pica
+ 11     Pozo Almonte
+ 12            Total
+ Name: Comuna, dtype: object,)
 </pre></div>
 </div>
 </div>
@@ -1271,6 +1292,12 @@
 <span class="s1">        [</span><span class="si">{}</span><span class="s1">_comuna[col].first_valid_index():</span><span class="si">{}</span><span class="s1">_comuna[col].last_valid_index()]</span><span class="se">\</span>
 <span class="s1">        .fillna(method=&quot;ffill&quot;, inplace=False)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1">### Incidencia acumulada por comuna</span>
+<span class="n">incidencia_acumulada</span> <span class="o">=</span> <span class="n">csv18</span><span class="p">[</span><span class="n">csv18</span><span class="o">.</span><span class="n">Region</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="s1">&#39;Codigo region&#39;</span><span class="p">,</span> <span class="s1">&#39;Comuna&#39;</span><span class="p">,</span>
+                                                                       <span class="s1">&#39;Codigo comuna&#39;</span><span class="p">,</span> <span class="s1">&#39;Poblacion&#39;</span><span class="p">])</span>
+<span class="n">incidencia_acumulada</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Incidencia acumulada &#39;</span> <span class="o">+</span> <span class="n">csv18</span><span class="p">[</span>
+    <span class="n">csv18</span><span class="o">.</span><span class="n">Region</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Comuna&#39;</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Total&#39;</span><span class="p">,</span> <span class="s1">&#39;regional&#39;</span><span class="p">)</span>
     
 <span class="c1">### Otras cifras</span>
 <span class="n">poblacion</span> <span class="o">=</span> <span class="n">csv7</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span>
@@ -1279,6 +1306,21 @@
                          <span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">/</span><span class="n">csv58</span><span class="p">[(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Total&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Serie&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Camas UCI habilitadas&#39;</span><span class="p">)]</span>\
                          <span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">16</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
+<span class="c1">### Tasa de incidencia (tasa de casos nuevos pero sin media móvil sem., i. e. casos nuevos por cien mil hab.)</span>
+<span class="c1">### Regional</span>
+<span class="n">incidencia_regional</span> <span class="o">=</span> <span class="n">csv69_regional</span><span class="p">[</span><span class="n">csv69_regional</span><span class="o">.</span><span class="n">Region</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Codigo region&#39;</span><span class="p">,</span> <span class="s1">&#39;carga.liminf&#39;</span><span class="p">,</span> <span class="s1">&#39;carga.lisup&#39;</span><span class="p">,</span> <span class="s1">&#39;Region&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">incidencia_regional</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">incidencia_regional</span><span class="o">.</span><span class="n">fecha</span>
+<span class="n">incidencia_regional</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;fecha&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">### Provincial</span>
+<span class="n">incidencia_provincial</span> <span class="o">=</span> <span class="n">csv69_provincial</span><span class="p">[</span><span class="n">csv69_provincial</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">][[</span><span class="s1">&#39;fecha&#39;</span><span class="p">,</span><span class="s1">&#39;carga.estimada&#39;</span><span class="p">,</span> <span class="s1">&#39;Provincia&#39;</span><span class="p">]]</span>
+<span class="n">incidencia_provincial</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">incidencia_provincial</span><span class="p">[</span><span class="s1">&#39;fecha&#39;</span><span class="p">]</span>
+<span class="n">incidencia_provincial_iqq</span> <span class="o">=</span> <span class="n">incidencia_provincial</span><span class="p">[</span><span class="n">incidencia_provincial</span><span class="p">[</span><span class="s1">&#39;Provincia&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Iquique&#39;</span><span class="p">][</span><span class="s1">&#39;carga.estimada&#39;</span><span class="p">]</span>
+<span class="n">incidencia_provincial_tam</span> <span class="o">=</span> <span class="n">incidencia_provincial</span><span class="p">[</span><span class="n">incidencia_provincial</span><span class="p">[</span><span class="s1">&#39;Provincia&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tamarugal&#39;</span><span class="p">][</span><span class="s1">&#39;carga.estimada&#39;</span><span class="p">]</span>
+
+<span class="c1">### Tasa de casos nuevos por provincia</span>
+<span class="n">tasacasosnuevos_provincial_iqq</span> <span class="o">=</span> <span class="n">incidencia_provincial_iqq</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">tasacasosnuevos_provincial_tam</span> <span class="o">=</span> <span class="n">incidencia_provincial_tam</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 <span class="c1">### Datos calculados ###</span>
 
@@ -1358,68 +1400,76 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uniendo datos</span>
 
 <span class="c1">### Tabla de todos los datos</span>
-<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">casos_acumulativos</span><span class="p">,</span> <span class="n">casos_recuperados</span><span class="p">,</span> <span class="n">fallecidos_acumulativos</span><span class="p">,</span> \
-       <span class="n">casos_activos</span><span class="p">,</span> <span class="n">casos_activos_probables</span><span class="p">,</span> <span class="n">casos_cumulativos</span><span class="p">,</span> <span class="n">casos_con_sintomas</span><span class="p">,</span> \
-       <span class="n">casos_sin_sintomas</span><span class="p">,</span> <span class="n">casos_sin_notificar</span><span class="p">,</span> <span class="n">casos_cumulativos_antigeno</span><span class="p">,</span> \
-       <span class="n">casos_acumulativos_reinfeccion</span><span class="p">,</span> <span class="n">casos_recuperados_cumulativos</span><span class="p">,</span> <span class="n">fallecidos_diarios</span><span class="p">,</span> <span class="n">antigenos</span><span class="p">,</span> <span class="n">antigenos_acumulativos</span><span class="p">,</span>\
-       <span class="n">pcr_cumulativos</span><span class="p">,</span> <span class="n">pcr_acumulativos</span><span class="p">,</span> <span class="n">residencias_cupos</span><span class="p">,</span> <span class="n">residencias_usuarios</span><span class="p">,</span> \
-       <span class="n">residencias_numero</span><span class="p">,</span> <span class="n">uci_habilitadas</span><span class="p">,</span> <span class="n">uci_diaria</span><span class="p">,</span> <span class="n">uci_ocupadas_nocovid</span><span class="p">,</span> <span class="n">uci_real</span><span class="p">,</span> <span class="n">r_regional</span><span class="p">,</span> \
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">casos_acumulativos</span><span class="p">,</span> <span class="n">casos_recuperados</span><span class="p">,</span> <span class="n">fallecidos_acumulativos</span><span class="p">,</span>
+       <span class="n">casos_activos</span><span class="p">,</span> <span class="n">casos_activos_probables</span><span class="p">,</span> <span class="n">casos_cumulativos</span><span class="p">,</span> <span class="n">casos_con_sintomas</span><span class="p">,</span>
+       <span class="n">casos_sin_sintomas</span><span class="p">,</span> <span class="n">casos_sin_notificar</span><span class="p">,</span> <span class="n">casos_cumulativos_antigeno</span><span class="p">,</span>
+       <span class="n">casos_acumulativos_reinfeccion</span><span class="p">,</span> <span class="n">casos_recuperados_cumulativos</span><span class="p">,</span> <span class="n">fallecidos_diarios</span><span class="p">,</span> <span class="n">antigenos</span><span class="p">,</span> <span class="n">antigenos_acumulativos</span><span class="p">,</span>
+       <span class="n">pcr_cumulativos</span><span class="p">,</span> <span class="n">pcr_acumulativos</span><span class="p">,</span> <span class="n">residencias_cupos</span><span class="p">,</span> <span class="n">residencias_usuarios</span><span class="p">,</span>
+       <span class="n">residencias_numero</span><span class="p">,</span> <span class="n">uci_habilitadas</span><span class="p">,</span> <span class="n">uci_diaria</span><span class="p">,</span> <span class="n">uci_ocupadas_nocovid</span><span class="p">,</span> <span class="n">uci_real</span><span class="p">,</span> <span class="n">r_regional</span><span class="p">,</span>
        <span class="n">r_provincial_iqq</span><span class="p">,</span> <span class="n">r_provincial_tam</span><span class="p">,</span> <span class="n">positividad_diaria</span><span class="p">,</span> <span class="n">vacunacion</span><span class="p">,</span> <span class="n">casoscomuna_acumulativos</span><span class="p">,</span> 
-       <span class="n">casoscomuna_activos</span><span class="p">,</span> <span class="n">pasopaso_comuna</span><span class="p">,</span> <span class="n">movilidad</span><span class="p">,</span> <span class="n">notificacion_comuna</span><span class="p">,</span> <span class="n">bac_comuna</span><span class="p">,</span> <span class="n">positividad_comuna</span><span class="p">,</span>\
-       <span class="n">cobertura_comuna</span><span class="p">,</span> <span class="n">oportunidad_comuna</span><span class="p">,</span> <span class="n">fallecidos_comuna</span><span class="p">,</span> <span class="n">fallecidosdeis_conf_comuna</span><span class="p">,</span> <span class="n">fallecidosdeis_prob_comuna</span><span class="p">,</span>\
-       <span class="n">positividad_media_movil</span><span class="p">,</span> <span class="n">mortalidad_especifica</span><span class="p">,</span>\
-       <span class="n">crecimiento</span><span class="p">,</span> <span class="n">crecimientodiario</span><span class="p">,</span> <span class="n">uci_aprox</span><span class="p">,</span> <span class="n">error_abs</span><span class="p">,</span> <span class="n">tasa_casosnuevos</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">,</span>\
+       <span class="n">casoscomuna_activos</span><span class="p">,</span> <span class="n">pasopaso_comuna</span><span class="p">,</span> <span class="n">movilidad</span><span class="p">,</span> <span class="n">notificacion_comuna</span><span class="p">,</span> <span class="n">bac_comuna</span><span class="p">,</span> <span class="n">positividad_comuna</span><span class="p">,</span>
+       <span class="n">cobertura_comuna</span><span class="p">,</span> <span class="n">oportunidad_comuna</span><span class="p">,</span> <span class="n">fallecidos_comuna</span><span class="p">,</span> <span class="n">fallecidosdeis_conf_comuna</span><span class="p">,</span> <span class="n">fallecidosdeis_prob_comuna</span><span class="p">,</span>
+       <span class="n">incidencia_regional</span><span class="p">,</span> <span class="n">incidencia_provincial_iqq</span><span class="p">,</span> <span class="n">incidencia_provincial_tam</span><span class="p">,</span> <span class="n">tasacasosnuevos_provincial_iqq</span><span class="p">,</span>
+       <span class="n">tasacasosnuevos_provincial_tam</span><span class="p">,</span> <span class="n">incidencia_acumulada</span><span class="p">,</span>
+       <span class="n">positividad_media_movil</span><span class="p">,</span> <span class="n">mortalidad_especifica</span><span class="p">,</span>
+       <span class="n">crecimiento</span><span class="p">,</span> <span class="n">crecimientodiario</span><span class="p">,</span> <span class="n">uci_aprox</span><span class="p">,</span> <span class="n">error_abs</span><span class="p">,</span> <span class="n">tasa_casosnuevos</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">,</span>
        <span class="n">positividad_antigeno_media_movil</span><span class="p">,</span> <span class="n">me_comuna</span><span class="p">]</span>
 
 <span class="c1">### Unimos a la tabla anterior y rellenamos valores NaN (Not a Number o no definido)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1">### Asignamos nombres de columnas y formateamos datos</span>
-<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Casos confirmados acumulados&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos recuperados acumulados&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos fallecidos acumulados&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Casos activos confirmados&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos probables&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos con sintomas&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Casos nuevos sin sintomas&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos por laboratorio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos por antigeno&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Casos con sospecha de reinfeccion&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos fallecidos nuevos&#39;</span><span class="p">,</span>\
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Casos confirmados acumulados&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos recuperados acumulados&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos fallecidos acumulados&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Casos activos confirmados&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos probables&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos con sintomas&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Casos nuevos sin sintomas&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos por laboratorio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos por antigeno&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Casos con sospecha de reinfeccion&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos fallecidos nuevos&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Antigenos informados nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Antigenos informados acumulados&#39;</span><span class="p">,</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">,</span> 
               <span class="s1">&#39;PCR informados acumulados&#39;</span><span class="p">,</span> <span class="s1">&#39;Cupos en residencias&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Usuarios en residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;Numero de residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI habilitadas&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupadas por confirmados&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;UCI ocupadas por no confirmados&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupacion media movil real&#39;</span><span class="p">,</span> <span class="s1">&#39;Re regional&#39;</span><span class="p">,</span> <span class="s1">&#39;Re Iquique&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Re Tamarugal&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad diaria&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Camiña&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Casos acumulados en Colchane&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Casos acumulados en Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Pica&#39;</span><span class="p">,</span>\
+              <span class="s1">&#39;Usuarios en residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;Numero de residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI habilitadas&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupadas por confirmados&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;UCI ocupadas por no confirmados&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupacion media movil real&#39;</span><span class="p">,</span> <span class="s1">&#39;Re regional&#39;</span><span class="p">,</span> <span class="s1">&#39;Re Iquique&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Re Tamarugal&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad diaria&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Camiña&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Casos acumulados en Colchane&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Casos acumulados en Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Pica&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Casos acumulados en Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Comuna desconocida&#39;</span><span class="p">,</span> 
-              <span class="s1">&#39;Casos activos en Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Colchane&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Casos activos en Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Pica&#39;</span><span class="p">,</span> \
-              <span class="s1">&#39;Casos activos en Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Comuna desconocida&#39;</span> <span class="p">,</span><span class="s1">&#39;Paso a Paso Alto Hospicio&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Paso a Paso Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Iquique&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Paso a Paso Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Alto Hospicio&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Paso a Paso (dias) Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Huara&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Paso a Paso (dias) Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Pozo Almonte&#39;</span><span class="p">,</span> \
-              <span class="s1">&#39;Movilidad Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Movilidad Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Movilidad Alto Hospicio&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Movilidad Pozo almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Movilidad Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Alto Hospicio&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Notificacion PCR Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Huara&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Notificacion PCR Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Pozo Almonte&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;BAC Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Pica&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;BAC Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Colchane&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Positividad Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Pozo Almonte&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Cobertura de testeo Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Colchane&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Cobertura de testeo Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Pica&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Cobertura de testeo Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Alto Hospicio&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Oportunidad en notificacion Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Colchane&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Oportunidad en notificacion Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Iquique&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Oportunidad en notificacion Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Alto Hospicio&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Pica&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Comuna desconocida&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos total comunal&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos confirmados DEIS Alto Hospicio&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos confirmados DEIS Camiña&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos confirmados DEIS Colchane&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos confirmados DEIS Huara&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos confirmados DEIS Iquique&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos confirmados DEIS Pica&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos confirmados DEIS Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos probables DEIS Alto Hospicio&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos probables DEIS Camiña&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos probables DEIS Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos probables DEIS Huara&#39;</span><span class="p">,</span>\
+              <span class="s1">&#39;Casos activos en Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Colchane&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Casos activos en Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Pica&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;Casos activos en Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos activos en Comuna desconocida&#39;</span> <span class="p">,</span><span class="s1">&#39;Paso a Paso Alto Hospicio&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Paso a Paso Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Iquique&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Paso a Paso Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Alto Hospicio&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Paso a Paso (dias) Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Huara&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Paso a Paso (dias) Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Paso a Paso (dias) Pozo Almonte&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;Movilidad Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Movilidad Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Movilidad Alto Hospicio&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Movilidad Pozo almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Movilidad Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Alto Hospicio&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Notificacion PCR Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Huara&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Notificacion PCR Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Notificacion PCR Pozo Almonte&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;BAC Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC Pica&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;BAC Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Colchane&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Positividad Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad Pozo Almonte&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Cobertura de testeo Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Colchane&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Cobertura de testeo Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Cobertura de testeo Pica&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Cobertura de testeo Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Alto Hospicio&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Oportunidad en notificacion Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Colchane&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Oportunidad en notificacion Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Iquique&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Oportunidad en notificacion Pica&#39;</span><span class="p">,</span> <span class="s1">&#39;Oportunidad en notificacion Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Alto Hospicio&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Fallecidos Camiña&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Pica&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Fallecidos Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos Comuna desconocida&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos total comunal&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Fallecidos confirmados DEIS Alto Hospicio&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos confirmados DEIS Camiña&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Fallecidos confirmados DEIS Colchane&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos confirmados DEIS Huara&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Fallecidos confirmados DEIS Iquique&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos confirmados DEIS Pica&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Fallecidos confirmados DEIS Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos probables DEIS Alto Hospicio&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Fallecidos probables DEIS Camiña&#39;</span><span class="p">,</span><span class="s1">&#39;Fallecidos probables DEIS Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos probables DEIS Huara&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Fallecidos probables DEIS Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Fallecidos probables DEIS Pica&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Fallecidos probables DEIS Pozo Almonte&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Positividad media movil *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica *&#39;</span><span class="p">,</span> <span class="s1">&#39;Crecimiento semanal *&#39;</span><span class="p">,</span> <span class="s1">&#39;Crecimiento diario *&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;UCI ocupacion media movil aprox *&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI error abs *&#39;</span><span class="p">,</span><span class="s1">&#39;Tasa casos nuevos *&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad antigeno *&#39;</span><span class="p">,</span>\
-              <span class="s1">&#39;Positividad antigeno media movil *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Alto Hospicio *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Camiña *&#39;</span><span class="p">,</span>\
+              <span class="s1">&#39;Fallecidos probables DEIS Pozo Almonte&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;Incidencia regional estimada&#39;</span><span class="p">,</span> <span class="s1">&#39;Incidencia Iquique estimada&#39;</span><span class="p">,</span> <span class="s1">&#39;Incidencia Tamarugal estimada&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Tasa de casos nuevos Iquique estimada&#39;</span><span class="p">,</span> <span class="s1">&#39;Tasa de casos nuevos Tamarugal estimada&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;Incidencia acumulada Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Incidencia acumulada Camina&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Incidencia acumulada Colchane&#39;</span><span class="p">,</span> <span class="s1">&#39;Incidencia acumulada Huara&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Incidencia acumulada Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Incidencia acumulada Pica&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Incidencia acumulada Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Incidencia acumulada regional&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Positividad media movil *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica *&#39;</span><span class="p">,</span> <span class="s1">&#39;Crecimiento semanal *&#39;</span><span class="p">,</span> <span class="s1">&#39;Crecimiento diario *&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;UCI ocupacion media movil aprox *&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI error abs *&#39;</span><span class="p">,</span><span class="s1">&#39;Tasa casos nuevos *&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad antigeno *&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Positividad antigeno media movil *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Alto Hospicio *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Camiña *&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Mortalidad especifica comunal Colchane *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Huara *&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Mortalidad especifica comunal Iquique *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Pica *&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Mortalidad especifica comunal Pozo Almonte *&#39;</span><span class="p">]</span>
@@ -1481,15 +1531,15 @@
       <th>UCI ocupacion media movil real</th>
       <th>Re regional</th>
       <th>...</th>
-      <th>Fallecidos confirmados DEIS Pica</th>
-      <th>Fallecidos confirmados DEIS Pozo Almonte</th>
-      <th>Fallecidos probables DEIS Alto Hospicio</th>
-      <th>Fallecidos probables DEIS Camiña</th>
-      <th>Fallecidos probables DEIS Colchane</th>
-      <th>Fallecidos probables DEIS Huara</th>
-      <th>Fallecidos probables DEIS Iquique</th>
-      <th>Fallecidos probables DEIS Pica</th>
-      <th>Fallecidos probables DEIS Pozo Almonte</th>
+      <th>Tasa de casos nuevos Tamarugal estimada</th>
+      <th>Incidencia acumulada Alto Hospicio</th>
+      <th>Incidencia acumulada Camina</th>
+      <th>Incidencia acumulada Colchane</th>
+      <th>Incidencia acumulada Huara</th>
+      <th>Incidencia acumulada Iquique</th>
+      <th>Incidencia acumulada Pica</th>
+      <th>Incidencia acumulada Pozo Almonte</th>
+      <th>Incidencia acumulada regional</th>
       <th>Positividad media movil *</th>
       <th>Mortalidad especifica *</th>
       <th>Crecimiento semanal *</th>
@@ -1915,7 +1965,7 @@
       <td>77.04</td>
       <td>0.87</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>10.20</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2159,7 +2209,7 @@
     </tr>
   </tbody>
 </table>
-<p>499 rows × 140 columns</p>
+<p>499 rows × 153 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -2269,45 +2319,58 @@
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re Tamarugal&#39;</span><span class="p">]]</span>
               <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data6.csv&#39;</span><span class="p">)</span>
 
+<span class="c1">### Incidencia acumulada por provincia ###</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Incidencia&#39;</span><span class="p">)</span> 
+      <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;acumulada&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data7.csv&#39;</span><span class="p">)</span>
+
+<span class="c1">### Incidencia por provincia diaria ###</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Incidencia&#39;</span><span class="p">)</span> 
+      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;acumulada&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data8.csv&#39;</span><span class="p">)</span>
+
+<span class="c1">### Tasa de casos nuevos por provincia ###</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Tasa de casos nuevos&#39;</span><span class="p">)</span> 
+      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;acumulada&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data9.csv&#39;</span><span class="p">)</span>
+
+
+
 <span class="c1">### Tasa de crecimiento diaria y media móvil semanal ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crecimiento diario *&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crecimiento semanal *&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data7.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data10.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Por comuna</span>
 
 <span class="c1">### Histórico de casos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Casos acumulados en&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data8.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data11.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Positividad ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Positividad&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;diaria&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;movil&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;antigeno&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data9.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data12.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Activos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;activos&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;confirmados&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
                     <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;probables&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data10.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data13.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Fallecidos no procesados por DEIS ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos&#39;</span><span class="p">)</span> 
       <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos confirmados&#39;</span><span class="p">)</span>
-      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data11.csv&#39;</span><span class="p">)</span>
+      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data14.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Fallecidos procesados por DEIS, confirmados ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos&#39;</span><span class="p">)</span> 
       <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos confirmados&#39;</span><span class="p">)</span>
-      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data12.csv&#39;</span><span class="p">)</span>
+      <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data15.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Fallecidos procesados por DEIS, probables ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos&#39;</span><span class="p">)</span> 
       <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos confirmados&#39;</span><span class="p">)</span>
-      <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data13.csv&#39;</span><span class="p">)</span>
-
+      <span class="o">&amp;</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Fallecidos probables&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data16.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Red asistencial</span>
 
@@ -2315,11 +2378,11 @@
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI ocupacion media movil real&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI ocupacion media movil aprox *&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Media móvil real de ocupación UCI&#39;</span><span class="p">,</span> <span class="s1">&#39;Media móvil hipotética de ocupación UCI&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data14.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data17.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Residencias sanitarias ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;residencias&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Numero&#39;</span><span class="p">)]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data15.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data18.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Detalle de muestra y otros datos segregados</span>
 
@@ -2327,13 +2390,13 @@
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Media móvil semanal de PCR informados nuevos&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data16.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data19.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Antígeno ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Antigenos informados nuevos&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Antigenos informados nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Antígenos informados nuevos&#39;</span><span class="p">,</span> <span class="s1">&#39;Media móvil semanal de antígenos informados nuevos&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data17.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data20.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Detalle de casos nuevos ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos con sintomas&#39;</span><span class="p">],</span>
@@ -2342,31 +2405,31 @@
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos por antigeno&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Casos nuevos con síntomas&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos sin síntomas&#39;</span><span class="p">,</span>
                         <span class="s1">&#39;Casos nuevos por laboratorio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos nuevos por antígeno&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data18.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data21.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Detalle de casos nuevos con sospecha de reinfección ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos con sospecha de reinfeccion&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Casos con sospecha de reinfección&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data19.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data22.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Tasa de casos nuevos por cien mil habitantes en media móvil semanal ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa casos nuevos *&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tasa de casos nuevos de casos nuevos por cien mil habitantes&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data20.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data23.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Mortalidad específica ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mortalidad especifica *&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Mortalidad específica por cien mil habitantes&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data21.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data24.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Mortalidad específica por comuna ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Mortalidad especifica comunal *&#39;</span><span class="p">)])</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data22.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data25.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Vacunación ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data23.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data26.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2715,19 +2778,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 14 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.13%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.69%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.488%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.212%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.046%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.057%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>56</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.933%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.979%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>67</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>94.054%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.076%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.995%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.743%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>98</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>95.284%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>95.463%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -2854,27 +2917,27 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_22_0.png" src="../../_images/1_thisistheway_22_0.png" />
+<img alt="../../_images/1_thisistheway_23_0.png" src="../../_images/1_thisistheway_23_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_22_2.png" src="../../_images/1_thisistheway_22_2.png" />
+<img alt="../../_images/1_thisistheway_23_2.png" src="../../_images/1_thisistheway_23_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_22_4.png" src="../../_images/1_thisistheway_22_4.png" />
+<img alt="../../_images/1_thisistheway_23_4.png" src="../../_images/1_thisistheway_23_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_22_6.png" src="../../_images/1_thisistheway_22_6.png" />
+<img alt="../../_images/1_thisistheway_23_6.png" src="../../_images/1_thisistheway_23_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_22_8.png" src="../../_images/1_thisistheway_22_8.png" />
+<img alt="../../_images/1_thisistheway_23_8.png" src="../../_images/1_thisistheway_23_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_22_10.png" src="../../_images/1_thisistheway_22_10.png" />
+<img alt="../../_images/1_thisistheway_23_10.png" src="../../_images/1_thisistheway_23_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -3012,23 +3075,23 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_24_0.png" src="../../_images/1_thisistheway_24_0.png" />
+<img alt="../../_images/1_thisistheway_25_0.png" src="../../_images/1_thisistheway_25_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_24_2.png" src="../../_images/1_thisistheway_24_2.png" />
+<img alt="../../_images/1_thisistheway_25_2.png" src="../../_images/1_thisistheway_25_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_24_4.png" src="../../_images/1_thisistheway_24_4.png" />
+<img alt="../../_images/1_thisistheway_25_4.png" src="../../_images/1_thisistheway_25_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_24_6.png" src="../../_images/1_thisistheway_24_6.png" />
+<img alt="../../_images/1_thisistheway_25_6.png" src="../../_images/1_thisistheway_25_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_24_8.png" src="../../_images/1_thisistheway_24_8.png" />
+<img alt="../../_images/1_thisistheway_25_8.png" src="../../_images/1_thisistheway_25_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -3099,31 +3162,31 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
+<img alt="../../_images/1_thisistheway_27_0.png" src="../../_images/1_thisistheway_27_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
+<img alt="../../_images/1_thisistheway_27_2.png" src="../../_images/1_thisistheway_27_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
+<img alt="../../_images/1_thisistheway_27_4.png" src="../../_images/1_thisistheway_27_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
+<img alt="../../_images/1_thisistheway_27_6.png" src="../../_images/1_thisistheway_27_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
+<img alt="../../_images/1_thisistheway_27_8.png" src="../../_images/1_thisistheway_27_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_26_10.png" src="../../_images/1_thisistheway_26_10.png" />
+<img alt="../../_images/1_thisistheway_27_10.png" src="../../_images/1_thisistheway_27_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_26_12.png" src="../../_images/1_thisistheway_26_12.png" />
+<img alt="../../_images/1_thisistheway_27_12.png" src="../../_images/1_thisistheway_27_12.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -3491,16 +3554,16 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_36_0.png" src="../../_images/1_thisistheway_36_0.png" />
-<img alt="../../_images/1_thisistheway_36_1.png" src="../../_images/1_thisistheway_36_1.png" />
-<img alt="../../_images/1_thisistheway_36_2.png" src="../../_images/1_thisistheway_36_2.png" />
-<img alt="../../_images/1_thisistheway_36_3.png" src="../../_images/1_thisistheway_36_3.png" />
-<img alt="../../_images/1_thisistheway_36_4.png" src="../../_images/1_thisistheway_36_4.png" />
-<img alt="../../_images/1_thisistheway_36_5.png" src="../../_images/1_thisistheway_36_5.png" />
-<img alt="../../_images/1_thisistheway_36_6.png" src="../../_images/1_thisistheway_36_6.png" />
-<img alt="../../_images/1_thisistheway_36_7.png" src="../../_images/1_thisistheway_36_7.png" />
-<img alt="../../_images/1_thisistheway_36_8.png" src="../../_images/1_thisistheway_36_8.png" />
-<img alt="../../_images/1_thisistheway_36_9.png" src="../../_images/1_thisistheway_36_9.png" />
+<img alt="../../_images/1_thisistheway_37_0.png" src="../../_images/1_thisistheway_37_0.png" />
+<img alt="../../_images/1_thisistheway_37_1.png" src="../../_images/1_thisistheway_37_1.png" />
+<img alt="../../_images/1_thisistheway_37_2.png" src="../../_images/1_thisistheway_37_2.png" />
+<img alt="../../_images/1_thisistheway_37_3.png" src="../../_images/1_thisistheway_37_3.png" />
+<img alt="../../_images/1_thisistheway_37_4.png" src="../../_images/1_thisistheway_37_4.png" />
+<img alt="../../_images/1_thisistheway_37_5.png" src="../../_images/1_thisistheway_37_5.png" />
+<img alt="../../_images/1_thisistheway_37_6.png" src="../../_images/1_thisistheway_37_6.png" />
+<img alt="../../_images/1_thisistheway_37_7.png" src="../../_images/1_thisistheway_37_7.png" />
+<img alt="../../_images/1_thisistheway_37_8.png" src="../../_images/1_thisistheway_37_8.png" />
+<img alt="../../_images/1_thisistheway_37_9.png" src="../../_images/1_thisistheway_37_9.png" />
 </div>
 </div>
 </div>
@@ -3517,11 +3580,11 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_38_0.png" src="../../_images/1_thisistheway_38_0.png" />
-<img alt="../../_images/1_thisistheway_38_1.png" src="../../_images/1_thisistheway_38_1.png" />
-<img alt="../../_images/1_thisistheway_38_2.png" src="../../_images/1_thisistheway_38_2.png" />
-<img alt="../../_images/1_thisistheway_38_3.png" src="../../_images/1_thisistheway_38_3.png" />
-<img alt="../../_images/1_thisistheway_38_4.png" src="../../_images/1_thisistheway_38_4.png" />
+<img alt="../../_images/1_thisistheway_39_0.png" src="../../_images/1_thisistheway_39_0.png" />
+<img alt="../../_images/1_thisistheway_39_1.png" src="../../_images/1_thisistheway_39_1.png" />
+<img alt="../../_images/1_thisistheway_39_2.png" src="../../_images/1_thisistheway_39_2.png" />
+<img alt="../../_images/1_thisistheway_39_3.png" src="../../_images/1_thisistheway_39_3.png" />
+<img alt="../../_images/1_thisistheway_39_4.png" src="../../_images/1_thisistheway_39_4.png" />
 </div>
 </div>
 </div>
@@ -3538,15 +3601,15 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_40_0.png" src="../../_images/1_thisistheway_40_0.png" />
-<img alt="../../_images/1_thisistheway_40_1.png" src="../../_images/1_thisistheway_40_1.png" />
-<img alt="../../_images/1_thisistheway_40_2.png" src="../../_images/1_thisistheway_40_2.png" />
-<img alt="../../_images/1_thisistheway_40_3.png" src="../../_images/1_thisistheway_40_3.png" />
-<img alt="../../_images/1_thisistheway_40_4.png" src="../../_images/1_thisistheway_40_4.png" />
-<img alt="../../_images/1_thisistheway_40_5.png" src="../../_images/1_thisistheway_40_5.png" />
-<img alt="../../_images/1_thisistheway_40_6.png" src="../../_images/1_thisistheway_40_6.png" />
-<img alt="../../_images/1_thisistheway_40_7.png" src="../../_images/1_thisistheway_40_7.png" />
-<img alt="../../_images/1_thisistheway_40_8.png" src="../../_images/1_thisistheway_40_8.png" />
+<img alt="../../_images/1_thisistheway_41_0.png" src="../../_images/1_thisistheway_41_0.png" />
+<img alt="../../_images/1_thisistheway_41_1.png" src="../../_images/1_thisistheway_41_1.png" />
+<img alt="../../_images/1_thisistheway_41_2.png" src="../../_images/1_thisistheway_41_2.png" />
+<img alt="../../_images/1_thisistheway_41_3.png" src="../../_images/1_thisistheway_41_3.png" />
+<img alt="../../_images/1_thisistheway_41_4.png" src="../../_images/1_thisistheway_41_4.png" />
+<img alt="../../_images/1_thisistheway_41_5.png" src="../../_images/1_thisistheway_41_5.png" />
+<img alt="../../_images/1_thisistheway_41_6.png" src="../../_images/1_thisistheway_41_6.png" />
+<img alt="../../_images/1_thisistheway_41_7.png" src="../../_images/1_thisistheway_41_7.png" />
+<img alt="../../_images/1_thisistheway_41_8.png" src="../../_images/1_thisistheway_41_8.png" />
 </div>
 </div>
 </div>
@@ -3642,7 +3705,7 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 La media general del error es de:  0.81 %
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_45_1.png" src="../../_images/1_thisistheway_45_1.png" />
+<img alt="../../_images/1_thisistheway_46_1.png" src="../../_images/1_thisistheway_46_1.png" />
 </div>
 </div>
 </div>
@@ -3989,7 +4052,7 @@ La media general del error es de:  0.81 %
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-14 19:40
+            Session information updated at 2021-07-14 20:44
             </pre>
             </details></div></div>
 </div>
