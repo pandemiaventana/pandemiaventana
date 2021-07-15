@@ -122,15 +122,24 @@ with open('../../README.md', 'w', encoding='UTF-8') as f:
     f.write(txt1 + vec_)
 
 
+# In[5]:
+
+
+with open('../6_basedatos/2_basedatos.md', 'w', encoding='UTF-8') as f:
+    f.write('''# Archivos
+    
+    ''' + vec_)
+
+
 # ## Archivos PDF
 
-# In[5]:
+# In[6]:
 
 
 get_ipython().run_cell_magic('capture', 'archivopdf', '\n### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###\nsum_ = []\ndirr = [\'diario\', \'vacuna\', \'indicadorfase\']\nnames = [\'Reporte diario\', \'Balance de vacunas\', \'Indicador de Fase\']\np = 0\nfor reporte in dirr:\n    display(Markdown(\'<h2>{}</h2>\'.format(names[p])))\n    display(Markdown(\'Encontré los siguientes PDF:\'.format(names[p])))\n    exec(\'sum_{} = []\'.format(reporte))\n    for string in [name for name in os.listdir(\'../../out/{}/pdf\'.format(reporte))]:\n        if os.path.isdir(\'../../out/diario/pdf/{}\'.format(string)):\n            pass\n        else:\n            exec(\'sum_{} += [string]\'.format(reporte))\n            exec(\'sum_{} = natsorted(sum_{})\'.format(reporte, reporte))\n    exec(\'\'\'for ipdf in sum_{}:\n        display(Markdown(" <a href=\'https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/" + reporte + "/pdf/" + ipdf + "&embedded=true\'>" + ipdf + "</a>"))\'\'\'.format(reporte))\n    p += 1\n    \ntxt2 = """# Archivo\n\n"""')
 
 
-# In[6]:
+# In[7]:
 
 
 ### Visualizamos
@@ -140,7 +149,7 @@ for outputs in archivopdf.outputs:
 
 # ## Salida de archivos PDF
 
-# In[7]:
+# In[8]:
 
 
 outputs_ = archivopdf.outputs
@@ -173,7 +182,7 @@ A continuación, dispongo los reportes históricos a partir de la fecha de publi
 
 # ## Información de sesión
 
-# In[8]:
+# In[9]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='4_requeriments.txt')
