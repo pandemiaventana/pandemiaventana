@@ -172,6 +172,11 @@
      Salida
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_programacion.html">
+     Aclaraciones
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -211,11 +216,6 @@
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../4_legado/1_legado.html">
-     Lo nuevo
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../4_legado/2_legado.html">
      Lo que aún vive
@@ -278,7 +278,12 @@
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../6_bibliografia/0_bibliografia.html">
+  <a class="reference internal" href="../6_basedatos/0_basedatos.html">
+   Archivos procesados 📁
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_bibliografia/0_bibliografia.html">
    Bibliografía 📰
   </a>
  </li>
@@ -801,7 +806,7 @@
 <hr class="docutils" />
 <div class="section" id="micitec">
 <h3>MICITEC<a class="headerlink" href="#micitec" title="Permalink to this headline">¶</a></h3>
-<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span id="id3">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id3">MinisteriodCienciaTeInnovacion21</a>]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a class="footnote-reference brackets" href="#id5" id="id4">1</a></p>
+<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span id="id3">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id3">MinisteriodCienciaTeInnovacion21</a>]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a class="footnote-reference brackets" href="#id5" id="id4">1</a></p>
 <ul class="simple">
 <li><p>Los archivos .CSV refieren a “comma separated values”, que en español significa “archivos separados por coma”, y si bien, parecieran tener una estructura desorganizada, en verdad tienen un orden por columna y fila, delimitando cada elemento por una coma. En Data Science son ampliamente utilizados, aunque, en secuencias de datos más amplias (y con mayor peso) se suele utilizar el lenguaje de consulta SQL, dado que la librería Pandas, en un archivo .CSV, debe leer uno y cada uno de los datos, por lo que a medida escala el número de datos, el proceso de lectura de un .CSV se torna ineficiente.</p></li>
 <li><p>Para ejemplo práctico, leer bloque de código (<a class="reference external" href="#ejemplo1">Ejemplo 1</a>).</p></li>
@@ -909,26 +914,6 @@
 
 <span class="c1">### csv18 (tasa de incidencia histórica acumulada)</span>
 <span class="n">csv18</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">csv18</span><span class="p">[</span><span class="n">csv18</span><span class="o">.</span><span class="n">Region</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Comuna&#39;</span><span class="p">,</span> <span class="p">:],</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5     Alto Hospicio
- 6            Camina
- 7          Colchane
- 8             Huara
- 9           Iquique
- 10             Pica
- 11     Pozo Almonte
- 12            Total
- Name: Comuna, dtype: object,)
 </pre></div>
 </div>
 </div>
@@ -2248,7 +2233,7 @@
 <li><p><b>Indicador de fase</b></p></li>
 </ul>
 <p>El plan Paso a Paso y la capacidad de poder “predecirlo”. El indicador de fase surgió como una idea de saber, qué tan cerca o qué tan distantes se estaba de los avances o retrocesos de fase, en términos de confinamiento o desconfinamiento. La idea original la desarrollé un día por la noche, e hizo boom en redes sociales. El miembro del comité científico COVID-19 de la Universidad Arturo Prat, el Dr. Cristóbal Corral, fue capaz de explicarlo brevemente a los medios: Un termómetro del Paso a Paso.</p>
-<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id6">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id7">2</a></p>
+<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id6">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id7">2</a></p>
 <p>La segunda versión de este reporte fue subida, inicialmente, el 02/05/2021, que fue la 37° edición. Fue procesada en el siguiente script (This is the way 2), y se basa en un problema de clasificación. Para mayor información del cómo funciona y  sus fundamentos, recomiendo ver el siguiente notebook.</p>
 <ul class="simple">
 <li><p><b>Reporte comunal</b></p></li>
@@ -2733,6 +2718,113 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/reader.py</span> in <span class="ni">parse_json</span><span class="nt">(s, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>         <span class="n">nb_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/json/__init__.py</span> in <span class="ni">loads</span><span class="nt">(s, encoding, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span>             <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">348</span>         <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span>     <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/json/decoder.py</span> in <span class="ni">decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span><span class="sd">         obj, end = self.raw_decode(s, idx=_w(s, 0).end())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span><span class="sd">         end = _w(s, end).end()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/json/decoder.py</span> in <span class="ni">raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span><span class="sd">         except StopIteration as err:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span><span class="sd">             raise JSONDecodeError(&quot;Expecting value&quot;, s, err.value) from None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span><span class="sd">         return obj, end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 2256 column 1 (char 51039)
+
+<span class="sd">The above exception was the direct cause of the following exception:</span>
+
+<span class="ne">NotJSONError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="sd">/tmp/ipykernel_3003/1584369300.py in &lt;module&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="sd"> </span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="sd"> ### Ejecutamos notebook 4</span>
+<span class="ne">----&gt; </span><span class="mi">8</span><span class="sd"> get_ipython().run_line_magic(&#39;run&#39;, &#39;./../4_legado/1_legado.ipynb&#39;)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2346</span><span class="sd">                 kwargs[&#39;local_ns&#39;] = self.get_local_scope(stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2347</span><span class="sd">             with self.builtin_trap:</span>
+<span class="ne">-&gt; </span><span class="mi">2348</span><span class="sd">                 result = fn(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2349</span><span class="sd">             return result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2350</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span><span class="sd">             if not kwsyntax:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span><span class="sd">                 args, kw = fix(args, kw, sig)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span><span class="sd">             return caller(func, *(extras + args), **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd">     fun.__name__ = func.__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd">     fun.__doc__ = func.__doc__</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="sd">     # but it&#39;s overkill for just that one bit of state.</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span><span class="sd">     def magic_deco(arg):</span>
+<span class="ne">--&gt; </span><span class="mi">187</span><span class="sd">         call = lambda f, *a, **k: f(*a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="sd">         if callable(arg):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/magics/execution.py</span> in <span class="ni">run</span><span class="nt">(self, parameter_s, runner, file_finder)</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span><span class="sd">             with preserve_keys(self.shell.user_ns, &#39;__file__&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">723</span><span class="sd">                 self.shell.user_ns[&#39;__file__&#39;] = filename</span>
+<span class="ne">--&gt; </span><span class="mi">724</span><span class="sd">                 self.shell.safe_execfile_ipy(filename, raise_exceptions=True)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span><span class="sd">             return</span>
+<span class="g g-Whitespace">    </span><span class="mi">726</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">safe_execfile_ipy</span><span class="nt">(self, fname, shell_futures, raise_exceptions)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2830</span><span class="sd">         with prepended_to_syspath(dname):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2831</span><span class="sd">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">2832</span><span class="sd">                 for cell in get_cells():</span>
+<span class="g g-Whitespace">   </span><span class="mi">2833</span><span class="sd">                     result = self.run_cell(cell, silent=True, shell_futures=shell_futures)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2834</span><span class="sd">                     if raise_exceptions:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">get_cells</span><span class="nt">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">2818</span><span class="sd">             if fname.endswith(&#39;.ipynb&#39;):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2819</span><span class="sd">                 from nbformat import read</span>
+<span class="ne">-&gt; </span><span class="mi">2820</span><span class="sd">                 nb = read(fname, as_version=4)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2821</span><span class="sd">                 if not nb.cells:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2822</span><span class="sd">                     return</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/__init__.py</span> in <span class="ni">read</span><span class="nt">(fp, as_version, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="sd">     except AttributeError:</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="sd">         with io.open(fp, encoding=&#39;utf-8&#39;) as f:</span>
+<span class="ne">--&gt; </span><span class="mi">141</span><span class="sd">             return reads(f.read(), as_version, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span><span class="sd">     return reads(buf, as_version, **kwargs)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/__init__.py</span> in <span class="ni">reads</span><span class="nt">(s, as_version, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">         The notebook that was read.</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="n">nb</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">reads</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">if</span> <span class="n">as_version</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">NO_CONVERT</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>         <span class="n">nb</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">as_version</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/reader.py</span> in <span class="ni">reads</span><span class="nt">(s, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">versions</span><span class="p">,</span> <span class="n">NBFormatError</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> 
+<span class="ne">---&gt; </span><span class="mi">58</span>     <span class="n">nb_dict</span> <span class="o">=</span> <span class="n">parse_json</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_version</span><span class="p">(</span><span class="n">nb_dict</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>     <span class="k">if</span> <span class="n">major</span> <span class="ow">in</span> <span class="n">versions</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/reader.py</span> in <span class="ni">parse_json</span><span class="nt">(s, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="c1"># Limit the error message to 80 characters.  Display whatever JSON will fit.</span>
+<span class="ne">---&gt; </span><span class="mi">17</span>         <span class="k">raise</span> <span class="n">NotJSONError</span><span class="p">((</span><span class="s2">&quot;Notebook does not appear to be JSON: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)[:</span><span class="mi">77</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="k">return</span> <span class="n">nb_dict</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> 
+
+<span class="ne">NotJSONError</span>: Notebook does not appear to be JSON: &#39;{\n &quot;cells&quot;: [\n  {\n   &quot;cell_type&quot;: &quot;m...
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2778,19 +2870,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 14 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.723%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.635%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.244%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.556%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.104%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.966%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>56</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.946%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.979%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>67</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>94.461%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>94.508%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.576%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.48%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>98</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>93.305%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.108%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -2917,27 +3009,27 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_23_0.png" src="../../_images/1_thisistheway_23_0.png" />
+<img alt="../../_images/1_thisistheway_22_0.png" src="../../_images/1_thisistheway_22_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_2.png" src="../../_images/1_thisistheway_23_2.png" />
+<img alt="../../_images/1_thisistheway_22_2.png" src="../../_images/1_thisistheway_22_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_4.png" src="../../_images/1_thisistheway_23_4.png" />
+<img alt="../../_images/1_thisistheway_22_4.png" src="../../_images/1_thisistheway_22_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_6.png" src="../../_images/1_thisistheway_23_6.png" />
+<img alt="../../_images/1_thisistheway_22_6.png" src="../../_images/1_thisistheway_22_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_8.png" src="../../_images/1_thisistheway_23_8.png" />
+<img alt="../../_images/1_thisistheway_22_8.png" src="../../_images/1_thisistheway_22_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_23_10.png" src="../../_images/1_thisistheway_23_10.png" />
+<img alt="../../_images/1_thisistheway_22_10.png" src="../../_images/1_thisistheway_22_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -3075,23 +3167,23 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_25_0.png" src="../../_images/1_thisistheway_25_0.png" />
+<img alt="../../_images/1_thisistheway_24_0.png" src="../../_images/1_thisistheway_24_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_2.png" src="../../_images/1_thisistheway_25_2.png" />
+<img alt="../../_images/1_thisistheway_24_2.png" src="../../_images/1_thisistheway_24_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_4.png" src="../../_images/1_thisistheway_25_4.png" />
+<img alt="../../_images/1_thisistheway_24_4.png" src="../../_images/1_thisistheway_24_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_6.png" src="../../_images/1_thisistheway_25_6.png" />
+<img alt="../../_images/1_thisistheway_24_6.png" src="../../_images/1_thisistheway_24_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_25_8.png" src="../../_images/1_thisistheway_25_8.png" />
+<img alt="../../_images/1_thisistheway_24_8.png" src="../../_images/1_thisistheway_24_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -3162,31 +3254,31 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_27_0.png" src="../../_images/1_thisistheway_27_0.png" />
+<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_2.png" src="../../_images/1_thisistheway_27_2.png" />
+<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_4.png" src="../../_images/1_thisistheway_27_4.png" />
+<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_6.png" src="../../_images/1_thisistheway_27_6.png" />
+<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_8.png" src="../../_images/1_thisistheway_27_8.png" />
+<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_10.png" src="../../_images/1_thisistheway_27_10.png" />
+<img alt="../../_images/1_thisistheway_26_10.png" src="../../_images/1_thisistheway_26_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_27_12.png" src="../../_images/1_thisistheway_27_12.png" />
+<img alt="../../_images/1_thisistheway_26_12.png" src="../../_images/1_thisistheway_26_12.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
  
@@ -3202,7 +3294,7 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 <hr class="docutils" />
 <p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a class="footnote-reference brackets" href="#alsweigart" id="id11">3</a> para generar las infografías.</p>
 <p>El procedimiento manual implicaba exportar archivos .JSON, y a partir de ellos, rellenar manualmente los datos y gráficos en Photoshop, lo que es un proceso tedioso, y altamente susceptible a equivocaciones.</p>
-<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id12">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
+<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id12">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
 <p>Lo que tenemos que realizar consistirá en los siguientes pasos:</p>
 <ul class="simple">
 <li><p>Rellenar con datos las infografías prediseñadas en Photoshop.</p></li>
@@ -3554,16 +3646,16 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_37_0.png" src="../../_images/1_thisistheway_37_0.png" />
-<img alt="../../_images/1_thisistheway_37_1.png" src="../../_images/1_thisistheway_37_1.png" />
-<img alt="../../_images/1_thisistheway_37_2.png" src="../../_images/1_thisistheway_37_2.png" />
-<img alt="../../_images/1_thisistheway_37_3.png" src="../../_images/1_thisistheway_37_3.png" />
-<img alt="../../_images/1_thisistheway_37_4.png" src="../../_images/1_thisistheway_37_4.png" />
-<img alt="../../_images/1_thisistheway_37_5.png" src="../../_images/1_thisistheway_37_5.png" />
-<img alt="../../_images/1_thisistheway_37_6.png" src="../../_images/1_thisistheway_37_6.png" />
-<img alt="../../_images/1_thisistheway_37_7.png" src="../../_images/1_thisistheway_37_7.png" />
-<img alt="../../_images/1_thisistheway_37_8.png" src="../../_images/1_thisistheway_37_8.png" />
-<img alt="../../_images/1_thisistheway_37_9.png" src="../../_images/1_thisistheway_37_9.png" />
+<img alt="../../_images/1_thisistheway_36_0.png" src="../../_images/1_thisistheway_36_0.png" />
+<img alt="../../_images/1_thisistheway_36_1.png" src="../../_images/1_thisistheway_36_1.png" />
+<img alt="../../_images/1_thisistheway_36_2.png" src="../../_images/1_thisistheway_36_2.png" />
+<img alt="../../_images/1_thisistheway_36_3.png" src="../../_images/1_thisistheway_36_3.png" />
+<img alt="../../_images/1_thisistheway_36_4.png" src="../../_images/1_thisistheway_36_4.png" />
+<img alt="../../_images/1_thisistheway_36_5.png" src="../../_images/1_thisistheway_36_5.png" />
+<img alt="../../_images/1_thisistheway_36_6.png" src="../../_images/1_thisistheway_36_6.png" />
+<img alt="../../_images/1_thisistheway_36_7.png" src="../../_images/1_thisistheway_36_7.png" />
+<img alt="../../_images/1_thisistheway_36_8.png" src="../../_images/1_thisistheway_36_8.png" />
+<img alt="../../_images/1_thisistheway_36_9.png" src="../../_images/1_thisistheway_36_9.png" />
 </div>
 </div>
 </div>
@@ -3580,11 +3672,11 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_39_0.png" src="../../_images/1_thisistheway_39_0.png" />
-<img alt="../../_images/1_thisistheway_39_1.png" src="../../_images/1_thisistheway_39_1.png" />
-<img alt="../../_images/1_thisistheway_39_2.png" src="../../_images/1_thisistheway_39_2.png" />
-<img alt="../../_images/1_thisistheway_39_3.png" src="../../_images/1_thisistheway_39_3.png" />
-<img alt="../../_images/1_thisistheway_39_4.png" src="../../_images/1_thisistheway_39_4.png" />
+<img alt="../../_images/1_thisistheway_38_0.png" src="../../_images/1_thisistheway_38_0.png" />
+<img alt="../../_images/1_thisistheway_38_1.png" src="../../_images/1_thisistheway_38_1.png" />
+<img alt="../../_images/1_thisistheway_38_2.png" src="../../_images/1_thisistheway_38_2.png" />
+<img alt="../../_images/1_thisistheway_38_3.png" src="../../_images/1_thisistheway_38_3.png" />
+<img alt="../../_images/1_thisistheway_38_4.png" src="../../_images/1_thisistheway_38_4.png" />
 </div>
 </div>
 </div>
@@ -3601,15 +3693,15 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_41_0.png" src="../../_images/1_thisistheway_41_0.png" />
-<img alt="../../_images/1_thisistheway_41_1.png" src="../../_images/1_thisistheway_41_1.png" />
-<img alt="../../_images/1_thisistheway_41_2.png" src="../../_images/1_thisistheway_41_2.png" />
-<img alt="../../_images/1_thisistheway_41_3.png" src="../../_images/1_thisistheway_41_3.png" />
-<img alt="../../_images/1_thisistheway_41_4.png" src="../../_images/1_thisistheway_41_4.png" />
-<img alt="../../_images/1_thisistheway_41_5.png" src="../../_images/1_thisistheway_41_5.png" />
-<img alt="../../_images/1_thisistheway_41_6.png" src="../../_images/1_thisistheway_41_6.png" />
-<img alt="../../_images/1_thisistheway_41_7.png" src="../../_images/1_thisistheway_41_7.png" />
-<img alt="../../_images/1_thisistheway_41_8.png" src="../../_images/1_thisistheway_41_8.png" />
+<img alt="../../_images/1_thisistheway_40_0.png" src="../../_images/1_thisistheway_40_0.png" />
+<img alt="../../_images/1_thisistheway_40_1.png" src="../../_images/1_thisistheway_40_1.png" />
+<img alt="../../_images/1_thisistheway_40_2.png" src="../../_images/1_thisistheway_40_2.png" />
+<img alt="../../_images/1_thisistheway_40_3.png" src="../../_images/1_thisistheway_40_3.png" />
+<img alt="../../_images/1_thisistheway_40_4.png" src="../../_images/1_thisistheway_40_4.png" />
+<img alt="../../_images/1_thisistheway_40_5.png" src="../../_images/1_thisistheway_40_5.png" />
+<img alt="../../_images/1_thisistheway_40_6.png" src="../../_images/1_thisistheway_40_6.png" />
+<img alt="../../_images/1_thisistheway_40_7.png" src="../../_images/1_thisistheway_40_7.png" />
+<img alt="../../_images/1_thisistheway_40_8.png" src="../../_images/1_thisistheway_40_8.png" />
 </div>
 </div>
 </div>
@@ -3705,7 +3797,7 @@ Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Prepara
 La media general del error es de:  0.81 %
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_46_1.png" src="../../_images/1_thisistheway_46_1.png" />
+<img alt="../../_images/1_thisistheway_45_1.png" src="../../_images/1_thisistheway_45_1.png" />
 </div>
 </div>
 </div>
@@ -3743,11 +3835,11 @@ La media general del error es de:  0.81 %
 <h4>Definiciones<a class="headerlink" href="#definiciones" title="Permalink to this headline">¶</a></h4>
 <p>Respecto a las definiciones de la nomenclatura:</p>
 <ul class="simple">
-<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id22">4</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id23">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
+<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id22">4</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id23">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">5</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id25">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
+<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">5</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id25">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -3829,10 +3921,8 @@ La media general del error es de:  0.81 %
             datetime            NA
             json                2.0.9
             locale              NA
-            markdownify         NA
             math                NA
             matplotlib          3.3.4
-            natsort             7.1.1
             numpy               1.19.5
             os                  NA
             pandas              1.2.3
@@ -4052,7 +4142,7 @@ La media general del error es de:  0.81 %
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-14 23:42
+            Session information updated at 2021-07-15 01:40
             </pre>
             </details></div></div>
 </div>
