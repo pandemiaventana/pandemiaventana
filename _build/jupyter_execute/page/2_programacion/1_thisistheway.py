@@ -507,6 +507,7 @@ casoscomuna_activos = csv19[csv19.columns[csv19.columns.str.contains('^Tarapac',
 casoscomuna_activos.columns = 'Casos activos en ' + csv19[csv19.columns[csv19.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
 casoscomuna_activos.index = csv19['Region'][4:]
 casoscomuna_activos = casoscomuna_activos[casoscomuna_activos.columns[:-1]]
+incidencia_activos = (((casos_activos + casos_activos_probables)/poblacion)*100000)
 
 ### Paso a paso histórico por comuna (descartamos zonas rurales)
 pasopaso_comuna = csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc[:, csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc['zona',:] != 'Rural']
@@ -656,7 +657,7 @@ poblacion_yomevacuno = 286597
 # 
 # Los cambios siempre son para mejor.
 
-# In[4]:
+# In[38]:
 
 
 # Uniendo datos
@@ -675,7 +676,7 @@ dfs = [casos_acumulativos, casos_recuperados, fallecidos_acumulativos,
        tasacasosnuevos_provincial_tam, incidencia_acumulada,
        positividad_media_movil, mortalidad_especifica,
        crecimiento, crecimientodiario, uci_aprox, error_abs, tasa_casosnuevos, positividad_antigeno,
-       positividad_antigeno_media_movil, me_comuna]
+       positividad_antigeno_media_movil, me_comuna, incidencia_activos]
 
 ### Unimos a la tabla anterior y rellenamos valores NaN (Not a Number o no definido)
 df = pd.concat(dfs, join='outer', axis=1)
@@ -734,7 +735,7 @@ df.columns = ['Casos confirmados acumulados', 'Casos recuperados acumulados', 'C
               'Positividad antigeno media movil *', 'Mortalidad especifica comunal Alto Hospicio *', 'Mortalidad especifica comunal Camiña *',
               'Mortalidad especifica comunal Colchane *', 'Mortalidad especifica comunal Huara *',
               'Mortalidad especifica comunal Iquique *', 'Mortalidad especifica comunal Pica *',
-              'Mortalidad especifica comunal Pozo Almonte *']
+              'Mortalidad especifica comunal Pozo Almonte *', 'Tasa de activos (incidencia) *']
 
 ### Redondeamos a solo dos cifras significativas
 df = df.round(2)
@@ -805,7 +806,7 @@ df
 
 # ### CSV
 
-# In[5]:
+# In[39]:
 
 
 # Exportando información
@@ -960,24 +961,29 @@ pd.DataFrame([df['Tasa casos nuevos *']
              ], index=['Tasa de casos nuevos de casos nuevos por cien mil habitantes']
               ).transpose().to_csv('../../out/site/csv/data23.csv')
 
+### Tasa de activos ###
+pd.DataFrame([df['Tasa de activos (incidencia) *']
+             ], index=['Tasa de activos (incidencia)']
+              ).transpose().to_csv('../../out/site/csv/data24.csv')
+
 ### Mortalidad específica ###
 pd.DataFrame([df['Mortalidad especifica *']
              ], index=['Mortalidad específica por cien mil habitantes']
-              ).transpose().to_csv('../../out/site/csv/data24.csv')
+              ).transpose().to_csv('../../out/site/csv/data25.csv')
 
 ### Mortalidad específica por comuna ###
 pd.DataFrame(pd.DataFrame(df.loc[:, df.columns.str.contains('Mortalidad especifica comunal *')])
-              ).to_csv('../../out/site/csv/data25.csv')
+              ).to_csv('../../out/site/csv/data26.csv')
 
 ### Vacunación ###
 pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2° dosis'],
               df['Vacunados acumulados unica dosis']]
-              ).transpose().to_csv('../../out/site/csv/data26.csv')
+              ).transpose().to_csv('../../out/site/csv/data27.csv')
 
 
 # ### Reporte diario
 
-# In[6]:
+# In[40]:
 
 
 ### Infografías generadas
@@ -1148,7 +1154,7 @@ print(desc1)
 
 # ### Balance de vacunas
 
-# In[7]:
+# In[41]:
 
 
 ### Balance vacunas ###
@@ -1182,13 +1188,13 @@ print(desc2)
 
 # ### Indicador de fase
 
-# In[8]:
+# In[42]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[9]:
+# In[43]:
 
 
 ### Cambios
@@ -1246,7 +1252,7 @@ display(Markdown(pred))
 
 # ### Reporte diario
 
-# In[10]:
+# In[44]:
 
 
 ### Graficando para reporte diario ###
@@ -1337,7 +1343,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[11]:
+# In[45]:
 
 
 ### Graficando para balance vacunas ###
@@ -1445,7 +1451,7 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 
 # ### Indicador de fase
 
-# In[12]:
+# In[46]:
 
 
 ### Graficando para indicador fase ###
@@ -1514,7 +1520,7 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[13]:
+# In[47]:
 
 
 ### Generando reporte diario ###
@@ -1682,7 +1688,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[14]:
+# In[48]:
 
 
 ### Generando balance de vacunas ###
@@ -1744,7 +1750,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[15]:
+# In[49]:
 
 
 ### Indicador de fase ###
@@ -1816,7 +1822,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[16]:
+# In[50]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1828,7 +1834,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[17]:
+# In[51]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -1840,7 +1846,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[18]:
+# In[52]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -1859,7 +1865,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[19]:
+# In[53]:
 
 
 ### Ejemplo 1 ###
@@ -1881,7 +1887,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[20]:
+# In[54]:
 
 
 ### Ejemplo 2 ###
@@ -1941,7 +1947,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[21]:
+# In[55]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -1997,7 +2003,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[22]:
+# In[56]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
