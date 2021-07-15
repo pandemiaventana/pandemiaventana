@@ -339,6 +339,12 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # \end{align}
 # $$ (tasa_casos)
 # 
+# #### Tasa de incidencia (casos diarios)
+# 
+# La incidencia (casos nuevos por cien mil habitantes diarios) - *que se puede encontrar en la base de datos* - es estimada con un 95% de confianza por ICOVIDCHILE. 
+# 
+# El **cálculo de la tasa de incidencia diaria**, a partir de los casos confirmados, es la misma fórmula que de la tasa de casos nuevos por cien mil habitantes, con la diferencia de no aplicar la media móvil semanal y ser cumulativo o acumulativo según lo aclare el nombre de la columna.
+# 
 # #### Días por fase del plan Paso a Paso
 # 
 # Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un "*reset*" de días por cambio de fase de la comuna en el Paso a Paso.
@@ -366,6 +372,20 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # \Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
 # \end{align}
 # $$ (sin_inmunizar)
+# 
+# #### Tasa de activos
+# 
+# La tasa de activos, también denominada incidencia (activos), cuantifica la **velocidad de ocurriencia de infectados**. En este caso, se basa en el lapso temporal de los activos, a partir de los infectados en los últimos 11 días.
+# 
+# Por otro lado, según *Principales medidas en epidemiología* {cite}``medidas-epidemiologia``, "*En los estudios epidemiológicos en los que el propósito es la investigación causal o la evaluación de medidas preventivas, el interés está dirigido a la medición del flujo que se establece entre la salud y la enfermedad, es decir, a la aparición de casos nuevos. Como ya se mencionó anteriormente, la medida epidemiológica que mejor expresa este cambio de estado es la incidencia, la cual indica la frecuencia con que ocurren nuevos eventos*" {footcite}``medidas-epidemiologia``.
+# 
+# $$
+# \begin{align}
+# \Large Tasa_{activos} = \frac{Activos_{confirmados} + Activos_{probables}}{población}*100000
+# \end{align}
+# $$ (incidencia)
+# 
+# > La tasa de activos puede variar respecto al informe epidemiológico dado que la del presente repositorio se registra un día después (*con los datos del día anterior por el corte*).
 # 
 # 
 # ### Limpieza de datos
@@ -657,7 +677,7 @@ poblacion_yomevacuno = 286597
 # 
 # Los cambios siempre son para mejor.
 
-# In[38]:
+# In[ ]:
 
 
 # Uniendo datos
@@ -806,7 +826,7 @@ df
 
 # ### CSV
 
-# In[39]:
+# In[ ]:
 
 
 # Exportando información
@@ -983,7 +1003,7 @@ pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2°
 
 # ### Reporte diario
 
-# In[40]:
+# In[ ]:
 
 
 ### Infografías generadas
@@ -1154,7 +1174,7 @@ print(desc1)
 
 # ### Balance de vacunas
 
-# In[41]:
+# In[ ]:
 
 
 ### Balance vacunas ###
@@ -1188,13 +1208,13 @@ print(desc2)
 
 # ### Indicador de fase
 
-# In[42]:
+# In[ ]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[43]:
+# In[ ]:
 
 
 ### Cambios
@@ -1252,7 +1272,7 @@ display(Markdown(pred))
 
 # ### Reporte diario
 
-# In[44]:
+# In[ ]:
 
 
 ### Graficando para reporte diario ###
@@ -1343,7 +1363,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[45]:
+# In[ ]:
 
 
 ### Graficando para balance vacunas ###
@@ -1451,7 +1471,7 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 
 # ### Indicador de fase
 
-# In[46]:
+# In[ ]:
 
 
 ### Graficando para indicador fase ###
@@ -1520,7 +1540,7 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[47]:
+# In[ ]:
 
 
 ### Generando reporte diario ###
@@ -1688,7 +1708,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[48]:
+# In[ ]:
 
 
 ### Generando balance de vacunas ###
@@ -1750,7 +1770,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[49]:
+# In[ ]:
 
 
 ### Indicador de fase ###
@@ -1822,7 +1842,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[50]:
+# In[ ]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1834,7 +1854,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[51]:
+# In[ ]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -1846,7 +1866,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[52]:
+# In[ ]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -1865,7 +1885,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[53]:
+# In[ ]:
 
 
 ### Ejemplo 1 ###
@@ -1887,7 +1907,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[54]:
+# In[ ]:
 
 
 ### Ejemplo 2 ###
@@ -1947,7 +1967,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[55]:
+# In[ ]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2003,7 +2023,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[56]:
+# In[ ]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
