@@ -19,6 +19,7 @@ sections:
   - file: page/2_programacion/1_thisistheway
   - file: page/2_programacion/2_thisistheway
   - file: page/2_programacion/3_thisistheway
+  - file: page/2_programacion/3_programacion
 - file: page/3_reconocimiento/0_reconocimiento
   sections:
   - file: page/3_reconocimiento/1_reconocimiento
@@ -28,7 +29,6 @@ sections:
   sections:
   - file: page/4_legado/1_legado
   - file: page/4_legado/2_legado
-  - file: page/4_legado/3_legado
 - file: page/5_reportes/0_reportes
   sections:
   - file: page/5_reportes/1_reportes
@@ -39,4 +39,5 @@ sections:
   sections:
   - file: page/5_reportes/infografias/1_infografias
   - file: page/5_reportes/infografias/2_infografias
-- file: page/6_bibliografia/0_bibliografia
+- file: page/6_basedatos/0_basedatos
+- file: page/7_bibliografia/0_bibliografia

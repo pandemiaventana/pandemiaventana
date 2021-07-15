@@ -236,9 +236,6 @@ csv69_regional = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos
 ### csv18 (tasa de incidencia histórica acumulada)
 csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv')
 
-# %%
-csv18[csv18.Region == 'Tarapaca'].transpose().loc['Comuna', :], 
-
 # %% [markdown]
 # ## Análisis y manipulación de datos
 #
