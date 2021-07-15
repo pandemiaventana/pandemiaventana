@@ -493,6 +493,11 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tasa-de-incidencia-casos-diarios">
+       Tasa de incidencia (casos diarios)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dias-por-fase-del-plan-paso-a-paso">
        Días por fase del plan Paso a Paso
       </a>
@@ -500,6 +505,11 @@
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#inmunizaciones">
        Inmunizaciones
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tasa-de-activos">
+       Tasa de activos
       </a>
      </li>
     </ul>
@@ -594,17 +604,17 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
+    <a class="reference internal nav-link" href="#id10">
      Reporte diario
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
+    <a class="reference internal nav-link" href="#id11">
      Balance de vacunas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
+    <a class="reference internal nav-link" href="#id12">
      Indicador de fase
     </a>
    </li>
@@ -616,17 +626,17 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id13">
+    <a class="reference internal nav-link" href="#id15">
      Reporte diario
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
+    <a class="reference internal nav-link" href="#id16">
      Balance de vacunas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id17">
      Indicador de fase
     </a>
    </li>
@@ -638,7 +648,7 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id18">
      Reporte diario
     </a>
    </li>
@@ -648,7 +658,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id19">
      Indicador de fase
     </a>
    </li>
@@ -1073,6 +1083,11 @@
 \end{align}
 \]</div>
 </div>
+<div class="section" id="tasa-de-incidencia-casos-diarios">
+<h4>Tasa de incidencia (casos diarios)<a class="headerlink" href="#tasa-de-incidencia-casos-diarios" title="Permalink to this headline">¶</a></h4>
+<p>La incidencia (casos nuevos por cien mil habitantes diarios) - <em>que se puede encontrar en la base de datos</em> - es estimada con un 95% de confianza por ICOVIDCHILE.</p>
+<p>El <strong>cálculo de la tasa de incidencia diaria</strong>, a partir de los casos confirmados, es la misma fórmula que de la tasa de casos nuevos por cien mil habitantes, con la diferencia de no aplicar la media móvil semanal y ser cumulativo o acumulativo según lo aclare el nombre de la columna.</p>
+</div>
 <div class="section" id="dias-por-fase-del-plan-paso-a-paso">
 <h4>Días por fase del plan Paso a Paso<a class="headerlink" href="#dias-por-fase-del-plan-paso-a-paso" title="Permalink to this headline">¶</a></h4>
 <p>Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un “<em>reset</em>” de días por cambio de fase de la comuna en el Paso a Paso.</p>
@@ -1101,6 +1116,20 @@
 \Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
 \end{align}
 \]</div>
+</div>
+<div class="section" id="tasa-de-activos">
+<h4>Tasa de activos<a class="headerlink" href="#tasa-de-activos" title="Permalink to this headline">¶</a></h4>
+<p>La tasa de activos, también denominada incidencia (activos), cuantifica la <strong>velocidad de ocurriencia de infectados</strong>. En este caso, se basa en el lapso temporal de los activos, a partir de los infectados en los últimos 11 días.</p>
+<p>Por otro lado, según <em>Principales medidas en epidemiología</em> <span id="id6">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id49">AMA00</a>]</span>, “<em>En los estudios epidemiológicos en los que el propósito es la investigación causal o la evaluación de medidas preventivas, el interés está dirigido a la medición del flujo que se establece entre la salud y la enfermedad, es decir, a la aparición de casos nuevos. Como ya se mencionó anteriormente, la medida epidemiológica que mejor expresa este cambio de estado es la incidencia, la cual indica la frecuencia con que ocurren nuevos eventos</em>” <a class="footnote-reference brackets" href="#medidas-epidemiologia" id="id7">2</a>.</p>
+<div class="math notranslate nohighlight" id="equation-incidencia">
+<span class="eqno">(10)<a class="headerlink" href="#equation-incidencia" title="Permalink to this equation">¶</a></span>\[
+\begin{align}
+\Large Tasa_{activos} = \frac{Activos_{confirmados} + Activos_{probables}}{población}*100000
+\end{align}
+\]</div>
+<blockquote>
+<div><p>La tasa de activos puede variar respecto al informe epidemiológico dado que la del presente repositorio se registra un día después (<em>con los datos del día anterior por el corte</em>).</p>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="limpieza-de-datos">
@@ -1395,7 +1424,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2762</span><span class="o">/</span><span class="mf">1143040002.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2871</span><span class="o">/</span><span class="mf">1143040002.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">csv19</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">][</span><span class="mi">4</span><span class="p">:]</span>
 <span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="n">casoscomuna_activos</span> <span class="o">=</span> <span class="n">casoscomuna_activos</span><span class="p">[</span><span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 <span class="ne">--&gt; </span><span class="mi">123</span> <span class="n">incidencia_activos</span> <span class="o">=</span> <span class="p">(((</span><span class="n">casos_activos</span> <span class="o">+</span> <span class="n">casos_activos_probables</span><span class="p">)</span><span class="o">/</span><span class="n">poblacion</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span>
@@ -1508,731 +1537,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Casos confirmados acumulados</th>
-      <th>Casos recuperados acumulados</th>
-      <th>Casos fallecidos acumulados</th>
-      <th>Casos activos confirmados</th>
-      <th>Casos activos probables</th>
-      <th>Casos nuevos</th>
-      <th>Casos nuevos con sintomas</th>
-      <th>Casos nuevos sin sintomas</th>
-      <th>Casos nuevos por laboratorio</th>
-      <th>Casos nuevos por antigeno</th>
-      <th>Casos con sospecha de reinfeccion</th>
-      <th>Casos recuperados nuevos</th>
-      <th>Casos fallecidos nuevos</th>
-      <th>Antigenos informados nuevos</th>
-      <th>Antigenos informados acumulados</th>
-      <th>PCR informados nuevos</th>
-      <th>PCR informados acumulados</th>
-      <th>Cupos en residencias</th>
-      <th>Usuarios en residencias</th>
-      <th>Numero de residencias</th>
-      <th>UCI habilitadas</th>
-      <th>UCI ocupadas por confirmados</th>
-      <th>UCI ocupadas por no confirmados</th>
-      <th>UCI ocupacion media movil real</th>
-      <th>Re regional</th>
-      <th>...</th>
-      <th>Incidencia acumulada Alto Hospicio</th>
-      <th>Incidencia acumulada Camina</th>
-      <th>Incidencia acumulada Colchane</th>
-      <th>Incidencia acumulada Huara</th>
-      <th>Incidencia acumulada Iquique</th>
-      <th>Incidencia acumulada Pica</th>
-      <th>Incidencia acumulada Pozo Almonte</th>
-      <th>Incidencia acumulada regional</th>
-      <th>Positividad media movil *</th>
-      <th>Mortalidad especifica *</th>
-      <th>Crecimiento semanal *</th>
-      <th>Crecimiento diario *</th>
-      <th>UCI ocupacion media movil aprox *</th>
-      <th>UCI error abs *</th>
-      <th>Tasa casos nuevos *</th>
-      <th>Positividad antigeno *</th>
-      <th>Positividad antigeno media movil *</th>
-      <th>Mortalidad especifica comunal Alto Hospicio *</th>
-      <th>Mortalidad especifica comunal Camiña *</th>
-      <th>Mortalidad especifica comunal Colchane *</th>
-      <th>Mortalidad especifica comunal Huara *</th>
-      <th>Mortalidad especifica comunal Iquique *</th>
-      <th>Mortalidad especifica comunal Pica *</th>
-      <th>Mortalidad especifica comunal Pozo Almonte *</th>
-      <th>Tasa de activos (incidencia) *</th>
-    </tr>
-    <tr>
-      <th>Fecha</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2020-03-03</th>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-04</th>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-05</th>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-06</th>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-03-07</th>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2021-07-11</th>
-      <td>39,485.00</td>
-      <td>38,407.00</td>
-      <td>755.00</td>
-      <td>303.00</td>
-      <td>146.00</td>
-      <td>35.00</td>
-      <td>21.00</td>
-      <td>13.00</td>
-      <td>1.00</td>
-      <td>5.00</td>
-      <td>42.00</td>
-      <td>35.00</td>
-      <td>4.00</td>
-      <td>124.00</td>
-      <td>2,983.00</td>
-      <td>1,449.00</td>
-      <td>436,589.00</td>
-      <td>604.00</td>
-      <td>420.00</td>
-      <td>8.00</td>
-      <td>61.00</td>
-      <td>35.00</td>
-      <td>4.00</td>
-      <td>73.53</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.00</td>
-      <td>197.24</td>
-      <td>0.93</td>
-      <td>0.85</td>
-      <td>73.53</td>
-      <td>0.00</td>
-      <td>11.91</td>
-      <td>4.03</td>
-      <td>4.55</td>
-      <td>133.08</td>
-      <td>218.18</td>
-      <td>126.34</td>
-      <td>233.33</td>
-      <td>236.73</td>
-      <td>201.41</td>
-      <td>137.97</td>
-      <td>117.30</td>
-    </tr>
-    <tr>
-      <th>2021-07-12</th>
-      <td>39,515.00</td>
-      <td>38,457.00</td>
-      <td>757.00</td>
-      <td>281.00</td>
-      <td>128.00</td>
-      <td>31.00</td>
-      <td>22.00</td>
-      <td>9.00</td>
-      <td>0.00</td>
-      <td>1.00</td>
-      <td>42.00</td>
-      <td>50.00</td>
-      <td>2.00</td>
-      <td>106.00</td>
-      <td>3,089.00</td>
-      <td>1,844.00</td>
-      <td>438,433.00</td>
-      <td>604.00</td>
-      <td>385.00</td>
-      <td>8.00</td>
-      <td>61.00</td>
-      <td>35.00</td>
-      <td>3.00</td>
-      <td>70.48</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>11,543.9</td>
-      <td>15,490.9</td>
-      <td>9,096.7</td>
-      <td>14,766.7</td>
-      <td>12,677.3</td>
-      <td>16,549.2</td>
-      <td>12,785.3</td>
-      <td>12,625.2</td>
-      <td>3.00</td>
-      <td>197.77</td>
-      <td>0.83</td>
-      <td>0.89</td>
-      <td>70.48</td>
-      <td>0.00</td>
-      <td>10.79</td>
-      <td>0.94</td>
-      <td>4.52</td>
-      <td>135.39</td>
-      <td>218.18</td>
-      <td>126.34</td>
-      <td>233.33</td>
-      <td>238.52</td>
-      <td>201.41</td>
-      <td>137.97</td>
-      <td>106.85</td>
-    </tr>
-    <tr>
-      <th>2021-07-13</th>
-      <td>39,541.00</td>
-      <td>38,502.00</td>
-      <td>757.00</td>
-      <td>262.00</td>
-      <td>118.00</td>
-      <td>26.00</td>
-      <td>15.00</td>
-      <td>7.00</td>
-      <td>4.00</td>
-      <td>4.00</td>
-      <td>42.00</td>
-      <td>45.00</td>
-      <td>0.00</td>
-      <td>88.00</td>
-      <td>3,177.00</td>
-      <td>1,359.00</td>
-      <td>439,792.00</td>
-      <td>604.00</td>
-      <td>342.00</td>
-      <td>8.00</td>
-      <td>61.00</td>
-      <td>35.00</td>
-      <td>4.00</td>
-      <td>68.38</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>197.77</td>
-      <td>0.89</td>
-      <td>0.84</td>
-      <td>67.68</td>
-      <td>0.69</td>
-      <td>10.52</td>
-      <td>4.55</td>
-      <td>4.62</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>99.28</td>
-    </tr>
-    <tr>
-      <th>2021-07-14</th>
-      <td>39,560.00</td>
-      <td>38,551.00</td>
-      <td>757.00</td>
-      <td>232.00</td>
-      <td>117.00</td>
-      <td>18.00</td>
-      <td>12.00</td>
-      <td>5.00</td>
-      <td>1.00</td>
-      <td>3.00</td>
-      <td>43.00</td>
-      <td>49.00</td>
-      <td>0.00</td>
-      <td>163.00</td>
-      <td>3,340.00</td>
-      <td>1,215.00</td>
-      <td>441,007.00</td>
-      <td>604.00</td>
-      <td>310.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>34.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>197.77</td>
-      <td>0.85</td>
-      <td>0.69</td>
-      <td>65.34</td>
-      <td>NaN</td>
-      <td>10.11</td>
-      <td>1.84</td>
-      <td>4.18</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>91.18</td>
-    </tr>
-    <tr>
-      <th>2021-07-15</th>
-      <td>39,649.00</td>
-      <td>38,627.00</td>
-      <td>762.00</td>
-      <td>240.00</td>
-      <td>112.00</td>
-      <td>46.00</td>
-      <td>27.00</td>
-      <td>16.00</td>
-      <td>3.00</td>
-      <td>7.00</td>
-      <td>43.00</td>
-      <td>76.00</td>
-      <td>5.00</td>
-      <td>140.00</td>
-      <td>3,480.00</td>
-      <td>1,464.00</td>
-      <td>442,471.00</td>
-      <td>604.00</td>
-      <td>305.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>35.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>199.07</td>
-      <td>0.75</td>
-      <td>2.56</td>
-      <td>64.17</td>
-      <td>NaN</td>
-      <td>9.59</td>
-      <td>5.00</td>
-      <td>3.82</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>91.96</td>
-    </tr>
-  </tbody>
-</table>
-<p>500 rows × 154 columns</p>
-</div></div></div>
 </div>
 </div>
 </div>
@@ -2270,7 +1574,7 @@
 <li><p><b>Indicador de fase</b></p></li>
 </ul>
 <p>El plan Paso a Paso y la capacidad de poder “predecirlo”. El indicador de fase surgió como una idea de saber, qué tan cerca o qué tan distantes se estaba de los avances o retrocesos de fase, en términos de confinamiento o desconfinamiento. La idea original la desarrollé un día por la noche, e hizo boom en redes sociales. El miembro del comité científico COVID-19 de la Universidad Arturo Prat, el Dr. Cristóbal Corral, fue capaz de explicarlo brevemente a los medios: Un termómetro del Paso a Paso.</p>
-<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id6">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id7">2</a></p>
+<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id8">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id9">3</a></p>
 <p>La segunda versión de este reporte fue subida, inicialmente, el 02/05/2021, que fue la 37° edición. Fue procesada en el siguiente script (This is the way 2), y se basa en un problema de clasificación. Para mayor información del cómo funciona y  sus fundamentos, recomiendo ver el siguiente notebook.</p>
 <ul class="simple">
 <li><p><b>Reporte comunal</b></p></li>
@@ -2654,38 +1958,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 15 de julio de 2021 🕑. 
-
-• Infectados 46 casos nuevos de los cuales 27 con síntomas, 16 sin síntomas y 3 sin notificar, dando un total de 39,649 casos confirmados. Adicionalmente, 7 casos nuevos confirmados por antígeno y 43 casos totales con sospecha de reinfección. 🦠
-• Recuperadas 76 personas, sumando 38,627 recuperados totales. 💪
-• Perdieron la vida 5 persona(s), sumando 762 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
-• Informados 1,464 exámenes PCR dando un total de 442,471 exámenes PCR totales en la región. 🌡️
-• Respecto a residencias sanitarias, 8 recintos de hospedaje con 604 cupos, de los cuales 305 están utilizados. 🏨
-• Se reportaron 240 casos activos y 112 activos probables. 🧪
-• La tasa de crecimiento es del 2.56: curva de contagios al alza.
-• Hasta ayer, 35 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 64.2% ± 0.7%. 🆘
-• La positividad de casos PCR fue del 3%. Asimismo, una positividad media móvil semanal del 2%. 😷
-• De cada cien mil habitantes en la región, 199 fallecen por COVID-19. 😵
-• El Re Regional corresponde a 0.87. 💊
-• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 9.6. 💦
-• En el proceso de vacunación, 70% vacunados de la población objetivo (al menos, 199,602 personas con cuadro de vacunación completo). 💦
-
-*Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
-*La ocupación UCI es una aproximación de la situación de camas críticas regionales.
-*Datos actualizados hasta las 21 hrs. del día anterior.
-
-[ CAMBIOS EN LA 383° EDICION ⚙️ ]
-• Ninguno.
-
-[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
-• Autor: Alejandro Dinamarca.
-
-¡A cuidarse Tarapacá! 😉
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="balance-de-vacunas">
@@ -2720,24 +1992,6 @@
 
 <span class="c1">## Imprimimos</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">desc2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 15 de julio de 2021. 🕑 
-
-• El 70% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 199,602 personas con cuadros de vacunación completo.
-
-*Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
-
-[ CAMBIOS EN LA 55° EDICION ⚙️ ]
-• Ninguno
-
-[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
-• Autor: Alejandro Dinamarca.
-
-¡A cuidarse Tarapacá! 😉
 </pre></div>
 </div>
 </div>
@@ -2802,32 +2056,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<p>Indicador FASE, 15 de julio de 2021. 🕑</p>
-<ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>96.992%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.117%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.0%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
-Actualmente, la comuna registra <b>59</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.434%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>0</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>93.1%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>10</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>89.064%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.989%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-</ul>
-<p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
-<p>• Ninguno</p>
-<p>[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]</p>
-<p>• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!</p>
-<p>• Autor: Alejandro Dinamarca.</p>
-<p>• Para mayor información del funcionamiento del algoritmo, visitar el sitio adinamarca.github.io</p>
-<p>¡A cuidarse Tarapacá! 😉</p>
-</div>
 </div>
 </div>
 </div>
@@ -2838,8 +2066,8 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 <center><a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg"></img></a></center>
 <p>Existen otras librerías, como Seaborn (sns), que nos permite realizar gráficos más avanzados que Matplotlib con una sintaxis más simple. Sin embargo, Matplotlib tiene mayor versatilidad, y por ello, lo utilizaremos sobre Seaborn (sns viene con una sintaxis más simple pero menos manejable).</p>
 <center><a href="https://seaborn.pydata.org/"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg"></img></a></center>
-<div class="section" id="id8">
-<h3>Reporte diario<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Reporte diario<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para reporte diario ###</span>
@@ -2943,39 +2171,10 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_22_0.png" src="../../_images/1_thisistheway_22_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_22_2.png" src="../../_images/1_thisistheway_22_2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_22_4.png" src="../../_images/1_thisistheway_22_4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_22_6.png" src="../../_images/1_thisistheway_22_6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_22_8.png" src="../../_images/1_thisistheway_22_8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_22_10.png" src="../../_images/1_thisistheway_22_10.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-
- 
- Gráficos del reporte diario guardados de forma exitosa.
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id9">
-<h3>Balance de vacunas<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Balance de vacunas<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para balance vacunas ###</span>
@@ -3101,35 +2300,10 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_24_0.png" src="../../_images/1_thisistheway_24_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_24_2.png" src="../../_images/1_thisistheway_24_2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_24_4.png" src="../../_images/1_thisistheway_24_4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_24_6.png" src="../../_images/1_thisistheway_24_6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_24_8.png" src="../../_images/1_thisistheway_24_8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-
- 
- Gráficos del balance de vacunas guardados de forma exitosa.
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id10">
-<h3>Indicador de fase<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Indicador de fase<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para indicador fase ###</span>
@@ -3188,56 +2362,23 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_10.png" src="../../_images/1_thisistheway_26_10.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_12.png" src="../../_images/1_thisistheway_26_12.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-
- 
- Gráficos del indicador de fase guardados de forma exitosa.
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div class="section" id="generando-reportes">
 <h2>Generando reportes<a class="headerlink" href="#generando-reportes" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a class="footnote-reference brackets" href="#alsweigart" id="id11">3</a> para generar las infografías.</p>
+<p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a class="footnote-reference brackets" href="#alsweigart" id="id13">4</a> para generar las infografías.</p>
 <p>El procedimiento manual implicaba exportar archivos .JSON, y a partir de ellos, rellenar manualmente los datos y gráficos en Photoshop, lo que es un proceso tedioso, y altamente susceptible a equivocaciones.</p>
-<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id12">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
+<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id14">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
 <p>Lo que tenemos que realizar consistirá en los siguientes pasos:</p>
 <ul class="simple">
 <li><p>Rellenar con datos las infografías prediseñadas en Photoshop.</p></li>
 <li><p>Colocar imágenes de gráficos según corresponda en las mismas infografías.</p></li>
 <li><p>Exportar.</p></li>
 </ul>
-<div class="section" id="id13">
-<h3>Reporte diario<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Reporte diario<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Generando reporte diario ###</span>
@@ -3404,18 +2545,10 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<blockquote>
-<div><p>Todas las imágenes del reporte diario han sido correctamente exportadas.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El PDF del reporte diario ha sido exportado.</p>
-</div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="id14">
-<h3>Balance de vacunas<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Balance de vacunas<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Generando balance de vacunas ###</span>
@@ -3476,18 +2609,10 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<blockquote>
-<div><p>Todas las imágenes del balance de vacunas han sido correctamente exportadas.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El PDF del balance de vacunas ha sido exportado.</p>
-</div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="id15">
-<h3>Indicador de fase<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Indicador de fase<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Indicador de fase ###</span>
@@ -3554,22 +2679,14 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<blockquote>
-<div><p>Todas las imágenes del indicador de fase han sido correctamente exportadas.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El PDF del indicador de fase ha sido exportado.</p>
-</div></blockquote>
-</div>
 </div>
 </div>
 </div>
 <div class="section" id="resultado">
 <h2>Resultado<a class="headerlink" href="#resultado" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<div class="section" id="id16">
-<h3>Reporte diario<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Reporte diario<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Mostramos las imágenes del reporte diario</span>
@@ -3579,18 +2696,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;display(diario</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_36_0.png" src="../../_images/1_thisistheway_36_0.png" />
-<img alt="../../_images/1_thisistheway_36_1.png" src="../../_images/1_thisistheway_36_1.png" />
-<img alt="../../_images/1_thisistheway_36_2.png" src="../../_images/1_thisistheway_36_2.png" />
-<img alt="../../_images/1_thisistheway_36_3.png" src="../../_images/1_thisistheway_36_3.png" />
-<img alt="../../_images/1_thisistheway_36_4.png" src="../../_images/1_thisistheway_36_4.png" />
-<img alt="../../_images/1_thisistheway_36_5.png" src="../../_images/1_thisistheway_36_5.png" />
-<img alt="../../_images/1_thisistheway_36_6.png" src="../../_images/1_thisistheway_36_6.png" />
-<img alt="../../_images/1_thisistheway_36_7.png" src="../../_images/1_thisistheway_36_7.png" />
-<img alt="../../_images/1_thisistheway_36_8.png" src="../../_images/1_thisistheway_36_8.png" />
-<img alt="../../_images/1_thisistheway_36_9.png" src="../../_images/1_thisistheway_36_9.png" />
 </div>
 </div>
 </div>
@@ -3606,17 +2711,10 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_38_0.png" src="../../_images/1_thisistheway_38_0.png" />
-<img alt="../../_images/1_thisistheway_38_1.png" src="../../_images/1_thisistheway_38_1.png" />
-<img alt="../../_images/1_thisistheway_38_2.png" src="../../_images/1_thisistheway_38_2.png" />
-<img alt="../../_images/1_thisistheway_38_3.png" src="../../_images/1_thisistheway_38_3.png" />
-<img alt="../../_images/1_thisistheway_38_4.png" src="../../_images/1_thisistheway_38_4.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id17">
-<h3>Indicador de fase<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Indicador de fase<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Mostramos las imágenes del indicador de fase</span>
@@ -3626,17 +2724,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;display(indicadorfase</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_40_0.png" src="../../_images/1_thisistheway_40_0.png" />
-<img alt="../../_images/1_thisistheway_40_1.png" src="../../_images/1_thisistheway_40_1.png" />
-<img alt="../../_images/1_thisistheway_40_2.png" src="../../_images/1_thisistheway_40_2.png" />
-<img alt="../../_images/1_thisistheway_40_3.png" src="../../_images/1_thisistheway_40_3.png" />
-<img alt="../../_images/1_thisistheway_40_4.png" src="../../_images/1_thisistheway_40_4.png" />
-<img alt="../../_images/1_thisistheway_40_5.png" src="../../_images/1_thisistheway_40_5.png" />
-<img alt="../../_images/1_thisistheway_40_6.png" src="../../_images/1_thisistheway_40_6.png" />
-<img alt="../../_images/1_thisistheway_40_7.png" src="../../_images/1_thisistheway_40_7.png" />
-<img alt="../../_images/1_thisistheway_40_8.png" src="../../_images/1_thisistheway_40_8.png" />
 </div>
 </div>
 </div>
@@ -3664,46 +2751,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Universidad</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Juan</td>
-      <td>Ponce</td>
-      <td>uchile</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Ermógenes</td>
-      <td>Pérez</td>
-      <td>usch</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </div>
 <div class="section" id="ejemplo-2">
@@ -3727,13 +2774,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  0.69 %
-La media general del error es de:  0.81 %
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_45_1.png" src="../../_images/1_thisistheway_45_1.png" />
-</div>
 </div>
 </div>
 </div>
@@ -3745,22 +2785,22 @@ La media general del error es de:  0.81 %
 <span id="aclaracion"></span><h4>Casos activos confirmados<a class="headerlink" href="#casos-activos-confirmados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos activos confirmados del reporte diario del Minsal no calzan con los del reporte epidemiológico?</strong> Ésto se debe a que, el reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No contempla en la suma de activos confirmados, a los activos probables <a class="footnote-reference brackets" href="#b51-536" id="id18">4</a>, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No contempla en la suma de activos confirmados, a los activos probables <a class="footnote-reference brackets" href="#b51-536" id="id20">5</a>, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 </div>
 <div class="section" id="casos-confirmados-acumulados">
-<span id="id19"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
+<span id="id21"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos confirmados acumulados del reporte diario del Minsal no calzan con el total del reporte epidemiológico?</strong> Ésto se debe a dos situaciones con respecto al reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No se contemplan casos probables <a class="footnote-reference brackets" href="#b51-536" id="id20">4</a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos probables <a class="footnote-reference brackets" href="#b51-536" id="id22">5</a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>No se contemplan casos notificados por laboratorio <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id21">5</a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos notificados por laboratorio <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id23">6</a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <p>Ésto implica que:</p>
 <div class="math notranslate nohighlight" id="equation-casos-epidemiologico">
-<span class="eqno">(10)<a class="headerlink" href="#equation-casos-epidemiologico" title="Permalink to this equation">¶</a></span>\[ 
+<span class="eqno">(11)<a class="headerlink" href="#equation-casos-epidemiologico" title="Permalink to this equation">¶</a></span>\[ 
 \begin{align}
 \Large TOTAL = casos_{confirmados \ notificados} + casos_{probables} + casos_{notificados \ laboratorio}
 \end{align}
@@ -3770,11 +2810,11 @@ La media general del error es de:  0.81 %
 <h4>Definiciones<a class="headerlink" href="#definiciones" title="Permalink to this headline">¶</a></h4>
 <p>Respecto a las definiciones de la nomenclatura:</p>
 <ul class="simple">
-<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id22">4</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id23">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
+<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id24">5</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id25">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">5</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id25">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
+<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id26">6</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id27">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -3846,250 +2886,6 @@ La media general del error es de:  0.81 %
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><details>
-<summary>Click to view session information</summary>
-<pre>
------
-PIL                 8.2.0
-bs4                 4.9.3
-datetime            NA
-json                2.0.9
-locale              NA
-markdownify         NA
-math                NA
-matplotlib          3.3.4
-natsort             7.1.1
-numpy               1.19.2
-os                  NA
-pandas              1.2.3
-pkg_resources       NA
-plotly              4.8.1
-pybtex              0.24.0
-requests            2.25.1
-scipy               1.6.2
-seaborn             0.11.1
-session_info        1.0.0
-sklearn             0.24.1
-time                NA
-types               NA
------
-</pre>
-<details>
-<summary>Click to view modules imported as dependencies</summary>
-<pre>
-abc                 NA
-argparse            1.1
-array               NA
-ast                 NA
-asyncio             NA
-atexit              NA
-attr                21.2.0
-backcall            0.2.0
-base64              NA
-bdb                 NA
-binascii            NA
-bisect              NA
-brotli              NA
-bz2                 NA
-cProfile            NA
-calendar            NA
-certifi             2021.05.30
-cffi                1.14.5
-chardet             3.0.4
-cmath               NA
-cmd                 NA
-code                NA
-codecs              NA
-codeop              NA
-collections         NA
-colorama            0.4.3
-colorsys            NA
-concurrent          NA
-configparser        NA
-contextlib          NA
-contextvars         NA
-copy                NA
-copyreg             NA
-csv                 1.0
-ctypes              1.1.0
-cycler              0.10.0
-cython_runtime      NA
-dataclasses         NA
-dateutil            2.8.1
-decimal             1.70
-decorator           5.0.6
-difflib             NA
-dis                 NA
-distutils           3.7.0
-email               NA
-encodings           NA
-enum                NA
-errno               NA
-faulthandler        NA
-filecmp             NA
-fnmatch             NA
-fractions           NA
-functools           NA
-gc                  NA
-genericpath         NA
-getopt              NA
-getpass             NA
-gettext             NA
-glob                NA
-google              NA
-gzip                NA
-hashlib             NA
-heapq               NA
-hmac                NA
-html                NA
-http                NA
-idna                2.10
-imp                 NA
-importlib           NA
-importlib_metadata  NA
-inspect             NA
-io                  NA
-ipykernel           5.3.4
-ipyparallel         6.3.0
-ipython_genutils    0.2.0
-ipywidgets          7.6.3
-itertools           NA
-jedi                0.18.0
-joblib              1.0.1
-jsonschema          3.2.0
-keyword             NA
-kiwisolver          1.3.1
-linecache           NA
-logging             0.5.1.2
-lxml                4.6.3
-lzma                NA
-marshal             4
-matplotlib_inline   NA
-mimetypes           NA
-mkl                 2.3.0
-mmap                NA
-mpl_toolkits        NA
-msvcrt              NA
-multiprocessing     NA
-nbformat            5.1.3
-netrc               NA
-nt                  NA
-ntpath              NA
-ntsecuritycon       NA
-nturl2path          NA
-numbers             NA
-numexpr             2.7.3
-olefile             0.46
-opcode              NA
-operator            NA
-packaging           20.9
-parso               0.8.2
-pathlib             NA
-pdb                 NA
-pickle              NA
-pickleshare         0.7.5
-pkgutil             NA
-platform            1.0.8
-plistlib            NA
-posixpath           NA
-pprint              NA
-profile             NA
-prompt_toolkit      3.0.17
-pstats              NA
-psutil              5.8.0
-pvectorc            NA
-pydoc               NA
-pydoc_data          NA
-pyexpat             NA
-pygments            2.8.1
-pyparsing           2.4.7
-pyrsistent          NA
-pythoncom           NA
-pytz                2021.1
-pywintypes          NA
-queue               NA
-quopri              NA
-random              NA
-re                  2.2.1
-reprlib             NA
-retrying            NA
-ruamel              NA
-runpy               NA
-secrets             NA
-select              NA
-selectors           NA
-shlex               NA
-shutil              NA
-signal              NA
-site                NA
-six                 1.15.0
-socket              NA
-socketserver        0.4
-socks               1.7.1
-soupsieve           2.2.1
-sphinxcontrib       NA
-sqlite3             2.6.0
-sre_compile         NA
-sre_constants       NA
-sre_parse           NA
-ssl                 NA
-stat                NA
-storemagic          NA
-string              NA
-stringprep          NA
-struct              NA
-subprocess          NA
-sys                 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
-sysconfig           NA
-tarfile             0.9.0
-tempfile            NA
-textwrap            NA
-threading           NA
-timeit              NA
-token               NA
-tokenize            NA
-tornado             6.1
-traceback           NA
-traitlets           5.0.5
-typing              NA
-typing_extensions   NA
-unicodedata         NA
-unittest            NA
-urllib              NA
-urllib3             1.26.4
-uu                  NA
-uuid                NA
-warnings            NA
-wcwidth             0.2.5
-weakref             NA
-webbrowser          NA
-win32api            NA
-win32com            NA
-win32security       NA
-winreg              NA
-xml                 NA
-zipfile             NA
-zipimport           NA
-zipp                NA
-zlib                1.0
-zmq                 20.0.0
-</pre>
-</details> <!-- seems like this ends pre, so might as well be explicit -->
-<pre>
------
-IPython             7.23.1
-jupyter_client      6.1.12
-jupyter_core        4.7.1
-notebook            6.3.0
------
-Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
-Windows-10-10.0.19041-SP0
-12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
------
-Session information updated at 2021-07-15 15:16
-</pre>
-</details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
@@ -4098,16 +2894,19 @@ Session information updated at 2021-07-15 15:16
 <dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
 <dd><p>Ministerio de Ciencia, Tecnología e Innovación. Base de datos COVID-19. 2020, 2021. URL: <a class="reference external" href="https://github.com/MinCiencia/Datos-COVID19">https://github.com/MinCiencia/Datos-COVID19</a>.</p>
 </dd>
-<dt class="label" id="numeralab-indicadorfase"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dt class="label" id="medidas-epidemiologia"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dd><p>Alexánder Corcho-Berdugo Alejandra Moreno-Altamirano, Sergio López-Moreno. Principales medidas en epidemiología. 2000. URL: <a class="reference external" href="https://www.scielosp.org/pdf/spm/v42n4/2882.pdf">https://www.scielosp.org/pdf/spm/v42n4/2882.pdf</a>.</p>
+</dd>
+<dt class="label" id="numeralab-indicadorfase"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
 <dd><p>Alejandro Dinamarca. Indicador de fase, ed. 36°. 2021. URL: <a class="reference external" href="https://www.instagram.com/p/COyZiUcLUqu/">https://www.instagram.com/p/COyZiUcLUqu/</a>.</p>
 </dd>
-<dt class="label" id="alsweigart"><span class="brackets"><a class="fn-backref" href="#id11">3</a></span></dt>
+<dt class="label" id="alsweigart"><span class="brackets"><a class="fn-backref" href="#id13">4</a></span></dt>
 <dd><p>AlSweigart. Automate The Boring Stuff With Python. 2015. URL: <a class="reference external" href="https://automatetheboringstuff.com/chapter17/">https://automatetheboringstuff.com/chapter17/</a>.</p>
 </dd>
-<dt class="label" id="b51-536"><span class="brackets">4</span><span class="fn-backref">(<a href="#id18">1</a>,<a href="#id20">2</a>,<a href="#id22">3</a>)</span></dt>
+<dt class="label" id="b51-536"><span class="brackets">5</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id22">2</a>,<a href="#id24">3</a>)</span></dt>
 <dd><p>Subsecretaria de Salud Pública. Ordinario B51-536. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf">https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf</a>.</p>
 </dd>
-<dt class="label" id="epi-04-06-2021"><span class="brackets">5</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id24">2</a>)</span></dt>
+<dt class="label" id="epi-04-06-2021"><span class="brackets">6</span><span class="fn-backref">(<a href="#id23">1</a>,<a href="#id26">2</a>)</span></dt>
 <dd><p>Departamento de Epidemiología. Informe epidemiológico N° 126. Enfermedad por SARS-CoV-2 (COVID-19). Chile 04-06-2021. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf">https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf</a>.</p>
 </dd>
 </dl>
