@@ -519,6 +519,7 @@ casoscomuna_activos.columns = 'Casos activos en ' + csv19[csv19.columns[csv19.co
 replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
 casoscomuna_activos.index = csv19['Region'][4:]
 casoscomuna_activos = casoscomuna_activos[casoscomuna_activos.columns[:-1]]
+incidencia_activos = (((casos_activos + casos_activos_probables)/poblacion)*100000)
 
 ### Paso a paso histórico por comuna (descartamos zonas rurales)
 pasopaso_comuna = csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc[:, csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc['zona',:] != 'Rural']
@@ -697,7 +698,7 @@ dfs = [casos_acumulativos, casos_recuperados, fallecidos_acumulativos,
        tasacasosnuevos_provincial_tam, incidencia_acumulada,
        positividad_media_movil, mortalidad_especifica,
        crecimiento, crecimientodiario, uci_aprox, error_abs, tasa_casosnuevos, positividad_antigeno,
-       positividad_antigeno_media_movil, me_comuna]
+       positividad_antigeno_media_movil, me_comuna, incidencia_activos]
 
 ### Unimos a la tabla anterior y rellenamos valores NaN (Not a Number o no definido)
 df = pd.concat(dfs, join='outer', axis=1)
@@ -756,7 +757,7 @@ df.columns = ['Casos confirmados acumulados', 'Casos recuperados acumulados', 'C
               'Positividad antigeno media movil *', 'Mortalidad especifica comunal Alto Hospicio *', 'Mortalidad especifica comunal Camiña *',
               'Mortalidad especifica comunal Colchane *', 'Mortalidad especifica comunal Huara *',
               'Mortalidad especifica comunal Iquique *', 'Mortalidad especifica comunal Pica *',
-              'Mortalidad especifica comunal Pozo Almonte *']
+              'Mortalidad especifica comunal Pozo Almonte *', 'Tasa de activos (incidencia) *']
 
 ### Redondeamos a solo dos cifras significativas
 df = df.round(2)
@@ -981,19 +982,24 @@ pd.DataFrame([df['Tasa casos nuevos *']
              ], index=['Tasa de casos nuevos de casos nuevos por cien mil habitantes']
               ).transpose().to_csv('../../out/site/csv/data23.csv')
 
+### Tasa de activos ###
+pd.DataFrame([df['Tasa de activos (incidencia) *']
+             ], index=['Tasa de activos (incidencia)']
+              ).transpose().to_csv('../../out/site/csv/data24.csv')
+
 ### Mortalidad específica ###
 pd.DataFrame([df['Mortalidad especifica *']
              ], index=['Mortalidad específica por cien mil habitantes']
-              ).transpose().to_csv('../../out/site/csv/data24.csv')
+              ).transpose().to_csv('../../out/site/csv/data25.csv')
 
 ### Mortalidad específica por comuna ###
 pd.DataFrame(pd.DataFrame(df.loc[:, df.columns.str.contains('Mortalidad especifica comunal *')])
-              ).to_csv('../../out/site/csv/data25.csv')
+              ).to_csv('../../out/site/csv/data26.csv')
 
 ### Vacunación ###
 pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2° dosis'],
               df['Vacunados acumulados unica dosis']]
-              ).transpose().to_csv('../../out/site/csv/data26.csv')
+              ).transpose().to_csv('../../out/site/csv/data27.csv')
 
 # %% [markdown]
 # ### Reporte diario
