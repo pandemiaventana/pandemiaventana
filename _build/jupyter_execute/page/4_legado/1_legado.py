@@ -128,7 +128,7 @@ with open('../../README.md', 'w', encoding='UTF-8') as f:
 with open('../6_basedatos/2_basedatos.md', 'w', encoding='UTF-8') as f:
     f.write('''# Archivos
     
-    ''' + vec_)
+''' + vec_)
 
 
 # ## Archivos PDF
