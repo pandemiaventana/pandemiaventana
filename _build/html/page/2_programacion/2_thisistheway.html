@@ -172,6 +172,11 @@
      Salida
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_programacion.html">
+     Aclaraciones
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -211,11 +216,6 @@
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../4_legado/1_legado.html">
-     Lo nuevo
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../4_legado/2_legado.html">
      Lo que aún vive
@@ -278,7 +278,12 @@
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../6_bibliografia/0_bibliografia.html">
+  <a class="reference internal" href="../6_basedatos/0_basedatos.html">
+   Archivos procesados 📁
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../7_bibliografia/0_bibliografia.html">
    Bibliografía 📰
   </a>
  </li>
@@ -710,12 +715,12 @@
 <p>Para este inciso, nos basaremos en el trabajo de <em>Sergio Montoro</em> <a class="footnote-reference brackets" href="#sergio-montoro" id="id1">1</a>.</p>
 <div class="section" id="percepcion">
 <h3>Percepción<a class="headerlink" href="#percepcion" title="Permalink to this headline">¶</a></h3>
-<p>Según <span id="id2">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id19">Mon15</a>]</span>, “<em>La percepción es la organización, identificación e interpretación de información sensorial con el propósito de representar y entender el entorno</em>”.</p>
+<p>Según <span id="id2">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19">Mon15</a>]</span>, “<em>La percepción es la organización, identificación e interpretación de información sensorial con el propósito de representar y entender el entorno</em>”.</p>
 <div class="figure align-default" id="id3">
 <img alt="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" src="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" />
 <p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text"><strong>Fuente: Facebook. <a href="https://research.fb.com/blog/2016/08/learning-to-segment/">Learning to Segment</a></strong>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<p>En Facebook Research <a class="footnote-reference brackets" href="#learning-to-segment-facebook" id="id4">2</a>, se realizan la pregunta: “<em>Can a computer distinguish between the many objects in a photograph as effortlessly as the human eye?</em>” <span id="id5">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id20">Dol16</a>]</span>, que en Español, significa “<strong>¿Puede un computador distinguir, entre los muchos objetos de una fotografía, sin esfuerzo, tal como el ojo humano?</strong>”. Esa pregunta es capaz de responderla el <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a> (Aprendizaje Automático), en concreto, desde el <a href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a> (Visión por Computador).</p>
+<p>En Facebook Research <a class="footnote-reference brackets" href="#learning-to-segment-facebook" id="id4">2</a>, se realizan la pregunta: “<em>Can a computer distinguish between the many objects in a photograph as effortlessly as the human eye?</em>” <span id="id5">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id20">Dol16</a>]</span>, que en Español, significa “<strong>¿Puede un computador distinguir, entre los muchos objetos de una fotografía, sin esfuerzo, tal como el ojo humano?</strong>”. Esa pregunta es capaz de responderla el <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a> (Aprendizaje Automático), en concreto, desde el <a href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a> (Visión por Computador).</p>
 <p>Tal como en la figura, el reconocimiento de imágenes, y visto de forma muy general, es que, a partir de un conjunto de píxeles, se clasifica en tipos de objetos (lo que se determina como una <strong>clase</strong>). Ésto es, lo básico que debe realizar un <a href="https://aprendeia.com/diferencia-entre-algoritmos-de-clasificacion-y-regresion/#:~:text=Los%20algoritmos%20de%20clasificaci%C3%B3n%20se,conjunto%20finito%20de%20resultados%20posibles."><strong>Algoritmo de Clasificación</strong></a>. Éste tipo de algoritmos son parte del <a href="https://es.wikipedia.org/wiki/Aprendizaje_supervisado">Aprendizaje Supervisado</a>.</p>
 <p>Así entonces, tenemos algoritmos que, a partir de un conjunto de datos de entrada, como los píxeles de una imagen, es capaz de reconocer los distintos tipos de objetos (<strong>clases</strong>). Por ejemplo, reconocer el cielo, personas, vehículos, animales, etc. Pero, ¿cómo lo hace? Pues, a través del <strong>aprendizaje</strong>.</p>
 </div>
@@ -738,7 +743,7 @@
 <p>Dicho ésto, ¡proseguimos a la siguiente sección! Por cierto, <em>si quieres arrancar, es el momento</em>.</p>
 <div class="section" id="imitacion-aprendizaje">
 <h4>Imitación (aprendizaje)<a class="headerlink" href="#imitacion-aprendizaje" title="Permalink to this headline">¶</a></h4>
-<p>Entonces, ya lo sabemos. La imitación surge a partir de una función matemática. Esta función, se explicará desde el punto de vista del <strong>aprendizaje</strong> (según el contexto que nos ocupa). En este sentido, <span id="id9">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id19">Mon15</a>]</span> declara “<em>El aprendizaje es el hallazgo de una función <span class="math notranslate nohighlight">\(h(x)\)</span> —llamada frecuentemente hipótesis— que dado un vector de entrada <span class="math notranslate nohighlight">\(x\)</span> proporcione una estimación lo bastante buena de otra cantidad relacionada con <span class="math notranslate nohighlight">\(x\)</span></em>”.</p>
+<p>Entonces, ya lo sabemos. La imitación surge a partir de una función matemática. Esta función, se explicará desde el punto de vista del <strong>aprendizaje</strong> (según el contexto que nos ocupa). En este sentido, <span id="id9">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19">Mon15</a>]</span> declara “<em>El aprendizaje es el hallazgo de una función <span class="math notranslate nohighlight">\(h(x)\)</span> —llamada frecuentemente hipótesis— que dado un vector de entrada <span class="math notranslate nohighlight">\(x\)</span> proporcione una estimación lo bastante buena de otra cantidad relacionada con <span class="math notranslate nohighlight">\(x\)</span></em>”.</p>
 <p>Para comprender el punto anterior, <strong>¿recuerdas nuestra relación lineal en torno a los años de experiencia laboral y el salario?</strong> Definamos:</p>
 <div class="math notranslate nohighlight" id="equation-experiencia-laboral">
 <span class="eqno">(11)<a class="headerlink" href="#equation-experiencia-laboral" title="Permalink to this equation">¶</a></span>\[
@@ -915,7 +920,7 @@
 <li><p><b>Valores epidemiológicos como número de contagios, testeo, etc.</b></p></li>
 <li><p><b>Valores temporales (tiempo en confinamiento por comuna de acuerdo a límites del plan Paso a Paso)</b></p></li>
 </ul>
-<p>Así entonces, <b>se categorizará por alguna de las fases del plan Paso a Paso</b>. ¡Sin embargo! De acuerdo al plan <a class="footnote-reference brackets" href="#estrategiagradual-pasopaso" id="id11">3</a>, una comuna deberá permanecer, mínimamente, dos semanas en una determinada fase <span id="id12">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id6">dSdC21</a>]</span> (al menos, es lo que está especificado para la fase 1, en la edición del plan del <a href="https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf">29 de abril de 2021 | Pg. 4</a>). Respecto a la fase 1 (Cuarentena), se menciona:</p>
+<p>Así entonces, <b>se categorizará por alguna de las fases del plan Paso a Paso</b>. ¡Sin embargo! De acuerdo al plan <a class="footnote-reference brackets" href="#estrategiagradual-pasopaso" id="id11">3</a>, una comuna deberá permanecer, mínimamente, dos semanas en una determinada fase <span id="id12">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id6">dSdC21</a>]</span> (al menos, es lo que está especificado para la fase 1, en la edición del plan del <a href="https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf">29 de abril de 2021 | Pg. 4</a>). Respecto a la fase 1 (Cuarentena), se menciona:</p>
 <ul class="simple">
 <li><p>“<b><i>Tendrá una duración acotada: máximo 4 semanas. A la semana 2 se evaluará si se avanza o no, y si sigue en Cuarentena se evaluará el avance semana a semana.</i></b>”</p></li>
 </ul>
@@ -933,7 +938,7 @@
 <p>Visto lo que es la regresión logística, y en concreto, lo que son los problemas de clasificación, ya sabemos con lo que estamos lidiando. El inconveniente es el siguiente: Sé mucho sobre la teoría y poco de la práctica. Por ello, deberemos utilizar una planilla de Scikit-learn. ¡Sin embargo! Recordemos que tratamos con un <strong>problema de clasificación</strong>.</p>
 <div class="figure align-default" id="id14">
 <img alt="https://scikit-learn.org/stable/_static/ml_map.png" src="https://scikit-learn.org/stable/_static/ml_map.png" />
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text"><strong>Guía para seleccionar un algoritmo</strong>. Imagen de Scikit-learn <span id="id13">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id12">Sl</a>]</span>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text"><strong>Guía para seleccionar un algoritmo</strong>. Imagen de Scikit-learn <span id="id13">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id12">Sl</a>]</span>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="metodologia">
 <h3>Metodología<a class="headerlink" href="#metodologia" title="Permalink to this headline">¶</a></h3>
@@ -990,7 +995,7 @@
 </div>
 <div class="section" id="inferencia-estadistica">
 <h4>Inferencia estadística<a class="headerlink" href="#inferencia-estadistica" title="Permalink to this headline">¶</a></h4>
-<p>Según Economipedia, la inferencia estadística <a class="footnote-reference brackets" href="#economipedia-inferenciaestadistica" id="id15">4</a>, <em>es el conjunto de métodos que permiten inducir, a través de una muestra estadística, el comportamiento de una determinada población. La inferencia estadística, estudia entonces cómo, a través de la aplicación de dichos métodos sobre los datos de una muestra, se pueden extraer conclusiones sobre los parámetros de la población de datos. De la misma manera estudia también el grado de fiabilidad de los resultados extraídos del estudio</em> <span id="id16">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id13">Lop</a>]</span>.</p>
+<p>Según Economipedia, la inferencia estadística <a class="footnote-reference brackets" href="#economipedia-inferenciaestadistica" id="id15">4</a>, <em>es el conjunto de métodos que permiten inducir, a través de una muestra estadística, el comportamiento de una determinada población. La inferencia estadística, estudia entonces cómo, a través de la aplicación de dichos métodos sobre los datos de una muestra, se pueden extraer conclusiones sobre los parámetros de la población de datos. De la misma manera estudia también el grado de fiabilidad de los resultados extraídos del estudio</em> <span id="id16">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id13">Lop</a>]</span>.</p>
 <p>Con respecto a la definición, la inferencia estadística utiliza dos métodos posibles de acuerdo a ciertos criterios que tienen relación con la certeza, cantidad de datos, etc. que son la <strong>estadística paramétrica y la no paramétrica</strong>.</p>
 <p>En palabras simples, la estadística paramétrica asume que la distribución de los datos es conocida, lo que refiere a que, los estadísticos (media, mediana, etc.) describen correctamente los datos.</p>
 <p><strong>Nuestra labor es reconocer si nos es útil la estadística parámetrica o no paramétrica</strong> en este caso puntual.</p>
@@ -1002,7 +1007,7 @@
 <h4>Hipótesis no estadística<a class="headerlink" href="#hipotesis-no-estadistica" title="Permalink to this headline">¶</a></h4>
 <p>La pregunta es, <strong>¿conocemos la distribución de los datos?</strong> <em>La respuesta es, posiblemente, no</em>. La pandemia se caracteriza por cifras que, lejos de ser regulares, dependen de múltiples factores y tienden a la variabilidad. Por dicha razón, la distribución se ve afectada, constantemente, por los confinamientos, por la movilidad, por el muestreo, entre otros.</p>
 <p>Ahora bien, lo anterior es, netamente, una hipótesis. Debemos corroborarla, y para ello, simplificaremos un poco nuestro trabajo. Nos basaremos en “<em>El blog de Minitab</em>” <a class="footnote-reference brackets" href="#blogminitab-pruebaestadistica" id="id17">5</a>, en específico, “<em>¿Cómo elegir entre una prueba no paramétrica y una prueba paramétrica?</em>”. En estricto rigor, la elección del tipo de prueba estadística (metodología para evaluar la evidencia que proporcionan los datos, probando una hipótesis), nos brindará si <strong>deberemos utilizar un método paramétrico o no paramétrico</strong>. Notar que, justamente, los clasificadores <strong>SGD y KDE</strong>, tal como la <strong>regresión logística</strong> y el estimador <strong>SVC</strong> son clasificadores no paramétricos.</p>
-<p>En <span id="id18">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id14">Edi19</a>]</span>, se expone que, una de las razones para utilizar las pruebas no paramétricas refiere a “<em>el área de estudio se representa mejor con la mediana</em>”. Según el editor del blog, aclara “<em>Por ejemplo, el centro de una distribución asimétrica, como los ingresos, puede medirse mejor con la mediana, donde el 50% está por encima de la mediana y el 50% está por debajo. Si usted agrega varios multimillonarios a una muestra, la media matemática aumenta enormemente aunque el ingreso de la persona típica no cambia. Cuando la distribución es lo suficientemente asimétrica, la media se ve afectada fuertemente por cambios que ocurren lejos, en la cola de la distribución, mientras que la mediana sigue reflejando con mayor precisión el centro de la distribución. Para estas dos distribuciones, una muestra aleatoria de 100 proveniente de cada distribución produce medias que son significativamente diferentes, pero medianas que no son significativamente diferentes</em>”.</p>
+<p>En <span id="id18">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id14">Edi19</a>]</span>, se expone que, una de las razones para utilizar las pruebas no paramétricas refiere a “<em>el área de estudio se representa mejor con la mediana</em>”. Según el editor del blog, aclara “<em>Por ejemplo, el centro de una distribución asimétrica, como los ingresos, puede medirse mejor con la mediana, donde el 50% está por encima de la mediana y el 50% está por debajo. Si usted agrega varios multimillonarios a una muestra, la media matemática aumenta enormemente aunque el ingreso de la persona típica no cambia. Cuando la distribución es lo suficientemente asimétrica, la media se ve afectada fuertemente por cambios que ocurren lejos, en la cola de la distribución, mientras que la mediana sigue reflejando con mayor precisión el centro de la distribución. Para estas dos distribuciones, una muestra aleatoria de 100 proveniente de cada distribución produce medias que son significativamente diferentes, pero medianas que no son significativamente diferentes</em>”.</p>
 <p>Considerando el punto anterior, le daremos un vistazo a la distribución de los datos y su asimetría. Buscaremos todas aquellas columnas de datos que, como máximo, tengan una curtosis igual a <strong>0.05 como valor absoluto</strong> (<em>aproximadamente normal</em>). También podríamos utilizar <span class="math notranslate nohighlight">\( media = mediana \)</span> como en toda distribución normal, pero para ser un poco flexibles, utilizamos una leve aproximación a una distribución normal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1033,7 +1038,7 @@
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
  <h3> Para la columna Notificacion PCR Iquique </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>0.011674197843603018</strong></p>
+<div><p>El valor de la curtosis es de <strong>-0.023816336508040287</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_14.png" src="../../_images/2_thisistheway_19_14.png" />
  <h3> Para la columna Incidencia acumulada Pica </h3><blockquote>
@@ -1104,7 +1109,7 @@
 </div>
 <p>Recomiendo el siguiente vídeo del divulgador de Inteligencia Artificial, <a href="https://www.youtube.com/channel/UCy5znSnfMsDwaLlROnZ7Qbg">DOT.CSV</a>:</p>
 <center><iframe src="https://www.youtube.com/embed/7-6X3DTt3R8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></center>
-<p>A modo de resumen del vídeo <span id="id24">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id18">Veg19</a>]</span>, se entiende que:</p>
+<p>A modo de resumen del vídeo <span id="id24">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id18">Veg19</a>]</span>, se entiende que:</p>
 <div class="figure align-default" id="id25">
 <img alt="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
 <p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text"><strong>Un estudiante copiando</strong>. Fotografía de <a href="https://www.pexels.com/es-es/foto/hombre-escritura-colegio-libro-7092609/">RODNAE Productions en Pexels</a>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
@@ -1121,7 +1126,7 @@
 <li><p>Error en el entrenamiento o error de generalización.</p></li>
 <li><p>Sesgo o varianza del modelo entrenado.</p></li>
 </ul>
-<p>¿Qué hace el aprendizaje estadístico? Según <span id="id27">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id10">SVV18</a>]</span>, el aprendizaje estadístico formaliza estas ideas, caracterizando propiedades matemáticas de las máquinas de aprendizaje.</p>
+<p>¿Qué hace el aprendizaje estadístico? Según <span id="id27">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id10">SVV18</a>]</span>, el aprendizaje estadístico formaliza estas ideas, caracterizando propiedades matemáticas de las máquinas de aprendizaje.</p>
 <p>En relación a una “máquina de aprendizaje”, hace referencia a modelos de predicción, que nuevamente, son algoritmos o clasificadores.</p>
 <p>Antes de avanzar hacia la comprensión del modelo KDE, introduciremos, brevemente, la regresión logística.</p>
 </div>
@@ -1202,7 +1207,7 @@
 <li><p>Si <span class="math notranslate nohighlight">\( \theta_{T}X \)</span> es negativo, implicará un valor positivo del exponencial, y dado <span class="math notranslate nohighlight">\( \theta_{T}X = Z \)</span>, entonces, siempre que <span class="math notranslate nohighlight">\(0 &gt; Z\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> tenderá a 0.</p></li>
 <li><p>Si <span class="math notranslate nohighlight">\( \theta_{T}X \)</span> es positivo, implicará un valor negativo del exponencial, y dado <span class="math notranslate nohighlight">\( \theta_{T}X = Z \)</span>, entonces, siempre que <span class="math notranslate nohighlight">\(0 \leq Z\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> tenderá a 1.</p></li>
 </ul>
-<p>En consideración con lo anterior, y de acuerdo a los valores que asignemos a los parámetros <span class="math notranslate nohighlight">\(\theta\)</span>, podremos obtener los límites de decisión a partir de la inecuación entre <span class="math notranslate nohighlight">\(0 \leq Z\)</span> para el área positiva o <span class="math notranslate nohighlight">\(0 &gt; Z\)</span> para el área negativa <span id="id29">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id4">NG11</a>]</span>. Ésto se puede apreciar en una imagen que capturé del curso de Andrew NG en Coursera, de la Universidad de Stanford. <a class="footnote-reference brackets" href="#mlandrewng" id="id30">8</a></p>
+<p>En consideración con lo anterior, y de acuerdo a los valores que asignemos a los parámetros <span class="math notranslate nohighlight">\(\theta\)</span>, podremos obtener los límites de decisión a partir de la inecuación entre <span class="math notranslate nohighlight">\(0 \leq Z\)</span> para el área positiva o <span class="math notranslate nohighlight">\(0 &gt; Z\)</span> para el área negativa <span id="id29">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id4">NG11</a>]</span>. Ésto se puede apreciar en una imagen que capturé del curso de Andrew NG en Coursera, de la Universidad de Stanford. <a class="footnote-reference brackets" href="#mlandrewng" id="id30">8</a></p>
 <center><a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb"><img src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/12.png" style="margin-bottom:20px"></img></a></center>
 </div>
 <div class="section" id="descenso-del-gradiente-resumido">
@@ -1220,10 +1225,10 @@
 <h3>La deuda de Kernel<a class="headerlink" href="#la-deuda-de-kernel" title="Permalink to this headline">¶</a></h3>
 <p>Definido entonces, lo que es el aprendizaje, la regresión logística, y otros conceptos, <strong>tenemos un dominio relativo</strong>. Sin embargo, <strong>la deuda sigue siendo vigente en torno a qué son las aproximaciones por Kernel</strong>, de lo cual, y a ser sincero, no manejo.</p>
 <p>Me dediqué a buscar, sin éxito, <strong>algún texto explicativo</strong>, <strong>fácil de comprender</strong>, <strong>acerca de lo que es la aproximación por Kernel</strong>, hasta que encontré uno que me pareció muy bueno, <strong>y el cual aborda desde la Estadística su introducción</strong>. Este texto, fue realizado por <strong>Joaquín Amat Rodrigo</strong> <a class="footnote-reference brackets" href="#kernel-amat" id="id32">9</a>.</p>
-<p>Sin más preámbulo, seguiremos en la siguiente sección con Joaquín Amat Rodrigo <span id="id33">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>Sin más preámbulo, seguiremos en la siguiente sección con Joaquín Amat Rodrigo <span id="id33">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
 <div class="section" id="cimientos">
 <h4>Cimientos<a class="headerlink" href="#cimientos" title="Permalink to this headline">¶</a></h4>
-<p>De acuerdo con <span id="id34">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>, “<em>el identificar el tipo de distribución que tiene una variable es un paso fundamental en prácticamente todos los estudios que implican datos, desde los contrastes de hipótesis hasta la creación de modelos por aprendizaje estadístico y machine learning</em>” <a class="footnote-reference brackets" href="#kernel-amat" id="id35">9</a>.</p>
+<p>De acuerdo con <span id="id34">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>, “<em>el identificar el tipo de distribución que tiene una variable es un paso fundamental en prácticamente todos los estudios que implican datos, desde los contrastes de hipótesis hasta la creación de modelos por aprendizaje estadístico y machine learning</em>” <a class="footnote-reference brackets" href="#kernel-amat" id="id35">9</a>.</p>
 <div class="figure align-default" id="id36">
 <img alt="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
 <p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Fotografía de Burak Kepapci en Pexels.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
@@ -1272,7 +1277,7 @@
 <blockquote>
 <div><p>¡Vamos hallando cada vez más referencias!</p>
 </div></blockquote>
-<p>Según <span id="id40">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id15">dat</a>]</span>, “<em>Un gráfico de densidad visualiza la distribución de datos en un intervalo o período de tiempo continuo. Este gráfico es una variación de un histograma que usa el suavizado de cerner para trazar valores, permitiendo distribuciones más suaves al suavizar el ruido. Los picos de un gráfico de densidad ayudan a mostrar dónde los valores se concentran en el intervalo</em>”.</p>
+<p>Según <span id="id40">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id15">dat</a>]</span>, “<em>Un gráfico de densidad visualiza la distribución de datos en un intervalo o período de tiempo continuo. Este gráfico es una variación de un histograma que usa el suavizado de cerner para trazar valores, permitiendo distribuciones más suaves al suavizar el ruido. Los picos de un gráfico de densidad ayudan a mostrar dónde los valores se concentran en el intervalo</em>”.</p>
 <p>Pues, al igual que los histogramas, cuantifican la frecuencia de un determinado intervalo de la población, con la diferencia de <strong>presentar un suavizado a partir de promedios ponderados por datos vecinos</strong>.</p>
 <p>Visualicemos la misma distribución anterior (casos nuevos regionales), esta vez utilizando un gráfico de densidad de Kernel.</p>
 <div class="cell docutils container">
@@ -1286,14 +1291,14 @@
 <img alt="../../_images/2_thisistheway_29_0.png" src="../../_images/2_thisistheway_29_0.png" />
 </div>
 </div>
-<p>Así entonces, tenemos definidos los conceptos para proseguir con la explicación de <span id="id41">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>Así entonces, tenemos definidos los conceptos para proseguir con la explicación de <span id="id41">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
 </div>
 </div>
 <div class="section" id="idea-intuitiva">
 <h4>Idea intuitiva<a class="headerlink" href="#idea-intuitiva" title="Permalink to this headline">¶</a></h4>
-<p>Según <span id="id42">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>, “<em>kernel density estimation (KDE) expande la idea del histograma</em>”, donde, “*cada observación aumenta la densidad de probabilidad en la zona donde se encuentra, pero lo hace de forma que las contribuciones se agrupen creando una curva continua y suave (smooth)”.</p>
+<p>Según <span id="id42">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>, “<em>kernel density estimation (KDE) expande la idea del histograma</em>”, donde, “*cada observación aumenta la densidad de probabilidad en la zona donde se encuentra, pero lo hace de forma que las contribuciones se agrupen creando una curva continua y suave (smooth)”.</p>
 <blockquote>
-<div><p>Nos basaremos en el código que adjunta <span id="id43">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span> en su <a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html">notebook</a>. Se basa en la sección de “<em>Idea intuitiva</em>”: <strong><a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html#Idea-intuitiva">Para el enlace de referencia, click aquí</a></strong>.</p>
+<div><p>Nos basaremos en el código que adjunta <span id="id43">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span> en su <a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html">notebook</a>. Se basa en la sección de “<em>Idea intuitiva</em>”: <strong><a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html#Idea-intuitiva">Para el enlace de referencia, click aquí</a></strong>.</p>
 </div></blockquote>
 <p>Supongamos un conjunto de observaciones <span class="math notranslate nohighlight">\(X\)</span>:</p>
 <ul class="simple">
@@ -1331,7 +1336,7 @@
 <img alt="../../_images/2_thisistheway_31_0.png" src="../../_images/2_thisistheway_31_0.png" />
 </div>
 </div>
-<p>Luego, “<em>sobre cada observación se centra una distribución normal, con media igual al valor de la observación y desviación típica de 1</em>” según <span id="id44">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>Luego, “<em>sobre cada observación se centra una distribución normal, con media igual al valor de la observación y desviación típica de 1</em>” según <span id="id44">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Definimos ejes y figura de Matplotlib y graficamos con coordenadas</span>
@@ -1360,7 +1365,7 @@
 <img alt="../../_images/2_thisistheway_33_0.png" src="../../_images/2_thisistheway_33_0.png" />
 </div>
 </div>
-<p>“<em>De esta forma se consigue que cada observación contribuya justo en la posición que ocupa pero también, de forma gradual, en las regiones cercanas</em>” según <span id="id45">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>“<em>De esta forma se consigue que cada observación contribuya justo en la posición que ocupa pero también, de forma gradual, en las regiones cercanas</em>” según <span id="id45">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
 <p>Respecto a cómo se logra la predicción a partir de estas distribuciones de probabilidad, Joaquín aclara, “<em>si se suman las contribuciones individuales y se dividen por el total de curvas (observaciones), se consigue una curva final que describe la distribución de las observaciones</em>”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1393,13 +1398,13 @@
 <img alt="../../_images/2_thisistheway_35_0.png" src="../../_images/2_thisistheway_35_0.png" />
 </div>
 </div>
-<p>“<em>Esta idea tan sencilla pero a la vez tan potente es en la que se fundamenta el método kernel density estimation (KDE): aproximar una función de densidad como la suma de funciones (kernel) de cada observación.</em>” según <span id="id46">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>“<em>Esta idea tan sencilla pero a la vez tan potente es en la que se fundamenta el método kernel density estimation (KDE): aproximar una función de densidad como la suma de funciones (kernel) de cada observación.</em>” según <span id="id46">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
 </div>
 <div class="section" id="la-clasificacion-kde">
 <h4>La clasificación KDE<a class="headerlink" href="#la-clasificacion-kde" title="Permalink to this headline">¶</a></h4>
 <p>Bien. Hemos explicado el funcionamiento de KDE, pero, el acercamiento de Joaquín Amat, según lo que aprecio, es para la predicción de una variable continua.</p>
 <p>Para entender la clasificación del estimador KDE, nos basaremos en el trabajo de <em>Dennis Wittich</em>.</p>
-<p>Según <span id="id47">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id17">Wit19</a>]</span> el clasificador estima un determinado volumen <span class="math notranslate nohighlight">\(V\)</span> <a class="footnote-reference brackets" href="#dennis-wittich" id="id48">10</a> (<strong>el volumen</strong>, <em>lo entiendo como la distribución de probabilidad</em>). Así entonces, se considera <span class="math notranslate nohighlight">\(V\)</span> es la distribución de una clase <span class="math notranslate nohighlight">\(X\)</span>. <em>En nuestro caso, y a modo de ejemplo, puede ser la distribución para cada una de las etapas del Paso a Paso (<span class="math notranslate nohighlight">\(V_{0}\)</span>: Cuarentena, <span class="math notranslate nohighlight">\(V_{1}\)</span>: Transición, etc.)</em>; entonces, según el número de muestras que “caigan” en ese volumen, se determinará la distribución de la clase <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<p>Según <span id="id47">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id17">Wit19</a>]</span> el clasificador estima un determinado volumen <span class="math notranslate nohighlight">\(V\)</span> <a class="footnote-reference brackets" href="#dennis-wittich" id="id48">10</a> (<strong>el volumen</strong>, <em>lo entiendo como la distribución de probabilidad</em>). Así entonces, se considera <span class="math notranslate nohighlight">\(V\)</span> es la distribución de una clase <span class="math notranslate nohighlight">\(X\)</span>. <em>En nuestro caso, y a modo de ejemplo, puede ser la distribución para cada una de las etapas del Paso a Paso (<span class="math notranslate nohighlight">\(V_{0}\)</span>: Cuarentena, <span class="math notranslate nohighlight">\(V_{1}\)</span>: Transición, etc.)</em>; entonces, según el número de muestras que “caigan” en ese volumen, se determinará la distribución de la clase <span class="math notranslate nohighlight">\(X\)</span>:</p>
 <ul class="simple">
 <li><p>Si una muestra <span class="math notranslate nohighlight">\(X_{i}\)</span> es cercana a la distribución <span class="math notranslate nohighlight">\(V_{i}\)</span> de la clase <span class="math notranslate nohighlight">\(X\)</span>, se clasificará en ella.</p></li>
 </ul>
@@ -1415,7 +1420,7 @@
 <img alt="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" src="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" />
 <p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text"><strong>Ilustración extraída del artículo “<em>Support Vector Machine Algorithm for Automatically Identifying Depositional Microfacies Using Well Logs</em>”. El enlace en<a href="https://www.mdpi.com/2071-1050/11/7/1919"> MDPI</a></strong>.</span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
 </div>
-<p>La piedra angular del <strong>SVC</strong>, son los <strong>SVM</strong>, que es el acrónimo de <strong>Support Vector Machine</strong>, lo que significa “<strong>Máquinas de Vectores de Soporte</strong>”. En concreto, esta familia de algoritmos, y según <span id="id50">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id21">Her19</a>]</span>, se llaman “<strong>máquina</strong>” por parte del nombre del Aprendizaje de “<strong>Máquinas</strong>”, que es otro sinónimo de <strong>Aprendizaje Automático</strong> (en inglés, “<strong>Machine” Learning</strong>).</p>
+<p>La piedra angular del <strong>SVC</strong>, son los <strong>SVM</strong>, que es el acrónimo de <strong>Support Vector Machine</strong>, lo que significa “<strong>Máquinas de Vectores de Soporte</strong>”. En concreto, esta familia de algoritmos, y según <span id="id50">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21">Her19</a>]</span>, se llaman “<strong>máquina</strong>” por parte del nombre del Aprendizaje de “<strong>Máquinas</strong>”, que es otro sinónimo de <strong>Aprendizaje Automático</strong> (en inglés, “<strong>Machine” Learning</strong>).</p>
 <div class="section" id="funcionamiento">
 <h4>Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permalink to this headline">¶</a></h4>
 <p>Antes, al realizar la clasificación (en la regresión logística), intentábamos dar con una función que explicase la distribución de los datos, la cual denominamos <strong>hipótesis</strong>. Esta función se encargaba de separar, según las <strong>fronteras de decisión</strong>, dos o más clases de datos.</p>
@@ -1441,7 +1446,7 @@
 <h5>Definición de SVM<a class="headerlink" href="#definicion-de-svm" title="Permalink to this headline">¶</a></h5>
 <p>Bien, nuevamente, contamos con un <strong>dominio relativo</strong> de lo que sería un hiperplano. Ésto nos facilitará mucho el comprender cómo funcionan las Máquinas de Vectores de Soporte.</p>
 <p>“<em>Los vectores de soporte son los puntos que definen el margen máximo de separación del hiperplano que separa las clases. Se llaman vectores, en lugar de puntos, porque estos «puntos» tienen tantos elementos como dimensiones tenga nuestro espacio de entrada. Es decir, estos puntos multi-dimensionales se representan con un vector de n dimensiones</em>” <a class="footnote-reference brackets" href="#maquinas-soporte-jose" id="id53">11</a>.</p>
-<p>¡Muy bien! El hiperplano se encarga de realizar la separación. Pero en verdad, ¿cómo lo hace? Debemos recurrir nuevamente a <span id="id54">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id21">Her19</a>]</span>, en concreto, “<em>En el caso de que las clases sean linealmente separables, para hallar el hiperplano que las separa se toman un conjunto de casos, llamados vectores de soporte, y se elige el hiperplano que proporcione los mayores márgenes de distancia desde el hiperplano a los vectores de soporte más próximos. En el ejemplo, tanto el plano <span class="math notranslate nohighlight">\(Z_{1}\)</span> como <span class="math notranslate nohighlight">\(Z_{2}\)</span> podrían servir para distinguir las clases, pero <span class="math notranslate nohighlight">\(Z_{2}\)</span> es mejor porque el margen es más amplio</em>” <a class="footnote-reference brackets" href="#maquinas-soporte-jose" id="id55">11</a>.</p>
+<p>¡Muy bien! El hiperplano se encarga de realizar la separación. Pero en verdad, ¿cómo lo hace? Debemos recurrir nuevamente a <span id="id54">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21">Her19</a>]</span>, en concreto, “<em>En el caso de que las clases sean linealmente separables, para hallar el hiperplano que las separa se toman un conjunto de casos, llamados vectores de soporte, y se elige el hiperplano que proporcione los mayores márgenes de distancia desde el hiperplano a los vectores de soporte más próximos. En el ejemplo, tanto el plano <span class="math notranslate nohighlight">\(Z_{1}\)</span> como <span class="math notranslate nohighlight">\(Z_{2}\)</span> podrían servir para distinguir las clases, pero <span class="math notranslate nohighlight">\(Z_{2}\)</span> es mejor porque el margen es más amplio</em>” <a class="footnote-reference brackets" href="#maquinas-soporte-jose" id="id55">11</a>.</p>
 <div class="figure align-default" id="id56">
 <img alt="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" src="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" />
 <p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Ilustración extraída desde <strong><a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a></strong>.</span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
@@ -1692,11 +1697,11 @@
       <td>3.00</td>
       <td>5.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>5,471.00</td>
+      <td>80.90</td>
+      <td>3.10</td>
+      <td>96.50</td>
+      <td>99.40</td>
       <td>523.00</td>
       <td>529.00</td>
       <td>69.00</td>
@@ -1713,11 +1718,11 @@
       <td>3.00</td>
       <td>6.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>5,471.00</td>
+      <td>80.90</td>
+      <td>3.10</td>
+      <td>96.50</td>
+      <td>99.40</td>
       <td>523.00</td>
       <td>529.00</td>
       <td>69.00</td>
@@ -1734,11 +1739,11 @@
       <td>3.00</td>
       <td>7.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>6,023.00</td>
+      <td>81.60</td>
+      <td>2.60</td>
+      <td>98.00</td>
+      <td>100.00</td>
       <td>528.00</td>
       <td>533.00</td>
       <td>70.00</td>
@@ -1926,7 +1931,7 @@ Sus colores:
 </div>
 <div class="section" id="eleccion">
 <h3>Elección<a class="headerlink" href="#eleccion" title="Permalink to this headline">¶</a></h3>
-<p>No utilizamos la regresión logística u otro algoritmo basándonos en la recomendación de <strong>Axum Labs</strong>, donde, de acuerdo a nuestro número de observaciones y variables <span id="id64">[<a class="reference internal" href="../6_bibliografia/0_bibliografia.html#id22">Bas19</a>]</span>:</p>
+<p>No utilizamos la regresión logística u otro algoritmo basándonos en la recomendación de <strong>Axum Labs</strong>, donde, de acuerdo a nuestro número de observaciones y variables <span id="id64">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id22">Bas19</a>]</span>:</p>
 <blockquote>
 <div><p>“<em>If n is small (1–10 00) and m is intermediate (10–10,000) : use SVM with (Gaussian, polynomial etc) kernel</em>”. <a class="footnote-reference brackets" href="#axum-labs" id="id65">13</a></p>
 </div></blockquote>
@@ -2185,15 +2190,15 @@ weighted avg       1.00      1.00      1.00        58
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_6.png" src="../../_images/2_thisistheway_50_6.png" />
-<h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>94.82758620689656%</strong>.</p>
+<h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
- Preparación       0.70      1.00      0.82         7
-  Transición       1.00      0.94      0.97        51
+ Preparación       1.00      1.00      1.00         7
+  Transición       1.00      1.00      1.00        51
 
-    accuracy                           0.95        58
-   macro avg       0.85      0.97      0.90        58
-weighted avg       0.96      0.95      0.95        58
+    accuracy                           1.00        58
+   macro avg       1.00      1.00      1.00        58
+weighted avg       1.00      1.00      1.00        58
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
@@ -2581,7 +2586,7 @@ weighted avg       0.99      0.98      0.98        58
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-14 23:42
+            Session information updated at 2021-07-15 01:40
             </pre>
             </details></div></div>
 </div>
