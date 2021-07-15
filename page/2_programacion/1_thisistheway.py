@@ -351,6 +351,12 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # \end{align}
 # $$ (tasa_casos)
 #
+# #### Tasa de incidencia (casos diarios)
+#
+# La incidencia (casos nuevos por cien mil habitantes diarios) - *que se puede encontrar en la base de datos* - es estimada con un 95% de confianza por ICOVIDCHILE. 
+#
+# El **cálculo de la tasa de incidencia diaria**, a partir de los casos confirmados, es la misma fórmula que de la tasa de casos nuevos por cien mil habitantes, con la diferencia de no aplicar la media móvil semanal y ser cumulativo o acumulativo según lo aclare el nombre de la columna.
+#
 # #### Días por fase del plan Paso a Paso
 #
 # Variable que cuantifica la cantidad de días de una determinada fase del plan del Paso a Paso, por comuna. La variable, en sí, no requiere de una descripción. Se subentiende que, se acumulan los días que una determinada comuna estuvo en una determinada fase, haciendo un "*reset*" de días por cambio de fase de la comuna en el Paso a Paso.
@@ -378,6 +384,20 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # \Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
 # \end{align}
 # $$ (sin_inmunizar)
+#
+# #### Tasa de activos
+#
+# La tasa de activos, también denominada incidencia (activos), cuantifica la **velocidad de ocurriencia de infectados**. En este caso, se basa en el lapso temporal de los activos, a partir de los infectados en los últimos 11 días.
+#
+# Por otro lado, según *Principales medidas en epidemiología* {cite}``medidas-epidemiologia``, "*En los estudios epidemiológicos en los que el propósito es la investigación causal o la evaluación de medidas preventivas, el interés está dirigido a la medición del flujo que se establece entre la salud y la enfermedad, es decir, a la aparición de casos nuevos. Como ya se mencionó anteriormente, la medida epidemiológica que mejor expresa este cambio de estado es la incidencia, la cual indica la frecuencia con que ocurren nuevos eventos*" {footcite}``medidas-epidemiologia``.
+#
+# $$
+# \begin{align}
+# \Large Tasa_{activos} = \frac{Activos_{confirmados} + Activos_{probables}}{población}*100000
+# \end{align}
+# $$ (incidencia)
+#
+# > La tasa de activos puede variar respecto al informe epidemiológico dado que la del presente repositorio se registra un día después (*con los datos del día anterior por el corte*).
 #
 #
 # ### Limpieza de datos
