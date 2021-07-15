@@ -217,6 +217,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../4_legado/1_legado.html">
+     Lo nuevo
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../4_legado/2_legado.html">
      Lo que aún vive
     </a>
@@ -2718,113 +2723,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/reader.py</span> in <span class="ni">parse_json</span><span class="nt">(s, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">14</span>         <span class="n">nb_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/json/__init__.py</span> in <span class="ni">loads</span><span class="nt">(s, encoding, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span>             <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">348</span>         <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">349</span>     <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/json/decoder.py</span> in <span class="ni">decode</span><span class="nt">(self, s, _w)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>         <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">337</span><span class="sd">         obj, end = self.raw_decode(s, idx=_w(s, 0).end())</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span><span class="sd">         end = _w(s, end).end()</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/json/decoder.py</span> in <span class="ni">raw_decode</span><span class="nt">(self, s, idx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span><span class="sd">         except StopIteration as err:</span>
-<span class="ne">--&gt; </span><span class="mi">355</span><span class="sd">             raise JSONDecodeError(&quot;Expecting value&quot;, s, err.value) from None</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span><span class="sd">         return obj, end</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 2256 column 1 (char 51039)
-
-<span class="sd">The above exception was the direct cause of the following exception:</span>
-
-<span class="ne">NotJSONError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="sd">/tmp/ipykernel_3003/1584369300.py in &lt;module&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="sd"> </span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="sd"> ### Ejecutamos notebook 4</span>
-<span class="ne">----&gt; </span><span class="mi">8</span><span class="sd"> get_ipython().run_line_magic(&#39;run&#39;, &#39;./../4_legado/1_legado.ipynb&#39;)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2346</span><span class="sd">                 kwargs[&#39;local_ns&#39;] = self.get_local_scope(stack_depth)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2347</span><span class="sd">             with self.builtin_trap:</span>
-<span class="ne">-&gt; </span><span class="mi">2348</span><span class="sd">                 result = fn(*args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2349</span><span class="sd">             return result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2350</span><span class="sd"> </span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span><span class="sd">             if not kwsyntax:</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span><span class="sd">                 args, kw = fix(args, kw, sig)</span>
-<span class="ne">--&gt; </span><span class="mi">232</span><span class="sd">             return caller(func, *(extras + args), **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd">     fun.__name__ = func.__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd">     fun.__doc__ = func.__doc__</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="sd">     # but it&#39;s overkill for just that one bit of state.</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span><span class="sd">     def magic_deco(arg):</span>
-<span class="ne">--&gt; </span><span class="mi">187</span><span class="sd">         call = lambda f, *a, **k: f(*a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="sd">         if callable(arg):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/magics/execution.py</span> in <span class="ni">run</span><span class="nt">(self, parameter_s, runner, file_finder)</span>
-<span class="g g-Whitespace">    </span><span class="mi">722</span><span class="sd">             with preserve_keys(self.shell.user_ns, &#39;__file__&#39;):</span>
-<span class="g g-Whitespace">    </span><span class="mi">723</span><span class="sd">                 self.shell.user_ns[&#39;__file__&#39;] = filename</span>
-<span class="ne">--&gt; </span><span class="mi">724</span><span class="sd">                 self.shell.safe_execfile_ipy(filename, raise_exceptions=True)</span>
-<span class="g g-Whitespace">    </span><span class="mi">725</span><span class="sd">             return</span>
-<span class="g g-Whitespace">    </span><span class="mi">726</span><span class="sd"> </span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">safe_execfile_ipy</span><span class="nt">(self, fname, shell_futures, raise_exceptions)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2830</span><span class="sd">         with prepended_to_syspath(dname):</span>
-<span class="g g-Whitespace">   </span><span class="mi">2831</span><span class="sd">             try:</span>
-<span class="ne">-&gt; </span><span class="mi">2832</span><span class="sd">                 for cell in get_cells():</span>
-<span class="g g-Whitespace">   </span><span class="mi">2833</span><span class="sd">                     result = self.run_cell(cell, silent=True, shell_futures=shell_futures)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2834</span><span class="sd">                     if raise_exceptions:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">get_cells</span><span class="nt">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">2818</span><span class="sd">             if fname.endswith(&#39;.ipynb&#39;):</span>
-<span class="g g-Whitespace">   </span><span class="mi">2819</span><span class="sd">                 from nbformat import read</span>
-<span class="ne">-&gt; </span><span class="mi">2820</span><span class="sd">                 nb = read(fname, as_version=4)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2821</span><span class="sd">                 if not nb.cells:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2822</span><span class="sd">                     return</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/__init__.py</span> in <span class="ni">read</span><span class="nt">(fp, as_version, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="sd">     except AttributeError:</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="sd">         with io.open(fp, encoding=&#39;utf-8&#39;) as f:</span>
-<span class="ne">--&gt; </span><span class="mi">141</span><span class="sd">             return reads(f.read(), as_version, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span><span class="sd">     return reads(buf, as_version, **kwargs)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/__init__.py</span> in <span class="ni">reads</span><span class="nt">(s, as_version, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">         The notebook that was read.</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="n">nb</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">reads</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">if</span> <span class="n">as_version</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">NO_CONVERT</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>         <span class="n">nb</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="n">as_version</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/reader.py</span> in <span class="ni">reads</span><span class="nt">(s, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">versions</span><span class="p">,</span> <span class="n">NBFormatError</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> 
-<span class="ne">---&gt; </span><span class="mi">58</span>     <span class="n">nb_dict</span> <span class="o">=</span> <span class="n">parse_json</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_version</span><span class="p">(</span><span class="n">nb_dict</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>     <span class="k">if</span> <span class="n">major</span> <span class="ow">in</span> <span class="n">versions</span><span class="p">:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/nbformat/reader.py</span> in <span class="ni">parse_json</span><span class="nt">(s, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="c1"># Limit the error message to 80 characters.  Display whatever JSON will fit.</span>
-<span class="ne">---&gt; </span><span class="mi">17</span>         <span class="k">raise</span> <span class="n">NotJSONError</span><span class="p">((</span><span class="s2">&quot;Notebook does not appear to be JSON: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)[:</span><span class="mi">77</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="k">return</span> <span class="n">nb_dict</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> 
-
-<span class="ne">NotJSONError</span>: Notebook does not appear to be JSON: &#39;{\n &quot;cells&quot;: [\n  {\n   &quot;cell_type&quot;: &quot;m...
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2870,19 +2768,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 14 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.635%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.347%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.556%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.389%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.966%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.951%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>56</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.979%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.977%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>67</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>94.508%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>94.845%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.48%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.428%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>98</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.108%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.638%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>53</b> días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -3921,8 +3819,10 @@ La media general del error es de:  0.81 %
             datetime            NA
             json                2.0.9
             locale              NA
+            markdownify         NA
             math                NA
             matplotlib          3.3.4
+            natsort             7.1.1
             numpy               1.19.5
             os                  NA
             pandas              1.2.3
@@ -4142,7 +4042,7 @@ La media general del error es de:  0.81 %
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-15 01:40
+            Session information updated at 2021-07-15 01:52
             </pre>
             </details></div></div>
 </div>

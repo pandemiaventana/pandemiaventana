@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; La pandemia por la ventana</title>
+    <title>Lo nuevo &#8212; La pandemia por la ventana</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -92,7 +92,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="https://www.instagram.com/numeral.lab/">
    Instagram 📷
@@ -204,16 +204,21 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="0_legado.html">
    Legado 🔀
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Lo nuevo
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="2_legado.html">
      Lo que aún vive
@@ -364,6 +369,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pandemiaventana/pandemiaventana/main?urlpath=tree/page/4_legado/1_legado.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -373,7 +395,32 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#archivos-csv">
+   Archivos CSV
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#salida-para-markdown">
+   Salida para Markdown
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#archivos-pdf">
+   Archivos PDF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#salida-de-archivos-pdf">
+   Salida de archivos PDF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#informacion-de-sesion">
+   Información de sesión
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -385,7 +432,1410 @@
         
               <div>
                 
-  
+  <div class="section" id="lo-nuevo">
+<h1>Lo nuevo<a class="headerlink" href="#lo-nuevo" title="Permalink to this headline">¶</a></h1>
+<p>De forma rápida, los datos procesados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Los paquetes amigos</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Javascript</span><span class="p">,</span> <span class="n">IFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">session_info</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">markdownify</span> <span class="kn">import</span> <span class="n">markdownify</span> <span class="k">as</span> <span class="n">md</span>
+<span class="kn">from</span> <span class="nn">natsort</span> <span class="kn">import</span> <span class="n">natsorted</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="archivos-csv">
+<h2>Archivos CSV<a class="headerlink" href="#archivos-csv" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> archivocsv
+
+<span class="c1">### Mostrando archivos CSV</span>
+
+<span class="c1">### Ser perfeccionista es terrible ###</span>
+<span class="n">datas</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;./../../out/site/csv&#39;</span><span class="p">)]</span>
+<span class="n">datas</span> <span class="o">=</span> <span class="n">natsorted</span><span class="p">(</span><span class="n">datas</span><span class="p">)</span>
+<span class="n">datas</span> <span class="o">=</span> <span class="n">datas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">datas</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">:</span>
+    
+    <span class="c1">### Título</span>
+    
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;a style=&quot;font-size:18px&quot; href=&quot;https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/</span><span class="si">{}</span><span class="s1">&quot;&gt;&quot;</span><span class="si">{}</span><span class="s1">&quot;&lt;/a&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">upper</span><span class="p">())))</span>
+    <span class="c1">### Leemos</span>
+    
+    <span class="n">csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./../../out/site/csv/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>
+    
+    <span class="c1">### Info de pandas</span>
+    
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Tiene las siguientes columnas (**</span><span class="si">{}</span><span class="s1">** sin el índice):&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;- &#39;</span> <span class="o">+</span> <span class="n">col</span> <span class="o">+</span> <span class="s1">&#39; con **</span><span class="si">{}</span><span class="s1">** datos válidos.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">-</span> <span class="n">csv</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())))</span>
+    
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;hr&gt;&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Visualizamos</span>
+<span class="k">for</span> <span class="n">outputs</span> <span class="ow">in</span> <span class="n">archivocsv</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/numeralab.csv">&quot;NUMERALAB.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>153</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos confirmados acumulados con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos recuperados acumulados con <strong>464</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos fallecidos acumulados con <strong>480</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos confirmados con <strong>479</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos probables con <strong>389</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos con sintomas con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos sin sintomas con <strong>442</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos por laboratorio con <strong>392</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos por antigeno con <strong>140</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos con sospecha de reinfeccion con <strong>140</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos recuperados nuevos con <strong>463</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos fallecidos nuevos con <strong>479</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Antigenos informados nuevos con <strong>40</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Antigenos informados acumulados con <strong>40</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>PCR informados nuevos con <strong>454</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>PCR informados acumulados con <strong>454</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cupos en residencias con <strong>411</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Usuarios en residencias con <strong>411</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Numero de residencias con <strong>411</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>UCI habilitadas con <strong>456</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>UCI ocupadas por confirmados con <strong>470</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>UCI ocupadas por no confirmados con <strong>456</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>UCI ocupacion media movil real con <strong>450</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re regional con <strong>490</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Iquique con <strong>490</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Tamarugal con <strong>490</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad diaria con <strong>454</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Vacunados acumulados 1° dosis con <strong>202</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Vacunados acumulados 2° dosis con <strong>202</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Vacunados acumulados unica dosis con <strong>202</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Alto Hospicio con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Camiña con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Colchane con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Huara con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Iquique con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Pica con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Pozo Almonte con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Comuna desconocida con <strong>111</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Alto Hospicio con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Camiña con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Colchane con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Huara con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Iquique con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Pica con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Pozo Almonte con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Comuna desconocida con <strong>111</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso Alto Hospicio con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso Camiña con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso Colchane con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso Huara con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso Iquique con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso Pica con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso Pozo Almonte con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Alto Hospicio con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Camiña con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Colchane con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Huara con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Iquique con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Pica con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Paso a Paso (dias) Pozo Almonte con <strong>350</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Iquique con <strong>463</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Pica con <strong>463</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Alto Hospicio con <strong>463</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Pozo almonte con <strong>463</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Movilidad Huara con <strong>463</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Alto Hospicio con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Camiña con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Colchane con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Huara con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Iquique con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Pica con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Notificacion PCR Pozo Almonte con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Alto Hospicio con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Camiña con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Colchane con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Huara con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Iquique con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Pica con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>BAC Pozo Almonte con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Alto Hospicio con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Camiña con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Colchane con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Huara con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Iquique con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Pica con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Pozo Almonte con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Alto Hospicio con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Camiña con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Colchane con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Huara con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Iquique con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Pica con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cobertura de testeo Pozo Almonte con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Alto Hospicio con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Camiña con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Colchane con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Huara con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Iquique con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Pica con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Oportunidad en notificacion Pozo Almonte con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Alto Hospicio con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Camiña con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Colchane con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Huara con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Iquique con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Pica con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Pozo Almonte con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Comuna desconocida con <strong>389</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos total comunal con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Alto Hospicio con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Camiña con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Colchane con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Huara con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Iquique con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Pica con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Pozo Almonte con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Alto Hospicio con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Camiña con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Colchane con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Huara con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Iquique con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Pica con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Pozo Almonte con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia regional estimada con <strong>466</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia Iquique estimada con <strong>466</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia Tamarugal estimada con <strong>466</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Tasa de casos nuevos Iquique estimada con <strong>460</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Tasa de casos nuevos Tamarugal estimada con <strong>460</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Alto Hospicio con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Camina con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Colchane con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Huara con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Iquique con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Pica con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Pozo Almonte con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada regional con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad media movil * con <strong>436</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica * con <strong>480</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Crecimiento semanal * con <strong>479</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Crecimiento diario * con <strong>478</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>UCI ocupacion media movil aprox * con <strong>451</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>UCI error abs * con <strong>450</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Tasa casos nuevos * con <strong>493</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad antigeno * con <strong>40</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad antigeno media movil * con <strong>34</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Alto Hospicio * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Camiña * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Colchane * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Huara * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Iquique * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Pica * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Pozo Almonte * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data1.csv">&quot;DATA1.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>3</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos históricos con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Recuperados nuevos históricos con <strong>463</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos nuevos históricos con <strong>479</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data2.csv">&quot;DATA2.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>389</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos confirmados con <strong>389</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos probables con <strong>389</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data3.csv">&quot;DATA3.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>4</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos confirmados acumulados con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos recuperados acumulados con <strong>464</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos confirmados con <strong>479</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos fallecidos acumulados con <strong>480</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data4.csv">&quot;DATA4.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>3</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Media móvil semanal de casos nuevos con <strong>493</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Media móvil semanal de recuperados nuevos con <strong>457</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Media móvil semanal de fallecidos nuevos con <strong>473</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data5.csv">&quot;DATA5.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad diaria con <strong>454</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad media movil * con <strong>436</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data6.csv">&quot;DATA6.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>3</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re regional con <strong>490</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Iquique con <strong>490</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Re Tamarugal con <strong>490</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data7.csv">&quot;DATA7.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>8</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Alto Hospicio con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Camina con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Colchane con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Huara con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Iquique con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Pica con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada Pozo Almonte con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia acumulada regional con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data8.csv">&quot;DATA8.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>3</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia regional estimada con <strong>466</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia Iquique estimada con <strong>466</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Incidencia Tamarugal estimada con <strong>466</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data9.csv">&quot;DATA9.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Tasa de casos nuevos Iquique estimada con <strong>460</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Tasa de casos nuevos Tamarugal estimada con <strong>460</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data10.csv">&quot;DATA10.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Crecimiento diario * con <strong>478</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Crecimiento semanal * con <strong>479</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data11.csv">&quot;DATA11.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>8</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Alto Hospicio con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Camiña con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Colchane con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Huara con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Iquique con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Pica con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Pozo Almonte con <strong>137</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos acumulados en Comuna desconocida con <strong>111</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data12.csv">&quot;DATA12.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>7</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Alto Hospicio con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Camiña con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Colchane con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Huara con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Iquique con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Pica con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Positividad Pozo Almonte con <strong>323</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data13.csv">&quot;DATA13.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>8</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Alto Hospicio con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Camiña con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Colchane con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Huara con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Iquique con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Pica con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Pozo Almonte con <strong>131</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos activos en Comuna desconocida con <strong>111</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data14.csv">&quot;DATA14.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>9</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Alto Hospicio con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Camiña con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Colchane con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Huara con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Iquique con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Pica con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Pozo Almonte con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos Comuna desconocida con <strong>389</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos total comunal con <strong>396</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data15.csv">&quot;DATA15.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>7</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Alto Hospicio con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Camiña con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Colchane con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Huara con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Iquique con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Pica con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos confirmados DEIS Pozo Almonte con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data16.csv">&quot;DATA16.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>7</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Alto Hospicio con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Camiña con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Colchane con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Huara con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Iquique con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Pica con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fallecidos probables DEIS Pozo Almonte con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data17.csv">&quot;DATA17.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Media móvil real de ocupación UCI con <strong>450</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Media móvil hipotética de ocupación UCI con <strong>451</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data18.csv">&quot;DATA18.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Cupos en residencias con <strong>411</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Usuarios en residencias con <strong>411</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data19.csv">&quot;DATA19.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>PCR informados nuevos con <strong>454</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Media móvil semanal de PCR informados nuevos con <strong>447</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data20.csv">&quot;DATA20.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>2</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Antígenos informados nuevos con <strong>40</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Media móvil semanal de antígenos informados nuevos con <strong>34</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data21.csv">&quot;DATA21.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>4</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos con síntomas con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos sin síntomas con <strong>442</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos por laboratorio con <strong>392</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos nuevos por antígeno con <strong>140</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data22.csv">&quot;DATA22.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>1</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Casos con sospecha de reinfección con <strong>140</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data23.csv">&quot;DATA23.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>1</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Tasa de casos nuevos de casos nuevos por cien mil habitantes con <strong>493</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data24.csv">&quot;DATA24.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>1</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad específica por cien mil habitantes con <strong>480</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data25.csv">&quot;DATA25.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>7</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Alto Hospicio * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Camiña * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Colchane * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Huara * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Iquique * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Pica * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mortalidad especifica comunal Pozo Almonte * con <strong>309</strong> datos válidos.</p></li>
+</ul>
+<hr><p><a style="font-size:18px" href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data26.csv">&quot;DATA26.CSV&quot;</a></p>
+<p>Tiene las siguientes columnas (<strong>3</strong> sin el índice):</p>
+<ul class="simple">
+<li><p>Fecha con <strong>499</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Vacunados acumulados 1° dosis con <strong>202</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Vacunados acumulados 2° dosis con <strong>202</strong> datos válidos.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Vacunados acumulados unica dosis con <strong>202</strong> datos válidos.</p></li>
+</ul>
+<hr></div>
+</div>
+</div>
+<div class="section" id="salida-para-markdown">
+<h2>Salida para Markdown<a class="headerlink" href="#salida-para-markdown" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">txt1</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;# La pandemia por la ventana </span><span class="se">\n</span><span class="s1"></span>
+
+<span class="s1">![Ilustración por Bernardo Dinamarca](https://github.com/pandemiaventana/pandemiaventana/blob/main/img/page/2_cover.png?raw=true)</span>
+
+<span class="s1">*Ilustración por Bernardo Dinamarca*</span>
+
+<span class="s1">## Intro</span>
+
+<span class="s1">[La pandemia por la ventana es un sitio](https://pandemiaventana.github.io/pandemiaventana/), realizado con formato de *libro* gracias a Jupyter Books, hecho por Alejandro Dinamarca, que recaba el trabajo de Numeral.lab en la Región de Tarapacá.</span>
+
+<span class="s1">La página posee los siguientes ejes:</span>
+
+<span class="s1">- Reunir antecedentes del trabajo de Numeral.lab en la Región de Tarapacá en la pandemia del COVID-19.</span>
+
+<span class="s1">- Recopilar experiencias personales de Alejandro Dinamarca en el trabajo voluntario en Numeral.lab.</span>
+
+<span class="s1">- Monitoreo de la pandemia del COVID-19 en la Región de Tarapacá de forma automática.</span>
+
+<span class="s1">- Recabar información del repositorio del MICITEC en GitHub, específicamente, de la Región de Tarapacá.</span>
+
+<span class="s1">- Procesar datos recabados.</span>
+
+<span class="s1">- Generar informes (epidemiológicos, avance en campaña de vacunación y predictor de fase del Paso a Paso).</span>
+
+<span class="s1">- Generar concientización en ciudadanía bajo tendencias de la pandemia.</span>
+
+<span class="s1">&gt; Agradecimientos al Equipo Futuro del MICITEC por la democratización de los datos de la pandemia en Chile, a los desarrolladores de Jupyter Notebook, Jupyter Book y a todas las librerías de Python implicadas en los scripts, como también, a los propios desarrolladores de Python.</span>
+
+<span class="s1">Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de GitHub](https://github.com/pandemiaventana/pandemiaventana/issues/new).</span>
+
+<span class="s1">## Funcionamiento</span>
+
+<span class="s1">Básicamente, a través de Notebooks de Jupyter y un poco de Markdown. Python, por contraparte, genera los CSV, y Jupyter Books se encarga de generar la página web a partir de los Notebooks y el Markdown.</span>
+
+<span class="s1">El despliegue del libro en [gh-pages](https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages) se realiza cada vez que:</span>
+
+<span class="s1">- Desencadeno un cambio en [main](https://github.com/pandemiaventana/pandemiaventana)</span>
+
+<span class="s1">- Periódicamente desde las 11:30 hrs. a las 19:30 hrs. (hora de Santiago de Chile).</span>
+
+<span class="s1">A través del action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml).</span>
+
+<span class="s1">## Estado</span>
+
+<span class="s1">[![deploy-book](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg)](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml)</span>
+
+<span class="s1">## DOI</span>
+
+<span class="s1">[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg)](https://doi.org/10.5281/zenodo.5044609)</span>
+
+<span class="s1">## Archivos CSV generados</span>
+
+<span class="s1">Disponibles en [el siguiente enlace](https://github.com/pandemiaventana/pandemiaventana/tree/main/out/site/csv), los cuales se adjuntan a continuación:</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">outputs_</span> <span class="o">=</span> <span class="n">archivocsv</span><span class="o">.</span><span class="n">outputs</span>
+
+<span class="n">vec_out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">outs_</span> <span class="ow">in</span> <span class="n">outputs_</span><span class="p">:</span>
+    <span class="c1">### Convertimos a lista los outputs</span>
+    <span class="n">vec_out</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outs_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1">### Nuestro string</span>
+<span class="n">vec_</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="c1">### Recorremos la lista de outputs</span>
+<span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="n">vec_out</span><span class="p">:</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="c1">### Quitamos el str de datos de tabla sin formato</span>
+    <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;            &quot;</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">### Quitamos el str del tipo de variable</span>
+        <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;IPython.core.display.Markdown object&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1">### Finalmente, añadimos al vector</span>
+        <span class="n">vec_</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&#39;</span> <span class="o">+</span> <span class="n">vec</span>
+
+<span class="c1">### Abrimos y modificamos el HTML</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../README.md&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">txt1</span> <span class="o">+</span> <span class="n">vec_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../6_basedatos/2_basedatos.md&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;# Archivos</span>
+<span class="s1">    </span>
+<span class="s1">    &#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">vec_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="archivos-pdf">
+<h2>Archivos PDF<a class="headerlink" href="#archivos-pdf" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> archivopdf
+
+<span class="c1">### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###</span>
+<span class="n">sum_</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">dirr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;diario&#39;</span><span class="p">,</span> <span class="s1">&#39;vacuna&#39;</span><span class="p">,</span> <span class="s1">&#39;indicadorfase&#39;</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Reporte diario&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance de vacunas&#39;</span><span class="p">,</span> <span class="s1">&#39;Indicador de Fase&#39;</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">reporte</span> <span class="ow">in</span> <span class="n">dirr</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h2&gt;</span><span class="si">{}</span><span class="s1">&lt;/h2&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">p</span><span class="p">])))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;Encontré los siguientes PDF:&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">p</span><span class="p">])))</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> = []&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;../../out/</span><span class="si">{}</span><span class="s1">/pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))]:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;../../out/diario/pdf/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">string</span><span class="p">)):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> += [string]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+            <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> = natsorted(sum_</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">,</span> <span class="n">reporte</span><span class="p">))</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;for ipdf in sum_</span><span class="si">{}</span><span class="s1">:</span>
+<span class="s1">        display(Markdown(&quot; &lt;a href=&#39;https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/&quot; + reporte + &quot;/pdf/&quot; + ipdf + &quot;&amp;embedded=true&#39;&gt;&quot; + ipdf + &quot;&lt;/a&gt;&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">txt2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;# Archivo</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Visualizamos</span>
+<span class="k">for</span> <span class="n">outputs</span> <span class="ow">in</span> <span class="n">archivopdf</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<h2>Reporte diario</h2><p>Encontré los siguientes PDF:</p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.27.pdf&embedded=true'>2021.06.27.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.06.30.pdf&embedded=true'>2021.06.30.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.02.pdf&embedded=true'>2021.07.02.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.03.pdf&embedded=true'>2021.07.03.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.04.pdf&embedded=true'>2021.07.04.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.05.pdf&embedded=true'>2021.07.05.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.06.pdf&embedded=true'>2021.07.06.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.07.pdf&embedded=true'>2021.07.07.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.08.pdf&embedded=true'>2021.07.08.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.09.pdf&embedded=true'>2021.07.09.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.10.pdf&embedded=true'>2021.07.10.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.11.pdf&embedded=true'>2021.07.11.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.12.pdf&embedded=true'>2021.07.12.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.13.pdf&embedded=true'>2021.07.13.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/diario/pdf/2021.07.14.pdf&embedded=true'>2021.07.14.pdf</a></p>
+<h2>Balance de vacunas</h2><p>Encontré los siguientes PDF:</p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.26.pdf&embedded=true'>2021.06.26.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.29.pdf&embedded=true'>2021.06.29.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.06.30.pdf&embedded=true'>2021.06.30.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.01.pdf&embedded=true'>2021.07.01.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.02.pdf&embedded=true'>2021.07.02.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.03.pdf&embedded=true'>2021.07.03.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.04.pdf&embedded=true'>2021.07.04.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.05.pdf&embedded=true'>2021.07.05.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.06.pdf&embedded=true'>2021.07.06.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.07.pdf&embedded=true'>2021.07.07.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.08.pdf&embedded=true'>2021.07.08.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.09.pdf&embedded=true'>2021.07.09.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.10.pdf&embedded=true'>2021.07.10.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.11.pdf&embedded=true'>2021.07.11.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.12.pdf&embedded=true'>2021.07.12.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.13.pdf&embedded=true'>2021.07.13.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/vacuna/pdf/2021.07.14.pdf&embedded=true'>2021.07.14.pdf</a></p>
+<h2>Indicador de Fase</h2><p>Encontré los siguientes PDF:</p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.25.pdf&embedded=true'>2021.06.25.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.06.28.pdf&embedded=true'>2021.06.28.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.07.02.pdf&embedded=true'>2021.07.02.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.07.05.pdf&embedded=true'>2021.07.05.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.07.09.pdf&embedded=true'>2021.07.09.pdf</a></p>
+<p><a href='https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/indicadorfase/pdf/2021.07.12.pdf&embedded=true'>2021.07.12.pdf</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="salida-de-archivos-pdf">
+<h2>Salida de archivos PDF<a class="headerlink" href="#salida-de-archivos-pdf" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputs_</span> <span class="o">=</span> <span class="n">archivopdf</span><span class="o">.</span><span class="n">outputs</span>
+
+<span class="n">vec_out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">outs_</span> <span class="ow">in</span> <span class="n">outputs_</span><span class="p">:</span>
+    <span class="c1">### Convertimos a lista los outputs</span>
+    <span class="n">vec_out</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outs_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1">### Nuestro string</span>
+<span class="n">vec_</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="c1">### Recorremos la lista de outputs</span>
+<span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="n">vec_out</span><span class="p">:</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="c1">### Quitamos el str de datos de tabla sin formato</span>
+    <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;            &quot;</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">### Quitamos el str del tipo de variable</span>
+        <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;IPython.core.display.Markdown object&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1">### Finalmente, añadimos al vector</span>
+        <span class="n">vec_</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&#39;</span> <span class="o">+</span> <span class="n">vec</span>
+
+<span class="c1">### Abrimos y modificamos el MD</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../page/5_reportes/4_reportes.md&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;# Reportes históricos</span>
+<span class="s1">A continuación, dispongo los reportes históricos a partir de la fecha de publicación de la página. En caso de requerir otras ediciones, consultar &lt;a href=&quot;https://www.instagram.com/numeral.lab/&quot;&gt;Instagram&lt;/a&gt;.</span>
+<span class="s1">&#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">vec_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="informacion-de-sesion">
+<h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">req_file_name</span><span class="o">=</span><span class="s1">&#39;4_requeriments.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            bs4                 4.9.3
+            markdownify         NA
+            natsort             7.1.1
+            numpy               1.19.5
+            os                  NA
+            pandas              1.2.3
+            session_info        1.0.0
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                 NA
+            argparse            1.1
+            array               NA
+            ast                 NA
+            asyncio             NA
+            atexit              NA
+            backcall            0.2.0
+            base64              NA
+            bdb                 NA
+            binascii            NA
+            bisect              NA
+            bz2                 NA
+            cProfile            NA
+            calendar            NA
+            chardet             4.0.0
+            cmath               NA
+            cmd                 NA
+            code                NA
+            codecs              NA
+            codeop              NA
+            collections         NA
+            colorama            0.4.4
+            colorsys            NA
+            concurrent          NA
+            contextlib          NA
+            contextvars         NA
+            copy                NA
+            copyreg             NA
+            csv                 1.0
+            ctypes              1.1.0
+            curses              NA
+            cython_runtime      NA
+            dataclasses         NA
+            datetime            NA
+            dateutil            2.8.2
+            debugpy             1.3.0
+            decimal             1.70
+            decorator           5.0.9
+            difflib             NA
+            dis                 NA
+            distutils           3.7.10
+            email               NA
+            encodings           NA
+            enum                NA
+            errno               NA
+            faulthandler        NA
+            fcntl               NA
+            filecmp             NA
+            fnmatch             NA
+            functools           NA
+            gc                  NA
+            genericpath         NA
+            getopt              NA
+            getpass             NA
+            gettext             NA
+            glob                NA
+            grp                 NA
+            gzip                NA
+            hashlib             NA
+            heapq               NA
+            hmac                NA
+            html                NA
+            http                NA
+            imp                 NA
+            importlib           NA
+            inspect             NA
+            io                  NA
+            ipykernel           6.0.1
+            ipython_genutils    0.2.0
+            itertools           NA
+            jedi                0.18.0
+            json                2.0.9
+            keyword             NA
+            linecache           NA
+            locale              NA
+            logging             0.5.1.2
+            lzma                NA
+            marshal             4
+            math                NA
+            mimetypes           NA
+            mmap                NA
+            mpl_toolkits        NA
+            multiprocessing     NA
+            ntpath              NA
+            numbers             NA
+            opcode              NA
+            operator            NA
+            parso               0.8.2
+            pathlib             NA
+            pdb                 NA
+            pexpect             4.8.0
+            pickle              NA
+            pickleshare         0.7.5
+            pkgutil             NA
+            platform            1.0.8
+            posix               NA
+            posixpath           NA
+            pprint              NA
+            profile             NA
+            prompt_toolkit      3.0.19
+            pstats              NA
+            pty                 NA
+            ptyprocess          0.7.0
+            pwd                 NA
+            pydoc               NA
+            pydoc_data          NA
+            pygments            2.9.0
+            pytz                2021.1
+            queue               NA
+            quopri              NA
+            random              NA
+            re                  2.2.1
+            reprlib             NA
+            resource            NA
+            runpy               NA
+            secrets             NA
+            select              NA
+            selectors           NA
+            shlex               NA
+            shutil              NA
+            signal              NA
+            site                NA
+            six                 1.16.0
+            socket              NA
+            soupsieve           2.2.1
+            sphinxcontrib       NA
+            sqlite3             2.6.0
+            sre_compile         NA
+            sre_constants       NA
+            sre_parse           NA
+            ssl                 NA
+            stat                NA
+            storemagic          NA
+            string              NA
+            struct              NA
+            subprocess          NA
+            sys                 3.7.10 (default, Feb 16 2021, 12:01:19) 
+[GCC 9.3.0]
+            sysconfig           NA
+            tarfile             0.9.0
+            tempfile            NA
+            termios             NA
+            textwrap            NA
+            threading           NA
+            time                NA
+            timeit              NA
+            token               NA
+            tokenize            NA
+            tornado             6.1
+            traceback           NA
+            traitlets           5.0.5
+            tty                 NA
+            types               NA
+            typing              NA
+            unicodedata         NA
+            urllib              NA
+            uu                  NA
+            uuid                NA
+            warnings            NA
+            wcwidth             0.2.5
+            weakref             NA
+            xml                 NA
+            zipfile             NA
+            zipimport           NA
+            zlib                1.0
+            zmq                 22.1.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.25.0
+            jupyter_client      6.1.12
+            jupyter_core        4.7.1
+            notebook            6.4.0
+            -----
+            Python 3.7.10 (default, Feb 16 2021, 12:01:19) [GCC 9.3.0]
+            Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2021-07-15 01:53
+            </pre>
+            </details></div></div>
+</div>
+</div>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
