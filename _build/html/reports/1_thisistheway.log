@@ -1,0 +1,302 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 554, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Manipulando datos
+
+### Obteniendo casos cumulativos
+casos_cumulativos = csv13.loc[:, 'Tarapacá']
+casos_cumulativos.index = csv13['Region']
+
+### Obteniendo casos acumulativos
+casos_acumulativos = csv3.loc[:, 'Tarapacá']
+casos_acumulativos.index = csv3['Region']
+
+### Obteniendo fallecidos acumulativos
+fallecidos_acumulativos = csv14.loc[:, 'Tarapacá']
+fallecidos_diarios = fallecidos_acumulativos - fallecidos_acumulativos.shift(1)
+fallecidos_acumulativos.index, fallecidos_diarios.index = csv14['Region'], csv14['Region']
+
+### Obteniendo PCR
+pcr_cumulativos = csv7.loc[:, 'Tarapacá'][2:]
+pcr_cumulativos.index = csv7['Region'][2:]
+
+### El día 12 de mayo se registraron más casos de los PCR que se informaron, lo que es imposible
+### Asignamos los PCR del 13 de mayo de 2020, a los del 12 de mayo del mismo año
+### Posiblemente, es un dato mal registrado
+pcr_cumulativos['2020-05-13'] = pcr_cumulativos['2020-05-12']
+pcr_acumulativos = pcr_cumulativos.cumsum()
+
+### Obteniendo UCI diaria con COVID-19
+uci_diaria = csv8.loc[:, 'Tarapacá'][2:]
+uci_diaria.index = csv8['Region'][2:]
+
+### Obteniendo detalle de casos (sintomáticos, asintomáticos, etc.)
+casos_detalle = csv3_detalle[csv3_detalle['Region'] == 'Tarapacá']
+
+### Obteniendo residencias
+residencias = csv36[csv36['Region'] == 'Tarapacá']
+
+### Obteniendo encuesta nacional de medicina intensiva (desactualizada)
+# sochimi = csv48[csv48['Region'] == 'Tarapacá']
+
+### Obteniendo detalle de UCI semanal
+uci_detalle = csv58[csv58['Region'] == 'Tarapacá']
+uci_habilitadas = uci_detalle[uci_detalle['Serie'] == 'Camas UCI habilitadas'].loc[:, '2020-04-14':].transpose().iloc[:, 0]
+uci_ocupadas_covid = uci_detalle[uci_detalle['Serie'] == 'Camas UCI ocupadas COVID-19'].loc[:, '2020-04-14':].transpose().iloc[:, 0]
+uci_ocupadas_nocovid = uci_detalle[uci_detalle['Serie'] == 'Camas UCI ocupadas no COVID-19'].loc[:, '2020-04-14':].transpose().iloc[:, 0]
+
+### Añadiendo cifras recopiladas por Dr. Cristóbal Corral con metodología de conteo anterior al criterio actual
+activos_rescatados = [1,4,4,5,5,5,6,8,10,10,12,13,17,20,20,19,22,24,30,33,40,44,52,52,54,60,64,70,72,81,88,99,99,104,109,111,106,120,131,126,130,181,201,217,224,288,324,342,364,383,409,432,484,578,632,700,758,784,797,826,930,982,1038,1077,1152,1186,1264,1302,1389,1369,1452,1466,1519,1540,1549,1598,1658,1734,1727,1745,1705,1696,1720,1747,1696,1736,2066,2019,1987,2000]
+recuperados_rescatados = [1,4,4,5,5,5,6,8,10,10,12,13,17,20,21,23,26,29,35,38,46,52,62,62,66,73,81,90,93,104,114,128,134,142,155,163,168,182,197,199,211,271,294,321,338,416,458,484,519,546,577,614,681,777,843,971,1052,1105,1135,1242,1388,1466,1557,1623,1729,1800,1945,2079,2232,2340,2504,2571,2654,2782,2937,3064,3215,3357, 3545,3650,3775,3952,4087]
+
+### Obteniendo el detalle de los casos
+casos_con_sintomas = casos_detalle[casos_detalle['Categoria'] == 'Casos nuevos con sintomas'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+casos_sin_sintomas = casos_detalle[casos_detalle['Categoria'] == 'Casos nuevos sin sintomas'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+casos_sin_notificar = casos_detalle[casos_detalle['Categoria'] == 'Casos nuevos sin notificar'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+casos_recuperados = casos_detalle[casos_detalle['Categoria'] == 'Casos confirmados recuperados'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+casos_recuperados['2020-04-07':'2020-06-28'] = recuperados_rescatados
+casos_recuperados_cumulativos = casos_recuperados - casos_recuperados.shift(1)
+### Limpieza de outlier de 981 (solo en cifras cumulativas para no descuadrar cifra acumulada)
+casos_recuperados_cumulativos['2020-06-29'] = casos_recuperados_cumulativos['2020-06-28']
+casos_activos = casos_detalle[casos_detalle['Categoria'] == 'Casos activos confirmados'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+casos_activos['2020-03-23':'2020-06-20'] = activos_rescatados
+casos_activos_probables = casos_detalle[casos_detalle['Categoria'] == 'Casos activos probables'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+casos_cumulativos_antigeno = casos_detalle[casos_detalle['Categoria'] == 'Casos nuevos confirmados por antigeno'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+casos_acumulativos_reinfeccion = casos_detalle[casos_detalle['Categoria'] == 'Casos con sospecha de reinfeccion'].loc[:, '2020-03-03':].transpose().iloc[:, 0]
+
+### Obteniendo el detalle de residencias
+residencias_cupos = residencias[residencias['Categoria'] == 'cupos totales'].loc[:, '2020-05-29':].transpose().iloc[:, 0]
+residencias_usuarios = residencias[residencias['Categoria'] == 'usuarios en residencia'].loc[:, '2020-05-29':].transpose().iloc[:, 0]
+residencias_numero = residencias[residencias['Categoria'] == 'residencias'].loc[:, '2020-05-29':].transpose().iloc[:, 0]
+
+### Obteniendo el detalle de SOCHIMI (producto desactualizado e incompleto)
+#sochimi_uci_ocupadas = sochimi[sochimi['Serie'] == 'Camas ocupadas intensivo'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+#sochimi_uci_totales = sochimi[sochimi['Serie'] == 'Camas totales intensivo'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+#sochimi_uti_ocupadas = sochimi[sochimi['Serie'] == 'Camas ocupadas intermedio'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+#sochimi_uti_totales = sochimi[sochimi['Serie'] == 'Camas totales intermedio'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+#sochimi_vmi_covid = sochimi[sochimi['Serie'] == 'Vmi covid19 confirmados'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+#sochimi_vmi_sospecha = sochimi[sochimi['Serie'] == 'Vmi covid19 sospechosos'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+#sochimi_vmi_ocupados = sochimi[sochimi['Serie'] == 'Vmi ocupados'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+#sochimi_vmi_totales = sochimi[sochimi['Serie'] == 'Vmi totales'].loc[:, '2020-04-12':].transpose().iloc[:, 0]
+
+### Obteniendo R-efectivo
+r_regional = csv54_regional[csv54_regional['Region'] == 'Tarapacá'][['fecha','r.estimado']]
+r_regional.index = r_regional['fecha']
+r_regional = r_regional['r.estimado']
+r_provincial = csv54_provincial[csv54_provincial['Region'] == 'Tarapacá'][['fecha','r.estimado', 'Provincia']]
+r_provincial.index = r_provincial['fecha']
+r_provincial_iqq = r_provincial[r_provincial['Provincia'] == 'Iquique']['r.estimado']
+r_provincial_tam = r_provincial[r_provincial['Provincia'] == 'Tamarugal']['r.estimado']
+
+### Obteniendo vacunacion
+vacunacion = csv76[csv76['Region'] == 'Tarapacá'].transpose()
+vacunacion = vacunacion.drop('Dosis').drop('Region')
+vacunacion.index, vacunacion = pd.to_datetime(vacunacion.index), vacunacion.astype(int)
+vacunacion.columns = ['1° Dosis', '2° Dosis', 'Unica dosis']
+
+### Obteniendo vacunación por edades (dataframe aparte)
+x = np.arange(5, 70, 10)
+vacunacion_etaria = pd.DataFrame([])
+for i in x:
+    vacunacion_etaria['{} a {}'.format(csv81_edad1[csv81_edad1['Region'] == 'Tarapaca'].iloc[:, i:i+10].columns[0],
+                               csv81_edad1[csv81_edad1['Region'] == 'Tarapaca'].iloc[:, i:i+10].columns[-1])] \
+    = [csv81_poblacionedad[csv81_poblacionedad['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum(),
+       csv81_edad1[csv81_edad1['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum(), 
+      csv81_edad2[csv81_edad2['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum(),
+      csv81_edadunica[csv81_edad2['Region'] == 'Tarapaca'].iloc[:, i:i+10].sum().sum()]
+vacunacion_etaria.index = ['Poblacion', '1° Dosis', '2° Dosis', 'Unica dosis']
+vacunacion_etaria = vacunacion_etaria.transpose()
+
+### Antígenos en la región
+antigenos = csv87[csv87['Region'] == 'Tarapacá'].loc[:, '2021-06-05':].transpose()
+antigenos_acumulativos = antigenos.cumsum()
+
+### Obteniendo datos comunales
+casoscomuna_acumulativos = csv1[csv1.columns[csv1.columns.str.contains('^Tarapac', na=False)]][4:]
+casoscomuna_acumulativos.columns = 'Casos acumulados en ' + csv1[csv1.columns[csv1.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).\
+replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
+casoscomuna_acumulativos.index = csv1['Region'][4:]
+casoscomuna_acumulativos = casoscomuna_acumulativos.drop('Tasa')
+
+casoscomuna_activos = csv19[csv19.columns[csv19.columns.str.contains('^Tarapac', na=False)]][4:]
+casoscomuna_activos.columns = 'Casos activos en ' + csv19[csv19.columns[csv19.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).\
+replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
+casoscomuna_activos.index = csv19['Region'][4:]
+casoscomuna_activos = casoscomuna_activos[casoscomuna_activos.columns[:-1]]
+incidencia_activos = (((casos_activos + casos_activos_probables)/poblacion)*100000)
+
+### Paso a paso histórico por comuna (descartamos zonas rurales)
+pasopaso_comuna = csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc[:, csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc['zona',:] != 'Rural']
+pasopaso_comuna.columns = 'Paso a Paso ' + pasopaso_comuna.transpose().loc[:, 'comuna_residencia']
+pasopaso_comuna = pasopaso_comuna.drop(['codigo_region', 'codigo_comuna', 'comuna_residencia', 'zona', 'region_residencia'])
+
+### Movilidad
+movilidad_sem = csv82_semana[csv82_semana['region'] == 1]
+movilidad_finsem = csv82_finsemana[csv82_finsemana['region'] == 1]
+movilidad_comuna = pd.concat([movilidad_sem, movilidad_finsem])
+movilidad_comuna['fecha_inicio'], movilidad_comuna['fecha_termino'] = pd.to_datetime(movilidad_comuna['fecha_inicio']), pd.to_datetime(movilidad_comuna['fecha_termino'])
+movilidad_comuna = movilidad_comuna.sort_values(by=['fecha_inicio'])
+
+### Gracias a Erfan (stackoverflow.com/a/57334167/13746427) ###
+movilidad_comuna['Fecha'] = movilidad_comuna.apply(
+    lambda x: pd.date_range(x['fecha_inicio'], x['fecha_termino']), axis=1
+)
+movilidad_comuna = (
+    movilidad_comuna.explode('Fecha', ignore_index=True)
+    .drop(columns=['fecha_inicio', 'fecha_termino'])
+)
+
+movilidad_comuna.index = (movilidad_comuna['Fecha'])
+### ¿Por qué no ocupar el Paso a Paso histórico de este archivo? Por la frecuencia de actualización ###
+movilidad_comuna = movilidad_comuna.drop(['region', 'semana','paso', 'region', 'comuna', 'var_salidas_cota_inferior', \
+                                         'var_salidas_cota_superior', 'Fecha'], axis=1)
+### Finalmente, código que nos segrega por comuna los valores de la movilidad ###
+movilidad = pd.DataFrame([])
+for comuna in pd.unique(movilidad_comuna.transpose().loc['nom_comuna', :]):
+    exec('movilidad["{}"] = movilidad_comuna[movilidad_comuna["nom_comuna"] == "{}"]["var_salidas"]'\
+         .format(str('Movilidad ' + comuna.capitalize()), comuna))
+movilidad.index = movilidad.index.astype(str)
+movilidad = movilidad.loc['2020-03-03':, :]
+
+### Arreglamos tilde para coincidir
+csv61['Region'] = csv61['Region'].replace('Tarapacá', 'Tarapaca')
+
+### Notificación PCR, búsqueda activa, positividad, cobertura de testeo, oportunidad en la notificación por comuna,
+### fallecidos no procesados por deis y fallecidos procesados por deis
+### Se rellenan días sin registro con la última observación válida
+### Exceptuando días antes del primer caso y últimos días sin información ###
+csvs = ['csv63', 'csv64', 'csv65', 'csv66', 'csv67', 'csv38', "csv61[csv61['CIE 10'] == 'U07.1']", "csv61[csv61['CIE 10'] == 'U07.2']"]
+var = ['notificacion', 'bac', 'positividad', 'cobertura', 'oportunidad', 'fallecidos', 'fallecidosdeis_conf', 'fallecidosdeis_prob']
+nom = ['Notificacion PCR', 'BAC' , 'Positividad', 'Cobertura de testeo', 'Oportunidad en notificacion', 'Fallecidos', \
+      'Fallecidos confirmados DEIS', 'Fallecidos probables DEIS']
+i = 0
+for csv in csvs:
+    exec('{}_comuna = pd.DataFrame([], index=casos_cumulativos.index)'.format(var[i]))
+    exec('{}_comuna = {}_comuna.join({}[{}["Region"] == "Tarapaca"].transpose())'.format(var[i], var[i], csv, csv))
+    exec('{}_comuna.columns = "{} " + {}[{}["Region"] == "Tarapaca"].transpose().loc["Comuna", :].replace("Camina", "Camiña")'.format(var[i], nom[i], csv, csv))
+    exec('for col in {}_comuna: \
+        {}_comuna[col]\
+        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()] = \
+        {}_comuna[col]\
+        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()]\
+        .fillna(method="ffill", inplace=False)'.format(var[i], var[i], var[i], var[i], var[i], var[i], var[i]))
+    i += 1
+
+### Incidencia acumulada por comuna
+incidencia_acumulada = csv18[csv18.Region == 'Tarapaca'].transpose().drop(['Region', 'Codigo region', 'Comuna',
+                                                                       'Codigo comuna', 'Poblacion'])
+incidencia_acumulada.columns = 'Incidencia acumulada ' + csv18[
+    csv18.Region == 'Tarapaca'].transpose().loc['Comuna', :].replace('Total', 'regional')
+    
+### Otras cifras
+poblacion = csv7.loc[1, 'Tarapacá']
+uciocupacion_nacional = round(((int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas no COVID-19')].\
+                         transpose().iloc[-1]) + int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas COVID-19')]\
+                         .transpose().iloc[-1]))/csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI habilitadas')]\
+                         .transpose().iloc[-1])[16] * 100, 0)
+
+### Tasa de incidencia (tasa de casos nuevos pero sin media móvil sem., i. e. casos nuevos por cien mil hab.)
+### Regional
+incidencia_regional = csv69_regional[csv69_regional.Region == 'Tarapacá'].drop(
+    ['Codigo region', 'carga.liminf', 'carga.lisup', 'Region'], axis=1)
+incidencia_regional.index = incidencia_regional.fecha
+incidencia_regional.drop(['fecha'], axis=1, inplace=True)
+### Provincial
+incidencia_provincial = csv69_provincial[csv69_provincial['Region'] == 'Tarapacá'][['fecha','carga.estimada', 'Provincia']]
+incidencia_provincial.index = incidencia_provincial['fecha']
+incidencia_provincial_iqq = incidencia_provincial[incidencia_provincial['Provincia'] == 'Iquique']['carga.estimada']
+incidencia_provincial_tam = incidencia_provincial[incidencia_provincial['Provincia'] == 'Tamarugal']['carga.estimada']
+
+### Tasa de casos nuevos por provincia
+tasacasosnuevos_provincial_iqq = incidencia_provincial_iqq.rolling(window=7).mean()
+tasacasosnuevos_provincial_tam = incidencia_provincial_tam.rolling(window=7).mean()
+
+### Datos calculados ###
+
+### Positividad PCR sin redondear
+positividad_diaria = ((casos_cumulativos - casos_cumulativos_antigeno)/pcr_cumulativos)*100
+### Rellenamos datos anteriores al primer registro de los antígenos
+positividad_diaria = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos)
+
+### Positividad media móvil redondeada
+positividad_media_movil = positividad_diaria.rolling(7).mean().round(0)
+### Rellenamos datos anteriores al primer registro de los antígenos
+positividad_media_movil = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos).rolling(7).mean().round(0)
+
+## Positividad PCR redondeada
+positividad_diaria = positividad_diaria.round(0)
+
+### Positividad diaria ANTÍGENO
+positividad_antigeno = (casos_cumulativos_antigeno[antigenos.first_valid_index():].transpose()/
+      antigenos[antigenos.first_valid_index():].transpose() * 100).transpose()
+
+### Positividad media móvil ANTÍGENO
+positividad_antigeno_media_movil = (casos_cumulativos_antigeno[antigenos.first_valid_index():].transpose()/
+      antigenos[antigenos.first_valid_index():].transpose() * 100).transpose().rolling(7).mean()
+
+### Tasa de crecimiento semanal y diaria
+crecimiento = casos_cumulativos.rolling(7).sum()/casos_cumulativos.rolling(7).sum().shift(7)
+crecimientodiario = casos_cumulativos/casos_cumulativos.shift(1)
+### Limpieza de outlier de 41
+crecimientodiario['2020-12-13'] = crecimientodiario['2020-12-12']
+
+### Mortalidad específica por cien mil habitantes
+mortalidad_especifica = (((fallecidos_acumulativos) / poblacion)*100000)
+
+### Mortalidad específica por cien mil habitantes por comuna
+j = 0
+poblaciones_comunales = csv38[csv38['Region'] == 'Tarapaca'][:-2]['Poblacion']
+poblaciones_comunales.index = np.arange(7)
+me_comuna = pd.DataFrame([])
+for col in fallecidosdeis_conf_comuna:
+    me_comuna['Mortalidad especifica comunal {} *'.format(col[28:])] = fallecidosdeis_conf_comuna[col]/poblaciones_comunales[j]*100000
+    me_comuna['Mortalidad especifica comunal {} *'.format(col[28:])] = me_comuna['Mortalidad especifica comunal {} *'.format(col[28:])].astype(float)
+    j += 1
+    
+### UCI diaria aproximada, real y error absoluto
+uci_aprox = (100*(uci_diaria + uci_ocupadas_nocovid)/uci_habilitadas).rolling(7).mean()
+### Rellenamos con últimos disponibles datos las filas faltantes
+uci_aprox.loc[uci_aprox.last_valid_index():] = (100*(uci_diaria + uci_ocupadas_nocovid[uci_ocupadas_nocovid.last_valid_index()])/uci_habilitadas[uci_habilitadas.last_valid_index()]).rolling(7).mean()
+uci_real = (100*(uci_ocupadas_covid + uci_ocupadas_nocovid)/uci_habilitadas).rolling(7).mean()
+error_abs = abs(((uci_real) - (uci_aprox[:uci_habilitadas.last_valid_index()])))
+
+### Tasa de casos nuevos por cien mil habitantes
+tasa_casosnuevos = ((casos_cumulativos.rolling(window=7).mean()/poblacion)*100000)
+
+### Días por fase del plan Paso a Paso
+### Gracias a P.Tillmann (stackoverflow.com/q/25119524/13746427), código para contar duración en días por fase ###
+for col in pasopaso_comuna:
+    pasopaso_comuna['Paso a Paso (dias) ' + col[5:]] = pasopaso_comuna.groupby((pasopaso_comuna[col] != pasopaso_comuna[col].shift(1)).cumsum()).cumcount()
+
+### Población yomevacuno
+poblacion_yomevacuno = 286597
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_2762/1143040002.py[0m in [0;36m<module>[0;34m[0m
+[1;32m    121[0m [0mcasoscomuna_activos[0m[0;34m.[0m[0mindex[0m [0;34m=[0m [0mcsv19[0m[0;34m[[0m[0;34m'Region'[0m[0;34m][0m[0;34m[[0m[0;36m4[0m[0;34m:[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m    122[0m [0mcasoscomuna_activos[0m [0;34m=[0m [0mcasoscomuna_activos[0m[0;34m[[0m[0mcasoscomuna_activos[0m[0;34m.[0m[0mcolumns[0m[0;34m[[0m[0;34m:[0m[0;34m-[0m[0;36m1[0m[0;34m][0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 123[0;31m [0mincidencia_activos[0m [0;34m=[0m [0;34m([0m[0;34m([0m[0;34m([0m[0mcasos_activos[0m [0;34m+[0m [0mcasos_activos_probables[0m[0;34m)[0m[0;34m/[0m[0mpoblacion[0m[0;34m)[0m[0;34m*[0m[0;36m100000[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    124[0m [0;34m[0m[0m
+[1;32m    125[0m [0;31m### Paso a paso histórico por comuna (descartamos zonas rurales)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'poblacion' is not defined
+NameError: name 'poblacion' is not defined
+

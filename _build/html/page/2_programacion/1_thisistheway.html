@@ -1242,6 +1242,7 @@
 <span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Camina&#39;</span><span class="p">,</span> <span class="s1">&#39;Camiña&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Desconocido Tarapaca&#39;</span><span class="p">,</span> <span class="s1">&#39;Comuna desconocida&#39;</span><span class="p">)</span>
 <span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">csv19</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">][</span><span class="mi">4</span><span class="p">:]</span>
 <span class="n">casoscomuna_activos</span> <span class="o">=</span> <span class="n">casoscomuna_activos</span><span class="p">[</span><span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">incidencia_activos</span> <span class="o">=</span> <span class="p">(((</span><span class="n">casos_activos</span> <span class="o">+</span> <span class="n">casos_activos_probables</span><span class="p">)</span><span class="o">/</span><span class="n">poblacion</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span>
 
 <span class="c1">### Paso a paso histórico por comuna (descartamos zonas rurales)</span>
 <span class="n">pasopaso_comuna</span> <span class="o">=</span> <span class="n">csv74</span><span class="p">[</span><span class="n">csv74</span><span class="p">[</span><span class="s1">&#39;region_residencia&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">csv74</span><span class="p">[</span><span class="n">csv74</span><span class="p">[</span><span class="s1">&#39;region_residencia&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;zona&#39;</span><span class="p">,:]</span> <span class="o">!=</span> <span class="s1">&#39;Rural&#39;</span><span class="p">]</span>
@@ -1391,6 +1392,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2762</span><span class="o">/</span><span class="mf">1143040002.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">csv19</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">][</span><span class="mi">4</span><span class="p">:]</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="n">casoscomuna_activos</span> <span class="o">=</span> <span class="n">casoscomuna_activos</span><span class="p">[</span><span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="ne">--&gt; </span><span class="mi">123</span> <span class="n">incidencia_activos</span> <span class="o">=</span> <span class="p">(((</span><span class="n">casos_activos</span> <span class="o">+</span> <span class="n">casos_activos_probables</span><span class="p">)</span><span class="o">/</span><span class="n">poblacion</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> 
+<span class="g g-Whitespace">    </span><span class="mi">125</span> <span class="c1">### Paso a paso histórico por comuna (descartamos zonas rurales)</span>
+
+<span class="ne">NameError</span>: name &#39;poblacion&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1420,7 +1435,7 @@
        <span class="n">tasacasosnuevos_provincial_tam</span><span class="p">,</span> <span class="n">incidencia_acumulada</span><span class="p">,</span>
        <span class="n">positividad_media_movil</span><span class="p">,</span> <span class="n">mortalidad_especifica</span><span class="p">,</span>
        <span class="n">crecimiento</span><span class="p">,</span> <span class="n">crecimientodiario</span><span class="p">,</span> <span class="n">uci_aprox</span><span class="p">,</span> <span class="n">error_abs</span><span class="p">,</span> <span class="n">tasa_casosnuevos</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">,</span>
-       <span class="n">positividad_antigeno_media_movil</span><span class="p">,</span> <span class="n">me_comuna</span><span class="p">]</span>
+       <span class="n">positividad_antigeno_media_movil</span><span class="p">,</span> <span class="n">me_comuna</span><span class="p">,</span> <span class="n">incidencia_activos</span><span class="p">]</span>
 
 <span class="c1">### Unimos a la tabla anterior y rellenamos valores NaN (Not a Number o no definido)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1479,7 +1494,7 @@
               <span class="s1">&#39;Positividad antigeno media movil *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Alto Hospicio *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Camiña *&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Mortalidad especifica comunal Colchane *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Huara *&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Mortalidad especifica comunal Iquique *&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortalidad especifica comunal Pica *&#39;</span><span class="p">,</span>
-              <span class="s1">&#39;Mortalidad especifica comunal Pozo Almonte *&#39;</span><span class="p">]</span>
+              <span class="s1">&#39;Mortalidad especifica comunal Pozo Almonte *&#39;</span><span class="p">,</span> <span class="s1">&#39;Tasa de activos (incidencia) *&#39;</span><span class="p">]</span>
 
 <span class="c1">### Redondeamos a solo dos cifras significativas</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -1538,7 +1553,6 @@
       <th>UCI ocupacion media movil real</th>
       <th>Re regional</th>
       <th>...</th>
-      <th>Tasa de casos nuevos Tamarugal estimada</th>
       <th>Incidencia acumulada Alto Hospicio</th>
       <th>Incidencia acumulada Camina</th>
       <th>Incidencia acumulada Colchane</th>
@@ -1563,6 +1577,7 @@
       <th>Mortalidad especifica comunal Iquique *</th>
       <th>Mortalidad especifica comunal Pica *</th>
       <th>Mortalidad especifica comunal Pozo Almonte *</th>
+      <th>Tasa de activos (incidencia) *</th>
     </tr>
     <tr>
       <th>Fecha</th>
@@ -1980,7 +1995,6 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>3.00</td>
       <td>197.24</td>
       <td>0.93</td>
@@ -1997,6 +2011,7 @@
       <td>236.73</td>
       <td>201.41</td>
       <td>137.97</td>
+      <td>117.30</td>
     </tr>
     <tr>
       <th>2021-07-12</th>
@@ -2026,7 +2041,6 @@
       <td>70.48</td>
       <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
       <td>11,543.9</td>
       <td>15,490.9</td>
       <td>9,096.7</td>
@@ -2051,6 +2065,7 @@
       <td>238.52</td>
       <td>201.41</td>
       <td>137.97</td>
+      <td>106.85</td>
     </tr>
     <tr>
       <th>2021-07-13</th>
@@ -2088,7 +2103,6 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>2.00</td>
       <td>197.77</td>
       <td>0.89</td>
@@ -2105,6 +2119,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>99.28</td>
     </tr>
     <tr>
       <th>2021-07-14</th>
@@ -2142,7 +2157,6 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>2.00</td>
       <td>197.77</td>
       <td>0.85</td>
@@ -2159,6 +2173,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>91.18</td>
     </tr>
     <tr>
       <th>2021-07-15</th>
@@ -2196,7 +2211,6 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>2.00</td>
       <td>199.07</td>
       <td>0.75</td>
@@ -2213,10 +2227,11 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>91.96</td>
     </tr>
   </tbody>
 </table>
-<p>500 rows × 153 columns</p>
+<p>500 rows × 154 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -2424,19 +2439,24 @@
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tasa de casos nuevos de casos nuevos por cien mil habitantes&#39;</span><span class="p">]</span>
               <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data23.csv&#39;</span><span class="p">)</span>
 
+<span class="c1">### Tasa de activos ###</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa de activos (incidencia) *&#39;</span><span class="p">]</span>
+             <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Tasa de activos (incidencia)&#39;</span><span class="p">]</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data24.csv&#39;</span><span class="p">)</span>
+
 <span class="c1">### Mortalidad específica ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mortalidad especifica *&#39;</span><span class="p">]</span>
              <span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Mortalidad específica por cien mil habitantes&#39;</span><span class="p">]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data24.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data25.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Mortalidad específica por comuna ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Mortalidad especifica comunal *&#39;</span><span class="p">)])</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data25.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data26.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Vacunación ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">],</span>
               <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]]</span>
-              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data26.csv&#39;</span><span class="p">)</span>
+              <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data27.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2785,19 +2805,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 15 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>96.466%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>96.992%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.091%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.117%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.148%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.0%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>59</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.539%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.434%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>93.163%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>93.1%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>10</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>88.992%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>89.064%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.972%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.989%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -3827,240 +3847,249 @@ La media general del error es de:  0.81 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">            <details>
-            <summary>Click to view session information</summary>
-            <pre>
-            -----
-            PIL                 8.2.0
-            bs4                 4.9.3
-            datetime            NA
-            json                2.0.9
-            locale              NA
-            markdownify         NA
-            math                NA
-            matplotlib          3.3.4
-            natsort             7.1.1
-            numpy               1.19.5
-            os                  NA
-            pandas              1.2.3
-            pkg_resources       NA
-            plotly              4.8.1
-            pybtex              0.24.0
-            requests            2.25.1
-            scipy               1.6.2
-            seaborn             0.11.1
-            session_info        1.0.0
-            sklearn             0.24.1
-            time                NA
-            types               NA
-            -----
-            </pre>
-            <details>
-            <summary>Click to view modules imported as dependencies</summary>
-            <pre>
-            abc                 NA
-            argparse            1.1
-            array               NA
-            ast                 NA
-            asyncio             NA
-            atexit              NA
-            attr                20.3.0
-            backcall            0.2.0
-            base64              NA
-            bdb                 NA
-            binascii            NA
-            bisect              NA
-            bz2                 NA
-            cProfile            NA
-            calendar            NA
-            certifi             2021.05.30
-            cffi                1.14.6
-            chardet             4.0.0
-            cmath               NA
-            cmd                 NA
-            code                NA
-            codecs              NA
-            codeop              NA
-            collections         NA
-            colorama            0.4.4
-            colorsys            NA
-            concurrent          NA
-            contextlib          NA
-            contextvars         NA
-            copy                NA
-            copyreg             NA
-            csv                 1.0
-            ctypes              1.1.0
-            curses              NA
-            cycler              0.10.0
-            cython_runtime      NA
-            dataclasses         NA
-            dateutil            2.8.2
-            decimal             1.70
-            decorator           5.0.9
-            difflib             NA
-            dis                 NA
-            distutils           3.7.11
-            email               NA
-            encodings           NA
-            enum                NA
-            errno               NA
-            faulthandler        NA
-            fcntl               NA
-            filecmp             NA
-            fnmatch             NA
-            fractions           NA
-            functools           NA
-            gc                  NA
-            genericpath         NA
-            getopt              NA
-            getpass             NA
-            gettext             NA
-            glob                NA
-            grp                 NA
-            gzip                NA
-            hashlib             NA
-            heapq               NA
-            hmac                NA
-            html                NA
-            http                NA
-            idna                2.10
-            imp                 NA
-            importlib           NA
-            importlib_metadata  NA
-            inspect             NA
-            io                  NA
-            ipykernel           6.0.2
-            ipython_genutils    0.2.0
-            ipywidgets          7.6.3
-            itertools           NA
-            jedi                0.18.0
-            joblib              1.0.1
-            jsonschema          3.2.0
-            keyword             NA
-            kiwisolver          1.3.1
-            linecache           NA
-            logging             0.5.1.2
-            lzma                NA
-            marshal             4
-            matplotlib_inline   NA
-            mimetypes           NA
-            mmap                NA
-            mpl_toolkits        NA
-            multiprocessing     NA
-            nbformat            5.1.3
-            netrc               NA
-            ntpath              NA
-            numbers             NA
-            opcode              NA
-            operator            NA
-            packaging           21.0
-            parso               0.8.2
-            pathlib             NA
-            pdb                 NA
-            pexpect             4.8.0
-            pickle              NA
-            pickleshare         0.7.5
-            pkgutil             NA
-            platform            1.0.8
-            plistlib            NA
-            posix               NA
-            posixpath           NA
-            pprint              NA
-            profile             NA
-            prompt_toolkit      3.0.19
-            pstats              NA
-            pty                 NA
-            ptyprocess          0.7.0
-            pvectorc            NA
-            pwd                 NA
-            pydoc               NA
-            pydoc_data          NA
-            pyexpat             NA
-            pygments            2.9.0
-            pyparsing           2.4.7
-            pyrsistent          NA
-            pytz                2021.1
-            queue               NA
-            quopri              NA
-            random              NA
-            re                  2.2.1
-            reprlib             NA
-            resource            NA
-            retrying            NA
-            runpy               NA
-            secrets             NA
-            select              NA
-            selectors           NA
-            shlex               NA
-            shutil              NA
-            signal              NA
-            site                NA
-            six                 1.16.0
-            socket              NA
-            socketserver        0.4
-            soupsieve           2.2.1
-            sphinxcontrib       NA
-            sqlite3             2.6.0
-            sre_compile         NA
-            sre_constants       NA
-            sre_parse           NA
-            ssl                 NA
-            stat                NA
-            storemagic          NA
-            string              NA
-            stringprep          NA
-            struct              NA
-            subprocess          NA
-            sys                 3.7.11 (default, Jul  5 2021, 20:57:17) 
-[GCC 9.3.0]
-            sysconfig           NA
-            tarfile             0.9.0
-            tempfile            NA
-            termios             NA
-            textwrap            NA
-            threading           NA
-            timeit              NA
-            token               NA
-            tokenize            NA
-            tornado             6.1
-            traceback           NA
-            traitlets           5.0.5
-            tty                 NA
-            typing              NA
-            typing_extensions   NA
-            unicodedata         NA
-            unittest            NA
-            urllib              NA
-            urllib3             1.26.6
-            uu                  NA
-            uuid                NA
-            warnings            NA
-            wcwidth             0.2.5
-            weakref             NA
-            webbrowser          NA
-            xml                 NA
-            zipfile             NA
-            zipimport           NA
-            zipp                NA
-            zlib                1.0
-            zmq                 22.1.0
-            </pre>
-            </details> <!-- seems like this ends pre, so might as well be explicit -->
-            <pre>
-            -----
-            IPython             7.25.0
-            jupyter_client      6.1.12
-            jupyter_core        4.7.1
-            notebook            6.4.0
-            -----
-            Python 3.7.11 (default, Jul  5 2021, 20:57:17) [GCC 9.3.0]
-            Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
-            2 logical CPU cores, x86_64
-            -----
-            Session information updated at 2021-07-15 19:41
-            </pre>
-            </details></div></div>
+<div class="output text_html"><details>
+<summary>Click to view session information</summary>
+<pre>
+-----
+PIL                 8.2.0
+bs4                 4.9.3
+datetime            NA
+json                2.0.9
+locale              NA
+markdownify         NA
+math                NA
+matplotlib          3.3.4
+natsort             7.1.1
+numpy               1.19.2
+os                  NA
+pandas              1.2.3
+pkg_resources       NA
+plotly              4.8.1
+pybtex              0.24.0
+requests            2.25.1
+scipy               1.6.2
+seaborn             0.11.1
+session_info        1.0.0
+sklearn             0.24.1
+time                NA
+types               NA
+-----
+</pre>
+<details>
+<summary>Click to view modules imported as dependencies</summary>
+<pre>
+abc                 NA
+argparse            1.1
+array               NA
+ast                 NA
+asyncio             NA
+atexit              NA
+attr                21.2.0
+backcall            0.2.0
+base64              NA
+bdb                 NA
+binascii            NA
+bisect              NA
+brotli              NA
+bz2                 NA
+cProfile            NA
+calendar            NA
+certifi             2021.05.30
+cffi                1.14.5
+chardet             3.0.4
+cmath               NA
+cmd                 NA
+code                NA
+codecs              NA
+codeop              NA
+collections         NA
+colorama            0.4.3
+colorsys            NA
+concurrent          NA
+configparser        NA
+contextlib          NA
+contextvars         NA
+copy                NA
+copyreg             NA
+csv                 1.0
+ctypes              1.1.0
+cycler              0.10.0
+cython_runtime      NA
+dataclasses         NA
+dateutil            2.8.1
+decimal             1.70
+decorator           5.0.6
+difflib             NA
+dis                 NA
+distutils           3.7.0
+email               NA
+encodings           NA
+enum                NA
+errno               NA
+faulthandler        NA
+filecmp             NA
+fnmatch             NA
+fractions           NA
+functools           NA
+gc                  NA
+genericpath         NA
+getopt              NA
+getpass             NA
+gettext             NA
+glob                NA
+google              NA
+gzip                NA
+hashlib             NA
+heapq               NA
+hmac                NA
+html                NA
+http                NA
+idna                2.10
+imp                 NA
+importlib           NA
+importlib_metadata  NA
+inspect             NA
+io                  NA
+ipykernel           5.3.4
+ipyparallel         6.3.0
+ipython_genutils    0.2.0
+ipywidgets          7.6.3
+itertools           NA
+jedi                0.18.0
+joblib              1.0.1
+jsonschema          3.2.0
+keyword             NA
+kiwisolver          1.3.1
+linecache           NA
+logging             0.5.1.2
+lxml                4.6.3
+lzma                NA
+marshal             4
+matplotlib_inline   NA
+mimetypes           NA
+mkl                 2.3.0
+mmap                NA
+mpl_toolkits        NA
+msvcrt              NA
+multiprocessing     NA
+nbformat            5.1.3
+netrc               NA
+nt                  NA
+ntpath              NA
+ntsecuritycon       NA
+nturl2path          NA
+numbers             NA
+numexpr             2.7.3
+olefile             0.46
+opcode              NA
+operator            NA
+packaging           20.9
+parso               0.8.2
+pathlib             NA
+pdb                 NA
+pickle              NA
+pickleshare         0.7.5
+pkgutil             NA
+platform            1.0.8
+plistlib            NA
+posixpath           NA
+pprint              NA
+profile             NA
+prompt_toolkit      3.0.17
+pstats              NA
+psutil              5.8.0
+pvectorc            NA
+pydoc               NA
+pydoc_data          NA
+pyexpat             NA
+pygments            2.8.1
+pyparsing           2.4.7
+pyrsistent          NA
+pythoncom           NA
+pytz                2021.1
+pywintypes          NA
+queue               NA
+quopri              NA
+random              NA
+re                  2.2.1
+reprlib             NA
+retrying            NA
+ruamel              NA
+runpy               NA
+secrets             NA
+select              NA
+selectors           NA
+shlex               NA
+shutil              NA
+signal              NA
+site                NA
+six                 1.15.0
+socket              NA
+socketserver        0.4
+socks               1.7.1
+soupsieve           2.2.1
+sphinxcontrib       NA
+sqlite3             2.6.0
+sre_compile         NA
+sre_constants       NA
+sre_parse           NA
+ssl                 NA
+stat                NA
+storemagic          NA
+string              NA
+stringprep          NA
+struct              NA
+subprocess          NA
+sys                 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+sysconfig           NA
+tarfile             0.9.0
+tempfile            NA
+textwrap            NA
+threading           NA
+timeit              NA
+token               NA
+tokenize            NA
+tornado             6.1
+traceback           NA
+traitlets           5.0.5
+typing              NA
+typing_extensions   NA
+unicodedata         NA
+unittest            NA
+urllib              NA
+urllib3             1.26.4
+uu                  NA
+uuid                NA
+warnings            NA
+wcwidth             0.2.5
+weakref             NA
+webbrowser          NA
+win32api            NA
+win32com            NA
+win32security       NA
+winreg              NA
+xml                 NA
+zipfile             NA
+zipimport           NA
+zipp                NA
+zlib                1.0
+zmq                 20.0.0
+</pre>
+</details> <!-- seems like this ends pre, so might as well be explicit -->
+<pre>
+-----
+IPython             7.23.1
+jupyter_client      6.1.12
+jupyter_core        4.7.1
+notebook            6.3.0
+-----
+Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+Windows-10-10.0.19041-SP0
+12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+-----
+Session information updated at 2021-07-15 15:16
+</pre>
+</details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
