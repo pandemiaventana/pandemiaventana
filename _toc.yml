@@ -40,4 +40,7 @@ sections:
   - file: page/5_reportes/infografias/1_infografias
   - file: page/5_reportes/infografias/2_infografias
 - file: page/6_basedatos/0_basedatos
+  sections:
+  - file: page/6_basedatos/1_basedatos
+  - file: page/6_basedatos/2_basedatos
 - file: page/7_bibliografia/0_bibliografia
