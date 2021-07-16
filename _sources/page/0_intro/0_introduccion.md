@@ -53,6 +53,32 @@ El libro está identificado con el **DOI 10.5281**. [![DOI](https://zenodo.org/b
 
 ### Versión
 
+#### Incidencia
+
+[Release v1.2](https://github.com/pandemiaventana/pandemiaventana/releases/tag/v1.2) apodado "*Incidencia*" del libro dinámico. 
+
+![image](https://user-images.githubusercontent.com/63689583/125992498-a5f0f687-6603-49c0-bf64-6f5f7aca976a.png)
+
+##### Cambios/mejoras
+
+* Se añaden [tasas de incidencia](https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/1_thisistheway.html#tasa-de-incidencia-casos-diarios).
+
+* Se añade al [autor](https://pandemiaventana.github.io/pandemiaventana/page/1_experiencia/3_experiencia.html).
+
+* Se añade [nuevo reporte del toque de queda](https://pandemiaventana.github.io/pandemiaventana/page/5_reportes/toquequeda.html).
+
+* Se añade enlace directo a Instagram apodado "**[Instagram](https://www.instagram.com/numeral.lab/)** 📷".
+
+* Se añade sección de infografías apodado "**[Infografías](https://pandemiaventana.github.io/pandemiaventana/page/5_reportes/infografias/0_infografias.html)** 📦".
+
+* Se añade sección de archivos apodado "**[Archivos procesados](https://pandemiaventana.github.io/pandemiaventana/page/6_basedatos/0_basedatos.html)** 📁".
+
+* Indexación en Google.
+
+* Se añade tasa de activos, número de establecimientos para residencias sanitarias habilitados, positividad por antígeno, entre otros.
+
+* Nuevas notas de prensa.
+
 #### Salida
 
 [Release v1.1](https://github.com/pandemiaventana/pandemiaventana/releases/tag/v1.1) apodado "*Salida*" del libro dinámico. 
