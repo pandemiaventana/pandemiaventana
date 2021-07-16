@@ -1327,7 +1327,7 @@ else:
 desc2 = \
 """¿Toque de queda a las 00:00 hrs.? 🕑
 
-Para que en la Región se pueda aplazar el toque de queda, se deben cumplir los siguientes indicadores:
+Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
 
 • Tasa de incidencia de activos menor a 150 (actualmente es {}). {}
 • El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}
@@ -1666,7 +1666,7 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 ### Toque de queda
 avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
                          + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
-avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
+avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()].round(0)
 
 
 ## Primer gráfico: tasa de activos
