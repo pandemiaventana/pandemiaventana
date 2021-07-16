@@ -1036,6 +1036,7 @@ fallecidosnuevos_hoy, fallecidosacumulados_hoy = df['Casos fallecidos nuevos'][w
 
 ### PCR informados nuevos y acumulados
 pcrnuevos_hoy, pcracumulados_hoy = df['PCR informados nuevos'][weekend_data], df['PCR informados acumulados'][weekend_data]
+antigenonuevos_hoy, antigenoacumulados_hoy = df['Antigenos informados nuevos'][weekend_data], df['Antigenos informados acumulados'][weekend_data]
 
 ### Residencias
 residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy = df['Numero de residencias'][weekend_data], df['Usuarios en residencias'][weekend_data], df['Cupos en residencias'][weekend_data]
@@ -1049,6 +1050,7 @@ ucidiaria_hoy, uciaprox_hoy, errorabs_hoy = df['UCI ocupadas por confirmados'][w
 
 ### Positividad diaria y móvil
 positividad_hoy, positividadmovil_hoy = df['Positividad diaria'][weekend_data], df['Positividad media movil *'][weekend_data]
+positividad_antigeno = round((antigeno_hoy/antigenonuevos_hoy)*100)
 
 ### Mortalidad especifica, Re, tasa casos nuevos y crecimiento
 me_hoy, reregional_hoy, tasanuevos_hoy = df['Mortalidad especifica *'][weekend_data], df['Re regional'][df['Re regional'].last_valid_index()], round(df['Tasa casos nuevos *'][weekend_data], 1)
@@ -1079,7 +1081,7 @@ ed_hoy = (d2 - d1).days + (d3 - d2).days
 ed_hoy = (d2 - d1).days + (d3 - d2).days
 
 ### Valores de hoy a integer
-casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, activos_hoy, activosprobables_hoy, ucidiaria_hoy, positividad_hoy, positividadmovil_hoy, me_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,ed_hoy, tasa_activos = [ format(int(i), ',d') for i in [
+casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, activos_hoy, activosprobables_hoy, ucidiaria_hoy, positividad_hoy, positividadmovil_hoy, me_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy, positividad_antigeno = [ format(int(i), ',d') for i in [
 casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
 recuperados_hoy, recuperadosacumulados_hoy, \
 fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
@@ -1089,7 +1091,7 @@ activos_hoy, activosprobables_hoy, \
 ucidiaria_hoy, \
 positividad_hoy, positividadmovil_hoy, \
 me_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,\
-ed_hoy, tasa_activos]]
+ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy, positividad_antigeno]]
 
 ### Datos de ayer ###
 
@@ -1143,12 +1145,12 @@ desc1 = """Reporte DIARIO, {} 🕑. \n
 • Infectados {} casos nuevos de los cuales {} con síntomas, {} sin síntomas y {} sin notificar, dando un total de {} casos confirmados. Adicionalmente, {} casos nuevos confirmados por antígeno y {} casos totales con sospecha de reinfección. 🦠
 • Recuperadas {} personas, sumando {} recuperados totales. 💪
 • Perdieron la vida {} persona(s), sumando {} fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
-• Informados {} exámenes PCR dando un total de {} exámenes PCR totales en la región. 🌡️
+• Informados {} exámenes PCR dando un total de {} exámenes PCR totales en la región. En antígenos, {} informados y {} acumulados. 🌡️
 • Respecto a residencias sanitarias, {} recintos de hospedaje con {} cupos, de los cuales {} están utilizados. 🏨
 • Se reportaron {} casos activos y {} activos probables. La tasa de activos (incidencia) es de {}. 🧪
 • La tasa de crecimiento es del {}: {}.
 • Hasta ayer, {} pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del {}% ± {}%. 🆘
-• La positividad de casos PCR fue del {}%. Asimismo, una positividad media móvil semanal del {}%. 😷
+• La positividad PCR fue del {}%, con una positividad media móvil semanal del {}%. En antígeno, un {}% de positividad. 😷
 • De cada cien mil habitantes en la región, {} fallecen por COVID-19. 😵
 • El Re Regional corresponde a {}. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a {}. 💦
@@ -1170,11 +1172,12 @@ desc1 = """Reporte DIARIO, {} 🕑. \n
                                    recuperados_hoy, recuperadosacumulados_hoy, \
                                    fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
                                    pcrnuevos_hoy, pcracumulados_hoy, \
+                                   antigenonuevos_hoy, antigenoacumulados_hoy, \
                                    residenciasnumero_hoy, residenciascupos_hoy, residenciasusuarios_hoy, \
                                    activos_hoy, activosprobables_hoy, tasa_activos, \
                                    crecimientodiario_hoy, situacioncurva_hoy, \
                                    ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, \
-                                   positividad_hoy, positividadmovil_hoy, \
+                                   positividad_hoy, positividadmovil_hoy, positividad_antigeno, \
                                    me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,\
                                    ed_hoy, cambios)
 
@@ -1741,8 +1744,9 @@ txt = ImageDraw.Draw(diario5)
 txt.text((780, 70), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
 txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
+txt.text((190, 860), 'Antígeno: {}%'.format(positividad_antigeno), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 txt.text((540, 680), '{}%'.format(procesovacunacion_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
-txt.text((540, 750), 'Ayer: {}%'.format(procesovacunacion_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((540, 750), 'Últ. act.: {}%'.format(procesovacunacion_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
 txt.text((890, 680), '{}'.format(me_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno

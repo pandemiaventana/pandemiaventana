@@ -2531,6 +2531,7 @@
 
 <span class="c1">### PCR informados nuevos y acumulados</span>
 <span class="n">pcrnuevos_hoy</span><span class="p">,</span> <span class="n">pcracumulados_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCR informados nuevos&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PCR informados acumulados&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">]</span>
+<span class="n">antigenonuevos_hoy</span><span class="p">,</span> <span class="n">antigenoacumulados_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Antigenos informados nuevos&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Antigenos informados acumulados&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">]</span>
 
 <span class="c1">### Residencias</span>
 <span class="n">residenciasnumero_hoy</span><span class="p">,</span> <span class="n">residenciasusuarios_hoy</span><span class="p">,</span> <span class="n">residenciascupos_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Numero de residencias&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Usuarios en residencias&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cupos en residencias&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">]</span>
@@ -2544,6 +2545,7 @@
 
 <span class="c1">### Positividad diaria y móvil</span>
 <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Positividad diaria&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Positividad media movil *&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">]</span>
+<span class="n">positividad_antigeno</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">antigeno_hoy</span><span class="o">/</span><span class="n">antigenonuevos_hoy</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c1">### Mortalidad especifica, Re, tasa casos nuevos y crecimiento</span>
 <span class="n">me_hoy</span><span class="p">,</span> <span class="n">reregional_hoy</span><span class="p">,</span> <span class="n">tasanuevos_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mortalidad especifica *&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re regional&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Re regional&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa casos nuevos *&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
@@ -2583,7 +2585,7 @@
 <span class="n">ucidiaria_hoy</span><span class="p">,</span> \
 <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
 <span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
-<span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span> <span class="o">=</span> \
+<span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">,</span> <span class="n">antigenonuevos_hoy</span><span class="p">,</span> <span class="n">antigenoacumulados_hoy</span><span class="p">,</span> <span class="n">positividad_antigeno</span> <span class="o">=</span> \
 <span class="p">[</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span>
 <span class="n">casos_hoy</span><span class="p">,</span> <span class="n">consintomas_hoy</span><span class="p">,</span> <span class="n">sinsintomas_hoy</span><span class="p">,</span> <span class="n">porlaboratorio_hoy</span><span class="p">,</span> <span class="n">casosacumulados_hoy</span><span class="p">,</span> <span class="n">antigeno_hoy</span><span class="p">,</span> <span class="n">reinfeccion_hoy</span><span class="p">,</span> \
 <span class="n">recuperados_hoy</span><span class="p">,</span> <span class="n">recuperadosacumulados_hoy</span><span class="p">,</span> \
@@ -2594,7 +2596,7 @@
 <span class="n">ucidiaria_hoy</span><span class="p">,</span> \
 <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
 <span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
-<span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">]]</span>
+<span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">,</span> <span class="n">antigenonuevos_hoy</span><span class="p">,</span> <span class="n">antigenoacumulados_hoy</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">]]</span>
 
 <span class="c1">### Datos de ayer ###</span>
 
@@ -2659,12 +2661,12 @@
 <span class="sd">• Infectados {} casos nuevos de los cuales {} con síntomas, {} sin síntomas y {} sin notificar, dando un total de {} casos confirmados. Adicionalmente, {} casos nuevos confirmados por antígeno y {} casos totales con sospecha de reinfección. 🦠</span>
 <span class="sd">• Recuperadas {} personas, sumando {} recuperados totales. 💪</span>
 <span class="sd">• Perdieron la vida {} persona(s), sumando {} fallecidos totales. Nuestro profundo pésame a las familias. 🕊️</span>
-<span class="sd">• Informados {} exámenes PCR dando un total de {} exámenes PCR totales en la región. 🌡️</span>
+<span class="sd">• Informados {} exámenes PCR dando un total de {} exámenes PCR totales en la región. En antígenos, {} informados y {} acumulados. 🌡️</span>
 <span class="sd">• Respecto a residencias sanitarias, {} recintos de hospedaje con {} cupos, de los cuales {} están utilizados. 🏨</span>
 <span class="sd">• Se reportaron {} casos activos y {} activos probables. La tasa de activos (incidencia) es de {}. 🧪</span>
 <span class="sd">• La tasa de crecimiento es del {}: {}.</span>
 <span class="sd">• Hasta ayer, {} pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del {}% ± {}%. 🆘</span>
-<span class="sd">• La positividad de casos PCR fue del {}%. Asimismo, una positividad media móvil semanal del {}%. 😷</span>
+<span class="sd">• La positividad PCR fue del {}%, con una positividad media móvil semanal del {}%. En antígeno, un {}% de positividad. 😷</span>
 <span class="sd">• De cada cien mil habitantes en la región, {} fallecen por COVID-19. 😵</span>
 <span class="sd">• El Re Regional corresponde a {}. 💊</span>
 <span class="sd">• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a {}. 💦</span>
@@ -2686,11 +2688,12 @@
                                    <span class="n">recuperados_hoy</span><span class="p">,</span> <span class="n">recuperadosacumulados_hoy</span><span class="p">,</span> \
                                    <span class="n">fallecidosnuevos_hoy</span><span class="p">,</span> <span class="n">fallecidosacumulados_hoy</span><span class="p">,</span> \
                                    <span class="n">pcrnuevos_hoy</span><span class="p">,</span> <span class="n">pcracumulados_hoy</span><span class="p">,</span> \
+                                   <span class="n">antigenonuevos_hoy</span><span class="p">,</span> <span class="n">antigenoacumulados_hoy</span><span class="p">,</span> \
                                    <span class="n">residenciasnumero_hoy</span><span class="p">,</span> <span class="n">residenciascupos_hoy</span><span class="p">,</span> <span class="n">residenciasusuarios_hoy</span><span class="p">,</span> \
                                    <span class="n">activos_hoy</span><span class="p">,</span> <span class="n">activosprobables_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">,</span> \
                                    <span class="n">crecimientodiario_hoy</span><span class="p">,</span> <span class="n">situacioncurva_hoy</span><span class="p">,</span> \
                                    <span class="n">ucidiaria_hoy</span><span class="p">,</span> <span class="n">uciaprox_hoy</span><span class="p">,</span> <span class="n">errorabs_hoy</span><span class="p">,</span> \
-                                   <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
+                                   <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">,</span> \
                                    <span class="n">me_hoy</span><span class="p">,</span> <span class="n">reregional_hoy</span><span class="p">,</span> <span class="n">tasanuevos_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
                                    <span class="n">ed_hoy</span><span class="p">,</span> <span class="n">cambios</span><span class="p">)</span>
 
@@ -2705,12 +2708,12 @@
 • Infectados 37 casos nuevos de los cuales 23 con síntomas, 11 sin síntomas y 3 sin notificar, dando un total de 39,740 casos confirmados. Adicionalmente, 6 casos nuevos confirmados por antígeno y 43 casos totales con sospecha de reinfección. 🦠
 • Recuperadas 88 personas, sumando 38,715 recuperados totales. 💪
 • Perdieron la vida 1 persona(s), sumando 763 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
-• Informados 1,205 exámenes PCR dando un total de 443,676 exámenes PCR totales en la región. 🌡️
+• Informados 1,205 exámenes PCR dando un total de 443,676 exámenes PCR totales en la región. En antígenos, 122 informados y 3,602 acumulados. 🌡️
 • Respecto a residencias sanitarias, 8 recintos de hospedaje con 604 cupos, de los cuales 297 están utilizados. 🏨
 • Se reportaron 242 casos activos y 96 activos probables. La tasa de activos (incidencia) es de 88. 🧪
 • La tasa de crecimiento es del 0.8: curva de contagios a la baja.
 • Hasta ayer, 34 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 63.2% ± 0.7%. 🆘
-• La positividad de casos PCR fue del 3%. Asimismo, una positividad media móvil semanal del 2%. 😷
+• La positividad PCR fue del 3%, con una positividad media móvil semanal del 2%. En antígeno, un 5% de positividad. 😷
 • De cada cien mil habitantes en la región, 199 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 0.87. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 8.7. 💦
@@ -2850,19 +2853,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 16 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.042%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.254%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.211%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.233%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.635%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.627%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>59</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>59.055%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>71.304%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>95.672%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>95.5%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>10</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>89.954%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>89.872%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>74.074%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>74.692%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -3510,8 +3513,9 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">780</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividadmovil_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">)</span> <span class="c1"># casos con sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos con sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Ayer: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos con sintomas</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">860</span><span class="p">),</span> <span class="s1">&#39;Antígeno: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_antigeno</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># nuevos antigeno</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos sin sintomas</span>
-<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Ayer: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos sin sintomas</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Últ. act.: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos sin sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">890</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">me_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos por laboratorio</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">890</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Ayer: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">me_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos por laboratorio</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">860</span><span class="p">),</span> <span class="s1">&#39;Acum. 2° dosis: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunaciontotales_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># nuevos antigeno</span>
@@ -4311,7 +4315,7 @@ La media general del error es de:  0.81 %
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-16 16:10
+            Session information updated at 2021-07-16 16:30
             </pre>
             </details></div></div>
 </div>
