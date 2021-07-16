@@ -828,6 +828,10 @@ df
 # En período de práctica, me vi en la necesidad de hacer nuevas cosas. En diciembre de 2020 y enero de 2021 era alta la expectativa respecto a la campaña de vacunación "Yo me vacuno" impulsada por el Ministerio de Salud. Ello coincidió con que Juan Cristóbal Olivares, ingeniero de Amazon, contribuyó en el repositorio del MICITEC con un "dataproduct" (datos) de vacunación a nivel nacional. Entonces, haciendo uso de su contribución, desarrollé el "Avance de vacunas", luego denominado "Balance vacunas". 
 # 
 # En un principio, brindaba la comparativa regional en torno al proceso de vacunación de forma estandarizada. Sin embargo, luego lo modifiqué para que, tal como el reporte diario, difundiese información sobre el proceso de vacunación a nivel regional.
+# 
+# - <b>Toque de queda 00:00 hrs.</b>
+# 
+# Se añade reporte que hace seguimiento a los indicadores para el toque de queda a las 00:00 hrs. en la Región de Tarapacá, dado que llegaron muchas dudas con respecto a.
 
 # ### CSV
 
