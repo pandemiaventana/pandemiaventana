@@ -1624,6 +1624,10 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 # %%
 ### Toque de queda
+avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
+                         + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
+avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
+
 
 ## Primer gráfico: tasa de activos
 graph1 = graphLine([df[-14:].index],\
@@ -1634,9 +1638,7 @@ graph1 = graphLine([df[-14:].index],\
                   txty=147, txts=6)
 
 ## Segundo gráfico: avance vacunación
-avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
-                         + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
-avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
+
 graph2 = graphLine([avance_graph.index],\
                    [avance_graph], \
                    color=['tab:cyan'], \
