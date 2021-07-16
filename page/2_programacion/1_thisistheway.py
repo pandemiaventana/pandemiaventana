@@ -419,6 +419,12 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # %%
 # Manipulando datos
 
+### Población segregada por comuna
+poblacion = csv7.loc[1, 'Tarapacá']
+### Población por comuna
+poblaciones_comunales = csv38[csv38['Region'] == 'Tarapaca'][:-2]['Poblacion']
+poblaciones_comunales.index = np.arange(7)
+
 ### Obteniendo casos cumulativos
 casos_cumulativos = csv13.loc[:, 'Tarapacá']
 casos_cumulativos.index = csv13['Region']
@@ -605,7 +611,6 @@ incidencia_acumulada.columns = 'Incidencia acumulada ' + csv18[
     csv18.Region == 'Tarapaca'].transpose().loc['Comuna', :].replace('Total', 'regional')
     
 ### Otras cifras
-poblacion = csv7.loc[1, 'Tarapacá']
 uciocupacion_nacional = round(((int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas no COVID-19')].\
                          transpose().iloc[-1]) + int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas COVID-19')]\
                          .transpose().iloc[-1]))/csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI habilitadas')]\
@@ -661,8 +666,6 @@ mortalidad_especifica = (((fallecidos_acumulativos) / poblacion)*100000)
 
 ### Mortalidad específica por cien mil habitantes por comuna
 j = 0
-poblaciones_comunales = csv38[csv38['Region'] == 'Tarapaca'][:-2]['Poblacion']
-poblaciones_comunales.index = np.arange(7)
 me_comuna = pd.DataFrame([])
 for col in fallecidosdeis_conf_comuna:
     me_comuna['Mortalidad especifica comunal {} *'.format(col[28:])] = fallecidosdeis_conf_comuna[col]/poblaciones_comunales[j]*100000
@@ -1052,6 +1055,7 @@ residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy = df['Numer
 
 ### Activos confirmados y probables
 activos_hoy, activosprobables_hoy = df['Casos activos confirmados'][weekend_data], df['Casos activos probables'][weekend_data]
+tasa_activos = df['Tasa de activos (incidencia) *'][weekend_data]
 
 ### UCI diaria y ocupacion uci aproximada
 ucidiaria_hoy, uciaprox_hoy, errorabs_hoy = df['UCI ocupadas por confirmados'][weekend_data], round(df['UCI ocupacion media movil aprox *'][weekend_data], 1), round(df['UCI error abs *'][df['UCI error abs *'].last_valid_index()], 1)
@@ -1097,7 +1101,7 @@ activos_hoy, activosprobables_hoy, \
 ucidiaria_hoy, \
 positividad_hoy, positividadmovil_hoy, \
 me_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,\
-ed_hoy = \
+ed_hoy, tasa_activos = \
 [ format(int(i), ',d') for i in [
 casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
 recuperados_hoy, recuperadosacumulados_hoy, \
@@ -1108,7 +1112,7 @@ activos_hoy, activosprobables_hoy, \
 ucidiaria_hoy, \
 positividad_hoy, positividadmovil_hoy, \
 me_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,\
-ed_hoy]]
+ed_hoy, tasa_activos]]
 
 ### Datos de ayer ###
 
@@ -1175,7 +1179,7 @@ desc1 = \
 • Perdieron la vida {} persona(s), sumando {} fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
 • Informados {} exámenes PCR dando un total de {} exámenes PCR totales en la región. 🌡️
 • Respecto a residencias sanitarias, {} recintos de hospedaje con {} cupos, de los cuales {} están utilizados. 🏨
-• Se reportaron {} casos activos y {} activos probables. 🧪
+• Se reportaron {} casos activos y {} activos probables. La tasa de activos (incidencia) es de {}. 🧪
 • La tasa de crecimiento es del {}: {}.
 • Hasta ayer, {} pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del {}% ± {}%. 🆘
 • La positividad de casos PCR fue del {}%. Asimismo, una positividad media móvil semanal del {}%. 😷
@@ -1201,7 +1205,7 @@ desc1 = \
                                    fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
                                    pcrnuevos_hoy, pcracumulados_hoy, \
                                    residenciasnumero_hoy, residenciascupos_hoy, residenciasusuarios_hoy, \
-                                   activos_hoy, activosprobables_hoy, \
+                                   activos_hoy, activosprobables_hoy, tasa_activos, \
                                    crecimientodiario_hoy, situacioncurva_hoy, \
                                    ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, \
                                    positividad_hoy, positividadmovil_hoy, \
@@ -1726,6 +1730,8 @@ txt.text((540, 750), 'Ayer: {}'.format(residenciasusuarios_ayer), fill='#989898'
 txt.text((890, 680), '{}'.format(activos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(activos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((190, 860), 'Acumulado: {}'.format(pcracumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
+txt.text((540, 860), 'Establecimientos: {}'.format(residenciasnumero_hoy), fill='#989898', font=roboto_data1, anchor='ms') # reinfeccion
+txt.text((890, 860), 'Incidencia: {}'.format(tasa_activos), fill='#989898', font=roboto_data1, anchor='ms') # reinfeccion
 
 ### Guardamos
 diario4.save('../../out/diario/4.png')
