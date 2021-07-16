@@ -3,8 +3,10 @@ bs4==4.9.3
 datetime
 json==2.0.9
 locale
+markdownify
 math
 matplotlib==3.3.4
+natsort==7.1.1
 numpy==1.19.2
 os
 pandas==1.2.3
