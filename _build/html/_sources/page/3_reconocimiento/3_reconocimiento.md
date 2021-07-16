@@ -206,6 +206,18 @@ Onceava aparición.
 
 En aquella oportunidad, expliqué la terminología detrás del número de reproducción efectivo, de la mano de un artículo buenísimo por Marcel Salathé (epidemiólogo) y Nicky Case (encargado del código) en <a href="https://vrruiz.github.io/covid-19/">"¿Qué pasará ahora? Los futuros de la COVID-19 explicados con simulaciones"</a>.
 
+#### Julio, 15
+
+“*Bajos indicadores permitirían que Iquique avance de fase*” {cite}`Estrella-iquique16`, realizada por *Pamela Castillo*, del diario La Estrella de Iquique {footcite}`Estrella-iquique16`.
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/prensa/tiny/17.jpg">
+
+**Bajos indicadores permitirían que Iquique avance de fase**. Imagen de <a href="https://www.estrellaiquique.cl/impresa/2021/07/15/full/cuerpo-principal/3/">La Estrella de Iquique</a>.
+:::
+
+Doceava aparición.
+
 ### Notas faltantes
 
 Tengo entendido, existe mayor número de apariciones por parte del Dr. Cristóbal Corral, las cuales no están recabadas aquí. Por otro lado, desconozco si aparecí mayor número de veces en el diario La Estrella de Iquique. **La memoria es frágil**.
