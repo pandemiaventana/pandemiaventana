@@ -258,6 +258,11 @@
      Reportes históricos
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5_reportes/toquequeda.html">
+     Toque de queda
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -640,6 +645,11 @@
      Indicador de fase
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#toque-de-queda">
+     Toque de queda
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -660,6 +670,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
      Indicador de fase
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     Toque de queda
     </a>
    </li>
   </ul>
@@ -784,6 +799,8 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mtick</span>
 
 <span class="c1">### Customizamos para tener fondos transparentes con alta resolución</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span><span class="o">=</span> <span class="mi">300</span>
@@ -2824,19 +2841,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 15 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.308%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.094%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.204%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.468%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.013%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.159%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>59</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.475%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.381%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>93.653%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>92.938%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>10</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>89.17%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>87.723%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.988%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.951%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -2898,9 +2915,16 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 <span class="sd">    color: colores</span>
 <span class="sd">    path: dirección de guardado</span>
 <span class="sd">    opt: sufijo de dato</span>
+<span class="sd">    line: línea paralela a y, &#39;&#39;=True, &#39;#&#39;=False</span>
+<span class="sd">    liney: valor para line</span>
+<span class="sd">    txth: texto, &#39;&#39;=True, &#39;#&#39;=False</span>
+<span class="sd">    txt_str: string para txth</span>
+<span class="sd">    txtx: x para txth</span>
+<span class="sd">    txty: y para txth</span>
+<span class="sd">    txts: tamaño para txt</span>
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">liney</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">txth</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">txt_str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">txtx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">txty</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">opt</span> <span class="o">=</span> <span class="n">opt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -2908,12 +2932,21 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
         <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">liney</span> <span class="o">=</span> <span class="n">liney</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">txth</span> <span class="o">=</span> <span class="n">txth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">txt_str</span> <span class="o">=</span> <span class="n">txt_str</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">txtx</span> <span class="o">=</span> <span class="n">txtx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">txty</span> <span class="o">=</span> <span class="n">txty</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">txts</span> <span class="o">=</span> <span class="n">txts</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">:</span>
             <span class="n">graph</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">]):</span>
                 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="p">),</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+            <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">plt.axhline(self.liney, color=&quot;white&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">))</span>
+            <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">ax.text(txtx, txty, txt_str, color=&quot;white&quot;, size=self.txts)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txth</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">grid_color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
@@ -3241,6 +3274,46 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Toque de queda</span>
+
+<span class="c1">## Primer gráfico: tasa de activos</span>
+<span class="n">graph1</span> <span class="o">=</span> <span class="n">graphLine</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>\
+                   <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa de activos (incidencia) *&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:]],</span> \
+                   <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">],</span> \
+                   <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../../in/toquequeda/grafico/1.png&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">liney</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+                   <span class="n">txth</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">txt_str</span><span class="o">=</span><span class="s1">&#39;Umbral para toque de queda (menor a 150)&#39;</span><span class="p">,</span> <span class="n">txtx</span><span class="o">=</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">(),</span>
+                  <span class="n">txty</span><span class="o">=</span><span class="mi">147</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1">## Segundo gráfico: avance vacunación</span>
+<span class="n">avance_graph</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span>
+                         <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:])</span><span class="o">/</span><span class="n">poblacion_yomevacuno</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">avance_graph</span> <span class="o">=</span> <span class="n">avance_graph</span><span class="p">[</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span>
+<span class="n">graph2</span> <span class="o">=</span> <span class="n">graphLine</span><span class="p">([</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>\
+                   <span class="p">[</span><span class="n">avance_graph</span><span class="p">],</span> \
+                   <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:cyan&#39;</span><span class="p">],</span> \
+                   <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../../in/toquequeda/grafico/2.png&#39;</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">liney</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+                   <span class="n">txth</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">txt_str</span><span class="o">=</span><span class="s1">&#39;Umbral para toque de queda (mayor al 80%)&#39;</span><span class="p">,</span> <span class="n">txtx</span><span class="o">=</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">(),</span>
+                  <span class="n">txty</span><span class="o">=</span><span class="mf">79.2</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2818</span><span class="o">/</span><span class="mf">2921156081.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>                    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">],</span> \
+<span class="g g-Whitespace">      </span><span class="mi">7</span>                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../../in/toquequeda/grafico/1.png&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">liney</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+<span class="ne">----&gt; </span><span class="mi">8</span>                    <span class="n">txth</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">txt_str</span><span class="o">=</span><span class="s1">&#39;Umbral para toque de queda (menor a 150)&#39;</span><span class="p">,</span> <span class="n">txtx</span><span class="o">=</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">(),</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>                   <span class="n">txty</span><span class="o">=</span><span class="mi">147</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+
+<span class="ne">NameError</span>: name &#39;avance_graph&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="generando-reportes">
@@ -3425,14 +3498,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<blockquote>
-<div><p>Todas las imágenes del reporte diario han sido correctamente exportadas.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El PDF del reporte diario ha sido exportado.</p>
-</div></blockquote>
-</div>
 </div>
 </div>
 <div class="section" id="id16">
@@ -3497,14 +3562,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<blockquote>
-<div><p>Todas las imágenes del balance de vacunas han sido correctamente exportadas.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El PDF del balance de vacunas ha sido exportado.</p>
-</div></blockquote>
-</div>
 </div>
 </div>
 <div class="section" id="id17">
@@ -3543,8 +3600,8 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">860</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">° ed.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ed_indicador</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#b9b9b9&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_ed</span><span class="p">)</span> <span class="c1"># edicion</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">360</span><span class="p">,</span> <span class="mi">380</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos acumulados en Iquique&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">)</span> <span class="c1"># fecha</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">resultado_prediccion</span><span class="p">:</span>
-            <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">490</span><span class="p">,</span> <span class="mi">512</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">resultado_prob</span><span class="p">[</span><span class="n">co</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># fecha</span>
-            <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">670</span><span class="p">,</span> <span class="mi">512</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="n">resultado_colores</span><span class="p">[</span><span class="n">co</span><span class="p">],</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># fecha</span>
+            <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">490</span><span class="p">,</span> <span class="mi">512</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">resultado_prob</span><span class="p">[</span><span class="n">co</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># prob</span>
+            <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">670</span><span class="p">,</span> <span class="mi">512</span> <span class="o">+</span> <span class="n">b</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="n">resultado_colores</span><span class="p">[</span><span class="n">co</span><span class="p">],</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># resultado</span>
             <span class="n">b</span> <span class="o">+=</span> <span class="mi">72</span>
             <span class="n">co</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -3575,13 +3632,60 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<blockquote>
-<div><p>Todas las imágenes del indicador de fase han sido correctamente exportadas.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El PDF del indicador de fase ha sido exportado.</p>
-</div></blockquote>
+</div>
+</div>
+<div class="section" id="toque-de-queda">
+<h3>Toque de queda<a class="headerlink" href="#toque-de-queda" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Indicador de fase ###</span>
+
+<span class="c1">### Abriendo gráficos guardados</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">image_path</span> <span class="o">=</span> <span class="s1">&#39;../../in/toquequeda/grafico/</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;graph</span><span class="si">{}</span><span class="s1"> = Image.open(image_path)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="n">i</span>
+
+<span class="c1">### Cargando imagenes</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">image_path</span> <span class="o">=</span> <span class="s1">&#39;../../in/toquequeda/</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;toquequeda</span><span class="si">{}</span><span class="s1"> = Image.open(image_path)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;toquequeda</span><span class="si">{}</span><span class="s1"> = toquequeda</span><span class="si">{}</span><span class="s1">.copy()&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="n">i</span>
+
+<span class="c1">### Manipulando primera, segunda, tercera y cuarta imagen</span>
+
+<span class="c1">### Para ir arreglando alto</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1">### Para tener índice de vector de colores</span>
+<span class="n">co</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;toquequeda</span><span class="si">{}</span><span class="s1">.paste(graph</span><span class="si">{}</span><span class="s1">, (-50, 100), graph</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;toquequeda</span><span class="si">{}</span><span class="s1">.save(&quot;../../out/toquequeda/</span><span class="si">{}</span><span class="s1">.png&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+<span class="c1">### ¿Todo ok?</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Todas las imágenes del reporte del toque de queda han sido correctamente exportadas.&#39;</span><span class="p">))</span>
+
+<span class="c1">### Guardamos a PDF</span>
+<span class="n">pdfs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;pdfs += [toquequeda</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    
+<span class="c1">### Histórico</span>
+<span class="n">toquequeda1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../../out/toquequeda/pdf/</span><span class="si">{}</span><span class="s1">.pdf&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa de activos (incidencia) *&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+                                             <span class="p">),</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### Última actualización</span>
+<span class="n">toquequeda1</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../../out/toquequeda/pdf/ult/ult.pdf&#39;</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="p">[</span><span class="n">pdf</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">])</span>
+
+<span class="c1">### ¿Todo ok?</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El PDF del reporte de toque de queda ha sido exportado.&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -3601,18 +3705,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_36_0.png" src="../../_images/1_thisistheway_36_0.png" />
-<img alt="../../_images/1_thisistheway_36_1.png" src="../../_images/1_thisistheway_36_1.png" />
-<img alt="../../_images/1_thisistheway_36_2.png" src="../../_images/1_thisistheway_36_2.png" />
-<img alt="../../_images/1_thisistheway_36_3.png" src="../../_images/1_thisistheway_36_3.png" />
-<img alt="../../_images/1_thisistheway_36_4.png" src="../../_images/1_thisistheway_36_4.png" />
-<img alt="../../_images/1_thisistheway_36_5.png" src="../../_images/1_thisistheway_36_5.png" />
-<img alt="../../_images/1_thisistheway_36_6.png" src="../../_images/1_thisistheway_36_6.png" />
-<img alt="../../_images/1_thisistheway_36_7.png" src="../../_images/1_thisistheway_36_7.png" />
-<img alt="../../_images/1_thisistheway_36_8.png" src="../../_images/1_thisistheway_36_8.png" />
-<img alt="../../_images/1_thisistheway_36_9.png" src="../../_images/1_thisistheway_36_9.png" />
-</div>
 </div>
 </div>
 <div class="section" id="balance-vacunas">
@@ -3626,13 +3718,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;display(vacuna</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_38_0.png" src="../../_images/1_thisistheway_38_0.png" />
-<img alt="../../_images/1_thisistheway_38_1.png" src="../../_images/1_thisistheway_38_1.png" />
-<img alt="../../_images/1_thisistheway_38_2.png" src="../../_images/1_thisistheway_38_2.png" />
-<img alt="../../_images/1_thisistheway_38_3.png" src="../../_images/1_thisistheway_38_3.png" />
-<img alt="../../_images/1_thisistheway_38_4.png" src="../../_images/1_thisistheway_38_4.png" />
 </div>
 </div>
 </div>
@@ -3648,16 +3733,19 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_40_0.png" src="../../_images/1_thisistheway_40_0.png" />
-<img alt="../../_images/1_thisistheway_40_1.png" src="../../_images/1_thisistheway_40_1.png" />
-<img alt="../../_images/1_thisistheway_40_2.png" src="../../_images/1_thisistheway_40_2.png" />
-<img alt="../../_images/1_thisistheway_40_3.png" src="../../_images/1_thisistheway_40_3.png" />
-<img alt="../../_images/1_thisistheway_40_4.png" src="../../_images/1_thisistheway_40_4.png" />
-<img alt="../../_images/1_thisistheway_40_5.png" src="../../_images/1_thisistheway_40_5.png" />
-<img alt="../../_images/1_thisistheway_40_6.png" src="../../_images/1_thisistheway_40_6.png" />
-<img alt="../../_images/1_thisistheway_40_7.png" src="../../_images/1_thisistheway_40_7.png" />
-<img alt="../../_images/1_thisistheway_40_8.png" src="../../_images/1_thisistheway_40_8.png" />
+</div>
+</div>
+<div class="section" id="id20">
+<h3>Toque de queda<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Mostramos las imágenes del indicador de fase</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;toquequeda</span><span class="si">{}</span><span class="s1"> = Image.open(&quot;../../out/toquequeda/</span><span class="si">{}</span><span class="s1">.png&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;display(toquequeda</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -3685,46 +3773,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Universidad</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Juan</td>
-      <td>Ponce</td>
-      <td>uchile</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Ermógenes</td>
-      <td>Pérez</td>
-      <td>usch</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </div>
 <div class="section" id="ejemplo-2">
@@ -3748,13 +3796,6 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  0.69 %
-La media general del error es de:  0.81 %
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_45_1.png" src="../../_images/1_thisistheway_45_1.png" />
-</div>
 </div>
 </div>
 </div>
@@ -3766,18 +3807,18 @@ La media general del error es de:  0.81 %
 <span id="aclaracion"></span><h4>Casos activos confirmados<a class="headerlink" href="#casos-activos-confirmados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos activos confirmados del reporte diario del Minsal no calzan con los del reporte epidemiológico?</strong> Ésto se debe a que, el reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No contempla en la suma de activos confirmados, a los activos probables <a class="footnote-reference brackets" href="#b51-536" id="id20">5</a>, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No contempla en la suma de activos confirmados, a los activos probables <a class="footnote-reference brackets" href="#b51-536" id="id21">5</a>, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 </div>
 <div class="section" id="casos-confirmados-acumulados">
-<span id="id21"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
+<span id="id22"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos confirmados acumulados del reporte diario del Minsal no calzan con el total del reporte epidemiológico?</strong> Ésto se debe a dos situaciones con respecto al reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No se contemplan casos probables <a class="footnote-reference brackets" href="#b51-536" id="id22">5</a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos probables <a class="footnote-reference brackets" href="#b51-536" id="id23">5</a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>No se contemplan casos notificados por laboratorio <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id23">6</a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos notificados por laboratorio <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">6</a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <p>Ésto implica que:</p>
 <div class="math notranslate nohighlight" id="equation-casos-epidemiologico">
@@ -3791,11 +3832,11 @@ La media general del error es de:  0.81 %
 <h4>Definiciones<a class="headerlink" href="#definiciones" title="Permalink to this headline">¶</a></h4>
 <p>Respecto a las definiciones de la nomenclatura:</p>
 <ul class="simple">
-<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id24">5</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id25">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
+<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id25">5</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id26">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id26">6</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id27">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
+<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id27">6</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id28">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -3867,241 +3908,6 @@ La media general del error es de:  0.81 %
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">            <details>
-            <summary>Click to view session information</summary>
-            <pre>
-            -----
-            PIL                 8.2.0
-            bs4                 4.9.3
-            datetime            NA
-            json                2.0.9
-            locale              NA
-            markdownify         NA
-            math                NA
-            matplotlib          3.3.4
-            natsort             7.1.1
-            numpy               1.19.5
-            os                  NA
-            pandas              1.2.3
-            pkg_resources       NA
-            plotly              4.8.1
-            pybtex              0.24.0
-            requests            2.25.1
-            scipy               1.6.2
-            seaborn             0.11.1
-            session_info        1.0.0
-            sklearn             0.24.1
-            time                NA
-            types               NA
-            -----
-            </pre>
-            <details>
-            <summary>Click to view modules imported as dependencies</summary>
-            <pre>
-            abc                 NA
-            argparse            1.1
-            array               NA
-            ast                 NA
-            asyncio             NA
-            atexit              NA
-            attr                20.3.0
-            backcall            0.2.0
-            base64              NA
-            bdb                 NA
-            binascii            NA
-            bisect              NA
-            bz2                 NA
-            cProfile            NA
-            calendar            NA
-            certifi             2021.05.30
-            cffi                1.14.6
-            chardet             4.0.0
-            cmath               NA
-            cmd                 NA
-            code                NA
-            codecs              NA
-            codeop              NA
-            collections         NA
-            colorama            0.4.4
-            colorsys            NA
-            concurrent          NA
-            contextlib          NA
-            contextvars         NA
-            copy                NA
-            copyreg             NA
-            csv                 1.0
-            ctypes              1.1.0
-            curses              NA
-            cycler              0.10.0
-            cython_runtime      NA
-            dataclasses         NA
-            dateutil            2.8.2
-            decimal             1.70
-            decorator           5.0.9
-            difflib             NA
-            dis                 NA
-            distutils           3.7.11
-            email               NA
-            encodings           NA
-            enum                NA
-            errno               NA
-            faulthandler        NA
-            fcntl               NA
-            filecmp             NA
-            fnmatch             NA
-            fractions           NA
-            functools           NA
-            gc                  NA
-            genericpath         NA
-            getopt              NA
-            getpass             NA
-            gettext             NA
-            glob                NA
-            grp                 NA
-            gzip                NA
-            hashlib             NA
-            heapq               NA
-            hmac                NA
-            html                NA
-            http                NA
-            idna                2.10
-            imp                 NA
-            importlib           NA
-            importlib_metadata  NA
-            inspect             NA
-            io                  NA
-            ipykernel           6.0.2
-            ipython_genutils    0.2.0
-            ipywidgets          7.6.3
-            itertools           NA
-            jedi                0.18.0
-            joblib              1.0.1
-            jsonschema          3.2.0
-            keyword             NA
-            kiwisolver          1.3.1
-            linecache           NA
-            logging             0.5.1.2
-            lzma                NA
-            marshal             4
-            matplotlib_inline   NA
-            mimetypes           NA
-            mmap                NA
-            mpl_toolkits        NA
-            multiprocessing     NA
-            nbformat            5.1.3
-            netrc               NA
-            ntpath              NA
-            numbers             NA
-            opcode              NA
-            operator            NA
-            packaging           21.0
-            parso               0.8.2
-            pathlib             NA
-            pdb                 NA
-            pexpect             4.8.0
-            pickle              NA
-            pickleshare         0.7.5
-            pkgutil             NA
-            platform            1.0.8
-            plistlib            NA
-            posix               NA
-            posixpath           NA
-            pprint              NA
-            profile             NA
-            prompt_toolkit      3.0.19
-            pstats              NA
-            pty                 NA
-            ptyprocess          0.7.0
-            pvectorc            NA
-            pwd                 NA
-            pydoc               NA
-            pydoc_data          NA
-            pyexpat             NA
-            pygments            2.9.0
-            pyparsing           2.4.7
-            pyrsistent          NA
-            pytz                2021.1
-            queue               NA
-            quopri              NA
-            random              NA
-            re                  2.2.1
-            reprlib             NA
-            resource            NA
-            retrying            NA
-            runpy               NA
-            secrets             NA
-            select              NA
-            selectors           NA
-            shlex               NA
-            shutil              NA
-            signal              NA
-            site                NA
-            six                 1.16.0
-            socket              NA
-            socketserver        0.4
-            soupsieve           2.2.1
-            sphinxcontrib       NA
-            sqlite3             2.6.0
-            sre_compile         NA
-            sre_constants       NA
-            sre_parse           NA
-            ssl                 NA
-            stat                NA
-            storemagic          NA
-            string              NA
-            stringprep          NA
-            struct              NA
-            subprocess          NA
-            sys                 3.7.11 (default, Jul  5 2021, 20:57:17) 
-[GCC 9.3.0]
-            sysconfig           NA
-            tarfile             0.9.0
-            tempfile            NA
-            termios             NA
-            textwrap            NA
-            threading           NA
-            timeit              NA
-            token               NA
-            tokenize            NA
-            tornado             6.1
-            traceback           NA
-            traitlets           5.0.5
-            tty                 NA
-            typing              NA
-            typing_extensions   NA
-            unicodedata         NA
-            unittest            NA
-            urllib              NA
-            urllib3             1.26.6
-            uu                  NA
-            uuid                NA
-            warnings            NA
-            wcwidth             0.2.5
-            weakref             NA
-            webbrowser          NA
-            xml                 NA
-            zipfile             NA
-            zipimport           NA
-            zipp                NA
-            zlib                1.0
-            zmq                 22.1.0
-            </pre>
-            </details> <!-- seems like this ends pre, so might as well be explicit -->
-            <pre>
-            -----
-            IPython             7.25.0
-            jupyter_client      6.1.12
-            jupyter_core        4.7.1
-            notebook            6.4.0
-            -----
-            Python 3.7.11 (default, Jul  5 2021, 20:57:17) [GCC 9.3.0]
-            Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
-            2 logical CPU cores, x86_64
-            -----
-            Session information updated at 2021-07-16 00:26
-            </pre>
-            </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
@@ -4119,10 +3925,10 @@ La media general del error es de:  0.81 %
 <dt class="label" id="alsweigart"><span class="brackets"><a class="fn-backref" href="#id13">4</a></span></dt>
 <dd><p>AlSweigart. Automate The Boring Stuff With Python. 2015. URL: <a class="reference external" href="https://automatetheboringstuff.com/chapter17/">https://automatetheboringstuff.com/chapter17/</a>.</p>
 </dd>
-<dt class="label" id="b51-536"><span class="brackets">5</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id22">2</a>,<a href="#id24">3</a>)</span></dt>
+<dt class="label" id="b51-536"><span class="brackets">5</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id23">2</a>,<a href="#id25">3</a>)</span></dt>
 <dd><p>Subsecretaria de Salud Pública. Ordinario B51-536. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf">https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf</a>.</p>
 </dd>
-<dt class="label" id="epi-04-06-2021"><span class="brackets">6</span><span class="fn-backref">(<a href="#id23">1</a>,<a href="#id26">2</a>)</span></dt>
+<dt class="label" id="epi-04-06-2021"><span class="brackets">6</span><span class="fn-backref">(<a href="#id24">1</a>,<a href="#id27">2</a>)</span></dt>
 <dd><p>Departamento de Epidemiología. Informe epidemiológico N° 126. Enfermedad por SARS-CoV-2 (COVID-19). Chile 04-06-2021. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf">https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf</a>.</p>
 </dd>
 </dl>

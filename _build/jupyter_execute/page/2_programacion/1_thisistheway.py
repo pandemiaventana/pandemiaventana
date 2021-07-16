@@ -59,6 +59,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import matplotlib as mpl
+import matplotlib.dates as mdates
+import matplotlib.ticker as mtick
 
 ### Customizamos para tener fondos transparentes con alta resolución
 mpl.rcParams['figure.dpi']= 300
@@ -1316,9 +1318,16 @@ class graphLine:
     color: colores
     path: dirección de guardado
     opt: sufijo de dato
+    line: línea paralela a y, ''=True, '#'=False
+    liney: valor para line
+    txth: texto, ''=True, '#'=False
+    txt_str: string para txth
+    txtx: x para txth
+    txty: y para txth
+    txts: tamaño para txt
     
     """
-    def __init__(self, x, y, color, path, opt=''):
+    def __init__(self, x, y, color, path, opt='', line='#', liney=1, txth='#', txt_str='', txtx=1, txty=1, txts=20):
         self.opt = opt
         self.s = 0
         fig, ax = plt.subplots(figsize=(4, 3))
@@ -1326,12 +1335,21 @@ class graphLine:
         ax.spines['left'].set_color('white')
         self.x = x
         self.y = y
+        self.line = line
+        self.liney = liney
+        self.txth = txth
+        self.txt_str = txt_str
+        self.txtx = txtx
+        self.txty = txty
+        self.txts = txts
         self.color = color
         self.path = path
         for x in self.x:
             graph = plt.plot(self.x[self.s], self.y[self.s], color=self.color[self.s])
             for i,j in zip(self.x[self.s],self.y[self.s]):
                 ax.annotate('{}{}'.format(int(j), self.opt),xy=(i,j), color='w', size=8, horizontalalignment='center', verticalalignment='bottom')
+            exec('{}plt.axhline(self.liney, color="white")'.format(self.line))
+            exec('{}ax.text(txtx, txty, txt_str, color="white", size=self.txts)'.format(self.txth))
             self.s += 1
         ax.tick_params(labelsize=3, colors='w', grid_color='w')
         self.path = path
@@ -1522,6 +1540,25 @@ graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].column
 print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
+# In[13]:
+
+
+### Toque de queda
+
+## Primer gráfico: tasa de activos
+graph1 = graphLine([df[-14:].index],                   [df['Tasa de activos (incidencia) *'][-14:]],                    color=['tab:orange'],                    path='../../in/toquequeda/grafico/1.png', line='', liney=150,
+                   txth='', txt_str='Umbral para toque de queda (menor a 150)', txtx=avance_graph.first_valid_index(),
+                  txty=147, txts=6)
+
+## Segundo gráfico: avance vacunación
+avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
+                         + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
+avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
+graph2 = graphLine([avance_graph.index],                   [avance_graph],                    color=['tab:cyan'],                    path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
+                   txth='', txt_str='Umbral para toque de queda (mayor al 80%)', txtx=avance_graph.first_valid_index(),
+                  txty=79.2, txts=6)
+
+
 # ## Generando reportes
 # 
 # ---
@@ -1544,7 +1581,7 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[13]:
+# In[ ]:
 
 
 ### Generando reporte diario ###
@@ -1714,7 +1751,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[14]:
+# In[ ]:
 
 
 ### Generando balance de vacunas ###
@@ -1776,7 +1813,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[15]:
+# In[ ]:
 
 
 ### Indicador de fase ###
@@ -1811,8 +1848,8 @@ for i in x:
         txt.text((860, 35), '{}° ed.'.format(ed_indicador), fill='#b9b9b9', font=roboto_ed) # edicion
         txt.text((360, 380), '{}'.format(df['Casos acumulados en Iquique'].last_valid_index().strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         for val in resultado_prediccion:
-            txt.text((490, 512 + b), '{} '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # fecha
-            txt.text((670, 512 + b), '{}'.format(val), fill=resultado_colores[co], font=roboto_data3) # fecha
+            txt.text((490, 512 + b), '{} '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # prob
+            txt.text((670, 512 + b), '{}'.format(val), fill=resultado_colores[co], font=roboto_data3) # resultado
             b += 72
             co += 1
     elif i == 2:
@@ -1842,13 +1879,66 @@ indicadorfase1.convert('RGB').save('../../out/indicadorfase/pdf/ult/ult.pdf', sa
 display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 
+# ### Toque de queda
+
+# In[ ]:
+
+
+### Indicador de fase ###
+
+### Abriendo gráficos guardados
+x = range(1, 3)
+for i in x:
+    image_path = '../../in/toquequeda/grafico/{}.png'.format(i)
+    exec('graph{} = Image.open(image_path)'.format(i))
+    i += i
+
+### Cargando imagenes
+x = range(1, 3)
+for i in x:
+    image_path = '../../in/toquequeda/{}.png'.format(i)
+    exec('toquequeda{} = Image.open(image_path)'.format(i))
+    exec('toquequeda{} = toquequeda{}.copy()'.format(i, i))
+    i += i
+
+### Manipulando primera, segunda, tercera y cuarta imagen
+
+### Para ir arreglando alto
+b = 0
+
+### Para tener índice de vector de colores
+co = 0
+
+for i in x:
+    exec('toquequeda{}.paste(graph{}, (-50, 100), graph{})'.format(i, i, i))
+    exec('toquequeda{}.save("../../out/toquequeda/{}.png")'.format(i, i))
+
+### ¿Todo ok?
+display(Markdown('> Todas las imágenes del reporte del toque de queda han sido correctamente exportadas.'))
+
+### Guardamos a PDF
+pdfs = []
+for i in range(2, 3):
+    exec('pdfs += [toquequeda{}]'.format(i))
+    
+### Histórico
+toquequeda1.convert('RGB').save('../../out/toquequeda/pdf/{}.pdf'.format(df['Tasa de activos (incidencia) *'].last_valid_index().strftime('%Y.%m.%d')
+                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### Última actualización
+toquequeda1.convert('RGB').save('../../out/toquequeda/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+
+### ¿Todo ok?
+display(Markdown('> El PDF del reporte de toque de queda ha sido exportado.'))
+
+
 # ## Resultado
 # 
 # ---
 
 # ### Reporte diario
 
-# In[16]:
+# In[ ]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1860,7 +1950,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[17]:
+# In[ ]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -1872,7 +1962,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[18]:
+# In[ ]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -1880,6 +1970,18 @@ x = range(1, 10)
 for i in x:
     exec('diario{} = Image.open("../../out/indicadorfase/{}.png")'.format(i, i))
     exec('display(indicadorfase{})'.format(i))
+
+
+# ### Toque de queda
+
+# In[ ]:
+
+
+### Mostramos las imágenes del indicador de fase
+x = range(1, 3)
+for i in x:
+    exec('toquequeda{} = Image.open("../../out/toquequeda/{}.png")'.format(i, i))
+    exec('display(toquequeda{})'.format(i))
 
 
 # ## Ejemplos
@@ -1891,7 +1993,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[19]:
+# In[ ]:
 
 
 ### Ejemplo 1 ###
@@ -1913,7 +2015,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[20]:
+# In[ ]:
 
 
 ### Ejemplo 2 ###
@@ -1973,7 +2075,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[21]:
+# In[ ]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2029,7 +2131,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[22]:
+# In[ ]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
