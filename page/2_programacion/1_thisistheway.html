@@ -254,13 +254,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../5_reportes/4_reportes.html">
-     Reportes históricos
+    <a class="reference internal" href="../5_reportes/toquequeda.html">
+     Toque de queda
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../5_reportes/toquequeda.html">
-     Toque de queda
+    <a class="reference internal" href="../5_reportes/4_reportes.html">
+     Reportes históricos
     </a>
    </li>
   </ul>
@@ -2841,19 +2841,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 15 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.094%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.181%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.468%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.92%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.159%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.976%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>59</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.381%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.513%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>92.938%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>93.292%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>10</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>87.723%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>89.984%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.951%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.867%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
@@ -3277,6 +3277,10 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Toque de queda</span>
+<span class="n">avance_graph</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span>
+                         <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:])</span><span class="o">/</span><span class="n">poblacion_yomevacuno</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">avance_graph</span> <span class="o">=</span> <span class="n">avance_graph</span><span class="p">[</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span>
+
 
 <span class="c1">## Primer gráfico: tasa de activos</span>
 <span class="n">graph1</span> <span class="o">=</span> <span class="n">graphLine</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>\
@@ -3287,9 +3291,7 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
                   <span class="n">txty</span><span class="o">=</span><span class="mi">147</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="c1">## Segundo gráfico: avance vacunación</span>
-<span class="n">avance_graph</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span>
-                         <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:])</span><span class="o">/</span><span class="n">poblacion_yomevacuno</span><span class="o">*</span><span class="mi">100</span>
-<span class="n">avance_graph</span> <span class="o">=</span> <span class="n">avance_graph</span><span class="p">[</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span>
+
 <span class="n">graph2</span> <span class="o">=</span> <span class="n">graphLine</span><span class="p">([</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>\
                    <span class="p">[</span><span class="n">avance_graph</span><span class="p">],</span> \
                    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:cyan&#39;</span><span class="p">],</span> \
@@ -3300,16 +3302,12 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2818</span><span class="o">/</span><span class="mf">2921156081.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>                    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">],</span> \
-<span class="g g-Whitespace">      </span><span class="mi">7</span>                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../../in/toquequeda/grafico/1.png&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">liney</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
-<span class="ne">----&gt; </span><span class="mi">8</span>                    <span class="n">txth</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">txt_str</span><span class="o">=</span><span class="s1">&#39;Umbral para toque de queda (menor a 150)&#39;</span><span class="p">,</span> <span class="n">txtx</span><span class="o">=</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">(),</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>                   <span class="n">txty</span><span class="o">=</span><span class="mi">147</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-
-<span class="ne">NameError</span>: name &#39;avance_graph&#39; is not defined
+<img alt="../../_images/1_thisistheway_27_0.png" src="../../_images/1_thisistheway_27_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_27_2.png" src="../../_images/1_thisistheway_27_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
 </div>
@@ -3498,6 +3496,14 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Todas las imágenes del reporte diario han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del reporte diario ha sido exportado.</p>
+</div></blockquote>
+</div>
 </div>
 </div>
 <div class="section" id="id16">
@@ -3561,6 +3567,14 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El PDF del balance de vacunas ha sido exportado.&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Todas las imágenes del balance de vacunas han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del balance de vacunas ha sido exportado.</p>
+</div></blockquote>
 </div>
 </div>
 </div>
@@ -3632,6 +3646,14 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Todas las imágenes del indicador de fase han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del indicador de fase ha sido exportado.</p>
+</div></blockquote>
+</div>
 </div>
 </div>
 <div class="section" id="toque-de-queda">
@@ -3687,6 +3709,14 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Todas las imágenes del reporte del toque de queda han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del reporte de toque de queda ha sido exportado.</p>
+</div></blockquote>
+</div>
 </div>
 </div>
 </div>
@@ -3705,6 +3735,18 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_39_0.png" src="../../_images/1_thisistheway_39_0.png" />
+<img alt="../../_images/1_thisistheway_39_1.png" src="../../_images/1_thisistheway_39_1.png" />
+<img alt="../../_images/1_thisistheway_39_2.png" src="../../_images/1_thisistheway_39_2.png" />
+<img alt="../../_images/1_thisistheway_39_3.png" src="../../_images/1_thisistheway_39_3.png" />
+<img alt="../../_images/1_thisistheway_39_4.png" src="../../_images/1_thisistheway_39_4.png" />
+<img alt="../../_images/1_thisistheway_39_5.png" src="../../_images/1_thisistheway_39_5.png" />
+<img alt="../../_images/1_thisistheway_39_6.png" src="../../_images/1_thisistheway_39_6.png" />
+<img alt="../../_images/1_thisistheway_39_7.png" src="../../_images/1_thisistheway_39_7.png" />
+<img alt="../../_images/1_thisistheway_39_8.png" src="../../_images/1_thisistheway_39_8.png" />
+<img alt="../../_images/1_thisistheway_39_9.png" src="../../_images/1_thisistheway_39_9.png" />
+</div>
 </div>
 </div>
 <div class="section" id="balance-vacunas">
@@ -3718,6 +3760,13 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;display(vacuna</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_41_0.png" src="../../_images/1_thisistheway_41_0.png" />
+<img alt="../../_images/1_thisistheway_41_1.png" src="../../_images/1_thisistheway_41_1.png" />
+<img alt="../../_images/1_thisistheway_41_2.png" src="../../_images/1_thisistheway_41_2.png" />
+<img alt="../../_images/1_thisistheway_41_3.png" src="../../_images/1_thisistheway_41_3.png" />
+<img alt="../../_images/1_thisistheway_41_4.png" src="../../_images/1_thisistheway_41_4.png" />
 </div>
 </div>
 </div>
@@ -3733,6 +3782,17 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_43_0.png" src="../../_images/1_thisistheway_43_0.png" />
+<img alt="../../_images/1_thisistheway_43_1.png" src="../../_images/1_thisistheway_43_1.png" />
+<img alt="../../_images/1_thisistheway_43_2.png" src="../../_images/1_thisistheway_43_2.png" />
+<img alt="../../_images/1_thisistheway_43_3.png" src="../../_images/1_thisistheway_43_3.png" />
+<img alt="../../_images/1_thisistheway_43_4.png" src="../../_images/1_thisistheway_43_4.png" />
+<img alt="../../_images/1_thisistheway_43_5.png" src="../../_images/1_thisistheway_43_5.png" />
+<img alt="../../_images/1_thisistheway_43_6.png" src="../../_images/1_thisistheway_43_6.png" />
+<img alt="../../_images/1_thisistheway_43_7.png" src="../../_images/1_thisistheway_43_7.png" />
+<img alt="../../_images/1_thisistheway_43_8.png" src="../../_images/1_thisistheway_43_8.png" />
+</div>
 </div>
 </div>
 <div class="section" id="id20">
@@ -3746,6 +3806,10 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;display(toquequeda</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_45_0.png" src="../../_images/1_thisistheway_45_0.png" />
+<img alt="../../_images/1_thisistheway_45_1.png" src="../../_images/1_thisistheway_45_1.png" />
 </div>
 </div>
 </div>
@@ -3773,6 +3837,46 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Universidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan</td>
+      <td>Ponce</td>
+      <td>uchile</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ermógenes</td>
+      <td>Pérez</td>
+      <td>usch</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="ejemplo-2">
@@ -3795,6 +3899,13 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  0.69 %
+La media general del error es de:  0.81 %
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_50_1.png" src="../../_images/1_thisistheway_50_1.png" />
 </div>
 </div>
 </div>
@@ -3908,6 +4019,241 @@ Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Ap
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            PIL                 8.2.0
+            bs4                 4.9.3
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            markdownify         NA
+            math                NA
+            matplotlib          3.3.4
+            natsort             7.1.1
+            numpy               1.19.5
+            os                  NA
+            pandas              1.2.3
+            pkg_resources       NA
+            plotly              4.8.1
+            pybtex              0.24.0
+            requests            2.25.1
+            scipy               1.6.2
+            seaborn             0.11.1
+            session_info        1.0.0
+            sklearn             0.24.1
+            time                NA
+            types               NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                 NA
+            argparse            1.1
+            array               NA
+            ast                 NA
+            asyncio             NA
+            atexit              NA
+            attr                20.3.0
+            backcall            0.2.0
+            base64              NA
+            bdb                 NA
+            binascii            NA
+            bisect              NA
+            bz2                 NA
+            cProfile            NA
+            calendar            NA
+            certifi             2021.05.30
+            cffi                1.14.6
+            chardet             4.0.0
+            cmath               NA
+            cmd                 NA
+            code                NA
+            codecs              NA
+            codeop              NA
+            collections         NA
+            colorama            0.4.4
+            colorsys            NA
+            concurrent          NA
+            contextlib          NA
+            contextvars         NA
+            copy                NA
+            copyreg             NA
+            csv                 1.0
+            ctypes              1.1.0
+            curses              NA
+            cycler              0.10.0
+            cython_runtime      NA
+            dataclasses         NA
+            dateutil            2.8.2
+            decimal             1.70
+            decorator           5.0.9
+            difflib             NA
+            dis                 NA
+            distutils           3.7.11
+            email               NA
+            encodings           NA
+            enum                NA
+            errno               NA
+            faulthandler        NA
+            fcntl               NA
+            filecmp             NA
+            fnmatch             NA
+            fractions           NA
+            functools           NA
+            gc                  NA
+            genericpath         NA
+            getopt              NA
+            getpass             NA
+            gettext             NA
+            glob                NA
+            grp                 NA
+            gzip                NA
+            hashlib             NA
+            heapq               NA
+            hmac                NA
+            html                NA
+            http                NA
+            idna                2.10
+            imp                 NA
+            importlib           NA
+            importlib_metadata  NA
+            inspect             NA
+            io                  NA
+            ipykernel           6.0.2
+            ipython_genutils    0.2.0
+            ipywidgets          7.6.3
+            itertools           NA
+            jedi                0.18.0
+            joblib              1.0.1
+            jsonschema          3.2.0
+            keyword             NA
+            kiwisolver          1.3.1
+            linecache           NA
+            logging             0.5.1.2
+            lzma                NA
+            marshal             4
+            matplotlib_inline   NA
+            mimetypes           NA
+            mmap                NA
+            mpl_toolkits        NA
+            multiprocessing     NA
+            nbformat            5.1.3
+            netrc               NA
+            ntpath              NA
+            numbers             NA
+            opcode              NA
+            operator            NA
+            packaging           21.0
+            parso               0.8.2
+            pathlib             NA
+            pdb                 NA
+            pexpect             4.8.0
+            pickle              NA
+            pickleshare         0.7.5
+            pkgutil             NA
+            platform            1.0.8
+            plistlib            NA
+            posix               NA
+            posixpath           NA
+            pprint              NA
+            profile             NA
+            prompt_toolkit      3.0.19
+            pstats              NA
+            pty                 NA
+            ptyprocess          0.7.0
+            pvectorc            NA
+            pwd                 NA
+            pydoc               NA
+            pydoc_data          NA
+            pyexpat             NA
+            pygments            2.9.0
+            pyparsing           2.4.7
+            pyrsistent          NA
+            pytz                2021.1
+            queue               NA
+            quopri              NA
+            random              NA
+            re                  2.2.1
+            reprlib             NA
+            resource            NA
+            retrying            NA
+            runpy               NA
+            secrets             NA
+            select              NA
+            selectors           NA
+            shlex               NA
+            shutil              NA
+            signal              NA
+            site                NA
+            six                 1.16.0
+            socket              NA
+            socketserver        0.4
+            soupsieve           2.2.1
+            sphinxcontrib       NA
+            sqlite3             2.6.0
+            sre_compile         NA
+            sre_constants       NA
+            sre_parse           NA
+            ssl                 NA
+            stat                NA
+            storemagic          NA
+            string              NA
+            stringprep          NA
+            struct              NA
+            subprocess          NA
+            sys                 3.7.11 (default, Jul  5 2021, 20:57:17) 
+[GCC 9.3.0]
+            sysconfig           NA
+            tarfile             0.9.0
+            tempfile            NA
+            termios             NA
+            textwrap            NA
+            threading           NA
+            timeit              NA
+            token               NA
+            tokenize            NA
+            tornado             6.1
+            traceback           NA
+            traitlets           5.0.5
+            tty                 NA
+            typing              NA
+            typing_extensions   NA
+            unicodedata         NA
+            unittest            NA
+            urllib              NA
+            urllib3             1.26.6
+            uu                  NA
+            uuid                NA
+            warnings            NA
+            wcwidth             0.2.5
+            weakref             NA
+            webbrowser          NA
+            xml                 NA
+            zipfile             NA
+            zipimport           NA
+            zipp                NA
+            zlib                1.0
+            zmq                 22.1.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.25.0
+            jupyter_client      6.1.12
+            jupyter_core        4.7.1
+            notebook            6.4.0
+            -----
+            Python 3.7.11 (default, Jul  5 2021, 20:57:17) [GCC 9.3.0]
+            Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2021-07-16 02:45
+            </pre>
+            </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
