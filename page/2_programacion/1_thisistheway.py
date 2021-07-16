@@ -271,15 +271,7 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 #
 # ### Datos por agregar
 #
-# Por tiempo, falta añadir las siguientes variables (*si se requieren, abrir un Issue o solicitarlo directamente*):
-#
-# - Tasa de incidencia histórica por comuna.
-#
-# - Tasa de incidencia histórica por provincia.
-#
-# - Tasa de incidencia histórica en región.
-#
-# - Tasa de incidencia acumulada (*en caso de estar disponible*).
+# Si se requieren, abrir un Issue o solicitarlo directamente.
 #
 # ### Datos calculados
 #
