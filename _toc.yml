@@ -35,6 +35,7 @@ sections:
   - file: page/5_reportes/2_reportes
   - file: page/5_reportes/3_reportes
   - file: page/5_reportes/4_reportes
+  - file: page/5_reportes/toquequeda
 - file: page/5_reportes/infografias/0_infografias
   sections:
   - file: page/5_reportes/infografias/1_infografias
