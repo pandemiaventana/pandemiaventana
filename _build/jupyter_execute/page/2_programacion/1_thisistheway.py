@@ -1265,6 +1265,43 @@ pred += """
 display(Markdown(pred))
 
 
+# ### Toque de queda a las 00:00 hrs.
+
+# In[10]:
+
+
+### Balance vacunas ###
+
+if int(tasa_activos)<150:
+    cumplimiento_tasa = '✔️'
+else:
+    cumplimiento_tasa = '❌'
+    
+if int(procesovacunacion_hoy)>= 80:
+    cumplimiento_vacunacion = '✔️'
+else:
+    cumplimiento_vacunacion = '❌' 
+
+### Descripción
+desc2 = """¿Toque de queda a las 00:00 hrs.? 🕑
+
+Para que en la Región se pueda aplazar el toque de queda, se deben cumplir los siguientes indicadores:
+
+• Tasa de incidencia de activos menor a 150 (actualmente es {}). {}
+• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}
+
+[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+• Datos actualizados de acuerdo a informes del {}.
+• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+• Autor: Alejandro Dinamarca.
+
+¡A cuidarse Tarapacá! 😉
+""".format(tasa_activos, cumplimiento_tasa, procesovacunacion_hoy, cumplimiento_vacunacion, fecha_hoy)
+
+## Imprimimos
+print(desc2)
+
+
 # ## Graficando
 # 
 # ---
@@ -1282,7 +1319,7 @@ display(Markdown(pred))
 
 # ### Reporte diario
 
-# In[10]:
+# In[11]:
 
 
 ### Graficando para reporte diario ###
@@ -1389,7 +1426,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[11]:
+# In[12]:
 
 
 ### Graficando para balance vacunas ###
@@ -1497,7 +1534,7 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 
 # ### Indicador de fase
 
-# In[12]:
+# In[13]:
 
 
 ### Graficando para indicador fase ###
@@ -1544,7 +1581,7 @@ graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].column
 print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
-# In[13]:
+# In[14]:
 
 
 ### Toque de queda
@@ -1587,7 +1624,7 @@ graph2 = graphLine([avance_graph.index],                   [avance_graph],      
 
 # ### Reporte diario
 
-# In[14]:
+# In[15]:
 
 
 ### Generando reporte diario ###
@@ -1757,7 +1794,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[15]:
+# In[16]:
 
 
 ### Generando balance de vacunas ###
@@ -1819,7 +1856,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[16]:
+# In[17]:
 
 
 ### Indicador de fase ###
@@ -1887,7 +1924,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Toque de queda
 
-# In[17]:
+# In[18]:
 
 
 ### Indicador de fase ###
@@ -1907,18 +1944,12 @@ for i in x:
     exec('toquequeda{} = toquequeda{}.copy()'.format(i, i))
     i += i
 
-### Manipulando primera, segunda, tercera y cuarta imagen
-
-### Para ir arreglando alto
-b = 0
-
-### Para tener índice de vector de colores
-co = 0
-
 for i in x:
     exec('toquequeda{}.paste(graph{}, (-50, 100), graph{})'.format(i, i, i))
+    exec("txt = ImageDraw.Draw(toquequeda{})".format(i))
+    txt.text((920, 5), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
     exec('toquequeda{}.save("../../out/toquequeda/{}.png")'.format(i, i))
-
+    
 ### ¿Todo ok?
 display(Markdown('> Todas las imágenes del reporte del toque de queda han sido correctamente exportadas.'))
 
@@ -1944,7 +1975,7 @@ display(Markdown('> El PDF del reporte de toque de queda ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[18]:
+# In[19]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1956,7 +1987,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[19]:
+# In[20]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -1968,7 +1999,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[20]:
+# In[21]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -1980,7 +2011,7 @@ for i in x:
 
 # ### Toque de queda
 
-# In[21]:
+# In[22]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -1999,7 +2030,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[22]:
+# In[23]:
 
 
 ### Ejemplo 1 ###
@@ -2021,7 +2052,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[23]:
+# In[24]:
 
 
 ### Ejemplo 2 ###
@@ -2081,7 +2112,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[24]:
+# In[25]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2137,7 +2168,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[25]:
+# In[26]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
