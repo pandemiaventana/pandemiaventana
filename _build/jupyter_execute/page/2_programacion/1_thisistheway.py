@@ -1544,6 +1544,10 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
 ### Toque de queda
+avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
+                         + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
+avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
+
 
 ## Primer gráfico: tasa de activos
 graph1 = graphLine([df[-14:].index],                   [df['Tasa de activos (incidencia) *'][-14:]],                    color=['tab:orange'],                    path='../../in/toquequeda/grafico/1.png', line='', liney=150,
@@ -1551,9 +1555,7 @@ graph1 = graphLine([df[-14:].index],                   [df['Tasa de activos (inc
                   txty=147, txts=6)
 
 ## Segundo gráfico: avance vacunación
-avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
-                         + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
-avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
+
 graph2 = graphLine([avance_graph.index],                   [avance_graph],                    color=['tab:cyan'],                    path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
                    txth='', txt_str='Umbral para toque de queda (mayor al 80%)', txtx=avance_graph.first_valid_index(),
                   txty=79.2, txts=6)
@@ -1581,7 +1583,7 @@ graph2 = graphLine([avance_graph.index],                   [avance_graph],      
 
 # ### Reporte diario
 
-# In[ ]:
+# In[14]:
 
 
 ### Generando reporte diario ###
@@ -1751,7 +1753,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[ ]:
+# In[15]:
 
 
 ### Generando balance de vacunas ###
@@ -1813,7 +1815,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[ ]:
+# In[16]:
 
 
 ### Indicador de fase ###
@@ -1881,7 +1883,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Toque de queda
 
-# In[ ]:
+# In[17]:
 
 
 ### Indicador de fase ###
@@ -1938,7 +1940,7 @@ display(Markdown('> El PDF del reporte de toque de queda ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[ ]:
+# In[18]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -1950,7 +1952,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[ ]:
+# In[19]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -1962,7 +1964,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[ ]:
+# In[20]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -1974,7 +1976,7 @@ for i in x:
 
 # ### Toque de queda
 
-# In[ ]:
+# In[21]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -1993,7 +1995,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[ ]:
+# In[22]:
 
 
 ### Ejemplo 1 ###
@@ -2015,7 +2017,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[ ]:
+# In[23]:
 
 
 ### Ejemplo 2 ###
@@ -2075,7 +2077,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[ ]:
+# In[24]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2131,7 +2133,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[ ]:
+# In[25]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
