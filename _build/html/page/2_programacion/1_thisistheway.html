@@ -1151,6 +1151,12 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manipulando datos</span>
 
+<span class="c1">### Población segregada por comuna</span>
+<span class="n">poblacion</span> <span class="o">=</span> <span class="n">csv7</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span>
+<span class="c1">### Población por comuna</span>
+<span class="n">poblaciones_comunales</span> <span class="o">=</span> <span class="n">csv38</span><span class="p">[</span><span class="n">csv38</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;Poblacion&#39;</span><span class="p">]</span>
+<span class="n">poblaciones_comunales</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
 <span class="c1">### Obteniendo casos cumulativos</span>
 <span class="n">casos_cumulativos</span> <span class="o">=</span> <span class="n">csv13</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span>
 <span class="n">casos_cumulativos</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">csv13</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span>
@@ -1337,7 +1343,6 @@
     <span class="n">csv18</span><span class="o">.</span><span class="n">Region</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Comuna&#39;</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Total&#39;</span><span class="p">,</span> <span class="s1">&#39;regional&#39;</span><span class="p">)</span>
     
 <span class="c1">### Otras cifras</span>
-<span class="n">poblacion</span> <span class="o">=</span> <span class="n">csv7</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span>
 <span class="n">uciocupacion_nacional</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(((</span><span class="nb">int</span><span class="p">(</span><span class="n">csv58</span><span class="p">[(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Total&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Serie&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Camas UCI ocupadas no COVID-19&#39;</span><span class="p">)]</span><span class="o">.</span>\
                          <span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv58</span><span class="p">[(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Total&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Serie&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Camas UCI ocupadas COVID-19&#39;</span><span class="p">)]</span>\
                          <span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">/</span><span class="n">csv58</span><span class="p">[(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Total&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">csv58</span><span class="p">[</span><span class="s1">&#39;Serie&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Camas UCI habilitadas&#39;</span><span class="p">)]</span>\
@@ -1393,8 +1398,6 @@
 
 <span class="c1">### Mortalidad específica por cien mil habitantes por comuna</span>
 <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">poblaciones_comunales</span> <span class="o">=</span> <span class="n">csv38</span><span class="p">[</span><span class="n">csv38</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;Poblacion&#39;</span><span class="p">]</span>
-<span class="n">poblaciones_comunales</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
 <span class="n">me_comuna</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([])</span>
 <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">fallecidosdeis_conf_comuna</span><span class="p">:</span>
     <span class="n">me_comuna</span><span class="p">[</span><span class="s1">&#39;Mortalidad especifica comunal </span><span class="si">{}</span><span class="s1"> *&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">[</span><span class="mi">28</span><span class="p">:])]</span> <span class="o">=</span> <span class="n">fallecidosdeis_conf_comuna</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">/</span><span class="n">poblaciones_comunales</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mi">100000</span>
@@ -1418,20 +1421,6 @@
 
 <span class="c1">### Población yomevacuno</span>
 <span class="n">poblacion_yomevacuno</span> <span class="o">=</span> <span class="mi">286597</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2868</span><span class="o">/</span><span class="mf">1143040002.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">csv19</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">][</span><span class="mi">4</span><span class="p">:]</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="n">casoscomuna_activos</span> <span class="o">=</span> <span class="n">casoscomuna_activos</span><span class="p">[</span><span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-<span class="ne">--&gt; </span><span class="mi">123</span> <span class="n">incidencia_activos</span> <span class="o">=</span> <span class="p">(((</span><span class="n">casos_activos</span> <span class="o">+</span> <span class="n">casos_activos_probables</span><span class="p">)</span><span class="o">/</span><span class="n">poblacion</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span> 
-<span class="g g-Whitespace">    </span><span class="mi">125</span> <span class="c1">### Paso a paso histórico por comuna (descartamos zonas rurales)</span>
-
-<span class="ne">NameError</span>: name &#39;poblacion&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1537,6 +1526,731 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Casos confirmados acumulados</th>
+      <th>Casos recuperados acumulados</th>
+      <th>Casos fallecidos acumulados</th>
+      <th>Casos activos confirmados</th>
+      <th>Casos activos probables</th>
+      <th>Casos nuevos</th>
+      <th>Casos nuevos con sintomas</th>
+      <th>Casos nuevos sin sintomas</th>
+      <th>Casos nuevos por laboratorio</th>
+      <th>Casos nuevos por antigeno</th>
+      <th>Casos con sospecha de reinfeccion</th>
+      <th>Casos recuperados nuevos</th>
+      <th>Casos fallecidos nuevos</th>
+      <th>Antigenos informados nuevos</th>
+      <th>Antigenos informados acumulados</th>
+      <th>PCR informados nuevos</th>
+      <th>PCR informados acumulados</th>
+      <th>Cupos en residencias</th>
+      <th>Usuarios en residencias</th>
+      <th>Numero de residencias</th>
+      <th>UCI habilitadas</th>
+      <th>UCI ocupadas por confirmados</th>
+      <th>UCI ocupadas por no confirmados</th>
+      <th>UCI ocupacion media movil real</th>
+      <th>Re regional</th>
+      <th>...</th>
+      <th>Incidencia acumulada Alto Hospicio</th>
+      <th>Incidencia acumulada Camina</th>
+      <th>Incidencia acumulada Colchane</th>
+      <th>Incidencia acumulada Huara</th>
+      <th>Incidencia acumulada Iquique</th>
+      <th>Incidencia acumulada Pica</th>
+      <th>Incidencia acumulada Pozo Almonte</th>
+      <th>Incidencia acumulada regional</th>
+      <th>Positividad media movil *</th>
+      <th>Mortalidad especifica *</th>
+      <th>Crecimiento semanal *</th>
+      <th>Crecimiento diario *</th>
+      <th>UCI ocupacion media movil aprox *</th>
+      <th>UCI error abs *</th>
+      <th>Tasa casos nuevos *</th>
+      <th>Positividad antigeno *</th>
+      <th>Positividad antigeno media movil *</th>
+      <th>Mortalidad especifica comunal Alto Hospicio *</th>
+      <th>Mortalidad especifica comunal Camiña *</th>
+      <th>Mortalidad especifica comunal Colchane *</th>
+      <th>Mortalidad especifica comunal Huara *</th>
+      <th>Mortalidad especifica comunal Iquique *</th>
+      <th>Mortalidad especifica comunal Pica *</th>
+      <th>Mortalidad especifica comunal Pozo Almonte *</th>
+      <th>Tasa de activos (incidencia) *</th>
+    </tr>
+    <tr>
+      <th>Fecha</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-03-03</th>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2020-03-04</th>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2020-03-05</th>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2020-03-06</th>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2020-03-07</th>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-07-11</th>
+      <td>39,485.00</td>
+      <td>38,407.00</td>
+      <td>755.00</td>
+      <td>303.00</td>
+      <td>146.00</td>
+      <td>35.00</td>
+      <td>21.00</td>
+      <td>13.00</td>
+      <td>1.00</td>
+      <td>5.00</td>
+      <td>42.00</td>
+      <td>35.00</td>
+      <td>4.00</td>
+      <td>124.00</td>
+      <td>2,983.00</td>
+      <td>1,449.00</td>
+      <td>436,589.00</td>
+      <td>604.00</td>
+      <td>420.00</td>
+      <td>8.00</td>
+      <td>61.00</td>
+      <td>35.00</td>
+      <td>4.00</td>
+      <td>73.53</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.00</td>
+      <td>197.24</td>
+      <td>0.93</td>
+      <td>0.85</td>
+      <td>73.53</td>
+      <td>0.00</td>
+      <td>11.91</td>
+      <td>4.03</td>
+      <td>4.55</td>
+      <td>133.08</td>
+      <td>218.18</td>
+      <td>126.34</td>
+      <td>233.33</td>
+      <td>236.73</td>
+      <td>201.41</td>
+      <td>137.97</td>
+      <td>117.30</td>
+    </tr>
+    <tr>
+      <th>2021-07-12</th>
+      <td>39,515.00</td>
+      <td>38,457.00</td>
+      <td>757.00</td>
+      <td>281.00</td>
+      <td>128.00</td>
+      <td>31.00</td>
+      <td>22.00</td>
+      <td>9.00</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>42.00</td>
+      <td>50.00</td>
+      <td>2.00</td>
+      <td>106.00</td>
+      <td>3,089.00</td>
+      <td>1,844.00</td>
+      <td>438,433.00</td>
+      <td>604.00</td>
+      <td>385.00</td>
+      <td>8.00</td>
+      <td>61.00</td>
+      <td>35.00</td>
+      <td>3.00</td>
+      <td>70.48</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>11,543.9</td>
+      <td>15,490.9</td>
+      <td>9,096.7</td>
+      <td>14,766.7</td>
+      <td>12,677.3</td>
+      <td>16,549.2</td>
+      <td>12,785.3</td>
+      <td>12,625.2</td>
+      <td>3.00</td>
+      <td>197.77</td>
+      <td>0.83</td>
+      <td>0.89</td>
+      <td>70.48</td>
+      <td>0.00</td>
+      <td>10.79</td>
+      <td>0.94</td>
+      <td>4.52</td>
+      <td>135.39</td>
+      <td>218.18</td>
+      <td>126.34</td>
+      <td>233.33</td>
+      <td>238.52</td>
+      <td>201.41</td>
+      <td>137.97</td>
+      <td>106.85</td>
+    </tr>
+    <tr>
+      <th>2021-07-13</th>
+      <td>39,541.00</td>
+      <td>38,502.00</td>
+      <td>757.00</td>
+      <td>262.00</td>
+      <td>118.00</td>
+      <td>26.00</td>
+      <td>15.00</td>
+      <td>7.00</td>
+      <td>4.00</td>
+      <td>4.00</td>
+      <td>42.00</td>
+      <td>45.00</td>
+      <td>0.00</td>
+      <td>88.00</td>
+      <td>3,177.00</td>
+      <td>1,359.00</td>
+      <td>439,792.00</td>
+      <td>604.00</td>
+      <td>342.00</td>
+      <td>8.00</td>
+      <td>61.00</td>
+      <td>35.00</td>
+      <td>4.00</td>
+      <td>68.38</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>197.77</td>
+      <td>0.89</td>
+      <td>0.84</td>
+      <td>67.68</td>
+      <td>0.69</td>
+      <td>10.52</td>
+      <td>4.55</td>
+      <td>4.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>99.28</td>
+    </tr>
+    <tr>
+      <th>2021-07-14</th>
+      <td>39,560.00</td>
+      <td>38,551.00</td>
+      <td>757.00</td>
+      <td>232.00</td>
+      <td>117.00</td>
+      <td>18.00</td>
+      <td>12.00</td>
+      <td>5.00</td>
+      <td>1.00</td>
+      <td>3.00</td>
+      <td>43.00</td>
+      <td>49.00</td>
+      <td>0.00</td>
+      <td>163.00</td>
+      <td>3,340.00</td>
+      <td>1,215.00</td>
+      <td>441,007.00</td>
+      <td>604.00</td>
+      <td>310.00</td>
+      <td>8.00</td>
+      <td>NaN</td>
+      <td>34.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>197.77</td>
+      <td>0.85</td>
+      <td>0.69</td>
+      <td>65.34</td>
+      <td>NaN</td>
+      <td>10.11</td>
+      <td>1.84</td>
+      <td>4.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>91.18</td>
+    </tr>
+    <tr>
+      <th>2021-07-15</th>
+      <td>39,649.00</td>
+      <td>38,627.00</td>
+      <td>762.00</td>
+      <td>240.00</td>
+      <td>112.00</td>
+      <td>46.00</td>
+      <td>27.00</td>
+      <td>16.00</td>
+      <td>3.00</td>
+      <td>7.00</td>
+      <td>43.00</td>
+      <td>76.00</td>
+      <td>5.00</td>
+      <td>140.00</td>
+      <td>3,480.00</td>
+      <td>1,464.00</td>
+      <td>442,471.00</td>
+      <td>604.00</td>
+      <td>305.00</td>
+      <td>8.00</td>
+      <td>NaN</td>
+      <td>35.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>199.07</td>
+      <td>0.75</td>
+      <td>2.56</td>
+      <td>64.17</td>
+      <td>NaN</td>
+      <td>9.59</td>
+      <td>5.00</td>
+      <td>3.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>91.96</td>
+    </tr>
+  </tbody>
+</table>
+<p>500 rows × 154 columns</p>
+</div></div></div>
 </div>
 </div>
 </div>
@@ -1797,6 +2511,7 @@
 
 <span class="c1">### Activos confirmados y probables</span>
 <span class="n">activos_hoy</span><span class="p">,</span> <span class="n">activosprobables_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos confirmados&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos activos probables&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">]</span>
+<span class="n">tasa_activos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa de activos (incidencia) *&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">]</span>
 
 <span class="c1">### UCI diaria y ocupacion uci aproximada</span>
 <span class="n">ucidiaria_hoy</span><span class="p">,</span> <span class="n">uciaprox_hoy</span><span class="p">,</span> <span class="n">errorabs_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI ocupadas por confirmados&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI ocupacion media movil aprox *&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI error abs *&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;UCI error abs *&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> <span class="mi">1</span><span class="p">)</span>
@@ -1842,7 +2557,7 @@
 <span class="n">ucidiaria_hoy</span><span class="p">,</span> \
 <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
 <span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
-<span class="n">ed_hoy</span> <span class="o">=</span> \
+<span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span> <span class="o">=</span> \
 <span class="p">[</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span>
 <span class="n">casos_hoy</span><span class="p">,</span> <span class="n">consintomas_hoy</span><span class="p">,</span> <span class="n">sinsintomas_hoy</span><span class="p">,</span> <span class="n">porlaboratorio_hoy</span><span class="p">,</span> <span class="n">casosacumulados_hoy</span><span class="p">,</span> <span class="n">antigeno_hoy</span><span class="p">,</span> <span class="n">reinfeccion_hoy</span><span class="p">,</span> \
 <span class="n">recuperados_hoy</span><span class="p">,</span> <span class="n">recuperadosacumulados_hoy</span><span class="p">,</span> \
@@ -1853,7 +2568,7 @@
 <span class="n">ucidiaria_hoy</span><span class="p">,</span> \
 <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
 <span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
-<span class="n">ed_hoy</span><span class="p">]]</span>
+<span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">]]</span>
 
 <span class="c1">### Datos de ayer ###</span>
 
@@ -1920,7 +2635,7 @@
 <span class="sd">• Perdieron la vida {} persona(s), sumando {} fallecidos totales. Nuestro profundo pésame a las familias. 🕊️</span>
 <span class="sd">• Informados {} exámenes PCR dando un total de {} exámenes PCR totales en la región. 🌡️</span>
 <span class="sd">• Respecto a residencias sanitarias, {} recintos de hospedaje con {} cupos, de los cuales {} están utilizados. 🏨</span>
-<span class="sd">• Se reportaron {} casos activos y {} activos probables. 🧪</span>
+<span class="sd">• Se reportaron {} casos activos y {} activos probables. La tasa de activos (incidencia) es de {}. 🧪</span>
 <span class="sd">• La tasa de crecimiento es del {}: {}.</span>
 <span class="sd">• Hasta ayer, {} pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del {}% ± {}%. 🆘</span>
 <span class="sd">• La positividad de casos PCR fue del {}%. Asimismo, una positividad media móvil semanal del {}%. 😷</span>
@@ -1946,7 +2661,7 @@
                                    <span class="n">fallecidosnuevos_hoy</span><span class="p">,</span> <span class="n">fallecidosacumulados_hoy</span><span class="p">,</span> \
                                    <span class="n">pcrnuevos_hoy</span><span class="p">,</span> <span class="n">pcracumulados_hoy</span><span class="p">,</span> \
                                    <span class="n">residenciasnumero_hoy</span><span class="p">,</span> <span class="n">residenciascupos_hoy</span><span class="p">,</span> <span class="n">residenciasusuarios_hoy</span><span class="p">,</span> \
-                                   <span class="n">activos_hoy</span><span class="p">,</span> <span class="n">activosprobables_hoy</span><span class="p">,</span> \
+                                   <span class="n">activos_hoy</span><span class="p">,</span> <span class="n">activosprobables_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">,</span> \
                                    <span class="n">crecimientodiario_hoy</span><span class="p">,</span> <span class="n">situacioncurva_hoy</span><span class="p">,</span> \
                                    <span class="n">ucidiaria_hoy</span><span class="p">,</span> <span class="n">uciaprox_hoy</span><span class="p">,</span> <span class="n">errorabs_hoy</span><span class="p">,</span> \
                                    <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
@@ -1955,6 +2670,38 @@
 
 <span class="c1">## Imprimimos</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">desc1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 15 de julio de 2021 🕑. 
+
+• Infectados 46 casos nuevos de los cuales 27 con síntomas, 16 sin síntomas y 3 sin notificar, dando un total de 39,649 casos confirmados. Adicionalmente, 7 casos nuevos confirmados por antígeno y 43 casos totales con sospecha de reinfección. 🦠
+• Recuperadas 76 personas, sumando 38,627 recuperados totales. 💪
+• Perdieron la vida 5 persona(s), sumando 762 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
+• Informados 1,464 exámenes PCR dando un total de 442,471 exámenes PCR totales en la región. 🌡️
+• Respecto a residencias sanitarias, 8 recintos de hospedaje con 604 cupos, de los cuales 305 están utilizados. 🏨
+• Se reportaron 240 casos activos y 112 activos probables. La tasa de activos (incidencia) es de 91. 🧪
+• La tasa de crecimiento es del 2.56: curva de contagios al alza.
+• Hasta ayer, 35 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 64.2% ± 0.7%. 🆘
+• La positividad de casos PCR fue del 3%. Asimismo, una positividad media móvil semanal del 2%. 😷
+• De cada cien mil habitantes en la región, 199 fallecen por COVID-19. 😵
+• El Re Regional corresponde a 0.87. 💊
+• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 9.6. 💦
+• En el proceso de vacunación, 70% vacunados de la población objetivo (al menos, 199,602 personas con cuadro de vacunación completo). 💦
+
+*Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
+*La ocupación UCI es una aproximación de la situación de camas críticas regionales.
+*Datos actualizados hasta las 21 hrs. del día anterior.
+
+[ CAMBIOS EN LA 383° EDICION ⚙️ ]
+• Ninguno.
+
+[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+• Autor: Alejandro Dinamarca.
+
+¡A cuidarse Tarapacá! 😉
 </pre></div>
 </div>
 </div>
@@ -1992,6 +2739,24 @@
 
 <span class="c1">## Imprimimos</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">desc2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 15 de julio de 2021. 🕑 
+
+• El 70% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 199,602 personas con cuadros de vacunación completo.
+
+*Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
+
+[ CAMBIOS EN LA 55° EDICION ⚙️ ]
+• Ninguno
+
+[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+• Autor: Alejandro Dinamarca.
+
+¡A cuidarse Tarapacá! 😉
 </pre></div>
 </div>
 </div>
@@ -2055,6 +2820,32 @@
 <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">pred</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<p>Indicador FASE, 15 de julio de 2021. 🕑</p>
+<ul class="simple">
+<li><p>De acuerdo al algoritmo, y con un <b>97.308%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>99.204%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>98.013%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>59</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>99.475%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>0</b> días en <b style="color:orange">Transición</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>93.653%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>10</b> días en <b style="color:gold">Preparación</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>89.17%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:orange">Transición</b>.
+Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>99.988%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+</ul>
+<p>[ CAMBIOS EN LA 40° EDICION ⚙️ ]</p>
+<p>• Ninguno</p>
+<p>[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]</p>
+<p>• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!</p>
+<p>• Autor: Alejandro Dinamarca.</p>
+<p>• Para mayor información del funcionamiento del algoritmo, visitar el sitio adinamarca.github.io</p>
+<p>¡A cuidarse Tarapacá! 😉</p>
 </div>
 </div>
 </div>
@@ -2168,6 +2959,35 @@
     
 <span class="c1">### ¿Todo ok?</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> Gráficos del reporte diario guardados de forma exitosa.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_22_0.png" src="../../_images/1_thisistheway_22_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_22_2.png" src="../../_images/1_thisistheway_22_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_22_4.png" src="../../_images/1_thisistheway_22_4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_22_6.png" src="../../_images/1_thisistheway_22_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_22_8.png" src="../../_images/1_thisistheway_22_8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_22_10.png" src="../../_images/1_thisistheway_22_10.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+
+ 
+ Gráficos del reporte diario guardados de forma exitosa.
 </pre></div>
 </div>
 </div>
@@ -2300,6 +3120,31 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_24_0.png" src="../../_images/1_thisistheway_24_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_24_2.png" src="../../_images/1_thisistheway_24_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_24_4.png" src="../../_images/1_thisistheway_24_4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_24_6.png" src="../../_images/1_thisistheway_24_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_24_8.png" src="../../_images/1_thisistheway_24_8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+
+ 
+ Gráficos del balance de vacunas guardados de forma exitosa.
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="id12">
@@ -2359,6 +3204,39 @@
 
 <span class="c1">### ¿Todo ok?</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> Gráficos del indicador de fase guardados de forma exitosa.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_26_10.png" src="../../_images/1_thisistheway_26_10.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_26_12.png" src="../../_images/1_thisistheway_26_12.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+
+ 
+ Gráficos del indicador de fase guardados de forma exitosa.
 </pre></div>
 </div>
 </div>
@@ -2482,6 +3360,8 @@
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">890</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">activos_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos por laboratorio</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">890</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Ayer: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">activos_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos por laboratorio</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">860</span><span class="p">),</span> <span class="s1">&#39;Acumulado: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pcracumulados_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># nuevos antigeno</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">860</span><span class="p">),</span> <span class="s1">&#39;Establecimientos: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">residenciasnumero_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># reinfeccion</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">890</span><span class="p">,</span> <span class="mi">860</span><span class="p">),</span> <span class="s1">&#39;Incidencia: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tasa_activos</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># reinfeccion</span>
 
 <span class="c1">### Guardamos</span>
 <span class="n">diario4</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../../out/diario/4.png&#39;</span><span class="p">)</span>
@@ -2544,6 +3424,14 @@
 <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El PDF del reporte diario ha sido exportado.&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Todas las imágenes del reporte diario han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del reporte diario ha sido exportado.</p>
+</div></blockquote>
 </div>
 </div>
 </div>
@@ -2608,6 +3496,14 @@
 <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El PDF del balance de vacunas ha sido exportado.&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Todas las imágenes del balance de vacunas han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del balance de vacunas ha sido exportado.</p>
+</div></blockquote>
 </div>
 </div>
 </div>
@@ -2679,6 +3575,14 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Todas las imágenes del indicador de fase han sido correctamente exportadas.</p>
+</div></blockquote>
+<blockquote>
+<div><p>El PDF del indicador de fase ha sido exportado.</p>
+</div></blockquote>
+</div>
 </div>
 </div>
 </div>
@@ -2697,6 +3601,18 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_36_0.png" src="../../_images/1_thisistheway_36_0.png" />
+<img alt="../../_images/1_thisistheway_36_1.png" src="../../_images/1_thisistheway_36_1.png" />
+<img alt="../../_images/1_thisistheway_36_2.png" src="../../_images/1_thisistheway_36_2.png" />
+<img alt="../../_images/1_thisistheway_36_3.png" src="../../_images/1_thisistheway_36_3.png" />
+<img alt="../../_images/1_thisistheway_36_4.png" src="../../_images/1_thisistheway_36_4.png" />
+<img alt="../../_images/1_thisistheway_36_5.png" src="../../_images/1_thisistheway_36_5.png" />
+<img alt="../../_images/1_thisistheway_36_6.png" src="../../_images/1_thisistheway_36_6.png" />
+<img alt="../../_images/1_thisistheway_36_7.png" src="../../_images/1_thisistheway_36_7.png" />
+<img alt="../../_images/1_thisistheway_36_8.png" src="../../_images/1_thisistheway_36_8.png" />
+<img alt="../../_images/1_thisistheway_36_9.png" src="../../_images/1_thisistheway_36_9.png" />
+</div>
 </div>
 </div>
 <div class="section" id="balance-vacunas">
@@ -2711,6 +3627,13 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_38_0.png" src="../../_images/1_thisistheway_38_0.png" />
+<img alt="../../_images/1_thisistheway_38_1.png" src="../../_images/1_thisistheway_38_1.png" />
+<img alt="../../_images/1_thisistheway_38_2.png" src="../../_images/1_thisistheway_38_2.png" />
+<img alt="../../_images/1_thisistheway_38_3.png" src="../../_images/1_thisistheway_38_3.png" />
+<img alt="../../_images/1_thisistheway_38_4.png" src="../../_images/1_thisistheway_38_4.png" />
+</div>
 </div>
 </div>
 <div class="section" id="id19">
@@ -2724,6 +3647,17 @@
     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;display(indicadorfase</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1_thisistheway_40_0.png" src="../../_images/1_thisistheway_40_0.png" />
+<img alt="../../_images/1_thisistheway_40_1.png" src="../../_images/1_thisistheway_40_1.png" />
+<img alt="../../_images/1_thisistheway_40_2.png" src="../../_images/1_thisistheway_40_2.png" />
+<img alt="../../_images/1_thisistheway_40_3.png" src="../../_images/1_thisistheway_40_3.png" />
+<img alt="../../_images/1_thisistheway_40_4.png" src="../../_images/1_thisistheway_40_4.png" />
+<img alt="../../_images/1_thisistheway_40_5.png" src="../../_images/1_thisistheway_40_5.png" />
+<img alt="../../_images/1_thisistheway_40_6.png" src="../../_images/1_thisistheway_40_6.png" />
+<img alt="../../_images/1_thisistheway_40_7.png" src="../../_images/1_thisistheway_40_7.png" />
+<img alt="../../_images/1_thisistheway_40_8.png" src="../../_images/1_thisistheway_40_8.png" />
 </div>
 </div>
 </div>
@@ -2751,6 +3685,46 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Universidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Juan</td>
+      <td>Ponce</td>
+      <td>uchile</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ermógenes</td>
+      <td>Pérez</td>
+      <td>usch</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="ejemplo-2">
@@ -2773,6 +3747,13 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  0.69 %
+La media general del error es de:  0.81 %
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_45_1.png" src="../../_images/1_thisistheway_45_1.png" />
 </div>
 </div>
 </div>
@@ -2886,6 +3867,241 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            PIL                 8.2.0
+            bs4                 4.9.3
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            markdownify         NA
+            math                NA
+            matplotlib          3.3.4
+            natsort             7.1.1
+            numpy               1.19.5
+            os                  NA
+            pandas              1.2.3
+            pkg_resources       NA
+            plotly              4.8.1
+            pybtex              0.24.0
+            requests            2.25.1
+            scipy               1.6.2
+            seaborn             0.11.1
+            session_info        1.0.0
+            sklearn             0.24.1
+            time                NA
+            types               NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                 NA
+            argparse            1.1
+            array               NA
+            ast                 NA
+            asyncio             NA
+            atexit              NA
+            attr                20.3.0
+            backcall            0.2.0
+            base64              NA
+            bdb                 NA
+            binascii            NA
+            bisect              NA
+            bz2                 NA
+            cProfile            NA
+            calendar            NA
+            certifi             2021.05.30
+            cffi                1.14.6
+            chardet             4.0.0
+            cmath               NA
+            cmd                 NA
+            code                NA
+            codecs              NA
+            codeop              NA
+            collections         NA
+            colorama            0.4.4
+            colorsys            NA
+            concurrent          NA
+            contextlib          NA
+            contextvars         NA
+            copy                NA
+            copyreg             NA
+            csv                 1.0
+            ctypes              1.1.0
+            curses              NA
+            cycler              0.10.0
+            cython_runtime      NA
+            dataclasses         NA
+            dateutil            2.8.2
+            decimal             1.70
+            decorator           5.0.9
+            difflib             NA
+            dis                 NA
+            distutils           3.7.11
+            email               NA
+            encodings           NA
+            enum                NA
+            errno               NA
+            faulthandler        NA
+            fcntl               NA
+            filecmp             NA
+            fnmatch             NA
+            fractions           NA
+            functools           NA
+            gc                  NA
+            genericpath         NA
+            getopt              NA
+            getpass             NA
+            gettext             NA
+            glob                NA
+            grp                 NA
+            gzip                NA
+            hashlib             NA
+            heapq               NA
+            hmac                NA
+            html                NA
+            http                NA
+            idna                2.10
+            imp                 NA
+            importlib           NA
+            importlib_metadata  NA
+            inspect             NA
+            io                  NA
+            ipykernel           6.0.2
+            ipython_genutils    0.2.0
+            ipywidgets          7.6.3
+            itertools           NA
+            jedi                0.18.0
+            joblib              1.0.1
+            jsonschema          3.2.0
+            keyword             NA
+            kiwisolver          1.3.1
+            linecache           NA
+            logging             0.5.1.2
+            lzma                NA
+            marshal             4
+            matplotlib_inline   NA
+            mimetypes           NA
+            mmap                NA
+            mpl_toolkits        NA
+            multiprocessing     NA
+            nbformat            5.1.3
+            netrc               NA
+            ntpath              NA
+            numbers             NA
+            opcode              NA
+            operator            NA
+            packaging           21.0
+            parso               0.8.2
+            pathlib             NA
+            pdb                 NA
+            pexpect             4.8.0
+            pickle              NA
+            pickleshare         0.7.5
+            pkgutil             NA
+            platform            1.0.8
+            plistlib            NA
+            posix               NA
+            posixpath           NA
+            pprint              NA
+            profile             NA
+            prompt_toolkit      3.0.19
+            pstats              NA
+            pty                 NA
+            ptyprocess          0.7.0
+            pvectorc            NA
+            pwd                 NA
+            pydoc               NA
+            pydoc_data          NA
+            pyexpat             NA
+            pygments            2.9.0
+            pyparsing           2.4.7
+            pyrsistent          NA
+            pytz                2021.1
+            queue               NA
+            quopri              NA
+            random              NA
+            re                  2.2.1
+            reprlib             NA
+            resource            NA
+            retrying            NA
+            runpy               NA
+            secrets             NA
+            select              NA
+            selectors           NA
+            shlex               NA
+            shutil              NA
+            signal              NA
+            site                NA
+            six                 1.16.0
+            socket              NA
+            socketserver        0.4
+            soupsieve           2.2.1
+            sphinxcontrib       NA
+            sqlite3             2.6.0
+            sre_compile         NA
+            sre_constants       NA
+            sre_parse           NA
+            ssl                 NA
+            stat                NA
+            storemagic          NA
+            string              NA
+            stringprep          NA
+            struct              NA
+            subprocess          NA
+            sys                 3.7.11 (default, Jul  5 2021, 20:57:17) 
+[GCC 9.3.0]
+            sysconfig           NA
+            tarfile             0.9.0
+            tempfile            NA
+            termios             NA
+            textwrap            NA
+            threading           NA
+            timeit              NA
+            token               NA
+            tokenize            NA
+            tornado             6.1
+            traceback           NA
+            traitlets           5.0.5
+            tty                 NA
+            typing              NA
+            typing_extensions   NA
+            unicodedata         NA
+            unittest            NA
+            urllib              NA
+            urllib3             1.26.6
+            uu                  NA
+            uuid                NA
+            warnings            NA
+            wcwidth             0.2.5
+            weakref             NA
+            webbrowser          NA
+            xml                 NA
+            zipfile             NA
+            zipimport           NA
+            zipp                NA
+            zlib                1.0
+            zmq                 22.1.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.25.0
+            jupyter_client      6.1.12
+            jupyter_core        4.7.1
+            notebook            6.4.0
+            -----
+            Python 3.7.11 (default, Jul  5 2021, 20:57:17) [GCC 9.3.0]
+            Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2021-07-16 00:26
+            </pre>
+            </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
