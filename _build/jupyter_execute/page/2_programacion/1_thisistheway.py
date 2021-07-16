@@ -1601,7 +1601,7 @@ graph1 = graphLine([df[-14:].index],                   [df['Tasa de activos (inc
 ## Segundo gráfico: avance vacunación
 
 graph2 = graphLine([avance_graph.index],                   [avance_graph],                    color=['tab:cyan'],                    path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
-                   txth='', txt_str='Umbral para toque de queda (mayor al 80%)', txtx=avance_graph.first_valid_index(),
+                   txth='', txt_str='Umbral para toque de queda (mayor o igual al 80%)', txtx=avance_graph.first_valid_index(),
                   txty=79.2, txts=6)
 
 
@@ -1746,7 +1746,7 @@ txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvet
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((190, 860), 'Antígeno: {}%'.format(positividad_antigeno), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 txt.text((540, 680), '{}%'.format(procesovacunacion_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
-txt.text((540, 750), 'Últ. act.: {}%'.format(procesovacunacion_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((540, 750), 'Antes: {}%'.format(procesovacunacion_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
 txt.text((890, 680), '{}'.format(me_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
