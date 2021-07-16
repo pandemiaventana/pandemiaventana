@@ -1307,6 +1307,42 @@ pred += """
 
 display(Markdown(pred))
 
+# %% [markdown]
+# ### Toque de queda a las 00:00 hrs.
+
+# %%
+### Balance vacunas ###
+
+if int(tasa_activos)<150:
+    cumplimiento_tasa = '✔️'
+else:
+    cumplimiento_tasa = '❌'
+    
+if int(procesovacunacion_hoy)>= 80:
+    cumplimiento_vacunacion = '✔️'
+else:
+    cumplimiento_vacunacion = '❌' 
+
+### Descripción
+desc2 = \
+"""¿Toque de queda a las 00:00 hrs.? 🕑
+
+Para que en la Región se pueda aplazar el toque de queda, se deben cumplir los siguientes indicadores:
+
+• Tasa de incidencia de activos menor a 150 (actualmente es {}). {}
+• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}
+
+[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+• Datos actualizados de acuerdo a informes del {}.
+• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+• Autor: Alejandro Dinamarca.
+
+¡A cuidarse Tarapacá! 😉
+""".format(tasa_activos, cumplimiento_tasa, procesovacunacion_hoy, cumplimiento_vacunacion, fecha_hoy)
+
+## Imprimimos
+print(desc2)
+
 
 # %% [markdown]
 # ## Graficando
@@ -1986,18 +2022,12 @@ for i in x:
     exec('toquequeda{} = toquequeda{}.copy()'.format(i, i))
     i += i
 
-### Manipulando primera, segunda, tercera y cuarta imagen
-
-### Para ir arreglando alto
-b = 0
-
-### Para tener índice de vector de colores
-co = 0
-
 for i in x:
     exec('toquequeda{}.paste(graph{}, (-50, 100), graph{})'.format(i, i, i))
+    exec("txt = ImageDraw.Draw(toquequeda{})".format(i))
+    txt.text((920, 5), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
     exec('toquequeda{}.save("../../out/toquequeda/{}.png")'.format(i, i))
-
+    
 ### ¿Todo ok?
 display(Markdown('> Todas las imágenes del reporte del toque de queda han sido correctamente exportadas.'))
 
