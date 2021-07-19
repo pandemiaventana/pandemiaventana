@@ -1688,7 +1688,7 @@ graph2 = graphLine([avance_graph.index],\
                    color=['tab:cyan'], \
                    path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
                    txth='', txt_str='Umbral para toque de queda (mayor o igual al 80%)', txtx=avance_graph.first_valid_index(),
-                  txty=79.2, txts=6)
+                  txty=79.2, txts=6, sizelabelin=6)
 
 # %% [markdown]
 # ## Generando reportes
