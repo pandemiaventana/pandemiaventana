@@ -1356,6 +1356,7 @@ class graphLine:
     opt: sufijo de dato
     line: línea paralela a y, ''=True, '#'=False
     liney: valor para line
+    sizelabelin: tamaño para texto in-graph
     txth: texto, ''=True, '#'=False
     txt_str: string para txth
     txtx: x para txth
@@ -1363,7 +1364,8 @@ class graphLine:
     txts: tamaño para txt
     
     """
-    def __init__(self, x, y, color, path, opt='', line='#', liney=1, txth='#', txt_str='', txtx=1, txty=1, txts=20):
+    def __init__(self, x, y, color, path, opt='', line='#', liney=1, txth='#', txt_str='', txtx=1, txty=1, txts=20,
+                sizelabelin=8):
         self.opt = opt
         self.s = 0
         fig, ax = plt.subplots(figsize=(4, 3))
@@ -1380,10 +1382,11 @@ class graphLine:
         self.txts = txts
         self.color = color
         self.path = path
+        self.sizelabelin = sizelabelin
         for x in self.x:
             graph = plt.plot(self.x[self.s], self.y[self.s], color=self.color[self.s])
             for i,j in zip(self.x[self.s],self.y[self.s]):
-                ax.annotate('{}{}'.format(int(j), self.opt),xy=(i,j), color='w', size=8, horizontalalignment='center', verticalalignment='bottom')
+                ax.annotate('{}{}'.format(int(j), self.opt),xy=(i,j), color='w', size=self.sizelabelin, horizontalalignment='center', verticalalignment='bottom')
             exec('{}plt.axhline(self.liney, color="white")'.format(self.line))
             exec('{}ax.text(txtx, txty, txt_str, color="white", size=self.txts)'.format(self.txth))
             self.s += 1
@@ -1580,18 +1583,24 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
 ### Toque de queda
+
+
+### Para primer gráfico
+avance_activos = df['Tasa de activos (incidencia) *'][-14:]
+avance_activos = avance_activos[avance_activos.first_valid_index():avance_activos.last_valid_index()].round(0)
+
+
+## Primer gráfico: tasa de activos
+graph1 = graphLine([avance_activos.index],                   [avance_activos],                    color=['tab:orange'],                    path='../../in/toquequeda/grafico/1.png', line='', liney=150,
+                   txth='', txt_str='Umbral para toque de queda (menor a 150)', txtx=avance_activos.first_valid_index(),
+                  txty=147, txts=6)
+
+## Para segundo gráfico
 avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
                          + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
 avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()].round(0)
 
-
-## Primer gráfico: tasa de activos
-graph1 = graphLine([df[-14:].index],                   [df['Tasa de activos (incidencia) *'][-14:]],                    color=['tab:orange'],                    path='../../in/toquequeda/grafico/1.png', line='', liney=150,
-                   txth='', txt_str='Umbral para toque de queda (menor a 150)', txtx=avance_graph.first_valid_index(),
-                  txty=147, txts=6)
-
 ## Segundo gráfico: avance vacunación
-
 graph2 = graphLine([avance_graph.index],                   [avance_graph],                    color=['tab:cyan'],                    path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
                    txth='', txt_str='Umbral para toque de queda (mayor o igual al 80%)', txtx=avance_graph.first_valid_index(),
                   txty=79.2, txts=6)
