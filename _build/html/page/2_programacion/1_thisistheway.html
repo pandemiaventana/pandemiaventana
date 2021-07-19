@@ -2847,19 +2847,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 18 de julio de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>96.976%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>96.904%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>11</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>96.825%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>96.506%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>11</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.735%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.777%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>63</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>91.551%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:orange">Transición</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>85.292%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:orange">Transición</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>96.044%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>95.629%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>14</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.403%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.345%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>72.324%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>72.679%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 41° EDICION ⚙️ ]</p>
@@ -3344,11 +3344,9 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Toque de queda</span>
 
-
 <span class="c1">### Para primer gráfico</span>
 <span class="n">avance_activos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tasa de activos (incidencia) *&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span>
 <span class="n">avance_activos</span> <span class="o">=</span> <span class="n">avance_activos</span><span class="p">[</span><span class="n">avance_activos</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():</span><span class="n">avance_activos</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
 
 <span class="c1">## Primer gráfico: tasa de activos</span>
 <span class="n">graph1</span> <span class="o">=</span> <span class="n">graphLine</span><span class="p">([</span><span class="n">avance_activos</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>\
@@ -3609,7 +3607,7 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">610</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#9ad5ff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1"># avance</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">670</span><span class="p">),</span> <span class="s1">&#39;Con esquema de vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto1</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">710</span><span class="p">),</span> <span class="s1">&#39;completo (2° o única dosis)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto2</span>
-        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">380</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vacunacion_pct</span><span class="p">[</span><span class="s1">&#39;Población objetivo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1">#restante</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vacunacion_pct</span><span class="p">[</span><span class="s1">&#39;Población objetivo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1">#restante</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">990</span><span class="p">),</span> <span class="s1">&#39;Personas deben iniciar o&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto3</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">1030</span><span class="p">),</span> <span class="s1">&#39;completar su vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto4</span>
         <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;vacuna</span><span class="si">{}</span><span class="s1">.paste(graph</span><span class="si">{}</span><span class="s1">, (100, 410), graph</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
@@ -4318,7 +4316,7 @@ La media general del error es de:  0.81 %
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-19 15:51
+            Session information updated at 2021-07-19 16:48
             </pre>
             </details></div></div>
 </div>
