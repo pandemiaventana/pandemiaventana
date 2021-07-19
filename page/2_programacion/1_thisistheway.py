@@ -1663,11 +1663,9 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 # %%
 ### Toque de queda
 
-
 ### Para primer gráfico
 avance_activos = df['Tasa de activos (incidencia) *'][-14:]
 avance_activos = avance_activos[avance_activos.first_valid_index():avance_activos.last_valid_index()].round(0)
-
 
 ## Primer gráfico: tasa de activos
 graph1 = graphLine([avance_activos.index],\
@@ -1910,7 +1908,7 @@ for i in x:
         txt.text((610, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
         txt.text((420, 670), 'Con esquema de vacunación', fill='white', font=roboto_data3) # texto1
         txt.text((420, 710), 'completo (2° o única dosis)', fill='white', font=roboto_data3) # texto2
-        txt.text((380, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
+        txt.text((400, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
         txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
         txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
         exec('vacuna{}.paste(graph{}, (100, 410), graph{})'.format(i, i, i))
