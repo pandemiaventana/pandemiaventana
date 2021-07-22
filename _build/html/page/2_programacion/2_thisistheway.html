@@ -1060,14 +1060,10 @@
 <div><p>El valor de la curtosis es de <strong>0.04974473482726023</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
- <h3> Para la columna Notificacion PCR Iquique </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.023816336508040374</strong></p>
-</div></blockquote>
-<img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
  <h3> Para la columna Incidencia acumulada Pica </h3><blockquote>
 <div><p>El valor de la curtosis es de <strong>0.023496250020866735</strong></p>
 </div></blockquote>
-<img alt="../../_images/2_thisistheway_19_14.png" src="../../_images/2_thisistheway_19_14.png" />
+<img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
 </div>
 </div>
 <p>Prácticamente, no existe normalidad, y las pocas columnas que son, <em>aproximadamente normales</em>, se deben a datos de comunas con baja población, o que contienen bajo número de observaciones (a raíz de ser añadidas hace poco tiempo al <a href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Min. Ciencia</a>). <strong>Estas columnas las descartamos al asignar que la curtosis sea distinta de cero</strong>.</p>
@@ -1720,11 +1716,11 @@
       <td>3.00</td>
       <td>12.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>6,023.00</td>
+      <td>81.60</td>
+      <td>2.60</td>
+      <td>98.00</td>
+      <td>100.00</td>
       <td>530.00</td>
       <td>536.00</td>
       <td>71.00</td>
@@ -1741,11 +1737,11 @@
       <td>3.00</td>
       <td>13.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>6,023.00</td>
+      <td>81.60</td>
+      <td>2.60</td>
+      <td>98.00</td>
+      <td>100.00</td>
       <td>530.00</td>
       <td>536.00</td>
       <td>71.00</td>
@@ -1762,11 +1758,11 @@
       <td>3.00</td>
       <td>14.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>5,222.00</td>
+      <td>82.80</td>
+      <td>2.00</td>
+      <td>97.00</td>
+      <td>100.00</td>
       <td>530.00</td>
       <td>537.00</td>
       <td>71.00</td>
@@ -2237,15 +2233,15 @@ Apertura Inicial       1.00      1.00      1.00        59
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
-<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>100.0%</strong>.</p>
+<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>94.91525423728814%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
- Preparación       1.00      1.00      1.00        52
-  Transición       1.00      1.00      1.00         7
+ Preparación       0.95      1.00      0.97        52
+  Transición       1.00      0.57      0.73         7
 
-    accuracy                           1.00        59
-   macro avg       1.00      1.00      1.00        59
-weighted avg       1.00      1.00      1.00        59
+    accuracy                           0.95        59
+   macro avg       0.97      0.79      0.85        59
+weighted avg       0.95      0.95      0.94        59
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
@@ -2611,7 +2607,7 @@ Apertura Inicial       1.00      1.00      1.00         7
             Linux-5.8.0-1036-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-07-21 23:43
+            Session information updated at 2021-07-22 15:52
             </pre>
             </details></div></div>
 </div>
