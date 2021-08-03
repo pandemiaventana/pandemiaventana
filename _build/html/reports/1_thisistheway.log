@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 622, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 85, in ensure_async
+    result = await obj
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
     record_timing=False,
   File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 1112, in execute
@@ -11,43 +22,18 @@ Traceback (most recent call last):
     return future.result()
   File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 554, in async_execute
     cell, index, execution_count=self.code_cells_executed + 1
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 857, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-### Toque de queda
-
-## Primer gráfico: tasa de activos
-graph1 = graphLine([df[-14:].index],\
-                   [df['Tasa de activos (incidencia) *'][-14:]], \
-                   color=['tab:orange'], \
-                   path='../../in/toquequeda/grafico/1.png', line='', liney=150,
-                   txth='', txt_str='Umbral para toque de queda (menor a 150)', txtx=avance_graph.first_valid_index(),
-                  txty=147, txts=6)
-
-## Segundo gráfico: avance vacunación
-avance_graph = (df['Vacunados acumulados 2° dosis'][-14:]
-                         + df['Vacunados acumulados unica dosis'][-14:])/poblacion_yomevacuno*100
-avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
-graph2 = graphLine([avance_graph.index],\
-                   [avance_graph], \
-                   color=['tab:cyan'], \
-                   path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
-                   txth='', txt_str='Umbral para toque de queda (mayor al 80%)', txtx=avance_graph.first_valid_index(),
-                  txty=79.2, txts=6)
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2818/2921156081.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      6[0m                    [0mcolor[0m[0;34m=[0m[0;34m[[0m[0;34m'tab:orange'[0m[0;34m][0m[0;34m,[0m[0;31m [0m[0;31m\[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      7[0m                    [0mpath[0m[0;34m=[0m[0;34m'../../in/toquequeda/grafico/1.png'[0m[0;34m,[0m [0mline[0m[0;34m=[0m[0;34m''[0m[0;34m,[0m [0mliney[0m[0;34m=[0m[0;36m150[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 8[0;31m                    [0mtxth[0m[0;34m=[0m[0;34m''[0m[0;34m,[0m [0mtxt_str[0m[0;34m=[0m[0;34m'Umbral para toque de queda (menor a 150)'[0m[0;34m,[0m [0mtxtx[0m[0;34m=[0m[0mavance_graph[0m[0;34m.[0m[0mfirst_valid_index[0m[0;34m([0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      9[0m                   txty=147, txts=6)
-[1;32m     10[0m [0;34m[0m[0m
-
-[0;31mNameError[0m: name 'avance_graph' is not defined
-NameError: name 'avance_graph' is not defined
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 841, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 646, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 697, in _async_handle_timeout
+    "Cell execution timed out", timeout, cell
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['# Obteniendo datos desde Min. de Ciencia y Tecnología', '', '### csv13 (casos acumulativos), producto 13', "csv13 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto13/CasosNuevosCumulativo_T.csv')", '']
+...
+['### csv69 (tasa de incidencia regional, por cada cien mil habitantes, de casos confirmados, calculada por ICOVID Chile)', "csv69_regional = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.regional.ajustada.csv')", '', '### csv18 (tasa de incidencia histórica acumulada)', "csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv')"]
+-------------------
 
