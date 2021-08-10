@@ -1117,21 +1117,24 @@
 <div class="math notranslate nohighlight" id="equation-inmunizadas-total">
 <span class="eqno">(7)<a class="headerlink" href="#equation-inmunizadas-total" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large Inmunizadas_{total} = Población - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
+\Large Inmunizadas_{total} = Población - Innoculaciones_{2° \ dosis}
 \end{align}
 \]</div>
 <div class="math notranslate nohighlight" id="equation-inmunizadas-objetivo">
 <span class="eqno">(8)<a class="headerlink" href="#equation-inmunizadas-objetivo" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large Inmunizadas_{objetivo} = Población*0.8 - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
+\Large Inmunizadas_{objetivo} = Población*0.8 - Innoculaciones_{2° \ dosis}
 \end{align}
 \]</div>
 <div class="math notranslate nohighlight" id="equation-sin-inmunizar">
 <span class="eqno">(9)<a class="headerlink" href="#equation-sin-inmunizar" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
+\Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis} - Innoculaciones_{única \ dosis}
 \end{align}
 \]</div>
+<blockquote>
+<div><p><em>Debido a que, recientemente, se establece que “En todos aquellos hombres menores de 45 años que han recibido una primera dosis de vacuna del laboratorio AstraZeneca, se completara su esquema con una segunda dosis del laboratorio Pfizer- BioNTech” de acuerdo <a href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F9037e283-1278-422c-84c4-16e42a7026c8&sectionIndex=1&sso_guest=true&sas-welcome=false">al Dashboard del DEIS del Ministerio de Salud</a>, se remueve las dosis únicas de las personas con inmunización total</em>.</p>
+</div></blockquote>
 </div>
 <div class="section" id="tasa-de-activos">
 <h4>Tasa de activos<a class="headerlink" href="#tasa-de-activos" title="Permalink to this headline">¶</a></h4>
@@ -2555,10 +2558,10 @@
         <span class="n">situacioncurva_hoy</span> <span class="o">=</span> <span class="s2">&quot;curva de contagios al alza&quot;</span>
 
 <span class="c1">### Proceso de vacunación a población objetivo objetivo</span>
-<span class="n">procesovacunacion_2dosis</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">procesovacunacion_unica</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">procesovacunacion_hoy</span> <span class="o">=</span> <span class="n">procesovacunacion_2dosis</span> <span class="o">+</span> <span class="n">procesovacunacion_unica</span>
-<span class="n">procesovacunaciontotales_hoy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span>
+<span class="n">procesovacunacion_2dosis</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">procesovacunacion_unica</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">procesovacunacion_hoy</span> <span class="o">=</span> <span class="n">procesovacunacion_2dosis</span>
+<span class="n">procesovacunaciontotales_hoy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span>
 
 <span class="c1">### Número de edición</span>
 <span class="n">d1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">27</span><span class="p">)</span>
@@ -2578,7 +2581,7 @@
 <span class="n">activos_hoy</span><span class="p">,</span> <span class="n">activosprobables_hoy</span><span class="p">,</span> \
 <span class="n">ucidiaria_hoy</span><span class="p">,</span> \
 <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
-<span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
+<span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
 <span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">,</span> <span class="n">antigenonuevos_hoy</span><span class="p">,</span> <span class="n">antigenoacumulados_hoy</span><span class="p">,</span> <span class="n">positividad_antigeno</span> <span class="o">=</span> \
 <span class="p">[</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span>
 <span class="n">casos_hoy</span><span class="p">,</span> <span class="n">consintomas_hoy</span><span class="p">,</span> <span class="n">sinsintomas_hoy</span><span class="p">,</span> <span class="n">porlaboratorio_hoy</span><span class="p">,</span> <span class="n">casosacumulados_hoy</span><span class="p">,</span> <span class="n">antigeno_hoy</span><span class="p">,</span> <span class="n">reinfeccion_hoy</span><span class="p">,</span> \
@@ -2589,7 +2592,7 @@
 <span class="n">activos_hoy</span><span class="p">,</span> <span class="n">activosprobables_hoy</span><span class="p">,</span> \
 <span class="n">ucidiaria_hoy</span><span class="p">,</span> \
 <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> \
-<span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
+<span class="n">me_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
 <span class="n">ed_hoy</span><span class="p">,</span> <span class="n">tasa_activos</span><span class="p">,</span> <span class="n">antigenonuevos_hoy</span><span class="p">,</span> <span class="n">antigenoacumulados_hoy</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">]]</span>
 
 <span class="c1">### Datos de ayer ###</span>
@@ -2624,7 +2627,7 @@
 <span class="c1">### Proceso de vacunación de población objetivo</span>
 <span class="n">procesovacunacion_ayer_2</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">procesovacunacion_ayer_unica</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">procesovacunacion_ayer</span> <span class="o">=</span> <span class="n">procesovacunacion_ayer_unica</span> <span class="o">+</span> <span class="n">procesovacunacion_ayer_2</span>
+<span class="n">procesovacunacion_ayer</span> <span class="o">=</span> <span class="n">procesovacunacion_ayer_2</span>
 
 
 <span class="c1">### Valores de ayer a integer</span>
@@ -2711,7 +2714,7 @@
 • De cada cien mil habitantes en la región, 207 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 1.03. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 6.8. 💦
-• En el proceso de vacunación, 79% vacunados de la población objetivo (al menos, 224,620 personas con cuadro de vacunación completo). 💦
+• En el proceso de vacunación, 76.6% vacunados de la población objetivo (al menos, 219,439 personas con cuadro de vacunación completo). 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
@@ -2768,7 +2771,7 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 10 de agosto de 2021. 🕑 
 
-• El 79% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 224,620 personas con cuadros de vacunación completo.
+• El 76.6% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 219,439 personas con cuadros de vacunación completo.
 
 *Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
 
@@ -2847,19 +2850,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 10 de agosto de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.392%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.28%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>34</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>93.688%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>91.848%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>11</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.3%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.282%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>86</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>84.741%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>83.532%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>75.133%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>69.815%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>61.14%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>64.075%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>87.851%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>87.491%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>27</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 44° EDICION ⚙️ ]</p>
@@ -2916,7 +2919,7 @@ Actualmente, la comuna registra <b>27</b> días en <b style="color:dodgerblue">A
 Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
 
 • Tasa de incidencia de activos menor a 150 (actualmente es 70). ✔️
-• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es 79%). ❌
+• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es 76.6%). ❌
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
 • Datos actualizados de acuerdo a informes del 10 de agosto de 2021.
@@ -3099,12 +3102,12 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para balance vacunas ###</span>
 
 <span class="c1">### Últimas cifras de vacunación a población total/objetivo</span>
-<span class="n">pob_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> \
+<span class="n">pob_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> \
+          <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> \
+          <span class="n">poblacion</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]])</span>
+<span class="n">pob_obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span>  <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> \
           <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> \
-          <span class="n">poblacion</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]])</span>
-<span class="n">pob_obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> \
-          <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()],</span> \
-          <span class="n">poblacion_yomevacuno</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]])</span>
+          <span class="n">poblacion_yomevacuno</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]])</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Con 1° dosis </span><span class="se">\n</span><span class="s1"> (sin inmunidad o parcial)&#39;</span><span class="p">,</span> <span class="s1">&#39;Con cuadro completo </span><span class="se">\n</span><span class="s1"> (eventual inmunes)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sin cuadro completo </span><span class="se">\n</span><span class="s1"> (sin inmunidad)&#39;</span><span class="p">])</span>
 <span class="n">vacunacion_pct</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">pob_total</span><span class="p">,</span> <span class="n">pob_obj</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="n">vacunacion_pct</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">labels</span>
@@ -3204,13 +3207,13 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
         
 <span class="c1">### Cuarto gráfico: Vacunas administradas (1° dosis)</span>
 <span class="n">graph4</span> <span class="o">=</span> <span class="n">graphBar</span><span class="p">([</span><span class="n">vacunacion_etaria</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span>\
-                   <span class="p">[</span><span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;Poblacion&#39;</span><span class="p">],</span> <span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">]],</span> \
+                   <span class="p">[</span><span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;Poblacion&#39;</span><span class="p">],</span> <span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;Unica dosis&#39;</span><span class="p">],</span> \
                    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;#8899e1&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> \
                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../../in/vacuna/grafico/4.png&#39;</span><span class="p">)</span>
 
 <span class="c1">### Quinto gráfico: Vacunas administradas (2° dosis)</span>
 <span class="n">graph5</span> <span class="o">=</span> <span class="n">graphBar</span><span class="p">([</span><span class="n">vacunacion_etaria</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span>\
-                   <span class="p">[</span><span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;Poblacion&#39;</span><span class="p">],</span> <span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;2° Dosis&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;Unica dosis&#39;</span><span class="p">]],</span> \
+                   <span class="p">[</span><span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;Poblacion&#39;</span><span class="p">],</span> <span class="n">vacunacion_etaria</span><span class="p">[</span><span class="s1">&#39;2° Dosis&#39;</span><span class="p">]],</span> \
                    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;#9ad5ff&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> \
                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../../in/vacuna/grafico/5.png&#39;</span><span class="p">)</span>
 
@@ -3220,27 +3223,10 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-
- 
- Gráficos del balance de vacunas guardados de forma exitosa.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_3103/3894292057.py&quot;</span><span class="gt">, line </span><span class="mi">110</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;#8899e1&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> \
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -3357,8 +3343,7 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
                   <span class="n">txty</span><span class="o">=</span><span class="mi">147</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="c1">## Para segundo gráfico</span>
-<span class="n">avance_graph</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span>
-                         <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:])</span><span class="o">/</span><span class="n">poblacion_yomevacuno</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">avance_graph</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:])</span><span class="o">/</span><span class="n">poblacion_yomevacuno</span><span class="o">*</span><span class="mi">100</span>
 <span class="n">avance_graph</span> <span class="o">=</span> <span class="n">avance_graph</span><span class="p">[</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">## Segundo gráfico: avance vacunación</span>
@@ -3515,7 +3500,7 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos con sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Ayer: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos con sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">860</span><span class="p">),</span> <span class="s1">&#39;Antígeno: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_antigeno</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># nuevos antigeno</span>
-<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos sin sintomas</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos sin sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">540</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Antes: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos sin sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">890</span><span class="p">,</span> <span class="mi">680</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">me_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos por laboratorio</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">890</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Ayer: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">me_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos por laboratorio</span>
@@ -3604,10 +3589,10 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
         <span class="n">txt</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">vacuna1</span><span class="p">)</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">860</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">° ed.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ed_vacuna</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#b9b9b9&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_ed</span><span class="p">)</span> <span class="c1"># edicion</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">380</span><span class="p">,</span> <span class="mi">357</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">weekend_data</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">)</span> <span class="c1"># fecha</span>
-        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">610</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#9ad5ff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1"># avance</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">480</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#9ad5ff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1"># avance</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">670</span><span class="p">),</span> <span class="s1">&#39;Con esquema de vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto1</span>
-        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">710</span><span class="p">),</span> <span class="s1">&#39;completo (2° o única dosis)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto2</span>
-        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vacunacion_pct</span><span class="p">[</span><span class="s1">&#39;Población objetivo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1">#restante</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">710</span><span class="p">),</span> <span class="s1">&#39;completo (2° dosis)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto2</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">425</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vacunacion_pct</span><span class="p">[</span><span class="s1">&#39;Población objetivo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1">#restante</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">990</span><span class="p">),</span> <span class="s1">&#39;Personas deben iniciar o&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto3</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">1030</span><span class="p">),</span> <span class="s1">&#39;completar su vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto4</span>
         <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;vacuna</span><span class="si">{}</span><span class="s1">.paste(graph</span><span class="si">{}</span><span class="s1">, (100, 410), graph</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
@@ -3966,8 +3951,8 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  3.95 %
-La media general del error es de:  0.77 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  0.69 %
+La media general del error es de:  0.81 %
 </pre></div>
 </div>
 <img alt="../../_images/1_thisistheway_52_1.png" src="../../_images/1_thisistheway_52_1.png" />
@@ -4085,240 +4070,249 @@ La media general del error es de:  0.77 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">            <details>
-            <summary>Click to view session information</summary>
-            <pre>
-            -----
-            PIL                 8.2.0
-            bs4                 4.9.3
-            datetime            NA
-            json                2.0.9
-            locale              NA
-            markdownify         NA
-            math                NA
-            matplotlib          3.3.4
-            natsort             7.1.1
-            numpy               1.19.5
-            os                  NA
-            pandas              1.2.3
-            pkg_resources       NA
-            plotly              4.8.1
-            pybtex              0.24.0
-            requests            2.25.1
-            scipy               1.6.2
-            seaborn             0.11.1
-            session_info        1.0.0
-            sklearn             0.24.1
-            time                NA
-            types               NA
-            -----
-            </pre>
-            <details>
-            <summary>Click to view modules imported as dependencies</summary>
-            <pre>
-            abc                 NA
-            argparse            1.1
-            array               NA
-            ast                 NA
-            asyncio             NA
-            atexit              NA
-            attr                20.3.0
-            backcall            0.2.0
-            base64              NA
-            bdb                 NA
-            binascii            NA
-            bisect              NA
-            bz2                 NA
-            cProfile            NA
-            calendar            NA
-            certifi             2021.05.30
-            cffi                1.14.6
-            chardet             4.0.0
-            cmath               NA
-            cmd                 NA
-            code                NA
-            codecs              NA
-            codeop              NA
-            collections         NA
-            colorama            0.4.4
-            colorsys            NA
-            concurrent          NA
-            contextlib          NA
-            contextvars         NA
-            copy                NA
-            copyreg             NA
-            csv                 1.0
-            ctypes              1.1.0
-            curses              NA
-            cycler              0.10.0
-            cython_runtime      NA
-            dataclasses         NA
-            dateutil            2.8.2
-            decimal             1.70
-            decorator           5.0.9
-            difflib             NA
-            dis                 NA
-            distutils           3.7.11
-            email               NA
-            encodings           NA
-            enum                NA
-            errno               NA
-            faulthandler        NA
-            fcntl               NA
-            filecmp             NA
-            fnmatch             NA
-            fractions           NA
-            functools           NA
-            gc                  NA
-            genericpath         NA
-            getopt              NA
-            getpass             NA
-            gettext             NA
-            glob                NA
-            grp                 NA
-            gzip                NA
-            hashlib             NA
-            heapq               NA
-            hmac                NA
-            html                NA
-            http                NA
-            idna                2.10
-            imp                 NA
-            importlib           NA
-            importlib_metadata  NA
-            inspect             NA
-            io                  NA
-            ipykernel           6.0.3
-            ipython_genutils    0.2.0
-            ipywidgets          7.6.3
-            itertools           NA
-            jedi                0.18.0
-            joblib              1.0.1
-            jsonschema          3.2.0
-            keyword             NA
-            kiwisolver          1.3.1
-            linecache           NA
-            logging             0.5.1.2
-            lzma                NA
-            marshal             4
-            matplotlib_inline   NA
-            mimetypes           NA
-            mmap                NA
-            mpl_toolkits        NA
-            multiprocessing     NA
-            nbformat            5.1.3
-            netrc               NA
-            ntpath              NA
-            numbers             NA
-            opcode              NA
-            operator            NA
-            packaging           21.0
-            parso               0.8.2
-            pathlib             NA
-            pdb                 NA
-            pexpect             4.8.0
-            pickle              NA
-            pickleshare         0.7.5
-            pkgutil             NA
-            platform            1.0.8
-            plistlib            NA
-            posix               NA
-            posixpath           NA
-            pprint              NA
-            profile             NA
-            prompt_toolkit      3.0.19
-            pstats              NA
-            pty                 NA
-            ptyprocess          0.7.0
-            pvectorc            NA
-            pwd                 NA
-            pydoc               NA
-            pydoc_data          NA
-            pyexpat             NA
-            pygments            2.9.0
-            pyparsing           2.4.7
-            pyrsistent          NA
-            pytz                2021.1
-            queue               NA
-            quopri              NA
-            random              NA
-            re                  2.2.1
-            reprlib             NA
-            resource            NA
-            retrying            NA
-            runpy               NA
-            secrets             NA
-            select              NA
-            selectors           NA
-            shlex               NA
-            shutil              NA
-            signal              NA
-            site                NA
-            six                 1.16.0
-            socket              NA
-            socketserver        0.4
-            soupsieve           2.2.1
-            sphinxcontrib       NA
-            sqlite3             2.6.0
-            sre_compile         NA
-            sre_constants       NA
-            sre_parse           NA
-            ssl                 NA
-            stat                NA
-            storemagic          NA
-            string              NA
-            stringprep          NA
-            struct              NA
-            subprocess          NA
-            sys                 3.7.11 (default, Jul  5 2021, 20:57:17) 
-[GCC 9.3.0]
-            sysconfig           NA
-            tarfile             0.9.0
-            tempfile            NA
-            termios             NA
-            textwrap            NA
-            threading           NA
-            timeit              NA
-            token               NA
-            tokenize            NA
-            tornado             6.1
-            traceback           NA
-            traitlets           5.0.5
-            tty                 NA
-            typing              NA
-            typing_extensions   NA
-            unicodedata         NA
-            unittest            NA
-            urllib              NA
-            urllib3             1.26.6
-            uu                  NA
-            uuid                NA
-            warnings            NA
-            wcwidth             0.2.5
-            weakref             NA
-            webbrowser          NA
-            xml                 NA
-            zipfile             NA
-            zipimport           NA
-            zipp                NA
-            zlib                1.0
-            zmq                 22.2.1
-            </pre>
-            </details> <!-- seems like this ends pre, so might as well be explicit -->
-            <pre>
-            -----
-            IPython             7.26.0
-            jupyter_client      6.1.12
-            jupyter_core        4.7.1
-            notebook            6.4.2
-            -----
-            Python 3.7.11 (default, Jul  5 2021, 20:57:17) [GCC 9.3.0]
-            Linux-5.8.0-1039-azure-x86_64-with-debian-bullseye-sid
-            2 logical CPU cores, x86_64
-            -----
-            Session information updated at 2021-08-10 19:42
-            </pre>
-            </details></div></div>
+<div class="output text_html"><details>
+<summary>Click to view session information</summary>
+<pre>
+-----
+PIL                 8.2.0
+bs4                 4.9.3
+datetime            NA
+json                2.0.9
+locale              NA
+markdownify         NA
+math                NA
+matplotlib          3.3.4
+natsort             7.1.1
+numpy               1.19.2
+os                  NA
+pandas              1.2.3
+pkg_resources       NA
+plotly              4.8.1
+pybtex              0.24.0
+requests            2.25.1
+scipy               1.6.2
+seaborn             0.11.1
+session_info        1.0.0
+sklearn             0.24.1
+time                NA
+types               NA
+-----
+</pre>
+<details>
+<summary>Click to view modules imported as dependencies</summary>
+<pre>
+abc                 NA
+argparse            1.1
+array               NA
+ast                 NA
+asyncio             NA
+atexit              NA
+attr                21.2.0
+backcall            0.2.0
+base64              NA
+bdb                 NA
+binascii            NA
+bisect              NA
+brotli              NA
+bz2                 NA
+cProfile            NA
+calendar            NA
+certifi             2021.05.30
+cffi                1.14.5
+chardet             3.0.4
+cmath               NA
+cmd                 NA
+code                NA
+codecs              NA
+codeop              NA
+collections         NA
+colorama            0.4.3
+colorsys            NA
+concurrent          NA
+configparser        NA
+contextlib          NA
+contextvars         NA
+copy                NA
+copyreg             NA
+csv                 1.0
+ctypes              1.1.0
+cycler              0.10.0
+cython_runtime      NA
+dataclasses         NA
+dateutil            2.8.1
+decimal             1.70
+decorator           5.0.6
+difflib             NA
+dis                 NA
+distutils           3.7.0
+email               NA
+encodings           NA
+enum                NA
+errno               NA
+faulthandler        NA
+filecmp             NA
+fnmatch             NA
+fractions           NA
+functools           NA
+gc                  NA
+genericpath         NA
+getopt              NA
+getpass             NA
+gettext             NA
+glob                NA
+google              NA
+gzip                NA
+hashlib             NA
+heapq               NA
+hmac                NA
+html                NA
+http                NA
+idna                2.10
+imp                 NA
+importlib           NA
+importlib_metadata  NA
+inspect             NA
+io                  NA
+ipykernel           5.3.4
+ipyparallel         6.3.0
+ipython_genutils    0.2.0
+ipywidgets          7.6.3
+itertools           NA
+jedi                0.18.0
+joblib              1.0.1
+jsonschema          3.2.0
+keyword             NA
+kiwisolver          1.3.1
+linecache           NA
+logging             0.5.1.2
+lxml                4.6.3
+lzma                NA
+marshal             4
+matplotlib_inline   NA
+mimetypes           NA
+mkl                 2.3.0
+mmap                NA
+mpl_toolkits        NA
+msvcrt              NA
+multiprocessing     NA
+nbformat            5.1.3
+netrc               NA
+nt                  NA
+ntpath              NA
+ntsecuritycon       NA
+nturl2path          NA
+numbers             NA
+numexpr             2.7.3
+olefile             0.46
+opcode              NA
+operator            NA
+packaging           20.9
+parso               0.8.2
+pathlib             NA
+pdb                 NA
+pickle              NA
+pickleshare         0.7.5
+pkgutil             NA
+platform            1.0.8
+plistlib            NA
+posixpath           NA
+pprint              NA
+profile             NA
+prompt_toolkit      3.0.17
+pstats              NA
+psutil              5.8.0
+pvectorc            NA
+pydoc               NA
+pydoc_data          NA
+pyexpat             NA
+pygments            2.8.1
+pyparsing           2.4.7
+pyrsistent          NA
+pythoncom           NA
+pytz                2021.1
+pywintypes          NA
+queue               NA
+quopri              NA
+random              NA
+re                  2.2.1
+reprlib             NA
+retrying            NA
+ruamel              NA
+runpy               NA
+secrets             NA
+select              NA
+selectors           NA
+shlex               NA
+shutil              NA
+signal              NA
+site                NA
+six                 1.15.0
+socket              NA
+socketserver        0.4
+socks               1.7.1
+soupsieve           2.2.1
+sphinxcontrib       NA
+sqlite3             2.6.0
+sre_compile         NA
+sre_constants       NA
+sre_parse           NA
+ssl                 NA
+stat                NA
+storemagic          NA
+string              NA
+stringprep          NA
+struct              NA
+subprocess          NA
+sys                 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+sysconfig           NA
+tarfile             0.9.0
+tempfile            NA
+textwrap            NA
+threading           NA
+timeit              NA
+token               NA
+tokenize            NA
+tornado             6.1
+traceback           NA
+traitlets           5.0.5
+typing              NA
+typing_extensions   NA
+unicodedata         NA
+unittest            NA
+urllib              NA
+urllib3             1.26.4
+uu                  NA
+uuid                NA
+warnings            NA
+wcwidth             0.2.5
+weakref             NA
+webbrowser          NA
+win32api            NA
+win32com            NA
+win32security       NA
+winreg              NA
+xml                 NA
+zipfile             NA
+zipimport           NA
+zipp                NA
+zlib                1.0
+zmq                 20.0.0
+</pre>
+</details> <!-- seems like this ends pre, so might as well be explicit -->
+<pre>
+-----
+IPython             7.23.1
+jupyter_client      6.1.12
+jupyter_core        4.7.1
+notebook            6.3.0
+-----
+Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
+Windows-10-10.0.19041-SP0
+12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+-----
+Session information updated at 2021-07-19 12:35
+</pre>
+</details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
