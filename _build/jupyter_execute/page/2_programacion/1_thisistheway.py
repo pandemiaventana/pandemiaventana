@@ -676,7 +676,7 @@ poblacion_yomevacuno = 286597
 # 
 # Los cambios siempre son para mejor.
 
-# In[4]:
+# In[32]:
 
 
 # Uniendo datos
@@ -829,7 +829,7 @@ df
 
 # ### CSV
 
-# In[5]:
+# In[33]:
 
 
 # Exportando información
@@ -1006,7 +1006,7 @@ pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2°
 
 # ### Reporte diario
 
-# In[6]:
+# In[1]:
 
 
 ### Infografías generadas
@@ -1181,7 +1181,7 @@ print(desc1)
 
 # ### Balance de vacunas
 
-# In[7]:
+# In[35]:
 
 
 ### Balance vacunas ###
@@ -1215,13 +1215,13 @@ print(desc2)
 
 # ### Indicador de fase
 
-# In[8]:
+# In[36]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[9]:
+# In[37]:
 
 
 ### Cambios
@@ -1264,7 +1264,7 @@ display(Markdown(pred))
 
 # ### Toque de queda a las 00:00 hrs.
 
-# In[10]:
+# In[38]:
 
 
 ### Balance vacunas ###
@@ -1316,7 +1316,7 @@ print(desc2)
 
 # ### Reporte diario
 
-# In[11]:
+# In[39]:
 
 
 ### Graficando para reporte diario ###
@@ -1426,7 +1426,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[12]:
+# In[40]:
 
 
 ### Graficando para balance vacunas ###
