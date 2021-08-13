@@ -1427,7 +1427,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[12]:
+# In[40]:
 
 
 ### Graficando para balance vacunas ###
