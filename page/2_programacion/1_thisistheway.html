@@ -1265,7 +1265,7 @@
 <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">csv76</span><span class="p">[</span><span class="n">csv76</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Dosis&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
 <span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">vacunacion</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;2° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Unica dosis&#39;</span><span class="p">]</span>
+<span class="n">vacunacion</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;2° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Refuerzo&#39;</span><span class="p">]</span>
 
 <span class="c1">### Obteniendo vacunación por edades (dataframe aparte)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -1443,43 +1443,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3409</span><span class="o">/</span><span class="mf">325069999.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Dosis&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">98</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;2° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Unica dosis&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span> 
-<span class="g g-Whitespace">    </span><span class="mi">100</span> <span class="c1">### Obteniendo vacunación por edades (dataframe aparte)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">__setattr__</span><span class="nt">(self, name, value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5476</span>         <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">5477</span>             <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">5478</span>             <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5479</span>         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">5480</span>             <span class="k">pass</span>
-
-<span class="nn">pandas/_libs/properties.pyx</span> in <span class="ni">pandas._libs.properties.AxisProperty.__set__</span><span class="nt">()</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">_set_axis</span><span class="nt">(self, axis, labels)</span>
-<span class="g g-Whitespace">    </span><span class="mi">668</span>     <span class="k">def</span> <span class="nf">_set_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">669</span>         <span class="n">labels</span> <span class="o">=</span> <span class="n">ensure_index</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">670</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_item_cache</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">672</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pandas/core/internals/managers.py</span> in <span class="ni">set_axis</span><span class="nt">(self, axis, new_labels)</span>
-<span class="g g-Whitespace">    </span><span class="mi">219</span>         <span class="k">if</span> <span class="n">new_len</span> <span class="o">!=</span> <span class="n">old_len</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">221</span>                 <span class="sa">f</span><span class="s2">&quot;Length mismatch: Expected axis has </span><span class="si">{</span><span class="n">old_len</span><span class="si">}</span><span class="s2"> elements, new &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>                 <span class="sa">f</span><span class="s2">&quot;values have </span><span class="si">{</span><span class="n">new_len</span><span class="si">}</span><span class="s2"> elements&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>             <span class="p">)</span>
-
-<span class="ne">ValueError</span>: Length mismatch: Expected axis has 4 elements, new values have 3 elements
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1524,7 +1487,8 @@
               <span class="s1">&#39;Usuarios en residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;Numero de residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI habilitadas&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupadas por confirmados&#39;</span><span class="p">,</span>
               <span class="s1">&#39;UCI ocupadas por no confirmados&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupacion media movil real&#39;</span><span class="p">,</span> <span class="s1">&#39;Re regional&#39;</span><span class="p">,</span> <span class="s1">&#39;Re Iquique&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Re Tamarugal&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad diaria&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">,</span>
-              <span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Camiña&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados dosis de refuerzo&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Casos acumulados en Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Camiña&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Casos acumulados en Colchane&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Casos acumulados en Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Pica&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Casos acumulados en Pozo Almonte&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Comuna desconocida&#39;</span><span class="p">,</span> 
@@ -2034,193 +1998,31 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2021-07-15</th>
-      <td>39,649.00</td>
-      <td>38,627.00</td>
-      <td>762.00</td>
-      <td>240.00</td>
-      <td>112.00</td>
-      <td>46.00</td>
-      <td>27.00</td>
-      <td>16.00</td>
-      <td>3.00</td>
-      <td>7.00</td>
-      <td>43.00</td>
-      <td>76.00</td>
-      <td>5.00</td>
-      <td>140.00</td>
-      <td>3,480.00</td>
-      <td>1,464.00</td>
-      <td>442,471.00</td>
-      <td>604.00</td>
-      <td>305.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>35.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>199.07</td>
-      <td>0.75</td>
-      <td>2.56</td>
-      <td>64.17</td>
-      <td>NaN</td>
-      <td>9.59</td>
-      <td>5.00</td>
-      <td>3.82</td>
-      <td>135.39</td>
-      <td>218.18</td>
-      <td>126.34</td>
-      <td>233.33</td>
-      <td>238.52</td>
-      <td>201.41</td>
-      <td>137.97</td>
-      <td>91.96</td>
-    </tr>
-    <tr>
-      <th>2021-07-16</th>
-      <td>39,740.00</td>
-      <td>38,715.00</td>
-      <td>763.00</td>
-      <td>242.00</td>
-      <td>96.00</td>
-      <td>37.00</td>
-      <td>23.00</td>
-      <td>11.00</td>
-      <td>3.00</td>
-      <td>6.00</td>
-      <td>43.00</td>
-      <td>88.00</td>
-      <td>1.00</td>
-      <td>122.00</td>
-      <td>3,602.00</td>
-      <td>1,205.00</td>
-      <td>443,676.00</td>
-      <td>604.00</td>
-      <td>297.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>34.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>11,603.9</td>
-      <td>15,563.6</td>
-      <td>9,096.7</td>
-      <td>14,800.0</td>
-      <td>12,745.7</td>
-      <td>16,616.3</td>
-      <td>12,802.5</td>
-      <td>12,688.5</td>
-      <td>2.00</td>
-      <td>199.33</td>
-      <td>0.68</td>
-      <td>0.80</td>
-      <td>63.23</td>
-      <td>NaN</td>
-      <td>8.73</td>
-      <td>4.92</td>
-      <td>3.32</td>
-      <td>137.69</td>
-      <td>218.18</td>
-      <td>126.34</td>
-      <td>233.33</td>
-      <td>239.86</td>
-      <td>201.41</td>
-      <td>137.97</td>
-      <td>88.30</td>
-    </tr>
-    <tr>
-      <th>2021-07-17</th>
-      <td>39,803.00</td>
-      <td>38,800.00</td>
-      <td>764.00</td>
-      <td>219.00</td>
-      <td>97.00</td>
-      <td>22.00</td>
-      <td>12.00</td>
-      <td>8.00</td>
-      <td>2.00</td>
-      <td>1.00</td>
-      <td>43.00</td>
-      <td>85.00</td>
-      <td>1.00</td>
-      <td>128.00</td>
-      <td>3,730.00</td>
-      <td>1,304.00</td>
-      <td>444,980.00</td>
-      <td>604.00</td>
-      <td>285.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>28.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>199.60</td>
-      <td>0.63</td>
-      <td>0.59</td>
-      <td>61.83</td>
-      <td>NaN</td>
-      <td>8.02</td>
-      <td>0.78</td>
-      <td>3.15</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>82.56</td>
-    </tr>
-    <tr>
-      <th>2021-07-18</th>
-      <td>39,817.00</td>
-      <td>38,822.00</td>
-      <td>764.00</td>
-      <td>211.00</td>
-      <td>94.00</td>
+      <th>2021-08-08</th>
+      <td>40,570.00</td>
+      <td>39,557.00</td>
+      <td>793.00</td>
+      <td>196.00</td>
+      <td>57.00</td>
       <td>20.00</td>
       <td>14.00</td>
-      <td>5.00</td>
-      <td>1.00</td>
       <td>2.00</td>
-      <td>43.00</td>
-      <td>22.00</td>
+      <td>4.00</td>
+      <td>3.00</td>
+      <td>49.00</td>
+      <td>33.00</td>
       <td>0.00</td>
-      <td>103.00</td>
-      <td>3,833.00</td>
-      <td>1,357.00</td>
-      <td>446,337.00</td>
-      <td>604.00</td>
-      <td>290.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>28.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>142.00</td>
+      <td>7,008.00</td>
+      <td>1,512.00</td>
+      <td>475,875.00</td>
+      <td>508.00</td>
+      <td>221.00</td>
+      <td>6.00</td>
+      <td>47.00</td>
+      <td>7.00</td>
+      <td>21.00</td>
+      <td>61.09</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
@@ -2232,25 +2034,105 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>2.00</td>
-      <td>199.60</td>
-      <td>0.63</td>
-      <td>0.91</td>
-      <td>60.19</td>
-      <td>NaN</td>
-      <td>7.46</td>
-      <td>1.94</td>
-      <td>2.85</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>79.68</td>
+      <td>207.17</td>
+      <td>1.01</td>
+      <td>0.67</td>
+      <td>61.09</td>
+      <td>0.00</td>
+      <td>7.13</td>
+      <td>2.11</td>
+      <td>3.39</td>
+      <td>141.54</td>
+      <td>290.91</td>
+      <td>126.34</td>
+      <td>233.33</td>
+      <td>249.71</td>
+      <td>218.19</td>
+      <td>137.97</td>
+      <td>66.10</td>
     </tr>
     <tr>
-      <th>2021-07-19</th>
+      <th>2021-08-09</th>
+      <td>40,597.00</td>
+      <td>39,587.00</td>
+      <td>794.00</td>
+      <td>192.00</td>
+      <td>66.00</td>
+      <td>23.00</td>
+      <td>11.00</td>
+      <td>8.00</td>
+      <td>4.00</td>
+      <td>3.00</td>
+      <td>49.00</td>
+      <td>30.00</td>
+      <td>1.00</td>
+      <td>117.00</td>
+      <td>7,125.00</td>
+      <td>2,132.00</td>
+      <td>478,007.00</td>
+      <td>508.00</td>
+      <td>209.00</td>
+      <td>6.00</td>
+      <td>47.00</td>
+      <td>7.00</td>
+      <td>21.00</td>
+      <td>61.40</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>11,893.9</td>
+      <td>16,072.7</td>
+      <td>9,159.8</td>
+      <td>15,166.7</td>
+      <td>13,010.2</td>
+      <td>16,851.3</td>
+      <td>13,055.5</td>
+      <td>12,964.6</td>
+      <td>2.00</td>
+      <td>207.43</td>
+      <td>1.13</td>
+      <td>1.15</td>
+      <td>61.40</td>
+      <td>0.00</td>
+      <td>7.32</td>
+      <td>2.56</td>
+      <td>3.20</td>
+      <td>142.31</td>
+      <td>290.91</td>
+      <td>189.51</td>
+      <td>233.33</td>
+      <td>249.71</td>
+      <td>218.19</td>
+      <td>137.97</td>
+      <td>67.40</td>
+    </tr>
+    <tr>
+      <th>2021-08-10</th>
+      <td>40,625.00</td>
+      <td>39,612.00</td>
+      <td>794.00</td>
+      <td>195.00</td>
+      <td>73.00</td>
+      <td>28.00</td>
+      <td>8.00</td>
+      <td>17.00</td>
+      <td>3.00</td>
+      <td>4.00</td>
+      <td>49.00</td>
+      <td>25.00</td>
+      <td>0.00</td>
+      <td>140.00</td>
+      <td>7,265.00</td>
+      <td>1,677.00</td>
+      <td>479,684.00</td>
+      <td>508.00</td>
+      <td>216.00</td>
+      <td>6.00</td>
+      <td>47.00</td>
+      <td>7.00</td>
+      <td>23.00</td>
+      <td>62.01</td>
+      <td>NaN</td>
+      <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2259,6 +2141,15 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>1.00</td>
+      <td>207.43</td>
+      <td>0.88</td>
+      <td>1.22</td>
+      <td>65.96</td>
+      <td>3.95</td>
+      <td>6.79</td>
+      <td>2.86</td>
+      <td>3.35</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2266,13 +2157,32 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>70.02</td>
+    </tr>
+    <tr>
+      <th>2021-08-11</th>
+      <td>40,666.00</td>
+      <td>39,646.00</td>
+      <td>794.00</td>
+      <td>202.00</td>
+      <td>86.00</td>
+      <td>19.00</td>
+      <td>11.00</td>
+      <td>2.00</td>
+      <td>6.00</td>
+      <td>6.00</td>
+      <td>49.00</td>
+      <td>34.00</td>
+      <td>0.00</td>
+      <td>213.00</td>
+      <td>7,478.00</td>
+      <td>1,324.00</td>
+      <td>481,008.00</td>
+      <td>508.00</td>
+      <td>229.00</td>
+      <td>6.00</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>6.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2285,6 +2195,52 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>1.00</td>
+      <td>207.43</td>
+      <td>0.87</td>
+      <td>0.68</td>
+      <td>65.35</td>
+      <td>NaN</td>
+      <td>6.94</td>
+      <td>2.82</td>
+      <td>3.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>75.24</td>
+    </tr>
+    <tr>
+      <th>2021-08-12</th>
+      <td>40,755.00</td>
+      <td>39,715.00</td>
+      <td>796.00</td>
+      <td>219.00</td>
+      <td>87.00</td>
+      <td>72.00</td>
+      <td>18.00</td>
+      <td>35.00</td>
+      <td>19.00</td>
+      <td>4.00</td>
+      <td>50.00</td>
+      <td>69.00</td>
+      <td>2.00</td>
+      <td>169.00</td>
+      <td>7,647.00</td>
+      <td>1,870.00</td>
+      <td>482,878.00</td>
+      <td>508.00</td>
+      <td>238.00</td>
+      <td>6.00</td>
+      <td>NaN</td>
+      <td>5.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2293,6 +2249,15 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>2.00</td>
+      <td>207.96</td>
+      <td>1.17</td>
+      <td>3.79</td>
+      <td>64.13</td>
+      <td>NaN</td>
+      <td>8.66</td>
+      <td>2.37</td>
+      <td>2.88</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2300,12 +2265,11 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>79.94</td>
     </tr>
   </tbody>
 </table>
-<p>504 rows × 154 columns</p>
+<p>528 rows × 155 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -2533,7 +2497,7 @@
 
 <span class="c1">### Vacunación ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">],</span>
-              <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]]</span>
+              <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados dosis de refuerzo&#39;</span><span class="p">]]</span>
               <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data27.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2737,16 +2701,34 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">d30f8a6e8edf</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1">### Fecha</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">fecha_hoy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">weekend_data</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1">### Casos nuevos confirmados y acumulados</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 12 de agosto de 2021 🕑. 
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+• Infectados 72 casos nuevos de los cuales 18 con síntomas, 35 sin síntomas y 19 sin notificar, dando un total de 40,755 casos confirmados. Adicionalmente, 4 casos nuevos confirmados por antígeno y 50 casos totales con sospecha de reinfección. 🦠
+• Recuperadas 69 personas, sumando 39,715 recuperados totales. 💪
+• Perdieron la vida 2 persona(s), sumando 796 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
+• Informados 1,870 exámenes PCR dando un total de 482,878 exámenes PCR totales en la región. En antígenos, 169 informados y 7,647 acumulados. 🌡️
+• Respecto a residencias sanitarias, 6 recintos de hospedaje con 508 cupos, de los cuales 238 están utilizados. 🏨
+• Se reportaron 219 casos activos y 87 activos probables. La tasa de activos (incidencia) es de 79. 🧪
+• La tasa de crecimiento es del 3.79: curva de contagios al alza.
+• Hasta ayer, 5 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 64.1% ± 4.0%. 🆘
+• La positividad PCR fue del 4%, con una positividad media móvil semanal del 2%. En antígeno, un 2% de positividad. 😷
+• De cada cien mil habitantes en la región, 207 fallecen por COVID-19. 😵
+• El Re Regional corresponde a 1.03. 💊
+• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 8.7. 💦
+• En el proceso de vacunación, 77.5% vacunados de la población objetivo (al menos, 222,184 personas con cuadro de vacunación completo). 💦
+
+*Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
+*La ocupación UCI es una aproximación de la situación de camas críticas regionales.
+*Datos actualizados hasta las 21 hrs. del día anterior.
+
+[ CAMBIOS EN LA 411° EDICION ⚙️ ]
+• Ninguno.
+
+[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+• Autor: Alejandro Dinamarca.
+
+¡A cuidarse Tarapacá! 😉
 </pre></div>
 </div>
 </div>
@@ -2788,13 +2770,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 18 de julio de 2021. 🕑 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 12 de agosto de 2021. 🕑 
 
-• El 71% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 203,126 personas con cuadros de vacunación completo.
+• El 77.5% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 222,184 personas con cuadros de vacunación completo.
 
 *Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
 
-[ CAMBIOS EN LA 56° EDICION ⚙️ ]
+[ CAMBIOS EN LA 59° EDICION ⚙️ ]
 • Ninguno
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
@@ -2867,24 +2849,24 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Indicador FASE, 18 de julio de 2021. 🕑</p>
+<p>Indicador FASE, 12 de agosto de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>97.249%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>11</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>96.589%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>11</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.732%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
-Actualmente, la comuna registra <b>63</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>92.797%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:orange">Transición</b>.
-Actualmente, la comuna registra <b>4</b> días en <b style="color:orange">Transición</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>96.05%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>14</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.072%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:gold">Preparación</b>.
-Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>71.911%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.811%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>34</b> días en <b style="color:gold">Preparación</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>90.131%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>11</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>98.587%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>86</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>94.702%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>77.787%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>61.191%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>7</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>89.049%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>27</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
-<p>[ CAMBIOS EN LA 41° EDICION ⚙️ ]</p>
+<p>[ CAMBIOS EN LA 44° EDICION ⚙️ ]</p>
 <p>• Ninguno</p>
 <p>[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]</p>
 <p>• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!</p>
@@ -2938,10 +2920,10 @@ Actualmente, la comuna registra <b>4</b> días en <b style="color:dodgerblue">Ap
 Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
 
 • Tasa de incidencia de activos menor a 150 (actualmente es 79). ✔️
-• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es 71%). ❌
+• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es 77.5%). ❌
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Datos actualizados de acuerdo a informes del 18 de julio de 2021.
+• Datos actualizados de acuerdo a informes del 12 de agosto de 2021.
 • Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
 • Autor: Alejandro Dinamarca.
 
@@ -3242,27 +3224,10 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-
- 
- Gráficos del balance de vacunas guardados de forma exitosa.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_2935/3894292057.py&quot;</span><span class="gt">, line </span><span class="mi">110</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;#8899e1&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> \
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
