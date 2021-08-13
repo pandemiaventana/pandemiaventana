@@ -17,22 +17,34 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-### Graficando para balance vacunas ###
+### Graficando para reporte diario ###
 
-### Últimas cifras de vacunación a población total/objetivo
-pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()], \
-          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()], \
-          poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
-pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()] +  + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()], \
-          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()], \
-          poblacion_yomevacuno - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
-labels = np.array(['Con 1° dosis \n (sin inmunidad o parcial)', 'Con cuadro completo \n (eventual inmunes)', 'Sin cuadro completo \n (sin inmunidad)'])
-vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
-vacunacion_pct.index = labels
-vacunacion_pct.columns = ['Población total', 'Población objetivo']
+### Para gráficos de torta
+class graphPie:
+    """
+    Clase para gráfico de torta.
+    Args
+    ____
+    data: datos para torta
+    color: colores
+    path: dirección de guardado
+    
+    """
+    def __init__(self, data, color, path):
+        fig, ax = plt.subplots(figsize=(1.5, 1.5), subplot_kw=dict(aspect="equal"))
+        self.data = data
+        self.color = color
+        def absolute_value(val):
+            a = np.int(np.round(val/100*(np.array(data).sum())))
+            return a
+        graph = plt.pie(self.data, autopct=absolute_value, shadow=True, colors=self.color, pctdistance=0.9, textprops={'color':'w', 'fontsize': 9}, explode=[0.02, 0.02, 0.02])
+        self.path = path
+        plt.savefig(self.path)
+        plt.show()
+        print('Gráfico guardado.')
 
-### Para gráficos de barra
-class graphBar:
+### Para gráficos de línea
+class graphLine:
     """
     Clase para gráfico de barra.
     Args
@@ -41,108 +53,126 @@ class graphBar:
     y: eje y
     color: colores
     path: dirección de guardado
-    alpha: transparencia
-    opt:'' sufijo de dato
-    uni:0 booleano (0 para color para todas las barras, 1 para color por cada barra)
-    w:4 (ancho)
-    l:3 (largo)
-    horizontal:0 (gráfico vertical u horizontal)
-    rot: rotacion para gráfico con uni=1
+    opt: sufijo de dato
+    line: línea paralela a y, ''=True, '#'=False
+    liney: valor para line
+    sizelabelin: tamaño para texto in-graph
+    txth: texto, ''=True, '#'=False
+    txt_str: string para txth
+    txtx: x para txth
+    txty: y para txth
+    txts: tamaño para txt
     
     """
-    def __init__(self, x, y, color, path, alpha, opt='', uni=0, w=4, l=3, horizontal=0, rot=0):
+    def __init__(self, x, y, color, path, opt='', line='#', liney=1, txth='#', txt_str='', txtx=1, txty=1, txts=20,
+                sizelabelin=8):
         self.opt = opt
-        self.w = 4
-        self.l = 3
         self.s = 0
-        fig, ax = plt.subplots(figsize=(w, l))
-        self.x = x
-        self.y = y
-        self.color = color
-        self.alpha = alpha
-        self.path = path
-        self.uni = uni
-        self.horizontal = 0
-        self.rot = rot
-        if horizontal == 0:
-            if uni == True:
-                for x in self.x:
-                    ax.bar(self.x[self.s], self.y[self.s], color=self.color, alpha=self.alpha[self.s])
-                for i,j in zip(self.x[self.s],self.y[self.s]):
-                    ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=9, horizontalalignment='center', verticalalignment='bottom')
-                self.s += 1
-                plt.xticks(rotation=self.rot)
-            else:
-                for x in self.x:
-                    ax.bar(self.x[self.s], self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
-                    for i,j in zip(self.x[self.s],self.y[self.s]):
-                        ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=4.5, horizontalalignment='center', verticalalignment='bottom')
-                    self.s += 1
-                    plt.xticks(rotation=15)
-        else:
-            for x in self.x:
-                ax.barh(width=self.x[self.s], y=self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
-                ax.axis('off')
-                fig.patch.set_visible(True)
-                self.s += 1
-        ax.tick_params(labelsize=5, colors='w', grid_color='w')
-        ax.get_yaxis().set_major_formatter(
-        mpl.ticker.FuncFormatter(lambda y, p: format(int(y), ',d')))
-        self.path = path
+        fig, ax = plt.subplots(figsize=(4, 3))
         ax.spines['bottom'].set_color('white')
         ax.spines['left'].set_color('white')
-        plt.savefig(self.path, bbox_inches = 'tight')
+        self.x = x
+        self.y = y
+        self.line = line
+        self.liney = liney
+        self.txth = txth
+        self.txt_str = txt_str
+        self.txtx = txtx
+        self.txty = txty
+        self.txts = txts
+        self.color = color
+        self.path = path
+        self.sizelabelin = sizelabelin
+        for x in self.x:
+            graph = plt.plot(self.x[self.s], self.y[self.s], color=self.color[self.s])
+            for i,j in zip(self.x[self.s],self.y[self.s]):
+                ax.annotate('{}{}'.format(int(j), self.opt),xy=(i,j), color='w', size=self.sizelabelin, horizontalalignment='center', verticalalignment='bottom')
+            exec('{}plt.axhline(self.liney, color="white")'.format(self.line))
+            exec('{}ax.text(txtx, txty, txt_str, color="white", size=self.txts)'.format(self.txth))
+            self.s += 1
+        ax.tick_params(labelsize=3, colors='w', grid_color='w')
+        self.path = path
+        plt.savefig(self.path)
         ax.tick_params(colors='#000', grid_color='#000')
         ax.spines['bottom'].set_color('#000')
         ax.spines['left'].set_color('#000')
         plt.show()
         print('Gráfico guardado.')
-        
-### Primer gráfico: Proporción objetivo vacunada
-graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],\
-                   [[0], [0]], \
-                   color=['gray', '#9ad5ff'], alpha=[1, 1], \
-                   path='../../in/vacuna/grafico/1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-vaccine = Image.open(requests.get('https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/in/vacuna/grafico/vaccine.png', stream=True).raw).rotate(-90)
-pct_ = Image.open('../../in/vacuna/grafico/1.png')
-background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
-background.paste(pct_, (135,359), pct_)
-background.paste(vaccine, (0, 0), vaccine)
-background = background.rotate(90).resize((400, 700), Image.ANTIALIAS)
-background.save('../../in/vacuna/grafico/1.png')
 
-### Segundo gráfico: Vacunas administradas (1° dosis)
-graph2 = graphBar([vacunacion_pct.index],\
-                   [vacunacion_pct['Población total']], \
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
-                   path='../../in/vacuna/grafico/2.png', uni=1, w=3.5, l=2.5)
-        
-### Tercer gráfico: Vacunas administradas (1° dosis)
-graph3 = graphBar([vacunacion_pct.index],\
-                   [vacunacion_pct['Población objetivo']], \
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
-                   path='../../in/vacuna/grafico/3.png', uni=1, w=3.5, l=2.5)
-        
-### Cuarto gráfico: Vacunas administradas (1° dosis)
-graph4 = graphBar([vacunacion_etaria.index]*2,\
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis'] + vacunacion_etaria['Unica dosis'], \
-                   color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
-                   path='../../in/vacuna/grafico/4.png')
+### Primer gráfico: Detalle de casos nuevos
+graph1 = graphPie([df['Casos nuevos con sintomas'][weekend_data], df['Casos nuevos sin sintomas'][weekend_data], df['Casos nuevos por laboratorio'][weekend_data]], \
+         ['#a688f1', '#ca6e8f', '#a8ca55'], '../../in/diario/grafico/1.png')
 
-### Quinto gráfico: Vacunas administradas (2° dosis)
-graph5 = graphBar([vacunacion_etaria.index]*2,\
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis']], \
-                   color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
-                   path='../../in/vacuna/grafico/5.png')
+### Segundo gráfico: Balance diario
+graph2 = graphPie([df['Casos nuevos'][weekend_data], df['Casos recuperados nuevos'][weekend_data], df['Casos fallecidos nuevos'][weekend_data]], \
+         ['#b68b41', '#43bb48', '#fe4747'], '../../in/diario/grafico/2.png')
 
+
+### Tercer gráfico: Balance semanal
+graph3 = graphLine([df[weekstart_data:weekend_data].index]*3,\
+                   [df['Casos nuevos'][weekstart_data:weekend_data], df['Casos recuperados nuevos'][weekstart_data:weekend_data], df['Casos fallecidos nuevos'][weekstart_data:weekend_data]], \
+                   color=['#b68b40', '#43bb47', '#fe4747'], \
+                   path='../../in/diario/grafico/3.png')
+
+### Cuarto gráfico: Activos semanales
+graph4 = graphLine([df[weekstart_data:weekend_data].index]*2,\
+                   [df['Casos activos confirmados'][weekstart_data:weekend_data], df['Casos activos probables'][weekstart_data:weekend_data]], \
+                   color=['#edf01c', '#9585dc'], \
+                   path='../../in/diario/grafico/4.png',)
+
+## Quinto gráfico: Positividad
+graph5 = graphLine([df[weekstart_data:weekend_data].index]*2,\
+                   [df['Positividad diaria'][weekstart_data:weekend_data], df['Positividad media movil *'][weekstart_data:weekend_data]], \
+                   color=['#f052d0', '#f5e7d0'], \
+                   path='../../in/diario/grafico/5.png', opt='%')
+
+### Sexto gráfico: Residencias sanitarias
+graph6 = graphLine([df[weekstart_data:weekend_data].index]*2,\
+                   [df['Cupos en residencias'][weekstart_data:weekend_data], df['Usuarios en residencias'][weekstart_data:weekend_data]], \
+                   color=['#4c4c4c', '#1efde2'], \
+                   path='../../in/diario/grafico/6.png')
+    
 ### ¿Todo ok?
-print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
+print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 ------------------
 
-[0;36m  File [0;32m"/tmp/ipykernel_2935/3894292057.py"[0;36m, line [0;32m110[0m
-[0;31m    color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5, \[0m
-[0m         ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m/tmp/ipykernel_2906/3711567112.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     87[0m [0;31m### Segundo gráfico: Balance diario[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     88[0m graph2 = graphPie([df['Casos nuevos'][weekend_data], df['Casos recuperados nuevos'][weekend_data], df['Casos fallecidos nuevos'][weekend_data]], \
+[0;32m---> 89[0;31m          ['#b68b41', '#43bb48', '#fe4747'], '../../in/diario/grafico/2.png')
+[0m[1;32m     90[0m [0;34m[0m[0m
+[1;32m     91[0m [0;34m[0m[0m
 
-SyntaxError: invalid syntax (3894292057.py, line 110)
+[0;32m/tmp/ipykernel_2906/3711567112.py[0m in [0;36m__init__[0;34m(self, data, color, path)[0m
+[1;32m     19[0m             [0ma[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mint[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0mround[0m[0;34m([0m[0mval[0m[0;34m/[0m[0;36m100[0m[0;34m*[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0marray[0m[0;34m([0m[0mdata[0m[0;34m)[0m[0;34m.[0m[0msum[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     20[0m             [0;32mreturn[0m [0ma[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 21[0;31m         [0mgraph[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0mpie[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mdata[0m[0;34m,[0m [0mautopct[0m[0;34m=[0m[0mabsolute_value[0m[0;34m,[0m [0mshadow[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mcolors[0m[0;34m=[0m[0mself[0m[0;34m.[0m[0mcolor[0m[0;34m,[0m [0mpctdistance[0m[0;34m=[0m[0;36m0.9[0m[0;34m,[0m [0mtextprops[0m[0;34m=[0m[0;34m{[0m[0;34m'color'[0m[0;34m:[0m[0;34m'w'[0m[0;34m,[0m [0;34m'fontsize'[0m[0;34m:[0m [0;36m9[0m[0;34m}[0m[0;34m,[0m [0mexplode[0m[0;34m=[0m[0;34m[[0m[0;36m0.02[0m[0;34m,[0m [0;36m0.02[0m[0;34m,[0m [0;36m0.02[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     22[0m         [0mself[0m[0;34m.[0m[0mpath[0m [0;34m=[0m [0mpath[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     23[0m         [0mplt[0m[0;34m.[0m[0msavefig[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mpath[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/matplotlib/pyplot.py[0m in [0;36mpie[0;34m(x, explode, labels, colors, autopct, pctdistance, shadow, labeldistance, startangle, radius, counterclock, wedgeprops, textprops, center, frame, rotatelabels, normalize, data)[0m
+[1;32m   2832[0m         [0mwedgeprops[0m[0;34m=[0m[0mwedgeprops[0m[0;34m,[0m [0mtextprops[0m[0;34m=[0m[0mtextprops[0m[0;34m,[0m [0mcenter[0m[0;34m=[0m[0mcenter[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2833[0m         [0mframe[0m[0;34m=[0m[0mframe[0m[0;34m,[0m [0mrotatelabels[0m[0;34m=[0m[0mrotatelabels[0m[0;34m,[0m [0mnormalize[0m[0;34m=[0m[0mnormalize[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2834[0;31m         **({"data": data} if data is not None else {}))
+[0m[1;32m   2835[0m [0;34m[0m[0m
+[1;32m   2836[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/matplotlib/__init__.py[0m in [0;36minner[0;34m(ax, data, *args, **kwargs)[0m
+[1;32m   1445[0m     [0;32mdef[0m [0minner[0m[0;34m([0m[0max[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0mdata[0m[0;34m=[0m[0;32mNone[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1446[0m         [0;32mif[0m [0mdata[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1447[0;31m             [0;32mreturn[0m [0mfunc[0m[0;34m([0m[0max[0m[0;34m,[0m [0;34m*[0m[0mmap[0m[0;34m([0m[0msanitize_sequence[0m[0;34m,[0m [0margs[0m[0;34m)[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1448[0m [0;34m[0m[0m
+[1;32m   1449[0m         [0mbound[0m [0;34m=[0m [0mnew_sig[0m[0;34m.[0m[0mbind[0m[0;34m([0m[0max[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/matplotlib/axes/_axes.py[0m in [0;36mpie[0;34m(self, x, explode, labels, colors, autopct, pctdistance, shadow, labeldistance, startangle, radius, counterclock, wedgeprops, textprops, center, frame, rotatelabels, normalize)[0m
+[1;32m   2998[0m [0;34m[0m[0m
+[1;32m   2999[0m         [0;32mif[0m [0mnp[0m[0;34m.[0m[0many[0m[0;34m([0m[0mx[0m [0;34m<[0m [0;36m0[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 3000[0;31m             [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"Wedge sizes 'x' must be non negative values"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   3001[0m [0;34m[0m[0m
+[1;32m   3002[0m         [0msx[0m [0;34m=[0m [0mx[0m[0;34m.[0m[0msum[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: Wedge sizes 'x' must be non negative values
+ValueError: Wedge sizes 'x' must be non negative values
 
