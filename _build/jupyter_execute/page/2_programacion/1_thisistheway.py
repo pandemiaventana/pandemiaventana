@@ -763,6 +763,8 @@ df = df.round(2)
 ### Pasamos el index (índice) a objeto datetime (fecha) y le asignamos nombre
 df.index = pd.to_datetime(df.index)
 df.index = df.index.rename('Fecha')
+### Corrección de negativos por ajuste histórico
+df['Casos recuperados nuevos'] = df['Casos recuperados nuevos'].clip(lower=0)
 
 ### Imprimimos el DataFrame
 df
@@ -1427,7 +1429,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[40]:
+# In[12]:
 
 
 ### Graficando para balance vacunas ###

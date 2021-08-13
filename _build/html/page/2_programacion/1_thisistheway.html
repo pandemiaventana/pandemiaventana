@@ -1540,6 +1540,8 @@
 <span class="c1">### Pasamos el index (índice) a objeto datetime (fecha) y le asignamos nombre</span>
 <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
+<span class="c1">### Corrección de negativos por ajuste histórico</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">### Imprimimos el DataFrame</span>
 <span class="n">df</span>
@@ -2226,7 +2228,7 @@
       <td>2.00</td>
       <td>7.00</td>
       <td>50.00</td>
-      <td>-29.00</td>
+      <td>0.00</td>
       <td>0.00</td>
       <td>184.00</td>
       <td>7,831.00</td>
@@ -2704,7 +2706,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 13 de agosto de 2021 🕑. 
 
 • Infectados 15 casos nuevos de los cuales 9 con síntomas, 4 sin síntomas y 2 sin notificar, dando un total de 40,734 casos confirmados. Adicionalmente, 7 casos nuevos confirmados por antígeno y 50 casos totales con sospecha de reinfección. 🦠
-• Recuperadas -29 personas, sumando 39,686 recuperados totales. 💪
+• Recuperadas 0 personas, sumando 39,686 recuperados totales. 💪
 • Perdieron la vida 0 persona(s), sumando 796 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
 • Informados 1,416 exámenes PCR dando un total de 484,294 exámenes PCR totales en la región. En antígenos, 184 informados y 7,831 acumulados. 🌡️
 • Respecto a residencias sanitarias, 6 recintos de hospedaje con 508 cupos, de los cuales 237 están utilizados. 🏨
@@ -2851,19 +2853,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 13 de agosto de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.804%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.993%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>34</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>88.664%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>89.142%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>11</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.461%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.428%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>86</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>81.144%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>77.888%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>78.024%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>75.105%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>48.253%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>50.642%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>89.344%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>89.431%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>27</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 44° EDICION ⚙️ ]</p>
@@ -3070,47 +3072,29 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2906</span><span class="o">/</span><span class="mf">3711567112.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span> <span class="c1">### Segundo gráfico: Balance diario</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="n">graph2</span> <span class="o">=</span> <span class="n">graphPie</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos nuevos&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos fallecidos nuevos&#39;</span><span class="p">][</span><span class="n">weekend_data</span><span class="p">]],</span> \
-<span class="ne">---&gt; </span><span class="mi">89</span>          <span class="p">[</span><span class="s1">&#39;#b68b41&#39;</span><span class="p">,</span> <span class="s1">&#39;#43bb48&#39;</span><span class="p">,</span> <span class="s1">&#39;#fe4747&#39;</span><span class="p">],</span> <span class="s1">&#39;../../in/diario/grafico/2.png&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span> 
-<span class="g g-Whitespace">     </span><span class="mi">91</span> 
-
-<span class="nn">/tmp/ipykernel_2906/3711567112.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, color, path)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>             <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">val</span><span class="o">/</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())))</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="k">return</span> <span class="n">a</span>
-<span class="ne">---&gt; </span><span class="mi">21</span>         <span class="n">graph</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="n">absolute_value</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span> <span class="n">explode</span><span class="o">=</span><span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/matplotlib/pyplot.py</span> in <span class="ni">pie</span><span class="nt">(x, explode, labels, colors, autopct, pctdistance, shadow, labeldistance, startangle, radius, counterclock, wedgeprops, textprops, center, frame, rotatelabels, normalize, data)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2832</span>         <span class="n">wedgeprops</span><span class="o">=</span><span class="n">wedgeprops</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="n">textprops</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2833</span>         <span class="n">frame</span><span class="o">=</span><span class="n">frame</span><span class="p">,</span> <span class="n">rotatelabels</span><span class="o">=</span><span class="n">rotatelabels</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">,</span>
-<span class="ne">-&gt; </span><span class="mi">2834</span>         <span class="o">**</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}))</span>
-<span class="g g-Whitespace">   </span><span class="mi">2835</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2836</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/matplotlib/__init__.py</span> in <span class="ni">inner</span><span class="nt">(ax, data, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1446</span>         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1447</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">sanitize_sequence</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1448</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1449</span>         <span class="n">bound</span> <span class="o">=</span> <span class="n">new_sig</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/matplotlib/axes/_axes.py</span> in <span class="ni">pie</span><span class="nt">(self, x, explode, labels, colors, autopct, pctdistance, shadow, labeldistance, startangle, radius, counterclock, wedgeprops, textprops, center, frame, rotatelabels, normalize)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2998</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2999</span>         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">3000</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Wedge sizes &#39;x&#39; must be non negative values&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3001</span> 
-<span class="g g-Whitespace">   </span><span class="mi">3002</span>         <span class="n">sx</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="ne">ValueError</span>: Wedge sizes &#39;x&#39; must be non negative values
+<img alt="../../_images/1_thisistheway_24_2.png" src="../../_images/1_thisistheway_24_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<img alt="../../_images/1_thisistheway_24_3.png" src="../../_images/1_thisistheway_24_3.png" />
+<img alt="../../_images/1_thisistheway_24_4.png" src="../../_images/1_thisistheway_24_4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_24_6.png" src="../../_images/1_thisistheway_24_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_24_8.png" src="../../_images/1_thisistheway_24_8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_24_10.png" src="../../_images/1_thisistheway_24_10.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+
+ 
+ Gráficos del reporte diario guardados de forma exitosa.
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -3242,27 +3226,10 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1_thisistheway_26_0.png" src="../../_images/1_thisistheway_26_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_2.png" src="../../_images/1_thisistheway_26_2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_4.png" src="../../_images/1_thisistheway_26_4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_6.png" src="../../_images/1_thisistheway_26_6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-</pre></div>
-</div>
-<img alt="../../_images/1_thisistheway_26_8.png" src="../../_images/1_thisistheway_26_8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
-
- 
- Gráficos del balance de vacunas guardados de forma exitosa.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_2954/3894292057.py&quot;</span><span class="gt">, line </span><span class="mi">110</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;#8899e1&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> \
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
