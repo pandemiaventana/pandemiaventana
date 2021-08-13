@@ -500,7 +500,7 @@ r_provincial_tam = r_provincial[r_provincial['Provincia'] == 'Tamarugal']['r.est
 vacunacion = csv76[csv76['Region'] == 'Tarapacá'].transpose()
 vacunacion = vacunacion.drop('Dosis').drop('Region')
 vacunacion.index, vacunacion = pd.to_datetime(vacunacion.index), vacunacion.astype(int)
-vacunacion.columns = ['1° Dosis', '2° Dosis', 'Unica dosis']
+vacunacion.columns = ['1° Dosis', '2° Dosis', 'Unica dosis', 'Refuerzo']
 
 ### Obteniendo vacunación por edades (dataframe aparte)
 x = np.arange(5, 70, 10)
@@ -676,7 +676,7 @@ poblacion_yomevacuno = 286597
 # 
 # Los cambios siempre son para mejor.
 
-# In[32]:
+# In[4]:
 
 
 # Uniendo datos
@@ -710,7 +710,8 @@ df.columns = ['Casos confirmados acumulados', 'Casos recuperados acumulados', 'C
               'Usuarios en residencias', 'Numero de residencias', 'UCI habilitadas', 'UCI ocupadas por confirmados',
               'UCI ocupadas por no confirmados', 'UCI ocupacion media movil real', 'Re regional', 'Re Iquique',
               'Re Tamarugal', 'Positividad diaria', 'Vacunados acumulados 1° dosis', 'Vacunados acumulados 2° dosis',
-              'Vacunados acumulados unica dosis', 'Casos acumulados en Alto Hospicio', 'Casos acumulados en Camiña',
+              'Vacunados acumulados unica dosis', 'Vacunados acumulados dosis de refuerzo',
+              'Casos acumulados en Alto Hospicio', 'Casos acumulados en Camiña',
               'Casos acumulados en Colchane',
               'Casos acumulados en Huara', 'Casos acumulados en Iquique', 'Casos acumulados en Pica',
               'Casos acumulados en Pozo Almonte', 'Casos acumulados en Comuna desconocida', 
@@ -829,7 +830,7 @@ df
 
 # ### CSV
 
-# In[33]:
+# In[5]:
 
 
 # Exportando información
@@ -1000,13 +1001,13 @@ pd.DataFrame(pd.DataFrame(df.loc[:, df.columns.str.contains('Mortalidad especifi
 
 ### Vacunación ###
 pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2° dosis'],
-              df['Vacunados acumulados unica dosis']]
+              df['Vacunados acumulados unica dosis'], df['Vacunados acumulados dosis de refuerzo']]
               ).transpose().to_csv('../../out/site/csv/data27.csv')
 
 
 # ### Reporte diario
 
-# In[1]:
+# In[6]:
 
 
 ### Infografías generadas
@@ -1181,7 +1182,7 @@ print(desc1)
 
 # ### Balance de vacunas
 
-# In[35]:
+# In[7]:
 
 
 ### Balance vacunas ###
@@ -1215,13 +1216,13 @@ print(desc2)
 
 # ### Indicador de fase
 
-# In[36]:
+# In[8]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[37]:
+# In[9]:
 
 
 ### Cambios
@@ -1264,7 +1265,7 @@ display(Markdown(pred))
 
 # ### Toque de queda a las 00:00 hrs.
 
-# In[38]:
+# In[10]:
 
 
 ### Balance vacunas ###
@@ -1316,7 +1317,7 @@ print(desc2)
 
 # ### Reporte diario
 
-# In[39]:
+# In[11]:
 
 
 ### Graficando para reporte diario ###
@@ -1426,7 +1427,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[40]:
+# In[12]:
 
 
 ### Graficando para balance vacunas ###
