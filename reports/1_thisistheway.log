@@ -139,7 +139,7 @@ graph5 = graphBar([vacunacion_etaria.index]*2,\
 print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 ------------------
 
-[0;36m  File [0;32m"/tmp/ipykernel_3174/3894292057.py"[0;36m, line [0;32m110[0m
+[0;36m  File [0;32m"/tmp/ipykernel_3132/3894292057.py"[0;36m, line [0;32m110[0m
 [0;31m    color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5, \[0m
 [0m         ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m invalid syntax
