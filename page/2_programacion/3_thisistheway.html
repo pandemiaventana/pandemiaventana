@@ -483,11 +483,6 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#gracias-a-benvida-stackoverflow-com-a-64495269-13746427">
-       Gracias a BenVida (stackoverflow.com/a/64495269/13746427)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#nuevo-inconveniente">
        Nuevo inconveniente
       </a>
@@ -852,36 +847,6 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="gracias-a-benvida-stackoverflow-com-a-64495269-13746427">
-<h4>Gracias a BenVida (<a class="reference external" href="http://stackoverflow.com/a/64495269/13746427">stackoverflow.com/a/64495269/13746427</a>)<a class="headerlink" href="#gracias-a-benvida-stackoverflow-com-a-64495269-13746427" title="Permalink to this headline">¶</a></h4>
-<p>Javascript(‘’’{
-let outputs=[…document.querySelectorAll(“.cell”)].map(
-cell=&gt; {
-let output=cell.querySelector(“.output”)
-if(output) return output.innerHTML
-output=cell.querySelector(“.rendered_html”)
-if(output) return output.innerHTML
-return “”
-}
-)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>IPython.notebook.kernel.execute(&quot;cell_outputs=&quot;+JSON.stringify(outputs)) 
-IPython.notebook.kernel.execute(&quot;soup = BeautifulSoup(cell_outputs[9])&quot;)
-IPython.notebook.kernel.execute(&quot;removals = soup.find_all(attrs={&#39;class&#39;: &#39;prompt&#39;})&quot;)
-IPython.notebook.kernel.execute(&quot;for removal in removals: removal.decompose()&quot;)
-IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)   
-IPython.notebook.kernel.execute(&quot;html = open(&#39;../../out/site/balance.html&#39;,&#39;w&#39;)&quot;)
-IPython.notebook.kernel.execute(&quot;html.write(\
-&#39;&lt;html&gt;&lt;head&gt;&lt;link rel={} href={}&gt;&lt;link rel={} href={}&gt;&lt;link rel={} href={}&gt;&lt;script src={}&gt;&lt;/script&gt;&lt;script src={}&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&#39;\
-.format(&#39;stylesheet&#39;, &#39;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css&#39;, \
-&#39;stylesheet&#39;, &#39;./style.min.css&#39;, \
-&#39;stylesheet&#39;, &#39;./ipython.min.css&#39;, \
-&#39;https://cdn.plot.ly/plotly-latest.min.js&#39;, &#39;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js&#39;)\
-+ soup +&#39;&lt;/body&gt;&lt;/html&gt;&#39;)&quot;)
-IPython.notebook.kernel.execute(&quot;html.close()&quot;)
-</pre></div>
-</div>
-<p>}’’’)</p>
-</div>
 <div class="section" id="nuevo-inconveniente">
 <h4>Nuevo inconveniente<a class="headerlink" href="#nuevo-inconveniente" title="Permalink to this headline">¶</a></h4>
 <p>Al automatizar el código en GitHub, logré apreciar que el código Python a través de JavaScript no es ejecutado. Ésto produce que los archivos no se actualicen.</p>
@@ -1199,7 +1164,7 @@ IPython.notebook.kernel.execute(&quot;html.close()&quot;)
             Linux-5.8.0-1039-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-08-15 18:51
+            Session information updated at 2021-08-15 19:01
             </pre>
             </details></div></div>
 </div>
