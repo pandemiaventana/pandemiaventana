@@ -1447,36 +1447,36 @@ class graphLine:
         print('Gráfico guardado.')
 
 ### Primer gráfico: Detalle de casos nuevos
-graph1 = graphPie([df['Casos nuevos con sintomas'][weekend_data], df['Casos nuevos sin sintomas'][weekend_data], df['Casos nuevos por laboratorio'][weekend_data]], \
+graph1 = graphPie([df['Casos nuevos con sintomas'][weekend_data], df['Casos nuevos sin sintomas'][weekend_data], df['Casos nuevos por laboratorio'][weekend_data]], 
          ['#a688f1', '#ca6e8f', '#a8ca55'], '../../in/diario/grafico/1.png')
 
 ### Segundo gráfico: Balance diario
-graph2 = graphPie([df['Casos nuevos'][weekend_data], df['Casos recuperados nuevos'][weekend_data], df['Casos fallecidos nuevos'][weekend_data]], \
+graph2 = graphPie([df['Casos nuevos'][weekend_data], df['Casos recuperados nuevos'][weekend_data], df['Casos fallecidos nuevos'][weekend_data]],
          ['#b68b41', '#43bb48', '#fe4747'], '../../in/diario/grafico/2.png')
 
 
 ### Tercer gráfico: Balance semanal
-graph3 = graphLine([df[weekstart_data:weekend_data].index]*3,\
-                   [df['Casos nuevos'][weekstart_data:weekend_data], df['Casos recuperados nuevos'][weekstart_data:weekend_data], df['Casos fallecidos nuevos'][weekstart_data:weekend_data]], \
-                   color=['#b68b40', '#43bb47', '#fe4747'], \
+graph3 = graphLine([df[weekstart_data:weekend_data].index]*3,
+                   [df['Casos nuevos'][weekstart_data:weekend_data], df['Casos recuperados nuevos'][weekstart_data:weekend_data], df['Casos fallecidos nuevos'][weekstart_data:weekend_data]],
+                   color=['#b68b40', '#43bb47', '#fe4747'],
                    path='../../in/diario/grafico/3.png')
 
 ### Cuarto gráfico: Activos semanales
-graph4 = graphLine([df[weekstart_data:weekend_data].index]*2,\
-                   [df['Casos activos confirmados'][weekstart_data:weekend_data], df['Casos activos probables'][weekstart_data:weekend_data]], \
-                   color=['#edf01c', '#9585dc'], \
+graph4 = graphLine([df[weekstart_data:weekend_data].index]*2,
+                   [df['Casos activos confirmados'][weekstart_data:weekend_data], df['Casos activos probables'][weekstart_data:weekend_data]],
+                   color=['#edf01c', '#9585dc'],
                    path='../../in/diario/grafico/4.png',)
 
 ## Quinto gráfico: Positividad
-graph5 = graphLine([df[weekstart_data:weekend_data].index]*2,\
-                   [df['Positividad diaria'][weekstart_data:weekend_data], df['Positividad media movil *'][weekstart_data:weekend_data]], \
-                   color=['#f052d0', '#f5e7d0'], \
+graph5 = graphLine([df[weekstart_data:weekend_data].index]*2,
+                   [df['Positividad diaria'][weekstart_data:weekend_data], df['Positividad media movil *'][weekstart_data:weekend_data]],
+                   color=['#f052d0', '#f5e7d0'], 
                    path='../../in/diario/grafico/5.png', opt='%')
 
 ### Sexto gráfico: Residencias sanitarias
-graph6 = graphLine([df[weekstart_data:weekend_data].index]*2,\
-                   [df['Cupos en residencias'][weekstart_data:weekend_data], df['Usuarios en residencias'][weekstart_data:weekend_data]], \
-                   color=['#4c4c4c', '#1efde2'], \
+graph6 = graphLine([df[weekstart_data:weekend_data].index]*2,
+                   [df['Cupos en residencias'][weekstart_data:weekend_data], df['Usuarios en residencias'][weekstart_data:weekend_data]],
+                   color=['#4c4c4c', '#1efde2'],
                    path='../../in/diario/grafico/6.png')
     
 ### ¿Todo ok?
@@ -1568,9 +1568,9 @@ class graphBar:
         print('Gráfico guardado.')
         
 ### Primer gráfico: Proporción objetivo vacunada
-graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],\
-                   [[0], [0]], \
-                   color=['gray', '#9ad5ff'], alpha=[1, 1], \
+graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],
+                   [[0], [0]],
+                   color=['gray', '#9ad5ff'], alpha=[1, 1],
                    path='../../in/vacuna/grafico/1.png', uni=1, w=1.68, l=0.6, horizontal=1)
 vaccine = Image.open(requests.get('https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/in/vacuna/grafico/vaccine.png', stream=True).raw).rotate(-90)
 pct_ = Image.open('../../in/vacuna/grafico/1.png')
@@ -1581,27 +1581,27 @@ background = background.rotate(90).resize((400, 700), Image.ANTIALIAS)
 background.save('../../in/vacuna/grafico/1.png')
 
 ### Segundo gráfico: Vacunas administradas (1° dosis)
-graph2 = graphBar([vacunacion_pct.index],\
-                   [vacunacion_pct['Población total']], \
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
+graph2 = graphBar([vacunacion_pct.index],
+                   [vacunacion_pct['Población total']],
+                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],
                    path='../../in/vacuna/grafico/2.png', uni=1, w=3.5, l=2.5)
         
 ### Tercer gráfico: Vacunas administradas (1° dosis)
-graph3 = graphBar([vacunacion_pct.index],\
-                   [vacunacion_pct['Población objetivo']], \
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1], \
+graph3 = graphBar([vacunacion_pct.index],
+                   [vacunacion_pct['Población objetivo']],
+                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],
                    path='../../in/vacuna/grafico/3.png', uni=1, w=3.5, l=2.5)
         
 ### Cuarto gráfico: Vacunas administradas (1° dosis)
-graph4 = graphBar([vacunacion_etaria.index]*2,\
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis'] + vacunacion_etaria['Unica dosis'], \
-                   color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
+graph4 = graphBar([vacunacion_etaria.index]*2,
+                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis'] + vacunacion_etaria['Unica dosis']], 
+                   color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5,
                    path='../../in/vacuna/grafico/4.png')
 
 ### Quinto gráfico: Vacunas administradas (2° dosis)
 graph5 = graphBar([vacunacion_etaria.index]*2,\
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis']], \
-                   color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5, \
+                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis']],
+                   color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5,
                    path='../../in/vacuna/grafico/5.png')
 
 ### ¿Todo ok?
