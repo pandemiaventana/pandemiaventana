@@ -2316,6 +2316,11 @@
 <p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id8">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id9">3</a></p>
 <p>La segunda versión de este reporte fue subida, inicialmente, el 02/05/2021, que fue la 37° edición. Fue procesada en el siguiente script (This is the way 2), y se basa en un problema de clasificación. Para mayor información del cómo funciona y  sus fundamentos, recomiendo ver el siguiente notebook.</p>
 <ul class="simple">
+<li><p><b>Indicador EPI</b></p></li>
+</ul>
+<p>Se me ocurrió, a raíz de la forma en cómo ICOVIDCHILE elabora sus informes, en hacer un Indicador EPI, a partir de las variables epidemiológicas, clasificando en luz verde (<em>contagios estables y a la baja</em>) y en luz roja (<em>contagios incrementando y posible confinamiento</em>).</p>
+<p>Es una idea bastante vaga, pero quizás me dé el tiempo de desarrollarla.</p>
+<ul class="simple">
 <li><p><b>Reporte comunal</b></p></li>
 </ul>
 <p>El reporte comunal es, posiblemente, el reporte más simple de todos: Es un reporte que entrega la situación comunal en torno a los cambios del plan Paso a Paso, como también, los casos activos de COVID-19 por comuna, de acuerdo al informe epidemiológico.</p>
@@ -2856,19 +2861,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 15 de agosto de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.075%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.184%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>37</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>91.063%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>91.058%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>14</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.432%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.436%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>89</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>62.129%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>64.701%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>3</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>71.511%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>71.883%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>59.819%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>61.976%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>10</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>89.731%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>89.969%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>30</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 44° EDICION ⚙️ ]</p>
@@ -3614,7 +3619,7 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">380</span><span class="p">,</span> <span class="mi">357</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">weekend_data</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">)</span> <span class="c1"># fecha</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">480</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#9ad5ff&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1"># avance</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">670</span><span class="p">),</span> <span class="s1">&#39;Con esquema de vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto1</span>
-        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">710</span><span class="p">),</span> <span class="s1">&#39;completo (2° dosis)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto2</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">710</span><span class="p">),</span> <span class="s1">&#39;completo (2° dosis o única)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1"># texto2</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">425</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vacunacion_pct</span><span class="p">[</span><span class="s1">&#39;Población objetivo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;,d&#39;</span><span class="p">)),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data4</span><span class="p">)</span> <span class="c1">#restante</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">990</span><span class="p">),</span> <span class="s1">&#39;Personas deben iniciar o&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto3</span>
         <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">420</span><span class="p">,</span> <span class="mi">1030</span><span class="p">),</span> <span class="s1">&#39;completar su vacunación&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">)</span> <span class="c1">#texto4</span>
@@ -4324,7 +4329,7 @@ La media general del error es de:  0.77 %
             Linux-5.8.0-1039-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-08-15 23:06
+            Session information updated at 2021-08-15 23:28
             </pre>
             </details></div></div>
 </div>

@@ -820,6 +820,12 @@ df
 # 
 # La segunda versión de este reporte fue subida, inicialmente, el 02/05/2021, que fue la 37° edición. Fue procesada en el siguiente script (This is the way 2), y se basa en un problema de clasificación. Para mayor información del cómo funciona y  sus fundamentos, recomiendo ver el siguiente notebook.
 # 
+# - <b>Indicador EPI</b>
+# 
+# Se me ocurrió, a raíz de la forma en cómo ICOVIDCHILE elabora sus informes, en hacer un Indicador EPI, a partir de las variables epidemiológicas, clasificando en luz verde (*contagios estables y a la baja*) y en luz roja (*contagios incrementando y posible confinamiento*).
+# 
+# Es una idea bastante vaga, pero quizás me dé el tiempo de desarrollarla.
+# 
 # - <b>Reporte comunal</b>
 # 
 # El reporte comunal es, posiblemente, el reporte más simple de todos: Es un reporte que entrega la situación comunal en torno a los cambios del plan Paso a Paso, como también, los casos activos de COVID-19 por comuna, de acuerdo al informe epidemiológico.
@@ -1865,7 +1871,7 @@ for i in x:
         txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
         txt.text((480, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
         txt.text((420, 670), 'Con esquema de vacunación', fill='white', font=roboto_data3) # texto1
-        txt.text((420, 710), 'completo (2° dosis)', fill='white', font=roboto_data3) # texto2
+        txt.text((420, 710), 'completo (2° dosis o única)', fill='white', font=roboto_data3) # texto2
         txt.text((425, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
         txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
         txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
