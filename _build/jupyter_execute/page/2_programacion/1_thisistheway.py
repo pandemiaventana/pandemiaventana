@@ -349,25 +349,27 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # - Puntualmente, entiéndase por inmunización - *para este cálculo particular* -, **la suma de inmunizaciones eventuales** para aquellas personas con menos de dos semanas de innoculadas con 2° dosis o única (según el laboratorio de la vacuna) **e inmunizaciones completas** para personas con más de dos semanas de innoculadas con 2° dosis o única.
 # 
+# - ¿Por qué utilizar el término **inmunización eventual**? Pues, ya que al autor está un poco quemado con programar cosas relacionadas a datos del COVID-19, no quiso programar la diferencia de las personas con inmunidad completa (*la que se logra una vez cumplidas las dos semanas tras su cuadro completo de vacunación*), con las inmunizaciones eventuales (*aquellas que aún no cumplen las dos semanas aprox. tras su cuadro completo de vacunación*). De esta forma, se utiliza el criterio metodológico especificado.
+# 
 # $$
 # \begin{align}
-# \Large Inmunizadas_{total} = Población - Innoculaciones_{2° \ dosis}
+# \Large Inmunizadas_{total} = Población - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
 # \end{align}
 # $$ (inmunizadas_total)
 # 
 # $$
 # \begin{align}
-# \Large Inmunizadas_{objetivo} = Población*0.8 - Innoculaciones_{2° \ dosis}
+# \Large Inmunizadas_{objetivo} = Población*0.8 - Innoculaciones_{2° \ dosis} - Innoculaciones_{única \ dosis}
 # \end{align}
 # $$ (inmunizadas_objetivo)
 # 
 # $$
 # \begin{align}
-# \Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis} - Innoculaciones_{única \ dosis}
+# \Large Sin_{inmunizar \ o \ con \ protección \ parcial} = Población - Innoculaciones_{1° \ dosis}
 # \end{align}
 # $$ (sin_inmunizar)
 # 
-# > *Debido a que, recientemente, se establece que "En todos aquellos hombres menores de 45 años que han recibido una primera dosis de vacuna del laboratorio AstraZeneca, se completara su esquema con una segunda dosis del laboratorio Pfizer- BioNTech" de acuerdo <a href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F9037e283-1278-422c-84c4-16e42a7026c8&sectionIndex=1&sso_guest=true&sas-welcome=false">al Dashboard del DEIS del Ministerio de Salud</a>, se remueve las dosis únicas de las personas con inmunización total*.
+# > Debido a que, recientemente, se establece que "*En todos aquellos hombres menores de 45 años que han recibido una primera dosis de vacuna del laboratorio AstraZeneca, se completara su esquema con una segunda dosis del laboratorio Pfizer- BioNTech*" de acuerdo <a href="https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F9037e283-1278-422c-84c4-16e42a7026c8&sectionIndex=1&sso_guest=true&sas-welcome=false">al Dashboard del DEIS del Ministerio de Salud</a>, algunos datos producto de metodología pueden variar*.
 # 
 # #### Tasa de activos
 # 
@@ -579,7 +581,9 @@ for csv in csvs:
     exec('{}_comuna.columns = "{} " + {}[{}["Region"] == "Tarapaca"].transpose().loc["Comuna", :].replace("Camina", "Camiña")'.format(var[i], nom[i], csv, csv))
     exec('for col in {}_comuna:         {}_comuna[col]        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()] =         {}_comuna[col]        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()]        .fillna(method="ffill", inplace=False)'.format(var[i], var[i], var[i], var[i], var[i], var[i], var[i]))
     i += 1
-
+### Vacunados con cuadro completo menores de 18 años
+menores18 = csv81_edad2[csv81_edad2['Region'] == 'Tarapaca'].iloc[:, 5:11].sum().sum()
+    
 ### Incidencia acumulada por comuna
 incidencia_acumulada = csv18[csv18.Region == 'Tarapaca'].transpose().drop(['Region', 'Codigo region', 'Comuna',
                                                                        'Codigo comuna', 'Poblacion'])
@@ -1063,10 +1067,10 @@ else:
         situacioncurva_hoy = "curva de contagios al alza"
 
 ### Proceso de vacunación a población objetivo objetivo
-procesovacunacion_2dosis = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()])/(poblacion_yomevacuno), 3)*100)
+procesovacunacion_2dosis = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - menores18)/(poblacion_yomevacuno), 3)*100)
 procesovacunacion_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion_yomevacuno), 3)*100)
-procesovacunacion_hoy = procesovacunacion_2dosis
-procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()])
+procesovacunacion_hoy = procesovacunacion_2dosis + procesovacunacion_unica
+procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - menores18)
 
 ### Número de edición
 d1 = datetime.datetime(2020,6,27)
@@ -1120,13 +1124,13 @@ positividad_ayer = df['Positividad diaria'][weekend_datay]
 me_ayer = df['Mortalidad especifica *'][weekend_datay]
 
 ### Proceso de vacunación de población objetivo
-procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion_yomevacuno), 2)*100)
-procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion_yomevacuno), 2)*100)
-procesovacunacion_ayer = procesovacunacion_ayer_2
+procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)] - menores18)/(poblacion_yomevacuno), 3)*100)
+procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion_yomevacuno), 3)*100)
+procesovacunacion_ayer = procesovacunacion_ayer_2 + procesovacunacion_ayer_unica
 
 
 ### Valores de ayer a integer
-casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, recuperados_ayer, fallecidosnuevos_ayer, pcrnuevos_ayer, residenciasusuarios_ayer, activos_ayer, activosprobables_ayer, ucidiaria_ayer, positividad_ayer, me_ayer, procesovacunacion_ayer= [ format(int(i), ',d') for i in [
+casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, recuperados_ayer, fallecidosnuevos_ayer, pcrnuevos_ayer, residenciasusuarios_ayer, activos_ayer, activosprobables_ayer, ucidiaria_ayer, positividad_ayer, me_ayer= [ format(int(i), ',d') for i in [
 casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, \
 recuperados_ayer, \
 fallecidosnuevos_ayer, \
@@ -1135,7 +1139,7 @@ residenciasusuarios_ayer, \
 activos_ayer, activosprobables_ayer, \
 ucidiaria_ayer, \
 positividad_ayer, \
-me_ayer, procesovacunacion_ayer]]
+me_ayer]]
 
 ### Descripción
 desc1 = """Reporte DIARIO, {} 🕑. \n
@@ -1449,8 +1453,12 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 ### Graficando para balance vacunas ###
 
 ### Últimas cifras de vacunación a población total/objetivo
-pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()],           poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
-pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()] +  + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()],           poblacion_yomevacuno - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()]])
+pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],
+          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18,
+          poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18])
+pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],
+          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18,
+          poblacion_yomevacuno - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18])
 labels = np.array(['Con 1° dosis \n (sin inmunidad o parcial)', 'Con cuadro completo \n (eventual inmunes)', 'Sin cuadro completo \n (sin inmunidad)'])
 vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
 vacunacion_pct.index = labels
@@ -1777,7 +1785,7 @@ txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvet
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((190, 860), 'Antígeno: {}%'.format(positividad_antigeno), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 txt.text((540, 680), '{}%'.format(int(procesovacunacion_hoy)), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
-txt.text((540, 750), 'Antes: {}%'.format(procesovacunacion_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((540, 750), 'Antes: {}%'.format(int(procesovacunacion_ayer)), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
 txt.text((890, 680), '{}'.format(me_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
