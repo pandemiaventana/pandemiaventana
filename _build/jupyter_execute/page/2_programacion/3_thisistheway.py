@@ -265,34 +265,6 @@ get_ipython().run_cell_magic('capture', 'reportediario', 'x = 0\n### Título y o
 #     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
 #     IPython.notebook.kernel.execute("soup = str(soup)")
 # ```
-# 
-# #### Gracias a BenVida (stackoverflow.com/a/64495269/13746427) ###
-# Javascript('''{
-#     let outputs=[...document.querySelectorAll(".cell")].map(
-#         cell=> {
-#             let output=cell.querySelector(".output")
-#             if(output) return output.innerHTML
-#             output=cell.querySelector(".rendered_html")
-#             if(output) return output.innerHTML
-#             return ""
-#         }
-#     )
-#     
-#     IPython.notebook.kernel.execute("cell_outputs="+JSON.stringify(outputs)) 
-#     IPython.notebook.kernel.execute("soup = BeautifulSoup(cell_outputs[9])")
-#     IPython.notebook.kernel.execute("removals = soup.find_all(attrs={'class': 'prompt'})")
-#     IPython.notebook.kernel.execute("for removal in removals: removal.decompose()")
-#     IPython.notebook.kernel.execute("soup = str(soup)")   
-#     IPython.notebook.kernel.execute("html = open('../../out/site/balance.html','w')")
-#     IPython.notebook.kernel.execute("html.write(\
-#     '<html><head><link rel={} href={}><link rel={} href={}><link rel={} href={}><script src={}></script><script src={}></script></head><body>'\
-#     .format('stylesheet', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', \
-#     'stylesheet', './style.min.css', \
-#     'stylesheet', './ipython.min.css', \
-#     'https://cdn.plot.ly/plotly-latest.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js')\
-#     + soup +'</body></html>')")
-#     IPython.notebook.kernel.execute("html.close()")
-# }''')
 
 # #### Nuevo inconveniente
 # 
