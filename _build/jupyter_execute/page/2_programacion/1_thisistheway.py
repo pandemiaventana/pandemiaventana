@@ -1070,7 +1070,7 @@ else:
 procesovacunacion_2dosis = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - menores18)/(poblacion_yomevacuno), 3)*100)
 procesovacunacion_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion_yomevacuno), 3)*100)
 procesovacunacion_hoy = procesovacunacion_2dosis + procesovacunacion_unica
-procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - menores18)
+procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18)
 
 ### Número de edición
 d1 = datetime.datetime(2020,6,27)
@@ -1558,12 +1558,12 @@ graph3 = graphBar([vacunacion_pct.index],
         
 ### Cuarto gráfico: Vacunas administradas (1° dosis)
 graph4 = graphBar([vacunacion_etaria.index]*2,
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis'] + vacunacion_etaria['Unica dosis']], 
+                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis']], 
                    color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5,
                    path='../../in/vacuna/grafico/4.png')
 
 ### Quinto gráfico: Vacunas administradas (2° dosis)
-graph5 = graphBar([vacunacion_etaria.index]*2,                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis']],
+graph5 = graphBar([vacunacion_etaria.index]*2,                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis'] + vacunacion_etaria['Unica dosis']],
                    color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5,
                    path='../../in/vacuna/grafico/5.png')
 
@@ -1784,8 +1784,8 @@ txt.text((780, 70), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coo
 txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((190, 860), 'Antígeno: {}%'.format(positividad_antigeno), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
-txt.text((540, 680), '{}%'.format(int(procesovacunacion_hoy)), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
-txt.text((540, 750), 'Antes: {}%'.format(int(procesovacunacion_ayer)), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((540, 680), '{}%'.format(int(round(procesovacunacion_hoy, 0))), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 750), 'Antes: {}%'.format(int(round(procesovacunacion_ayer, 0))), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
 txt.text((890, 680), '{}'.format(me_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
