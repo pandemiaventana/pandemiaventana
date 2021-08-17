@@ -2861,19 +2861,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 17 de agosto de 2021. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>99.046%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.015%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>37</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>91.331%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>92.067%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>14</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.457%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.526%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>89</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>90.428%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>54.497%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>3</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>83.041%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>81.439%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>66.384%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>66.189%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>10</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>90.608%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>90.621%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>30</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 44° EDICION ⚙️ ]</p>
@@ -3371,8 +3371,8 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
                   <span class="n">txty</span><span class="o">=</span><span class="mi">147</span><span class="p">,</span> <span class="n">txts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="c1">## Para segundo gráfico</span>
-<span class="n">avance_graph</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">14</span><span class="p">:])</span><span class="o">/</span><span class="n">poblacion_yomevacuno</span><span class="o">*</span><span class="mi">100</span>
-<span class="n">avance_graph</span> <span class="o">=</span> <span class="n">avance_graph</span><span class="p">[</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">avance_graph</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)[</span><span class="o">-</span><span class="mi">14</span><span class="p">:]</span><span class="o">/</span><span class="n">poblacion_yomevacuno</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">avance_graph</span> <span class="o">=</span> <span class="n">avance_graph</span><span class="p">[</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">():</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span>
 
 <span class="c1">## Segundo gráfico: avance vacunación</span>
 <span class="n">graph2</span> <span class="o">=</span> <span class="n">graphLine</span><span class="p">([</span><span class="n">avance_graph</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>\
@@ -4329,7 +4329,7 @@ La media general del error es de:  0.75 %
             Linux-5.8.0-1039-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-08-17 15:51
+            Session information updated at 2021-08-17 17:02
             </pre>
             </details></div></div>
 </div>
