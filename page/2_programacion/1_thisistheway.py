@@ -1691,8 +1691,8 @@ graph1 = graphLine([avance_activos.index],\
                   txty=147, txts=6)
 
 ## Para segundo gráfico
-avance_graph = (df['Vacunados acumulados 2° dosis'][-14:])/poblacion_yomevacuno*100
-avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()].round(0)
+avance_graph = (df['Vacunados acumulados 2° dosis'] + df['Vacunados acumulados unica dosis'] - menores18)[-14:]/poblacion_yomevacuno*100
+avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
 
 ## Segundo gráfico: avance vacunación
 graph2 = graphLine([avance_graph.index],\
