@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/2_thisistheway.html" />
     <link rel="shortcut icon" href="../../_static/0_favicon.ico"/>
@@ -85,7 +85,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -418,7 +418,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conceptos-previos">
@@ -984,7 +984,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Contamos con <strong>540</strong> filas de observaciones o datos.</p>
+<p>Contamos con <strong>541</strong> filas de observaciones o datos.</p>
 </div>
 </div>
 <blockquote>
@@ -1049,11 +1049,11 @@
 </div>
 <div class="cell_output docutils container">
  <h3> Para la columna Casos con sospecha de reinfeccion </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.02427326471974496</strong></p>
+<div><p>El valor de la curtosis es de <strong>-0.028300201707004743</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
  <h3> Para la columna Numero de residencias </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.0024684474447476037</strong></p>
+<div><p>El valor de la curtosis es de <strong>-0.015506239661272665</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
  <h3> Para la columna Casos acumulados en Huara </h3><blockquote>
@@ -1725,29 +1725,8 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2021-08-20</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.00</td>
-      <td>13.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
       <th>2021-08-21</th>
-      <td>NaN</td>
+      <td>0.91</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>4.00</td>
@@ -1761,8 +1740,8 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>4.17</td>
+      <td>4.88</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -1771,8 +1750,8 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>4.00</td>
+      <td>15.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1792,8 +1771,8 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>4.00</td>
+      <td>16.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1813,8 +1792,29 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>4.00</td>
+      <td>17.00</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2021-08-25</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.00</td>
+      <td>18.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1831,7 +1831,7 @@
     </tr>
   </tbody>
 </table>
-<p>540 rows × 18 columns</p>
+<p>541 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2217,8 +2217,8 @@ Sus colores:
 <h3>Resultado para Alto Hospicio</h3><p>El algoritmo entrenado para la comuna de Alto Hospicio tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
- Preparación       1.00      1.00      1.00        48
-  Transición       1.00      1.00      1.00        17
+ Preparación       1.00      1.00      1.00        49
+  Transición       1.00      1.00      1.00        16
 
     accuracy                           1.00        65
    macro avg       1.00      1.00      1.00        65
@@ -2229,13 +2229,13 @@ weighted avg       1.00      1.00      1.00        65
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>87.6923076923077%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.83      1.00      0.91        25
+Apertura Inicial       0.84      1.00      0.91        26
      Preparación       0.86      0.78      0.82        23
-      Transición       1.00      0.82      0.90        17
+      Transición       1.00      0.81      0.90        16
 
         accuracy                           0.88        65
        macro avg       0.90      0.87      0.88        65
-    weighted avg       0.89      0.88      0.88        65
+    weighted avg       0.88      0.88      0.88        65
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
@@ -2250,25 +2250,25 @@ Apertura Inicial       1.00      1.00      1.00        65
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
-<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>84.61538461538461%</strong>.</p>
+<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>90.76923076923077%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.61      1.00      0.76        14
-     Preparación       0.97      0.82      0.89        38
-      Transición       1.00      0.77      0.87        13
+Apertura Inicial       1.00      0.87      0.93        15
+     Preparación       0.86      1.00      0.92        37
+      Transición       1.00      0.69      0.82        13
 
-        accuracy                           0.85        65
-       macro avg       0.86      0.86      0.84        65
-    weighted avg       0.90      0.85      0.85        65
+        accuracy                           0.91        65
+       macro avg       0.95      0.85      0.89        65
+    weighted avg       0.92      0.91      0.90        65
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
 <h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       1.00      1.00      1.00        18
+Apertura Inicial       1.00      1.00      1.00        19
      Preparación       1.00      1.00      1.00        33
-      Transición       1.00      1.00      1.00        14
+      Transición       1.00      1.00      1.00        13
 
         accuracy                           1.00        65
        macro avg       1.00      1.00      1.00        65
@@ -2279,25 +2279,25 @@ Apertura Inicial       1.00      1.00      1.00        18
 <h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>93.84615384615384%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.84      1.00      0.91        21
+Apertura Inicial       0.85      1.00      0.92        22
      Preparación       1.00      0.80      0.89        20
-      Transición       1.00      1.00      1.00        24
+      Transición       1.00      1.00      1.00        23
 
         accuracy                           0.94        65
-       macro avg       0.95      0.93      0.93        65
+       macro avg       0.95      0.93      0.94        65
     weighted avg       0.95      0.94      0.94        65
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
-<h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>100.0%</strong>.</p>
+<h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>98.46153846153847%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       1.00      1.00      1.00        34
-     Preparación       1.00      1.00      1.00        31
+Apertura Inicial       1.00      0.97      0.99        34
+     Preparación       0.97      1.00      0.98        31
 
-        accuracy                           1.00        65
-       macro avg       1.00      1.00      1.00        65
-    weighted avg       1.00      1.00      1.00        65
+        accuracy                           0.98        65
+       macro avg       0.98      0.99      0.98        65
+    weighted avg       0.99      0.98      0.98        65
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
@@ -2629,7 +2629,7 @@ Apertura Inicial       1.00      1.00      1.00        34
             Linux-5.8.0-1039-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-08-24 23:46
+            Session information updated at 2021-08-25 15:59
             </pre>
             </details></div></div>
 </div>
@@ -2705,12 +2705,32 @@ Apertura Inicial       1.00      1.00      1.00        34
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="1_thisistheway.html" title="previous page">Génesis</a>
-    <a class='right-next' id="next-link" href="3_thisistheway.html" title="next page">Salida</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="1_thisistheway.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Génesis</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="3_thisistheway.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Salida</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
