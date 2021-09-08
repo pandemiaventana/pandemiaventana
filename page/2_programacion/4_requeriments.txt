@@ -1,5 +1,5 @@
 PIL==8.2.0
-bs4==4.9.3
+bs4==4.10.0
 datetime
 json==2.0.9
 locale
