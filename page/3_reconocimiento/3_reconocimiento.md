@@ -218,6 +218,30 @@ En aquella oportunidad, expliqué la terminología detrás del número de reprod
 
 Doceava aparición.
 
+#### Agosto, 15
+
+“*Región tiene 62% menos casos activos que en el 2020*” {cite}`Estrella-iquique17`, realizada por *Pamela Castillo*, del diario La Estrella de Iquique {footcite}`Estrella-iquique17`.
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/prensa/tiny/18.jpg">
+
+**Región tiene 62% menos casos activos que en el 2020**. Imagen de <a href="https://www.estrellaiquique.cl/impresa/2021/08/15/full/cuerpo-principal/2/">La Estrella de Iquique</a>.
+:::
+
+Aparición en donde la cuña fue respaldada por un epidemiológo de la Universidad de Chile.
+
+#### Septiembre, 21
+
+“*Estudiante Unap publicó libro sobre plataforma COVID*” {cite}`Estrella-iquique18`, realizada por *Pamela Castillo*, del diario La Estrella de Iquique {footcite}`Estrella-iquique18`.
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/prensa/tiny/19.jpg">
+
+**Estudiante Unap publicó libro sobre plataforma COVID**. Imagen de <a href="https://www.estrellaiquique.cl/impresa/2021/09/21/full/cuerpo-principal/6/">La Estrella de Iquique</a>.
+:::
+
+Aparición por publicación de La pandemia por la ventana.
+
 ### Notas faltantes
 
 Tengo entendido, existe mayor número de apariciones por parte del Dr. Cristóbal Corral, las cuales no están recabadas aquí. Por otro lado, desconozco si aparecí mayor número de veces en el diario La Estrella de Iquique. **La memoria es frágil**.
