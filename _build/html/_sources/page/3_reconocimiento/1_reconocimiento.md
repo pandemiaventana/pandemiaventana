@@ -106,6 +106,16 @@ En 2021, una nota referente al desarrollo del Indicador de Fase.
 **Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase que posibilita saber que tan cerca estamos de avanzar o retroceder**. Imagen de <a href="https://www.unap.cl/prontus_unap/site/artic/20210113/pags/20210113142515.html">la Universidad Arturo Prat</a>.
 :::
 
+#### Septiembre, 21
+
+"*Autor de software que automatiza cifras Covid lanza libro detallando su innovación*" {cite}``unap3``, por la Universidad Arturo Prat {footcite}``unap3``.
+
+:::{figure-md} markdown-fig
+<img src="../../img/page/reconocimiento/publica/9.jpg">
+
+**Autor de software que automatiza cifras Covid lanza libro detallando su innovación**. Imagen de <a href="https://www.unap.cl/prontus_unap/site/artic/20210921/pags/20210921131857.html">la Universidad Arturo Prat</a>.
+:::
+
 ## Consorcio de U. Estatales del Estado de Chile
 
 Esta vez, nota en el Consorcio de Universidades del Estado de Chile.
