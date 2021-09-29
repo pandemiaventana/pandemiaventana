@@ -6,6 +6,6 @@ os
 pandas==1.2.3
 session_info==1.0.0
 IPython==7.28.0
-jupyter_client==7.0.4
+jupyter_client==7.0.5
 jupyter_core==4.8.1
 notebook==6.4.4
