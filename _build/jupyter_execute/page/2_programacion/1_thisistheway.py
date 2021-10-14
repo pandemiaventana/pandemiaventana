@@ -1329,7 +1329,7 @@ print(desc2)
 
 # ### Reporte diario
 
-# In[30]:
+# In[11]:
 
 
 ### Graficando para reporte diario ###
@@ -1626,7 +1626,7 @@ graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].column
 print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
-# In[41]:
+# In[14]:
 
 
 ### Toque de queda
