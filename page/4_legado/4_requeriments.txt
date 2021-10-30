@@ -5,7 +5,7 @@ numpy==1.19.5
 os
 pandas==1.2.3
 session_info==1.0.0
-IPython==7.28.0
+IPython==7.29.0
 jupyter_client==7.0.6
 jupyter_core==4.9.1
 notebook==6.4.5

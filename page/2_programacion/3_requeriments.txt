@@ -9,7 +9,7 @@ pandas==1.2.3
 plotly==4.8.1
 session_info==1.0.0
 time
-IPython==7.28.0
+IPython==7.29.0
 jupyter_client==7.0.6
 jupyter_core==4.9.1
 notebook==6.4.5
