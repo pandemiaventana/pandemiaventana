@@ -1001,7 +1001,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Contamos con <strong>632</strong> filas de observaciones o datos.</p>
+<p>Contamos con <strong>633</strong> filas de observaciones o datos.</p>
 </div>
 </div>
 <blockquote>
@@ -1066,21 +1066,17 @@
 </div>
 <div class="cell_output docutils container">
  <h3> Para la columna Casos recuperados acumulados </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>0.04159575867067408</strong></p>
+<div><p>El valor de la curtosis es de <strong>0.03922462096304537</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
  <h3> Para la columna Numero de residencias </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.045860659704165</strong></p>
+<div><p>El valor de la curtosis es de <strong>-0.042471823654641326</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
- <h3> Para la columna Paso a Paso Camiña </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.04071249397557277</strong></p>
-</div></blockquote>
-<img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
  <h3> Para la columna Oportunidad en notificacion Iquique </h3><blockquote>
 <div><p>El valor de la curtosis es de <strong>0.03790925581575973</strong></p>
 </div></blockquote>
-<img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
+<img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
 </div>
 </div>
 <p>Prácticamente, no existe normalidad, y las pocas columnas que son, <em>aproximadamente normales</em>, se deben a datos de comunas con baja población, o que contienen bajo número de observaciones (a raíz de ser añadidas hace poco tiempo al <a href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Min. Ciencia</a>). <strong>Estas columnas las descartamos al asignar que la curtosis sea distinta de cero</strong>.</p>
@@ -1726,33 +1722,12 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2021-11-20</th>
-      <td>0.94</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>24.00</td>
-      <td>62.50</td>
-      <td>0.00</td>
-      <td>94.70</td>
-      <td>94.70</td>
-      <td>594.00</td>
-      <td>572.00</td>
-      <td>74.00</td>
-      <td>10.57</td>
-      <td>12.70</td>
-      <td>NaN</td>
-      <td>255.97</td>
-    </tr>
-    <tr>
       <th>2021-11-21</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>3.00</td>
+      <td>46.00</td>
       <td>NaN</td>
       <td>24.00</td>
       <td>62.50</td>
@@ -1772,8 +1747,8 @@
       <td>NaN</td>
       <td>31,671.00</td>
       <td>178.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>3.00</td>
+      <td>47.00</td>
       <td>NaN</td>
       <td>29.00</td>
       <td>79.30</td>
@@ -1793,8 +1768,8 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>3.00</td>
+      <td>48.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1811,6 +1786,27 @@
     </tr>
     <tr>
       <th>2021-11-24</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.00</td>
+      <td>49.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2021-11-25</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1832,7 +1828,7 @@
     </tr>
   </tbody>
 </table>
-<p>632 rows × 18 columns</p>
+<p>633 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2219,46 +2215,46 @@ Sus colores:
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
 Apertura Inicial       1.00      1.00      1.00        58
-     Preparación       1.00      1.00      1.00        22
+     Preparación       1.00      1.00      1.00        23
 
-        accuracy                           1.00        80
-       macro avg       1.00      1.00      1.00        80
-    weighted avg       1.00      1.00      1.00        80
+        accuracy                           1.00        81
+       macro avg       1.00      1.00      1.00        81
+    weighted avg       1.00      1.00      1.00        81
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_6.png" src="../../_images/2_thisistheway_50_6.png" />
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       1.00      1.00      1.00        80
+Apertura Inicial       1.00      1.00      1.00        81
 
-        accuracy                           1.00        80
-       macro avg       1.00      1.00      1.00        80
-    weighted avg       1.00      1.00      1.00        80
+        accuracy                           1.00        81
+       macro avg       1.00      1.00      1.00        81
+    weighted avg       1.00      1.00      1.00        81
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
-<h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>91.25%</strong>.</p>
+<h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>91.35802469135803%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
 Apertura Inicial       0.86      1.00      0.93        44
-     Preparación       1.00      0.81      0.89        36
+     Preparación       1.00      0.81      0.90        37
 
-        accuracy                           0.91        80
-       macro avg       0.93      0.90      0.91        80
-    weighted avg       0.92      0.91      0.91        80
+        accuracy                           0.91        81
+       macro avg       0.93      0.91      0.91        81
+    weighted avg       0.93      0.91      0.91        81
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
-<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>87.5%</strong>.</p>
+<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>86.41975308641975%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.88      0.95      0.91        55
-     Preparación       0.86      0.72      0.78        25
+Apertura Inicial       0.88      0.93      0.90        56
+     Preparación       0.82      0.72      0.77        25
 
-        accuracy                           0.88        80
-       macro avg       0.87      0.83      0.85        80
-    weighted avg       0.87      0.88      0.87        80
+        accuracy                           0.86        81
+       macro avg       0.85      0.82      0.84        81
+    weighted avg       0.86      0.86      0.86        81
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
@@ -2266,11 +2262,11 @@ Apertura Inicial       0.88      0.95      0.91        55
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
 Apertura Inicial       1.00      1.00      1.00        30
-     Preparación       1.00      1.00      1.00        50
+     Preparación       1.00      1.00      1.00        51
 
-        accuracy                           1.00        80
-       macro avg       1.00      1.00      1.00        80
-    weighted avg       1.00      1.00      1.00        80
+        accuracy                           1.00        81
+       macro avg       1.00      1.00      1.00        81
+    weighted avg       1.00      1.00      1.00        81
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
@@ -2278,23 +2274,23 @@ Apertura Inicial       1.00      1.00      1.00        30
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
 Apertura Inicial       1.00      1.00      1.00        65
-     Preparación       1.00      1.00      1.00        15
+     Preparación       1.00      1.00      1.00        16
 
-        accuracy                           1.00        80
-       macro avg       1.00      1.00      1.00        80
-    weighted avg       1.00      1.00      1.00        80
+        accuracy                           1.00        81
+       macro avg       1.00      1.00      1.00        81
+    weighted avg       1.00      1.00      1.00        81
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
-<h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>90.0%</strong>.</p>
+<h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>87.65432098765432%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.89      1.00      0.94        66
-     Preparación       1.00      0.43      0.60        14
+Apertura Inicial       0.87      1.00      0.93        65
+     Preparación       1.00      0.38      0.55        16
 
-        accuracy                           0.90        80
-       macro avg       0.95      0.71      0.77        80
-    weighted avg       0.91      0.90      0.88        80
+        accuracy                           0.88        81
+       macro avg       0.93      0.69      0.74        81
+    weighted avg       0.89      0.88      0.85        81
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
@@ -2636,7 +2632,7 @@ Apertura Inicial       0.89      1.00      0.94        66
             Linux-5.11.0-1021-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-11-25 17:58
+            Session information updated at 2021-11-25 18:57
             </pre>
             </details></div></div>
 </div>
