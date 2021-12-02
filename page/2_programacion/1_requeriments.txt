@@ -20,7 +20,7 @@ session_info==1.0.0
 sklearn==0.24.1
 time
 types
-IPython==7.30.0
+IPython==7.30.1
 jupyter_client==7.1.0
 jupyter_core==4.9.1
 notebook==6.4.6
