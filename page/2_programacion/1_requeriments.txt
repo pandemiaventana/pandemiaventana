@@ -6,7 +6,7 @@ locale
 markdownify
 math
 matplotlib==3.3.4
-natsort==8.0.0
+natsort==8.0.1
 numpy==1.19.5
 os
 pandas==1.2.3
