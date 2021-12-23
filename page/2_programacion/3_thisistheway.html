@@ -791,6 +791,76 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3285</span><span class="o">/</span><span class="mf">1974478783.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>         <span class="n">Asimismo</span><span class="p">,</span> <span class="n">la</span> <span class="n">mediana</span> <span class="n">es</span> <span class="n">de</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;.</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>         <span class="n">Respecto</span> <span class="n">a</span> <span class="n">la</span> <span class="n">dispersión</span> <span class="n">de</span> <span class="n">los</span> <span class="n">datos</span><span class="p">,</span> <span class="n">la</span> <span class="n">desviación</span> <span class="n">estándar</span> <span class="n">es</span> <span class="k">del</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;.</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">66</span><span class="s2">                          .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime(&#39;</span><span class="si">%d</span><span class="s2"> de %B de %Y&#39;),</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span><span class="s2">                                  round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span><span class="s2">         display(Markdown(&#39;&gt; El valor en base al último reporte diario o epidemiológico (</span><span class="si">{}</span><span class="s2">) es de &lt;b&gt;</span><span class="si">{}</span><span class="s2">&lt;/b&gt;.&#39;.format(dataframe[index_:].index[0].strftime(&#39;</span><span class="si">%d</span><span class="s2"> de %B de %Y&#39;), dataframe[col][index_])))</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">11192</span><span class="s2">         )</span>
+<span class="g g-Whitespace">  </span><span class="mi">11193</span><span class="s2">         def max(self, axis=None, skipna=None, level=None, numeric_only=None, **kwargs):</span>
+<span class="ne">&gt; </span><span class="mi">11194</span><span class="s2">             return NDFrame.max(self, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">11195</span><span class="s2"> </span>
+<span class="g g-Whitespace">  </span><span class="mi">11196</span><span class="s2">         # pandas\core\generic.py:10992: error: Cannot assign to a method</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10720</span><span class="s2">     def max(self, axis=None, skipna=None, level=None, numeric_only=None, **kwargs):</span>
+<span class="g g-Whitespace">  </span><span class="mi">10721</span><span class="s2">         return self._stat_function(</span>
+<span class="ne">&gt; </span><span class="mi">10722</span><span class="s2">             &quot;max&quot;, nanops.nanmax, axis, skipna, level, numeric_only, **kwargs</span>
+<span class="g g-Whitespace">  </span><span class="mi">10723</span><span class="s2">         )</span>
+<span class="g g-Whitespace">  </span><span class="mi">10724</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">_stat_function</span><span class="nt">(self, name, func, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10710</span><span class="s2">             return self._agg_by_level(name, axis=axis, level=level, skipna=skipna)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10711</span><span class="s2">         return self._reduce(</span>
+<span class="ne">&gt; </span><span class="mi">10712</span><span class="s2">             func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only</span>
+<span class="g g-Whitespace">  </span><span class="mi">10713</span><span class="s2">         )</span>
+<span class="g g-Whitespace">  </span><span class="mi">10714</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/series.py</span> in <span class="ni">_reduce</span><span class="nt">(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4180</span><span class="s2">                 )</span>
+<span class="g g-Whitespace">   </span><span class="mi">4181</span><span class="s2">             with np.errstate(all=&quot;ignore&quot;):</span>
+<span class="ne">-&gt; </span><span class="mi">4182</span><span class="s2">                 return op(delegate, skipna=skipna, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4183</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">4184</span><span class="s2">     def _reindex_indexer(self, new_index, indexer, copy):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">f</span><span class="nt">(values, axis, skipna, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span><span class="s2">                     result = alt(values, axis=axis, skipna=skipna, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span><span class="s2">             else:</span>
+<span class="ne">--&gt; </span><span class="mi">133</span><span class="s2">                 result = alt(values, axis=axis, skipna=skipna, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span><span class="s2">             return result</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">new_func</span><span class="nt">(values, axis, skipna, mask, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">390</span><span class="s2">             mask = isna(values)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">392</span><span class="s2">         result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span><span class="s2">         if datetimelike:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">reduction</span><span class="nt">(values, axis, skipna, mask)</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span><span class="s2">                 result = np.nan</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span><span class="s2">         else:</span>
+<span class="ne">--&gt; </span><span class="mi">975</span><span class="s2">             result = getattr(values, meth)(axis)</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span><span class="s2">         result = _maybe_null_out(result, axis, mask, values.shape)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/numpy/core/_methods.py</span> in <span class="ni">_amax</span><span class="nt">(a, axis, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="s2"> def _amax(a, axis=None, out=None, keepdims=False,</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="s2">           initial=_NoValue, where=True):</span>
+<span class="ne">---&gt; </span><span class="mi">39</span><span class="s2">     return umr_maximum(a, axis, None, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="s2"> def _amin(a, axis=None, out=None, keepdims=False,</span>
+
+<span class="ne">TypeError</span>: &#39;&gt;=&#39; not supported between instances of &#39;float&#39; and &#39;str&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1196,7 +1266,7 @@
             Linux-5.11.0-1022-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2021-12-22 23:57
+            Session information updated at 2021-12-23 16:01
             </pre>
             </details></div></div>
 </div>
