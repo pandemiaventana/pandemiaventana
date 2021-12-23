@@ -1,0 +1,72 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 1093, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 560, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+### Un poco de Markdown
+
+display(Markdown('''
+
+<h2>Prueba de algoritmos</h3>
+
+> Se utilizará, aproximadamente, un **{}% de los datos para prueba**, y el restante se utilizó para entrenamiento.
+
+'''.format(round((len(y_test)/len(y_train)*100)))))
+k = 0
+for comuna in comunas:
+    
+    ### Título
+    
+    display(Markdown('<h3>Resultado para {}</h3>'.format(comuna)))
+    
+    ### Precisión
+    
+    exec('''display(Markdown(
+    "El algoritmo entrenado para la comuna de {} tiene una precisión del **" +
+    str(clf_{}.score(X_test_{}, y_test_{}) * 100) + "%**."))'''.format(comuna, comuna[:3], comuna[:3], comuna[:3]))
+    
+    ### Generamos la matriz de confusión y reporte de precisión, recall, etc.
+    
+    display(Markdown('<h3>Reporte de clasificador</h3>'))
+    
+    print(report[k])
+    
+    display(Markdown('<h3>Matriz de confusión</h3>'))
+    
+    exec('cm = confusion_matrix(y_train_{}, clf_{}.predict(X_train_{}))'.format(comuna[:3], comuna[:3], comuna[:3], comuna[:3]))
+    exec('plot_confusion_matrix(clf_{}, X_test_{}, y_test_{})'.format(comuna[:3], comuna[:3], comuna[:3]))
+    plt.xlabel('Verdadero')
+    plt.ylabel('Predicho')
+    plt.title('Matriz de confusión para {}'.format(comuna))
+    plt.show()
+    k += 1
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_3254/1533704879.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     19[0m     exec('''display(Markdown(
+[1;32m     20[0m     [0;34m"El algoritmo entrenado para la comuna de {} tiene una precisión del **"[0m [0;34m+[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 21[0;31m     str(clf_{}.score(X_test_{}, y_test_{}) * 100) + "%**."))'''.format(comuna, comuna[:3], comuna[:3], comuna[:3]))
+[0m[1;32m     22[0m [0;34m[0m[0m
+[1;32m     23[0m     [0;31m### Generamos la matriz de confusión y reporte de precisión, recall, etc.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<string>[0m in [0;36m<module>[0;34m[0m
+
+[0;31mNameError[0m: name 'clf_Hua' is not defined
+NameError: name 'clf_Hua' is not defined
+

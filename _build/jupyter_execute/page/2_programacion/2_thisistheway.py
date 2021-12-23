@@ -1122,7 +1122,7 @@ for comuna in comunas:
 # 
 # Una sección adelantada. ¡Habrá mayor detalle en el siguiente notebook!
 
-# In[17]:
+# In[ ]:
 
 
 outputs_ = indicadorfase.outputs
@@ -1196,7 +1196,7 @@ with open('../../_build/html/dinamic/indicadorfase.html', 'w', encoding='UTF-8')
 
 # ## Información de sesión
 
-# In[18]:
+# In[ ]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='2_requeriments.txt')

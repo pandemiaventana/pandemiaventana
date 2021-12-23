@@ -1626,7 +1626,7 @@ graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].column
 print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
-# In[14]:
+# In[41]:
 
 
 ### Toque de queda
