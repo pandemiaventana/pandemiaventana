@@ -58,7 +58,7 @@ for comuna in comunas:
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3153/1533704879.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_3160/1533704879.py[0m in [0;36m<module>[0;34m[0m
 [1;32m     19[0m     exec('''display(Markdown(
 [1;32m     20[0m     [0;34m"El algoritmo entrenado para la comuna de {} tiene una precisión del **"[0m [0;34m+[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 21[0;31m     str(clf_{}.score(X_test_{}, y_test_{}) * 100) + "%**."))'''.format(comuna, comuna[:3], comuna[:3], comuna[:3]))
