@@ -74,7 +74,7 @@ print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3110/1228308839.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_3508/1228308839.py[0m in [0;36m<module>[0;34m[0m
 [1;32m     24[0m graph4 = graphBar([df.loc[:, df.columns.str.contains('Notificacion PCR', regex=False)].columns.str[17:]],\
 [1;32m     25[0m                    [df.loc[:, df.columns.str.contains('Notificacion PCR ', regex=False)]
 [0;32m---> 26[0;31m                     .loc[positividad_comuna.last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000], \
