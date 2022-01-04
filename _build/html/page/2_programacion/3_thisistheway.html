@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -377,7 +377,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -430,7 +430,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -524,9 +524,105 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Salida</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importando-paquetes">
+   Importando paquetes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importando-datos">
+   Importando datos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tendencia">
+   Tendencia
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cifras-significativas">
+     Cifras significativas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cuantos-graficos-se-exportaran">
+     ¿Cuántos gráficos se exportarán?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#automatizando-salida-de-graficos">
+     Automatizando salida de gráficos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automatizando-salida-para-asistenciacovid19">
+   Automatizando salida para asistenciacovid19
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#donde-estara-la-salida">
+     ¿Dónde estará la salida?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#como-funciona">
+     ¿Cómo funciona?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inconveniente">
+     Inconveniente
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#algunos-arreglos">
+       Algunos arreglos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#detalles">
+       Detalles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nuevo-inconveniente">
+       Nuevo inconveniente
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#informacion-de-sesion">
+   Información de sesión
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliografia-de-esta-pagina">
+   Bibliografía de esta página
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="salida">
@@ -794,7 +890,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3362</span><span class="o">/</span><span class="mf">1974478783.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3634</span><span class="o">/</span><span class="mf">1974478783.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">64</span>         <span class="n">Asimismo</span><span class="p">,</span> <span class="n">la</span> <span class="n">mediana</span> <span class="n">es</span> <span class="n">de</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;.</span>
 <span class="g g-Whitespace">     </span><span class="mi">65</span>         <span class="n">Respecto</span> <span class="n">a</span> <span class="n">la</span> <span class="n">dispersión</span> <span class="n">de</span> <span class="n">los</span> <span class="n">datos</span><span class="p">,</span> <span class="n">la</span> <span class="n">desviación</span> <span class="n">estándar</span> <span class="n">es</span> <span class="k">del</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;.</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="ne">---&gt; </span><span class="mi">66</span><span class="s2">                          .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime(&#39;</span><span class="si">%d</span><span class="s2"> de %B de %Y&#39;),</span>
@@ -1266,7 +1362,794 @@
             Linux-5.11.0-1022-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-01-04 17:17
+            Session information updated at 2022-01-04 18:10
+            </pre>
+            </details></div></div>
+</div>
+</div>
+<div class="section" id="bibliografia-de-esta-pagina">
+<h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">¶</a></h2>
+<p><dl class="footnote brackets">
+<dt class="label" id="benvida"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>BenVida. Jupyter magic to handle notebook exceptions. 2020. URL: <a class="reference external" href="https://stackoverflow.com/a/64495269/13746427">https://stackoverflow.com/a/64495269/13746427</a>.</p>
+</dd>
+<dt class="label" id="bootstrap"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dd><p>Bootstrap. Get started with Bootstrap. 2020. URL: <a class="reference external" href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">https://getbootstrap.com/docs/4.3/getting-started/introduction/</a>.</p>
+</dd>
+</dl>
+</p>
+<hr class="footnotes docutils" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./page/2_programacion"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="salida">
+<h1>Salida<a class="headerlink" href="#salida" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="figure align-default" id="markdown-fig">
+<img alt="../../_images/2_cover.png" src="../../_images/2_cover.png" />
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text"><strong>Ilustración realizada por Bernardo Dinamarca</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>¡Hola! Este notebook estará basado en recopilar, a través de la Visualización de Datos, las cifras históricas y actuales de la pandemia en Tarapacá. Aún no he indagado cómo hacer que se actualice de forma automática, pero eventualmente, ¡lo lograremos!</p>
+<div class="section" id="importando-paquetes">
+<h2>Importando paquetes<a class="headerlink" href="#importando-paquetes" title="Permalink to this headline">¶</a></h2>
+<p>Trabajaremos con las librerías del primer notebook y otras. Respecto a las librerías para visualización, no utilizaremos Matplotlib o Seaborn, dado que deseo realizar gráficas interactivas que sean visualmente limpias y atractivas. Además, incorporaremos al equipo Beautiful Soup, que es una librería para manipular lenguaje HTML.</p>
+<p>Todo ésto, será en fin de generar dos salidas:</p>
+<ul class="simple">
+<li><p>Un reporte para el libro.</p></li>
+<li><p>Una página externa para incrustarse en el sitio de la Universidad Arturo Prat.</p></li>
+</ul>
+<p>Anteriormente, trabajaba con Infogram, la cual es la misma plataforma que utiliza el Gobierno de Chile en su página de Cifras Oficiales. Sin embargo, la plataforma carece de automatización gratuita, y se debe pagar para lograr esa automatización.</p>
+<p>En ese sentido, exportaremos una página HTML, para poder incrustarse en el sitio de la Universidad Arturo Prat.</p>
+<p>Respecto a nuestro equipo de librerías habitual, sumamos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://Plot.ly">Plot.ly</a> (librería de visualización dinámica e interactiva a partir de JavaScript).</p></li>
+</ul>
+<div class="figure align-default" id="id1">
+<img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png" />
+<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text"><strong>Logo de la librería <a href="https://plotly.com/python/">Plot.ly</a></strong>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Beautiful Soup (librería de Python para extraer datos de archivos HTML y XML).</p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<img alt="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024" src="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024" />
+<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text"><strong>Logo de la librería <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup">Beautiful Soup</a></strong>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importando paquetes</span>
+
+<span class="c1">### Librería de manipulación de datos </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_inf_as_na&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+
+<span class="c1">### Librería de álgebra</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1">### Librerías para graficar</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="c1">### Customizamos opciones de Plot.ly</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;displayModeBar&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;showTips&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;scrollZoom&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">dragmode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">),</span>
+    <span class="n">xaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">showline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">showgrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">showticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;rgb(204, 204, 204)&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;outside&#39;</span><span class="p">,</span>
+        <span class="n">tickfont</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(82, 82, 82)&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">yaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">showgrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">showticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">autosize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">autoexpand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">r</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">showlegend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+    <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">itemclick</span><span class="o">=</span><span class="s2">&quot;toggleothers&quot;</span><span class="p">,</span>
+        <span class="n">itemdoubleclick</span><span class="o">=</span><span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
+        <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span>
+        <span class="n">yanchor</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
+        <span class="n">xanchor</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">### Librería BeautifulSoup para manipular HTML</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="c1">### Para formato local</span>
+<span class="kn">import</span> <span class="nn">locale</span>
+<span class="c1">### Según Windows o Ubuntu</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1">### Windows</span>
+    <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="c1">### Ubuntu (action)</span>
+    <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">&#39;es_CL.UTF-8&#39;</span><span class="p">)</span>
+
+<span class="c1">### Otros paquetes</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">json</span> <span class="k">as</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Javascript</span><span class="p">,</span> <span class="n">IFrame</span>
+
+<span class="c1">### Gracias a joelostblom (https://gitlab.com/joelostblom/session_info)</span>
+<span class="kn">import</span> <span class="nn">session_info</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="importando-datos">
+<h2>Importando datos<a class="headerlink" href="#importando-datos" title="Permalink to this headline">¶</a></h2>
+<p>Hacemos el mismo proceso habitual, con la diferencia que importaremos datos ya procesados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Gracias a Daniel Stutzbach y Bruno Bronosky (stackoverflow.com/a/2632251/13746427) ###</span>
+<span class="n">sum_</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/&#39;</span><span class="p">)]:</span>
+    <span class="n">sum_</span> <span class="o">+=</span> <span class="n">string</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+
+<span class="c1">## Cargamos cada uno de los csv (basado en el primer notebook)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sum_</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;data += [pd.read_csv(&quot;../../out/site/csv/data</span><span class="si">{}</span><span class="s1">.csv&quot;, parse_dates=[&quot;Fecha&quot;], index_col=[&quot;Fecha&quot;])]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tendencia">
+<h2>Tendencia<a class="headerlink" href="#tendencia" title="Permalink to this headline">¶</a></h2>
+<p>La diferencia de nuestras publicaciones (en contraste a la forma en que se entregaba información en otras páginas informativas en Instagram) se basaban en la visualización de datos, y en particular, en las tendencias semanales. También, se agregaban cálculos o datos que, en los reportes del Minsal, no se encontraban procesados.</p>
+<p>Imaginemos que, lo único que hiciéramos fuese entregar cifras aisladas. ¿Qué retratan? ¿De dónde venimos? No es correcto que, por un día, debamos ser positivistas o negativistas. De hecho, esos pensamientos deparan en sesgos, y lo peor, en sesgos que no contemplan la integralidad de la pandemia. Por eso es relevante formar una mirada holística en la visualización de los datos. Las cifras de un día <span class="math notranslate nohighlight">\(X\)</span> pueden ser sumamente variables al día <span class="math notranslate nohighlight">\(X+1\)</span> en función de depender de la muestra (cantidad de exámenes PCR informados en el día <span class="math notranslate nohighlight">\(X\)</span> o <span class="math notranslate nohighlight">\(X+1\)</span>). Por ello, es importante regirse por las tendencias, o por los estadísticos.</p>
+<p>El problema es que, al ser Instagram, una plataforma homogénea, el storytelling debe ser accesible para todo público (con estudios matemáticos o no). De esa forma, los reportes tenían una alta presencia de tendencias a través de gráficas, y no así de estadísticos (a excepción de medias móviles semanales).</p>
+<p>La comprensión de la pandemia debía partir desde el mejor storytelling (el contar una historia detrás de los datos). El tomar una idea, o un incidente, y contarla como una historia: Cada día particular de la pandemia es una hoja de esa historia (<i>una hoja del “libro” COVID-19 en Tarapacá</i>). Por esa razón, desarrollamos el reporte diario no solo con datos duros, sino también con gráficas de tendencia semanal.</p>
+<div class="section" id="cifras-significativas">
+<h3>Cifras significativas<a class="headerlink" href="#cifras-significativas" title="Permalink to this headline">¶</a></h3>
+<p>Las tablas y gráficos visualizados en la presente sección <strong>tienen una a dos cifras significativas</strong>. Cualquier sugerencia es bienvenida.</p>
+<blockquote>
+<div><p><strong>Para los datos, descargar los archivos .CSV procesados</strong>. Éstos están disponibles en el propio libro (sección <strong>Legado</strong> 🔀), o bien, en el <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana">repositorio</a>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cuantos-graficos-se-exportaran">
+<h3>¿Cuántos gráficos se exportarán?<a class="headerlink" href="#cuantos-graficos-se-exportaran" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Se exportarán un total de **</span><span class="si">{}</span><span class="s1"> gráficos**.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sum_</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<blockquote>
+<div><p>Se exportarán un total de <strong>27 gráficos</strong>.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="automatizando-salida-de-graficos">
+<h3>Automatizando salida de gráficos<a class="headerlink" href="#automatizando-salida-de-graficos" title="Permalink to this headline">¶</a></h3>
+<p>A continuación, se desarrolla un código que recorre cada uno de los archivos .CSV que generamos en el primer notebook, del cual, realiza una “especie” de resumen de los estadísticos, visualiza los datos en un gráfico en <a class="reference external" href="http://Plot.ly">Plot.ly</a> y culmina con información adicional sobre:</p>
+<ul class="simple">
+<li><p>Descarga de los datos (solo funciona al presionar desde el libro publicado, no desde el notebook).</p></li>
+<li><p>La fecha de inicio y fin del gráfico.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> reportediario
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">### Título y otras cosas</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h2 style=&quot;font-size:60px;&quot;&gt;REPORTE DIARIO&lt;/h2&gt;&#39;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h3 style=&quot;font-size:20px;&quot;&gt;Región de Tarapacá, </span><span class="si">{}</span><span class="s1">&lt;/h3&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">))))</span>
+
+<span class="c1">### Recorremos el vector que almacena los DataFrames, uno a uno</span>
+<span class="k">for</span> <span class="n">dataframe</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    
+    <span class="c1">### Para guardar el número del gráfico (un poco ordinario el método, lo sé)</span>
+    
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1">### Definimos una nueva figura</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+    
+    <span class="c1">### Algunos datos y título</span>
+    
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h3&gt; Gráfico </span><span class="si">{}</span><span class="s1">&lt;/h3&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;El gráfico contiene las siguientes &lt;b&gt;columnas&lt;/b&gt;: &#39;</span><span class="p">))</span>
+    
+    <span class="c1">### Recorremos cada una de las columnas del DataFrame anterior</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        
+        <span class="c1">### Vector de fechas desde primer y último dato válido por cada columna</span>
+        
+        <span class="n">index</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">()</span>
+        <span class="n">index_</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span>
+            
+        <span class="c1">### DataFrame según filtro de primer dato válido</span>
+        
+        <span class="n">_df</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">index</span><span class="p">:]</span>
+            
+        <span class="c1">### Índice de DataFrame según filtro anterior</span>
+            
+        <span class="n">fecha</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">index</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span>
+    
+        <span class="c1">### Columna específica</span>
+        
+        <span class="n">_col</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">index</span><span class="p">:][</span><span class="n">col</span><span class="p">]</span>
+        
+        <span class="c1">### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y</span>
+        <span class="c1">### suavizamos por interpolación spline</span>
+        
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> %b %Y&#39;</span><span class="p">),</span>
+                                 <span class="n">y</span><span class="o">=</span><span class="n">_col</span><span class="p">,</span>
+                    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+                    <span class="n">connectgaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">line_shape</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+                    <span class="n">hovertemplate</span> <span class="o">=</span>
+                    <span class="s1">&#39;&lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;: &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;%</span><span class="si">{y:.2f}</span><span class="s1">&#39;</span><span class="o">+</span><span class="s1">&#39;&lt;br&gt;&lt;b&gt;Fecha&lt;/b&gt;: %</span><span class="si">{x}</span><span class="s1">&lt;br&gt;&#39;</span> <span class="o">+</span> <span class="s2">&quot;&lt;extra&gt;&lt;/extra&gt;&quot;</span><span class="p">))</span>
+        
+        <span class="c1">### Para colocar en 35° las etiquetas del eje X, con el número de etiquetas proporcional al número de meses</span>
+        <span class="c1">### desde el primer dato válido</span>
+        
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">xaxis</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">XAxis</span><span class="p">(</span><span class="n">tickangle</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span>
+                                                  <span class="n">nticks</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">unique</span><span class="p">())))</span>
+        <span class="c1">### Más datos</span>
+        
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39; - &lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">)))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;El mayor valor es de &lt;b&gt;</span><span class="si">{}</span><span class="s2">&lt;/b&gt;, registrado el &lt;b&gt;</span><span class="si">{}</span><span class="s2">&lt;/b&gt;. </span>
+<span class="s2">        Asimismo, la mediana es de &lt;b&gt;</span><span class="si">{}</span><span class="s2">&lt;/b&gt;.</span>
+<span class="s2">        Respecto a la dispersión de los datos, la desviación estándar es del &lt;b&gt;</span><span class="si">{}</span><span class="s2">&lt;/b&gt;. &quot;&quot;&quot;</span>
+                         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">),</span>
+                                 <span class="nb">round</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; El valor en base al último reporte diario o epidemiológico (</span><span class="si">{}</span><span class="s1">) es de &lt;b&gt;</span><span class="si">{}</span><span class="s1">&lt;/b&gt;.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">index_</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">),</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="n">index_</span><span class="p">])))</span>
+    
+    <span class="c1">### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h4&gt;Visualización del gráfico </span><span class="si">{}</span><span class="s1">&lt;/h4&gt; &lt;br&gt; El gráfico, visualizado en &lt;a href=&quot;https://plotly.com/python/&quot;&gt;Plot.ly&lt;/a&gt;: &lt;br&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+    
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&gt; &lt;b&gt;Notas&lt;/b&gt;: </span>
+<span class="s2">    &lt;br&gt; - El gráfico &lt;b&gt;inicia en el </span><span class="si">{}</span><span class="s2">&lt;/b&gt; y &lt;b&gt;termina el </span><span class="si">{}</span><span class="s2">&lt;/b&gt; en base a los datos disponibles.</span>
+<span class="s2">    &lt;br&gt; - Para aislar una curva, presionar en el nombre o color en la leyenda. </span>
+<span class="s2">    &lt;br&gt; - Para remover una curva, seguir instrucción anterior, con la diferencia de presionar dos veces.&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+                    <span class="n">_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">),</span>
+                    <span class="n">dataframe</span><span class="p">[</span><span class="n">index_</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> de %B de %Y&#39;</span><span class="p">))))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&lt;h4&gt;Información adicional sobre el gráfico </span><span class="si">{}</span><span class="s1">&lt;/h4&gt; &lt;br&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span>
+    <span class="sd">&quot;&quot;&quot;El &lt;b&gt;gráfico {}&lt;/b&gt; utilizó los datos procesados en &lt;a href=&quot;https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv&quot;&gt;data{}.csv&lt;/a&gt;.</span>
+<span class="sd">    La tabla de datos resumida:&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3634</span><span class="o">/</span><span class="mf">1974478783.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>         <span class="n">Asimismo</span><span class="p">,</span> <span class="n">la</span> <span class="n">mediana</span> <span class="n">es</span> <span class="n">de</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;.</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>         <span class="n">Respecto</span> <span class="n">a</span> <span class="n">la</span> <span class="n">dispersión</span> <span class="n">de</span> <span class="n">los</span> <span class="n">datos</span><span class="p">,</span> <span class="n">la</span> <span class="n">desviación</span> <span class="n">estándar</span> <span class="n">es</span> <span class="k">del</span> <span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="p">{}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;.</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">66</span><span class="s2">                          .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime(&#39;</span><span class="si">%d</span><span class="s2"> de %B de %Y&#39;),</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span><span class="s2">                                  round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span><span class="s2">         display(Markdown(&#39;&gt; El valor en base al último reporte diario o epidemiológico (</span><span class="si">{}</span><span class="s2">) es de &lt;b&gt;</span><span class="si">{}</span><span class="s2">&lt;/b&gt;.&#39;.format(dataframe[index_:].index[0].strftime(&#39;</span><span class="si">%d</span><span class="s2"> de %B de %Y&#39;), dataframe[col][index_])))</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">11192</span><span class="s2">         )</span>
+<span class="g g-Whitespace">  </span><span class="mi">11193</span><span class="s2">         def max(self, axis=None, skipna=None, level=None, numeric_only=None, **kwargs):</span>
+<span class="ne">&gt; </span><span class="mi">11194</span><span class="s2">             return NDFrame.max(self, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">11195</span><span class="s2"> </span>
+<span class="g g-Whitespace">  </span><span class="mi">11196</span><span class="s2">         # pandas\core\generic.py:10992: error: Cannot assign to a method</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10720</span><span class="s2">     def max(self, axis=None, skipna=None, level=None, numeric_only=None, **kwargs):</span>
+<span class="g g-Whitespace">  </span><span class="mi">10721</span><span class="s2">         return self._stat_function(</span>
+<span class="ne">&gt; </span><span class="mi">10722</span><span class="s2">             &quot;max&quot;, nanops.nanmax, axis, skipna, level, numeric_only, **kwargs</span>
+<span class="g g-Whitespace">  </span><span class="mi">10723</span><span class="s2">         )</span>
+<span class="g g-Whitespace">  </span><span class="mi">10724</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">_stat_function</span><span class="nt">(self, name, func, axis, skipna, level, numeric_only, **kwargs)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10710</span><span class="s2">             return self._agg_by_level(name, axis=axis, level=level, skipna=skipna)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10711</span><span class="s2">         return self._reduce(</span>
+<span class="ne">&gt; </span><span class="mi">10712</span><span class="s2">             func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only</span>
+<span class="g g-Whitespace">  </span><span class="mi">10713</span><span class="s2">         )</span>
+<span class="g g-Whitespace">  </span><span class="mi">10714</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/series.py</span> in <span class="ni">_reduce</span><span class="nt">(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4180</span><span class="s2">                 )</span>
+<span class="g g-Whitespace">   </span><span class="mi">4181</span><span class="s2">             with np.errstate(all=&quot;ignore&quot;):</span>
+<span class="ne">-&gt; </span><span class="mi">4182</span><span class="s2">                 return op(delegate, skipna=skipna, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4183</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">4184</span><span class="s2">     def _reindex_indexer(self, new_index, indexer, copy):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">f</span><span class="nt">(values, axis, skipna, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span><span class="s2">                     result = alt(values, axis=axis, skipna=skipna, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span><span class="s2">             else:</span>
+<span class="ne">--&gt; </span><span class="mi">133</span><span class="s2">                 result = alt(values, axis=axis, skipna=skipna, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span><span class="s2">             return result</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">new_func</span><span class="nt">(values, axis, skipna, mask, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">390</span><span class="s2">             mask = isna(values)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">392</span><span class="s2">         result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span><span class="s2">         if datetimelike:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">reduction</span><span class="nt">(values, axis, skipna, mask)</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span><span class="s2">                 result = np.nan</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span><span class="s2">         else:</span>
+<span class="ne">--&gt; </span><span class="mi">975</span><span class="s2">             result = getattr(values, meth)(axis)</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span><span class="s2">         result = _maybe_null_out(result, axis, mask, values.shape)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/numpy/core/_methods.py</span> in <span class="ni">_amax</span><span class="nt">(a, axis, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="s2"> def _amax(a, axis=None, out=None, keepdims=False,</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="s2">           initial=_NoValue, where=True):</span>
+<span class="ne">---&gt; </span><span class="mi">39</span><span class="s2">     return umr_maximum(a, axis, None, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="s2"> def _amin(a, axis=None, out=None, keepdims=False,</span>
+
+<span class="ne">TypeError</span>: &#39;&gt;=&#39; not supported between instances of &#39;float&#39; and &#39;str&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="automatizando-salida-para-asistenciacovid19">
+<h2>Automatizando salida para asistenciacovid19<a class="headerlink" href="#automatizando-salida-para-asistenciacovid19" title="Permalink to this headline">¶</a></h2>
+<p>En razón de brindar una página web que se pueda incrustar en el sitio de la Universidad Arturo Prat, como también en el presente sitio, generamos las siguientes líneas de codigo.</p>
+<div class="section" id="donde-estara-la-salida">
+<h3>¿Dónde estará la salida?<a class="headerlink" href="#donde-estara-la-salida" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>La salida estará disponible en <a class="reference external" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/balance.html">“<strong>Balance histórico</strong> 📊”</a>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="como-funciona">
+<h3>¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>La salida completa de la celda anterior es capturada como lenguaje HTML, pero solo el cuerpo de la página <span id="id3">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id16">Ben20</a>]</span>.</p></li>
+</ul>
+<p>En este sentido, <strong>dar gracias al usuario Benvida, de Stackoverflow</strong> <a class="footnote-reference brackets" href="#benvida" id="id4">1</a>. El código original que desarrolló se encuentra a continuación, el cual modificaremos.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">js</span>
+<span class="p">{</span>
+    <span class="n">let</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="n">document</span><span class="o">.</span><span class="n">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;.cell&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="n">cell</span><span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="n">let</span> <span class="n">output</span><span class="o">=</span><span class="n">cell</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s2">&quot;.output_text&quot;</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">innerText</span>
+            <span class="n">output</span><span class="o">=</span><span class="n">cell</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s2">&quot;.rendered_html&quot;</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">innerHTML</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    
+    <span class="n">IPython</span><span class="o">.</span><span class="n">notebook</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;cell_outputs=&quot;</span><span class="o">+</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">outputs</span><span class="p">))</span>    
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="inconveniente">
+<h3>Inconveniente<a class="headerlink" href="#inconveniente" title="Permalink to this headline">¶</a></h3>
+<p>En primer lugar, el lenguaje de marcado (HTML) solo brinda la estructura básica del sitio, que se compone de texto, imágenes y scripts. Para que funcionen los scripts, en este caso, <a class="reference external" href="http://Plot.ly">Plot.ly</a>, se tienen múltiples dependencias de otras librerías de JavaScript.</p>
+<p>JavaScript es un lenguaje de programación de alto nivel, el cual, tal como Python, tiene múltiples librerías que se especializan en distintas tareas y funciones. <a class="reference external" href="http://Plot.ly">Plot.ly</a> depende de otras librerías para funcionar, por lo que, para que el script de JavaScript, realizado por los creadores de <a class="reference external" href="http://Plot.ly">Plot.ly</a>, funcione, debemos no solo incorporar el código de los gráficos, sino también sus <strong>dependencias</strong>.</p>
+<p>Para ello, incorporamos en el <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> las CDN. Estos son servidores, a partir de los cuales descargamos los archivos que tienen las dependencias.</p>
+<p>Cabe recalcar que, además de código JavaScript, también incorporamos lenguaje de hojas de estilo en cascada (CSS), el cual le da formato y estilo al solitario HTML.</p>
+<p>En analogía, y para simple comprensión, <strong>HTML es el esqueleto (estructura), JS es la musculación (animaciones y movimiento) y CSS es la apariencia externa (piel y atributos físicos)</strong>.</p>
+<div class="section" id="algunos-arreglos">
+<h4>Algunos arreglos<a class="headerlink" href="#algunos-arreglos" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>La función por BenVida es ejecutada una vez se terminó de ejecutar todas las celdas, y por ende, los outputs no son recopilados hasta que el Kernel culmina su ejecución.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">html</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;balance.html&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">html</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;html&gt;&lt;head&gt;&lt;link rel=&#39;stylesheet&#39; href=&#39;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css&#39;&gt;&lt;script src=&#39;https://cdn.plot.ly/plotly-latest.min.js&#39;&gt;&lt;/script&gt;&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js&#39;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&#39;&#39;&#39;</span> <span class="o">+</span><span class="n">cell_outputs</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">+</span><span class="s1">&#39;&#39;&#39;&lt;/body&gt;&lt;/html&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">html</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Aquí se nos genera el siguiente problema: La variable <code class="docutils literal notranslate"><span class="pre">cell_outputs</span></code> no es asignada hasta que el Kernel termina su ejecución, por lo que si deséaramos actualizar el archivo HTML, en base a la celda anterior de código (donde están los gráficos <a class="reference external" href="http://Plot.ly">Plot.ly</a>), no podríamos, porque la variable <code class="docutils literal notranslate"><span class="pre">cell_outputs</span></code> todavía no está asignada. ¿La solución? Ejecutar el código Python tras la ejecución del código JavaScript, y de esta forma, no tenemos inconvenientes. Para ello, utilizaremos la misma función que utilizó BenVida, <code class="docutils literal notranslate"><span class="pre">IPython.notebook.kernel.execute(&quot;&quot;)</span></code> donde en <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> debe ir el código Python.</p>
+<p>Por otro lado, al ser código JavaScript con Python, ¡se debe tener cuidado al utilizar comillas sobre doble comillas o viceversa! De otra forma, tendremos un error. Por esta razón, utilizamos la función <code class="docutils literal notranslate"><span class="pre">format()</span></code> de Python (ya que las URL deben ir entre comillas, le decimos a Python que se encargue de esa situación, sin que el input de JavaScript nos resulte en error).</p>
+</div>
+<div class="section" id="detalles">
+<h4>Detalles<a class="headerlink" href="#detalles" title="Permalink to this headline">¶</a></h4>
+<p>El sitio se encuentra en el directorio <code class="docutils literal notranslate"><span class="pre">./out/site</span></code>. Respecto al funcionamiento del código para procesarlo:</p>
+<ul class="simple">
+<li><p>Modificamos al función para no solamente obtener el texto, sino que todo el HTML.</p></li>
+<li><p>Para no desperdiciar los estilos CSS que utiliza Jupyter Notebooks, copié los mismos archivos CSS en la carpeta del sitio (<code class="docutils literal notranslate"><span class="pre">ipython.min.css</span></code> y <code class="docutils literal notranslate"><span class="pre">style.min.css</span></code>). Los archivos se pueden encontrar en el directorio de Anaconda, <code class="docutils literal notranslate"><span class="pre">usuario/anaconda3/Lib/site-packages/notebook/static/style</span></code>.</p></li>
+<li><p>Además, en el mismo directorio se encuentra el archivo JavaScript, <code class="docutils literal notranslate"><span class="pre">plotly.js</span></code>, que debe estar en el directorio para que funcionen los gráficos interactivos.</p></li>
+<li><p>Se remueven los <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> con clase <code class="docutils literal notranslate"><span class="pre">prompt</span></code>, que es lo que brinda el margen a la izquierda en Jupyter Notebooks.</p></li>
+</ul>
+<div class="highlight-IPython.notebook.kernel.execute(&quot;soup notranslate"><div class="highlight"><pre><span></span>    IPython.notebook.kernel.execute(&quot;removals = soup.find_all(attrs={&#39;class&#39;: &#39;prompt&#39;})&quot;)
+    IPython.notebook.kernel.execute(&quot;for removal in removals: removal.decompose()&quot;)
+    IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)
+</pre></div>
+</div>
+</div>
+<div class="section" id="nuevo-inconveniente">
+<h4>Nuevo inconveniente<a class="headerlink" href="#nuevo-inconveniente" title="Permalink to this headline">¶</a></h4>
+<p>Al automatizar el código en GitHub, logré apreciar que el código Python a través de JavaScript no es ejecutado. Ésto produce que los archivos no se actualicen.</p>
+<p>Por ello, tuve que aproximar otra solución.</p>
+<blockquote>
+<div><p>Con el comando mágico de Jupyter Notebook, <code class="docutils literal notranslate"><span class="pre">%%capture</span></code>, capturamos la salida de una celda específica.</p>
+</div></blockquote>
+<p>En este caso puntual, almacenamos la salida en la variable <code class="docutils literal notranslate"><span class="pre">reportediario</span></code> con el comando mágico <code class="docutils literal notranslate"><span class="pre">%%capture</span></code>. Esa salida debemos convertirla a texto, o <strong>string</strong> en inglés, el problema es que, al ser un output de una celda, posee algunos textos que no deseamos:</p>
+<ul class="simple">
+<li><p>El tipo de variable que se está imprimiendo.</p></li>
+<li><p>Configuración de <a class="reference external" href="http://Plot.ly">Plot.ly</a> en diccionario.</p></li>
+<li><p>Datos de tabla sin formato.</p></li>
+</ul>
+<p>En las siguientes líneas de código:</p>
+<ul class="simple">
+<li><p>Limpieza de textos.</p></li>
+<li><p>Damos formato de documento HTML.</p></li>
+<li><p>Añadimos <a class="reference external" href="https://getbootstrap.com/">Bootstrap</a> <a class="footnote-reference brackets" href="#bootstrap" id="id5">2</a> para que el documento HTML no quede plano, añadiendo código desde sus Docs <span id="id6">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id52">Boo20</a>]</span>.</p></li>
+<li><p>Entre otros.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputs_</span> <span class="o">=</span> <span class="n">reportediario</span><span class="o">.</span><span class="n">outputs</span>
+
+<span class="n">vec_out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">outs_</span> <span class="ow">in</span> <span class="n">outputs_</span><span class="p">:</span>
+    <span class="c1">### Convertimos a lista los outputs</span>
+    <span class="n">vec_out</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outs_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1">### Nuestro string</span>
+<span class="n">vec_</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="c1">### Recorremos la lista de outputs</span>
+<span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="n">vec_out</span><span class="p">:</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="c1">### Quitamos configuración de Plot.ly</span>
+    <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;{&#39;config&#39;:&quot;</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">### Quitamos el str de datos de tabla sin formato</span>
+        <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;            &quot;</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">### Quitamos el str del tipo de variable</span>
+            <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&lt;IPython.core.display.Markdown object&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="c1">### Damos formato a tablas</span>
+            <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;</span><span class="se">\n</span><span class="s1">&lt;style scoped&gt;&#39;</span><span class="p">):</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NaN&#39;</span><span class="p">,</span> <span class="s1">&#39;Sin datos&#39;</span><span class="p">)</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+                <span class="n">vec</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="p">[])</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39; table table-dark table-striped table-hover table-sm&#39;</span><span class="p">]</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="s1">&#39;&lt;div class=&quot;table-responsive&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/div&gt;&#39;</span>
+            <span class="c1">### Finalmente, añadimos al vector</span>
+            <span class="n">vec_</span> <span class="o">+=</span> <span class="s1">&#39;&lt;div class=&quot;row&quot;&gt;&lt;br&gt;&lt;div class=&quot;col text-light&quot;&gt;&#39;</span> <span class="o">+</span> <span class="n">vec</span> <span class="o">+</span> <span class="s1">&#39;&lt;/div&gt;&lt;/div&gt;&#39;</span>
+
+<span class="c1">### Abrimos y modificamos el HTML</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../_build/html/dinamic/balance.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;html&gt;</span>
+<span class="s1">    &lt;head&gt;</span>
+<span class="s1">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&quot; integrity=&quot;sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://code.jquery.com/jquery-3.2.1.slim.min.js&quot; integrity=&quot;sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js&quot; integrity=&quot;sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js&quot; integrity=&quot;sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl&quot; crossorigin=&quot;anonymous&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://cdn.plot.ly/plotly-latest.min.js&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js&quot;&gt;</span>
+<span class="s1">    &lt;/script&gt;</span>
+<span class="s1">    &lt;link rel=&quot;icon&quot; href=&quot;./favicon.ico&quot; type=&quot;image/x-icon&quot;/&gt;</span>
+<span class="s1">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="s1">    &lt;title&gt;Balance histórico 📊 &amp;#8212; La pandemia por la ventana&lt;/title&gt;</span>
+<span class="s1">    &lt;/head&gt;</span>
+<span class="s1">    &lt;body&gt;</span>
+<span class="s1">    &lt;nav class=&quot;navbar nnavbar-expand-lg navbar-dark bg-dark&quot;&gt;</span>
+<span class="s1">      &lt;a class=&quot;navbar-brand&quot; href=&quot;https://pandemiaventana.github.io/pandemiaventana/&quot;&gt;</span>
+<span class="s1">    &lt;img src=&quot;./logo.png&quot; width=&quot;35&quot; height=&quot;35&quot; class=&quot;d-inline-block align-top&quot; alt=&quot;&quot;&gt;</span>
+<span class="s1">    Numeral.lab</span>
+<span class="s1">      &lt;/a&gt;</span>
+<span class="s1">      &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarNavAltMarkup&quot; aria-controls=&quot;navbarNavAltMarkup&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;</span>
+<span class="s1">    &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;</span>
+<span class="s1">    &lt;/button&gt;</span>
+<span class="s1">    &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarNavAltMarkup&quot;&gt;</span>
+<span class="s1">    &lt;div class=&quot;navbar-nav&quot;&gt;</span>
+<span class="s1">      &lt;a class=&quot;nav-item nav-link active&quot; href=&quot;#&quot;&gt;Reporte diario &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;</span>
+<span class="s1">      &lt;a class=&quot;nav-item nav-link&quot; href=&quot;https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html&quot;&gt;Indicador de fase&lt;/a&gt;</span>
+<span class="s1">      &lt;a class=&quot;nav-item nav-link&quot; href=&quot;https://pandemiaventana.github.io/pandemiaventana/&quot;&gt;La pandemia por la ventana&lt;/a&gt;</span>
+<span class="s1">    &lt;/div&gt;</span>
+<span class="s1">    &lt;/div&gt;</span>
+<span class="s1">    &lt;/nav&gt;</span>
+<span class="s1">    &lt;div class=&quot;container-fluid bg-dark text-light&quot;&gt;&#39;&#39;&#39;</span> 
+    <span class="o">+</span> <span class="n">vec_</span> <span class="o">+</span> 
+    <span class="sd">&#39;&#39;&#39;&lt;/div&gt;</span>
+<span class="sd">    &lt;/body&gt;</span>
+<span class="sd">    &lt;/html&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="informacion-de-sesion">
+<h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">req_file_name</span><span class="o">=</span><span class="s1">&#39;3_requeriments.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            bs4                 4.10.0
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            math                NA
+            numpy               1.19.5
+            os                  NA
+            pandas              1.2.3
+            plotly              4.8.1
+            session_info        1.0.0
+            time                NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            PIL                         8.2.0
+            abc                         NA
+            argparse                    1.1
+            array                       NA
+            ast                         NA
+            asyncio                     NA
+            atexit                      NA
+            attr                        21.4.0
+            backcall                    0.2.0
+            base64                      NA
+            bdb                         NA
+            binascii                    NA
+            bisect                      NA
+            bz2                         NA
+            cProfile                    NA
+            calendar                    NA
+            chardet                     4.0.0
+            cmath                       NA
+            cmd                         NA
+            code                        NA
+            codecs                      NA
+            codeop                      NA
+            collections                 NA
+            colorama                    0.4.4
+            colorsys                    NA
+            concurrent                  NA
+            configparser                NA
+            contextlib                  NA
+            contextvars                 NA
+            copy                        NA
+            copyreg                     NA
+            csv                         1.0
+            ctypes                      1.1.0
+            curses                      NA
+            cython_runtime              NA
+            dataclasses                 NA
+            dateutil                    2.8.2
+            debugpy                     1.5.1
+            decimal                     1.70
+            decorator                   5.1.0
+            difflib                     NA
+            dis                         NA
+            distutils                   3.7.12
+            email                       NA
+            encodings                   NA
+            entrypoints                 0.3
+            enum                        NA
+            errno                       NA
+            faulthandler                NA
+            fcntl                       NA
+            filecmp                     NA
+            fnmatch                     NA
+            functools                   NA
+            gc                          NA
+            genericpath                 NA
+            getopt                      NA
+            getpass                     NA
+            gettext                     NA
+            glob                        NA
+            grp                         NA
+            gzip                        NA
+            hashlib                     NA
+            heapq                       NA
+            hmac                        NA
+            html                        NA
+            http                        NA
+            idna                        2.10
+            imp                         NA
+            importlib                   NA
+            importlib_metadata          NA
+            inspect                     NA
+            io                          NA
+            ipykernel                   6.6.1
+            ipython_genutils            0.2.0
+            itertools                   NA
+            jedi                        0.18.1
+            jsonschema                  3.2.0
+            keyword                     NA
+            linecache                   NA
+            logging                     0.5.1.2
+            lzma                        NA
+            marshal                     4
+            mimetypes                   NA
+            mmap                        NA
+            mpl_toolkits                NA
+            multiprocessing             NA
+            nbformat                    5.1.3
+            ntpath                      NA
+            numbers                     NA
+            opcode                      NA
+            operator                    NA
+            parso                       0.8.3
+            pathlib                     NA
+            pdb                         NA
+            pexpect                     4.8.0
+            pickle                      NA
+            pickleshare                 0.7.5
+            pkg_resources               NA
+            pkgutil                     NA
+            platform                    1.0.8
+            plistlib                    NA
+            posix                       NA
+            posixpath                   NA
+            pprint                      NA
+            profile                     NA
+            prompt_toolkit              3.0.24
+            pstats                      NA
+            pty                         NA
+            ptyprocess                  0.7.0
+            pvectorc                    NA
+            pwd                         NA
+            pydev_ipython               NA
+            pydevconsole                NA
+            pydevd                      2.6.0
+            pydevd_concurrency_analyser NA
+            pydevd_file_utils           NA
+            pydevd_plugins              NA
+            pydevd_tracing              NA
+            pydoc                       NA
+            pydoc_data                  NA
+            pyexpat                     NA
+            pygments                    2.11.1
+            pyrsistent                  NA
+            pytz                        2021.3
+            queue                       NA
+            quopri                      NA
+            random                      NA
+            re                          2.2.1
+            reprlib                     NA
+            resource                    NA
+            retrying                    NA
+            runpy                       NA
+            secrets                     NA
+            select                      NA
+            selectors                   NA
+            shlex                       NA
+            shutil                      NA
+            signal                      NA
+            site                        NA
+            six                         1.16.0
+            socket                      NA
+            socketserver                0.4
+            soupsieve                   2.3.1
+            sphinxcontrib               NA
+            sqlite3                     2.6.0
+            sre_compile                 NA
+            sre_constants               NA
+            sre_parse                   NA
+            ssl                         NA
+            stat                        NA
+            storemagic                  NA
+            string                      NA
+            stringprep                  NA
+            struct                      NA
+            subprocess                  NA
+            sys                         3.7.12 (default, Sep  6 2021, 07:19:30) 
+[GCC 9.3.0]
+            sysconfig                   NA
+            tarfile                     0.9.0
+            tempfile                    NA
+            termios                     NA
+            textwrap                    NA
+            threading                   NA
+            timeit                      NA
+            token                       NA
+            tokenize                    NA
+            tornado                     6.1
+            traceback                   NA
+            traitlets                   5.1.1
+            tty                         NA
+            types                       NA
+            typing                      NA
+            typing_extensions           NA
+            unicodedata                 NA
+            urllib                      NA
+            uu                          NA
+            uuid                        NA
+            warnings                    NA
+            wcwidth                     0.2.5
+            weakref                     NA
+            webbrowser                  NA
+            xml                         NA
+            xmlrpc                      NA
+            zipfile                     NA
+            zipimport                   NA
+            zipp                        NA
+            zlib                        1.0
+            zmq                         22.3.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.30.1
+            jupyter_client      7.1.0
+            jupyter_core        4.9.1
+            notebook            6.4.6
+            -----
+            Python 3.7.12 (default, Sep  6 2021, 07:19:30) [GCC 9.3.0]
+            Linux-5.11.0-1022-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2022-01-04 18:10
             </pre>
             </details></div></div>
 </div>
@@ -1330,18 +2213,16 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alejandro Dinamarca Cáceres<br/>
-        
-            &copy; Copyright 2021. Numeral.lab.<br/>
-          <div class="extra_footer">
-            Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alejandro Dinamarca Cáceres<br/>
+    
+        &copy; Copyright 2021. Numeral.lab.<br/>
+      <div class="extra_footer">
+        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+      </div>
+  </p>
+</footer>
 </main>
 
 

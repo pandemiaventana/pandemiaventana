@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -375,7 +375,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -411,7 +411,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -434,7 +434,90 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Del desorden al orden</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#el-debe">
+   El debe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aporte">
+   Aporte
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="del-desorden-al-orden">
+<h1>Del desorden al orden<a class="headerlink" href="#del-desorden-al-orden" title="Permalink to this headline">¶</a></h1>
+<p>Varias veces que me encontré desarrollando ideas para brindar información y ayudar en plena pandemia, eran recurrente los siguientes pensamientos:</p>
+<ul class="simple">
+<li><p><b>¿Estoy perdiendo tiempo?</b></p></li>
+<li><p><b>Podría estar haciendo algo para la Universidad.</b></p></li>
+<li><p><b>¿Vale la pena hacer lo que estoy haciendo?</b></p></li>
+</ul>
+<p>Sin embargo, gran parte de esos pensamientos se anulaban con el ideal del ayudar desde mi escritorio a otras personas a informarse, a concientizar… Creía que el desarrollar las ideas que tenía en el momento era mi forma de contribuir, sea cual sea el fin.
+De hecho, ahora que estoy escribiendo, acabo de terminar de programar el balance de vacunas, y aprovechando que tenía la mente fresca me puse a escribir lo que sentí en la tarde.</p>
+<div class="section" id="el-debe">
+<h2>El debe<a class="headerlink" href="#el-debe" title="Permalink to this headline">¶</a></h2>
+<p>Siguiendo con la idea original, <b>creo que las instituciones públicas y universidades están al debe con el aporte que deben realizar a la comunidad</b>. Como joven - y tal vez, como viejo, gracias a la gran crianza de mis padres - recuerdo que, ellos siempre encontraban su forma de contribuir al medio que los rodeaba. Quizás, fue un intento de replicar eso, y en esa línea, de contribuir a la Región y Universidad.</p>
+<p>Cuando comencé ocupando la interfaz para elaborar los primeros gráficos (Jupyter Notebook), no entendía nada. No entendía como funcionaban las librerías en Python, por lo que tuve que investigar por mi parte, errar, caer y volver a aprender. Los primeros gráficos que hice fueron malísimos, y la primera publicación que subí a numeral.lab también lo fue. Sin embargo, persistí, mejoré, pero ello implicó darme el tiempo de aprender de mis errores, pero también, ¡lanzarme al desorden! No sabía nada, y aún así, desarrollé un par de cosas en ese tiempo, hasta que finalmente construí mi orden (y sí, el por qué del título; suelo creer que soy creativo).</p>
+<p>Existe un deber ser de las cosas, y cuando nos comprometemos con algo, debemos persistir en ese algo, de otra forma, nos fallamos a nosotros mismos. No tuve ningún incentivo económico, ni tampoco lo busqué, solo busqué contribuir, y en el proceso, aprender de mi mismo, conocer a los problemas que me enfrentaba, ¡y solucionarlos! Después de todo soy un “ingeniero”, con habilidades bastante dispersas… Y sí, un ingeniero no puede escribir algo sin decir que es ingeniero.</p>
+</div>
+<div class="section" id="aporte">
+<h2>Aporte<a class="headerlink" href="#aporte" title="Permalink to this headline">¶</a></h2>
+<p>Lo interesante fue que, a la par que me convertí en un “visualizador de datos”, y también un “community manager”, fui capaz de introducir a las personas en conceptos sin explicación (<em>en un principio, nadie entendía la diferencia entre activos y casos nuevos, por ejemplo</em>), por lo que, eran constantes los comentarios aludiendo a qué significaba tal cifra, por qué aumentaban, por qué disminuían, etc. Y allí estaba, respondiendo cada uno.</p>
+<p>Recuerdo que, en comunidades de Instagram de Iquique, empecé a comentar en los reportes diarios de otras páginas, las que quizás, solo exponían cifras aisladas, como los casos nuevos, fallecidos, y de ellos, los totales, siendo la idea, <strong>complementar la falta de información</strong>, relacionando la cantidad de exámenes con los casos nuevos, introduciendo la positividad, entre otros, lo que generó difusión de información fidedigna, y quizás, menor incertidumbre. Para ello, preciso numerosos comentarios agradeciendo la labor de Numeral.lab, “<em>Me asusté ): esta página me entrega mucha confianza. No se vayan nunca</em> 🥺” de parte de &#64;v_inzenz, “… <em>Son los 1 que veo cuando salen los casos diarios, gracias por seguir</em> 🔥❤️” de parte de &#64;cecialvina, entre otros muchos más que agradezco enormemente, los cuales se pueden encontrar en varias publicaciones (<strong>particularmente en aquellas que conmemoran el alcance de una determinada cifra de seguidores</strong>).</p>
+<div class="figure align-default" id="markdown-fig">
+<img alt="../../_images/1.png" src="../../_images/1.png" />
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text"><strong>Conmemoración de 2.500 seguidores</strong>. Imagen del Instagram de <a href="https://www.instagram.com/p/CGXos_MjuhT/?utm_medium=share_sheet">Numeral.lab</a>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Fue un proceso que duró un poco más de un año (<em>y posiblemente, a la fecha, aún es vigente</em>), al menos, en torno a la pandemia. Desconozco que será de Numeral.lab una vez finalice, eventualmente, el confinamiento y el COVID-19.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./page/1_experiencia"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -511,18 +594,16 @@ De hecho, ahora que estoy escribiendo, acabo de terminar de programar el balance
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alejandro Dinamarca Cáceres<br/>
-        
-            &copy; Copyright 2021. Numeral.lab.<br/>
-          <div class="extra_footer">
-            Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alejandro Dinamarca Cáceres<br/>
+    
+        &copy; Copyright 2021. Numeral.lab.<br/>
+      <div class="extra_footer">
+        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+      </div>
+  </p>
+</footer>
 </main>
 
 

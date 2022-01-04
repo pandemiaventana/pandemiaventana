@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -374,7 +374,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -410,7 +410,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -428,7 +428,229 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Bibliografía 📰</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agradecimientos">
+   Agradecimientos
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="bibliografia">
+<h1>Bibliografía 📰<a class="headerlink" href="#bibliografia" title="Permalink to this headline">¶</a></h1>
+<p id="id1"><dl class="citation">
+<dt class="label" id="id53"><span class="brackets">AMA00</span></dt>
+<dd><p>Alexánder Corcho-Berdugo Alejandra Moreno-Altamirano, Sergio López-Moreno. Principales medidas en epidemiología. 2000. URL: <a class="reference external" href="https://www.scielosp.org/pdf/spm/v42n4/2882.pdf">https://www.scielosp.org/pdf/spm/v42n4/2882.pdf</a>.</p>
+</dd>
+<dt class="label" id="id23"><span class="brackets">AlS15</span></dt>
+<dd><p>AlSweigart. Automate The Boring Stuff With Python. 2015. URL: <a class="reference external" href="https://automatetheboringstuff.com/chapter17/">https://automatetheboringstuff.com/chapter17/</a>.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets">Bas19</span></dt>
+<dd><p>Patricia Bassey. Logistic Regression Vs Support Vector Machines (SVM). 2019. URL: <a class="reference external" href="https://medium.com/axum-labs/logistic-regression-vs-support-vector-machines-svm-c335610a3d16">https://medium.com/axum-labs/logistic-regression-vs-support-vector-machines-svm-c335610a3d16</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets">Ben20</span></dt>
+<dd><p>BenVida. Jupyter magic to handle notebook exceptions. 2020. URL: <a class="reference external" href="https://stackoverflow.com/a/64495269/13746427">https://stackoverflow.com/a/64495269/13746427</a>.</p>
+</dd>
+<dt class="label" id="id52"><span class="brackets">Boo20</span></dt>
+<dd><p>Bootstrap. Get started with Bootstrap. 2020. URL: <a class="reference external" href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">https://getbootstrap.com/docs/4.3/getting-started/introduction/</a>.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets">dat</span></dt>
+<dd><p>datavizcatalogue. Catálogo de Visualización de Datos: Gráfico de Densidad. URL: <a class="reference external" href="https://datavizcatalogue.com/ES/metodos/grafico_de_densidad.html">https://datavizcatalogue.com/ES/metodos/grafico_de_densidad.html</a>.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets">dE21</span></dt>
+<dd><p>Departamento de Epidemiología. Informe epidemiológico N° 126. Enfermedad por SARS-CoV-2 (COVID-19). Chile 04-06-2021. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf">https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf</a>.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets">dSdC21</span></dt>
+<dd><p>Ministerio de Salud de Chile. Estrategia Gradual “Paso a Paso nos cuidamos”. 2021. URL: <a class="reference external" href="https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf">https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf</a>.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">dSP21</span></dt>
+<dd><p>Subsecretaria de Salud Pública. Ordinario B51-536. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf">https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf</a>.</p>
+</dd>
+<dt class="label" id="id49"><span class="brackets">dUdEdC20</span></dt>
+<dd><p>Consorcio de Universidades del Estado de Chile. Aplicación web de estudiante UNAP hace accesible datos Covid 19 Min. Ciencia. 2020. URL: <a class="reference external" href="http://www.uestatales.cl/cue/?q=node/7493">http://www.uestatales.cl/cue/?q=node/7493</a>.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">Din21</span></dt>
+<dd><p>Alejandro Dinamarca. Indicador de fase, ed. 36°. 2021. URL: <a class="reference external" href="https://www.instagram.com/p/COyZiUcLUqu/">https://www.instagram.com/p/COyZiUcLUqu/</a>.</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets">Dol16</span></dt>
+<dd><p>Piotr Dollár. Learning to Segment. 2016. URL: <a class="reference external" href="https://research.fb.com/blog/2016/08/learning-to-segment/">https://research.fb.com/blog/2016/08/learning-to-segment/</a>.</p>
+</dd>
+<dt class="label" id="id42"><span class="brackets">Dua20</span></dt>
+<dd><p>Rodrigo Tapia Duarte. Min. Ciencia incorpora a su sitio innovadora plataforma creada por iquiqueño. 2020. URL: <a class="reference external" href="https://lakalle.cl/contenido/1815/ministerio-de-ciencias-incorpora-a-su-comunidad-de-base-de-datos-covid-19-innova">https://lakalle.cl/contenido/1815/ministerio-de-ciencias-incorpora-a-su-comunidad-de-base-de-datos-covid-19-innova</a>.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">Edi19</span></dt>
+<dd><p>Minitab Blog Editor. ¿Cómo Elegir entre una Prueba no Paramétrica y una Prueba Paramétrica? 2019. URL: <a class="reference external" href="https://blog.minitab.com/es/como-elegir-entre-una-prueba-no-parametrica-y-una-prueba-parametrica">https://blog.minitab.com/es/como-elegir-entre-una-prueba-no-parametrica-y-una-prueba-parametrica</a>.</p>
+</dd>
+<dt class="label" id="id41"><span class="brackets">F21</span></dt>
+<dd><p>V. F. Estudiante Unap publicó libro sobre plataforma COVID. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/09/21/full/cuerpo-principal/6/">https://www.estrellaiquique.cl/impresa/2021/09/21/full/cuerpo-principal/6/</a>.</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets">Her19</span></dt>
+<dd><p>Jose Martinez Heras. Máquinas de Vectores de Soporte (SVM). 2019. URL: <a class="reference external" href="https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/">https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/</a>.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">Lop</span></dt>
+<dd><p>José Francisco López. Choosing the right estimator. URL: <a class="reference external" href="https://economipedia.com/definiciones/inferencia-estadistica.html">https://economipedia.com/definiciones/inferencia-estadistica.html</a>.</p>
+</dd>
+<dt class="label" id="id50"><span class="brackets">MdC20</span></dt>
+<dd><p>Conocimiento e Innovación Ministerio de Ciencia, Tecnología. ¿Cómo usa la comunidad la Base de Datos COVID-19? 2020. URL: <a class="reference external" href="https://minciencia.gob.cl/comunidad-covid19/">https://minciencia.gob.cl/comunidad-covid19/</a>.</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets">Mon15</span></dt>
+<dd><p>Sergio Montoro. Repaso didáctico sobre machine learning. 2015. URL: <a class="reference external" href="https://lapastillaroja.net/2015/02/ml-algols/">https://lapastillaroja.net/2015/02/ml-algols/</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">NG11</span></dt>
+<dd><p>Andrew NG. Machine Learning. 2011. URL: <a class="reference external" href="https://www.coursera.org/learn/machine-learning">https://www.coursera.org/learn/machine-learning</a>.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets">P20</span></dt>
+<dd><p>Patricio Iglesias P. Iquiqueño crea app COVID y es usada por Ministerio. 2020. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2020/07/13/papel/">https://www.estrellaiquique.cl/impresa/2020/07/13/papel/</a>.</p>
+</dd>
+<dt class="label" id="id37"><span class="brackets">P21a</span></dt>
+<dd><p>Patricio Iglesias P. Iquique avanza a Preparación y Alto Hospicio se mantiene en fase 2. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/07/02/full/cuerpo-principal/2/">https://www.estrellaiquique.cl/impresa/2021/07/02/full/cuerpo-principal/2/</a>.</p>
+</dd>
+<dt class="label" id="id34"><span class="brackets">P21b</span></dt>
+<dd><p>Patricio Iglesias P. Tarapacá es &quot;top 5&quot; por mayor baja de transmisión del covid. 2021. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=FVCM3IHVO5X2HZTITPK6FPF5NHGGYRUHVTPIYCFLUNT4DK2EDZIA">https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=FVCM3IHVO5X2HZTITPK6FPF5NHGGYRUHVTPIYCFLUNT4DK2EDZIA</a>.</p>
+</dd>
+<dt class="label" id="id26"><span class="brackets">Par20</span></dt>
+<dd><p>Mauricio Torres Paredes. Colegio Médico afirma que “avanzar pronto a la fase 3 no se ve posible aún&quot;. 2020. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=.X.Vj1g.Gq.Feiulq.Yn.I.G.R.U.B.%C3%9Cx/c.Jz.M5r.Aqe.R.Vxrk.P.Gpufs.%C3%96">https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=.X.Vj1g.Gq.Feiulq.Yn.I.G.R.U.B.%C3%9Cx/c.Jz.M5r.Aqe.R.Vxrk.P.Gpufs.%C3%96</a>.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets">Par21a</span></dt>
+<dd><p>Mauricio Torres Paredes. Bajan casos activos desde la cifra más alta del mes de enero. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/01/31/papel/">https://www.estrellaiquique.cl/impresa/2021/01/31/papel/</a>.</p>
+</dd>
+<dt class="label" id="id32"><span class="brackets">Par21b</span></dt>
+<dd><p>Mauricio Torres Paredes. Enero fue el mes con más fallecidos por Covid-19 desde junio de 2020. 2021. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=.Pc.B0.S/am.Wg.I.Im0g.E3b.Zo.Av.Ct/.Jqs.Bjxq94.Dg.Nn.R.F.U.J.E.%C3%96">https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=.Pc.B0.S/am.Wg.I.Im0g.E3b.Zo.Av.Ct/.Jqs.Bjxq94.Dg.Nn.R.F.U.J.E.%C3%96</a>.</p>
+</dd>
+<dt class="label" id="id48"><span class="brackets">Pra21a</span></dt>
+<dd><p>Prensa Universidad Arturo Prat. Autor de software que automatiza cifras Covid lanza libro detallando su innovación. 2021. URL: <a class="reference external" href="https://www.unap.cl/prontus_unap/site/artic/20210921/pags/20210921131857.html">https://www.unap.cl/prontus_unap/site/artic/20210921/pags/20210921131857.html</a>.</p>
+</dd>
+<dt class="label" id="id46"><span class="brackets">Pra20</span></dt>
+<dd><p>Universidad Arturo Prat. Aplicación web de estudiante UNAP hace accesible datos Covid 19. 2020. URL: <a class="reference external" href="https://www.unap.cl/prontus_unap/site/artic/20200710/pags/20200710123250.html">https://www.unap.cl/prontus_unap/site/artic/20200710/pags/20200710123250.html</a>.</p>
+</dd>
+<dt class="label" id="id47"><span class="brackets">Pra21b</span></dt>
+<dd><p>Universidad Arturo Prat. Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase. 2021. URL: <a class="reference external" href="https://www.unap.cl/prontus_unap/site/artic/20210113/pags/20210113142515.html">https://www.unap.cl/prontus_unap/site/artic/20210113/pags/20210113142515.html</a>.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">Pro21</span></dt>
+<dd><p>Real Time Statistics Project. Internet Live Stats - One Second. 2021. URL: <a class="reference external" href="https://www.internetlivestats.com/one-second/">https://www.internetlivestats.com/one-second/</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">Rod21</span></dt>
+<dd><p>Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: <a class="reference external" href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html">https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html</a>.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">SVV18</span></dt>
+<dd><p>I. Santamaría S. Van Vaerenbergh. Métodos kernel para clasificación. 2018. URL: <a class="reference external" href="https://gtas.unican.es/files/docencia/APS/apuntes/07_svm_kernel.pdf">https://gtas.unican.es/files/docencia/APS/apuntes/07_svm_kernel.pdf</a>.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets">Sl</span></dt>
+<dd><p>Scikit-learn. Choosing the right estimator. URL: <a class="reference external" href="https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html">https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html</a>.</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets">Seg20a</span></dt>
+<dd><p>Naguib Danilla Segovia. Plataforma revela en qué estado está la zona para avanzar a la etapa tres. 2020. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Cortes.cshtml?LPKey=s.H.T.Cc/4b.U.Lodc.B.Ctdj.Wi.Uy0.Y.Me1.I.Q3.N.V.%C3%9Ck.K0ot9.L.Z.A.I.%C3%96">https://www.litoralpress.cl/sitio/Prensa_Cortes.cshtml?LPKey=s.H.T.Cc/4b.U.Lodc.B.Ctdj.Wi.Uy0.Y.Me1.I.Q3.N.V.%C3%9Ck.K0ot9.L.Z.A.I.%C3%96</a>.</p>
+</dd>
+<dt class="label" id="id27"><span class="brackets">Seg20b</span></dt>
+<dd><p>Naguib Danilla Segovia. UC y Unap informan mejoras en indicadores Covid de la región. 2020. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=xyp.X39.U6nv.Ayw.Z.Nm.P.K.Q.U.S.Kzly0.Xv2c.Zq92wte.Mcagc.M.%C3%96">https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=xyp.X39.U6nv.Ayw.Z.Nm.P.K.Q.U.S.Kzly0.Xv2c.Zq92wte.Mcagc.M.%C3%96</a>.</p>
+</dd>
+<dt class="label" id="id29"><span class="brackets">Seg21a</span></dt>
+<dd><p>Naguib Danilla Segovia. Casos actuales ya superaron a los del “primer peak” en la región. 2021. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=.Sq.Jnf.I.H.F.L.U.P/z.Bp.R3ict/hf.A.Fa.L6lsrti.Jr3vg8.Tn.K.Q.%C3%96">https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=.Sq.Jnf.I.H.F.L.U.P/z.Bp.R3ict/hf.A.Fa.L6lsrti.Jr3vg8.Tn.K.Q.%C3%96</a>.</p>
+</dd>
+<dt class="label" id="id28"><span class="brackets">Seg21b</span></dt>
+<dd><p>Naguib Danilla Segovia. Registran crecimiento en los casos nuevos de Covid. 2021. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=z.S.L.Ztju.Jnyy9.Q.M.Bs0.S8s.H.Fnq1y.Wxq6.H.J.M2v89.Yov1k8.%C3%96">https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=z.S.L.Ztju.Jnyy9.Q.M.Bs0.S8s.H.Fnq1y.Wxq6.H.J.M2v89.Yov1k8.%C3%96</a>.</p>
+</dd>
+<dt class="label" id="id31"><span class="brackets">Seg21c</span></dt>
+<dd><p>Naguib Danilla Segovia. Seremi de Salud: La región está con indicadores “muy elevados. 2021. URL: <a class="reference external" href="https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=7.Flj.Tr36m.H.Ig.Hi.Gb2a.Vleh.Za.P7/0/3p7.Ds.K.S7m.Dd5c.I.%C3%96">https://www.litoralpress.cl/sitio/Prensa_Texto?LPKey=7.Flj.Tr36m.H.Ig.Hi.Gb2a.Vleh.Za.P7/0/3p7.Ds.K.S7m.Dd5c.I.%C3%96</a>.</p>
+</dd>
+<dt class="label" id="id51"><span class="brackets">Tar20</span></dt>
+<dd><p>Gobierno Regional Tarapacá. Entendiendo las curvas de contagio y el desafío de aplanarlas - II parte. 2020. URL: <a class="reference external" href="https://www.facebook.com/watch/live/?extid=SEO----&amp;v=4143835965690381&amp;ref=watch_permalink">https://www.facebook.com/watch/live/?extid=SEO----&amp;v=4143835965690381&amp;ref=watch_permalink</a>.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets">Tar21a</span></dt>
+<dd><p>Hub Tarapacá. HUB 24H la transmisión más larga del ecosistema. 2021. URL: <a class="reference external" href="https://www.youtube.com/watch?v=4fierypnbqI&amp;t=11907s">https://www.youtube.com/watch?v=4fierypnbqI&amp;t=11907s</a>.</p>
+</dd>
+<dt class="label" id="id45"><span class="brackets">Tar21b</span></dt>
+<dd><p>Hub Tarapacá. Quiénes somos. 2021. URL: <a class="reference external" href="https://hubtarapaca.cl/">https://hubtarapaca.cl/</a>.</p>
+</dd>
+<dt class="label" id="id43"><span class="brackets">Tar21c</span></dt>
+<dd><p>Hub Tarapacá. Revista HUB Tarapacá N6. 2021. URL: <a class="reference external" href="https://online.fliphtml5.com/kpwsr/xrfl/#p=12">https://online.fliphtml5.com/kpwsr/xrfl/#p=12</a>.</p>
+</dd>
+<dt class="label" id="id18"><span class="brackets">Veg19</span></dt>
+<dd><p>Carlos Santana Vega. Las Redes Neuronales... ¿Aprenden o Memorizan? - Overfitting y Underfitting - Parte 1. 2019. URL: <a class="reference external" href="https://www.youtube.com/watch?v=7-6X3DTt3R8">https://www.youtube.com/watch?v=7-6X3DTt3R8</a>.</p>
+</dd>
+<dt class="label" id="id39"><span class="brackets">Ver21a</span></dt>
+<dd><p>Pamela Castillo Vergara. Bajos indicadores permitirían que Iquique avance de fase. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/07/15/full/cuerpo-principal/3/">https://www.estrellaiquique.cl/impresa/2021/07/15/full/cuerpo-principal/3/</a>.</p>
+</dd>
+<dt class="label" id="id38"><span class="brackets">Ver21b</span></dt>
+<dd><p>Pamela Castillo Vergara. Experto asegura que los casos seguirán bajando hasta agosto. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/07/09/full/cuerpo-principal/3/">https://www.estrellaiquique.cl/impresa/2021/07/09/full/cuerpo-principal/3/</a>.</p>
+</dd>
+<dt class="label" id="id33"><span class="brackets">Ver21c</span></dt>
+<dd><p>Pamela Castillo Vergara. Fallecidos por covid en Tarapacá se redujeron a la mitad durante mayo. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/06/22/papel/">https://www.estrellaiquique.cl/impresa/2021/06/22/papel/</a>.</p>
+</dd>
+<dt class="label" id="id35"><span class="brackets">Ver21d</span></dt>
+<dd><p>Pamela Castillo Vergara. Iquique no cumple con cifras para avance de fase. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/06/25/full/cuerpo-principal/3/">https://www.estrellaiquique.cl/impresa/2021/06/25/full/cuerpo-principal/3/</a>.</p>
+</dd>
+<dt class="label" id="id40"><span class="brackets">Ver21e</span></dt>
+<dd><p>Pamela Castillo Vergara. Región tiene 62pct menos casos activos que en el 2020. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/08/15/full/cuerpo-principal/2/">https://www.estrellaiquique.cl/impresa/2021/08/15/full/cuerpo-principal/2/</a>.</p>
+</dd>
+<dt class="label" id="id36"><span class="brackets">Ver21f</span></dt>
+<dd><p>Pamela Castillo Vergara. Tarapacá registra cifra más baja de casos activos en 2021. 2021. URL: <a class="reference external" href="https://www.estrellaiquique.cl/impresa/2021/07/01/full/cuerpo-principal/2/">https://www.estrellaiquique.cl/impresa/2021/07/01/full/cuerpo-principal/2/</a>.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets">Wit19</span></dt>
+<dd><p>Dennis Wittich. Jupyter magic to handle notebook exceptions. 2019. URL: <a class="reference external" href="https://icaml.org/canon/algo/bayesian-classification/KDE_KNN/KNN.html">https://icaml.org/canon/algo/bayesian-classification/KDE_KNN/KNN.html</a>.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">MinisteriodCienciaTeInnovacion21</span></dt>
+<dd><p>Ministerio de Ciencia, Tecnología e Innovación. Base de datos COVID-19. 2020, 2021. URL: <a class="reference external" href="https://github.com/MinCiencia/Datos-COVID19">https://github.com/MinCiencia/Datos-COVID19</a>.</p>
+</dd>
+</dl>
+</p>
+<div class="section" id="agradecimientos">
+<h2>Agradecimientos<a class="headerlink" href="#agradecimientos" title="Permalink to this headline">¶</a></h2>
+<p>Mi amor, incondicional, a mi madre y padre, <strong>Rossana Cáceres</strong> y <strong>Bernardo Dinamarca</strong>.</p>
+<div class="figure align-default" id="markdown-fig">
+<a class="reference internal image-reference" href="https://images.pexels.com/photos/250609/pexels-photo-250609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"><img alt="https://images.pexels.com/photos/250609/pexels-photo-250609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/250609/pexels-photo-250609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text"><strong>Imagen por John-Mark Smith</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Además, debo agradecer, profundamente,  al <strong>Dr. Cristóbal Corral</strong>, con quién tuve la oportunidad de compartir y trabajar en el proyecto de vinculación.</p>
+<p>Al académico <strong>Sr. Francisco Cartes</strong> por permitirme introducirme en el mundo de la Ciencia de Datos.</p>
+<p>Asimismo, recuerdo con mucho cariño a los docentes <strong>Sr. Ulimario Barnao</strong>, al <strong>Sr. Luciano Urizar</strong>, a la <strong>Sra. Corina Claro</strong> y al <strong>Sr. Sebastián Carmona</strong>, los que me enseñaron amor por la matemática.</p>
+<p>Finalmente, todo se construye con relaciones, todo es en base al trabajo de otras personas. Nada sería de Numeral.lab si no fuese por los miles de personas que trabajaron detrás de Python y sus librerías, como también, en las fuentes recopiladas.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./page/7_bibliografia"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -642,18 +864,16 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alejandro Dinamarca Cáceres<br/>
-        
-            &copy; Copyright 2021. Numeral.lab.<br/>
-          <div class="extra_footer">
-            Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alejandro Dinamarca Cáceres<br/>
+    
+        &copy; Copyright 2021. Numeral.lab.<br/>
+      <div class="extra_footer">
+        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+      </div>
+  </p>
+</footer>
 </main>
 
 

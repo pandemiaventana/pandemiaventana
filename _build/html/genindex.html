@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/genindex.html" />
     <link rel="shortcut icon" href="_static/0_favicon.ico"/>
@@ -383,12 +383,37 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1></h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+            </div>
+            
+              <div>
+                
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ 
+</div>
+
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -411,18 +436,16 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alejandro Dinamarca Cáceres<br/>
-        
-            &copy; Copyright 2021. Numeral.lab.<br/>
-          <div class="extra_footer">
-            Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alejandro Dinamarca Cáceres<br/>
+    
+        &copy; Copyright 2021. Numeral.lab.<br/>
+      <div class="extra_footer">
+        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+      </div>
+  </p>
+</footer>
 </main>
 
 
