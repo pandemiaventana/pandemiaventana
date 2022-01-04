@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -375,7 +375,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -411,7 +411,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -429,7 +429,81 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Experiencia 💭</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#por-que-anadir-esta-seccion">
+   ¿Por qué añadir esta sección?
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="experiencia">
+<h1>Experiencia 💭<a class="headerlink" href="#experiencia" title="Permalink to this headline">¶</a></h1>
+<p>Esta sección se basará en experiencias personales, pensamientos o situaciones del día a día. Creí necesario explayar algunas cosas humanas o personales.</p>
+<div class="section" id="por-que-anadir-esta-seccion">
+<h2>¿Por qué añadir esta sección?<a class="headerlink" href="#por-que-anadir-esta-seccion" title="Permalink to this headline">¶</a></h2>
+<p>Me gustaría, tal como dije, abordar experiencias personales. Además, retratar un poco cómo fue mi camino en la Ciencia de Datos, el cual todavía sigo recorriendo.</p>
+<p>Creo a alguien interesado en el tema le puede servir, porque quizás, y en su momento, yo no tuve un camino claro hacia donde dirigir mis esfuerzos, tal como muchos otros.</p>
+<p>Por cierto, no quiero decir que mi camino es el correcto, pero sí que he utilizado los medios con los que he dispuesto en el tiempo.</p>
+<div class="figure align-default" id="markdown-fig">
+<a class="reference internal image-reference" href="https://images.pexels.com/photos/5586819/pexels-photo-5586819.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"><img alt="https://images.pexels.com/photos/5586819/pexels-photo-5586819.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/5586819/pexels-photo-5586819.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><strong>Santo Domingo</strong>. Fotografía de Esteban Amaro en Pexels.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>La Ciencia de Datos es un <strong>largo camino con curvas</strong> (como la canción de The Beatles)…</p>
+<p>En la presente sección abordaremos:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_experiencia.html">El saber sin saber</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_experiencia.html">Del desorden al orden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_experiencia.html">Autor</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./page/1_experiencia"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -502,18 +576,16 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alejandro Dinamarca Cáceres<br/>
-        
-            &copy; Copyright 2021. Numeral.lab.<br/>
-          <div class="extra_footer">
-            Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alejandro Dinamarca Cáceres<br/>
+    
+        &copy; Copyright 2021. Numeral.lab.<br/>
+      <div class="extra_footer">
+        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+      </div>
+  </p>
+</footer>
 </main>
 
 

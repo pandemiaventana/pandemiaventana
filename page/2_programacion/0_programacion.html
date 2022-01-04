@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -375,7 +375,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -411,7 +411,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -429,7 +429,92 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Programación 👨‍💻</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#por-que-this-is-the-way">
+   ¿Por qué “This is the way”?
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="programacion">
+<h1>Programación 👨‍💻<a class="headerlink" href="#programacion" title="Permalink to this headline">¶</a></h1>
+<p>La sección lógica. Vuelvo a recalcar, el código está hecho con mucho cariño.</p>
+<p>Respecto a la estructura, limpieza o claridad del script, debo declarar que me considero un programador sobreviviente. Están todos y todas avisados.</p>
+<div class="figure align-default" id="markdown-fig">
+<a class="reference internal image-reference" href="https://images.pexels.com/photos/2753432/pexels-photo-2753432.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"><img alt="https://images.pexels.com/photos/2753432/pexels-photo-2753432.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260" src="https://images.pexels.com/photos/2753432/pexels-photo-2753432.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text"><strong>Universo</strong>. Fotografía de Wendy Wei en Pexels.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="por-que-this-is-the-way">
+<h2>¿Por qué “This is the way”?<a class="headerlink" href="#por-que-this-is-the-way" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="https://media1.giphy.com/media/4OWoiLFuVkaw76Intv/giphy.gif"><img alt="https://media1.giphy.com/media/4OWoiLFuVkaw76Intv/giphy.gif" src="https://media1.giphy.com/media/4OWoiLFuVkaw76Intv/giphy.gif" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text"><strong>The Mandalorian</strong>. Todos los créditos a Disney+ (sí, es mi forma de evitar Copyright).</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Si habrás notado, los archivos de Notebook de Jupyter están nombrados como:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/blob/main/page/2_programacion/1_thisistheway.ipynb">1_<strong>thisistheway</strong>.ipynb</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/blob/main/page/2_programacion/2_thisistheway.ipynb">2_<strong>thisistheway</strong>.ipynb</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/blob/main/page/2_programacion/3_thisistheway.ipynb">3_<strong>thisistheway</strong>.ipynb</a>.</p></li>
+</ul>
+<p>En la serie The Mandalorian, existe una frase célebre del protagonista y de su especie, cuyo significado en español es “esta es la forma”, o “este es el camino de hacer las cosas”. Encontré una buena opción utilizarla, ¿por qué? Bueno, soy un creyente de que toda contribución debe ir desde adentro hacia afuera: Construirse uno mismo para construir hacia afuera. La experiencia que adquirí en este proyecto fue enorme, y asimismo fueron los reconocimientos de parte de instituciones públicas y de la ciudadanía. Ese reconocimiento no es vano, por el contrario, es un reconocimiento al aporte comunitario, que es el camino que deberíamos seguir. ¡Todos tenemos algo que aportar! Y ese es el camino.</p>
+<p>En la presente sección abordaremos:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_programacion.html">Funcionamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_programacion.html">Estado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_thisistheway.html">Génesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_thisistheway.html">Aprendizaje</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_thisistheway.html">Salida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_programacion.html">Aclaraciones</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./page/2_programacion"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -513,18 +598,16 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alejandro Dinamarca Cáceres<br/>
-        
-            &copy; Copyright 2021. Numeral.lab.<br/>
-          <div class="extra_footer">
-            Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alejandro Dinamarca Cáceres<br/>
+    
+        &copy; Copyright 2021. Numeral.lab.<br/>
+      <div class="extra_footer">
+        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+      </div>
+  </p>
+</footer>
 </main>
 
 
