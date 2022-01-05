@@ -429,19 +429,20 @@
         </div>
     </div>
 </div>
-    <!-- Table of contents that is only displayed when printing the page -->
-    <div id="jb-print-docs-body" class="onlyprint">
-        <h1>Base de datos</h1>
-        <!-- Table of contents -->
-        <div id="print-main-content" class="row">
-            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
-            <div id="jb-print-toc">
-                
-                <div>
-                    <h2> Contents </h2>
-                </div>
-                <nav aria-label="Page">
-                    <ul class="visible nav section-nav flex-column">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Base de datos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#archivo-csv">
    Archivo .CSV
@@ -449,7 +450,9 @@
  </li>
 </ul>
 
-                </nav>
+                        </nav>
+                    </div>
+                </div>
             </div>
             
               <div>
@@ -489,51 +492,8 @@
 
               </div>
               
-            </div>
-        </div>
-    </div>
-    <div id="main-content" class="row noprint">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="base-de-datos">
-<h1>Base de datos<a class="headerlink" href="#base-de-datos" title="Permalink to this headline">¶</a></h1>
-<p>La base de datos procesada por Numeral.lab a partir de la información recabada desde el repositorio del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación, y aportada por distintos colaboradores e investigadores, es una base de datos completa, que recaba la historia de la pandemia a través de los datos en la Región de Tarapacá con datos regionales, provinciales y comunales, desde comienzo a fin.</p>
-<p>Utilizála, investiga, aporta. Está disponible para todos y todas.</p>
-<div class="section" id="archivo-csv">
-<h2>Archivo .CSV<a class="headerlink" href="#archivo-csv" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default" id="markdown-fig">
-<img alt="../../_images/6_bbdd.png" src="../../_images/6_bbdd.png" />
-<p class="caption"><span class="caption-number">Fig. 72 </span><span class="caption-text"><strong>Base de datos COVID-19</strong>. <a href="https://min.gitcdn.link/repo/pandemiaventana/pandemiaventana/main/out/site/csv/numeralab.csv">Descargar (presiona aquí)</a>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./page/6_basedatos"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="0_basedatos.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -550,7 +510,7 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">

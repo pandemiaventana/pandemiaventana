@@ -439,19 +439,20 @@
         </div>
     </div>
 </div>
-    <!-- Table of contents that is only displayed when printing the page -->
-    <div id="jb-print-docs-body" class="onlyprint">
-        <h1>Funcionamiento</h1>
-        <!-- Table of contents -->
-        <div id="print-main-content" class="row">
-            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
-            <div id="jb-print-toc">
-                
-                <div>
-                    <h2> Contents </h2>
-                </div>
-                <nav aria-label="Page">
-                    <ul class="visible nav section-nav flex-column">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Funcionamiento</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#como-lo-hace">
    ¿Cómo lo hace?
@@ -469,7 +470,9 @@
  </li>
 </ul>
 
-                </nav>
+                        </nav>
+                    </div>
+                </div>
             </div>
             
               <div>
@@ -527,69 +530,8 @@
 
               </div>
               
-            </div>
-        </div>
-    </div>
-    <div id="main-content" class="row noprint">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="funcionamiento">
-<h1>Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permalink to this headline">¶</a></h1>
-<p>El libro es dinámico. Es decir, se actualiza de forma constante.</p>
-<div class="section" id="como-lo-hace">
-<h2>¿Cómo lo hace?<a class="headerlink" href="#como-lo-hace" title="Permalink to this headline">¶</a></h2>
-<p>A través de Notebooks de Jupyter, un poco de Markdown y GitHub Actions:</p>
-<ul class="simple">
-<li><p>El script realizado en Jupyter Notebook - <em>con Python</em> - genera los archivos de datos, infografías y sitios.</p></li>
-<li><p>Jupyter Books se encarga de generar la página web a partir de los Notebooks de Jupyter y Markdown.</p></li>
-<li><p>GitHub Actions ejecuta, iteradamente, los procesos anteriores.</p></li>
-</ul>
-</div>
-<div class="section" id="ejecucion-de-actualizaciones">
-<h2>Ejecución de actualizaciones<a class="headerlink" href="#ejecucion-de-actualizaciones" title="Permalink to this headline">¶</a></h2>
-<p>El despliegue del libro en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/tree/gh-pages">gh-pages</a> se realiza con GitHub Actions cada vez que:</p>
-<ul class="simple">
-<li><p>Desencadeno un cambio en el repositorio. Puntualmente, en <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana">main</a>.</p></li>
-<li><p>Se cumple una hora desde las 10:30 hrs. hasta las 19:30 hrs. (horario de Santiago de Chile). <em>El repositorio duerme desde las 19:31 hrs. hasta las 11:29 hrs. del próximo día</em>.</p></li>
-</ul>
-<p>La ejecución se realiza a través del action <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml">actualiza_libro</a>.</p>
-</div>
-<div class="section" id="notas">
-<h2>Notas<a class="headerlink" href="#notas" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>El repositorio se actualiza constantemente según disponibilidad de datos en el <a class="reference external" href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación</a>. Por lo general, este tipo de actualizaciones están bajo el commit “🤖 <em>Actualización de repositorio</em>”.</p></li>
-<li><p>La entrada de archivos se encuentra en “<a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/tree/main/in">in</a>” y la salida en “<a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana/tree/main/out">out</a>”.</p></li>
-<li><p>La subida a Instagram aún no se encuentra automatizada por riesgo de ban.</p></li>
-</ul>
-</div>
-</div>
-
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./page/2_programacion"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="0_programacion.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -606,7 +548,7 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
