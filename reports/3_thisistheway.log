@@ -17,90 +17,96 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-outputs_ = reportediario.outputs
+capture reportediario
+x = 0
+### Título y otras cosas
+display(Markdown('<h2 style="font-size:60px;">REPORTE DIARIO</h2>'))
+display(Markdown('<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>'.format(data[0].last_valid_index().strftime('%d de %B de %Y'))))
 
-vec_out = []
-for outs_ in outputs_:
-    ### Convertimos a lista los outputs
-    vec_out += list(outs_.data.values())
-
-### Nuestro string
-vec_ = ''
-### Recorremos la lista de outputs
-for vec in vec_out:
-    vec = str(vec)
-    ### Quitamos configuración de Plot.ly
-    if vec.startswith("{'config':"):
-        pass
-    else:
-        ### Quitamos el str de datos de tabla sin formato
-        if vec.startswith("            "):
-            pass
-        else:
-            ### Quitamos el str del tipo de variable
-            vec = vec.replace('<IPython.core.display.Markdown object>', '')
-            ### Damos formato a tablas
-            if vec.startswith('<div>\n<style scoped>'):
-                vec = vec.replace('NaN', 'Sin datos')
-                vec = BeautifulSoup(vec, 'html.parser').find('table')
-                vec['class'] = vec.get('class', []) + [' table table-dark table-striped table-hover table-sm']
-                vec = '<div class="table-responsive">' + str(vec) + '</div>'
-            ### Finalmente, añadimos al vector
-            vec_ += '<div class="row"><br><div class="col text-light">' + vec + '</div></div>'
-
-### Abrimos y modificamos el HTML
-with open('../../_build/html/dinamic/balance.html', 'w', encoding='UTF-8') as f:
-    f.write('''<html>
-    <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js">
-    </script>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
-    <meta charset="UTF-8">
-    <title>Balance histórico 📊 &#8212; La pandemia por la ventana</title>
-    </head>
-    <body>
-    <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="https://pandemiaventana.github.io/pandemiaventana/">
-    <img src="./logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
-    Numeral.lab
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Reporte diario <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html">Indicador de fase</a>
-      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/">La pandemia por la ventana</a>
-    </div>
-    </div>
-    </nav>
-    <div class="container-fluid bg-dark text-light">''' 
-    + vec_ + 
-    '''</div>
-    </body>
-    </html>''')
+### Recorremos el vector que almacena los DataFrames, uno a uno
+for dataframe in data:
+    
+    ### Para guardar el número del gráfico (un poco ordinario el método, lo sé)
+    
+    x += 1
+    
+    ### Definimos una nueva figura
+    
+    fig = go.Figure(layout=layout)
+    
+    ### Algunos datos y título
+    
+    display(Markdown('<h3> Gráfico {}</h3>'.format(x)))
+    display(Markdown('El gráfico contiene las siguientes <b>columnas</b>: '))
+    
+    ### Recorremos cada una de las columnas del DataFrame anterior
+    
+    for col in dataframe.columns:
+        
+        ### Vector de fechas desde primer y último dato válido por cada columna
+        
+        index = dataframe[col].first_valid_index()
+        index_ = dataframe[col].last_valid_index()
+            
+        ### DataFrame según filtro de primer dato válido
+        
+        _df = dataframe[index:]
+            
+        ### Índice de DataFrame según filtro anterior
+            
+        fecha = dataframe[index:].index
+    
+        ### Columna específica
+        
+        _col = dataframe[index:][col]
+        
+        ### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y
+        ### suavizamos por interpolación spline
+        
+        fig.add_trace(go.Scatter(x=_df.index.strftime('%d %b %Y'),
+                                 y=_col,
+                    mode='lines',
+                    name=col,
+                    connectgaps=True,
+                    line_shape='linear',
+                    hovertemplate =
+                    '<b>{}</b>: '.format(col) + '%{y:.2f}'+'<br><b>Fecha</b>: %{x}<br>' + "<extra></extra>"))
+        
+        ### Para colocar en 35° las etiquetas del eje X, con el número de etiquetas proporcional al número de meses
+        ### desde el primer dato válido
+        
+        fig.update_layout(xaxis = go.layout.XAxis(tickangle = 90,
+                                                  nticks=len(_df.index.month.unique())))
+        ### Más datos
+        display(Markdown(' - <b>{}</b>.'.format(col)))
+        display(Markdown("""El mayor valor es de <b>{}</b>, registrado el <b>{}</b>. 
+        Asimismo, la mediana es de <b>{}</b>.
+        Respecto a la dispersión de los datos, la desviación estándar es del <b>{}</b>. """
+                         .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime('%d de %B de %Y'),
+                                 round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))
+        display(Markdown('> El valor en base al último reporte diario o epidemiológico ({}) es de <b>{}</b>.'.format(dataframe[index_:].index[0].strftime('%d de %B de %Y'), dataframe[col][index_])))
+    
+    ### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado
+    display(Markdown('<h4>Visualización del gráfico {}</h4> <br> El gráfico, visualizado en <a href="https://plotly.com/python/">Plot.ly</a>: <br>'.format(x)))
+    fig.show(config=config)
+    
+    display(Markdown("""> <b>Notas</b>: 
+    <br> - El gráfico <b>inicia en el {}</b> y <b>termina el {}</b> en base a los datos disponibles.
+    <br> - Para aislar una curva, presionar en el nombre o color en la leyenda. 
+    <br> - Para remover una curva, seguir instrucción anterior, con la diferencia de presionar dos veces.""".format(\
+                    _df.index[0].strftime('%d de %B de %Y'),
+                    dataframe[index_:].index[0].strftime('%d de %B de %Y'))))
+    display(Markdown('<h4>Información adicional sobre el gráfico {}</h4> <br>'.format(x)))
+    display(Markdown(
+    """El <b>gráfico {}</b> utilizó los datos procesados en <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv">data{}.csv</a>.
+    La tabla de datos resumida:""".format(x, x, x, x)))
+    display(dataframe)
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3395/2824493156.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0moutputs_[0m [0;34m=[0m [0mreportediario[0m[0;34m.[0m[0moutputs[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0;34m[0m[0m
-[1;32m      3[0m [0mvec_out[0m [0;34m=[0m [0;34m[[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;32mfor[0m [0mouts_[0m [0;32min[0m [0moutputs_[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m     [0;31m### Convertimos a lista los outputs[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;36m  File [0;32m"/tmp/ipykernel_3309/4026074398.py"[0;36m, line [0;32m1[0m
+[0;31m    capture reportediario[0m
+[0m                        ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
-[0;31mNameError[0m: name 'reportediario' is not defined
-NameError: name 'reportediario' is not defined
+SyntaxError: invalid syntax (4026074398.py, line 1)
 
