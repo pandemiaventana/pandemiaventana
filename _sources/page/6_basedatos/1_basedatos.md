@@ -9,7 +9,7 @@ Utilizála, investiga, aporta. Está disponible para todos y todas.
 :::{figure-md} markdown-fig
 <img src="../../img/page/6_bbdd.png">
 
-**Base de datos COVID-19**. <a href="https://min.gitcdn.link/repo/pandemiaventana/pandemiaventana/main/out/site/csv/numeralab.csv">Descargar (presiona aquí)</a>.
+**Base de datos COVID-19**. <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/numeralab.csv">Descargar (presiona aquí)</a>.
 :::
 
 
