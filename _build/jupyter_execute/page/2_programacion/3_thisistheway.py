@@ -181,7 +181,7 @@ display(Markdown('> Se exportarán un total de **{} gráficos**.'.format(sum_)))
 # In[4]:
 
 
-#%%capture reportediario
+capture reportediario
 x = 0
 ### Título y otras cosas
 display(Markdown('<h2 style="font-size:60px;">REPORTE DIARIO</h2>'))
@@ -375,7 +375,7 @@ for dataframe in data:
 # 
 # - Entre otros.
 
-# In[5]:
+# In[ ]:
 
 
 outputs_ = reportediario.outputs

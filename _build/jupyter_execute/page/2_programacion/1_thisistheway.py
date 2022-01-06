@@ -402,7 +402,7 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # ### Manipulando (*ahora sí*)
 
-# In[3]:
+# In[202]:
 
 
 # Manipulando datos
@@ -681,7 +681,7 @@ poblacion_yomevacuno = 286597
 # 
 # Los cambios siempre son para mejor.
 
-# In[4]:
+# In[203]:
 
 
 # Uniendo datos
@@ -846,7 +846,7 @@ df
 
 # ### CSV
 
-# In[5]:
+# In[204]:
 
 
 # Exportando información
@@ -1023,7 +1023,7 @@ pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2°
 
 # ### Reporte diario
 
-# In[6]:
+# In[205]:
 
 
 ### Infografías generadas
@@ -1198,7 +1198,7 @@ print(desc1)
 
 # ### Balance de vacunas
 
-# In[7]:
+# In[206]:
 
 
 ### Balance vacunas ###
@@ -1232,13 +1232,13 @@ print(desc2)
 
 # ### Indicador de fase
 
-# In[8]:
+# In[207]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[9]:
+# In[208]:
 
 
 ### Cambios
@@ -1281,7 +1281,7 @@ display(Markdown(pred))
 
 # ### Toque de queda a las 00:00 hrs.
 
-# In[10]:
+# In[209]:
 
 
 ### Balance vacunas ###
@@ -1333,7 +1333,7 @@ print(desc2)
 
 # ### Reporte diario
 
-# In[11]:
+# In[210]:
 
 
 ### Graficando para reporte diario ###
@@ -1457,7 +1457,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[12]:
+# In[211]:
 
 
 ### Graficando para balance vacunas ###
@@ -1583,7 +1583,7 @@ print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
 
 # ### Indicador de fase
 
-# In[13]:
+# In[212]:
 
 
 ### Graficando para indicador fase ###
@@ -1630,7 +1630,7 @@ graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].column
 print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
-# In[14]:
+# In[213]:
 
 
 ### Toque de queda
@@ -1677,7 +1677,7 @@ graph2 = graphLine([avance_graph.index],                   [avance_graph],      
 
 # ### Reporte diario
 
-# In[15]:
+# In[214]:
 
 
 ### Generando reporte diario ###
@@ -1848,7 +1848,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[16]:
+# In[215]:
 
 
 ### Generando balance de vacunas ###
@@ -1910,7 +1910,7 @@ display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
 
 # ### Indicador de fase
 
-# In[17]:
+# In[216]:
 
 
 ### Indicador de fase ###
@@ -1978,7 +1978,7 @@ display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
 
 # ### Toque de queda
 
-# In[18]:
+# In[217]:
 
 
 ### Indicador de fase ###
@@ -2029,7 +2029,7 @@ display(Markdown('> El PDF del reporte de toque de queda ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[19]:
+# In[218]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2041,7 +2041,7 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[20]:
+# In[219]:
 
 
 ### Mostramos las imágenes del balance de vacunas
@@ -2053,7 +2053,7 @@ for i in x:
 
 # ### Indicador de fase
 
-# In[21]:
+# In[220]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -2065,7 +2065,7 @@ for i in x:
 
 # ### Toque de queda
 
-# In[22]:
+# In[221]:
 
 
 ### Mostramos las imágenes del indicador de fase
@@ -2084,7 +2084,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[23]:
+# In[222]:
 
 
 ### Ejemplo 1 ###
@@ -2106,7 +2106,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[24]:
+# In[223]:
 
 
 ### Ejemplo 2 ###
@@ -2166,7 +2166,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[25]:
+# In[224]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2222,7 +2222,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[26]:
+# In[225]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
