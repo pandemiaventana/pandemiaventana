@@ -1457,203 +1457,214 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Balance de vacunas
 
-# In[12]:
-
-
-### Graficando para balance vacunas ###
-
-### Últimas cifras de vacunación a población total/objetivo
-pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],
-          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18,
-          poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18])
-pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],
-          df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18,
-          poblacion_yomevacuno - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18])
-labels = np.array(['Con 1° dosis \n (sin inmunidad o parcial)', 'Con cuadro completo \n (eventual inmunes)', 'Sin cuadro completo \n (sin inmunidad)'])
-vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
-vacunacion_pct.index = labels
-vacunacion_pct.columns = ['Población total', 'Población objetivo']
-
-### Para gráficos de barra
-class graphBar:
-    """
-    Clase para gráfico de barra.
-    Args
-    ____
-    x: eje x
-    y: eje y
-    color: colores
-    path: dirección de guardado
-    alpha: transparencia
-    opt:'' sufijo de dato
-    uni:0 booleano (0 para color para todas las barras, 1 para color por cada barra)
-    w:4 (ancho)
-    l:3 (largo)
-    horizontal:0 (gráfico vertical u horizontal)
-    rot: rotacion para gráfico con uni=1
-    
-    """
-    def __init__(self, x, y, color, path, alpha, opt='', uni=0, w=4, l=3, horizontal=0, rot=0):
-        self.opt = opt
-        self.w = 4
-        self.l = 3
-        self.s = 0
-        fig, ax = plt.subplots(figsize=(w, l))
-        self.x = x
-        self.y = y
-        self.color = color
-        self.alpha = alpha
-        self.path = path
-        self.uni = uni
-        self.horizontal = 0
-        self.rot = rot
-        if horizontal == 0:
-            if uni == True:
-                for x in self.x:
-                    ax.bar(self.x[self.s], self.y[self.s], color=self.color, alpha=self.alpha[self.s])
-                for i,j in zip(self.x[self.s],self.y[self.s]):
-                    ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=9, horizontalalignment='center', verticalalignment='bottom')
-                self.s += 1
-                plt.xticks(rotation=self.rot)
-            else:
-                for x in self.x:
-                    ax.bar(self.x[self.s], self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
-                    for i,j in zip(self.x[self.s],self.y[self.s]):
-                        ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=4.5, horizontalalignment='center', verticalalignment='bottom')
-                    self.s += 1
-                    plt.xticks(rotation=15)
-        else:
-            for x in self.x:
-                ax.barh(width=self.x[self.s], y=self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
-                ax.axis('off')
-                fig.patch.set_visible(True)
-                self.s += 1
-        ax.tick_params(labelsize=5, colors='w', grid_color='w')
-        ax.get_yaxis().set_major_formatter(
-        mpl.ticker.FuncFormatter(lambda y, p: format(int(y), ',d')))
-        self.path = path
-        ax.spines['bottom'].set_color('white')
-        ax.spines['left'].set_color('white')
-        plt.savefig(self.path, bbox_inches = 'tight')
-        ax.tick_params(colors='#000', grid_color='#000')
-        ax.spines['bottom'].set_color('#000')
-        ax.spines['left'].set_color('#000')
-        plt.show()
-        print('Gráfico guardado.')
-        
-### Primer gráfico: Proporción objetivo vacunada
-graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],
-                   [[0], [0]],
-                   color=['gray', '#9ad5ff'], alpha=[1, 1],
-                   path='../../in/vacuna/grafico/1.png', uni=1, w=1.68, l=0.6, horizontal=1)
-vaccine = Image.open(requests.get('https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/in/vacuna/grafico/vaccine.png', stream=True).raw).rotate(-90)
-pct_ = Image.open('../../in/vacuna/grafico/1.png')
-background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
-background.paste(pct_, (135,359), pct_)
-background.paste(vaccine, (0, 0), vaccine)
-background = background.rotate(90).resize((400, 700), Image.ANTIALIAS)
-background.save('../../in/vacuna/grafico/1.png')
-
-### Segundo gráfico: Vacunas administradas (1° dosis)
-graph2 = graphBar([vacunacion_pct.index],
-                   [vacunacion_pct['Población total']],
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],
-                   path='../../in/vacuna/grafico/2.png', uni=1, w=3.5, l=2.5)
-        
-### Tercer gráfico: Vacunas administradas (1° dosis)
-graph3 = graphBar([vacunacion_pct.index],
-                   [vacunacion_pct['Población objetivo']],
-                   color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],
-                   path='../../in/vacuna/grafico/3.png', uni=1, w=3.5, l=2.5)
-        
-### Cuarto gráfico: Vacunas administradas (1° dosis)
-graph4 = graphBar([vacunacion_etaria.index]*2,
-                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis']], 
-                   color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5,
-                   path='../../in/vacuna/grafico/4.png')
-
-### Quinto gráfico: Vacunas administradas (2° dosis)
-graph5 = graphBar([vacunacion_etaria.index]*2,                   [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis'] + vacunacion_etaria['Unica dosis']],
-                   color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5,
-                   path='../../in/vacuna/grafico/5.png')
-
-### ¿Todo ok?
-print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
-
+# ```
+# ### Graficando para balance vacunas ###
+# 
+# ### Últimas cifras de vacunación a población total/objetivo
+# pob_total = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],
+#           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18,
+#           poblacion - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18])
+# pob_obj = np.array([df['Vacunados acumulados 1° dosis'][df['Vacunados acumulados 1° dosis'].last_valid_index()],
+#           df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18,
+#           poblacion_yomevacuno - df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18])
+# labels = np.array(['Con 1° dosis \n (sin inmunidad o parcial)', 'Con cuadro completo \n (eventual inmunes)', 'Sin cuadro completo \n (sin inmunidad)'])
+# vacunacion_pct = pd.DataFrame([pob_total, pob_obj]).transpose()
+# vacunacion_pct.index = labels
+# vacunacion_pct.columns = ['Población total', 'Población objetivo']
+# 
+# ### Para gráficos de barra
+# class graphBar:
+#     """
+#     Clase para gráfico de barra.
+#     Args
+#     ____
+#     x: eje x
+#     y: eje y
+#     color: colores
+#     path: dirección de guardado
+#     alpha: transparencia
+#     opt:'' sufijo de dato
+#     uni:0 booleano (0 para color para todas las barras, 1 para color por cada barra)
+#     w:4 (ancho)
+#     l:3 (largo)
+#     horizontal:0 (gráfico vertical u horizontal)
+#     rot: rotacion para gráfico con uni=1
+#     
+#     """
+#     def __init__(self, x, y, color, path, alpha, opt='', uni=0, w=4, l=3, horizontal=0, rot=0):
+#         self.opt = opt
+#         self.w = 4
+#         self.l = 3
+#         self.s = 0
+#         fig, ax = plt.subplots(figsize=(w, l))
+#         self.x = x
+#         self.y = y
+#         self.color = color
+#         self.alpha = alpha
+#         self.path = path
+#         self.uni = uni
+#         self.horizontal = 0
+#         self.rot = rot
+#         if horizontal == 0:
+#             if uni == True:
+#                 for x in self.x:
+#                     ax.bar(self.x[self.s], self.y[self.s], color=self.color, alpha=self.alpha[self.s])
+#                 for i,j in zip(self.x[self.s],self.y[self.s]):
+#                     ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=9, horizontalalignment='center', verticalalignment='bottom')
+#                 self.s += 1
+#                 plt.xticks(rotation=self.rot)
+#             else:
+#                 for x in self.x:
+#                     ax.bar(self.x[self.s], self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
+#                     for i,j in zip(self.x[self.s],self.y[self.s]):
+#                         ax.annotate('{}{}'.format(format(int(j), ',d'), self.opt),xy=(i,j), color='w', size=4.5, horizontalalignment='center', verticalalignment='bottom')
+#                     self.s += 1
+#                     plt.xticks(rotation=15)
+#         else:
+#             for x in self.x:
+#                 ax.barh(width=self.x[self.s], y=self.y[self.s], color=self.color[self.s], alpha=self.alpha[self.s])
+#                 ax.axis('off')
+#                 fig.patch.set_visible(True)
+#                 self.s += 1
+#         ax.tick_params(labelsize=5, colors='w', grid_color='w')
+#         ax.get_yaxis().set_major_formatter(
+#         mpl.ticker.FuncFormatter(lambda y, p: format(int(y), ',d')))
+#         self.path = path
+#         ax.spines['bottom'].set_color('white')
+#         ax.spines['left'].set_color('white')
+#         plt.savefig(self.path, bbox_inches = 'tight')
+#         ax.tick_params(colors='#000', grid_color='#000')
+#         ax.spines['bottom'].set_color('#000')
+#         ax.spines['left'].set_color('#000')
+#         plt.show()
+#         print('Gráfico guardado.')
+#         
+# ### Primer gráfico: Proporción objetivo vacunada
+# graph1 = graphBar([[100], [int(procesovacunacion_hoy)]],
+#                    [[0], [0]],
+#                    color=['gray', '#9ad5ff'], alpha=[1, 1],
+#                    path='../../in/vacuna/grafico/1.png', uni=1, w=1.68, l=0.6, horizontal=1)
+# vaccine = Image.open(requests.get('https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/in/vacuna/grafico/vaccine.png', stream=True).raw).rotate(-90)
+# pct_ = Image.open('../../in/vacuna/grafico/1.png')
+# background = Image.new('RGBA', (1000, 1000), (0, 0, 0, 0))
+# background.paste(pct_, (135,359), pct_)
+# background.paste(vaccine, (0, 0), vaccine)
+# background = background.rotate(90).resize((400, 700), Image.ANTIALIAS)
+# background.save('../../in/vacuna/grafico/1.png')
+# 
+# ### Segundo gráfico: Vacunas administradas (1° dosis)
+# graph2 = graphBar([vacunacion_pct.index],
+#                    [vacunacion_pct['Población total']],
+#                    color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],
+#                    path='../../in/vacuna/grafico/2.png', uni=1, w=3.5, l=2.5)
+#         
+# ### Tercer gráfico: Vacunas administradas (1° dosis)
+# graph3 = graphBar([vacunacion_pct.index],
+#                    [vacunacion_pct['Población objetivo']],
+#                    color=['#8899e1', '#9ad5ff', 'gray'], alpha=[1],
+#                    path='../../in/vacuna/grafico/3.png', uni=1, w=3.5, l=2.5)
+#         
+# ### Cuarto gráfico: Vacunas administradas (1° dosis)
+# graph4 = graphBar([vacunacion_etaria.index]*2,
+#                    [vacunacion_etaria['Poblacion'], vacunacion_etaria['1° Dosis']], 
+#                    color=['gray', '#8899e1'], alpha=[0.9, 0.9], w=3.5, l=2.5,
+#                    path='../../in/vacuna/grafico/4.png')
+# 
+# ### Quinto gráfico: Vacunas administradas (2° dosis)
+# graph5 = graphBar([vacunacion_etaria.index]*2,\
+#                    [vacunacion_etaria['Poblacion'], vacunacion_etaria['2° Dosis'] + vacunacion_etaria['Unica dosis']],
+#                    color=['gray', '#9ad5ff'], alpha=[0.9, 0.9], w=3.5, l=2.5,
+#                    path='../../in/vacuna/grafico/5.png')
+# 
+# ### ¿Todo ok?
+# print('\n \n Gráficos del balance de vacunas guardados de forma exitosa.')
+# ```
 
 # ### Indicador de fase
 
-# In[13]:
+# ``` ### Graficando para indicador fase ###
+# 
+# ### Primer gráfico: Días por fase por comuna
+# graph1 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],\
+#                    [df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].loc[df['Paso a Paso (dias) Iquique'].last_valid_index()]], \
+#                    color=resultado_colores, alpha=[1], \
+#                    path='../../in/indicadorfase/grafico/1.png', uni=1, w=3.5, l=2.5, rot=15)
+# 
+# ### Segundo gráfico: Activos al último informe epidemiológico por comuna
+# graph2 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],\
+#                    [(df.loc[:, df.columns.str.contains('Casos activos en')].
+# loc[df['Casos activos en Iquique'].last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000)[:7]], \
+#                    color=resultado_colores + ['white'], alpha=[1], \
+#                    path='../../in/indicadorfase/grafico/2.png', uni=1, w=3.5, l=2.5, rot=15)
+# 
+# ### Tercer gráfico: Fallecidos al último informe epidemiológico por comuna
+# graph3 = graphBar([df.loc[:, df.columns.str.contains('confirmados DEIS', regex=False)].columns.str[28:]],\
+#                    [df.loc[:, df.columns.str.contains('confirmados DEIS', regex=False)].loc
+#                     [df['Fallecidos confirmados DEIS Iquique'].last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000], \
+#                    color=resultado_colores, alpha=[1], \
+#                    path='../../in/indicadorfase/grafico/3.png', uni=1, w=3.5, l=2.5, rot=15)
+# 
+# ### Cuarto gráfico: Notificación PCR por comuna
+# graph4 = graphBar([df.loc[:, df.columns.str.contains('Notificacion PCR', regex=False)].columns.str[17:]],\
+#                    [df.loc[:, df.columns.str.contains('Notificacion PCR ', regex=False)]
+#                     .loc[df['Notificacion PCR Iquique'].last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000], \
+#                    color=resultado_colores, alpha=[1], \
+#                    path='../../in/indicadorfase/grafico/4.png', uni=1, w=3.5, l=2.5, rot=15)
+# 
+# ### Quinto gráfico: Casos acumulados por comuna
+# graph5 = graphBar([df.loc[:, df.columns.str.contains('Casos acumulados en', regex=False)].columns.str[20:][:7]],\
+#                    [(df.loc[:, df.columns.str.contains('Casos acumulados en')].
+# loc[df['Casos acumulados en Iquique'].last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000)[:7]], \
+#                    color=resultado_colores, alpha=[1], \
+#                    path='../../in/indicadorfase/grafico/5.png', uni=1, w=3.5, l=2.5, rot=15)
+# 
+# ### Sexto gráfico: Positividad por comuna
+# graph6 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],\
+#                    [df.loc[:, df.columns.str.contains('Positividad ', regex=False) & 
+#                    ~df.columns.str.contains('diaria', regex=False) &
+#                    ~df.columns.str.contains('movil', regex=False) &
+#                    ~df.columns.str.contains('antigeno', regex=False)].loc[positividad_comuna.last_valid_index()]], \
+#                    color=resultado_colores + ['white'], alpha=[1], \
+#                    path='../../in/indicadorfase/grafico/6.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
+# 
+# ### Séptimo gráfico: BAC por comuna
+# graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].columns.str[4:]],\
+#                    [df.loc[:, df.columns.str.contains('BAC ', regex=False)].loc[df['BAC Iquique'].last_valid_index()]], \
+#                    color=resultado_colores, alpha=[1], \
+#                    path='../../in/indicadorfase/grafico/7.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
+# 
+# ### ¿Todo ok?
+# print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
+# ```
 
-
-### Graficando para indicador fase ###
-
-### Primer gráfico: Días por fase por comuna
-graph1 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],                   [df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].loc[pasopaso_comuna.index[-1]]],                    color=resultado_colores, alpha=[1],                    path='../../in/indicadorfase/grafico/1.png', uni=1, w=3.5, l=2.5, rot=15)
-
-### Segundo gráfico: Activos al último informe epidemiológico por comuna
-graph2 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],                   [(df.loc[:, df.columns.str.contains('Casos activos en')].
-loc[casoscomuna_activos.last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000)[:7]], \
-                   color=resultado_colores + ['white'], alpha=[1], \
-                   path='../../in/indicadorfase/grafico/2.png', uni=1, w=3.5, l=2.5, rot=15)
-
-### Tercer gráfico: Fallecidos al último informe epidemiológico por comuna
-graph3 = graphBar([df.loc[:, df.columns.str.contains('confirmados DEIS', regex=False)].columns.str[28:]],                   [df.loc[:, df.columns.str.contains('confirmados DEIS', regex=False)].loc
-                    [casoscomuna_activos.index[-1]].reset_index(drop=True).divide(poblaciones_comunales)*100000], \
-                   color=resultado_colores, alpha=[1], \
-                   path='../../in/indicadorfase/grafico/3.png', uni=1, w=3.5, l=2.5, rot=15)
-
-### Cuarto gráfico: Notificación PCR por comuna
-graph4 = graphBar([df.loc[:, df.columns.str.contains('Notificacion PCR', regex=False)].columns.str[17:]],                   [df.loc[:, df.columns.str.contains('Notificacion PCR ', regex=False)]
-                    .loc[positividad_comuna.last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000], \
-                   color=resultado_colores, alpha=[1], \
-                   path='../../in/indicadorfase/grafico/4.png', uni=1, w=3.5, l=2.5, rot=15)
-
-### Quinto gráfico: Casos acumulados por comuna
-graph5 = graphBar([df.loc[:, df.columns.str.contains('Casos acumulados en', regex=False)].columns.str[20:][:7]],                   [(df.loc[:, df.columns.str.contains('Casos acumulados en')].
-loc[casoscomuna_activos.last_valid_index()].reset_index(drop=True).divide(poblaciones_comunales)*100000)[:7]], \
-                   color=resultado_colores, alpha=[1], \
-                   path='../../in/indicadorfase/grafico/5.png', uni=1, w=3.5, l=2.5, rot=15)
-
-### Sexto gráfico: Positividad por comuna
-graph6 = graphBar([df.loc[:, df.columns.str.contains('Paso a Paso (dias)', regex=False)].columns.str[19:]],                   [df.loc[:, df.columns.str.contains('Positividad ', regex=False) & 
-                   ~df.columns.str.contains('diaria', regex=False) &
-                   ~df.columns.str.contains('movil', regex=False) &
-                   ~df.columns.str.contains('antigeno', regex=False)].loc[positividad_comuna.last_valid_index()]], \
-                   color=resultado_colores + ['white'], alpha=[1], \
-                   path='../../in/indicadorfase/grafico/6.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
-
-### Séptimo gráfico: BAC por comuna
-graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].columns.str[4:]],                   [df.loc[:, df.columns.str.contains('BAC ', regex=False)].loc[positividad_comuna.last_valid_index()]],                    color=resultado_colores, alpha=[1],                    path='../../in/indicadorfase/grafico/7.png', uni=1, w=3.5, l=2.5, rot=15, opt='%')
-
-### ¿Todo ok?
-print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
-
-
-# In[14]:
-
-
-### Toque de queda
-
-### Para primer gráfico
-avance_activos = df['Tasa de activos (incidencia) *'][-14:]
-avance_activos = avance_activos[avance_activos.first_valid_index():avance_activos.last_valid_index()].round(0)
-
-## Primer gráfico: tasa de activos
-graph1 = graphLine([avance_activos.index],                   [avance_activos],                    color=['tab:orange'],                    path='../../in/toquequeda/grafico/1.png', line='', liney=150,
-                   txth='', txt_str='Umbral para toque de queda (menor a 150)', txtx=avance_activos.first_valid_index(),
-                  txty=145, txts=6)
-
-## Para segundo gráfico
-avance_graph = (df['Vacunados acumulados 2° dosis'] + df['Vacunados acumulados unica dosis'] - menores18)[-14:]/poblacion_yomevacuno*100
-avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
-avance_graph = avance_graph.round(0)
-
-## Segundo gráfico: avance vacunación
-graph2 = graphLine([avance_graph.index],                   [avance_graph],                    color=['tab:cyan'],                    path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
-                   txth='', txt_str='Umbral para toque de queda (mayor o igual al 80%)', txtx=avance_graph.first_valid_index(),
-                  txty=79.6, txts=6, sizelabelin=6)
-
+# ```
+# ### Toque de queda
+# 
+# ### Para primer gráfico
+# avance_activos = df['Tasa de activos (incidencia) *'][-14:]
+# avance_activos = avance_activos[avance_activos.first_valid_index():avance_activos.last_valid_index()].round(0)
+# 
+# ## Primer gráfico: tasa de activos
+# graph1 = graphLine([avance_activos.index],\
+#                    [avance_activos], \
+#                    color=['tab:orange'], \
+#                    path='../../in/toquequeda/grafico/1.png', line='', liney=150,
+#                    txth='', txt_str='Umbral para toque de queda (menor a 150)', txtx=avance_activos.first_valid_index(),
+#                   txty=145, txts=6)
+# 
+# ## Para segundo gráfico
+# avance_graph = (df['Vacunados acumulados 2° dosis'] + df['Vacunados acumulados unica dosis'] - menores18)[-14:]/poblacion_yomevacuno*100
+# avance_graph = avance_graph[avance_graph.first_valid_index():avance_graph.last_valid_index()]
+# avance_graph = avance_graph.round(0)
+# 
+# ## Segundo gráfico: avance vacunación
+# graph2 = graphLine([avance_graph.index],\
+#                    [avance_graph], \
+#                    color=['tab:cyan'], \
+#                    path='../../in/toquequeda/grafico/2.png', opt='%', line='', liney=80,
+#                    txth='', txt_str='Umbral para toque de queda (mayor o igual al 80%)', txtx=avance_graph.first_valid_index(),
+#                   txty=79.6, txts=6, sizelabelin=6)
+# ```
 
 # ## Generando reportes
 # 
@@ -1677,7 +1688,7 @@ graph2 = graphLine([avance_graph.index],                   [avance_graph],      
 
 # ### Reporte diario
 
-# In[15]:
+# In[12]:
 
 
 ### Generando reporte diario ###
@@ -1848,180 +1859,174 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Balance de vacunas
 
-# In[16]:
-
-
-### Generando balance de vacunas ###
-
-### Abriendo gráficos guardados
-x = range(1, 6)
-for i in x:
-    image_path = '../../in/vacuna/grafico/{}.png'.format(i)
-    exec('graph{} = Image.open(image_path)'.format(i))
-    i += i
-
-### Cargando imagenes
-for i in x:
-    image_path = '../../in/vacuna/{}.png'.format(i)
-    exec('vacuna{} = Image.open(image_path)'.format(i))
-    exec('vacuna{} = vacuna{}.copy()'.format(i, i))
-    i += i
-
-### Manipulando primera, segunda, tercera y cuarta imagen
-for i in x:
-    ### Gráficos
-    if i == 1:
-        txt = ImageDraw.Draw(vacuna1)
-        txt.text((860, 35), '{}° ed.'.format(ed_vacuna), fill='#b9b9b9', font=roboto_ed) # edicion
-        txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
-        txt.text((480, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
-        txt.text((420, 670), 'Con esquema de vacunación', fill='white', font=roboto_data3) # texto1
-        txt.text((420, 710), 'completo (2° dosis o única)', fill='white', font=roboto_data3) # texto2
-        txt.text((425, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
-        txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
-        txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
-        exec('vacuna{}.paste(graph{}, (100, 410), graph{})'.format(i, i, i))
-    elif i == 2 or i == 3:
-        exec('vacuna{}.paste(graph{}, (50, 250), graph{})'.format(i, i, i))
-    else:
-        exec('vacuna{}.paste(graph{}, (60, 240), graph{})'.format(i, i, i))
-    ### Guardamos
-    exec('vacuna{}.save("../../out/vacuna/{}.png")'.format(i, i))
-    i += i
-
-### ¿Todo ok?
-display(Markdown('> Todas las imágenes del balance de vacunas han sido correctamente exportadas.'))
-
-### Guardamos a PDF
-pdfs = []
-for i in range(2, 6):
-    exec('pdfs += [vacuna{}]'.format(i))
-
-### Histórico    
-vacuna1.convert('RGB').save('../../out/vacuna/pdf/{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
-                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
-
-### Última actualización
-vacuna1.convert('RGB').save('../../out/vacuna/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
-
-### ¿Todo ok?
-display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
-
+# ```
+# ### Generando balance de vacunas ###
+# 
+# ### Abriendo gráficos guardados
+# x = range(1, 6)
+# for i in x:
+#     image_path = '../../in/vacuna/grafico/{}.png'.format(i)
+#     exec('graph{} = Image.open(image_path)'.format(i))
+#     i += i
+# 
+# ### Cargando imagenes
+# for i in x:
+#     image_path = '../../in/vacuna/{}.png'.format(i)
+#     exec('vacuna{} = Image.open(image_path)'.format(i))
+#     exec('vacuna{} = vacuna{}.copy()'.format(i, i))
+#     i += i
+# 
+# ### Manipulando primera, segunda, tercera y cuarta imagen
+# for i in x:
+#     ### Gráficos
+#     if i == 1:
+#         txt = ImageDraw.Draw(vacuna1)
+#         txt.text((860, 35), '{}° ed.'.format(ed_vacuna), fill='#b9b9b9', font=roboto_ed) # edicion
+#         txt.text((380, 357), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+#         txt.text((480, 500), '{}'.format('{}%'.format(procesovacunacion_hoy)), fill='#9ad5ff', font=coolvetica_data4) # avance
+#         txt.text((420, 670), 'Con esquema de vacunación', fill='white', font=roboto_data3) # texto1
+#         txt.text((420, 710), 'completo (2° dosis o única)', fill='white', font=roboto_data3) # texto2
+#         txt.text((425, 800), '{}'.format(format(int(vacunacion_pct['Población objetivo'][-1]), ',d')), fill='gray', font=coolvetica_data4) #restante
+#         txt.text((420, 990), 'Personas deben iniciar o', fill='white', font=roboto_data3) #texto3
+#         txt.text((420, 1030), 'completar su vacunación', fill='white', font=roboto_data3) #texto4
+#         exec('vacuna{}.paste(graph{}, (100, 410), graph{})'.format(i, i, i))
+#     elif i == 2 or i == 3:
+#         exec('vacuna{}.paste(graph{}, (50, 250), graph{})'.format(i, i, i))
+#     else:
+#         exec('vacuna{}.paste(graph{}, (60, 240), graph{})'.format(i, i, i))
+#     ### Guardamos
+#     exec('vacuna{}.save("../../out/vacuna/{}.png")'.format(i, i))
+#     i += i
+# 
+# ### ¿Todo ok?
+# display(Markdown('> Todas las imágenes del balance de vacunas han sido correctamente exportadas.'))
+# 
+# ### Guardamos a PDF
+# pdfs = []
+# for i in range(2, 6):
+#     exec('pdfs += [vacuna{}]'.format(i))
+# 
+# ### Histórico    
+# vacuna1.convert('RGB').save('../../out/vacuna/pdf/{}.pdf'.format(df['Casos nuevos'].last_valid_index().strftime('%Y.%m.%d')
+#                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+# 
+# ### Última actualización
+# vacuna1.convert('RGB').save('../../out/vacuna/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+# 
+# ### ¿Todo ok?
+# display(Markdown('> El PDF del balance de vacunas ha sido exportado.'))
+# ```
 
 # ### Indicador de fase
 
-# In[17]:
-
-
-### Indicador de fase ###
-
-### Abriendo gráficos guardados
-x = range(1, 8)
-for i in x:
-    image_path = '../../in/indicadorfase/grafico/{}.png'.format(i)
-    exec('graph{} = Image.open(image_path)'.format(i))
-    i += i
-
-### Cargando imagenes
-x = range(1, 10)
-for i in x:
-    image_path = '../../in/indicadorfase/{}.png'.format(i)
-    exec('indicadorfase{} = Image.open(image_path)'.format(i))
-    exec('indicadorfase{} = indicadorfase{}.copy()'.format(i, i))
-    i += i
-
-### Manipulando primera, segunda, tercera y cuarta imagen
-
-### Para ir arreglando alto
-b = 0
-
-### Para tener índice de vector de colores
-co = 0
-
-for i in x:
-    ### Gráficos
-    if i == 1:
-        txt = ImageDraw.Draw(indicadorfase1)
-        txt.text((860, 35), '{}° ed.'.format(ed_indicador), fill='#b9b9b9', font=roboto_ed) # edicion
-        txt.text((360, 380), '{}'.format(df['Casos acumulados en Iquique'].last_valid_index().strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
-        for val in resultado_prediccion:
-            txt.text((490, 512 + b), '{} '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # prob
-            txt.text((670, 512 + b), '{}'.format(val), fill=resultado_colores[co], font=roboto_data3) # resultado
-            b += 72
-            co += 1
-    elif i == 2:
-        pass
-    else:
-        exec('indicadorfase{}.paste(graph{}, (60, 250), graph{})'.format(i, i-2, i-2))
-    ### Guardamos
-    exec('indicadorfase{}.save("../../out/indicadorfase/{}.png")'.format(i, i))
-    i += i
-
-### ¿Todo ok?
-display(Markdown('> Todas las imágenes del indicador de fase han sido correctamente exportadas.'))
-
-### Guardamos a PDF
-pdfs = []
-for i in range(2, 10):
-    exec('pdfs += [indicadorfase{}]'.format(i))
-    
-### Histórico
-indicadorfase1.convert('RGB').save('../../out/indicadorfase/pdf/{}.pdf'.format(df['Casos acumulados en Alto Hospicio'].last_valid_index().strftime('%Y.%m.%d')
-                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
-
-### Última actualización
-indicadorfase1.convert('RGB').save('../../out/indicadorfase/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
-
-### ¿Todo ok?
-display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
-
+# ```
+# ### Indicador de fase ###
+# 
+# ### Abriendo gráficos guardados
+# x = range(1, 8)
+# for i in x:
+#     image_path = '../../in/indicadorfase/grafico/{}.png'.format(i)
+#     exec('graph{} = Image.open(image_path)'.format(i))
+#     i += i
+# 
+# ### Cargando imagenes
+# x = range(1, 10)
+# for i in x:
+#     image_path = '../../in/indicadorfase/{}.png'.format(i)
+#     exec('indicadorfase{} = Image.open(image_path)'.format(i))
+#     exec('indicadorfase{} = indicadorfase{}.copy()'.format(i, i))
+#     i += i
+# 
+# ### Manipulando primera, segunda, tercera y cuarta imagen
+# 
+# ### Para ir arreglando alto
+# b = 0
+# 
+# ### Para tener índice de vector de colores
+# co = 0
+# 
+# for i in x:
+#     ### Gráficos
+#     if i == 1:
+#         txt = ImageDraw.Draw(indicadorfase1)
+#         txt.text((860, 35), '{}° ed.'.format(ed_indicador), fill='#b9b9b9', font=roboto_ed) # edicion
+#         txt.text((360, 380), '{}'.format(df['Casos acumulados en Iquique'].last_valid_index().strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+#         for val in resultado_prediccion:
+#             txt.text((490, 512 + b), '{} '.format(str(int(resultado_prob[co].round(0))) + '%'), fill='#fff', font=roboto_data3) # prob
+#             txt.text((670, 512 + b), '{}'.format(val), fill=resultado_colores[co], font=roboto_data3) # resultado
+#             b += 72
+#             co += 1
+#     elif i == 2:
+#         pass
+#     else:
+#         exec('indicadorfase{}.paste(graph{}, (60, 250), graph{})'.format(i, i-2, i-2))
+#     ### Guardamos
+#     exec('indicadorfase{}.save("../../out/indicadorfase/{}.png")'.format(i, i))
+#     i += i
+# 
+# ### ¿Todo ok?
+# display(Markdown('> Todas las imágenes del indicador de fase han sido correctamente exportadas.'))
+# 
+# ### Guardamos a PDF
+# pdfs = []
+# for i in range(2, 10):
+#     exec('pdfs += [indicadorfase{}]'.format(i))
+#     
+# ### Histórico
+# indicadorfase1.convert('RGB').save('../../out/indicadorfase/pdf/{}.pdf'.format(df['Casos acumulados en Alto Hospicio'].last_valid_index().strftime('%Y.%m.%d')
+#                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+# 
+# ### Última actualización
+# indicadorfase1.convert('RGB').save('../../out/indicadorfase/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+# 
+# ### ¿Todo ok?
+# display(Markdown('> El PDF del indicador de fase ha sido exportado.'))
+# ```
 
 # ### Toque de queda
 
-# In[18]:
-
-
-### Indicador de fase ###
-
-### Abriendo gráficos guardados
-x = range(1, 3)
-for i in x:
-    image_path = '../../in/toquequeda/grafico/{}.png'.format(i)
-    exec('graph{} = Image.open(image_path)'.format(i))
-    i += i
-
-### Cargando imagenes
-x = range(1, 3)
-for i in x:
-    image_path = '../../in/toquequeda/{}.png'.format(i)
-    exec('toquequeda{} = Image.open(image_path)'.format(i))
-    exec('toquequeda{} = toquequeda{}.copy()'.format(i, i))
-    i += i
-
-for i in x:
-    exec('toquequeda{}.paste(graph{}, (-50, 100), graph{})'.format(i, i, i))
-    exec("txt = ImageDraw.Draw(toquequeda{})".format(i))
-    txt.text((920, 5), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
-    exec('toquequeda{}.save("../../out/toquequeda/{}.png")'.format(i, i))
-    
-### ¿Todo ok?
-display(Markdown('> Todas las imágenes del reporte del toque de queda han sido correctamente exportadas.'))
-
-### Guardamos a PDF
-pdfs = []
-for i in range(2, 3):
-    exec('pdfs += [toquequeda{}]'.format(i))
-    
-### Histórico
-toquequeda1.convert('RGB').save('../../out/toquequeda/pdf/{}.pdf'.format(df['Tasa de activos (incidencia) *'].last_valid_index().strftime('%Y.%m.%d')
-                                             ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
-
-### Última actualización
-toquequeda1.convert('RGB').save('../../out/toquequeda/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
-
-### ¿Todo ok?
-display(Markdown('> El PDF del reporte de toque de queda ha sido exportado.'))
-
+# ```
+# ### Indicador de fase ###
+# 
+# ### Abriendo gráficos guardados
+# x = range(1, 3)
+# for i in x:
+#     image_path = '../../in/toquequeda/grafico/{}.png'.format(i)
+#     exec('graph{} = Image.open(image_path)'.format(i))
+#     i += i
+# 
+# ### Cargando imagenes
+# x = range(1, 3)
+# for i in x:
+#     image_path = '../../in/toquequeda/{}.png'.format(i)
+#     exec('toquequeda{} = Image.open(image_path)'.format(i))
+#     exec('toquequeda{} = toquequeda{}.copy()'.format(i, i))
+#     i += i
+# 
+# for i in x:
+#     exec('toquequeda{}.paste(graph{}, (-50, 100), graph{})'.format(i, i, i))
+#     exec("txt = ImageDraw.Draw(toquequeda{})".format(i))
+#     txt.text((920, 5), '{}'.format(df.loc[weekend_data].name.strftime('%d/%m/%Y')), fill='#fff', font=roboto_data1) # fecha
+#     exec('toquequeda{}.save("../../out/toquequeda/{}.png")'.format(i, i))
+#     
+# ### ¿Todo ok?
+# display(Markdown('> Todas las imágenes del reporte del toque de queda han sido correctamente exportadas.'))
+# 
+# ### Guardamos a PDF
+# pdfs = []
+# for i in range(2, 3):
+#     exec('pdfs += [toquequeda{}]'.format(i))
+#     
+# ### Histórico
+# toquequeda1.convert('RGB').save('../../out/toquequeda/pdf/{}.pdf'.format(df['Tasa de activos (incidencia) *'].last_valid_index().strftime('%Y.%m.%d')
+#                                              ), save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+# 
+# ### Última actualización
+# toquequeda1.convert('RGB').save('../../out/toquequeda/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])
+# 
+# ### ¿Todo ok?
+# display(Markdown('> El PDF del reporte de toque de queda ha sido exportado.'))
+# ```
 
 # ## Resultado
 # 
@@ -2029,7 +2034,7 @@ display(Markdown('> El PDF del reporte de toque de queda ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[19]:
+# In[13]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2041,39 +2046,33 @@ for i in x:
 
 # ### Balance vacunas
 
-# In[20]:
-
-
-### Mostramos las imágenes del balance de vacunas
-x = range(1, 6)
-for i in x:
-    exec('diario{} = Image.open("../../out/vacuna/{}.png")'.format(i, i))
-    exec('display(vacuna{})'.format(i))
-
+# ```
+# ### Mostramos las imágenes del balance de vacunas
+# x = range(1, 6)
+# for i in x:
+#     exec('diario{} = Image.open("../../out/vacuna/{}.png")'.format(i, i))
+#     exec('display(vacuna{})'.format(i))
+# ```
 
 # ### Indicador de fase
 
-# In[21]:
-
-
-### Mostramos las imágenes del indicador de fase
-x = range(1, 10)
-for i in x:
-    exec('diario{} = Image.open("../../out/indicadorfase/{}.png")'.format(i, i))
-    exec('display(indicadorfase{})'.format(i))
-
+# ```
+# ### Mostramos las imágenes del indicador de fase
+# x = range(1, 10)
+# for i in x:
+#     exec('diario{} = Image.open("../../out/indicadorfase/{}.png")'.format(i, i))
+#     exec('display(indicadorfase{})'.format(i))
+# ```
 
 # ### Toque de queda
 
-# In[22]:
-
-
-### Mostramos las imágenes del indicador de fase
-x = range(1, 3)
-for i in x:
-    exec('toquequeda{} = Image.open("../../out/toquequeda/{}.png")'.format(i, i))
-    exec('display(toquequeda{})'.format(i))
-
+# ```
+# ### Mostramos las imágenes del indicador de fase
+# x = range(1, 3)
+# for i in x:
+#     exec('toquequeda{} = Image.open("../../out/toquequeda/{}.png")'.format(i, i))
+#     exec('display(toquequeda{})'.format(i))
+# ```
 
 # ## Ejemplos
 # 
@@ -2084,7 +2083,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[23]:
+# In[14]:
 
 
 ### Ejemplo 1 ###
@@ -2106,7 +2105,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[24]:
+# In[15]:
 
 
 ### Ejemplo 2 ###
@@ -2166,7 +2165,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[25]:
+# In[16]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2222,7 +2221,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[26]:
+# In[17]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')

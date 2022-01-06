@@ -4,6 +4,18 @@ La pandemia por la ventana es un sitio, elaborado con formato de *libro* gracias
 
 Favor, cualquier sugerencia o comentario, hacerlo llegar mediante [Issues de GitHub](https://github.com/pandemiaventana/pandemiaventana/issues/new).
 
+## Vigencia de datos
+
+El 6 de enero de 2022 se descontinuan los siguientes reportes:
+
+* Reporte de vacunación.
+
+* Indicador de fase.
+
+* Reporte de toque de queda.
+
+Por lo tanto, el único reporte vigente y con datos actualizados será el reporte diario a contar de la fecha especificada.
+
 :::{figure-md} markdown-fig
 <img src="../../img/page/2_cover.png">
 
