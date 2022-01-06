@@ -2399,6 +2399,7 @@ Sus colores:
     <span class="c1">### Escalamos y rellenamos valores faltantes</span>
     
     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;ffill&quot;</span><span class="p">)</span>
         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;bfill&quot;</span><span class="p">)</span>
@@ -2524,76 +2525,6 @@ Sus colores:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3198</span><span class="o">/</span><span class="mf">767618785.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> 
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">45</span>         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;ffill&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;bfill&quot;</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">11192</span>         <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">11193</span>         <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">&gt; </span><span class="mi">11194</span>             <span class="k">return</span> <span class="n">NDFrame</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">numeric_only</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">11195</span> 
-<span class="g g-Whitespace">  </span><span class="mi">11196</span>         <span class="c1"># pandas\core\generic.py:10992: error: Cannot assign to a method</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10720</span>     <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">  </span><span class="mi">10721</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stat_function</span><span class="p">(</span>
-<span class="ne">&gt; </span><span class="mi">10722</span>             <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="n">nanops</span><span class="o">.</span><span class="n">nanmax</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">numeric_only</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">  </span><span class="mi">10723</span>         <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10724</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">_stat_function</span><span class="nt">(self, name, func, axis, skipna, level, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10710</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_by_level</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10711</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reduce</span><span class="p">(</span>
-<span class="ne">&gt; </span><span class="mi">10712</span>             <span class="n">func</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="n">numeric_only</span>
-<span class="g g-Whitespace">  </span><span class="mi">10713</span>         <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10714</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/series.py</span> in <span class="ni">_reduce</span><span class="nt">(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4180</span>                 <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4181</span>             <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">4182</span>                 <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4183</span> 
-<span class="g g-Whitespace">   </span><span class="mi">4184</span>     <span class="k">def</span> <span class="nf">_reindex_indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_index</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">copy</span><span class="p">):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">f</span><span class="nt">(values, axis, skipna, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span>                     <span class="n">result</span> <span class="o">=</span> <span class="n">alt</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">133</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">alt</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span> 
-<span class="g g-Whitespace">    </span><span class="mi">135</span>             <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">new_func</span><span class="nt">(values, axis, skipna, mask, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">390</span>             <span class="n">mask</span> <span class="o">=</span> <span class="n">isna</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">391</span> 
-<span class="ne">--&gt; </span><span class="mi">392</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">393</span> 
-<span class="g g-Whitespace">    </span><span class="mi">394</span>         <span class="k">if</span> <span class="n">datetimelike</span><span class="p">:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">reduction</span><span class="nt">(values, axis, skipna, mask)</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">975</span>             <span class="n">result</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">meth</span><span class="p">)(</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">976</span> 
-<span class="g g-Whitespace">    </span><span class="mi">977</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">_maybe_null_out</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/numpy/core/_methods.py</span> in <span class="ni">_amax</span><span class="nt">(a, axis, out, keepdims, initial, where)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">def</span> <span class="nf">_amax</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>           <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="k">return</span> <span class="n">umr_maximum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> 
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="k">def</span> <span class="nf">_amin</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-
-<span class="ne">TypeError</span>: &#39;&gt;=&#39; not supported between instances of &#39;float&#39; and &#39;str&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -2684,20 +2615,54 @@ Apertura Inicial       0.91      0.91      0.91        53
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
-<h3>Resultado para Huara</h3><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3198</span><span class="o">/</span><span class="mf">1533704879.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;display(Markdown(</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span><span class="s1">     &quot;El algoritmo entrenado para la comuna de </span><span class="si">{}</span><span class="s1"> tiene una precisión del **&quot; +</span>
-<span class="ne">---&gt; </span><span class="mi">21</span><span class="s1">     str(clf_</span><span class="si">{}</span><span class="s1">.score(X_test_</span><span class="si">{}</span><span class="s1">, y_test_</span><span class="si">{}</span><span class="s1">) * 100) + &quot;%**.&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comuna</span><span class="p">,</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> 
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="c1">### Generamos la matriz de confusión y reporte de precisión, recall, etc.</span>
+<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>73.86363636363636%</strong>.</p>
+<h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-<span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+Apertura Inicial       0.73      1.00      0.85        63
+     Preparación       1.00      0.08      0.15        25
 
-<span class="ne">NameError</span>: name &#39;clf_Hua&#39; is not defined
+        accuracy                           0.74        88
+       macro avg       0.87      0.54      0.50        88
+    weighted avg       0.81      0.74      0.65        88
 </pre></div>
 </div>
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
+<h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>95.45454545454545%</strong>.</p>
+<h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
+
+Apertura Inicial       1.00      0.86      0.92        28
+     Preparación       0.94      1.00      0.97        60
+
+        accuracy                           0.95        88
+       macro avg       0.97      0.93      0.95        88
+    weighted avg       0.96      0.95      0.95        88
+</pre></div>
+</div>
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
+<h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>81.81818181818183%</strong>.</p>
+<h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
+
+Apertura Inicial       0.79      1.00      0.88        60
+     Preparación       1.00      0.43      0.60        28
+
+        accuracy                           0.82        88
+       macro avg       0.89      0.71      0.74        88
+    weighted avg       0.86      0.82      0.79        88
+</pre></div>
+</div>
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
+<h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>90.9090909090909%</strong>.</p>
+<h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
+
+Apertura Inicial       0.90      1.00      0.95        74
+     Preparación       1.00      0.43      0.60        14
+
+        accuracy                           0.91        88
+       macro avg       0.95      0.71      0.77        88
+    weighted avg       0.92      0.91      0.89        88
+</pre></div>
+</div>
+<h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
 </div>
 </div>
 <div class="section" id="ruido">
@@ -2801,6 +2766,244 @@ Apertura Inicial       0.91      0.91      0.91        53
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            bs4                 4.10.0
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            math                NA
+            matplotlib          3.3.4
+            numpy               1.19.5
+            os                  NA
+            pandas              1.2.3
+            plotly              4.8.1
+            scipy               1.6.2
+            seaborn             0.11.1
+            session_info        1.0.0
+            sklearn             0.24.1
+            time                NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            PIL                         8.2.0
+            abc                         NA
+            argparse                    1.1
+            array                       NA
+            ast                         NA
+            asyncio                     NA
+            atexit                      NA
+            attr                        21.4.0
+            backcall                    0.2.0
+            base64                      NA
+            bdb                         NA
+            binascii                    NA
+            bisect                      NA
+            bz2                         NA
+            cProfile                    NA
+            calendar                    NA
+            cffi                        1.15.0
+            chardet                     4.0.0
+            cmath                       NA
+            cmd                         NA
+            code                        NA
+            codecs                      NA
+            codeop                      NA
+            collections                 NA
+            colorama                    0.4.4
+            colorsys                    NA
+            concurrent                  NA
+            configparser                NA
+            contextlib                  NA
+            contextvars                 NA
+            copy                        NA
+            copyreg                     NA
+            csv                         1.0
+            ctypes                      1.1.0
+            curses                      NA
+            cycler                      0.10.0
+            cython_runtime              NA
+            dataclasses                 NA
+            dateutil                    2.8.2
+            debugpy                     1.5.1
+            decimal                     1.70
+            decorator                   5.1.0
+            difflib                     NA
+            dis                         NA
+            distutils                   3.7.12
+            email                       NA
+            encodings                   NA
+            entrypoints                 0.3
+            enum                        NA
+            errno                       NA
+            faulthandler                NA
+            fcntl                       NA
+            filecmp                     NA
+            fnmatch                     NA
+            fractions                   NA
+            functools                   NA
+            gc                          NA
+            genericpath                 NA
+            getopt                      NA
+            getpass                     NA
+            gettext                     NA
+            glob                        NA
+            grp                         NA
+            gzip                        NA
+            hashlib                     NA
+            heapq                       NA
+            hmac                        NA
+            html                        NA
+            http                        NA
+            idna                        2.10
+            imp                         NA
+            importlib                   NA
+            importlib_metadata          NA
+            inspect                     NA
+            io                          NA
+            ipykernel                   6.6.1
+            ipython_genutils            0.2.0
+            ipywidgets                  7.6.5
+            itertools                   NA
+            jedi                        0.18.1
+            joblib                      1.1.0
+            jsonschema                  3.2.0
+            keyword                     NA
+            kiwisolver                  1.3.2
+            linecache                   NA
+            logging                     0.5.1.2
+            lzma                        NA
+            marshal                     4
+            matplotlib_inline           NA
+            mimetypes                   NA
+            mmap                        NA
+            mpl_toolkits                NA
+            multiprocessing             NA
+            nbformat                    5.1.3
+            ntpath                      NA
+            numbers                     NA
+            opcode                      NA
+            operator                    NA
+            parso                       0.8.3
+            pathlib                     NA
+            pdb                         NA
+            pexpect                     4.8.0
+            pickle                      NA
+            pickleshare                 0.7.5
+            pkg_resources               NA
+            pkgutil                     NA
+            platform                    1.0.8
+            plistlib                    NA
+            posix                       NA
+            posixpath                   NA
+            pprint                      NA
+            profile                     NA
+            prompt_toolkit              3.0.24
+            pstats                      NA
+            pty                         NA
+            ptyprocess                  0.7.0
+            pvectorc                    NA
+            pwd                         NA
+            pydev_ipython               NA
+            pydevconsole                NA
+            pydevd                      2.6.0
+            pydevd_concurrency_analyser NA
+            pydevd_file_utils           NA
+            pydevd_plugins              NA
+            pydevd_tracing              NA
+            pydoc                       NA
+            pydoc_data                  NA
+            pyexpat                     NA
+            pygments                    2.11.2
+            pyparsing                   3.0.6
+            pyrsistent                  NA
+            pytz                        2021.3
+            queue                       NA
+            quopri                      NA
+            random                      NA
+            re                          2.2.1
+            reprlib                     NA
+            resource                    NA
+            retrying                    NA
+            runpy                       NA
+            secrets                     NA
+            select                      NA
+            selectors                   NA
+            shlex                       NA
+            shutil                      NA
+            signal                      NA
+            site                        NA
+            six                         1.16.0
+            socket                      NA
+            socketserver                0.4
+            soupsieve                   2.3.1
+            sphinxcontrib               NA
+            sqlite3                     2.6.0
+            sre_compile                 NA
+            sre_constants               NA
+            sre_parse                   NA
+            ssl                         NA
+            stat                        NA
+            storemagic                  NA
+            string                      NA
+            stringprep                  NA
+            struct                      NA
+            subprocess                  NA
+            sys                         3.7.12 (default, Sep  6 2021, 07:19:30) 
+[GCC 9.3.0]
+            sysconfig                   NA
+            tarfile                     0.9.0
+            tempfile                    NA
+            termios                     NA
+            textwrap                    NA
+            threading                   NA
+            timeit                      NA
+            token                       NA
+            tokenize                    NA
+            tornado                     6.1
+            traceback                   NA
+            traitlets                   5.1.1
+            tty                         NA
+            types                       NA
+            typing                      NA
+            typing_extensions           NA
+            unicodedata                 NA
+            unittest                    NA
+            urllib                      NA
+            uu                          NA
+            uuid                        NA
+            warnings                    NA
+            wcwidth                     0.2.5
+            weakref                     NA
+            webbrowser                  NA
+            xml                         NA
+            xmlrpc                      NA
+            zipfile                     NA
+            zipimport                   NA
+            zipp                        NA
+            zlib                        1.0
+            zmq                         22.3.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.31.0
+            jupyter_client      7.1.0
+            jupyter_core        4.9.1
+            notebook            6.4.6
+            -----
+            Python 3.7.12 (default, Sep  6 2021, 07:19:30) [GCC 9.3.0]
+            Linux-5.11.0-1022-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2022-01-06 17:12
+            </pre>
+            </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">

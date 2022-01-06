@@ -1715,6 +1715,7 @@
 <span class="s1">        [</span><span class="si">{}</span><span class="s1">_comuna[col].first_valid_index():</span><span class="si">{}</span><span class="s1">_comuna[col].last_valid_index()]</span><span class="se">\</span>
 <span class="s1">        .fillna(method=&quot;ffill&quot;, inplace=False)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
 <span class="c1">### Vacunados con cuadro completo menores de 18 años</span>
 <span class="n">menores18</span> <span class="o">=</span> <span class="n">csv81_edad2</span><span class="p">[</span><span class="n">csv81_edad2</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapaca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     
@@ -1828,7 +1829,7 @@
        <span class="n">casos_acumulativos_reinfeccion</span><span class="p">,</span> <span class="n">casos_recuperados_cumulativos</span><span class="p">,</span> <span class="n">fallecidos_diarios</span><span class="p">,</span> <span class="n">antigenos</span><span class="p">,</span> <span class="n">antigenos_acumulativos</span><span class="p">,</span>
        <span class="n">pcr_cumulativos</span><span class="p">,</span> <span class="n">pcr_acumulativos</span><span class="p">,</span> <span class="n">residencias_cupos</span><span class="p">,</span> <span class="n">residencias_usuarios</span><span class="p">,</span>
        <span class="n">residencias_numero</span><span class="p">,</span> <span class="n">uci_habilitadas</span><span class="p">,</span> <span class="n">uci_diaria</span><span class="p">,</span> <span class="n">uci_ocupadas_nocovid</span><span class="p">,</span> <span class="n">uci_real</span><span class="p">,</span> <span class="n">r_regional</span><span class="p">,</span>
-       <span class="n">r_provincial_iqq</span><span class="p">,</span> <span class="n">r_provincial_tam</span><span class="p">,</span> <span class="n">positividad_diaria</span><span class="p">,</span> <span class="n">vacunacion</span><span class="p">,</span> <span class="n">casoscomuna_acumulativos</span><span class="p">,</span> 
+       <span class="n">r_provincial_iqq</span><span class="p">,</span> <span class="n">r_provincial_tam</span><span class="p">,</span> <span class="n">positividad_diaria</span><span class="p">,</span> <span class="n">vacunacion</span><span class="p">,</span> <span class="n">casoscomuna_acumulativos</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> 
        <span class="n">casoscomuna_activos</span><span class="p">,</span> <span class="n">pasopaso_comuna</span><span class="p">,</span> <span class="n">movilidad</span><span class="p">,</span> <span class="n">notificacion_comuna</span><span class="p">,</span> <span class="n">bac_comuna</span><span class="p">,</span> <span class="n">positividad_comuna</span><span class="p">,</span>
        <span class="n">cobertura_comuna</span><span class="p">,</span> <span class="n">oportunidad_comuna</span><span class="p">,</span> <span class="n">fallecidos_comuna</span><span class="p">,</span> <span class="n">fallecidosdeis_conf_comuna</span><span class="p">,</span> <span class="n">fallecidosdeis_prob_comuna</span><span class="p">,</span>
        <span class="n">incidencia_regional</span><span class="p">,</span> <span class="n">incidencia_provincial_iqq</span><span class="p">,</span> <span class="n">incidencia_provincial_tam</span><span class="p">,</span> <span class="n">tasacasosnuevos_provincial_iqq</span><span class="p">,</span>
@@ -1905,6 +1906,9 @@
 <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;Fecha&#39;</span><span class="p">)</span>
 <span class="c1">### Corrección de negativos por ajuste histórico</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Casos recuperados nuevos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1">### Mata moscas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span> <span class="n">to_numeric</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
 
 <span class="c1">### Imprimimos el DataFrame</span>
 <span class="n">df</span>
@@ -2444,14 +2448,14 @@
       <td>72.96</td>
       <td>NaN</td>
       <td>...</td>
-      <td>13,126.3</td>
-      <td>17,018.2</td>
-      <td>12,318.4</td>
-      <td>16,633.3</td>
-      <td>14,786.3</td>
-      <td>18,076.5</td>
-      <td>14,619.1</td>
-      <td>14,560.1</td>
+      <td>13,126.30</td>
+      <td>17,018.20</td>
+      <td>12,318.40</td>
+      <td>16,633.30</td>
+      <td>14,786.30</td>
+      <td>18,076.50</td>
+      <td>14,619.10</td>
+      <td>14,560.10</td>
       <td>6.00</td>
       <td>216.84</td>
       <td>5.76</td>
@@ -3062,7 +3066,7 @@
                                    <span class="n">crecimientodiario_hoy</span><span class="p">,</span> <span class="n">situacioncurva_hoy</span><span class="p">,</span> \
                                    <span class="n">ucidiaria_hoy</span><span class="p">,</span> <span class="n">uciaprox_hoy</span><span class="p">,</span> <span class="n">errorabs_hoy</span><span class="p">,</span> \
                                    <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">,</span> \
-                                   <span class="n">me_hoy</span><span class="p">,</span> <span class="n">reregional_hoy</span><span class="p">,</span> <span class="n">tasanuevos_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
+                                   <span class="n">me_hoy</span><span class="p">,</span> <span class="n">reregional_hoy</span><span class="p">,</span> <span class="n">tasanuevos_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
                                    <span class="n">ed_hoy</span><span class="p">,</span> <span class="n">cambios</span><span class="p">)</span>
 
 <span class="c1">## Imprimimos</span>
@@ -3085,7 +3089,7 @@
 • De cada cien mil habitantes en la región, 216 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 2.11. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 54.2. 💦
-• En el proceso de vacunación, 106.39999999999999% vacunados de la población objetivo (al menos, 304,970 personas con cuadro de vacunación completo). 💦
+• En el proceso de vacunación, 106.4% vacunados de la población objetivo (al menos, 304,970 personas con cuadro de vacunación completo). 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
@@ -3178,95 +3182,25 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">2</span><span class="n">_programacion</span><span class="o">/</span><span class="mi">2</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> 
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">45</span>         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;ffill&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>         <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;bfill&quot;</span><span class="p">)</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">2</span><span class="n">_programacion</span><span class="o">/</span><span class="mi">3</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">outputs_</span> <span class="o">=</span> <span class="n">reportediario</span><span class="o">.</span><span class="n">outputs</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">vec_out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">outs_</span> <span class="ow">in</span> <span class="n">outputs_</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="c1">### Convertimos a lista los outputs</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">11192</span>         <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">11193</span>         <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">&gt; </span><span class="mi">11194</span>             <span class="k">return</span> <span class="n">NDFrame</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">numeric_only</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">11195</span> 
-<span class="g g-Whitespace">  </span><span class="mi">11196</span>         <span class="c1"># pandas\core\generic.py:10992: error: Cannot assign to a method</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">max</span><span class="nt">(self, axis, skipna, level, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10720</span>     <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">  </span><span class="mi">10721</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stat_function</span><span class="p">(</span>
-<span class="ne">&gt; </span><span class="mi">10722</span>             <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="n">nanops</span><span class="o">.</span><span class="n">nanmax</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">numeric_only</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">  </span><span class="mi">10723</span>         <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10724</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">_stat_function</span><span class="nt">(self, name, func, axis, skipna, level, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10710</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agg_by_level</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10711</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reduce</span><span class="p">(</span>
-<span class="ne">&gt; </span><span class="mi">10712</span>             <span class="n">func</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="n">numeric_only</span>
-<span class="g g-Whitespace">  </span><span class="mi">10713</span>         <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10714</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/series.py</span> in <span class="ni">_reduce</span><span class="nt">(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4180</span>                 <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4181</span>             <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">4182</span>                 <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4183</span> 
-<span class="g g-Whitespace">   </span><span class="mi">4184</span>     <span class="k">def</span> <span class="nf">_reindex_indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_index</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">copy</span><span class="p">):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">f</span><span class="nt">(values, axis, skipna, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span>                     <span class="n">result</span> <span class="o">=</span> <span class="n">alt</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">133</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">alt</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span> 
-<span class="g g-Whitespace">    </span><span class="mi">135</span>             <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">new_func</span><span class="nt">(values, axis, skipna, mask, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">390</span>             <span class="n">mask</span> <span class="o">=</span> <span class="n">isna</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">391</span> 
-<span class="ne">--&gt; </span><span class="mi">392</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">393</span> 
-<span class="g g-Whitespace">    </span><span class="mi">394</span>         <span class="k">if</span> <span class="n">datetimelike</span><span class="p">:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/nanops.py</span> in <span class="ni">reduction</span><span class="nt">(values, axis, skipna, mask)</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">975</span>             <span class="n">result</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">meth</span><span class="p">)(</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">976</span> 
-<span class="g g-Whitespace">    </span><span class="mi">977</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">_maybe_null_out</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/numpy/core/_methods.py</span> in <span class="ni">_amax</span><span class="nt">(a, axis, out, keepdims, initial, where)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">def</span> <span class="nf">_amax</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>           <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="k">return</span> <span class="n">umr_maximum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> 
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="k">def</span> <span class="nf">_amin</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-
-<span class="ne">TypeError</span>: &#39;&gt;=&#39; not supported between instances of &#39;float&#39; and &#39;str&#39;
+<span class="ne">NameError</span>: name &#39;reportediario&#39; is not defined
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">2</span><span class="n">_programacion</span><span class="o">/</span><span class="mi">2</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;display(Markdown(</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span><span class="s1">     &quot;El algoritmo entrenado para la comuna de </span><span class="si">{}</span><span class="s1"> tiene una precisión del **&quot; +</span>
-<span class="ne">---&gt; </span><span class="mi">21</span><span class="s1">     str(clf_</span><span class="si">{}</span><span class="s1">.score(X_test_</span><span class="si">{}</span><span class="s1">, y_test_</span><span class="si">{}</span><span class="s1">) * 100) + &quot;%**.&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comuna</span><span class="p">,</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> 
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="c1">### Generamos la matriz de confusión y reporte de precisión, recall, etc.</span>
-
-<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">2</span><span class="n">_programacion</span><span class="o">/</span><span class="mi">2</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-
-<span class="ne">NameError</span>: name &#39;clf_Hua&#39; is not defined
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3156</span><span class="o">/</span><span class="mf">1584369300.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### Ejecutamos notebook 2</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;2_thisistheway.ipynb&#39;</span><span class="p">)</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3305</span><span class="o">/</span><span class="mf">1584369300.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">### Ejecutamos notebook 3</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;3_thisistheway.ipynb&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;3_thisistheway.ipynb&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">### Ejecutamos notebook 4</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2362</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
@@ -3312,16 +3246,14 @@
 
     <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">1</span> <span class="n">frame</span><span class="p">]</span>
 
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3156</span><span class="o">/</span><span class="mf">1533704879.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;display(Markdown(</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span><span class="s1">     &quot;El algoritmo entrenado para la comuna de </span><span class="si">{}</span><span class="s1"> tiene una precisión del **&quot; +</span>
-<span class="ne">---&gt; </span><span class="mi">21</span><span class="s1">     str(clf_</span><span class="si">{}</span><span class="s1">.score(X_test_</span><span class="si">{}</span><span class="s1">, y_test_</span><span class="si">{}</span><span class="s1">) * 100) + &quot;%**.&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comuna</span><span class="p">,</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">comuna</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> 
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="c1">### Generamos la matriz de confusión y reporte de precisión, recall, etc.</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3305</span><span class="o">/</span><span class="mf">2824493156.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">outputs_</span> <span class="o">=</span> <span class="n">reportediario</span><span class="o">.</span><span class="n">outputs</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">vec_out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">outs_</span> <span class="ow">in</span> <span class="n">outputs_</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="c1">### Convertimos a lista los outputs</span>
 
-<span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-
-<span class="ne">NameError</span>: name &#39;clf_Hua&#39; is not defined
+<span class="ne">NameError</span>: name &#39;reportediario&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -3370,11 +3302,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 06 de enero de 2022. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>99.499%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.265%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.72%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.734%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>158</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.382%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>95.344%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>28</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>97.538%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>49</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>96.382%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>90.096%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+Actualmente, la comuna registra <b>28</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
+<li><p>De acuerdo al algoritmo, y con un <b>94.897%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>28</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 63° EDICION ⚙️ ]</p>
@@ -3834,30 +3774,23 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3156</span><span class="o">/</span><span class="mf">1228308839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">graph4</span> <span class="o">=</span> <span class="n">graphBar</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Notificacion PCR&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">17</span><span class="p">:]],</span>\
-<span class="g g-Whitespace">     </span><span class="mi">25</span>                    <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Notificacion PCR &#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
-<span class="ne">---&gt; </span><span class="mi">26</span>                     <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">positividad_comuna</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">poblaciones_comunales</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="p">],</span> \
-<span class="g g-Whitespace">     </span><span class="mi">27</span>                    <span class="n">color</span><span class="o">=</span><span class="n">resultado_colores</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> \
-<span class="g g-Whitespace">     </span><span class="mi">28</span>                    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../../in/indicadorfase/grafico/4.png&#39;</span><span class="p">,</span> <span class="n">uni</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<img alt="../../_images/1_thisistheway_28_6.png" src="../../_images/1_thisistheway_28_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_28_8.png" src="../../_images/1_thisistheway_28_8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_28_10.png" src="../../_images/1_thisistheway_28_10.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
+</pre></div>
+</div>
+<img alt="../../_images/1_thisistheway_28_12.png" src="../../_images/1_thisistheway_28_12.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico guardado.
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/ops/__init__.py</span> in <span class="ni">flex_wrapper</span><span class="nt">(self, other, level, fill_value, axis)</span>
-<span class="g g-Whitespace">    </span><span class="mi">163</span> 
-<span class="g g-Whitespace">    </span><span class="mi">164</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ABCSeries</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">165</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binop</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">166</span>         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">167</span>             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/series.py</span> in <span class="ni">_binop</span><span class="nt">(self, other, func, level, fill_value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2726</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2727</span>         <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2728</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">this_vals</span><span class="p">,</span> <span class="n">other_vals</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2729</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2730</span>         <span class="n">name</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_op_result_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for /: &#39;str&#39; and &#39;float&#39;
+ 
+ Gráficos del indicador de fase guardados de forma exitosa.
 </pre></div>
 </div>
 </div>
@@ -4488,8 +4421,8 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  1.85 %
-La media general del error es de:  0.75 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  6.12 %
+La media general del error es de:  0.59 %
 </pre></div>
 </div>
 <img alt="../../_images/1_thisistheway_52_1.png" src="../../_images/1_thisistheway_52_1.png" />
@@ -4607,249 +4540,249 @@ La media general del error es de:  0.75 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><details>
-<summary>Click to view session information</summary>
-<pre>
------
-PIL                 8.2.0
-bs4                 4.9.3
-datetime            NA
-json                2.0.9
-locale              NA
-markdownify         NA
-math                NA
-matplotlib          3.3.4
-natsort             7.1.1
-numpy               1.19.2
-os                  NA
-pandas              1.2.3
-pkg_resources       NA
-plotly              4.8.1
-pybtex              0.24.0
-requests            2.25.1
-scipy               1.6.2
-seaborn             0.11.1
-session_info        1.0.0
-sklearn             0.24.1
-time                NA
-types               NA
------
-</pre>
-<details>
-<summary>Click to view modules imported as dependencies</summary>
-<pre>
-abc                 NA
-argparse            1.1
-array               NA
-ast                 NA
-asyncio             NA
-atexit              NA
-attr                21.2.0
-backcall            0.2.0
-base64              NA
-bdb                 NA
-binascii            NA
-bisect              NA
-brotli              NA
-bz2                 NA
-cProfile            NA
-calendar            NA
-certifi             2021.05.30
-cffi                1.14.5
-chardet             3.0.4
-cmath               NA
-cmd                 NA
-code                NA
-codecs              NA
-codeop              NA
-collections         NA
-colorama            0.4.3
-colorsys            NA
-concurrent          NA
-configparser        NA
-contextlib          NA
-contextvars         NA
-copy                NA
-copyreg             NA
-csv                 1.0
-ctypes              1.1.0
-cycler              0.10.0
-cython_runtime      NA
-dataclasses         NA
-dateutil            2.8.1
-decimal             1.70
-decorator           5.0.6
-difflib             NA
-dis                 NA
-distutils           3.7.0
-email               NA
-encodings           NA
-enum                NA
-errno               NA
-faulthandler        NA
-filecmp             NA
-fnmatch             NA
-fractions           NA
-functools           NA
-gc                  NA
-genericpath         NA
-getopt              NA
-getpass             NA
-gettext             NA
-glob                NA
-google              NA
-gzip                NA
-hashlib             NA
-heapq               NA
-hmac                NA
-html                NA
-http                NA
-idna                2.10
-imp                 NA
-importlib           NA
-importlib_metadata  NA
-inspect             NA
-io                  NA
-ipykernel           5.3.4
-ipyparallel         6.3.0
-ipython_genutils    0.2.0
-ipywidgets          7.6.3
-itertools           NA
-jedi                0.18.0
-joblib              1.0.1
-jsonschema          3.2.0
-keyword             NA
-kiwisolver          1.3.1
-linecache           NA
-logging             0.5.1.2
-lxml                4.6.3
-lzma                NA
-marshal             4
-matplotlib_inline   NA
-mimetypes           NA
-mkl                 2.3.0
-mmap                NA
-mpl_toolkits        NA
-msvcrt              NA
-multiprocessing     NA
-nbformat            5.1.3
-netrc               NA
-nt                  NA
-ntpath              NA
-ntsecuritycon       NA
-nturl2path          NA
-numbers             NA
-numexpr             2.7.3
-olefile             0.46
-opcode              NA
-operator            NA
-packaging           20.9
-parso               0.8.2
-pathlib             NA
-pdb                 NA
-pickle              NA
-pickleshare         0.7.5
-pkgutil             NA
-platform            1.0.8
-plistlib            NA
-posixpath           NA
-pprint              NA
-profile             NA
-prompt_toolkit      3.0.17
-pstats              NA
-psutil              5.8.0
-pvectorc            NA
-pydoc               NA
-pydoc_data          NA
-pyexpat             NA
-pygments            2.8.1
-pyparsing           2.4.7
-pyrsistent          NA
-pythoncom           NA
-pytz                2021.1
-pywintypes          NA
-queue               NA
-quopri              NA
-random              NA
-re                  2.2.1
-reprlib             NA
-retrying            NA
-ruamel              NA
-runpy               NA
-secrets             NA
-select              NA
-selectors           NA
-shlex               NA
-shutil              NA
-signal              NA
-site                NA
-six                 1.15.0
-socket              NA
-socketserver        0.4
-socks               1.7.1
-soupsieve           2.2.1
-sphinxcontrib       NA
-sqlite3             2.6.0
-sre_compile         NA
-sre_constants       NA
-sre_parse           NA
-ssl                 NA
-stat                NA
-storemagic          NA
-string              NA
-stringprep          NA
-struct              NA
-subprocess          NA
-sys                 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
-sysconfig           NA
-tarfile             0.9.0
-tempfile            NA
-textwrap            NA
-threading           NA
-timeit              NA
-token               NA
-tokenize            NA
-tornado             6.1
-traceback           NA
-traitlets           5.0.5
-typing              NA
-typing_extensions   NA
-unicodedata         NA
-unittest            NA
-urllib              NA
-urllib3             1.26.4
-uu                  NA
-uuid                NA
-warnings            NA
-wcwidth             0.2.5
-weakref             NA
-webbrowser          NA
-win32api            NA
-win32com            NA
-win32security       NA
-winreg              NA
-xml                 NA
-zipfile             NA
-zipimport           NA
-zipp                NA
-zlib                1.0
-zmq                 20.0.0
-</pre>
-</details> <!-- seems like this ends pre, so might as well be explicit -->
-<pre>
------
-IPython             7.23.1
-jupyter_client      6.1.12
-jupyter_core        4.7.1
-notebook            6.3.0
------
-Python 3.7.0 (default, Jun 28 2018, 08:04:48) [MSC v.1912 64 bit (AMD64)]
-Windows-10-10.0.19041-SP0
-12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
------
-Session information updated at 2021-08-20 11:49
-</pre>
-</details></div></div>
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            PIL                 8.2.0
+            bs4                 4.10.0
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            math                NA
+            matplotlib          3.3.4
+            numpy               1.19.5
+            os                  NA
+            pandas              1.2.3
+            pkg_resources       NA
+            plotly              4.8.1
+            pybtex              0.24.0
+            requests            2.25.1
+            scipy               1.6.2
+            seaborn             0.11.1
+            session_info        1.0.0
+            sklearn             0.24.1
+            time                NA
+            types               NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                         NA
+            argparse                    1.1
+            array                       NA
+            ast                         NA
+            asyncio                     NA
+            atexit                      NA
+            attr                        21.4.0
+            backcall                    0.2.0
+            base64                      NA
+            bdb                         NA
+            binascii                    NA
+            bisect                      NA
+            bz2                         NA
+            cProfile                    NA
+            calendar                    NA
+            certifi                     2021.10.08
+            cffi                        1.15.0
+            chardet                     4.0.0
+            cmath                       NA
+            cmd                         NA
+            code                        NA
+            codecs                      NA
+            codeop                      NA
+            collections                 NA
+            colorama                    0.4.4
+            colorsys                    NA
+            concurrent                  NA
+            configparser                NA
+            contextlib                  NA
+            contextvars                 NA
+            copy                        NA
+            copyreg                     NA
+            csv                         1.0
+            ctypes                      1.1.0
+            curses                      NA
+            cycler                      0.10.0
+            cython_runtime              NA
+            dataclasses                 NA
+            dateutil                    2.8.2
+            debugpy                     1.5.1
+            decimal                     1.70
+            decorator                   5.1.0
+            difflib                     NA
+            dis                         NA
+            distutils                   3.7.12
+            email                       NA
+            encodings                   NA
+            entrypoints                 0.3
+            enum                        NA
+            errno                       NA
+            faulthandler                NA
+            fcntl                       NA
+            filecmp                     NA
+            fnmatch                     NA
+            fractions                   NA
+            functools                   NA
+            gc                          NA
+            genericpath                 NA
+            getopt                      NA
+            getpass                     NA
+            gettext                     NA
+            glob                        NA
+            grp                         NA
+            gzip                        NA
+            hashlib                     NA
+            heapq                       NA
+            hmac                        NA
+            html                        NA
+            http                        NA
+            idna                        2.10
+            imp                         NA
+            importlib                   NA
+            importlib_metadata          NA
+            inspect                     NA
+            io                          NA
+            ipykernel                   6.6.1
+            ipython_genutils            0.2.0
+            ipywidgets                  7.6.5
+            itertools                   NA
+            jedi                        0.18.1
+            joblib                      1.1.0
+            jsonschema                  3.2.0
+            keyword                     NA
+            kiwisolver                  1.3.2
+            linecache                   NA
+            logging                     0.5.1.2
+            lzma                        NA
+            marshal                     4
+            matplotlib_inline           NA
+            mimetypes                   NA
+            mmap                        NA
+            mpl_toolkits                NA
+            multiprocessing             NA
+            nbformat                    5.1.3
+            netrc                       NA
+            ntpath                      NA
+            numbers                     NA
+            opcode                      NA
+            operator                    NA
+            packaging                   21.3
+            parso                       0.8.3
+            pathlib                     NA
+            pdb                         NA
+            pexpect                     4.8.0
+            pickle                      NA
+            pickleshare                 0.7.5
+            pkgutil                     NA
+            platform                    1.0.8
+            plistlib                    NA
+            posix                       NA
+            posixpath                   NA
+            pprint                      NA
+            profile                     NA
+            prompt_toolkit              3.0.24
+            pstats                      NA
+            pty                         NA
+            ptyprocess                  0.7.0
+            pvectorc                    NA
+            pwd                         NA
+            pydev_ipython               NA
+            pydevconsole                NA
+            pydevd                      2.6.0
+            pydevd_concurrency_analyser NA
+            pydevd_file_utils           NA
+            pydevd_plugins              NA
+            pydevd_tracing              NA
+            pydoc                       NA
+            pydoc_data                  NA
+            pyexpat                     NA
+            pygments                    2.11.2
+            pyparsing                   3.0.6
+            pyrsistent                  NA
+            pytz                        2021.3
+            queue                       NA
+            quopri                      NA
+            random                      NA
+            re                          2.2.1
+            reprlib                     NA
+            resource                    NA
+            retrying                    NA
+            runpy                       NA
+            secrets                     NA
+            select                      NA
+            selectors                   NA
+            shlex                       NA
+            shutil                      NA
+            signal                      NA
+            site                        NA
+            six                         1.16.0
+            socket                      NA
+            socketserver                0.4
+            soupsieve                   2.3.1
+            sphinxcontrib               NA
+            sqlite3                     2.6.0
+            sre_compile                 NA
+            sre_constants               NA
+            sre_parse                   NA
+            ssl                         NA
+            stat                        NA
+            storemagic                  NA
+            string                      NA
+            stringprep                  NA
+            struct                      NA
+            subprocess                  NA
+            sys                         3.7.12 (default, Sep  6 2021, 07:19:30) 
+[GCC 9.3.0]
+            sysconfig                   NA
+            tarfile                     0.9.0
+            tempfile                    NA
+            termios                     NA
+            textwrap                    NA
+            threading                   NA
+            timeit                      NA
+            token                       NA
+            tokenize                    NA
+            tornado                     6.1
+            traceback                   NA
+            traitlets                   5.1.1
+            tty                         NA
+            typing                      NA
+            typing_extensions           NA
+            unicodedata                 NA
+            unittest                    NA
+            urllib                      NA
+            urllib3                     1.26.7
+            uu                          NA
+            uuid                        NA
+            warnings                    NA
+            wcwidth                     0.2.5
+            weakref                     NA
+            webbrowser                  NA
+            xml                         NA
+            xmlrpc                      NA
+            zipfile                     NA
+            zipimport                   NA
+            zipp                        NA
+            zlib                        1.0
+            zmq                         22.3.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.31.0
+            jupyter_client      7.1.0
+            jupyter_core        4.9.1
+            notebook            6.4.6
+            -----
+            Python 3.7.12 (default, Sep  6 2021, 07:19:30) [GCC 9.3.0]
+            Linux-5.11.0-1022-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2022-01-06 17:11
+            </pre>
+            </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
