@@ -581,6 +581,7 @@ for csv in csvs:
     exec('{}_comuna.columns = "{} " + {}[{}["Region"] == "Tarapaca"].transpose().loc["Comuna", :].replace("Camina", "Camiña")'.format(var[i], nom[i], csv, csv))
     exec('for col in {}_comuna:         {}_comuna[col]        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()] =         {}_comuna[col]        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()]        .fillna(method="ffill", inplace=False)'.format(var[i], var[i], var[i], var[i], var[i], var[i], var[i]))
     i += 1
+
 ### Vacunados con cuadro completo menores de 18 años
 menores18 = csv81_edad2[csv81_edad2['Region'] == 'Tarapaca'].iloc[:, 5:11].sum().sum()
     
@@ -692,7 +693,7 @@ dfs = [casos_acumulativos, casos_recuperados, fallecidos_acumulativos,
        casos_acumulativos_reinfeccion, casos_recuperados_cumulativos, fallecidos_diarios, antigenos, antigenos_acumulativos,
        pcr_cumulativos, pcr_acumulativos, residencias_cupos, residencias_usuarios,
        residencias_numero, uci_habilitadas, uci_diaria, uci_ocupadas_nocovid, uci_real, r_regional,
-       r_provincial_iqq, r_provincial_tam, positividad_diaria, vacunacion, casoscomuna_acumulativos, 
+       r_provincial_iqq, r_provincial_tam, positividad_diaria, vacunacion, casoscomuna_acumulativos.astype(float), 
        casoscomuna_activos, pasopaso_comuna, movilidad, notificacion_comuna, bac_comuna, positividad_comuna,
        cobertura_comuna, oportunidad_comuna, fallecidos_comuna, fallecidosdeis_conf_comuna, fallecidosdeis_prob_comuna,
        incidencia_regional, incidencia_provincial_iqq, incidencia_provincial_tam, tasacasosnuevos_provincial_iqq,
@@ -769,6 +770,9 @@ df.index = pd.to_datetime(df.index)
 df.index = df.index.rename('Fecha')
 ### Corrección de negativos por ajuste histórico
 df['Casos recuperados nuevos'] = df['Casos recuperados nuevos'].clip(lower=0)
+### Mata moscas
+df = df.apply(lambda x: x.str.strip() if isinstance(x, str) else x).replace('', np.nan)
+df = df.apply(pd. to_numeric, errors='coerce')
 
 ### Imprimimos el DataFrame
 df
@@ -1185,7 +1189,7 @@ desc1 = """Reporte DIARIO, {} 🕑. \n
                                    crecimientodiario_hoy, situacioncurva_hoy, \
                                    ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, \
                                    positividad_hoy, positividadmovil_hoy, positividad_antigeno, \
-                                   me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,\
+                                   me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy.round(2), procesovacunaciontotales_hoy,\
                                    ed_hoy, cambios)
 
 ## Imprimimos
@@ -1626,7 +1630,7 @@ graph7 = graphBar([df.loc[:, df.columns.str.contains('BAC', regex=False)].column
 print('\n \n Gráficos del indicador de fase guardados de forma exitosa.')
 
 
-# In[41]:
+# In[14]:
 
 
 ### Toque de queda

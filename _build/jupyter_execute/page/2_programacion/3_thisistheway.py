@@ -181,7 +181,90 @@ display(Markdown('> Se exportarán un total de **{} gráficos**.'.format(sum_)))
 # In[4]:
 
 
-get_ipython().run_cell_magic('capture', 'reportediario', 'x = 0\n### Título y otras cosas\ndisplay(Markdown(\'<h2 style="font-size:60px;">REPORTE DIARIO</h2>\'))\ndisplay(Markdown(\'<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>\'.format(data[0].last_valid_index().strftime(\'%d de %B de %Y\'))))\n\n### Recorremos el vector que almacena los DataFrames, uno a uno\nfor dataframe in data:\n    \n    ### Para guardar el número del gráfico (un poco ordinario el método, lo sé)\n    \n    x += 1\n    \n    ### Definimos una nueva figura\n    \n    fig = go.Figure(layout=layout)\n    \n    ### Algunos datos y título\n    \n    display(Markdown(\'<h3> Gráfico {}</h3>\'.format(x)))\n    display(Markdown(\'El gráfico contiene las siguientes <b>columnas</b>: \'))\n    \n    ### Recorremos cada una de las columnas del DataFrame anterior\n    \n    for col in dataframe.columns:\n        \n        ### Vector de fechas desde primer y último dato válido por cada columna\n        \n        index = dataframe[col].first_valid_index()\n        index_ = dataframe[col].last_valid_index()\n            \n        ### DataFrame según filtro de primer dato válido\n        \n        _df = dataframe[index:]\n            \n        ### Índice de DataFrame según filtro anterior\n            \n        fecha = dataframe[index:].index\n    \n        ### Columna específica\n        \n        _col = dataframe[index:][col]\n        \n        ### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y\n        ### suavizamos por interpolación spline\n        \n        fig.add_trace(go.Scatter(x=_df.index.strftime(\'%d %b %Y\'),\n                                 y=_col,\n                    mode=\'lines\',\n                    name=col,\n                    connectgaps=True,\n                    line_shape=\'linear\',\n                    hovertemplate =\n                    \'<b>{}</b>: \'.format(col) + \'%{y:.2f}\'+\'<br><b>Fecha</b>: %{x}<br>\' + "<extra></extra>"))\n        \n        ### Para colocar en 35° las etiquetas del eje X, con el número de etiquetas proporcional al número de meses\n        ### desde el primer dato válido\n        \n        fig.update_layout(xaxis = go.layout.XAxis(tickangle = 90,\n                                                  nticks=len(_df.index.month.unique())))\n        ### Más datos\n        \n        display(Markdown(\' - <b>{}</b>.\'.format(col)))\n        display(Markdown("""El mayor valor es de <b>{}</b>, registrado el <b>{}</b>. \n        Asimismo, la mediana es de <b>{}</b>.\n        Respecto a la dispersión de los datos, la desviación estándar es del <b>{}</b>. """\n                         .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime(\'%d de %B de %Y\'),\n                                 round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))\n        display(Markdown(\'> El valor en base al último reporte diario o epidemiológico ({}) es de <b>{}</b>.\'.format(dataframe[index_:].index[0].strftime(\'%d de %B de %Y\'), dataframe[col][index_])))\n    \n    ### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado\n    display(Markdown(\'<h4>Visualización del gráfico {}</h4> <br> El gráfico, visualizado en <a href="https://plotly.com/python/">Plot.ly</a>: <br>\'.format(x)))\n    fig.show(config=config)\n    \n    display(Markdown("""> <b>Notas</b>: \n    <br> - El gráfico <b>inicia en el {}</b> y <b>termina el {}</b> en base a los datos disponibles.\n    <br> - Para aislar una curva, presionar en el nombre o color en la leyenda. \n    <br> - Para remover una curva, seguir instrucción anterior, con la diferencia de presionar dos veces.""".format(\\\n                    _df.index[0].strftime(\'%d de %B de %Y\'),\n                    dataframe[index_:].index[0].strftime(\'%d de %B de %Y\'))))\n    display(Markdown(\'<h4>Información adicional sobre el gráfico {}</h4> <br>\'.format(x)))\n    display(Markdown(\n    """El <b>gráfico {}</b> utilizó los datos procesados en <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv">data{}.csv</a>.\n    La tabla de datos resumida:""".format(x, x, x, x)))\n    display(dataframe)')
+#%%capture reportediario
+x = 0
+### Título y otras cosas
+display(Markdown('<h2 style="font-size:60px;">REPORTE DIARIO</h2>'))
+display(Markdown('<h3 style="font-size:20px;">Región de Tarapacá, {}</h3>'.format(data[0].last_valid_index().strftime('%d de %B de %Y'))))
+
+### Recorremos el vector que almacena los DataFrames, uno a uno
+for dataframe in data:
+    
+    ### Para guardar el número del gráfico (un poco ordinario el método, lo sé)
+    
+    x += 1
+    
+    ### Definimos una nueva figura
+    
+    fig = go.Figure(layout=layout)
+    
+    ### Algunos datos y título
+    
+    display(Markdown('<h3> Gráfico {}</h3>'.format(x)))
+    display(Markdown('El gráfico contiene las siguientes <b>columnas</b>: '))
+    
+    ### Recorremos cada una de las columnas del DataFrame anterior
+    
+    for col in dataframe.columns:
+        
+        ### Vector de fechas desde primer y último dato válido por cada columna
+        
+        index = dataframe[col].first_valid_index()
+        index_ = dataframe[col].last_valid_index()
+            
+        ### DataFrame según filtro de primer dato válido
+        
+        _df = dataframe[index:]
+            
+        ### Índice de DataFrame según filtro anterior
+            
+        fecha = dataframe[index:].index
+    
+        ### Columna específica
+        
+        _col = dataframe[index:][col]
+        
+        ### Añadimos un trazado por cada columna, conectamos los valores para no tener discontinuidad y
+        ### suavizamos por interpolación spline
+        
+        fig.add_trace(go.Scatter(x=_df.index.strftime('%d %b %Y'),
+                                 y=_col,
+                    mode='lines',
+                    name=col,
+                    connectgaps=True,
+                    line_shape='linear',
+                    hovertemplate =
+                    '<b>{}</b>: '.format(col) + '%{y:.2f}'+'<br><b>Fecha</b>: %{x}<br>' + "<extra></extra>"))
+        
+        ### Para colocar en 35° las etiquetas del eje X, con el número de etiquetas proporcional al número de meses
+        ### desde el primer dato válido
+        
+        fig.update_layout(xaxis = go.layout.XAxis(tickangle = 90,
+                                                  nticks=len(_df.index.month.unique())))
+        ### Más datos
+        display(Markdown(' - <b>{}</b>.'.format(col)))
+        display(Markdown("""El mayor valor es de <b>{}</b>, registrado el <b>{}</b>. 
+        Asimismo, la mediana es de <b>{}</b>.
+        Respecto a la dispersión de los datos, la desviación estándar es del <b>{}</b>. """
+                         .format(dataframe[col].max(), dataframe[dataframe[col] == dataframe[col].max()].index[0].strftime('%d de %B de %Y'),
+                                 round(dataframe[col].median(), 2), round(dataframe[col].std(), 2))))
+        display(Markdown('> El valor en base al último reporte diario o epidemiológico ({}) es de <b>{}</b>.'.format(dataframe[index_:].index[0].strftime('%d de %B de %Y'), dataframe[col][index_])))
+    
+    ### Mostramos la figura procesada en el ciclo anterior y otros datos. Añadimos espaciado
+    display(Markdown('<h4>Visualización del gráfico {}</h4> <br> El gráfico, visualizado en <a href="https://plotly.com/python/">Plot.ly</a>: <br>'.format(x)))
+    fig.show(config=config)
+    
+    display(Markdown("""> <b>Notas</b>: 
+    <br> - El gráfico <b>inicia en el {}</b> y <b>termina el {}</b> en base a los datos disponibles.
+    <br> - Para aislar una curva, presionar en el nombre o color en la leyenda. 
+    <br> - Para remover una curva, seguir instrucción anterior, con la diferencia de presionar dos veces.""".format(\
+                    _df.index[0].strftime('%d de %B de %Y'),
+                    dataframe[index_:].index[0].strftime('%d de %B de %Y'))))
+    display(Markdown('<h4>Información adicional sobre el gráfico {}</h4> <br>'.format(x)))
+    display(Markdown(
+    """El <b>gráfico {}</b> utilizó los datos procesados en <a href="https://raw.githubusercontent.com/pandemiaventana/pandemiaventana/main/out/site/csv/data{}.csv">data{}.csv</a>.
+    La tabla de datos resumida:""".format(x, x, x, x)))
+    display(dataframe)
 
 
 # ## Automatizando salida para asistenciacovid19
@@ -372,7 +455,7 @@ with open('../../_build/html/dinamic/balance.html', 'w', encoding='UTF-8') as f:
 
 # ## Información de sesión
 
-# In[6]:
+# In[ ]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='3_requeriments.txt')

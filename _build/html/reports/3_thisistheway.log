@@ -1,0 +1,106 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 1093, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 560, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+outputs_ = reportediario.outputs
+
+vec_out = []
+for outs_ in outputs_:
+    ### Convertimos a lista los outputs
+    vec_out += list(outs_.data.values())
+
+### Nuestro string
+vec_ = ''
+### Recorremos la lista de outputs
+for vec in vec_out:
+    vec = str(vec)
+    ### Quitamos configuración de Plot.ly
+    if vec.startswith("{'config':"):
+        pass
+    else:
+        ### Quitamos el str de datos de tabla sin formato
+        if vec.startswith("            "):
+            pass
+        else:
+            ### Quitamos el str del tipo de variable
+            vec = vec.replace('<IPython.core.display.Markdown object>', '')
+            ### Damos formato a tablas
+            if vec.startswith('<div>\n<style scoped>'):
+                vec = vec.replace('NaN', 'Sin datos')
+                vec = BeautifulSoup(vec, 'html.parser').find('table')
+                vec['class'] = vec.get('class', []) + [' table table-dark table-striped table-hover table-sm']
+                vec = '<div class="table-responsive">' + str(vec) + '</div>'
+            ### Finalmente, añadimos al vector
+            vec_ += '<div class="row"><br><div class="col text-light">' + vec + '</div></div>'
+
+### Abrimos y modificamos el HTML
+with open('../../_build/html/dinamic/balance.html', 'w', encoding='UTF-8') as f:
+    f.write('''<html>
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js">
+    </script>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8">
+    <title>Balance histórico 📊 &#8212; La pandemia por la ventana</title>
+    </head>
+    <body>
+    <nav class="navbar nnavbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="https://pandemiaventana.github.io/pandemiaventana/">
+    <img src="./logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
+    Numeral.lab
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Reporte diario <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html">Indicador de fase</a>
+      <a class="nav-item nav-link" href="https://pandemiaventana.github.io/pandemiaventana/">La pandemia por la ventana</a>
+    </div>
+    </div>
+    </nav>
+    <div class="container-fluid bg-dark text-light">''' 
+    + vec_ + 
+    '''</div>
+    </body>
+    </html>''')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_3395/2824493156.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0moutputs_[0m [0;34m=[0m [0mreportediario[0m[0;34m.[0m[0moutputs[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;34m[0m[0m
+[1;32m      3[0m [0mvec_out[0m [0;34m=[0m [0;34m[[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mfor[0m [0mouts_[0m [0;32min[0m [0moutputs_[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0;31m### Convertimos a lista los outputs[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'reportediario' is not defined
+NameError: name 'reportediario' is not defined
+
