@@ -308,7 +308,7 @@ vec_ = ''
 for vec in vec_out:
     vec = str(vec)
     ### Quitamos configuración de Plot.ly
-    if vec.startswith("{'config':"):
+    if vec.startswith("{'data':"):
         pass
     else:
         ### Quitamos el str de datos de tabla sin formato
