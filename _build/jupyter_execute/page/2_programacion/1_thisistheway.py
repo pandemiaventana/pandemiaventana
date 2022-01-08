@@ -402,7 +402,7 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # ### Manipulando (*ahora sí*)
 
-# In[3]:
+# In[530]:
 
 
 # Manipulando datos
@@ -681,7 +681,7 @@ poblacion_yomevacuno = 286597
 # 
 # Los cambios siempre son para mejor.
 
-# In[4]:
+# In[531]:
 
 
 # Uniendo datos
@@ -846,7 +846,7 @@ df
 
 # ### CSV
 
-# In[5]:
+# In[532]:
 
 
 # Exportando información
@@ -1023,7 +1023,7 @@ pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2°
 
 # ### Reporte diario
 
-# In[6]:
+# In[533]:
 
 
 ### Infografías generadas
@@ -1198,7 +1198,7 @@ print(desc1)
 
 # ### Balance de vacunas
 
-# In[7]:
+# In[534]:
 
 
 ### Balance vacunas ###
@@ -1232,13 +1232,13 @@ print(desc2)
 
 # ### Indicador de fase
 
-# In[8]:
+# In[535]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[9]:
+# In[536]:
 
 
 ### Cambios
@@ -1281,7 +1281,7 @@ display(Markdown(pred))
 
 # ### Toque de queda a las 00:00 hrs.
 
-# In[10]:
+# In[537]:
 
 
 ### Balance vacunas ###
@@ -1333,7 +1333,7 @@ print(desc2)
 
 # ### Reporte diario
 
-# In[11]:
+# In[538]:
 
 
 ### Graficando para reporte diario ###
@@ -1688,7 +1688,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[12]:
+# In[539]:
 
 
 ### Generando reporte diario ###
@@ -2034,7 +2034,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[13]:
+# In[540]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2083,7 +2083,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[14]:
+# In[541]:
 
 
 ### Ejemplo 1 ###
@@ -2105,7 +2105,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[15]:
+# In[542]:
 
 
 ### Ejemplo 2 ###
@@ -2165,7 +2165,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[16]:
+# In[543]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2221,7 +2221,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[17]:
+# In[544]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')

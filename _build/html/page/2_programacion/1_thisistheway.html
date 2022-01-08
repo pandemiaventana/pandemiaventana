@@ -1321,6 +1321,174 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3111</span><span class="o">/</span><span class="mf">1986348969.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> 
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="c1">### csv81 (vacunación por edad 2° dosis), producto 81</span>
+<span class="ne">---&gt; </span><span class="mi">46</span> <span class="n">csv81_edad2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto81/vacunacion_comuna_edad_2daDosis.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> 
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="c1">### csv81 (vacunación por edad única dosis), producto 81</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span> 
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> 
+<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> 
+<span class="g g-Whitespace">    </span><span class="mi">588</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span> 
+<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span> 
+<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">809</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span> 
+<span class="ne">--&gt; </span><span class="mi">811</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">812</span> 
+<span class="g g-Whitespace">    </span><span class="mi">813</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1038</span>             <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1040</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1042</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> 
+<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="c1"># open handles</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>             <span class="n">memory_map</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>             <span class="n">storage_options</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="ne">--&gt; </span><span class="mi">229</span>             <span class="n">errors</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>         <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span>         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">614</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">616</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/common.py</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>         <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span>         <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">312</span>         <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span>             <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span>             <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/io/common.py</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>     <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> 
+<span class="ne">--&gt; </span><span class="mi">212</span>     <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> 
+<span class="g g-Whitespace">    </span><span class="mi">214</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/urllib/request.py</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">222</span>     <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span> 
+<span class="g g-Whitespace">    </span><span class="mi">224</span> <span class="k">def</span> <span class="nf">install_opener</span><span class="p">(</span><span class="n">opener</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/urllib/request.py</span> in <span class="ni">open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span>             <span class="n">req</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span> 
+<span class="ne">--&gt; </span><span class="mi">525</span>         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span> 
+<span class="g g-Whitespace">    </span><span class="mi">527</span>         <span class="c1"># post-process response</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/urllib/request.py</span> in <span class="ni">_open</span><span class="nt">(self, req, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span>         <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
+<span class="ne">--&gt; </span><span class="mi">543</span>                                   <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span>         <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">545</span>             <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/urllib/request.py</span> in <span class="ni">_call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>         <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>             <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">503</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>             <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>                 <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/urllib/request.py</span> in <span class="ni">https_open</span><span class="nt">(self, req)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1391</span>         <span class="k">def</span> <span class="nf">https_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1392</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">1393</span>                 <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">,</span> <span class="n">check_hostname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_check_hostname</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1394</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1395</span>         <span class="n">https_request</span> <span class="o">=</span> <span class="n">AbstractHTTPHandler</span><span class="o">.</span><span class="n">do_request_</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/urllib/request.py</span> in <span class="ni">do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1351</span>             <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
+<span class="g g-Whitespace">   </span><span class="mi">1352</span>                 <span class="k">raise</span> <span class="n">URLError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1353</span>             <span class="n">r</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1354</span>         <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1355</span>             <span class="n">h</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1371</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1372</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1373</span>                 <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1374</span>             <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1375</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span>         <span class="c1"># read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">319</span>             <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span>             <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>                 <span class="k">break</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span> 
+<span class="g g-Whitespace">    </span><span class="mi">279</span>     <span class="k">def</span> <span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">280</span>         <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>             <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">589</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>             <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span>                   <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span>                   <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1071</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span>             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span>             <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">929</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2357,6 +2525,114 @@
       <td>...</td>
     </tr>
     <tr>
+      <th>2022-01-02</th>
+      <td>45,663.00</td>
+      <td>43,861.00</td>
+      <td>829.00</td>
+      <td>891.00</td>
+      <td>0.00</td>
+      <td>293.00</td>
+      <td>96.00</td>
+      <td>152.00</td>
+      <td>45.00</td>
+      <td>36.00</td>
+      <td>60.00</td>
+      <td>39.00</td>
+      <td>0.00</td>
+      <td>285.00</td>
+      <td>80,068.00</td>
+      <td>2,466.00</td>
+      <td>719,628.00</td>
+      <td>363.00</td>
+      <td>237.00</td>
+      <td>5.00</td>
+      <td>28.00</td>
+      <td>6.00</td>
+      <td>16.00</td>
+      <td>70.92</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.00</td>
+      <td>216.58</td>
+      <td>5.37</td>
+      <td>1.42</td>
+      <td>70.92</td>
+      <td>0.00</td>
+      <td>33.44</td>
+      <td>12.63</td>
+      <td>6.66</td>
+      <td>145.39</td>
+      <td>290.91</td>
+      <td>189.51</td>
+      <td>233.33</td>
+      <td>262.68</td>
+      <td>234.98</td>
+      <td>143.72</td>
+      <td>232.78</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>45,790.00</td>
+      <td>43,890.00</td>
+      <td>830.00</td>
+      <td>988.00</td>
+      <td>1.00</td>
+      <td>127.00</td>
+      <td>29.00</td>
+      <td>82.00</td>
+      <td>16.00</td>
+      <td>19.00</td>
+      <td>66.00</td>
+      <td>29.00</td>
+      <td>1.00</td>
+      <td>310.00</td>
+      <td>80,378.00</td>
+      <td>1,971.00</td>
+      <td>721,599.00</td>
+      <td>363.00</td>
+      <td>227.00</td>
+      <td>5.00</td>
+      <td>28.00</td>
+      <td>6.00</td>
+      <td>15.00</td>
+      <td>72.96</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>13,126.30</td>
+      <td>17,018.20</td>
+      <td>12,318.40</td>
+      <td>16,633.30</td>
+      <td>14,786.30</td>
+      <td>18,076.50</td>
+      <td>14,619.10</td>
+      <td>14,560.10</td>
+      <td>6.00</td>
+      <td>216.84</td>
+      <td>5.76</td>
+      <td>0.43</td>
+      <td>72.96</td>
+      <td>0.00</td>
+      <td>37.17</td>
+      <td>6.13</td>
+      <td>7.31</td>
+      <td>146.15</td>
+      <td>290.91</td>
+      <td>189.51</td>
+      <td>233.33</td>
+      <td>262.68</td>
+      <td>234.98</td>
+      <td>143.72</td>
+      <td>258.38</td>
+    </tr>
+    <tr>
       <th>2022-01-04</th>
       <td>45,881.00</td>
       <td>43,934.00</td>
@@ -2401,13 +2677,13 @@
       <td>39.37</td>
       <td>9.78</td>
       <td>7.96</td>
-      <td>146.15</td>
-      <td>290.91</td>
-      <td>189.51</td>
-      <td>233.33</td>
-      <td>262.68</td>
-      <td>234.98</td>
-      <td>143.72</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>270.66</td>
     </tr>
     <tr>
@@ -2455,13 +2731,13 @@
       <td>44.90</td>
       <td>12.34</td>
       <td>9.06</td>
-      <td>146.15</td>
-      <td>290.91</td>
-      <td>189.51</td>
-      <td>233.33</td>
-      <td>262.68</td>
-      <td>234.98</td>
-      <td>143.72</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>313.76</td>
     </tr>
     <tr>
@@ -2509,126 +2785,18 @@
       <td>54.15</td>
       <td>13.54</td>
       <td>10.15</td>
-      <td>146.15</td>
-      <td>290.91</td>
-      <td>189.51</td>
-      <td>233.33</td>
-      <td>262.68</td>
-      <td>234.98</td>
-      <td>143.72</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>384.04</td>
-    </tr>
-    <tr>
-      <th>2022-01-07</th>
-      <td>46,896.00</td>
-      <td>44,224.00</td>
-      <td>830.00</td>
-      <td>1,758.00</td>
-      <td>1.00</td>
-      <td>444.00</td>
-      <td>148.00</td>
-      <td>226.00</td>
-      <td>70.00</td>
-      <td>96.00</td>
-      <td>78.00</td>
-      <td>156.00</td>
-      <td>0.00</td>
-      <td>609.00</td>
-      <td>82,335.00</td>
-      <td>2,861.00</td>
-      <td>730,567.00</td>
-      <td>533.00</td>
-      <td>324.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>6.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>13,126.30</td>
-      <td>17,018.20</td>
-      <td>12,318.40</td>
-      <td>16,633.30</td>
-      <td>14,786.30</td>
-      <td>18,076.50</td>
-      <td>14,619.10</td>
-      <td>14,560.10</td>
-      <td>9.00</td>
-      <td>216.84</td>
-      <td>3.81</td>
-      <td>1.26</td>
-      <td>82.14</td>
-      <td>NaN</td>
-      <td>64.57</td>
-      <td>15.76</td>
-      <td>11.57</td>
-      <td>146.15</td>
-      <td>290.91</td>
-      <td>189.51</td>
-      <td>233.33</td>
-      <td>262.68</td>
-      <td>234.98</td>
-      <td>143.72</td>
-      <td>459.54</td>
-    </tr>
-    <tr>
-      <th>2022-01-08</th>
-      <td>47,450.00</td>
-      <td>44,392.00</td>
-      <td>831.00</td>
-      <td>2,144.00</td>
-      <td>0.00</td>
-      <td>555.00</td>
-      <td>272.00</td>
-      <td>70.00</td>
-      <td>213.00</td>
-      <td>128.00</td>
-      <td>79.00</td>
-      <td>168.00</td>
-      <td>1.00</td>
-      <td>624.00</td>
-      <td>82,959.00</td>
-      <td>2,279.00</td>
-      <td>732,846.00</td>
-      <td>533.00</td>
-      <td>328.00</td>
-      <td>8.00</td>
-      <td>NaN</td>
-      <td>6.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>10.00</td>
-      <td>217.10</td>
-      <td>3.32</td>
-      <td>1.25</td>
-      <td>82.14</td>
-      <td>NaN</td>
-      <td>77.59</td>
-      <td>20.51</td>
-      <td>12.96</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>560.12</td>
     </tr>
   </tbody>
 </table>
-<p>677 rows × 155 columns</p>
+<p>675 rows × 155 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -3065,27 +3233,27 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 08 de enero de 2022 🕑. 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 06 de enero de 2022 🕑. 
 
-• Infectados 555 casos nuevos de los cuales 272 con síntomas, 70 sin síntomas y 213 sin notificar, dando un total de 47,450 casos confirmados. Adicionalmente, 128 casos nuevos confirmados por antígeno y 79 casos totales con sospecha de reinfección. 🦠
-• Recuperadas 168 personas, sumando 44,392 recuperados totales. 💪
-• Perdieron la vida 1 persona(s), sumando 831 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
-• Informados 2,279 exámenes PCR dando un total de 732,846 exámenes PCR totales en la región. En antígenos, 624 informados y 82,959 acumulados. 🌡️
-• Respecto a residencias sanitarias, 8 recintos de hospedaje con 533 cupos, de los cuales 328 están utilizados. 🏨
-• Se reportaron 2,144 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 560. 🧪
-• La tasa de crecimiento es del 1.25: curva de contagios al alza.
+• Infectados 352 casos nuevos de los cuales 135 con síntomas, 156 sin síntomas y 61 sin notificar, dando un total de 46,450 casos confirmados. Adicionalmente, 65 casos nuevos confirmados por antígeno y 74 casos totales con sospecha de reinfección. 🦠
+• Recuperadas 85 personas, sumando 44,068 recuperados totales. 💪
+• Perdieron la vida 0 persona(s), sumando 830 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
+• Informados 2,694 exámenes PCR dando un total de 727,706 exámenes PCR totales en la región. En antígenos, 480 informados y 81,726 acumulados. 🌡️
+• Respecto a residencias sanitarias, 5 recintos de hospedaje con 363 cupos, de los cuales 218 están utilizados. 🏨
+• Se reportaron 1,470 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 384. 🧪
+• La tasa de crecimiento es del 1.63: curva de contagios al alza.
 • Hasta ayer, 6 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 82.1% ± 6.1%. 🆘
-• La positividad PCR fue del 19%, con una positividad media móvil semanal del 10%. En antígeno, un 21% de positividad. 😷
-• De cada cien mil habitantes en la región, 217 fallecen por COVID-19. 😵
+• La positividad PCR fue del 11%, con una positividad media móvil semanal del 8%. En antígeno, un 14% de positividad. 😷
+• De cada cien mil habitantes en la región, 216 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 2.11. 💊
-• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 77.6. 💦
-• En el proceso de vacunación, 106.8% vacunados de la población objetivo (al menos, 306,125 personas con cuadro de vacunación completo). 💦
+• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 54.2. 💦
+• En el proceso de vacunación, 106.4% vacunados de la población objetivo (al menos, 304,970 personas con cuadro de vacunación completo). 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
 *Datos actualizados hasta las 21 hrs. del día anterior.
 
-[ CAMBIOS EN LA 560° EDICION ⚙️ ]
+[ CAMBIOS EN LA 558° EDICION ⚙️ ]
 • Ninguno.
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
@@ -3134,13 +3302,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 08 de enero de 2022. 🕑 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 06 de enero de 2022. 🕑 
 
-• El 106.8% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 306,125 personas con cuadros de vacunación completo.
+• El 106.39999999999999% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 304,970 personas con cuadros de vacunación completo.
 
 *Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
 
-[ CAMBIOS EN LA 81° EDICION ⚙️ ]
+[ CAMBIOS EN LA 80° EDICION ⚙️ ]
 • Ninguno
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
@@ -3213,21 +3381,21 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Indicador FASE, 08 de enero de 2022. 🕑</p>
+<p>Indicador FASE, 06 de enero de 2022. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.898%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>99.336%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.791%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>97.651%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>158</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>96.734%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>94.818%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>28</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.226%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>96.939%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>49</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>97.166%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>96.906%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>94.158%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>92.67%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>28</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>93.837%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>94.681%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>28</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 63° EDICION ⚙️ ]</p>
@@ -3283,11 +3451,11 @@ Actualmente, la comuna registra <b>28</b> días en <b style="color:dodgerblue">A
 
 Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
 
-• Tasa de incidencia de activos menor a 150 (actualmente es 560). ❌
-• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es 106.8%). ✔️
+• Tasa de incidencia de activos menor a 150 (actualmente es 384). ❌
+• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es 106.39999999999999%). ✔️
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Datos actualizados de acuerdo a informes del 08 de enero de 2022.
+• Datos actualizados de acuerdo a informes del 06 de enero de 2022.
 • Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
 • Autor: Alejandro Dinamarca.
 
@@ -3430,7 +3598,7 @@ Para que en la Región se pueda aplazar el toque de queda se deben cumplir los s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:19: DeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\dinam\AppData\Local\Temp/ipykernel_11100/1562497236.py:19: DeprecationWarning:
 
 `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -4308,256 +4476,281 @@ La media general del error es de:  0.59 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">            <details>
-            <summary>Click to view session information</summary>
-            <pre>
-            -----
-            PIL                 8.4.0
-            bs4                 4.10.0
-            datetime            NA
-            json                2.0.9
-            locale              NA
-            markdownify         NA
-            math                NA
-            matplotlib          3.4.3
-            natsort             8.0.2
-            numpy               1.20.3
-            os                  NA
-            pandas              1.3.4
-            pkg_resources       NA
-            plotly              5.5.0
-            pybtex              0.24.0
-            requests            2.26.0
-            scipy               1.7.1
-            seaborn             0.11.2
-            session_info        1.0.0
-            sklearn             0.24.2
-            time                NA
-            types               NA
-            -----
-            </pre>
-            <details>
-            <summary>Click to view modules imported as dependencies</summary>
-            <pre>
-            abc                         NA
-            argparse                    1.1
-            array                       NA
-            ast                         NA
-            asyncio                     NA
-            atexit                      NA
-            attr                        21.4.0
-            backcall                    0.2.0
-            base64                      NA
-            bdb                         NA
-            beta_ufunc                  NA
-            binascii                    NA
-            binom_ufunc                 NA
-            bisect                      NA
-            bz2                         NA
-            cProfile                    NA
-            calendar                    NA
-            certifi                     2021.10.08
-            cffi                        1.15.0
-            charset_normalizer          2.0.10
-            cmath                       NA
-            cmd                         NA
-            code                        NA
-            codecs                      NA
-            codeop                      NA
-            collections                 NA
-            colorama                    0.4.4
-            colorsys                    NA
-            concurrent                  NA
-            configparser                NA
-            contextlib                  NA
-            contextvars                 NA
-            copy                        NA
-            copyreg                     NA
-            csv                         1.0
-            ctypes                      1.1.0
-            curses                      NA
-            cycler                      0.10.0
-            cython_runtime              NA
-            dataclasses                 NA
-            dateutil                    2.8.2
-            debugpy                     1.5.1
-            decimal                     1.70
-            decorator                   5.1.1
-            defusedxml                  0.7.1
-            difflib                     NA
-            dis                         NA
-            distutils                   3.7.12
-            email                       NA
-            encodings                   NA
-            entrypoints                 0.3
-            enum                        NA
-            errno                       NA
-            faulthandler                NA
-            fcntl                       NA
-            filecmp                     NA
-            fnmatch                     NA
-            fractions                   NA
-            functools                   NA
-            gc                          NA
-            genericpath                 NA
-            getopt                      NA
-            getpass                     NA
-            gettext                     NA
-            glob                        NA
-            grp                         NA
-            gzip                        NA
-            hashlib                     NA
-            heapq                       NA
-            hmac                        NA
-            html                        NA
-            http                        NA
-            idna                        3.3
-            imp                         NA
-            importlib                   NA
-            importlib_metadata          NA
-            inspect                     NA
-            io                          NA
-            ipaddress                   1.0
-            ipykernel                   6.6.1
-            ipython_genutils            0.2.0
-            ipywidgets                  7.6.5
-            itertools                   NA
-            jedi                        0.18.1
-            joblib                      1.1.0
-            jsonschema                  3.2.0
-            keyword                     NA
-            kiwisolver                  1.3.2
-            linecache                   NA
-            logging                     0.5.1.2
-            lzma                        NA
-            marshal                     4
-            matplotlib_inline           NA
-            mimetypes                   NA
-            mmap                        NA
-            mpl_toolkits                NA
-            multiprocessing             NA
-            nbformat                    5.1.3
-            nbinom_ufunc                NA
-            netrc                       NA
-            ntpath                      NA
-            numbers                     NA
-            opcode                      NA
-            operator                    NA
-            packaging                   21.3
-            parso                       0.8.3
-            pathlib                     NA
-            pdb                         NA
-            pexpect                     4.8.0
-            pickle                      NA
-            pickleshare                 0.7.5
-            pkgutil                     NA
-            platform                    1.0.8
-            plistlib                    NA
-            posix                       NA
-            posixpath                   NA
-            pprint                      NA
-            profile                     NA
-            prompt_toolkit              3.0.24
-            pstats                      NA
-            pty                         NA
-            ptyprocess                  0.7.0
-            pvectorc                    NA
-            pwd                         NA
-            pydev_ipython               NA
-            pydevconsole                NA
-            pydevd                      2.6.0
-            pydevd_concurrency_analyser NA
-            pydevd_file_utils           NA
-            pydevd_plugins              NA
-            pydevd_tracing              NA
-            pydoc                       NA
-            pydoc_data                  NA
-            pyexpat                     NA
-            pygments                    2.11.2
-            pyparsing                   3.0.6
-            pyrsistent                  NA
-            pytz                        2021.3
-            queue                       NA
-            quopri                      NA
-            random                      NA
-            re                          2.2.1
-            reprlib                     NA
-            resource                    NA
-            runpy                       NA
-            secrets                     NA
-            select                      NA
-            selectors                   NA
-            shlex                       NA
-            shutil                      NA
-            signal                      NA
-            site                        NA
-            six                         1.16.0
-            socket                      NA
-            socketserver                0.4
-            soupsieve                   2.3.1
-            sphinxcontrib               NA
-            sqlite3                     2.6.0
-            sre_compile                 NA
-            sre_constants               NA
-            sre_parse                   NA
-            ssl                         NA
-            stat                        NA
-            storemagic                  NA
-            string                      NA
-            stringprep                  NA
-            struct                      NA
-            subprocess                  NA
-            sys                         3.7.12 (default, Sep  6 2021, 07:19:30) 
-[GCC 9.3.0]
-            sysconfig                   NA
-            tarfile                     0.9.0
-            tempfile                    NA
-            tenacity                    NA
-            termios                     NA
-            textwrap                    NA
-            threading                   NA
-            timeit                      NA
-            token                       NA
-            tokenize                    NA
-            tornado                     6.1
-            traceback                   NA
-            traitlets                   5.1.1
-            tty                         NA
-            typing                      NA
-            typing_extensions           NA
-            unicodedata                 NA
-            unittest                    NA
-            urllib                      NA
-            urllib3                     1.26.8
-            uu                          NA
-            uuid                        NA
-            warnings                    NA
-            wcwidth                     0.2.5
-            weakref                     NA
-            webbrowser                  NA
-            xml                         NA
-            xmlrpc                      NA
-            zipfile                     NA
-            zipimport                   NA
-            zipp                        NA
-            zlib                        1.0
-            zmq                         22.3.0
-            </pre>
-            </details> <!-- seems like this ends pre, so might as well be explicit -->
-            <pre>
-            -----
-            IPython             7.31.0
-            jupyter_client      7.1.0
-            jupyter_core        4.9.1
-            notebook            6.4.6
-            -----
-            Python 3.7.12 (default, Sep  6 2021, 07:19:30) [GCC 9.3.0]
-            Linux-5.11.0-1022-azure-x86_64-with-debian-bullseye-sid
-            2 logical CPU cores, x86_64
-            -----
-            Session information updated at 2022-01-08 20:54
-            </pre>
-            </details></div></div>
+<div class="output text_html"><details>
+<summary>Click to view session information</summary>
+<pre>
+-----
+PIL                 8.4.0
+bs4                 4.10.0
+datetime            NA
+json                2.0.9
+locale              NA
+markdownify         NA
+math                NA
+matplotlib          3.4.3
+natsort             8.0.2
+numpy               1.20.3
+os                  NA
+pandas              1.3.4
+pkg_resources       NA
+plotly              5.5.0
+pybtex              0.24.0
+requests            2.26.0
+scipy               1.7.1
+seaborn             0.11.2
+session_info        1.0.0
+sklearn             0.24.2
+time                NA
+types               NA
+-----
+</pre>
+<details>
+<summary>Click to view modules imported as dependencies</summary>
+<pre>
+abc                         NA
+anyio                       NA
+argparse                    1.1
+array                       NA
+ast                         NA
+asyncio                     NA
+atexit                      NA
+attr                        21.2.0
+babel                       2.9.1
+backcall                    0.2.0
+base64                      NA
+bdb                         NA
+beta_ufunc                  NA
+binascii                    NA
+binom_ufunc                 NA
+bisect                      NA
+bottleneck                  1.3.2
+brotli                      NA
+bz2                         NA
+cProfile                    NA
+calendar                    NA
+certifi                     2021.10.08
+cffi                        1.14.6
+chardet                     4.0.0
+charset_normalizer          2.0.4
+cmath                       NA
+cmd                         NA
+code                        NA
+codecs                      NA
+codeop                      NA
+collections                 NA
+colorama                    0.4.4
+colorsys                    NA
+concurrent                  NA
+configparser                NA
+contextlib                  NA
+contextvars                 NA
+copy                        NA
+copyreg                     NA
+csv                         1.0
+ctypes                      1.1.0
+cycler                      0.10.0
+cython_runtime              NA
+dataclasses                 NA
+dateutil                    2.8.2
+debugpy                     1.4.1
+decimal                     1.70
+decorator                   5.1.0
+defusedxml                  0.7.1
+difflib                     NA
+dis                         NA
+distutils                   3.9.7
+email                       NA
+encodings                   NA
+entrypoints                 0.3
+enum                        NA
+errno                       NA
+faulthandler                NA
+filecmp                     NA
+fnmatch                     NA
+fractions                   NA
+functools                   NA
+gc                          NA
+genericpath                 NA
+getopt                      NA
+getpass                     NA
+gettext                     NA
+glob                        NA
+gzip                        NA
+hashlib                     NA
+heapq                       NA
+hmac                        NA
+html                        NA
+html5lib                    1.1
+http                        NA
+idna                        3.2
+imp                         NA
+importlib                   NA
+inspect                     NA
+io                          NA
+ipaddress                   1.0
+ipykernel                   6.4.1
+ipython_genutils            0.2.0
+ipywidgets                  7.6.5
+itertools                   NA
+jedi                        0.18.0
+jinja2                      2.11.3
+joblib                      1.1.0
+json5                       NA
+jsonschema                  3.2.0
+jupyter_server              1.4.1
+jupyterlab_server           2.8.2
+keyword                     NA
+kiwisolver                  1.3.1
+linecache                   NA
+logging                     0.5.1.2
+lxml                        4.6.3
+lzma                        NA
+markupsafe                  1.1.1
+marshal                     4
+matplotlib_inline           NA
+mimetypes                   NA
+mkl                         2.4.0
+mmap                        NA
+mpl_toolkits                NA
+msvcrt                      NA
+multiprocessing             NA
+nbclassic                   NA
+nbformat                    5.1.3
+nbinom_ufunc                NA
+netrc                       NA
+nt                          NA
+ntpath                      NA
+ntsecuritycon               NA
+nturl2path                  NA
+numbers                     NA
+numexpr                     2.7.3
+olefile                     0.46
+opcode                      NA
+operator                    NA
+packaging                   21.0
+parso                       0.8.2
+pathlib                     NA
+pdb                         NA
+pickle                      NA
+pickleshare                 0.7.5
+pkgutil                     NA
+platform                    1.0.8
+plistlib                    NA
+posixpath                   NA
+pprint                      NA
+profile                     NA
+prometheus_client           NA
+prompt_toolkit              3.0.20
+pstats                      NA
+psutil                      5.8.0
+pvectorc                    NA
+pydev_ipython               NA
+pydevconsole                NA
+pydevd                      2.4.1
+pydevd_concurrency_analyser NA
+pydevd_file_utils           NA
+pydevd_plugins              NA
+pydevd_tracing              NA
+pydoc                       NA
+pydoc_data                  NA
+pyexpat                     NA
+pygments                    2.10.0
+pyparsing                   3.0.4
+pyrsistent                  NA
+pythoncom                   NA
+pytz                        2021.3
+pywintypes                  NA
+queue                       NA
+quopri                      NA
+random                      NA
+re                          2.2.1
+reprlib                     NA
+runpy                       NA
+secrets                     NA
+select                      NA
+selectors                   NA
+send2trash                  NA
+shlex                       NA
+shutil                      NA
+signal                      NA
+site                        NA
+six                         1.16.0
+sniffio                     1.2.0
+socket                      NA
+socketserver                0.4
+socks                       1.7.1
+soupsieve                   2.2.1
+sphinxcontrib               NA
+sqlite3                     2.6.0
+sre_compile                 NA
+sre_constants               NA
+sre_parse                   NA
+ssl                         NA
+stat                        NA
+statsmodels                 0.12.2
+storemagic                  NA
+string                      NA
+stringprep                  NA
+struct                      NA
+subprocess                  NA
+sys                         3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
+sysconfig                   NA
+tarfile                     0.9.0
+tempfile                    NA
+tenacity                    NA
+textwrap                    NA
+threading                   NA
+timeit                      NA
+token                       NA
+tokenize                    NA
+tornado                     6.1
+traceback                   NA
+traitlets                   5.1.0
+typing                      NA
+typing_extensions           NA
+unicodedata                 NA
+unittest                    NA
+urllib                      NA
+urllib3                     1.26.7
+uu                          NA
+uuid                        NA
+warnings                    NA
+wcwidth                     0.2.5
+weakref                     NA
+webbrowser                  NA
+webencodings                0.5.1
+win32api                    NA
+win32com                    NA
+win32con                    NA
+win32security               NA
+win32trace                  NA
+winerror                    NA
+winreg                      NA
+wsgiref                     NA
+xml                         NA
+xmlrpc                      NA
+zipfile                     NA
+zipimport                   NA
+zlib                        1.0
+zmq                         22.2.1
+zope                        NA
+</pre>
+</details> <!-- seems like this ends pre, so might as well be explicit -->
+<pre>
+-----
+IPython             7.29.0
+jupyter_client      6.1.12
+jupyter_core        4.8.1
+jupyterlab          3.2.1
+notebook            6.4.5
+-----
+Python 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
+Windows-10-10.0.22000-SP0
+12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+-----
+Session information updated at 2022-01-06 17:27
+</pre>
+</details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
