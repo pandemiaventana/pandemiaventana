@@ -41,4 +41,5 @@ sections:
   sections:
   - file: page/6_basedatos/1_basedatos
   - file: page/6_basedatos/2_basedatos
+  - file: out/variants/variants
 - file: page/7_bibliografia/0_bibliografia
