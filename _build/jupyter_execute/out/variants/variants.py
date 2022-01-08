@@ -18,7 +18,15 @@ import pandas as pd
 import requests, json, locale
 # Módulo para graficar
 import plotly.graph_objects as go
-locale.setlocale(locale.LC_TIME, 'es_ES') 
+# Para formato local
+import locale
+## Según Windows o Ubuntu
+try:
+    ### Windows
+    locale.setlocale(locale.LC_ALL, 'esp')
+except Exception:
+    ### Ubuntu (action)
+    locale.setlocale(locale.LC_ALL, 'es_CL.UTF-8') 
 
 
 # In[2]:
@@ -42,7 +50,7 @@ variants_nested.drop('Semana', axis=1, inplace=True)
 variants_nested.to_csv('variantesglobales.csv')
 
 
-# In[35]:
+# In[3]:
 
 
 # Filtramos datos de chilito
@@ -54,14 +62,17 @@ variants_nested_cl.dropna(axis=1, how='all', inplace=True)
 variants_nested_cl.to_csv('varianteschile.csv')
 
 
-# In[95]:
+# In[4]:
 
 
+# Objeto figura
 fig = go.Figure()
+# Graficamos por cada una de las variantes
 for variante in variants_nested_cl.loc[:, '20B/S:732A':]:
     fig.add_trace(go.Scatter(x=variants_nested_cl.index.strftime('%d %b %Y'), y=variants_nested_cl[variante],
                     mode='lines',
                     name=variante))
+# Customizando gráfica
 fig.update_layout(title='Variantes de Coronavirus en Chile',
     xaxis=dict(
         showline=True,
@@ -84,6 +95,7 @@ fig.update_layout(title='Variantes de Coronavirus en Chile',
     ),
     plot_bgcolor='white'
 )
+# Customizando ejes
 fig.update_xaxes(
         tickangle = 20,
 nticks=15)
