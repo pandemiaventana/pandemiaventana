@@ -8,4 +8,4 @@ session_info==1.0.0
 IPython==7.31.0
 jupyter_client==7.1.0
 jupyter_core==4.9.1
-notebook==6.4.6
+notebook==6.4.7
