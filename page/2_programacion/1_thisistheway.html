@@ -1494,11 +1494,14 @@
 <div class="math notranslate nohighlight" id="equation-incidencia">
 <span class="eqno">(10)<a class="headerlink" href="#equation-incidencia" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
-\Large Tasa_{activos} = \frac{Activos_{confirmados} + Activos_{probables}}{población}*100000
+\Large Tasa_{activos} = \frac{Activos_{confirmados}}{población}*100000
 \end{align}
 \]</div>
 <blockquote>
 <div><p>La tasa de activos puede variar respecto al informe epidemiológico dado que la del presente repositorio se registra un día después (<em>con los datos del día anterior por el corte</em>).</p>
+</div></blockquote>
+<blockquote>
+<div><p>Al 13 de enero de 2022, se modifica la fórmula empleando la utilizada por el Ministerio de Salud de Chile a modo de cuadrar con lo entregado por el mismo ministerio en sus reportes diarios.</p>
 </div></blockquote>
 </div>
 </div>
@@ -1647,7 +1650,7 @@
 <span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Camina&#39;</span><span class="p">,</span> <span class="s1">&#39;Camiña&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Desconocido Tarapaca&#39;</span><span class="p">,</span> <span class="s1">&#39;Comuna desconocida&#39;</span><span class="p">)</span>
 <span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">csv19</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">][</span><span class="mi">4</span><span class="p">:]</span>
 <span class="n">casoscomuna_activos</span> <span class="o">=</span> <span class="n">casoscomuna_activos</span><span class="p">[</span><span class="n">casoscomuna_activos</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-<span class="n">incidencia_activos</span> <span class="o">=</span> <span class="p">(((</span><span class="n">casos_activos</span> <span class="o">+</span> <span class="n">casos_activos_probables</span><span class="p">)</span><span class="o">/</span><span class="n">poblacion</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">incidencia_activos</span> <span class="o">=</span> <span class="p">(((</span><span class="n">casos_activos</span><span class="p">)</span><span class="o">/</span><span class="n">poblacion</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span>
 
 <span class="c1">### Paso a paso histórico por comuna (descartamos zonas rurales)</span>
 <span class="n">pasopaso_comuna</span> <span class="o">=</span> <span class="n">csv74</span><span class="p">[</span><span class="n">csv74</span><span class="p">[</span><span class="s1">&#39;region_residencia&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">csv74</span><span class="p">[</span><span class="n">csv74</span><span class="p">[</span><span class="s1">&#39;region_residencia&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;zona&#39;</span><span class="p">,:]</span> <span class="o">!=</span> <span class="s1">&#39;Rural&#39;</span><span class="p">]</span>
@@ -2408,7 +2411,7 @@
       <td>262.68</td>
       <td>234.98</td>
       <td>143.72</td>
-      <td>649.21</td>
+      <td>648.95</td>
     </tr>
     <tr>
       <th>2022-01-10</th>
@@ -2462,7 +2465,7 @@
       <td>263.13</td>
       <td>234.98</td>
       <td>143.72</td>
-      <td>751.62</td>
+      <td>751.36</td>
     </tr>
     <tr>
       <th>2022-01-11</th>
@@ -2516,7 +2519,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>857.43</td>
+      <td>857.17</td>
     </tr>
     <tr>
       <th>2022-01-12</th>
@@ -2923,8 +2926,8 @@
         <span class="n">situacioncurva_hoy</span> <span class="o">=</span> <span class="s2">&quot;curva de contagios al alza&quot;</span>
 
 <span class="c1">### Proceso de vacunación a población objetivo objetivo</span>
-<span class="n">procesovacunacion_2dosis</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">procesovacunacion_unica</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">procesovacunacion_2dosis</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">procesovacunacion_unica</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">procesovacunacion_hoy</span> <span class="o">=</span> <span class="n">procesovacunacion_2dosis</span> <span class="o">+</span> <span class="n">procesovacunacion_unica</span>
 <span class="n">procesovacunaciontotales_hoy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)</span>
 
@@ -2990,8 +2993,8 @@
 <span class="n">me_ayer</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mortalidad especifica *&#39;</span><span class="p">][</span><span class="n">weekend_datay</span><span class="p">]</span>
 
 <span class="c1">### Proceso de vacunación de población objetivo</span>
-<span class="n">procesovacunacion_ayer_2</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">procesovacunacion_ayer_unica</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion_yomevacuno</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">procesovacunacion_ayer_2</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">procesovacunacion_ayer_unica</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">procesovacunacion_ayer</span> <span class="o">=</span> <span class="n">procesovacunacion_ayer_2</span> <span class="o">+</span> <span class="n">procesovacunacion_ayer_unica</span>
 
 
@@ -3079,7 +3082,7 @@
 • De cada cien mil habitantes en la región, 217 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 1.89. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 159.1. 💦
-• En el proceso de vacunación, 107.1% vacunados de la población objetivo (al menos, 306,942 personas con cuadro de vacunación completo). 💦
+• En el proceso de vacunación, 80.2% vacunados de la población objetivo (al menos, 306,942 personas con cuadro de vacunación completo). 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
@@ -3136,7 +3139,7 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 13 de enero de 2022. 🕑 
 
-• El 107.09999999999998% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 306,942 personas con cuadros de vacunación completo.
+• El 80.2% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 306,942 personas con cuadros de vacunación completo.
 
 *Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
 
@@ -3215,19 +3218,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 13 de enero de 2022. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.436%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.829%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.542%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.45%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>165</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 <li><p>De acuerdo al algoritmo, y con un <b>100.0%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>35</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>83.884%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>82.055%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>56</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>99.151%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.539%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>51.291%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>52.033%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.985%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.828%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 64° EDICION ⚙️ ]</p>
@@ -4533,7 +4536,7 @@ La media general del error es de:  0.58 %
             Linux-5.11.0-1025-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-01-13 19:49
+            Session information updated at 2022-01-13 20:20
             </pre>
             </details></div></div>
 </div>
