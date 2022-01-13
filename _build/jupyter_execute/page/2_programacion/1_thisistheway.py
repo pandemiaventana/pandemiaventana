@@ -620,12 +620,12 @@ positividad_diaria = ((casos_cumulativos - casos_cumulativos_antigeno)/pcr_cumul
 positividad_diaria = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos)
 
 ### Positividad media móvil redondeada
-positividad_media_movil = positividad_diaria.rolling(7).mean().round(0)
+positividad_media_movil = positividad_diaria.rolling(7).mean().round(2)
 ### Rellenamos datos anteriores al primer registro de los antígenos
-positividad_media_movil = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos).rolling(7).mean().round(0)
+positividad_media_movil = positividad_diaria.fillna(100*(casos_cumulativos)/pcr_cumulativos).rolling(7).mean().round(2)
 
 ## Positividad PCR redondeada
-positividad_diaria = positividad_diaria.round(0)
+positividad_diaria = positividad_diaria.round(2)
 
 ### Positividad diaria ANTÍGENO
 positividad_antigeno = (casos_cumulativos_antigeno[antigenos.first_valid_index():].transpose()/
@@ -1094,7 +1094,7 @@ ed_hoy = (d2 - d1).days + (d3 - d2).days
 ed_hoy = (d2 - d1).days + (d3 - d2).days
 
 ### Valores de hoy a integer
-casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, activos_hoy, activosprobables_hoy, ucidiaria_hoy, positividad_hoy, positividadmovil_hoy, me_hoy, procesovacunaciontotales_hoy,ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy, positividad_antigeno = [ format(int(i), ',d') for i in [
+casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, activos_hoy, activosprobables_hoy, ucidiaria_hoy, me_hoy, procesovacunaciontotales_hoy,ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy, positividad_antigeno = [ format(int(i), ',d') for i in [
 casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
 recuperados_hoy, recuperadosacumulados_hoy, \
 fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
@@ -1102,7 +1102,6 @@ pcrnuevos_hoy, pcracumulados_hoy, \
 residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, \
 activos_hoy, activosprobables_hoy, \
 ucidiaria_hoy, \
-positividad_hoy, positividadmovil_hoy, \
 me_hoy, procesovacunaciontotales_hoy,\
 ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy, positividad_antigeno]]
 
@@ -1718,6 +1717,8 @@ roboto_data2 = ImageFont.truetype(BytesIO(roboto.content), 30)
 roboto_data3 = ImageFont.truetype(BytesIO(roboto.content), 40)
 coolvetica_data0 = ImageFont.truetype(BytesIO(coolvetica.content), 43)
 coolvetica_data1 = ImageFont.truetype(BytesIO(coolvetica.content), 75)
+coolvetica_data21 = ImageFont.truetype(BytesIO(coolvetica.content), 105)
+coolvetica_data22 = ImageFont.truetype(BytesIO(coolvetica.content), 110)
 coolvetica_data2 = ImageFont.truetype(BytesIO(coolvetica.content), 135)
 coolvetica_data3 = ImageFont.truetype(BytesIO(coolvetica.content), 100)
 coolvetica_data4 = ImageFont.truetype(BytesIO(coolvetica.content), 180)
@@ -1802,8 +1803,8 @@ diario4.save('../../out/diario/4.png')
 txt = ImageDraw.Draw(diario5)
 
 ### Textos
-txt.text((780, 70), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
-txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((780, 90), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data22) # casos con sintomas
+txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data21, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((190, 860), 'Antígeno: {}%'.format(positividad_antigeno), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 txt.text((540, 680), '{}%'.format(int(round(procesovacunacion_hoy, 0))), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
