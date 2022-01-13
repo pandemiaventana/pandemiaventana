@@ -1333,7 +1333,7 @@ print(desc2)
 
 # ### Reporte diario
 
-# In[11]:
+# In[538]:
 
 
 ### Graficando para reporte diario ###
@@ -1688,7 +1688,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[12]:
+# In[539]:
 
 
 ### Generando reporte diario ###
@@ -2034,7 +2034,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[13]:
+# In[540]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2083,7 +2083,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[14]:
+# In[541]:
 
 
 ### Ejemplo 1 ###
@@ -2105,7 +2105,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[15]:
+# In[542]:
 
 
 ### Ejemplo 2 ###
@@ -2165,7 +2165,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[16]:
+# In[543]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2221,7 +2221,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[17]:
+# In[544]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
