@@ -379,11 +379,13 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # $$
 # \begin{align}
-# \Large Tasa_{activos} = \frac{Activos_{confirmados} + Activos_{probables}}{población}*100000
+# \Large Tasa_{activos} = \frac{Activos_{confirmados}}{población}*100000
 # \end{align}
 # $$ (incidencia)
 # 
 # > La tasa de activos puede variar respecto al informe epidemiológico dado que la del presente repositorio se registra un día después (*con los datos del día anterior por el corte*).
+# 
+# > Al 13 de enero de 2022, se modifica la fórmula empleando la utilizada por el Ministerio de Salud de Chile a modo de cuadrar con lo entregado por el mismo ministerio en sus reportes diarios.
 # 
 # 
 # ### Limpieza de datos
@@ -531,7 +533,7 @@ casoscomuna_activos = csv19[csv19.columns[csv19.columns.str.contains('^Tarapac',
 casoscomuna_activos.columns = 'Casos activos en ' + csv19[csv19.columns[csv19.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
 casoscomuna_activos.index = csv19['Region'][4:]
 casoscomuna_activos = casoscomuna_activos[casoscomuna_activos.columns[:-1]]
-incidencia_activos = (((casos_activos + casos_activos_probables)/poblacion)*100000)
+incidencia_activos = (((casos_activos)/poblacion)*100000)
 
 ### Paso a paso histórico por comuna (descartamos zonas rurales)
 pasopaso_comuna = csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc[:, csv74[csv74['region_residencia'] == 'Tarapacá'].transpose().loc['zona',:] != 'Rural']
@@ -1077,8 +1079,8 @@ else:
         situacioncurva_hoy = "curva de contagios al alza"
 
 ### Proceso de vacunación a población objetivo objetivo
-procesovacunacion_2dosis = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - menores18)/(poblacion_yomevacuno), 3)*100)
-procesovacunacion_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion_yomevacuno), 3)*100)
+procesovacunacion_2dosis = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - menores18)/(poblacion), 3)*100)
+procesovacunacion_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion), 3)*100)
 procesovacunacion_hoy = procesovacunacion_2dosis + procesovacunacion_unica
 procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18)
 
@@ -1134,8 +1136,8 @@ positividad_ayer = df['Positividad diaria'][weekend_datay]
 me_ayer = df['Mortalidad especifica *'][weekend_datay]
 
 ### Proceso de vacunación de población objetivo
-procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)] - menores18)/(poblacion_yomevacuno), 3)*100)
-procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion_yomevacuno), 3)*100)
+procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)] - menores18)/(poblacion), 3)*100)
+procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion), 3)*100)
 procesovacunacion_ayer = procesovacunacion_ayer_2 + procesovacunacion_ayer_unica
 
 
