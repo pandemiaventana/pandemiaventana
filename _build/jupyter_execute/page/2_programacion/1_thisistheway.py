@@ -1281,40 +1281,38 @@ display(Markdown(pred))
 
 # ### Toque de queda a las 00:00 hrs.
 
-# In[10]:
-
-
-### Balance vacunas ###
-
-if int(tasa_activos)<150:
-    cumplimiento_tasa = '✔️'
-else:
-    cumplimiento_tasa = '❌'
-    
-if int(procesovacunacion_hoy)>= 80:
-    cumplimiento_vacunacion = '✔️'
-else:
-    cumplimiento_vacunacion = '❌' 
-
-### Descripción
-desc2 = """¿Toque de queda a las 00:00 hrs.? 🕑
-
-Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
-
-• Tasa de incidencia de activos menor a 150 (actualmente es {}). {}
-• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}
-
-[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Datos actualizados de acuerdo a informes del {}.
-• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
-• Autor: Alejandro Dinamarca.
-
-¡A cuidarse Tarapacá! 😉
-""".format(tasa_activos, cumplimiento_tasa, procesovacunacion_hoy, cumplimiento_vacunacion, fecha_hoy)
-
-## Imprimimos
-print(desc2)
-
+# ```### Balance vacunas ###
+# 
+# if int(tasa_activos)<150:
+#     cumplimiento_tasa = '✔️'
+# else:
+#     cumplimiento_tasa = '❌'
+#     
+# if int(procesovacunacion_hoy)>= 80:
+#     cumplimiento_vacunacion = '✔️'
+# else:
+#     cumplimiento_vacunacion = '❌' 
+# 
+# ### Descripción
+# desc2 = \
+# """¿Toque de queda a las 00:00 hrs.? 🕑
+# 
+# Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
+# 
+# • Tasa de incidencia de activos menor a 150 (actualmente es {}). {}
+# • El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}
+# 
+# [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+# • Datos actualizados de acuerdo a informes del {}.
+# • Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+# • Autor: Alejandro Dinamarca.
+# 
+# ¡A cuidarse Tarapacá! 😉
+# """.format(tasa_activos, cumplimiento_tasa, procesovacunacion_hoy, cumplimiento_vacunacion, fecha_hoy)
+# 
+# ## Imprimimos
+# print(desc2)
+# ```
 
 # ## Graficando
 # 
@@ -1333,7 +1331,7 @@ print(desc2)
 
 # ### Reporte diario
 
-# In[538]:
+# In[10]:
 
 
 ### Graficando para reporte diario ###
@@ -1688,7 +1686,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[539]:
+# In[11]:
 
 
 ### Generando reporte diario ###
@@ -2034,7 +2032,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[540]:
+# In[12]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2083,7 +2081,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[541]:
+# In[13]:
 
 
 ### Ejemplo 1 ###
@@ -2105,7 +2103,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[542]:
+# In[14]:
 
 
 ### Ejemplo 2 ###
@@ -2165,7 +2163,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[543]:
+# In[15]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2221,7 +2219,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[544]:
+# In[16]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')

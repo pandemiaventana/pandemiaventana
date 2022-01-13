@@ -3215,19 +3215,19 @@
 <div class="cell_output docutils container">
 <p>Indicador FASE, 13 de enero de 2022. 🕑</p>
 <ul class="simple">
-<li><p>De acuerdo al algoritmo, y con un <b>98.803%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.638%</b> de probabilidad, <b>Alto Hospicio</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.387%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.355%</b> de probabilidad, <b>Camiña</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>165</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
 <li><p>De acuerdo al algoritmo, y con un <b>100.0%</b> de probabilidad, <b>Colchane</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>35</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>82.812%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>83.192%</b> de probabilidad, <b>Huara</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>56</b> días en <b style="color:dodgerblue">Apertura Inicial</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.661%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.456%</b> de probabilidad, <b>Iquique</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>7</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>53.659%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>52.556%</b> de probabilidad, <b>Pica</b> debería estar en <b style="color:dodgerblue">Apertura Inicial</b>.
 Actualmente, la comuna registra <b>0</b> días en <b style="color:gold">Preparación</b>.</p></li>
-<li><p>De acuerdo al algoritmo, y con un <b>98.908%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
+<li><p>De acuerdo al algoritmo, y con un <b>98.745%</b> de probabilidad, <b>Pozo Almonte</b> debería estar en <b style="color:gold">Preparación</b>.
 Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparación</b>.</p></li>
 </ul>
 <p>[ CAMBIOS EN LA 64° EDICION ⚙️ ]</p>
@@ -3242,56 +3242,37 @@ Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparac
 </div>
 <div class="section" id="toque-de-queda-a-las-00-00-hrs">
 <h3>Toque de queda a las 00:00 hrs.<a class="headerlink" href="#toque-de-queda-a-las-00-00-hrs" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Balance vacunas ###</span>
-
-<span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">tasa_activos</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">150</span><span class="p">:</span>
-    <span class="n">cumplimiento_tasa</span> <span class="o">=</span> <span class="s1">&#39;✔️&#39;</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">cumplimiento_tasa</span> <span class="o">=</span> <span class="s1">&#39;❌&#39;</span>
+<div class="highlight-### notranslate"><div class="highlight"><pre><span></span>
+if int(tasa_activos)&lt;150:
+    cumplimiento_tasa = &#39;✔️&#39;
+else:
+    cumplimiento_tasa = &#39;❌&#39;
     
-<span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">procesovacunacion_hoy</span><span class="p">)</span><span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
-    <span class="n">cumplimiento_vacunacion</span> <span class="o">=</span> <span class="s1">&#39;✔️&#39;</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">cumplimiento_vacunacion</span> <span class="o">=</span> <span class="s1">&#39;❌&#39;</span> 
+if int(procesovacunacion_hoy)&gt;= 80:
+    cumplimiento_vacunacion = &#39;✔️&#39;
+else:
+    cumplimiento_vacunacion = &#39;❌&#39; 
 
-<span class="c1">### Descripción</span>
-<span class="n">desc2</span> <span class="o">=</span> \
-<span class="sd">&quot;&quot;&quot;¿Toque de queda a las 00:00 hrs.? 🕑</span>
+### Descripción
+desc2 = \
+&quot;&quot;&quot;¿Toque de queda a las 00:00 hrs.? 🕑
 
-<span class="sd">Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:</span>
+Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
 
-<span class="sd">• Tasa de incidencia de activos menor a 150 (actualmente es {}). {}</span>
-<span class="sd">• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}</span>
+• Tasa de incidencia de activos menor a 150 (actualmente es {}). {}
+• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}
 
-<span class="sd">[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]</span>
-<span class="sd">• Datos actualizados de acuerdo a informes del {}.</span>
-<span class="sd">• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!</span>
-<span class="sd">• Autor: Alejandro Dinamarca.</span>
+[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+• Datos actualizados de acuerdo a informes del {}.
+• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+• Autor: Alejandro Dinamarca.
 
-<span class="sd">¡A cuidarse Tarapacá! 😉</span>
-<span class="sd">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tasa_activos</span><span class="p">,</span> <span class="n">cumplimiento_tasa</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">cumplimiento_vacunacion</span><span class="p">,</span> <span class="n">fecha_hoy</span><span class="p">)</span>
+¡A cuidarse Tarapacá! 😉
+&quot;&quot;&quot;.format(tasa_activos, cumplimiento_tasa, procesovacunacion_hoy, cumplimiento_vacunacion, fecha_hoy)
 
-<span class="c1">## Imprimimos</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">desc2</span><span class="p">)</span>
+## Imprimimos
+print(desc2)
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3423</span><span class="o">/</span><span class="mf">3140083791.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### Balance vacunas ###</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">tasa_activos</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">150</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">cumplimiento_tasa</span> <span class="o">=</span> <span class="s1">&#39;✔️&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;1,123&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -3427,7 +3408,7 @@ Actualmente, la comuna registra <b>4</b> días en <b style="color:gold">Preparac
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\dinam\AppData\Local\Temp/ipykernel_11100/1562497236.py:19: DeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:19: DeprecationWarning:
 
 `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -4186,8 +4167,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  6.12 %
-La media general del error es de:  0.59 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  1.02 %
+La media general del error es de:  0.58 %
 </pre></div>
 </div>
 <img alt="../../_images/1_thisistheway_52_1.png" src="../../_images/1_thisistheway_52_1.png" />
@@ -4305,281 +4286,256 @@ La media general del error es de:  0.59 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><details>
-<summary>Click to view session information</summary>
-<pre>
------
-PIL                 8.4.0
-bs4                 4.10.0
-datetime            NA
-json                2.0.9
-locale              NA
-markdownify         NA
-math                NA
-matplotlib          3.4.3
-natsort             8.0.2
-numpy               1.20.3
-os                  NA
-pandas              1.3.4
-pkg_resources       NA
-plotly              5.5.0
-pybtex              0.24.0
-requests            2.26.0
-scipy               1.7.1
-seaborn             0.11.2
-session_info        1.0.0
-sklearn             0.24.2
-time                NA
-types               NA
------
-</pre>
-<details>
-<summary>Click to view modules imported as dependencies</summary>
-<pre>
-abc                         NA
-anyio                       NA
-argparse                    1.1
-array                       NA
-ast                         NA
-asyncio                     NA
-atexit                      NA
-attr                        21.2.0
-babel                       2.9.1
-backcall                    0.2.0
-base64                      NA
-bdb                         NA
-beta_ufunc                  NA
-binascii                    NA
-binom_ufunc                 NA
-bisect                      NA
-bottleneck                  1.3.2
-brotli                      NA
-bz2                         NA
-cProfile                    NA
-calendar                    NA
-certifi                     2021.10.08
-cffi                        1.14.6
-chardet                     4.0.0
-charset_normalizer          2.0.4
-cmath                       NA
-cmd                         NA
-code                        NA
-codecs                      NA
-codeop                      NA
-collections                 NA
-colorama                    0.4.4
-colorsys                    NA
-concurrent                  NA
-configparser                NA
-contextlib                  NA
-contextvars                 NA
-copy                        NA
-copyreg                     NA
-csv                         1.0
-ctypes                      1.1.0
-cycler                      0.10.0
-cython_runtime              NA
-dataclasses                 NA
-dateutil                    2.8.2
-debugpy                     1.4.1
-decimal                     1.70
-decorator                   5.1.0
-defusedxml                  0.7.1
-difflib                     NA
-dis                         NA
-distutils                   3.9.7
-email                       NA
-encodings                   NA
-entrypoints                 0.3
-enum                        NA
-errno                       NA
-faulthandler                NA
-filecmp                     NA
-fnmatch                     NA
-fractions                   NA
-functools                   NA
-gc                          NA
-genericpath                 NA
-getopt                      NA
-getpass                     NA
-gettext                     NA
-glob                        NA
-gzip                        NA
-hashlib                     NA
-heapq                       NA
-hmac                        NA
-html                        NA
-html5lib                    1.1
-http                        NA
-idna                        3.2
-imp                         NA
-importlib                   NA
-inspect                     NA
-io                          NA
-ipaddress                   1.0
-ipykernel                   6.4.1
-ipython_genutils            0.2.0
-ipywidgets                  7.6.5
-itertools                   NA
-jedi                        0.18.0
-jinja2                      2.11.3
-joblib                      1.1.0
-json5                       NA
-jsonschema                  3.2.0
-jupyter_server              1.4.1
-jupyterlab_server           2.8.2
-keyword                     NA
-kiwisolver                  1.3.1
-linecache                   NA
-logging                     0.5.1.2
-lxml                        4.6.3
-lzma                        NA
-markupsafe                  1.1.1
-marshal                     4
-matplotlib_inline           NA
-mimetypes                   NA
-mkl                         2.4.0
-mmap                        NA
-mpl_toolkits                NA
-msvcrt                      NA
-multiprocessing             NA
-nbclassic                   NA
-nbformat                    5.1.3
-nbinom_ufunc                NA
-netrc                       NA
-nt                          NA
-ntpath                      NA
-ntsecuritycon               NA
-nturl2path                  NA
-numbers                     NA
-numexpr                     2.7.3
-olefile                     0.46
-opcode                      NA
-operator                    NA
-packaging                   21.0
-parso                       0.8.2
-pathlib                     NA
-pdb                         NA
-pickle                      NA
-pickleshare                 0.7.5
-pkgutil                     NA
-platform                    1.0.8
-plistlib                    NA
-posixpath                   NA
-pprint                      NA
-profile                     NA
-prometheus_client           NA
-prompt_toolkit              3.0.20
-pstats                      NA
-psutil                      5.8.0
-pvectorc                    NA
-pydev_ipython               NA
-pydevconsole                NA
-pydevd                      2.4.1
-pydevd_concurrency_analyser NA
-pydevd_file_utils           NA
-pydevd_plugins              NA
-pydevd_tracing              NA
-pydoc                       NA
-pydoc_data                  NA
-pyexpat                     NA
-pygments                    2.10.0
-pyparsing                   3.0.4
-pyrsistent                  NA
-pythoncom                   NA
-pytz                        2021.3
-pywintypes                  NA
-queue                       NA
-quopri                      NA
-random                      NA
-re                          2.2.1
-reprlib                     NA
-runpy                       NA
-secrets                     NA
-select                      NA
-selectors                   NA
-send2trash                  NA
-shlex                       NA
-shutil                      NA
-signal                      NA
-site                        NA
-six                         1.16.0
-sniffio                     1.2.0
-socket                      NA
-socketserver                0.4
-socks                       1.7.1
-soupsieve                   2.2.1
-sphinxcontrib               NA
-sqlite3                     2.6.0
-sre_compile                 NA
-sre_constants               NA
-sre_parse                   NA
-ssl                         NA
-stat                        NA
-statsmodels                 0.12.2
-storemagic                  NA
-string                      NA
-stringprep                  NA
-struct                      NA
-subprocess                  NA
-sys                         3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-sysconfig                   NA
-tarfile                     0.9.0
-tempfile                    NA
-tenacity                    NA
-textwrap                    NA
-threading                   NA
-timeit                      NA
-token                       NA
-tokenize                    NA
-tornado                     6.1
-traceback                   NA
-traitlets                   5.1.0
-typing                      NA
-typing_extensions           NA
-unicodedata                 NA
-unittest                    NA
-urllib                      NA
-urllib3                     1.26.7
-uu                          NA
-uuid                        NA
-warnings                    NA
-wcwidth                     0.2.5
-weakref                     NA
-webbrowser                  NA
-webencodings                0.5.1
-win32api                    NA
-win32com                    NA
-win32con                    NA
-win32security               NA
-win32trace                  NA
-winerror                    NA
-winreg                      NA
-wsgiref                     NA
-xml                         NA
-xmlrpc                      NA
-zipfile                     NA
-zipimport                   NA
-zlib                        1.0
-zmq                         22.2.1
-zope                        NA
-</pre>
-</details> <!-- seems like this ends pre, so might as well be explicit -->
-<pre>
------
-IPython             7.29.0
-jupyter_client      6.1.12
-jupyter_core        4.8.1
-jupyterlab          3.2.1
-notebook            6.4.5
------
-Python 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-Windows-10-10.0.22000-SP0
-12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
------
-Session information updated at 2022-01-06 17:27
-</pre>
-</details></div></div>
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            PIL                 8.4.0
+            bs4                 4.10.0
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            markdownify         NA
+            math                NA
+            matplotlib          3.4.3
+            natsort             8.0.2
+            numpy               1.20.3
+            os                  NA
+            pandas              1.3.4
+            pkg_resources       NA
+            plotly              5.5.0
+            pybtex              0.24.0
+            requests            2.26.0
+            scipy               1.7.1
+            seaborn             0.11.2
+            session_info        1.0.0
+            sklearn             0.24.2
+            time                NA
+            types               NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                         NA
+            argparse                    1.1
+            array                       NA
+            ast                         NA
+            asyncio                     NA
+            atexit                      NA
+            attr                        21.4.0
+            backcall                    0.2.0
+            base64                      NA
+            bdb                         NA
+            beta_ufunc                  NA
+            binascii                    NA
+            binom_ufunc                 NA
+            bisect                      NA
+            bz2                         NA
+            cProfile                    NA
+            calendar                    NA
+            certifi                     2021.10.08
+            cffi                        1.15.0
+            charset_normalizer          2.0.10
+            cmath                       NA
+            cmd                         NA
+            code                        NA
+            codecs                      NA
+            codeop                      NA
+            collections                 NA
+            colorama                    0.4.4
+            colorsys                    NA
+            concurrent                  NA
+            configparser                NA
+            contextlib                  NA
+            contextvars                 NA
+            copy                        NA
+            copyreg                     NA
+            csv                         1.0
+            ctypes                      1.1.0
+            curses                      NA
+            cycler                      0.10.0
+            cython_runtime              NA
+            dataclasses                 NA
+            dateutil                    2.8.2
+            debugpy                     1.5.1
+            decimal                     1.70
+            decorator                   5.1.1
+            defusedxml                  0.7.1
+            difflib                     NA
+            dis                         NA
+            distutils                   3.7.12
+            email                       NA
+            encodings                   NA
+            entrypoints                 0.3
+            enum                        NA
+            errno                       NA
+            faulthandler                NA
+            fcntl                       NA
+            filecmp                     NA
+            fnmatch                     NA
+            fractions                   NA
+            functools                   NA
+            gc                          NA
+            genericpath                 NA
+            getopt                      NA
+            getpass                     NA
+            gettext                     NA
+            glob                        NA
+            grp                         NA
+            gzip                        NA
+            hashlib                     NA
+            heapq                       NA
+            hmac                        NA
+            html                        NA
+            http                        NA
+            idna                        3.3
+            imp                         NA
+            importlib                   NA
+            importlib_metadata          NA
+            inspect                     NA
+            io                          NA
+            ipaddress                   1.0
+            ipykernel                   6.7.0
+            ipython_genutils            0.2.0
+            ipywidgets                  7.6.5
+            itertools                   NA
+            jedi                        0.18.1
+            joblib                      1.1.0
+            jsonschema                  3.2.0
+            keyword                     NA
+            kiwisolver                  1.3.2
+            linecache                   NA
+            logging                     0.5.1.2
+            lzma                        NA
+            marshal                     4
+            matplotlib_inline           NA
+            mimetypes                   NA
+            mmap                        NA
+            mpl_toolkits                NA
+            multiprocessing             NA
+            nbformat                    5.1.3
+            nbinom_ufunc                NA
+            netrc                       NA
+            ntpath                      NA
+            numbers                     NA
+            opcode                      NA
+            operator                    NA
+            packaging                   21.3
+            parso                       0.8.3
+            pathlib                     NA
+            pdb                         NA
+            pexpect                     4.8.0
+            pickle                      NA
+            pickleshare                 0.7.5
+            pkgutil                     NA
+            platform                    1.0.8
+            plistlib                    NA
+            posix                       NA
+            posixpath                   NA
+            pprint                      NA
+            profile                     NA
+            prompt_toolkit              3.0.24
+            pstats                      NA
+            pty                         NA
+            ptyprocess                  0.7.0
+            pvectorc                    NA
+            pwd                         NA
+            pydev_ipython               NA
+            pydevconsole                NA
+            pydevd                      2.6.0
+            pydevd_concurrency_analyser NA
+            pydevd_file_utils           NA
+            pydevd_plugins              NA
+            pydevd_tracing              NA
+            pydoc                       NA
+            pydoc_data                  NA
+            pyexpat                     NA
+            pygments                    2.11.2
+            pyparsing                   3.0.6
+            pyrsistent                  NA
+            pytz                        2021.3
+            queue                       NA
+            quopri                      NA
+            random                      NA
+            re                          2.2.1
+            reprlib                     NA
+            resource                    NA
+            runpy                       NA
+            secrets                     NA
+            select                      NA
+            selectors                   NA
+            shlex                       NA
+            shutil                      NA
+            signal                      NA
+            site                        NA
+            six                         1.16.0
+            socket                      NA
+            socketserver                0.4
+            soupsieve                   2.3.1
+            sphinxcontrib               NA
+            sqlite3                     2.6.0
+            sre_compile                 NA
+            sre_constants               NA
+            sre_parse                   NA
+            ssl                         NA
+            stat                        NA
+            storemagic                  NA
+            string                      NA
+            stringprep                  NA
+            struct                      NA
+            subprocess                  NA
+            sys                         3.7.12 (default, Sep  6 2021, 07:19:30) 
+[GCC 9.3.0]
+            sysconfig                   NA
+            tarfile                     0.9.0
+            tempfile                    NA
+            tenacity                    NA
+            termios                     NA
+            textwrap                    NA
+            threading                   NA
+            timeit                      NA
+            token                       NA
+            tokenize                    NA
+            tornado                     6.1
+            traceback                   NA
+            traitlets                   5.1.1
+            tty                         NA
+            typing                      NA
+            typing_extensions           NA
+            unicodedata                 NA
+            unittest                    NA
+            urllib                      NA
+            urllib3                     1.26.8
+            uu                          NA
+            uuid                        NA
+            warnings                    NA
+            wcwidth                     0.2.5
+            weakref                     NA
+            webbrowser                  NA
+            xml                         NA
+            xmlrpc                      NA
+            zipfile                     NA
+            zipimport                   NA
+            zipp                        NA
+            zlib                        1.0
+            zmq                         22.3.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.31.0
+            jupyter_client      7.1.0
+            jupyter_core        4.9.1
+            notebook            6.4.7
+            -----
+            Python 3.7.12 (default, Sep  6 2021, 07:19:30) [GCC 9.3.0]
+            Linux-5.11.0-1025-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2022-01-13 16:43
+            </pre>
+            </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
