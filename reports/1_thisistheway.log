@@ -1,7 +1,18 @@
 Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 618, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/jupyter_client/channels.py", line 230, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
     record_timing=False,
-  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 1093, in execute
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 1085, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
   File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
     return just_run(coro(*args, **kwargs))
@@ -9,56 +20,27 @@ Traceback (most recent call last):
     return loop.run_until_complete(coro)
   File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
     return future.result()
-  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 560, in async_execute
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 552, in async_execute
     cell, index, execution_count=self.code_cells_executed + 1
-  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 854, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-### Balance vacunas ###
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 830, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 642, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 690, in _async_handle_timeout
+    "Cell execution timed out", timeout, cell
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+%%capture
 
-if int(tasa_activos)<150:
-    cumplimiento_tasa = '✔️'
-else:
-    cumplimiento_tasa = '❌'
-    
-if int(procesovacunacion_hoy)>= 80:
-    cumplimiento_vacunacion = '✔️'
-else:
-    cumplimiento_vacunacion = '❌' 
+### Ejecutamos notebook 2
+%run 2_thisistheway.ipynb
 
-### Descripción
-desc2 = \
-"""¿Toque de queda a las 00:00 hrs.? 🕑
+### Ejecutamos notebook 3
+%run 3_thisistheway.ipynb
 
-Para que en la Región se pueda aplazar el toque de queda se deben cumplir los siguientes indicadores:
-
-• Tasa de incidencia de activos menor a 150 (actualmente es {}). {}
-• El porcentaje de vacunación (cuadros completos) en población objetivo debe ser mayor o igual al 80% (actualmente es {}%). {}
-
-[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Datos actualizados de acuerdo a informes del {}.
-• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
-• Autor: Alejandro Dinamarca.
-
-¡A cuidarse Tarapacá! 😉
-""".format(tasa_activos, cumplimiento_tasa, procesovacunacion_hoy, cumplimiento_vacunacion, fecha_hoy)
-
-## Imprimimos
-print(desc2)
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mValueError[0m                                Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3423/3140083791.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;31m### Balance vacunas ###[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      2[0m [0;34m[0m[0m
-[0;32m----> 3[0;31m [0;32mif[0m [0mint[0m[0;34m([0m[0mtasa_activos[0m[0;34m)[0m[0;34m<[0m[0;36m150[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      4[0m     [0mcumplimiento_tasa[0m [0;34m=[0m [0;34m'✔️'[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mValueError[0m: invalid literal for int() with base 10: '1,123'
-ValueError: invalid literal for int() with base 10: '1,123'
+### Ejecutamos notebook 4
+%run ./../4_legado/1_legado.ipynb
+-------------------
 
