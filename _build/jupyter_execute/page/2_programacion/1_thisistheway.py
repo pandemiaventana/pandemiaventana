@@ -1239,7 +1239,7 @@ print(desc2)
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[51]:
+# In[9]:
 
 
 ### Cambios
@@ -1332,7 +1332,7 @@ display(Markdown(pred))
 
 # ### Reporte diario
 
-# In[52]:
+# In[10]:
 
 
 ### Graficando para reporte diario ###
@@ -1687,7 +1687,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[73]:
+# In[11]:
 
 
 ### Generando reporte diario ###
@@ -2035,7 +2035,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[74]:
+# In[12]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2084,7 +2084,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[55]:
+# In[13]:
 
 
 ### Ejemplo 1 ###
@@ -2106,7 +2106,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[56]:
+# In[14]:
 
 
 ### Ejemplo 2 ###
@@ -2166,7 +2166,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[57]:
+# In[15]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2222,7 +2222,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[58]:
+# In[16]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
