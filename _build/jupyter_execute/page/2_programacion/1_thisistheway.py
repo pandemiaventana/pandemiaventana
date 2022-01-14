@@ -1063,7 +1063,7 @@ ucidiaria_hoy, uciaprox_hoy, errorabs_hoy = df['UCI ocupadas por confirmados'][w
 
 ### Positividad diaria y móvil
 positividad_hoy, positividadmovil_hoy = df['Positividad diaria'][weekend_data], df['Positividad media movil *'][weekend_data]
-positividad_antigeno = round((antigeno_hoy/antigenonuevos_hoy)*100)
+positividad_antigeno = round((antigeno_hoy/antigenonuevos_hoy)*100, 2)
 
 ### Mortalidad especifica, Re, tasa casos nuevos y crecimiento
 me_hoy, reregional_hoy, tasanuevos_hoy = df['Mortalidad especifica *'][weekend_data], df['Re regional'][df['Re regional'].last_valid_index()], round(df['Tasa casos nuevos *'][weekend_data], 1)
@@ -1094,7 +1094,7 @@ ed_hoy = (d2 - d1).days + (d3 - d2).days
 ed_hoy = (d2 - d1).days + (d3 - d2).days
 
 ### Valores de hoy a integer
-casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, activos_hoy, activosprobables_hoy, ucidiaria_hoy, me_hoy, procesovacunaciontotales_hoy,ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy, positividad_antigeno = [ format(int(i), ',d') for i in [
+casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, activos_hoy, activosprobables_hoy, ucidiaria_hoy, me_hoy, procesovacunaciontotales_hoy,ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy = [ format(int(i), ',d') for i in [
 casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
 recuperados_hoy, recuperadosacumulados_hoy, \
 fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
@@ -1103,7 +1103,7 @@ residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, \
 activos_hoy, activosprobables_hoy, \
 ucidiaria_hoy, \
 me_hoy, procesovacunaciontotales_hoy,\
-ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy, positividad_antigeno]]
+ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy]]
 
 ### Datos de ayer ###
 
@@ -1152,6 +1152,32 @@ ucidiaria_ayer, \
 positividad_ayer, \
 me_ayer]]
 
+### Para redondear antes proceso de vacunación
+procesovacunacion_hoy = procesovacunacion_hoy.round(2)
+
+casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, antigenonuevos_hoy, antigenoacumulados_hoy, residenciasnumero_hoy, residenciascupos_hoy, residenciasusuarios_hoy, activos_hoy, activosprobables_hoy, tasa_activos, crecimientodiario_hoy, situacioncurva_hoy, ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, positividad_hoy, positividadmovil_hoy, positividad_antigeno, me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy, positividad_hoy, positividadmovil_hoy, antigeno_hoy, casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, recuperados_ayer, fallecidosnuevos_ayer, pcrnuevos_ayer, residenciasusuarios_ayer, activos_ayer, activosprobables_ayer, ucidiaria_ayer, positividad_ayer, me_ayer, procesovacunacion_ayer, positividad_ayer = [ (str(i).replace('.', ',') if ',' not in str(i) else str(i).replace(',', '.')) for i in 
+[casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
+recuperados_hoy, recuperadosacumulados_hoy, \
+fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
+pcrnuevos_hoy, pcracumulados_hoy, \
+antigenonuevos_hoy, antigenoacumulados_hoy, \
+residenciasnumero_hoy, residenciascupos_hoy, residenciasusuarios_hoy, \
+activos_hoy, activosprobables_hoy, tasa_activos, \
+crecimientodiario_hoy, situacioncurva_hoy, \
+ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, \
+positividad_hoy, positividadmovil_hoy, positividad_antigeno, \
+me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,
+positividad_hoy, positividadmovil_hoy, antigeno_hoy, casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, \
+recuperados_ayer, \
+fallecidosnuevos_ayer, \
+pcrnuevos_ayer, \
+residenciasusuarios_ayer, \
+activos_ayer, activosprobables_ayer, \
+ucidiaria_ayer, \
+positividad_ayer, \
+me_ayer, procesovacunacion_ayer,
+positividad_ayer]]
+
 ### Descripción
 desc1 = """Reporte DIARIO, {} 🕑. \n
 • Infectados {} casos nuevos de los cuales {} con síntomas, {} sin síntomas y {} sin notificar, dando un total de {} casos confirmados. Adicionalmente, {} casos nuevos confirmados por antígeno y {} casos totales con sospecha de reinfección. 🦠
@@ -1190,7 +1216,7 @@ desc1 = """Reporte DIARIO, {} 🕑. \n
                                    crecimientodiario_hoy, situacioncurva_hoy, \
                                    ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, \
                                    positividad_hoy, positividadmovil_hoy, positividad_antigeno, \
-                                   me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy.round(2), procesovacunaciontotales_hoy,\
+                                   me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,\
                                    ed_hoy, cambios)
 
 ## Imprimimos
@@ -1709,7 +1735,7 @@ for i in x:
     
 ### Cargando texto (gracias a Google Fonts y shoes)
 roboto = requests.get("https://github.com/googlefonts/roboto/raw/main/src/hinted/Roboto-Regular.ttf")
-coolvetica = requests.get("https://github.com/shoes/brown_shoes/blob/main/fonts/Coolvetica.ttf?raw=true")
+coolvetica = requests.get("https://github.com/jameshadfield/phandango/blob/master/font/roboto/Roboto-Bold.ttf?raw=true")
 roboto_ed = ImageFont.truetype(BytesIO(roboto.content), 50)
 roboto_data0 = ImageFont.truetype(BytesIO(roboto.content), 20)
 roboto_data1 = ImageFont.truetype(BytesIO(roboto.content), 28)
@@ -1717,9 +1743,7 @@ roboto_data2 = ImageFont.truetype(BytesIO(roboto.content), 30)
 roboto_data3 = ImageFont.truetype(BytesIO(roboto.content), 40)
 coolvetica_data0 = ImageFont.truetype(BytesIO(coolvetica.content), 43)
 coolvetica_data1 = ImageFont.truetype(BytesIO(coolvetica.content), 75)
-coolvetica_data21 = ImageFont.truetype(BytesIO(coolvetica.content), 105)
-coolvetica_data22 = ImageFont.truetype(BytesIO(coolvetica.content), 110)
-coolvetica_data2 = ImageFont.truetype(BytesIO(coolvetica.content), 135)
+coolvetica_data2 = ImageFont.truetype(BytesIO(coolvetica.content), 100)
 coolvetica_data3 = ImageFont.truetype(BytesIO(coolvetica.content), 100)
 coolvetica_data4 = ImageFont.truetype(BytesIO(coolvetica.content), 180)
 
@@ -1746,11 +1770,11 @@ diario1.save('../../out/diario/1.png')
 txt = ImageDraw.Draw(diario2)
 
 ### Textos (a diferencia de los textos anteriores, debemos centrar a medida se añaden carácteres con 'anchor')
-txt.text((190, 680), '{}'.format(consintomas_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((190, 670), '{}'.format(consintomas_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}'.format(consintomas_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
-txt.text((540, 680), '{}'.format(sinsintomas_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 670), '{}'.format(sinsintomas_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
 txt.text((540, 750), 'Ayer: {}'.format(sinsintomas_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
-txt.text((890, 680), '{}'.format(porlaboratorio_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((890, 670), '{}'.format(porlaboratorio_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(porlaboratorio_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((350, 910), '{} casos nuevos confirmados por antígeno.'.format(antigeno_hoy), fill='#b9b9b9', font=roboto_data1) # nuevos antigeno
 txt.text((350, 960), '{} casos del total están con sospecha de reinfección.'.format(reinfeccion_hoy), fill='#b9b9b9', font=roboto_data1) # reinfeccion
@@ -1765,11 +1789,11 @@ diario2.save('../../out/diario/2.png')
 txt = ImageDraw.Draw(diario3)
 
 ### Textos
-txt.text((190, 680), '{}'.format(casos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((190, 670), '{}'.format(casos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}'.format(casos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
-txt.text((540, 680), '{}'.format(recuperados_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 670), '{}'.format(recuperados_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
 txt.text((540, 750), 'Ayer: {}'.format(recuperados_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
-txt.text((890, 680), '{}'.format(fallecidosnuevos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((890, 670), '{}'.format(fallecidosnuevos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(fallecidosnuevos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((190, 860), 'Acumulado: {}'.format(casosacumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 txt.text((540, 860), 'Acumulado: {}'.format(recuperadosacumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # reinfeccion
@@ -1786,11 +1810,11 @@ txt = ImageDraw.Draw(diario4)
 
 ### Textos
 txt.text((780, 70), '{}'.format(reregional_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
-txt.text((190, 680), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((190, 670), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}'.format(pcrnuevos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
-txt.text((540, 680), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 670), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
 txt.text((540, 750), 'Ayer: {}'.format(residenciasusuarios_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
-txt.text((890, 680), '{}'.format(activos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((890, 670), '{}'.format(activos_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(activos_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((190, 860), 'Acumulado: {}'.format(pcracumulados_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 txt.text((540, 860), 'Establecimientos: {}'.format(residenciasnumero_hoy), fill='#989898', font=roboto_data1, anchor='ms') # reinfeccion
@@ -1803,13 +1827,13 @@ diario4.save('../../out/diario/4.png')
 txt = ImageDraw.Draw(diario5)
 
 ### Textos
-txt.text((780, 90), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data22) # casos con sintomas
-txt.text((190, 680), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data21, anchor='ms') # casos con sintomas
+txt.text((760, 90), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((190, 670), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((190, 860), 'Antígeno: {}%'.format(positividad_antigeno), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
-txt.text((540, 680), '{}%'.format(int(round(procesovacunacion_hoy, 0))), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
-txt.text((540, 750), 'Antes: {}%'.format(int(round(procesovacunacion_ayer, 0))), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
-txt.text((890, 680), '{}'.format(me_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
+txt.text((540, 670), '{}%'.format(procesovacunacion_hoy, 0), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((540, 750), 'Antes: {}%'.format(procesovacunacion_ayer, 0), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
+txt.text((890, 670), '{}'.format(me_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos por laboratorio
 txt.text((890, 750), 'Ayer: {}'.format(me_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos por laboratorio
 txt.text((540, 860), 'Acum. 2° dosis: {}'.format(procesovacunaciontotales_hoy), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
 
@@ -1821,9 +1845,9 @@ txt = ImageDraw.Draw(diario6)
 
 ### Textos
 txt.text((780, 70), '{}'.format(tasanuevos_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
-txt.text((280, 680), '{}'.format(activosprobables_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
+txt.text((280, 670), '{}'.format(activosprobables_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((280, 750), 'Ayer: {}'.format(activosprobables_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
-txt.text((800, 680), '{}%'.format(uciaprox_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
+txt.text((800, 670), '{}%'.format(uciaprox_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos sin sintomas
 txt.text((800, 750), 'Error aprox.: ±{}%'.format(errorabs_hoy), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos sin sintomas
 
 ### Guardamos
