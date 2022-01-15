@@ -89,7 +89,7 @@ El libro está identificado con el **DOI 10.5281**. [![DOI](https://zenodo.org/b
 
 * Se añade tasa de activos, número de establecimientos para residencias sanitarias habilitados, positividad por antígeno, entre otros.
 
-* Nuevas notas de prensa.
+* Nuevas notas de prensa del diario La Estrella de Iquique
 
 #### Salida
 
