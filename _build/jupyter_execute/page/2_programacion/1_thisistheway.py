@@ -1137,7 +1137,7 @@ me_ayer = df['Mortalidad especifica *'][weekend_datay]
 ### Proceso de vacunación de población objetivo
 procesovacunacion_ayer_2 = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()-datetime.timedelta(days=1)] - menores18)/(poblacion), 3)*100)
 procesovacunacion_ayer_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()-datetime.timedelta(days=1)])/(poblacion), 3)*100)
-procesovacunacion_ayer = procesovacunacion_ayer_2 + procesovacunacion_ayer_unica
+procesovacunacion_ayer = (procesovacunacion_ayer_2 + procesovacunacion_ayer_unica).round(2)
 
 
 ### Valores de ayer a integer
@@ -1265,46 +1265,43 @@ print(desc2)
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
 
 
-# In[9]:
-
-
-### Cambios
-cambios = """• Ninguno"""
-
-### Número de edición
-d1 = datetime.datetime(2020,9,4)
-d2 = datetime.datetime(2021,5,12)
-d3 = datetime.datetime(df.loc[weekend_data].name.year, 
-                       df.loc[weekend_data].name.month, 
-                       df.loc[weekend_data].name.day)
-ed_indicador = (d2 - d1).days/7.8 + (d3 - d2).days/7.8
-ed_indicador = (d2 - d1).days/7.8 + (d3 - d2).days/7.8
-ed_indicador = round(ed_indicador)
-
-### Descripción
-pred = 'Indicador FASE, {}. 🕑'.format(fecha_hoy)
-for result in results:
-    pred += '\n' + result
-
-pred += """
-
-[ CAMBIOS EN LA {}° EDICION ⚙️ ]
-
-{}
-
-[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-
-• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
-
-• Autor: Alejandro Dinamarca.
-
-• Para mayor información del funcionamiento del algoritmo, visitar el sitio adinamarca.github.io
-
-¡A cuidarse Tarapacá! 😉
-""".format(ed_indicador, cambios)
-
-display(Markdown(pred))
-
+# ```### Cambios
+# cambios = """• Ninguno"""
+# 
+# ### Número de edición
+# d1 = datetime.datetime(2020,9,4)
+# d2 = datetime.datetime(2021,5,12)
+# d3 = datetime.datetime(df.loc[weekend_data].name.year, 
+#                        df.loc[weekend_data].name.month, 
+#                        df.loc[weekend_data].name.day)
+# ed_indicador = (d2 - d1).days/7.8 + (d3 - d2).days/7.8
+# ed_indicador = (d2 - d1).days/7.8 + (d3 - d2).days/7.8
+# ed_indicador = round(ed_indicador)
+# 
+# ### Descripción
+# pred = 'Indicador FASE, {}. 🕑'.format(fecha_hoy)
+# for result in results:
+#     pred += '\n' + result
+# 
+# pred += """
+# 
+# [ CAMBIOS EN LA {}° EDICION ⚙️ ]
+# 
+# {}
+# 
+# [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+# 
+# • Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+# 
+# • Autor: Alejandro Dinamarca.
+# 
+# • Para mayor información del funcionamiento del algoritmo, visitar el sitio adinamarca.github.io
+# 
+# ¡A cuidarse Tarapacá! 😉
+# """.format(ed_indicador, cambios)
+# 
+# display(Markdown(pred))
+# ```
 
 # ### Toque de queda a las 00:00 hrs.
 
@@ -1358,7 +1355,7 @@ display(Markdown(pred))
 
 # ### Reporte diario
 
-# In[10]:
+# In[9]:
 
 
 ### Graficando para reporte diario ###
@@ -1713,7 +1710,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[11]:
+# In[10]:
 
 
 ### Generando reporte diario ###
@@ -2059,7 +2056,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[12]:
+# In[11]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2108,7 +2105,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[13]:
+# In[12]:
 
 
 ### Ejemplo 1 ###
@@ -2130,7 +2127,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[14]:
+# In[13]:
 
 
 ### Ejemplo 2 ###
@@ -2190,7 +2187,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[15]:
+# In[14]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2246,7 +2243,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[16]:
+# In[15]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
