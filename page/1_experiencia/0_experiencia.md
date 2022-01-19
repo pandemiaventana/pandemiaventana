@@ -1,6 +1,6 @@
 # Experiencia 💭
 
-Esta sección se basará en experiencias personales, pensamientos o situaciones del día a día. Creí necesario explayar algunas cosas humanas o personales.
+Esta sección se basará en experiencias personales, pensamientos o situaciones del día a día.
 
 ## ¿Por qué añadir esta sección?
 
