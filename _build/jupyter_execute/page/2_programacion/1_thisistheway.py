@@ -504,7 +504,7 @@ r_provincial_tam = r_provincial[r_provincial['Provincia'] == 'Tamarugal']['r.est
 vacunacion = csv76[csv76['Region'] == 'Tarapacá'].transpose()
 vacunacion = vacunacion.drop('Dosis').drop('Region')
 vacunacion.index, vacunacion = pd.to_datetime(vacunacion.index), vacunacion.astype(int)
-vacunacion.columns = ['1° Dosis', '2° Dosis', 'Unica dosis', 'Refuerzo']
+vacunacion.columns = ['1° Dosis', '2° Dosis', 'Unica dosis', 'Refuerzo', '4° Dosis']
 
 ### Obteniendo vacunación por edades (dataframe aparte)
 x = np.arange(5, 70, 10)
@@ -717,7 +717,7 @@ df.columns = ['Casos confirmados acumulados', 'Casos recuperados acumulados', 'C
               'Usuarios en residencias', 'Numero de residencias', 'UCI habilitadas', 'UCI ocupadas por confirmados',
               'UCI ocupadas por no confirmados', 'UCI ocupacion media movil real', 'Re regional', 'Re Iquique',
               'Re Tamarugal', 'Positividad diaria', 'Vacunados acumulados 1° dosis', 'Vacunados acumulados 2° dosis',
-              'Vacunados acumulados unica dosis', 'Vacunados acumulados dosis de refuerzo',
+              'Vacunados acumulados unica dosis', 'Vacunados acumulados dosis de refuerzo', 'Vacunados acumulados 4° dosis',
               'Casos acumulados en Alto Hospicio', 'Casos acumulados en Camiña',
               'Casos acumulados en Colchane',
               'Casos acumulados en Huara', 'Casos acumulados en Iquique', 'Casos acumulados en Pica',
@@ -1019,7 +1019,8 @@ pd.DataFrame(pd.DataFrame(df.loc[:, df.columns.str.contains('Mortalidad especifi
 
 ### Vacunación ###
 pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2° dosis'],
-              df['Vacunados acumulados unica dosis'], df['Vacunados acumulados dosis de refuerzo']]
+              df['Vacunados acumulados unica dosis'], df['Vacunados acumulados dosis de refuerzo'],
+             df['Vacunados acumulados 4° dosis']]
               ).transpose().to_csv('../../out/site/csv/data27.csv')
 
 
@@ -1082,6 +1083,7 @@ else:
 procesovacunacion_2dosis = (round((df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] - menores18)/(poblacion), 3)*100)
 procesovacunacion_unica = (round((df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()])/(poblacion), 3)*100)
 procesovacunacion_hoy = procesovacunacion_2dosis + procesovacunacion_unica
+procesovacunacion_hoy_4 = (round((df['Vacunados acumulados 4° dosis'][df['Vacunados acumulados 4° dosis'].last_valid_index()])/(poblacion), 3)*100)
 procesovacunaciontotales_hoy = int(df['Vacunados acumulados 2° dosis'][df['Vacunados acumulados 2° dosis'].last_valid_index()] + df['Vacunados acumulados unica dosis'][df['Vacunados acumulados unica dosis'].last_valid_index()] - menores18)
 
 ### Número de edición
@@ -1154,6 +1156,7 @@ me_ayer]]
 
 ### Para redondear antes proceso de vacunación
 procesovacunacion_hoy = procesovacunacion_hoy.round(2)
+procesovacunacion_hoy_4 = procesovacunacion_hoy_4.round(2)
 
 casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, antigenonuevos_hoy, antigenoacumulados_hoy, residenciasnumero_hoy, residenciascupos_hoy, residenciasusuarios_hoy, activos_hoy, activosprobables_hoy, tasa_activos, crecimientodiario_hoy, situacioncurva_hoy, ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, positividad_hoy, positividadmovil_hoy, positividad_antigeno, me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy, positividad_hoy, positividadmovil_hoy, antigeno_hoy, casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, recuperados_ayer, fallecidosnuevos_ayer, pcrnuevos_ayer, residenciasusuarios_ayer, activos_ayer, activosprobables_ayer, ucidiaria_ayer, positividad_ayer, me_ayer, procesovacunacion_ayer, positividad_ayer = [ (str(i).replace('.', ',') if ',' not in str(i) else str(i).replace(',', '.')) for i in 
 [casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
@@ -1192,7 +1195,7 @@ desc1 = """Reporte DIARIO, {} 🕑. \n
 • De cada cien mil habitantes en la región, {} fallecen por COVID-19. 😵
 • El Re Regional corresponde a {}. 💊
 • La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a {}. 💦
-• En el proceso de vacunación, {}% vacunados de la población objetivo (al menos, {} personas con cuadro de vacunación completo). 💦
+• En el proceso de vacunación, {}% vacunados de la población total (al menos, {} personas con 2° dosis o única). Con cuarta dosis se encuentran vacunados un {}% de la población objetivo. 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
@@ -1216,7 +1219,7 @@ desc1 = """Reporte DIARIO, {} 🕑. \n
                                    crecimientodiario_hoy, situacioncurva_hoy, \
                                    ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, \
                                    positividad_hoy, positividadmovil_hoy, positividad_antigeno, \
-                                   me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy,\
+                                   me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy, procesovacunacion_hoy_4, \
                                    ed_hoy, cambios)
 
 ## Imprimimos
@@ -1225,41 +1228,40 @@ print(desc1)
 
 # ### Balance de vacunas
 
-# In[7]:
-
-
-### Balance vacunas ###
-
-### Cambios
-cambios = """• Ninguno"""
-
-### Número de edición
-ed_vacuna = int(int(ed_hoy)/7 + 1)
-
-### Descripción
-desc2 = """Balance VACUNAS, {}. 🕑 
-
-• El {}% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de {} personas con cuadros de vacunación completo.
-
-*Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
-
-[ CAMBIOS EN LA {}° EDICION ⚙️ ]
-{}
-
-[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
-• Autor: Alejandro Dinamarca.
-
-¡A cuidarse Tarapacá! 😉
-""".format(fecha_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy, ed_vacuna, cambios)
-
-## Imprimimos
-print(desc2)
-
+# ```
+# ### Balance vacunas ###
+# 
+# ### Cambios
+# cambios = """• Ninguno"""
+# 
+# ### Número de edición
+# ed_vacuna = int(int(ed_hoy)/7 + 1)
+# 
+# ### Descripción
+# desc2 = \
+# """Balance VACUNAS, {}. 🕑 
+# 
+# • El {}% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de {} personas con cuadros de vacunación completo.
+# 
+# *Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
+# 
+# [ CAMBIOS EN LA {}° EDICION ⚙️ ]
+# {}
+# 
+# [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
+# • Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
+# • Autor: Alejandro Dinamarca.
+# 
+# ¡A cuidarse Tarapacá! 😉
+# """.format(fecha_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy, ed_vacuna, cambios)
+# 
+# ## Imprimimos
+# print(desc2)
+# ```
 
 # ### Indicador de fase
 
-# In[8]:
+# In[7]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
@@ -1355,7 +1357,7 @@ get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2
 
 # ### Reporte diario
 
-# In[9]:
+# In[8]:
 
 
 ### Graficando para reporte diario ###
@@ -1710,7 +1712,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[10]:
+# In[9]:
 
 
 ### Generando reporte diario ###
@@ -1755,10 +1757,11 @@ txt.text((820, 510), '{}'.format(recuperados_hoy), fill='#dfdede', font=coolveti
 txt.text((745, 585), '{}'.format(fallecidosnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # fallecidos nuevos
 txt.text((825, 660), '{}'.format(activos_hoy), fill='#dfdede', font=coolvetica_data1) # activos
 txt.text((760, 735), '{}'.format(activosprobables_hoy), fill='#dfdede', font=coolvetica_data1) # activos probables
-txt.text((700, 810), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # pcr nuevos
-txt.text((695, 890), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data1) # positividad diaria
-txt.text((750, 965), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data1) # residencias sanitarias
-txt.text((725, 1035), '{}'.format(ucidiaria_hoy), fill='#dfdede', font=coolvetica_data1) # uci diaria
+txt.text((760, 735700, 810), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # pcr nuevos
+txt.text((700, 810), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data1) # positividad diaria
+txt.text((695, 890), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data1) # residencias sanitarias
+txt.text((750, 965), '{}'.format(ucidiaria_hoy), fill='#dfdede', font=coolvetica_data1) # uci diaria
+txt.text((725, 1035), '{}%'.format(procesovacunacion_hoy_4), fill='#dfdede', font=coolvetica_data1) # vac 4°
 
 ### Guardamos
 diario1.save('../../out/diario/1.png')
@@ -1824,7 +1827,7 @@ diario4.save('../../out/diario/4.png')
 txt = ImageDraw.Draw(diario5)
 
 ### Textos
-txt.text((760, 90), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
+txt.text((750, 90), '{}%'.format(positividadmovil_hoy), fill='#dfdede', font=coolvetica_data2) # casos con sintomas
 txt.text((190, 670), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data2, anchor='ms') # casos con sintomas
 txt.text((190, 750), 'Ayer: {}%'.format(positividad_ayer), fill='#989898', font=roboto_data3, anchor='ms') # ayer, casos con sintomas
 txt.text((190, 860), 'Antígeno: {}%'.format(positividad_antigeno), fill='#989898', font=roboto_data1, anchor='ms') # nuevos antigeno
@@ -2056,7 +2059,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[11]:
+# In[10]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2105,7 +2108,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[12]:
+# In[11]:
 
 
 ### Ejemplo 1 ###
@@ -2127,7 +2130,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[13]:
+# In[12]:
 
 
 ### Ejemplo 2 ###
@@ -2187,7 +2190,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[14]:
+# In[13]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2243,7 +2246,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[15]:
+# In[14]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
