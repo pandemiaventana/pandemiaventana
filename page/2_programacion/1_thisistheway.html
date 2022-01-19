@@ -1619,7 +1619,7 @@
 <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">csv76</span><span class="p">[</span><span class="n">csv76</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Tarapacá&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Dosis&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
 <span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">vacunacion</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;2° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Refuerzo&#39;</span><span class="p">]</span>
+<span class="n">vacunacion</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;2° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Refuerzo&#39;</span><span class="p">,</span> <span class="s1">&#39;4° Dosis&#39;</span><span class="p">]</span>
 
 <span class="c1">### Obteniendo vacunación por edades (dataframe aparte)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -1800,50 +1800,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3121</span><span class="o">/</span><span class="mf">197260105.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Dosis&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">vacunacion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">vacunacion</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">98</span> <span class="n">vacunacion</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;2° Dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Refuerzo&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span> 
-<span class="g g-Whitespace">    </span><span class="mi">100</span> <span class="c1">### Obteniendo vacunación por edades (dataframe aparte)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">__setattr__</span><span class="nt">(self, name, value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5498</span>         <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">5499</span>             <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">5500</span>             <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5501</span>         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">5502</span>             <span class="k">pass</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/_libs/properties.pyx</span> in <span class="ni">pandas._libs.properties.AxisProperty.__set__</span><span class="nt">()</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">_set_axis</span><span class="nt">(self, axis, labels)</span>
-<span class="g g-Whitespace">    </span><span class="mi">764</span>     <span class="k">def</span> <span class="nf">_set_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">765</span>         <span class="n">labels</span> <span class="o">=</span> <span class="n">ensure_index</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">766</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_item_cache</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/internals/managers.py</span> in <span class="ni">set_axis</span><span class="nt">(self, axis, new_labels)</span>
-<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="k">def</span> <span class="nf">set_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">:</span> <span class="n">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span>         <span class="c1"># Caller is responsible for ensuring we have an Index object.</span>
-<span class="ne">--&gt; </span><span class="mi">216</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span>         <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_labels</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pandas/core/internals/base.py</span> in <span class="ni">_validate_set_axis</span><span class="nt">(self, axis, new_labels)</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="k">elif</span> <span class="n">new_len</span> <span class="o">!=</span> <span class="n">old_len</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="ne">---&gt; </span><span class="mi">58</span>                 <span class="sa">f</span><span class="s2">&quot;Length mismatch: Expected axis has </span><span class="si">{</span><span class="n">old_len</span><span class="si">}</span><span class="s2"> elements, new &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>                 <span class="sa">f</span><span class="s2">&quot;values have </span><span class="si">{</span><span class="n">new_len</span><span class="si">}</span><span class="s2"> elements&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>             <span class="p">)</span>
-
-<span class="ne">ValueError</span>: Length mismatch: Expected axis has 5 elements, new values have 4 elements
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1888,7 +1844,7 @@
               <span class="s1">&#39;Usuarios en residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;Numero de residencias&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI habilitadas&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupadas por confirmados&#39;</span><span class="p">,</span>
               <span class="s1">&#39;UCI ocupadas por no confirmados&#39;</span><span class="p">,</span> <span class="s1">&#39;UCI ocupacion media movil real&#39;</span><span class="p">,</span> <span class="s1">&#39;Re regional&#39;</span><span class="p">,</span> <span class="s1">&#39;Re Iquique&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Re Tamarugal&#39;</span><span class="p">,</span> <span class="s1">&#39;Positividad diaria&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">,</span>
-              <span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados dosis de refuerzo&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados dosis de refuerzo&#39;</span><span class="p">,</span> <span class="s1">&#39;Vacunados acumulados 4° dosis&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Casos acumulados en Alto Hospicio&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Camiña&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Casos acumulados en Colchane&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Casos acumulados en Huara&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Iquique&#39;</span><span class="p">,</span> <span class="s1">&#39;Casos acumulados en Pica&#39;</span><span class="p">,</span>
@@ -2404,222 +2360,6 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-01-11</th>
-      <td>49,271.00</td>
-      <td>45,074.00</td>
-      <td>832.00</td>
-      <td>3,281.00</td>
-      <td>1.00</td>
-      <td>646.00</td>
-      <td>303.00</td>
-      <td>31.00</td>
-      <td>312.00</td>
-      <td>148.00</td>
-      <td>92.00</td>
-      <td>236.00</td>
-      <td>0.00</td>
-      <td>688.00</td>
-      <td>84,905.00</td>
-      <td>2,769.00</td>
-      <td>742,574.00</td>
-      <td>455.00</td>
-      <td>295.00</td>
-      <td>7.00</td>
-      <td>28.00</td>
-      <td>5.00</td>
-      <td>15.00</td>
-      <td>75.00</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>13.14</td>
-      <td>217.36</td>
-      <td>3.22</td>
-      <td>0.99</td>
-      <td>73.98</td>
-      <td>1.02</td>
-      <td>126.59</td>
-      <td>21.51</td>
-      <td>18.04</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>857.17</td>
-    </tr>
-    <tr>
-      <th>2022-01-12</th>
-      <td>49,882.00</td>
-      <td>45,259.00</td>
-      <td>832.00</td>
-      <td>3,707.00</td>
-      <td>0.00</td>
-      <td>615.00</td>
-      <td>369.00</td>
-      <td>32.00</td>
-      <td>214.00</td>
-      <td>207.00</td>
-      <td>97.00</td>
-      <td>185.00</td>
-      <td>0.00</td>
-      <td>731.00</td>
-      <td>85,636.00</td>
-      <td>2,689.00</td>
-      <td>745,263.00</td>
-      <td>455.00</td>
-      <td>396.00</td>
-      <td>7.00</td>
-      <td>NaN</td>
-      <td>5.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>14.42</td>
-      <td>217.36</td>
-      <td>3.15</td>
-      <td>0.95</td>
-      <td>73.47</td>
-      <td>NaN</td>
-      <td>141.49</td>
-      <td>28.32</td>
-      <td>20.32</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>968.46</td>
-    </tr>
-    <tr>
-      <th>2022-01-13</th>
-      <td>50,704.00</td>
-      <td>45,484.00</td>
-      <td>834.00</td>
-      <td>4,300.00</td>
-      <td>0.00</td>
-      <td>825.00</td>
-      <td>308.00</td>
-      <td>149.00</td>
-      <td>368.00</td>
-      <td>294.00</td>
-      <td>102.00</td>
-      <td>225.00</td>
-      <td>2.00</td>
-      <td>1,225.00</td>
-      <td>86,861.00</td>
-      <td>4,005.00</td>
-      <td>749,268.00</td>
-      <td>455.00</td>
-      <td>386.00</td>
-      <td>7.00</td>
-      <td>NaN</td>
-      <td>5.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>14.80</td>
-      <td>217.88</td>
-      <td>2.94</td>
-      <td>1.34</td>
-      <td>72.96</td>
-      <td>NaN</td>
-      <td>159.14</td>
-      <td>24.00</td>
-      <td>21.82</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1,123.38</td>
-    </tr>
-    <tr>
-      <th>2022-01-14</th>
-      <td>51,579.00</td>
-      <td>46,010.00</td>
-      <td>836.00</td>
-      <td>4,647.00</td>
-      <td>0.00</td>
-      <td>881.00</td>
-      <td>306.00</td>
-      <td>119.00</td>
-      <td>456.00</td>
-      <td>243.00</td>
-      <td>110.00</td>
-      <td>526.00</td>
-      <td>2.00</td>
-      <td>810.00</td>
-      <td>87,671.00</td>
-      <td>3,332.00</td>
-      <td>752,600.00</td>
-      <td>455.00</td>
-      <td>415.00</td>
-      <td>7.00</td>
-      <td>NaN</td>
-      <td>5.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>15.79</td>
-      <td>218.41</td>
-      <td>2.72</td>
-      <td>1.07</td>
-      <td>72.45</td>
-      <td>NaN</td>
-      <td>175.45</td>
-      <td>30.00</td>
-      <td>23.85</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1,214.04</td>
-    </tr>
-    <tr>
       <th>2022-01-15</th>
       <td>52,716.00</td>
       <td>46,573.00</td>
@@ -2641,10 +2381,10 @@
       <td>455.00</td>
       <td>403.00</td>
       <td>7.00</td>
-      <td>NaN</td>
+      <td>31.00</td>
       <td>5.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>20.00</td>
+      <td>73.52</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
@@ -2659,8 +2399,8 @@
       <td>218.67</td>
       <td>2.54</td>
       <td>1.29</td>
-      <td>71.94</td>
-      <td>NaN</td>
+      <td>73.52</td>
+      <td>0.00</td>
       <td>197.13</td>
       <td>30.57</td>
       <td>25.29</td>
@@ -2673,9 +2413,225 @@
       <td>NaN</td>
       <td>1,363.73</td>
     </tr>
+    <tr>
+      <th>2022-01-16</th>
+      <td>53,576.00</td>
+      <td>47,187.00</td>
+      <td>837.00</td>
+      <td>5,465.00</td>
+      <td>0.00</td>
+      <td>877.00</td>
+      <td>376.00</td>
+      <td>146.00</td>
+      <td>355.00</td>
+      <td>259.00</td>
+      <td>122.00</td>
+      <td>614.00</td>
+      <td>0.00</td>
+      <td>694.00</td>
+      <td>89,258.00</td>
+      <td>2,872.00</td>
+      <td>758,781.00</td>
+      <td>455.00</td>
+      <td>419.00</td>
+      <td>7.00</td>
+      <td>31.00</td>
+      <td>6.00</td>
+      <td>16.00</td>
+      <td>72.94</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.05</td>
+      <td>218.67</td>
+      <td>2.44</td>
+      <td>0.77</td>
+      <td>72.94</td>
+      <td>0.00</td>
+      <td>210.23</td>
+      <td>37.32</td>
+      <td>28.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,427.74</td>
+    </tr>
+    <tr>
+      <th>2022-01-17</th>
+      <td>54,544.00</td>
+      <td>47,814.00</td>
+      <td>840.00</td>
+      <td>5,802.00</td>
+      <td>0.00</td>
+      <td>982.00</td>
+      <td>401.00</td>
+      <td>140.00</td>
+      <td>441.00</td>
+      <td>184.00</td>
+      <td>130.00</td>
+      <td>627.00</td>
+      <td>3.00</td>
+      <td>595.00</td>
+      <td>89,853.00</td>
+      <td>3,308.00</td>
+      <td>762,089.00</td>
+      <td>455.00</td>
+      <td>373.00</td>
+      <td>7.00</td>
+      <td>31.00</td>
+      <td>8.00</td>
+      <td>21.00</td>
+      <td>76.10</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>19.61</td>
+      <td>219.45</td>
+      <td>2.10</td>
+      <td>1.12</td>
+      <td>76.10</td>
+      <td>0.00</td>
+      <td>222.51</td>
+      <td>30.92</td>
+      <td>28.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,515.78</td>
+    </tr>
+    <tr>
+      <th>2022-01-18</th>
+      <td>55,489.00</td>
+      <td>48,569.00</td>
+      <td>840.00</td>
+      <td>5,992.00</td>
+      <td>1.00</td>
+      <td>944.00</td>
+      <td>460.00</td>
+      <td>86.00</td>
+      <td>398.00</td>
+      <td>186.00</td>
+      <td>141.00</td>
+      <td>755.00</td>
+      <td>0.00</td>
+      <td>580.00</td>
+      <td>90,433.00</td>
+      <td>3,203.00</td>
+      <td>765,292.00</td>
+      <td>455.00</td>
+      <td>398.00</td>
+      <td>7.00</td>
+      <td>31.00</td>
+      <td>9.00</td>
+      <td>16.00</td>
+      <td>77.42</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20.42</td>
+      <td>219.45</td>
+      <td>1.85</td>
+      <td>0.96</td>
+      <td>71.43</td>
+      <td>5.99</td>
+      <td>233.63</td>
+      <td>32.07</td>
+      <td>30.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,565.42</td>
+    </tr>
+    <tr>
+      <th>2022-01-19</th>
+      <td>56,461.00</td>
+      <td>49,340.00</td>
+      <td>840.00</td>
+      <td>6,193.00</td>
+      <td>0.00</td>
+      <td>974.00</td>
+      <td>510.00</td>
+      <td>140.00</td>
+      <td>324.00</td>
+      <td>312.00</td>
+      <td>145.00</td>
+      <td>771.00</td>
+      <td>0.00</td>
+      <td>990.00</td>
+      <td>91,423.00</td>
+      <td>2,479.00</td>
+      <td>767,771.00</td>
+      <td>455.00</td>
+      <td>438.00</td>
+      <td>7.00</td>
+      <td>NaN</td>
+      <td>8.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>22.07</td>
+      <td>219.45</td>
+      <td>1.75</td>
+      <td>1.03</td>
+      <td>72.81</td>
+      <td>NaN</td>
+      <td>247.03</td>
+      <td>31.52</td>
+      <td>30.91</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1,617.93</td>
+    </tr>
   </tbody>
 </table>
-<p>684 rows × 155 columns</p>
+<p>688 rows × 156 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -2908,7 +2864,8 @@
 
 <span class="c1">### Vacunación ###</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 1° dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">],</span>
-              <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados dosis de refuerzo&#39;</span><span class="p">]]</span>
+              <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados dosis de refuerzo&#39;</span><span class="p">],</span>
+             <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 4° dosis&#39;</span><span class="p">]]</span>
               <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../out/site/csv/data27.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2973,6 +2930,7 @@
 <span class="n">procesovacunacion_2dosis</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">procesovacunacion_unica</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">procesovacunacion_hoy</span> <span class="o">=</span> <span class="n">procesovacunacion_2dosis</span> <span class="o">+</span> <span class="n">procesovacunacion_unica</span>
+<span class="n">procesovacunacion_hoy_4</span> <span class="o">=</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 4° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 4° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="p">(</span><span class="n">poblacion</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">procesovacunaciontotales_hoy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados 2° dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vacunados acumulados unica dosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()]</span> <span class="o">-</span> <span class="n">menores18</span><span class="p">)</span>
 
 <span class="c1">### Número de edición</span>
@@ -3064,6 +3022,7 @@
 
 <span class="c1">### Para redondear antes proceso de vacunación</span>
 <span class="n">procesovacunacion_hoy</span> <span class="o">=</span> <span class="n">procesovacunacion_hoy</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">procesovacunacion_hoy_4</span> <span class="o">=</span> <span class="n">procesovacunacion_hoy_4</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">casos_hoy</span><span class="p">,</span> <span class="n">consintomas_hoy</span><span class="p">,</span> <span class="n">sinsintomas_hoy</span><span class="p">,</span> <span class="n">porlaboratorio_hoy</span><span class="p">,</span> <span class="n">casosacumulados_hoy</span><span class="p">,</span> <span class="n">antigeno_hoy</span><span class="p">,</span> <span class="n">reinfeccion_hoy</span><span class="p">,</span> \
 <span class="n">recuperados_hoy</span><span class="p">,</span> <span class="n">recuperadosacumulados_hoy</span><span class="p">,</span> \
@@ -3123,7 +3082,7 @@
 <span class="sd">• De cada cien mil habitantes en la región, {} fallecen por COVID-19. 😵</span>
 <span class="sd">• El Re Regional corresponde a {}. 💊</span>
 <span class="sd">• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a {}. 💦</span>
-<span class="sd">• En el proceso de vacunación, {}% vacunados de la población objetivo (al menos, {} personas con cuadro de vacunación completo). 💦</span>
+<span class="sd">• En el proceso de vacunación, {}% vacunados de la población total (al menos, {} personas con 2° dosis o única). Con cuarta dosis se encuentran vacunados un {}% de la población objetivo. 💦</span>
 
 <span class="sd">*Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares</span>
 <span class="sd">*La ocupación UCI es una aproximación de la situación de camas críticas regionales.</span>
@@ -3147,7 +3106,7 @@
                                    <span class="n">crecimientodiario_hoy</span><span class="p">,</span> <span class="n">situacioncurva_hoy</span><span class="p">,</span> \
                                    <span class="n">ucidiaria_hoy</span><span class="p">,</span> <span class="n">uciaprox_hoy</span><span class="p">,</span> <span class="n">errorabs_hoy</span><span class="p">,</span> \
                                    <span class="n">positividad_hoy</span><span class="p">,</span> <span class="n">positividadmovil_hoy</span><span class="p">,</span> <span class="n">positividad_antigeno</span><span class="p">,</span> \
-                                   <span class="n">me_hoy</span><span class="p">,</span> <span class="n">reregional_hoy</span><span class="p">,</span> <span class="n">tasanuevos_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span>\
+                                   <span class="n">me_hoy</span><span class="p">,</span> <span class="n">reregional_hoy</span><span class="p">,</span> <span class="n">tasanuevos_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy</span><span class="p">,</span> <span class="n">procesovacunaciontotales_hoy</span><span class="p">,</span> <span class="n">procesovacunacion_hoy_4</span><span class="p">,</span> \
                                    <span class="n">ed_hoy</span><span class="p">,</span> <span class="n">cambios</span><span class="p">)</span>
 
 <span class="c1">## Imprimimos</span>
@@ -3156,27 +3115,27 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 15 de enero de 2022 🕑. 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 19 de enero de 2022 🕑. 
 
-• Infectados 1.136 casos nuevos de los cuales 603 con síntomas, 98 sin síntomas y 435 sin notificar, dando un total de 52.716 casos confirmados. Adicionalmente, 273 casos nuevos confirmados por antígeno y 116 casos totales con sospecha de reinfección. 🦠
-• Recuperadas 563 personas, sumando 46.573 recuperados totales. 💪
-• Perdieron la vida 1 persona(s), sumando 837 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
-• Informados 3.309 exámenes PCR dando un total de 755.909 exámenes PCR totales en la región. En antígenos, 893 informados y 88.564 acumulados. 🌡️
-• Respecto a residencias sanitarias, 7 recintos de hospedaje con 455 cupos, de los cuales 403 están utilizados. 🏨
-• Se reportaron 5.220 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 1.363. 🧪
-• La tasa de crecimiento es del 1,29: curva de contagios al alza.
-• Hasta ayer, 5 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 71,9% ± 1,0%. 🆘
-• La positividad PCR fue del 26,08%, con una positividad media móvil semanal del 16,84%. En antígeno, un 30,57% de positividad. 😷
-• De cada cien mil habitantes en la región, 218 fallecen por COVID-19. 😵
+• Infectados 974 casos nuevos de los cuales 510 con síntomas, 140 sin síntomas y 324 sin notificar, dando un total de 56.461 casos confirmados. Adicionalmente, 312 casos nuevos confirmados por antígeno y 145 casos totales con sospecha de reinfección. 🦠
+• Recuperadas 771 personas, sumando 49.340 recuperados totales. 💪
+• Perdieron la vida 0 persona(s), sumando 840 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
+• Informados 2.479 exámenes PCR dando un total de 767.771 exámenes PCR totales en la región. En antígenos, 990 informados y 91.423 acumulados. 🌡️
+• Respecto a residencias sanitarias, 7 recintos de hospedaje con 455 cupos, de los cuales 438 están utilizados. 🏨
+• Se reportaron 6.193 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 1.617. 🧪
+• La tasa de crecimiento es del 1,03: curva de contagios al alza.
+• Hasta ayer, 8 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 72,8% ± 6,0%. 🆘
+• La positividad PCR fue del 26,7%, con una positividad media móvil semanal del 22,07%. En antígeno, un 31,52% de positividad. 😷
+• De cada cien mil habitantes en la región, 219 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 1,89. 💊
-• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 197,1. 💦
-• En el proceso de vacunación, 92,3% vacunados de la población objetivo (al menos, 353.519 personas con cuadro de vacunación completo). 💦
+• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 247,0. 💦
+• En el proceso de vacunación, 80,6% vacunados de la población total (al menos, 308.585 personas con 2° dosis o única). Con cuarta dosis se encuentran vacunados un 0.1% de la población objetivo. 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
 *Datos actualizados hasta las 21 hrs. del día anterior.
 
-[ CAMBIOS EN LA 567° EDICION ⚙️ ]
+[ CAMBIOS EN LA 571° EDICION ⚙️ ]
 • Ninguno.
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
@@ -3191,9 +3150,7 @@
 </div>
 <div class="section" id="balance-de-vacunas">
 <h3>Balance de vacunas<a class="headerlink" href="#balance-de-vacunas" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Balance vacunas ###</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Balance vacunas ###</span>
 
 <span class="c1">### Cambios</span>
 <span class="n">cambios</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;• Ninguno&quot;&quot;&quot;</span>
@@ -3222,26 +3179,6 @@
 <span class="c1">## Imprimimos</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">desc2</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balance VACUNAS, 15 de enero de 2022. 🕑 
-
-• El 92,3% de la población objetivo ha completado su proceso de vacunación en Tarapacá. El total es de 353.519 personas con cuadros de vacunación completo.
-
-*Información proporcionada por Juan Cristobal Olivares (@juancriolivares), COVID-19 Vaccination.
-
-[ CAMBIOS EN LA 82° EDICION ⚙️ ]
-• Ninguno
-
-[ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
-• Reporte generado de forma automática. Si encuentras algún error o sugerencia, ¡comenta!
-• Autor: Alejandro Dinamarca.
-
-¡A cuidarse Tarapacá! 😉
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="indicador-de-fase">
@@ -3468,7 +3405,7 @@ print(desc2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\dinam\AppData\Local\Temp/ipykernel_40784/1562497236.py:19: DeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:19: DeprecationWarning:
 
 `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -3773,10 +3710,11 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">745</span><span class="p">,</span> <span class="mi">585</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fallecidosnuevos_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># fallecidos nuevos</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">825</span><span class="p">,</span> <span class="mi">660</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">activos_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># activos</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">760</span><span class="p">,</span> <span class="mi">735</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">activosprobables_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># activos probables</span>
-<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">700</span><span class="p">,</span> <span class="mi">810</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pcrnuevos_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># pcr nuevos</span>
-<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">695</span><span class="p">,</span> <span class="mi">890</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># positividad diaria</span>
-<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">750</span><span class="p">,</span> <span class="mi">965</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">residenciasusuarios_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># residencias sanitarias</span>
-<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">725</span><span class="p">,</span> <span class="mi">1035</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ucidiaria_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># uci diaria</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">760</span><span class="p">,</span> <span class="mi">735700</span><span class="p">,</span> <span class="mi">810</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pcrnuevos_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># pcr nuevos</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">700</span><span class="p">,</span> <span class="mi">810</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># positividad diaria</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">695</span><span class="p">,</span> <span class="mi">890</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">residenciasusuarios_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># residencias sanitarias</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">750</span><span class="p">,</span> <span class="mi">965</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ucidiaria_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># uci diaria</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">725</span><span class="p">,</span> <span class="mi">1035</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">procesovacunacion_hoy_4</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data1</span><span class="p">)</span> <span class="c1"># vac 4°</span>
 
 <span class="c1">### Guardamos</span>
 <span class="n">diario1</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../../out/diario/1.png&#39;</span><span class="p">)</span>
@@ -3842,7 +3780,7 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 <span class="n">txt</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">diario5</span><span class="p">)</span>
 
 <span class="c1">### Textos</span>
-<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">760</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividadmovil_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">)</span> <span class="c1"># casos con sintomas</span>
+<span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">750</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividadmovil_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">)</span> <span class="c1"># casos con sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">670</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_hoy</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#dfdede&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">coolvetica_data2</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># casos con sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span> <span class="s1">&#39;Ayer: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_ayer</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data3</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># ayer, casos con sintomas</span>
 <span class="n">txt</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">190</span><span class="p">,</span> <span class="mi">860</span><span class="p">),</span> <span class="s1">&#39;Antígeno: </span><span class="si">{}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">positividad_antigeno</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#989898&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">roboto_data1</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span> <span class="c1"># nuevos antigeno</span>
@@ -4227,7 +4165,7 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  1.02 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  5.99 %
 La media general del error es de:  0.58 %
 </pre></div>
 </div>
@@ -4346,281 +4284,256 @@ La media general del error es de:  0.58 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><details>
-<summary>Click to view session information</summary>
-<pre>
------
-PIL                 8.4.0
-bs4                 4.10.0
-datetime            NA
-json                2.0.9
-locale              NA
-markdownify         NA
-math                NA
-matplotlib          3.4.3
-natsort             8.0.2
-numpy               1.20.3
-os                  NA
-pandas              1.3.4
-pkg_resources       NA
-plotly              5.5.0
-pybtex              0.24.0
-requests            2.26.0
-scipy               1.7.1
-seaborn             0.11.2
-session_info        1.0.0
-sklearn             0.24.2
-time                NA
-types               NA
------
-</pre>
-<details>
-<summary>Click to view modules imported as dependencies</summary>
-<pre>
-abc                         NA
-anyio                       NA
-argparse                    1.1
-array                       NA
-ast                         NA
-asyncio                     NA
-atexit                      NA
-attr                        21.2.0
-babel                       2.9.1
-backcall                    0.2.0
-base64                      NA
-bdb                         NA
-beta_ufunc                  NA
-binascii                    NA
-binom_ufunc                 NA
-bisect                      NA
-bottleneck                  1.3.2
-brotli                      NA
-bz2                         NA
-cProfile                    NA
-calendar                    NA
-certifi                     2021.10.08
-cffi                        1.14.6
-chardet                     4.0.0
-charset_normalizer          2.0.4
-cmath                       NA
-cmd                         NA
-code                        NA
-codecs                      NA
-codeop                      NA
-collections                 NA
-colorama                    0.4.4
-colorsys                    NA
-concurrent                  NA
-configparser                NA
-contextlib                  NA
-contextvars                 NA
-copy                        NA
-copyreg                     NA
-csv                         1.0
-ctypes                      1.1.0
-cycler                      0.10.0
-cython_runtime              NA
-dataclasses                 NA
-dateutil                    2.8.2
-debugpy                     1.4.1
-decimal                     1.70
-decorator                   5.1.0
-defusedxml                  0.7.1
-difflib                     NA
-dis                         NA
-distutils                   3.9.7
-email                       NA
-encodings                   NA
-entrypoints                 0.3
-enum                        NA
-errno                       NA
-faulthandler                NA
-filecmp                     NA
-fnmatch                     NA
-fractions                   NA
-functools                   NA
-gc                          NA
-genericpath                 NA
-getopt                      NA
-getpass                     NA
-gettext                     NA
-glob                        NA
-gzip                        NA
-hashlib                     NA
-heapq                       NA
-hmac                        NA
-html                        NA
-html5lib                    1.1
-http                        NA
-idna                        3.2
-imp                         NA
-importlib                   NA
-inspect                     NA
-io                          NA
-ipaddress                   1.0
-ipykernel                   6.4.1
-ipython_genutils            0.2.0
-ipywidgets                  7.6.5
-itertools                   NA
-jedi                        0.18.0
-jinja2                      2.11.3
-joblib                      1.1.0
-json5                       NA
-jsonschema                  3.2.0
-jupyter_server              1.4.1
-jupyterlab_server           2.8.2
-keyword                     NA
-kiwisolver                  1.3.1
-linecache                   NA
-logging                     0.5.1.2
-lxml                        4.6.3
-lzma                        NA
-markupsafe                  1.1.1
-marshal                     4
-matplotlib_inline           NA
-mimetypes                   NA
-mkl                         2.4.0
-mmap                        NA
-mpl_toolkits                NA
-msvcrt                      NA
-multiprocessing             NA
-nbclassic                   NA
-nbformat                    5.1.3
-nbinom_ufunc                NA
-netrc                       NA
-nt                          NA
-ntpath                      NA
-ntsecuritycon               NA
-nturl2path                  NA
-numbers                     NA
-numexpr                     2.7.3
-olefile                     0.46
-opcode                      NA
-operator                    NA
-packaging                   21.0
-parso                       0.8.2
-pathlib                     NA
-pdb                         NA
-pickle                      NA
-pickleshare                 0.7.5
-pkgutil                     NA
-platform                    1.0.8
-plistlib                    NA
-posixpath                   NA
-pprint                      NA
-profile                     NA
-prometheus_client           NA
-prompt_toolkit              3.0.20
-pstats                      NA
-psutil                      5.8.0
-pvectorc                    NA
-pydev_ipython               NA
-pydevconsole                NA
-pydevd                      2.4.1
-pydevd_concurrency_analyser NA
-pydevd_file_utils           NA
-pydevd_plugins              NA
-pydevd_tracing              NA
-pydoc                       NA
-pydoc_data                  NA
-pyexpat                     NA
-pygments                    2.10.0
-pyparsing                   3.0.4
-pyrsistent                  NA
-pythoncom                   NA
-pytz                        2021.3
-pywintypes                  NA
-queue                       NA
-quopri                      NA
-random                      NA
-re                          2.2.1
-reprlib                     NA
-runpy                       NA
-secrets                     NA
-select                      NA
-selectors                   NA
-send2trash                  NA
-shlex                       NA
-shutil                      NA
-signal                      NA
-site                        NA
-six                         1.16.0
-sniffio                     1.2.0
-socket                      NA
-socketserver                0.4
-socks                       1.7.1
-soupsieve                   2.2.1
-sphinxcontrib               NA
-sqlite3                     2.6.0
-sre_compile                 NA
-sre_constants               NA
-sre_parse                   NA
-ssl                         NA
-stat                        NA
-statsmodels                 0.12.2
-storemagic                  NA
-string                      NA
-stringprep                  NA
-struct                      NA
-subprocess                  NA
-sys                         3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-sysconfig                   NA
-tarfile                     0.9.0
-tempfile                    NA
-tenacity                    NA
-textwrap                    NA
-threading                   NA
-timeit                      NA
-token                       NA
-tokenize                    NA
-tornado                     6.1
-traceback                   NA
-traitlets                   5.1.0
-typing                      NA
-typing_extensions           NA
-unicodedata                 NA
-unittest                    NA
-urllib                      NA
-urllib3                     1.26.7
-uu                          NA
-uuid                        NA
-warnings                    NA
-wcwidth                     0.2.5
-weakref                     NA
-webbrowser                  NA
-webencodings                0.5.1
-win32api                    NA
-win32com                    NA
-win32con                    NA
-win32security               NA
-win32trace                  NA
-winerror                    NA
-winreg                      NA
-wsgiref                     NA
-xml                         NA
-xmlrpc                      NA
-zipfile                     NA
-zipimport                   NA
-zlib                        1.0
-zmq                         22.2.1
-zope                        NA
-</pre>
-</details> <!-- seems like this ends pre, so might as well be explicit -->
-<pre>
------
-IPython             7.29.0
-jupyter_client      6.1.12
-jupyter_core        4.8.1
-jupyterlab          3.2.1
-notebook            6.4.5
------
-Python 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-Windows-10-10.0.22000-SP0
-12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
------
-Session information updated at 2022-01-15 13:12
-</pre>
-</details></div></div>
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            PIL                 8.4.0
+            bs4                 4.10.0
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            markdownify         NA
+            math                NA
+            matplotlib          3.4.3
+            natsort             8.0.2
+            numpy               1.20.3
+            os                  NA
+            pandas              1.3.4
+            pkg_resources       NA
+            plotly              5.5.0
+            pybtex              0.24.0
+            requests            2.26.0
+            scipy               1.7.1
+            seaborn             0.11.2
+            session_info        1.0.0
+            sklearn             0.24.2
+            time                NA
+            types               NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                         NA
+            argparse                    1.1
+            array                       NA
+            ast                         NA
+            asyncio                     NA
+            atexit                      NA
+            attr                        21.4.0
+            backcall                    0.2.0
+            base64                      NA
+            bdb                         NA
+            beta_ufunc                  NA
+            binascii                    NA
+            binom_ufunc                 NA
+            bisect                      NA
+            bz2                         NA
+            cProfile                    NA
+            calendar                    NA
+            certifi                     2021.10.08
+            cffi                        1.15.0
+            charset_normalizer          2.0.10
+            cmath                       NA
+            cmd                         NA
+            code                        NA
+            codecs                      NA
+            codeop                      NA
+            collections                 NA
+            colorama                    0.4.4
+            colorsys                    NA
+            concurrent                  NA
+            configparser                NA
+            contextlib                  NA
+            contextvars                 NA
+            copy                        NA
+            copyreg                     NA
+            csv                         1.0
+            ctypes                      1.1.0
+            curses                      NA
+            cycler                      0.10.0
+            cython_runtime              NA
+            dataclasses                 NA
+            dateutil                    2.8.2
+            debugpy                     1.5.1
+            decimal                     1.70
+            decorator                   5.1.1
+            defusedxml                  0.7.1
+            difflib                     NA
+            dis                         NA
+            distutils                   3.7.12
+            email                       NA
+            encodings                   NA
+            entrypoints                 0.3
+            enum                        NA
+            errno                       NA
+            faulthandler                NA
+            fcntl                       NA
+            filecmp                     NA
+            fnmatch                     NA
+            fractions                   NA
+            functools                   NA
+            gc                          NA
+            genericpath                 NA
+            getopt                      NA
+            getpass                     NA
+            gettext                     NA
+            glob                        NA
+            grp                         NA
+            gzip                        NA
+            hashlib                     NA
+            heapq                       NA
+            hmac                        NA
+            html                        NA
+            http                        NA
+            idna                        3.3
+            imp                         NA
+            importlib                   NA
+            importlib_metadata          NA
+            inspect                     NA
+            io                          NA
+            ipaddress                   1.0
+            ipykernel                   6.7.0
+            ipython_genutils            0.2.0
+            ipywidgets                  7.6.5
+            itertools                   NA
+            jedi                        0.18.1
+            joblib                      1.1.0
+            jsonschema                  3.2.0
+            keyword                     NA
+            kiwisolver                  1.3.2
+            linecache                   NA
+            logging                     0.5.1.2
+            lzma                        NA
+            marshal                     4
+            matplotlib_inline           NA
+            mimetypes                   NA
+            mmap                        NA
+            mpl_toolkits                NA
+            multiprocessing             NA
+            nbformat                    5.1.3
+            nbinom_ufunc                NA
+            netrc                       NA
+            ntpath                      NA
+            numbers                     NA
+            opcode                      NA
+            operator                    NA
+            packaging                   21.3
+            parso                       0.8.3
+            pathlib                     NA
+            pdb                         NA
+            pexpect                     4.8.0
+            pickle                      NA
+            pickleshare                 0.7.5
+            pkgutil                     NA
+            platform                    1.0.8
+            plistlib                    NA
+            posix                       NA
+            posixpath                   NA
+            pprint                      NA
+            profile                     NA
+            prompt_toolkit              3.0.24
+            pstats                      NA
+            pty                         NA
+            ptyprocess                  0.7.0
+            pvectorc                    NA
+            pwd                         NA
+            pydev_ipython               NA
+            pydevconsole                NA
+            pydevd                      2.6.0
+            pydevd_concurrency_analyser NA
+            pydevd_file_utils           NA
+            pydevd_plugins              NA
+            pydevd_tracing              NA
+            pydoc                       NA
+            pydoc_data                  NA
+            pyexpat                     NA
+            pygments                    2.11.2
+            pyparsing                   3.0.6
+            pyrsistent                  NA
+            pytz                        2021.3
+            queue                       NA
+            quopri                      NA
+            random                      NA
+            re                          2.2.1
+            reprlib                     NA
+            resource                    NA
+            runpy                       NA
+            secrets                     NA
+            select                      NA
+            selectors                   NA
+            shlex                       NA
+            shutil                      NA
+            signal                      NA
+            site                        NA
+            six                         1.16.0
+            socket                      NA
+            socketserver                0.4
+            soupsieve                   2.3.1
+            sphinxcontrib               NA
+            sqlite3                     2.6.0
+            sre_compile                 NA
+            sre_constants               NA
+            sre_parse                   NA
+            ssl                         NA
+            stat                        NA
+            storemagic                  NA
+            string                      NA
+            stringprep                  NA
+            struct                      NA
+            subprocess                  NA
+            sys                         3.7.12 (default, Sep  6 2021, 07:19:30) 
+[GCC 9.3.0]
+            sysconfig                   NA
+            tarfile                     0.9.0
+            tempfile                    NA
+            tenacity                    NA
+            termios                     NA
+            textwrap                    NA
+            threading                   NA
+            timeit                      NA
+            token                       NA
+            tokenize                    NA
+            tornado                     6.1
+            traceback                   NA
+            traitlets                   5.1.1
+            tty                         NA
+            typing                      NA
+            typing_extensions           NA
+            unicodedata                 NA
+            unittest                    NA
+            urllib                      NA
+            urllib3                     1.26.8
+            uu                          NA
+            uuid                        NA
+            warnings                    NA
+            wcwidth                     0.2.5
+            weakref                     NA
+            webbrowser                  NA
+            xml                         NA
+            xmlrpc                      NA
+            zipfile                     NA
+            zipimport                   NA
+            zipp                        NA
+            zlib                        1.0
+            zmq                         22.3.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.31.1
+            jupyter_client      7.1.1
+            jupyter_core        4.9.1
+            notebook            6.4.7
+            -----
+            Python 3.7.12 (default, Sep  6 2021, 07:19:30) [GCC 9.3.0]
+            Linux-5.11.0-1025-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2022-01-19 18:53
+            </pre>
+            </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
