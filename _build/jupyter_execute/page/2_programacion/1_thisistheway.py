@@ -1756,12 +1756,11 @@ txt.text((650, 435), '{}'.format(casos_hoy), fill='#dfdede', font=coolvetica_dat
 txt.text((820, 510), '{}'.format(recuperados_hoy), fill='#dfdede', font=coolvetica_data1) # recuperados nuevos
 txt.text((745, 585), '{}'.format(fallecidosnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # fallecidos nuevos
 txt.text((825, 660), '{}'.format(activos_hoy), fill='#dfdede', font=coolvetica_data1) # activos
-txt.text((760, 735), '{}'.format(activosprobables_hoy), fill='#dfdede', font=coolvetica_data1) # activos probables
-txt.text((760, 735700, 810), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # pcr nuevos
+txt.text((700, 735), '{}'.format(pcrnuevos_hoy), fill='#dfdede', font=coolvetica_data1) # pcr nuevos
 txt.text((700, 810), '{}%'.format(positividad_hoy), fill='#dfdede', font=coolvetica_data1) # positividad diaria
-txt.text((695, 890), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data1) # residencias sanitarias
-txt.text((750, 965), '{}'.format(ucidiaria_hoy), fill='#dfdede', font=coolvetica_data1) # uci diaria
-txt.text((725, 1035), '{}%'.format(procesovacunacion_hoy_4), fill='#dfdede', font=coolvetica_data1) # vac 4°
+txt.text((760, 890), '{}'.format(residenciasusuarios_hoy), fill='#dfdede', font=coolvetica_data1) # residencias sanitarias
+txt.text((790, 965), '{}'.format(ucidiaria_hoy), fill='#dfdede', font=coolvetica_data1) # uci diaria
+txt.text((830, 1035), '{}%'.format(procesovacunacion_hoy_4), fill='#dfdede', font=coolvetica_data1) # vac 4°
 
 ### Guardamos
 diario1.save('../../out/diario/1.png')
