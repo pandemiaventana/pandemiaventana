@@ -23,4 +23,4 @@ types
 IPython==7.31.1
 jupyter_client==7.1.2
 jupyter_core==4.9.1
-notebook==6.4.7
+notebook==6.4.8
