@@ -1307,7 +1307,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Contamos con <strong>700</strong> filas de observaciones o datos.</p>
+<p>Contamos con <strong>701</strong> filas de observaciones o datos.</p>
 </div>
 </div>
 <blockquote>
@@ -1372,11 +1372,11 @@
 </div>
 <div class="cell_output docutils container">
  <h3> Para la columna Casos recuperados acumulados </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>0.02130048091324193</strong></p>
+<div><p>El valor de la curtosis es de <strong>0.035442594189455605</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
  <h3> Para la columna Casos fallecidos acumulados </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.044956478802226724</strong></p>
+<div><p>El valor de la curtosis es de <strong>-0.04701448164806362</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
  <h3> Para la columna Casos acumulados en Camiña </h3><blockquote>
@@ -1412,7 +1412,7 @@
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_29.png" src="../../_images/2_thisistheway_19_29.png" />
  <h3> Para la columna Mortalidad especifica * </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.04495842255318321</strong></p>
+<div><p>El valor de la curtosis es de <strong>-0.047016167393169064</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_32.png" src="../../_images/2_thisistheway_19_32.png" />
 </div>
@@ -2060,27 +2060,6 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-01-27</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2.00</td>
-      <td>12.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>633.00</td>
-      <td>598.00</td>
-      <td>75.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>267.61</td>
-    </tr>
-    <tr>
       <th>2022-01-28</th>
       <td>NaN</td>
       <td>46,713.00</td>
@@ -2164,9 +2143,30 @@
       <td>NaN</td>
       <td>NaN</td>
     </tr>
+    <tr>
+      <th>2022-02-01</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
   </tbody>
 </table>
-<p>700 rows × 18 columns</p>
+<p>701 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2553,9 +2553,9 @@ Sus colores:
 <h3>Resultado para Alto Hospicio</h3><p>El algoritmo entrenado para la comuna de Alto Hospicio tiene una precisión del <strong>97.82608695652173%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.94      1.00      0.97        30
+Apertura Inicial       0.94      1.00      0.97        29
      Preparación       1.00      0.96      0.98        49
-      Transición       1.00      1.00      1.00        13
+      Transición       1.00      1.00      1.00        14
 
         accuracy                           0.98        92
        macro avg       0.98      0.99      0.98        92
@@ -2563,42 +2563,42 @@ Apertura Inicial       0.94      1.00      0.97        30
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_6.png" src="../../_images/2_thisistheway_50_6.png" />
-<h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>96.73913043478261%</strong>.</p>
+<h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>100.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       1.00      1.00      1.00        79
-     Preparación       0.77      1.00      0.87        10
-      Transición       0.00      0.00      0.00         3
+Apertura Inicial       1.00      1.00      1.00        78
+     Preparación       1.00      1.00      1.00        10
+      Transición       1.00      1.00      1.00         4
 
-        accuracy                           0.97        92
-       macro avg       0.59      0.67      0.62        92
-    weighted avg       0.94      0.97      0.95        92
+        accuracy                           1.00        92
+       macro avg       1.00      1.00      1.00        92
+    weighted avg       1.00      1.00      1.00        92
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
-<h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>68.47826086956522%</strong>.</p>
+<h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>67.3913043478261%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.60      1.00      0.75        44
-     Preparación       1.00      0.36      0.52        45
-      Transición       1.00      1.00      1.00         3
+Apertura Inicial       0.59      1.00      0.74        43
+     Preparación       1.00      0.33      0.50        45
+      Transición       1.00      1.00      1.00         4
 
-        accuracy                           0.68        92
-       macro avg       0.87      0.79      0.76        92
-    weighted avg       0.81      0.68      0.65        92
+        accuracy                           0.67        92
+       macro avg       0.86      0.78      0.75        92
+    weighted avg       0.81      0.67      0.63        92
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
-<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>81.52173913043478%</strong>.</p>
+<h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>82.6086956521739%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.80      1.00      0.89        63
-     Preparación       1.00      0.35      0.51        26
-      Transición       0.75      1.00      0.86         3
+Apertura Inicial       0.81      1.00      0.89        63
+     Preparación       1.00      0.36      0.53        25
+      Transición       0.80      1.00      0.89         4
 
-        accuracy                           0.82        92
-       macro avg       0.85      0.78      0.75        92
-    weighted avg       0.85      0.82      0.78        92
+        accuracy                           0.83        92
+       macro avg       0.87      0.79      0.77        92
+    weighted avg       0.86      0.83      0.79        92
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
@@ -2606,8 +2606,8 @@ Apertura Inicial       0.80      1.00      0.89        63
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
 Apertura Inicial       1.00      0.36      0.53        28
-     Preparación       0.72      1.00      0.84        47
-      Transición       1.00      1.00      1.00        17
+     Preparación       0.72      1.00      0.84        46
+      Transición       1.00      1.00      1.00        18
 
         accuracy                           0.80        92
        macro avg       0.91      0.79      0.79        92
@@ -2618,22 +2618,22 @@ Apertura Inicial       1.00      0.36      0.53        28
 <h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>68.47826086956522%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.61      1.00      0.76        44
+Apertura Inicial       0.61      1.00      0.75        43
      Preparación       1.00      0.17      0.29        35
-      Transición       0.93      1.00      0.96        13
+      Transición       0.93      1.00      0.97        14
 
         accuracy                           0.68        92
        macro avg       0.85      0.72      0.67        92
-    weighted avg       0.80      0.68      0.61        92
+    weighted avg       0.81      0.68      0.61        92
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
 <h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>84.78260869565217%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.79      1.00      0.89        54
+Apertura Inicial       0.79      1.00      0.88        53
      Preparación       1.00      0.44      0.61        25
-      Transición       1.00      1.00      1.00        13
+      Transición       1.00      1.00      1.00        14
 
         accuracy                           0.85        92
        macro avg       0.93      0.81      0.83        92
@@ -2982,7 +2982,7 @@ Apertura Inicial       0.79      1.00      0.89        54
             Linux-5.11.0-1027-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-01-31 23:57
+            Session information updated at 2022-02-01 16:01
             </pre>
             </details></div></div>
 </div>
