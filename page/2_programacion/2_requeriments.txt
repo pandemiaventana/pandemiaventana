@@ -15,5 +15,5 @@ sklearn==0.24.2
 time
 IPython==7.31.1
 jupyter_client==7.1.2
-jupyter_core==4.9.1
+jupyter_core==4.9.2
 notebook==6.4.8
