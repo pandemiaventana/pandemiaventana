@@ -45,15 +45,14 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/3_thisistheway.html" />
     <link rel="shortcut icon" href="../../_static/0_favicon.ico"/>
@@ -897,9 +896,9 @@
 <div class="section" id="como-funciona">
 <h3>¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>La salida completa de la celda anterior es capturada como lenguaje HTML, pero solo el cuerpo de la página <span id="id3">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id16">Ben20</a>]</span>.</p></li>
+<li><p>La salida completa de la celda anterior es capturada como lenguaje HTML, pero solo el cuerpo de la página <span id="id3">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id16" title="BenVida. Jupyter magic to handle notebook exceptions. 2020. URL: https://stackoverflow.com/a/64495269/13746427.">Ben20</a>]</span>.</p></li>
 </ul>
-<p>En este sentido, <strong>dar gracias al usuario Benvida, de Stackoverflow</strong> <a class="footnote-reference brackets" href="#benvida" id="id4">1</a>. El código original que desarrolló se encuentra a continuación, el cual modificaremos.</p>
+<p>En este sentido, <strong>dar gracias al usuario Benvida, de Stackoverflow</strong> <a class="footnote-reference brackets" href="#footcite-benvida" id="id4">1</a>. El código original que desarrolló se encuentra a continuación, el cual modificaremos.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">js</span>
 <span class="p">{</span>
     <span class="n">let</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="n">document</span><span class="o">.</span><span class="n">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;.cell&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
@@ -972,7 +971,7 @@
 <ul class="simple">
 <li><p>Limpieza de textos.</p></li>
 <li><p>Damos formato de documento HTML.</p></li>
-<li><p>Añadimos <a class="reference external" href="https://getbootstrap.com/">Bootstrap</a> <a class="footnote-reference brackets" href="#bootstrap" id="id5">2</a> para que el documento HTML no quede plano, añadiendo código desde sus Docs <span id="id6">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id52">Boo20</a>]</span>.</p></li>
+<li><p>Añadimos <a class="reference external" href="https://getbootstrap.com/">Bootstrap</a> <a class="footnote-reference brackets" href="#footcite-bootstrap" id="id5">2</a> para que el documento HTML no quede plano, añadiendo código desde sus Docs <span id="id6">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id52" title="Bootstrap. Get started with Bootstrap. 2020. URL: https://getbootstrap.com/docs/4.3/getting-started/introduction/.">Boo20</a>]</span>.</p></li>
 <li><p>Entre otros.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1288,18 +1287,18 @@
             Linux-5.11.0-1028-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-02-21 23:53
+            Session information updated at 2022-02-22 15:56
             </pre>
             </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
 <h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">¶</a></h2>
-<p><dl class="footnote brackets">
-<dt class="label" id="benvida"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<p id="id7"><dl class="footnote brackets">
+<dt class="label" id="footcite-benvida"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
 <dd><p>BenVida. Jupyter magic to handle notebook exceptions. 2020. URL: <a class="reference external" href="https://stackoverflow.com/a/64495269/13746427">https://stackoverflow.com/a/64495269/13746427</a>.</p>
 </dd>
-<dt class="label" id="bootstrap"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dt class="label" id="footcite-bootstrap"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
 <dd><p>Bootstrap. Get started with Bootstrap. 2020. URL: <a class="reference external" href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">https://getbootstrap.com/docs/4.3/getting-started/introduction/</a>.</p>
 </dd>
 </dl>

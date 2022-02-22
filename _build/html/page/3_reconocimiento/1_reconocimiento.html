@@ -45,12 +45,11 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/page/3_reconocimiento/1_reconocimiento.html" />
@@ -657,10 +656,10 @@
 <p>Ambos reconocimientos datan del 2020.</p>
 <div class="section" id="como-usa-la-comunidad-la-base-de-datos-covid-19">
 <h4>¿Cómo usa la comunidad la Base de Datos COVID-19?<a class="headerlink" href="#como-usa-la-comunidad-la-base-de-datos-covid-19" title="Permalink to this headline">¶</a></h4>
-<p>En el <a href="https://minciencia.gob.cl/comunidad-covid19/">siguiente enlace</a> <span id="id2">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id50">MdC20</a>]</span>, el MICITEC “<em>recopila todas las iniciativas desarrolladas a partir de la Base de Datos COVID-19</em>” <a class="footnote-reference brackets" href="#minciencia" id="id3">1</a>.</p>
+<p>En el <a href="https://minciencia.gob.cl/comunidad-covid19/">siguiente enlace</a> <span id="id2">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id50" title="Conocimiento e Innovación Ministerio de Ciencia, Tecnología. ¿Cómo usa la comunidad la Base de Datos COVID-19? 2020. URL: https://minciencia.gob.cl/comunidad-covid19/.">MdC20</a>]</span>, el MICITEC “<em>recopila todas las iniciativas desarrolladas a partir de la Base de Datos COVID-19</em>” <a class="footnote-reference brackets" href="#footcite-minciencia" id="id3">1</a>.</p>
 <div class="section" id="numeral-lab-visualizacion-de-datos-en-tarapaca">
 <h5>Numeral.lab - Visualización de datos en Tarapacá<a class="headerlink" href="#numeral-lab-visualizacion-de-datos-en-tarapaca" title="Permalink to this headline">¶</a></h5>
-<p>La primera aparición fue a raíz de un correo que envié al MICITEC, siendo respondido días después con la positiva de añadir la página de Numeral.lab - <em>en ese entonces, <a class="reference external" href="http://adinamarca.github.io">adinamarca.github.io</a></em> - a su sitio web <a class="footnote-reference brackets" href="#minciencia" id="id4">1</a>.</p>
+<p>La primera aparición fue a raíz de un correo que envié al MICITEC, siendo respondido días después con la positiva de añadir la página de Numeral.lab - <em>en ese entonces, <a class="reference external" href="http://adinamarca.github.io">adinamarca.github.io</a></em> - a su sitio web <a class="footnote-reference brackets" href="#footcite-minciencia" id="id4">1</a>.</p>
 <p>El correo fue respondido por Carlos Avila, asesor del Equipo Futuro (le estoy sumamente agradecido).</p>
 <div class="figure align-default" id="markdown-fig">
 <img alt="../../_images/4.jpg" src="../../_images/4.jpg" />
@@ -669,7 +668,7 @@
 </div>
 <div class="section" id="asistencia-covid19">
 <h5>Asistencia COVID19<a class="headerlink" href="#asistencia-covid19" title="Permalink to this headline">¶</a></h5>
-<p>La segunda aparición fue a raíz de un nuevo correo que envié al MICITEC, esta vez, aludiendo a una mejora en la visualización de los datos gracias a la plataforma Infogram, siendo respondido días después con la positiva de añadir la página de la Universidad Arturo Prat - <em><a class="reference external" href="http://asistenciacovid19.cl">asistenciacovid19.cl</a></em> - a su sitio web <a class="footnote-reference brackets" href="#minciencia" id="id5">1</a>.</p>
+<p>La segunda aparición fue a raíz de un nuevo correo que envié al MICITEC, esta vez, aludiendo a una mejora en la visualización de los datos gracias a la plataforma Infogram, siendo respondido días después con la positiva de añadir la página de la Universidad Arturo Prat - <em><a class="reference external" href="http://asistenciacovid19.cl">asistenciacovid19.cl</a></em> - a su sitio web <a class="footnote-reference brackets" href="#footcite-minciencia" id="id5">1</a>.</p>
 <p>El correo también fue respondido por Carlos Avila.</p>
 <div class="figure align-default" id="id6">
 <img alt="../../_images/5.jpg" src="../../_images/5.jpg" />
@@ -678,7 +677,7 @@
 </div>
 <div class="section" id="la-pandemia-por-la-ventana">
 <h5>La pandemia por la ventana<a class="headerlink" href="#la-pandemia-por-la-ventana" title="Permalink to this headline">¶</a></h5>
-<p>La tercera aparición fue a raíz de otro correo que envié, apariciendo el presente <em>librito</em> en el portal del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación <a class="footnote-reference brackets" href="#minciencia" id="id7">1</a>.</p>
+<p>La tercera aparición fue a raíz de otro correo que envié, apariciendo el presente <em>librito</em> en el portal del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación <a class="footnote-reference brackets" href="#footcite-minciencia" id="id7">1</a>.</p>
 <p>El correo fue respondido por Demián Arancibia, a cargo del Equipo Futuro, a quién le tengo mucha admiración por su constante trabajo en democratización de datos (recíproco para todos los colaboradores del repositorio del Ministerio).</p>
 <div class="figure align-default" id="id8">
 <img alt="../../_images/8.jpg" src="../../_images/8.jpg" />
@@ -699,7 +698,7 @@
 <img alt="../../_images/7.jpg" src="../../_images/7.jpg" />
 <p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text"><strong>Entendiendo las curvas de contagio y el desafío de aplanarlas - II parte</strong>. Imagen del <a href="https://www.facebook.com/watch/live/?extid=SEO----&v=4143835965690381&ref=watch_permalink">Gobierno Regional de Tarapacá en su Facebook</a>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
-<p>“<em>Entendiendo las curvas de contagio y el desafío de aplanarlas - II parte</em>” <span id="id11">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id51">Tar20</a>]</span>, por GORE Tarapacá <a class="footnote-reference brackets" href="#gore" id="id12">2</a>.</p>
+<p>“<em>Entendiendo las curvas de contagio y el desafío de aplanarlas - II parte</em>” <span id="id11">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id51" title="Gobierno Regional Tarapacá. Entendiendo las curvas de contagio y el desafío de aplanarlas - II parte. 2020. URL: https://www.facebook.com/watch/live/?extid=SEO----&amp;v=4143835965690381&amp;ref=watch_permalink.">Tar20</a>]</span>, por GORE Tarapacá <a class="footnote-reference brackets" href="#footcite-gore" id="id12">2</a>.</p>
 <div class="figure align-default" id="id13">
 <img alt="../../_images/6.jpg" src="../../_images/6.jpg" />
 <p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text"><strong>Entendiendo las curvas de contagio y el desafío de aplanarlas - II parte</strong>. Imagen del <a href="https://www.facebook.com/watch/live/?extid=SEO----&v=4143835965690381&ref=watch_permalink">Gobierno Regional de Tarapacá</a>.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
@@ -716,7 +715,7 @@
 <p>En este sentido, hicieron una nota en la UNAP en 2020, referente a la incorporación de la iniciativa Numeral.lab al sitio del Ministerio de Ciencia, Tecnología e Información.</p>
 <div class="section" id="julio-10">
 <h4>Julio, 10<a class="headerlink" href="#julio-10" title="Permalink to this headline">¶</a></h4>
-<p>“<em>Aplicación web de estudiante UNAP hace accesible datos Covid 19 a la comunidad en página del Ministerio de Ciencias</em>” <span id="id15">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id46">Pra20</a>]</span>, por la Universidad Arturo Prat <a class="footnote-reference brackets" href="#unap1" id="id16">3</a>.</p>
+<p>“<em>Aplicación web de estudiante UNAP hace accesible datos Covid 19 a la comunidad en página del Ministerio de Ciencias</em>” <span id="id15">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id46" title="Universidad Arturo Prat. Aplicación web de estudiante UNAP hace accesible datos Covid 19. 2020. URL: https://www.unap.cl/prontus_unap/site/artic/20200710/pags/20200710123250.html.">Pra20</a>]</span>, por la Universidad Arturo Prat <a class="footnote-reference brackets" href="#footcite-unap1" id="id16">3</a>.</p>
 <div class="figure align-default" id="id17">
 <img alt="../../_images/1.jpg" src="../../_images/1.jpg" />
 <p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text"><strong>Aplicación web de estudiante UNAP hace accesible datos Covid 19 a la comunidad en página del Ministerio de Ciencias</strong>. Imagen de <a href="https://www.unap.cl/prontus_unap/site/artic/20200710/pags/20200710123250.html">la Universidad Arturo Prat</a>.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
@@ -728,7 +727,7 @@
 <p>En 2021, una nota referente al desarrollo del Indicador de Fase.</p>
 <div class="section" id="enero-13">
 <h4>Enero, 13<a class="headerlink" href="#enero-13" title="Permalink to this headline">¶</a></h4>
-<p>“<em>Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase que posibilita saber que tan cerca estamos de avanzar o retroceder</em>” <span id="id19">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id47">Pra21b</a>]</span>, por la Universidad Arturo Prat <a class="footnote-reference brackets" href="#unap2" id="id20">4</a>.</p>
+<p>“<em>Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase que posibilita saber que tan cerca estamos de avanzar o retroceder</em>” <span id="id19">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id47" title="Universidad Arturo Prat. Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase. 2021. URL: https://www.unap.cl/prontus_unap/site/artic/20210113/pags/20210113142515.html.">Pra21b</a>]</span>, por la Universidad Arturo Prat <a class="footnote-reference brackets" href="#footcite-unap2" id="id20">4</a>.</p>
 <div class="figure align-default" id="id21">
 <img alt="../../_images/2.jpg" src="../../_images/2.jpg" />
 <p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text"><strong>Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase que posibilita saber que tan cerca estamos de avanzar o retroceder</strong>. Imagen de <a href="https://www.unap.cl/prontus_unap/site/artic/20210113/pags/20210113142515.html">la Universidad Arturo Prat</a>.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
@@ -736,7 +735,7 @@
 </div>
 <div class="section" id="septiembre-21">
 <h4>Septiembre, 21<a class="headerlink" href="#septiembre-21" title="Permalink to this headline">¶</a></h4>
-<p>“<em>Autor de software que automatiza cifras Covid lanza libro detallando su innovación</em>” <span id="id22">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id48">Pra21a</a>]</span>, por la Universidad Arturo Prat <a class="footnote-reference brackets" href="#unap3" id="id23">5</a>.</p>
+<p>“<em>Autor de software que automatiza cifras Covid lanza libro detallando su innovación</em>” <span id="id22">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id48" title="Prensa Universidad Arturo Prat. Autor de software que automatiza cifras Covid lanza libro detallando su innovación. 2021. URL: https://www.unap.cl/prontus_unap/site/artic/20210921/pags/20210921131857.html.">Pra21a</a>]</span>, por la Universidad Arturo Prat <a class="footnote-reference brackets" href="#footcite-unap3" id="id23">5</a>.</p>
 <div class="figure align-default" id="id24">
 <img alt="../../_images/9.jpg" src="../../_images/9.jpg" />
 <p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text"><strong>Autor de software que automatiza cifras Covid lanza libro detallando su innovación</strong>. Imagen de <a href="https://www.unap.cl/prontus_unap/site/artic/20210921/pags/20210921131857.html">la Universidad Arturo Prat</a>.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
@@ -749,28 +748,28 @@
 <p>Esta vez, nota en el Consorcio de Universidades del Estado de Chile.</p>
 <div class="section" id="id25">
 <h3>Julio, 10<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
-<p>“<em>Aplicación web de estudiante UNAP hace accesible datos Covid 19 a la comunidad en página del Ministerio de Ciencias</em>” <span id="id26">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id49">dUdEdC20</a>]</span>, por el Consorcio de Universidades del Estado de Chile <a class="footnote-reference brackets" href="#uestatales" id="id27">6</a>.</p>
+<p>“<em>Aplicación web de estudiante UNAP hace accesible datos Covid 19 a la comunidad en página del Ministerio de Ciencias</em>” <span id="id26">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id49" title="Consorcio de Universidades del Estado de Chile. Aplicación web de estudiante UNAP hace accesible datos Covid 19 Min. Ciencia. 2020. URL: http://www.uestatales.cl/cue/?q=node/7493.">dUdEdC20</a>]</span>, por el Consorcio de Universidades del Estado de Chile <a class="footnote-reference brackets" href="#footcite-uestatales" id="id27">6</a>.</p>
 <div class="figure align-default" id="id28">
 <img alt="../../_images/3.jpg" src="../../_images/3.jpg" />
 <p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text"><strong>Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase que posibilita saber que tan cerca estamos de avanzar o retroceder</strong>. Imagen del <a href="http://www.uestatales.cl/cue/?q=node/7493">Consorcio de Universidades del Estado de Chile</a>.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
 </div>
-<p><dl class="footnote brackets">
-<dt class="label" id="minciencia"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>,<a href="#id7">4</a>)</span></dt>
+<p id="id29"><dl class="footnote brackets">
+<dt class="label" id="footcite-minciencia"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>,<a href="#id7">4</a>)</span></dt>
 <dd><p>Conocimiento e Innovación Ministerio de Ciencia, Tecnología. ¿Cómo usa la comunidad la Base de Datos COVID-19? 2020. URL: <a class="reference external" href="https://minciencia.gob.cl/comunidad-covid19/">https://minciencia.gob.cl/comunidad-covid19/</a>.</p>
 </dd>
-<dt class="label" id="gore"><span class="brackets"><a class="fn-backref" href="#id12">2</a></span></dt>
+<dt class="label" id="footcite-gore"><span class="brackets"><a class="fn-backref" href="#id12">2</a></span></dt>
 <dd><p>Gobierno Regional Tarapacá. Entendiendo las curvas de contagio y el desafío de aplanarlas - II parte. 2020. URL: <a class="reference external" href="https://www.facebook.com/watch/live/?extid=SEO----&amp;v=4143835965690381&amp;ref=watch_permalink">https://www.facebook.com/watch/live/?extid=SEO—-&amp;v=4143835965690381&amp;ref=watch_permalink</a>.</p>
 </dd>
-<dt class="label" id="unap1"><span class="brackets"><a class="fn-backref" href="#id16">3</a></span></dt>
+<dt class="label" id="footcite-unap1"><span class="brackets"><a class="fn-backref" href="#id16">3</a></span></dt>
 <dd><p>Universidad Arturo Prat. Aplicación web de estudiante UNAP hace accesible datos Covid 19. 2020. URL: <a class="reference external" href="https://www.unap.cl/prontus_unap/site/artic/20200710/pags/20200710123250.html">https://www.unap.cl/prontus_unap/site/artic/20200710/pags/20200710123250.html</a>.</p>
 </dd>
-<dt class="label" id="unap2"><span class="brackets"><a class="fn-backref" href="#id20">4</a></span></dt>
+<dt class="label" id="footcite-unap2"><span class="brackets"><a class="fn-backref" href="#id20">4</a></span></dt>
 <dd><p>Universidad Arturo Prat. Estudiante de Ingeniería Civil Industrial UNAP es uno de los creadores de un Indicador de Fase. 2021. URL: <a class="reference external" href="https://www.unap.cl/prontus_unap/site/artic/20210113/pags/20210113142515.html">https://www.unap.cl/prontus_unap/site/artic/20210113/pags/20210113142515.html</a>.</p>
 </dd>
-<dt class="label" id="unap3"><span class="brackets"><a class="fn-backref" href="#id23">5</a></span></dt>
+<dt class="label" id="footcite-unap3"><span class="brackets"><a class="fn-backref" href="#id23">5</a></span></dt>
 <dd><p>Prensa Universidad Arturo Prat. Autor de software que automatiza cifras Covid lanza libro detallando su innovación. 2021. URL: <a class="reference external" href="https://www.unap.cl/prontus_unap/site/artic/20210921/pags/20210921131857.html">https://www.unap.cl/prontus_unap/site/artic/20210921/pags/20210921131857.html</a>.</p>
 </dd>
-<dt class="label" id="uestatales"><span class="brackets"><a class="fn-backref" href="#id27">6</a></span></dt>
+<dt class="label" id="footcite-uestatales"><span class="brackets"><a class="fn-backref" href="#id27">6</a></span></dt>
 <dd><p>Consorcio de Universidades del Estado de Chile. Aplicación web de estudiante UNAP hace accesible datos Covid 19 Min. Ciencia. 2020. URL: <a class="reference external" href="http://www.uestatales.cl/cue/?q=node/7493">http://www.uestatales.cl/cue/?q=node/7493</a>.</p>
 </dd>
 </dl>
