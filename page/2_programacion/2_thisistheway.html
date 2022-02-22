@@ -45,15 +45,14 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/2_thisistheway.html" />
     <link rel="shortcut icon" href="../../_static/0_favicon.ico"/>
@@ -1065,15 +1064,15 @@
 <p>¡Hola de nuevo! Este notebook estará basado en la aplicación de un modelo de Machine Learning a intentar predecir el plan Paso a Paso por las comunas de la Región de Tarapacá.</p>
 <div class="section" id="conceptos-previos">
 <h2>Conceptos previos<a class="headerlink" href="#conceptos-previos" title="Permalink to this headline">¶</a></h2>
-<p>Para este inciso, nos basaremos en el trabajo de <em>Sergio Montoro</em> <a class="footnote-reference brackets" href="#sergio-montoro" id="id1">1</a>.</p>
+<p>Para este inciso, nos basaremos en el trabajo de <em>Sergio Montoro</em> <a class="footnote-reference brackets" href="#footcite-sergio-montoro" id="id1">1</a>.</p>
 <div class="section" id="percepcion">
 <h3>Percepción<a class="headerlink" href="#percepcion" title="Permalink to this headline">¶</a></h3>
-<p>Según <span id="id2">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19">Mon15</a>]</span>, “<em>La percepción es la organización, identificación e interpretación de información sensorial con el propósito de representar y entender el entorno</em>”.</p>
+<p>Según <span id="id2">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19" title="Sergio Montoro. Repaso didáctico sobre machine learning. 2015. URL: https://lapastillaroja.net/2015/02/ml-algols/.">Mon15</a>]</span>, “<em>La percepción es la organización, identificación e interpretación de información sensorial con el propósito de representar y entender el entorno</em>”.</p>
 <div class="figure align-default" id="id3">
 <img alt="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" src="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" />
 <p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text"><strong>Fuente: Facebook. <a href="https://research.fb.com/blog/2016/08/learning-to-segment/">Learning to Segment</a></strong>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
-<p>En Facebook Research <a class="footnote-reference brackets" href="#learning-to-segment-facebook" id="id4">2</a>, se realizan la pregunta: “<em>Can a computer distinguish between the many objects in a photograph as effortlessly as the human eye?</em>” <span id="id5">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id20">Dol16</a>]</span>, que en Español, significa “<strong>¿Puede un computador distinguir, entre los muchos objetos de una fotografía, sin esfuerzo, tal como el ojo humano?</strong>”. Esa pregunta es capaz de responderla el <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a> (Aprendizaje Automático), en concreto, desde el <a href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a> (Visión por Computador).</p>
+<p>En Facebook Research <a class="footnote-reference brackets" href="#footcite-learning-to-segment-facebook" id="id4">2</a>, se realizan la pregunta: “<em>Can a computer distinguish between the many objects in a photograph as effortlessly as the human eye?</em>” <span id="id5">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id20" title="Piotr Dollár. Learning to Segment. 2016. URL: https://research.fb.com/blog/2016/08/learning-to-segment/.">Dol16</a>]</span>, que en Español, significa “<strong>¿Puede un computador distinguir, entre los muchos objetos de una fotografía, sin esfuerzo, tal como el ojo humano?</strong>”. Esa pregunta es capaz de responderla el <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a> (Aprendizaje Automático), en concreto, desde el <a href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a> (Visión por Computador).</p>
 <p>Tal como en la figura, el reconocimiento de imágenes, y visto de forma muy general, es que, a partir de un conjunto de píxeles, se clasifica en tipos de objetos (lo que se determina como una <strong>clase</strong>). Ésto es, lo básico que debe realizar un <a href="https://aprendeia.com/diferencia-entre-algoritmos-de-clasificacion-y-regresion/#:~:text=Los%20algoritmos%20de%20clasificaci%C3%B3n%20se,conjunto%20finito%20de%20resultados%20posibles."><strong>Algoritmo de Clasificación</strong></a>. Éste tipo de algoritmos son parte del <a href="https://es.wikipedia.org/wiki/Aprendizaje_supervisado">Aprendizaje Supervisado</a>.</p>
 <p>Así entonces, tenemos algoritmos que, a partir de un conjunto de datos de entrada, como los píxeles de una imagen, es capaz de reconocer los distintos tipos de objetos (<strong>clases</strong>). Por ejemplo, reconocer el cielo, personas, vehículos, animales, etc. Pero, ¿cómo lo hace? Pues, a través del <strong>aprendizaje</strong>.</p>
 </div>
@@ -1096,7 +1095,7 @@
 <p>Dicho ésto, ¡proseguimos a la siguiente sección! Por cierto, <em>si quieres arrancar, es el momento</em>.</p>
 <div class="section" id="imitacion-aprendizaje">
 <h4>Imitación (aprendizaje)<a class="headerlink" href="#imitacion-aprendizaje" title="Permalink to this headline">¶</a></h4>
-<p>Entonces, ya lo sabemos. La imitación surge a partir de una función matemática. Esta función, se explicará desde el punto de vista del <strong>aprendizaje</strong> (según el contexto que nos ocupa). En este sentido, <span id="id9">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19">Mon15</a>]</span> declara “<em>El aprendizaje es el hallazgo de una función <span class="math notranslate nohighlight">\(h(x)\)</span> —llamada frecuentemente hipótesis— que dado un vector de entrada <span class="math notranslate nohighlight">\(x\)</span> proporcione una estimación lo bastante buena de otra cantidad relacionada con <span class="math notranslate nohighlight">\(x\)</span></em>”.</p>
+<p>Entonces, ya lo sabemos. La imitación surge a partir de una función matemática. Esta función, se explicará desde el punto de vista del <strong>aprendizaje</strong> (según el contexto que nos ocupa). En este sentido, <span id="id9">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19" title="Sergio Montoro. Repaso didáctico sobre machine learning. 2015. URL: https://lapastillaroja.net/2015/02/ml-algols/.">Mon15</a>]</span> declara “<em>El aprendizaje es el hallazgo de una función <span class="math notranslate nohighlight">\(h(x)\)</span> —llamada frecuentemente hipótesis— que dado un vector de entrada <span class="math notranslate nohighlight">\(x\)</span> proporcione una estimación lo bastante buena de otra cantidad relacionada con <span class="math notranslate nohighlight">\(x\)</span></em>”.</p>
 <p>Para comprender el punto anterior, <strong>¿recuerdas nuestra relación lineal en torno a los años de experiencia laboral y el salario?</strong> Definamos:</p>
 <div class="math notranslate nohighlight" id="equation-experiencia-laboral">
 <span class="eqno">(12)<a class="headerlink" href="#equation-experiencia-laboral" title="Permalink to this equation">¶</a></span>\[
@@ -1273,7 +1272,7 @@
 <li><p><b>Valores epidemiológicos como número de contagios, testeo, etc.</b></p></li>
 <li><p><b>Valores temporales (tiempo en confinamiento por comuna de acuerdo a límites del plan Paso a Paso)</b></p></li>
 </ul>
-<p>Así entonces, <b>se categorizará por alguna de las fases del plan Paso a Paso</b>. ¡Sin embargo! De acuerdo al plan <a class="footnote-reference brackets" href="#estrategiagradual-pasopaso" id="id11">3</a>, una comuna deberá permanecer, mínimamente, dos semanas en una determinada fase <span id="id12">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id6">dSdC21</a>]</span> (al menos, es lo que está especificado para la fase 1, en la edición del plan del <a href="https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf">29 de abril de 2021 | Pg. 4</a>). Respecto a la fase 1 (Cuarentena), se menciona:</p>
+<p>Así entonces, <b>se categorizará por alguna de las fases del plan Paso a Paso</b>. ¡Sin embargo! De acuerdo al plan <a class="footnote-reference brackets" href="#footcite-estrategiagradual-pasopaso" id="id11">3</a>, una comuna deberá permanecer, mínimamente, dos semanas en una determinada fase <span id="id12">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id6" title="Ministerio de Salud de Chile. Estrategia Gradual “Paso a Paso nos cuidamos”. 2021. URL: https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf.">dSdC21</a>]</span> (al menos, es lo que está especificado para la fase 1, en la edición del plan del <a href="https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf">29 de abril de 2021 | Pg. 4</a>). Respecto a la fase 1 (Cuarentena), se menciona:</p>
 <ul class="simple">
 <li><p>“<b><i>Tendrá una duración acotada: máximo 4 semanas. A la semana 2 se evaluará si se avanza o no, y si sigue en Cuarentena se evaluará el avance semana a semana.</i></b>”</p></li>
 </ul>
@@ -1291,7 +1290,7 @@
 <p>Visto lo que es la regresión logística, y en concreto, lo que son los problemas de clasificación, ya sabemos con lo que estamos lidiando. El inconveniente es el siguiente: Sé mucho sobre la teoría y poco de la práctica. Por ello, deberemos utilizar una planilla de Scikit-learn. ¡Sin embargo! Recordemos que tratamos con un <strong>problema de clasificación</strong>.</p>
 <div class="figure align-default" id="id14">
 <img alt="https://scikit-learn.org/stable/_static/ml_map.png" src="https://scikit-learn.org/stable/_static/ml_map.png" />
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text"><strong>Guía para seleccionar un algoritmo</strong>. Imagen de Scikit-learn <span id="id13">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id12">Sl</a>]</span>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text"><strong>Guía para seleccionar un algoritmo</strong>. Imagen de Scikit-learn <span id="id13">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id12" title="Scikit-learn. Choosing the right estimator. URL: https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html.">Sl</a>]</span>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="metodologia">
 <h3>Metodología<a class="headerlink" href="#metodologia" title="Permalink to this headline">¶</a></h3>
@@ -1310,7 +1309,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Contamos con <strong>721</strong> filas de observaciones o datos.</p>
+<p>Contamos con <strong>722</strong> filas de observaciones o datos.</p>
 </div>
 </div>
 <blockquote>
@@ -1348,7 +1347,7 @@
 </div>
 <div class="section" id="inferencia-estadistica">
 <h4>Inferencia estadística<a class="headerlink" href="#inferencia-estadistica" title="Permalink to this headline">¶</a></h4>
-<p>Según Economipedia, la inferencia estadística <a class="footnote-reference brackets" href="#economipedia-inferenciaestadistica" id="id15">4</a>, <em>es el conjunto de métodos que permiten inducir, a través de una muestra estadística, el comportamiento de una determinada población. La inferencia estadística, estudia entonces cómo, a través de la aplicación de dichos métodos sobre los datos de una muestra, se pueden extraer conclusiones sobre los parámetros de la población de datos. De la misma manera estudia también el grado de fiabilidad de los resultados extraídos del estudio</em> <span id="id16">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id13">Lop</a>]</span>.</p>
+<p>Según Economipedia, la inferencia estadística <a class="footnote-reference brackets" href="#footcite-economipedia-inferenciaestadistica" id="id15">4</a>, <em>es el conjunto de métodos que permiten inducir, a través de una muestra estadística, el comportamiento de una determinada población. La inferencia estadística, estudia entonces cómo, a través de la aplicación de dichos métodos sobre los datos de una muestra, se pueden extraer conclusiones sobre los parámetros de la población de datos. De la misma manera estudia también el grado de fiabilidad de los resultados extraídos del estudio</em> <span id="id16">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id13" title="José Francisco López. Choosing the right estimator. URL: https://economipedia.com/definiciones/inferencia-estadistica.html.">Lop</a>]</span>.</p>
 <p>Con respecto a la definición, la inferencia estadística utiliza dos métodos posibles de acuerdo a ciertos criterios que tienen relación con la certeza, cantidad de datos, etc. que son la <strong>estadística paramétrica y la no paramétrica</strong>.</p>
 <p>En palabras simples, la estadística paramétrica asume que la distribución de los datos es conocida, lo que refiere a que, los estadísticos (media, mediana, etc.) describen correctamente los datos.</p>
 <p><strong>Nuestra labor es reconocer si nos es útil la estadística parámetrica o no paramétrica</strong> en este caso puntual.</p>
@@ -1359,8 +1358,8 @@
 <div class="section" id="hipotesis-no-estadistica">
 <h4>Hipótesis no estadística<a class="headerlink" href="#hipotesis-no-estadistica" title="Permalink to this headline">¶</a></h4>
 <p>La pregunta es, <strong>¿conocemos la distribución de los datos?</strong> <em>La respuesta es, posiblemente, no</em>. La pandemia se caracteriza por cifras que, lejos de ser regulares, dependen de múltiples factores y tienden a la variabilidad. Por dicha razón, la distribución se ve afectada, constantemente, por los confinamientos, por la movilidad, por el muestreo, entre otros.</p>
-<p>Ahora bien, lo anterior es, netamente, una hipótesis. Debemos corroborarla, y para ello, simplificaremos un poco nuestro trabajo. Nos basaremos en “<em>El blog de Minitab</em>” <a class="footnote-reference brackets" href="#blogminitab-pruebaestadistica" id="id17">5</a>, en específico, “<em>¿Cómo elegir entre una prueba no paramétrica y una prueba paramétrica?</em>”. En estricto rigor, la elección del tipo de prueba estadística (metodología para evaluar la evidencia que proporcionan los datos, probando una hipótesis), nos brindará si <strong>deberemos utilizar un método paramétrico o no paramétrico</strong>. Notar que, justamente, los clasificadores <strong>SGD y KDE</strong>, tal como la <strong>regresión logística</strong> y el estimador <strong>SVC</strong> son clasificadores no paramétricos.</p>
-<p>En <span id="id18">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id14">Edi19</a>]</span>, se expone que, una de las razones para utilizar las pruebas no paramétricas refiere a “<em>el área de estudio se representa mejor con la mediana</em>”. Según el editor del blog, aclara “<em>Por ejemplo, el centro de una distribución asimétrica, como los ingresos, puede medirse mejor con la mediana, donde el 50% está por encima de la mediana y el 50% está por debajo. Si usted agrega varios multimillonarios a una muestra, la media matemática aumenta enormemente aunque el ingreso de la persona típica no cambia. Cuando la distribución es lo suficientemente asimétrica, la media se ve afectada fuertemente por cambios que ocurren lejos, en la cola de la distribución, mientras que la mediana sigue reflejando con mayor precisión el centro de la distribución. Para estas dos distribuciones, una muestra aleatoria de 100 proveniente de cada distribución produce medias que son significativamente diferentes, pero medianas que no son significativamente diferentes</em>”.</p>
+<p>Ahora bien, lo anterior es, netamente, una hipótesis. Debemos corroborarla, y para ello, simplificaremos un poco nuestro trabajo. Nos basaremos en “<em>El blog de Minitab</em>” <a class="footnote-reference brackets" href="#footcite-blogminitab-pruebaestadistica" id="id17">5</a>, en específico, “<em>¿Cómo elegir entre una prueba no paramétrica y una prueba paramétrica?</em>”. En estricto rigor, la elección del tipo de prueba estadística (metodología para evaluar la evidencia que proporcionan los datos, probando una hipótesis), nos brindará si <strong>deberemos utilizar un método paramétrico o no paramétrico</strong>. Notar que, justamente, los clasificadores <strong>SGD y KDE</strong>, tal como la <strong>regresión logística</strong> y el estimador <strong>SVC</strong> son clasificadores no paramétricos.</p>
+<p>En <span id="id18">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id14" title="Minitab Blog Editor. ¿Cómo Elegir entre una Prueba no Paramétrica y una Prueba Paramétrica? 2019. URL: https://blog.minitab.com/es/como-elegir-entre-una-prueba-no-parametrica-y-una-prueba-parametrica.">Edi19</a>]</span>, se expone que, una de las razones para utilizar las pruebas no paramétricas refiere a “<em>el área de estudio se representa mejor con la mediana</em>”. Según el editor del blog, aclara “<em>Por ejemplo, el centro de una distribución asimétrica, como los ingresos, puede medirse mejor con la mediana, donde el 50% está por encima de la mediana y el 50% está por debajo. Si usted agrega varios multimillonarios a una muestra, la media matemática aumenta enormemente aunque el ingreso de la persona típica no cambia. Cuando la distribución es lo suficientemente asimétrica, la media se ve afectada fuertemente por cambios que ocurren lejos, en la cola de la distribución, mientras que la mediana sigue reflejando con mayor precisión el centro de la distribución. Para estas dos distribuciones, una muestra aleatoria de 100 proveniente de cada distribución produce medias que son significativamente diferentes, pero medianas que no son significativamente diferentes</em>”.</p>
 <p>Considerando el punto anterior, le daremos un vistazo a la distribución de los datos y su asimetría. Buscaremos todas aquellas columnas de datos que, como máximo, tengan una curtosis igual a <strong>0.05 como valor absoluto</strong> (<em>aproximadamente normal</em>). También podríamos utilizar <span class="math notranslate nohighlight">\( media = mediana \)</span> como en toda distribución normal, pero para ser un poco flexibles, utilizamos una leve aproximación a una distribución normal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1391,7 +1390,7 @@
 </div>
 <div class="section" id="maquinas">
 <h2>Máquinas<a class="headerlink" href="#maquinas" title="Permalink to this headline">¶</a></h2>
-<p>Para estas dos próximas secciones, nos basaramos en dos fuentes, en la primera parte de S. Van Vaerenbergh, I. Santamaría <a class="footnote-reference brackets" href="#kernel-vaerenbergh" id="id19">6</a>, “<i>Métodos Kernel para clasificación</i>” y en la de Joaquín Amat Rodrigo, “<i>Ajuste de distribuciones con kernel density estimation y Python</i>”. Sin embargo, complementaremos ambas fuentes con algunas analogías y ejemplos explicativos realizados al mejor de mis posibilidades.</p>
+<p>Para estas dos próximas secciones, nos basaramos en dos fuentes, en la primera parte de S. Van Vaerenbergh, I. Santamaría <a class="footnote-reference brackets" href="#footcite-kernel-vaerenbergh" id="id19">6</a>, “<i>Métodos Kernel para clasificación</i>” y en la de Joaquín Amat Rodrigo, “<i>Ajuste de distribuciones con kernel density estimation y Python</i>”. Sin embargo, complementaremos ambas fuentes con algunas analogías y ejemplos explicativos realizados al mejor de mis posibilidades.</p>
 <p>Cabe recalcar que, referente a la estadística paramétrica y no paramétrica, el <strong>clasificador KDE se sustenta en la estadística no paramétrica</strong> (considerando las suposiciones que ello implica).</p>
 <div class="section" id="la-academia">
 <h3>La academia<a class="headerlink" href="#la-academia" title="Permalink to this headline">¶</a></h3>
@@ -1446,7 +1445,7 @@
 </div>
 <p>Recomiendo el siguiente vídeo del divulgador de Inteligencia Artificial, <a href="https://www.youtube.com/channel/UCy5znSnfMsDwaLlROnZ7Qbg">DOT.CSV</a>:</p>
 <center><iframe src="https://www.youtube.com/embed/7-6X3DTt3R8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></center>
-<p>A modo de resumen del vídeo <span id="id24">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id18">Veg19</a>]</span>, se entiende que:</p>
+<p>A modo de resumen del vídeo <span id="id24">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id18" title="Carlos Santana Vega. Las Redes Neuronales... ¿Aprenden o Memorizan? - Overfitting y Underfitting - Parte 1. 2019. URL: https://www.youtube.com/watch?v=7-6X3DTt3R8.">Veg19</a>]</span>, se entiende que:</p>
 <div class="figure align-default" id="id25">
 <img alt="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
 <p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text"><strong>Un estudiante copiando</strong>. Fotografía de <a href="https://www.pexels.com/es-es/foto/hombre-escritura-colegio-libro-7092609/">RODNAE Productions en Pexels</a>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
@@ -1456,14 +1455,14 @@
 <li><p>El <strong>appropiate-fitting</strong> (buen ajuste, o <strong>un algoritmo que explica los datos</strong>) es áquel estudiante que estudia, y que logra buenas calificaciones sin, necesariamente, lograr la nota máxima. ¿Por qué? <strong>No memorizó el material de estudio</strong>, <strong>tampoco le faltó material de estudio</strong>. Sencillamente, estudio para aprender, <strong>no para la evaluación</strong>.</p></li>
 <li><p>El <strong>over-fitting</strong> (excesivo ajuste, o <strong>un algoritmo que intenta, de sobre manera, explicar los datos</strong>) es áquel estudiante que estudia memorizando el contenido, logrando excelentes calificaciones. ¿Por qué? <strong>Memoriza el material de estudio</strong>, tiene <strong>demasiado material de estudio, pero que únicamente entrará en la evaluación</strong>. Es decir, estudia solo los contenidos para la evaluación, y por ende, si en la prueba se añade un problema de aplicación, distinto a lo que estudió, no sabrá responder correctamente, porque solo estudió un determinado tipo de problemas.</p></li>
 </ul>
-<p>¿Quién de estos estudiantes es el más propicio para desarrollar un problema? Es evidente. Esa es la mejor explicación que he escuchado y visto en base al aprendizaje de los algoritmos. Enorme el aporte de <strong>Carlos Santana Vega</strong> <a class="footnote-reference brackets" href="#dotcsv" id="id26">7</a>. Recomiendo, plentamente, <a href="https://www.youtube.com/channel/UCy5znSnfMsDwaLlROnZ7Qbg">su canal para los apasionados sobre IA y ML</a>.</p>
+<p>¿Quién de estos estudiantes es el más propicio para desarrollar un problema? Es evidente. Esa es la mejor explicación que he escuchado y visto en base al aprendizaje de los algoritmos. Enorme el aporte de <strong>Carlos Santana Vega</strong> <a class="footnote-reference brackets" href="#footcite-dotcsv" id="id26">7</a>. Recomiendo, plentamente, <a href="https://www.youtube.com/channel/UCy5znSnfMsDwaLlROnZ7Qbg">su canal para los apasionados sobre IA y ML</a>.</p>
 <p>¡Sigamos! Nuevamente, ¿qué clasificador funcionará sobre el conjunto de prueba? Puedes realizar una analogía con el ejemplo anterior.</p>
 <p>Es evidente que, existe un compromiso entre:</p>
 <ul class="simple">
 <li><p>Error en el entrenamiento o error de generalización.</p></li>
 <li><p>Sesgo o varianza del modelo entrenado.</p></li>
 </ul>
-<p>¿Qué hace el aprendizaje estadístico? Según <span id="id27">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id10">SVV18</a>]</span>, el aprendizaje estadístico formaliza estas ideas, caracterizando propiedades matemáticas de las máquinas de aprendizaje.</p>
+<p>¿Qué hace el aprendizaje estadístico? Según <span id="id27">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id10" title="I. Santamaría S. Van Vaerenbergh. Métodos kernel para clasificación. 2018. URL: https://gtas.unican.es/files/docencia/APS/apuntes/07_svm_kernel.pdf.">SVV18</a>]</span>, el aprendizaje estadístico formaliza estas ideas, caracterizando propiedades matemáticas de las máquinas de aprendizaje.</p>
 <p>En relación a una “máquina de aprendizaje”, hace referencia a modelos de predicción, que nuevamente, son algoritmos o clasificadores.</p>
 <p>Antes de avanzar hacia la comprensión del modelo KDE, introduciremos, brevemente, la regresión logística.</p>
 </div>
@@ -1544,7 +1543,7 @@
 <li><p>Si <span class="math notranslate nohighlight">\( \theta_{T}X \)</span> es negativo, implicará un valor positivo del exponencial, y dado <span class="math notranslate nohighlight">\( \theta_{T}X = Z \)</span>, entonces, siempre que <span class="math notranslate nohighlight">\(0 &gt; Z\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> tenderá a 0.</p></li>
 <li><p>Si <span class="math notranslate nohighlight">\( \theta_{T}X \)</span> es positivo, implicará un valor negativo del exponencial, y dado <span class="math notranslate nohighlight">\( \theta_{T}X = Z \)</span>, entonces, siempre que <span class="math notranslate nohighlight">\(0 \leq Z\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> tenderá a 1.</p></li>
 </ul>
-<p>En consideración con lo anterior, y de acuerdo a los valores que asignemos a los parámetros <span class="math notranslate nohighlight">\(\theta\)</span>, podremos obtener los límites de decisión a partir de la inecuación entre <span class="math notranslate nohighlight">\(0 \leq Z\)</span> para el área positiva o <span class="math notranslate nohighlight">\(0 &gt; Z\)</span> para el área negativa <span id="id29">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id4">NG11</a>]</span>. Ésto se puede apreciar en una imagen que capturé del curso de Andrew NG en Coursera, de la Universidad de Stanford. <a class="footnote-reference brackets" href="#mlandrewng" id="id30">8</a></p>
+<p>En consideración con lo anterior, y de acuerdo a los valores que asignemos a los parámetros <span class="math notranslate nohighlight">\(\theta\)</span>, podremos obtener los límites de decisión a partir de la inecuación entre <span class="math notranslate nohighlight">\(0 \leq Z\)</span> para el área positiva o <span class="math notranslate nohighlight">\(0 &gt; Z\)</span> para el área negativa <span id="id29">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id4" title="Andrew NG. Machine Learning. 2011. URL: https://www.coursera.org/learn/machine-learning.">NG11</a>]</span>. Ésto se puede apreciar en una imagen que capturé del curso de Andrew NG en Coursera, de la Universidad de Stanford. <a class="footnote-reference brackets" href="#footcite-mlandrewng" id="id30">8</a></p>
 <center><a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb"><img src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/12.png" style="margin-bottom:20px"></img></a></center>
 </div>
 <div class="section" id="descenso-del-gradiente-resumido">
@@ -1561,26 +1560,26 @@
 <div class="section" id="la-deuda-de-kernel">
 <h3>La deuda de Kernel<a class="headerlink" href="#la-deuda-de-kernel" title="Permalink to this headline">¶</a></h3>
 <p>Definido entonces, lo que es el aprendizaje, la regresión logística, y otros conceptos, <strong>tenemos un dominio relativo</strong>. Sin embargo, <strong>la deuda sigue siendo vigente en torno a qué son las aproximaciones por Kernel</strong>, de lo cual, y a ser sincero, no manejo.</p>
-<p>Me dediqué a buscar, sin éxito, <strong>algún texto explicativo</strong>, <strong>fácil de comprender</strong>, <strong>acerca de lo que es la aproximación por Kernel</strong>, hasta que encontré uno que me pareció muy bueno, <strong>y el cual aborda desde la Estadística su introducción</strong>. Este texto, fue realizado por <strong>Joaquín Amat Rodrigo</strong> <a class="footnote-reference brackets" href="#kernel-amat" id="id32">9</a>.</p>
-<p>Sin más preámbulo, seguiremos en la siguiente sección con Joaquín Amat Rodrigo <span id="id33">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>Me dediqué a buscar, sin éxito, <strong>algún texto explicativo</strong>, <strong>fácil de comprender</strong>, <strong>acerca de lo que es la aproximación por Kernel</strong>, hasta que encontré uno que me pareció muy bueno, <strong>y el cual aborda desde la Estadística su introducción</strong>. Este texto, fue realizado por <strong>Joaquín Amat Rodrigo</strong> <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id32">9</a>.</p>
+<p>Sin más preámbulo, seguiremos en la siguiente sección con Joaquín Amat Rodrigo <span id="id33">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
 <div class="section" id="cimientos">
 <h4>Cimientos<a class="headerlink" href="#cimientos" title="Permalink to this headline">¶</a></h4>
-<p>De acuerdo con <span id="id34">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>, “<em>el identificar el tipo de distribución que tiene una variable es un paso fundamental en prácticamente todos los estudios que implican datos, desde los contrastes de hipótesis hasta la creación de modelos por aprendizaje estadístico y machine learning</em>” <a class="footnote-reference brackets" href="#kernel-amat" id="id35">9</a>.</p>
+<p>De acuerdo con <span id="id34">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>, “<em>el identificar el tipo de distribución que tiene una variable es un paso fundamental en prácticamente todos los estudios que implican datos, desde los contrastes de hipótesis hasta la creación de modelos por aprendizaje estadístico y machine learning</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id35">9</a>.</p>
 <div class="figure align-default" id="id36">
 <img alt="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
 <p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Fotografía de Burak Kepapci en Pexels.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
 </div>
-<p>“<em>Son muchas las ventajas que tiene disponer de una función que describa aproximadamente los datos. Por ejemplo, se puede calcular la probabilidad (o densidad en el caso de variables aleatorias continuas) de que una observación tome un determinado valor. También es posible simular nuevos valores</em>” <a class="footnote-reference brackets" href="#kernel-amat" id="id37">9</a>.</p>
+<p>“<em>Son muchas las ventajas que tiene disponer de una función que describa aproximadamente los datos. Por ejemplo, se puede calcular la probabilidad (o densidad en el caso de variables aleatorias continuas) de que una observación tome un determinado valor. También es posible simular nuevos valores</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id37">9</a>.</p>
 <p>Lo anterior, nos afirma una solución a nuestra problemática. <strong>Si deseamos predecir el Paso a Paso</strong>, podemos utilizar la ya definida estadística no paramétrica.</p>
 <p>“<em>En términos generales, ajustar una distribución consiste en encontrar una función matemática capaz de describir un conjunto de datos. De entre todas las posibles funciones candidatas, lo interesante es encontrar aquella que, con mayor probabilidad, puede haber generado los datos observados</em>.</p>
 <p><em>Una de las aproximaciones más prácticas es utilizar como candidatas distribuciones parámetras, estas son distribuciones conocidas cuyo comportamiento está determinado usando un número finito de parámetros. Por ejemplo, la distribución normal está parametrizada por la media y la desviación típica</em>.</p>
-<p><em>Cuando ninguna de las distribuciones paramétricas disponibles describe correctamente los datos, es necesario recurrir a lo que se conoce como métodos de ajuste no parámetricos, cuyo objetivo es encontrar funciones que describan distribuciones cualesquiera, entendiendo a que no se limitan a distribuciones paramétricas conocidas. Uno de los métodos más empleados es kernel density estimation (KDE)</em>” <a class="footnote-reference brackets" href="#kernel-amat" id="id38">9</a>.</p>
+<p><em>Cuando ninguna de las distribuciones paramétricas disponibles describe correctamente los datos, es necesario recurrir a lo que se conoce como métodos de ajuste no parámetricos, cuyo objetivo es encontrar funciones que describan distribuciones cualesquiera, entendiendo a que no se limitan a distribuciones paramétricas conocidas. Uno de los métodos más empleados es kernel density estimation (KDE)</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id38">9</a>.</p>
 <p>Así entonces, están sentadas las bases. Debo declarar que <strong>Joaquín Amat Rodrigo</strong> resumió y explicó en gloria y majestad lo que intenté exponer en las secciones anteriores.</p>
 </div>
 <div class="section" id="kde-kernel-density-estimation">
 <h4>KDE (kernel density estimation)<a class="headerlink" href="#kde-kernel-density-estimation" title="Permalink to this headline">¶</a></h4>
 <p>“<em>En estadística, kernel density estimation (KDE), es un método no paramétrico que permite estimar la función de densidad de probabilidad de una variable aleatoria a partir de un número finito de observaciones (muestra). Fue propuesto por Fix y Hodges (1951) y Rosenblatt (1956)</em>.</p>
-<p><em>Dado un valor  <span class="math notranslate nohighlight">\(x_{i}\)</span>  la función aprendida por el kernel density estimator devuelve la densidad de la distribución en el punto  <span class="math notranslate nohighlight">\(x_{i}\)</span>. Esta densidad, cuyo valor está acotado al rango <span class="math notranslate nohighlight">\([0, + \infty]\)</span>, es una medida relativa de verosimilitud (likelihood). Si la densidad para el punto A es mayor que la de B, significa que la probabilidad de que A pertenezca a la distribución es mayor que la de B. Con frecuencia, para facilitar los cálculos, en lugar de utilizar el valor de densidad se utiliza el su logaritmo, aun así, la interpretación es la misma, cuanto mayor su valor, mayor la evidencia de que la observación pertenece a la distribución</em>” <a class="footnote-reference brackets" href="#kernel-amat" id="id39">9</a>.</p>
+<p><em>Dado un valor  <span class="math notranslate nohighlight">\(x_{i}\)</span>  la función aprendida por el kernel density estimator devuelve la densidad de la distribución en el punto  <span class="math notranslate nohighlight">\(x_{i}\)</span>. Esta densidad, cuyo valor está acotado al rango <span class="math notranslate nohighlight">\([0, + \infty]\)</span>, es una medida relativa de verosimilitud (likelihood). Si la densidad para el punto A es mayor que la de B, significa que la probabilidad de que A pertenezca a la distribución es mayor que la de B. Con frecuencia, para facilitar los cálculos, en lugar de utilizar el valor de densidad se utiliza el su logaritmo, aun así, la interpretación es la misma, cuanto mayor su valor, mayor la evidencia de que la observación pertenece a la distribución</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id39">9</a>.</p>
 <p>Es decir, lo que realizaremos con el KDE será estimar la densidad de la distribución (el Paso a Paso por comuna), a partir de los datos de entrada que deberemos seleccionar en la próxima sección. <em>O al menos, esa es la idea parcial hasta el momento</em>.</p>
 <div class="section" id="a-fondo">
 <h5>A fondo<a class="headerlink" href="#a-fondo" title="Permalink to this headline">¶</a></h5>
@@ -1614,7 +1613,7 @@
 <blockquote>
 <div><p>¡Vamos hallando cada vez más referencias!</p>
 </div></blockquote>
-<p>Según <span id="id40">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id15">dat</a>]</span>, “<em>Un gráfico de densidad visualiza la distribución de datos en un intervalo o período de tiempo continuo. Este gráfico es una variación de un histograma que usa el suavizado de cerner para trazar valores, permitiendo distribuciones más suaves al suavizar el ruido. Los picos de un gráfico de densidad ayudan a mostrar dónde los valores se concentran en el intervalo</em>”.</p>
+<p>Según <span id="id40">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id15" title="datavizcatalogue. Catálogo de Visualización de Datos: Gráfico de Densidad. URL: https://datavizcatalogue.com/ES/metodos/grafico_de_densidad.html.">dat</a>]</span>, “<em>Un gráfico de densidad visualiza la distribución de datos en un intervalo o período de tiempo continuo. Este gráfico es una variación de un histograma que usa el suavizado de cerner para trazar valores, permitiendo distribuciones más suaves al suavizar el ruido. Los picos de un gráfico de densidad ayudan a mostrar dónde los valores se concentran en el intervalo</em>”.</p>
 <p>Pues, al igual que los histogramas, cuantifican la frecuencia de un determinado intervalo de la población, con la diferencia de <strong>presentar un suavizado a partir de promedios ponderados por datos vecinos</strong>.</p>
 <p>Visualicemos la misma distribución anterior (casos nuevos regionales), esta vez utilizando un gráfico de densidad de Kernel.</p>
 <div class="cell docutils container">
@@ -1628,14 +1627,14 @@
 <img alt="../../_images/2_thisistheway_29_0.png" src="../../_images/2_thisistheway_29_0.png" />
 </div>
 </div>
-<p>Así entonces, tenemos definidos los conceptos para proseguir con la explicación de <span id="id41">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>Así entonces, tenemos definidos los conceptos para proseguir con la explicación de <span id="id41">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
 </div>
 </div>
 <div class="section" id="idea-intuitiva">
 <h4>Idea intuitiva<a class="headerlink" href="#idea-intuitiva" title="Permalink to this headline">¶</a></h4>
-<p>Según <span id="id42">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>, “<em>kernel density estimation (KDE) expande la idea del histograma</em>”, donde, “*cada observación aumenta la densidad de probabilidad en la zona donde se encuentra, pero lo hace de forma que las contribuciones se agrupen creando una curva continua y suave (smooth)”.</p>
+<p>Según <span id="id42">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>, “<em>kernel density estimation (KDE) expande la idea del histograma</em>”, donde, “*cada observación aumenta la densidad de probabilidad en la zona donde se encuentra, pero lo hace de forma que las contribuciones se agrupen creando una curva continua y suave (smooth)”.</p>
 <blockquote>
-<div><p>Nos basaremos en el código que adjunta <span id="id43">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span> en su <a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html">notebook</a>. Se basa en la sección de “<em>Idea intuitiva</em>”: <strong><a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html#Idea-intuitiva">Para el enlace de referencia, click aquí</a></strong>.</p>
+<div><p>Nos basaremos en el código que adjunta <span id="id43">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span> en su <a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html">notebook</a>. Se basa en la sección de “<em>Idea intuitiva</em>”: <strong><a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html#Idea-intuitiva">Para el enlace de referencia, click aquí</a></strong>.</p>
 </div></blockquote>
 <p>Supongamos un conjunto de observaciones <span class="math notranslate nohighlight">\(X\)</span>:</p>
 <ul class="simple">
@@ -1673,7 +1672,7 @@
 <img alt="../../_images/2_thisistheway_31_0.png" src="../../_images/2_thisistheway_31_0.png" />
 </div>
 </div>
-<p>Luego, “<em>sobre cada observación se centra una distribución normal, con media igual al valor de la observación y desviación típica de 1</em>” según <span id="id44">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>Luego, “<em>sobre cada observación se centra una distribución normal, con media igual al valor de la observación y desviación típica de 1</em>” según <span id="id44">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Definimos ejes y figura de Matplotlib y graficamos con coordenadas</span>
@@ -1702,7 +1701,7 @@
 <img alt="../../_images/2_thisistheway_33_0.png" src="../../_images/2_thisistheway_33_0.png" />
 </div>
 </div>
-<p>“<em>De esta forma se consigue que cada observación contribuya justo en la posición que ocupa pero también, de forma gradual, en las regiones cercanas</em>” según <span id="id45">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>“<em>De esta forma se consigue que cada observación contribuya justo en la posición que ocupa pero también, de forma gradual, en las regiones cercanas</em>” según <span id="id45">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
 <p>Respecto a cómo se logra la predicción a partir de estas distribuciones de probabilidad, Joaquín aclara, “<em>si se suman las contribuciones individuales y se dividen por el total de curvas (observaciones), se consigue una curva final que describe la distribución de las observaciones</em>”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1735,13 +1734,13 @@
 <img alt="../../_images/2_thisistheway_35_0.png" src="../../_images/2_thisistheway_35_0.png" />
 </div>
 </div>
-<p>“<em>Esta idea tan sencilla pero a la vez tan potente es en la que se fundamenta el método kernel density estimation (KDE): aproximar una función de densidad como la suma de funciones (kernel) de cada observación.</em>” según <span id="id46">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11">Rod21</a>]</span>.</p>
+<p>“<em>Esta idea tan sencilla pero a la vez tan potente es en la que se fundamenta el método kernel density estimation (KDE): aproximar una función de densidad como la suma de funciones (kernel) de cada observación.</em>” según <span id="id46">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
 </div>
 <div class="section" id="la-clasificacion-kde">
 <h4>La clasificación KDE<a class="headerlink" href="#la-clasificacion-kde" title="Permalink to this headline">¶</a></h4>
 <p>Bien. Hemos explicado el funcionamiento de KDE, pero, el acercamiento de Joaquín Amat, según lo que aprecio, es para la predicción de una variable continua.</p>
 <p>Para entender la clasificación del estimador KDE, nos basaremos en el trabajo de <em>Dennis Wittich</em>.</p>
-<p>Según <span id="id47">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id17">Wit19</a>]</span> el clasificador estima un determinado volumen <span class="math notranslate nohighlight">\(V\)</span> <a class="footnote-reference brackets" href="#dennis-wittich" id="id48">10</a> (<strong>el volumen</strong>, <em>lo entiendo como la distribución de probabilidad</em>). Así entonces, se considera <span class="math notranslate nohighlight">\(V\)</span> es la distribución de una clase <span class="math notranslate nohighlight">\(X\)</span>. <em>En nuestro caso, y a modo de ejemplo, puede ser la distribución para cada una de las etapas del Paso a Paso (<span class="math notranslate nohighlight">\(V_{0}\)</span>: Cuarentena, <span class="math notranslate nohighlight">\(V_{1}\)</span>: Transición, etc.)</em>; entonces, según el número de muestras que “caigan” en ese volumen, se determinará la distribución de la clase <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<p>Según <span id="id47">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id17" title="Dennis Wittich. Jupyter magic to handle notebook exceptions. 2019. URL: https://icaml.org/canon/algo/bayesian-classification/KDE_KNN/KNN.html.">Wit19</a>]</span> el clasificador estima un determinado volumen <span class="math notranslate nohighlight">\(V\)</span> <a class="footnote-reference brackets" href="#footcite-dennis-wittich" id="id48">10</a> (<strong>el volumen</strong>, <em>lo entiendo como la distribución de probabilidad</em>). Así entonces, se considera <span class="math notranslate nohighlight">\(V\)</span> es la distribución de una clase <span class="math notranslate nohighlight">\(X\)</span>. <em>En nuestro caso, y a modo de ejemplo, puede ser la distribución para cada una de las etapas del Paso a Paso (<span class="math notranslate nohighlight">\(V_{0}\)</span>: Cuarentena, <span class="math notranslate nohighlight">\(V_{1}\)</span>: Transición, etc.)</em>; entonces, según el número de muestras que “caigan” en ese volumen, se determinará la distribución de la clase <span class="math notranslate nohighlight">\(X\)</span>:</p>
 <ul class="simple">
 <li><p>Si una muestra <span class="math notranslate nohighlight">\(X_{i}\)</span> es cercana a la distribución <span class="math notranslate nohighlight">\(V_{i}\)</span> de la clase <span class="math notranslate nohighlight">\(X\)</span>, se clasificará en ella.</p></li>
 </ul>
@@ -1757,7 +1756,7 @@
 <img alt="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" src="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" />
 <p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text"><strong>Ilustración extraída del artículo “<em>Support Vector Machine Algorithm for Automatically Identifying Depositional Microfacies Using Well Logs</em>”. El enlace en<a href="https://www.mdpi.com/2071-1050/11/7/1919"> MDPI</a></strong>.</span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
 </div>
-<p>La piedra angular del <strong>SVC</strong>, son los <strong>SVM</strong>, que es el acrónimo de <strong>Support Vector Machine</strong>, lo que significa “<strong>Máquinas de Vectores de Soporte</strong>”. En concreto, esta familia de algoritmos, y según <span id="id50">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21">Her19</a>]</span>, se llaman “<strong>máquina</strong>” por parte del nombre del Aprendizaje de “<strong>Máquinas</strong>”, que es otro sinónimo de <strong>Aprendizaje Automático</strong> (en inglés, “<strong>Machine” Learning</strong>).</p>
+<p>La piedra angular del <strong>SVC</strong>, son los <strong>SVM</strong>, que es el acrónimo de <strong>Support Vector Machine</strong>, lo que significa “<strong>Máquinas de Vectores de Soporte</strong>”. En concreto, esta familia de algoritmos, y según <span id="id50">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21" title="Jose Martinez Heras. Máquinas de Vectores de Soporte (SVM). 2019. URL: https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/.">Her19</a>]</span>, se llaman “<strong>máquina</strong>” por parte del nombre del Aprendizaje de “<strong>Máquinas</strong>”, que es otro sinónimo de <strong>Aprendizaje Automático</strong> (en inglés, “<strong>Machine” Learning</strong>).</p>
 <div class="section" id="funcionamiento">
 <h4>Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permalink to this headline">¶</a></h4>
 <p>Antes, al realizar la clasificación (en la regresión logística), intentábamos dar con una función que explicase la distribución de los datos, la cual denominamos <strong>hipótesis</strong>. Esta función se encargaba de separar, según las <strong>fronteras de decisión</strong>, dos o más clases de datos.</p>
@@ -1782,13 +1781,13 @@
 <div class="section" id="definicion-de-svm">
 <h5>Definición de SVM<a class="headerlink" href="#definicion-de-svm" title="Permalink to this headline">¶</a></h5>
 <p>Bien, nuevamente, contamos con un <strong>dominio relativo</strong> de lo que sería un hiperplano. Ésto nos facilitará mucho el comprender cómo funcionan las Máquinas de Vectores de Soporte.</p>
-<p>“<em>Los vectores de soporte son los puntos que definen el margen máximo de separación del hiperplano que separa las clases. Se llaman vectores, en lugar de puntos, porque estos «puntos» tienen tantos elementos como dimensiones tenga nuestro espacio de entrada. Es decir, estos puntos multi-dimensionales se representan con un vector de n dimensiones</em>” <a class="footnote-reference brackets" href="#maquinas-soporte-jose" id="id53">11</a>.</p>
-<p>¡Muy bien! El hiperplano se encarga de realizar la separación. Pero en verdad, ¿cómo lo hace? Debemos recurrir nuevamente a <span id="id54">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21">Her19</a>]</span>, en concreto, “<em>En el caso de que las clases sean linealmente separables, para hallar el hiperplano que las separa se toman un conjunto de casos, llamados vectores de soporte, y se elige el hiperplano que proporcione los mayores márgenes de distancia desde el hiperplano a los vectores de soporte más próximos. En el ejemplo, tanto el plano <span class="math notranslate nohighlight">\(Z_{1}\)</span> como <span class="math notranslate nohighlight">\(Z_{2}\)</span> podrían servir para distinguir las clases, pero <span class="math notranslate nohighlight">\(Z_{2}\)</span> es mejor porque el margen es más amplio</em>” <a class="footnote-reference brackets" href="#maquinas-soporte-jose" id="id55">11</a>.</p>
+<p>“<em>Los vectores de soporte son los puntos que definen el margen máximo de separación del hiperplano que separa las clases. Se llaman vectores, en lugar de puntos, porque estos «puntos» tienen tantos elementos como dimensiones tenga nuestro espacio de entrada. Es decir, estos puntos multi-dimensionales se representan con un vector de n dimensiones</em>” <a class="footnote-reference brackets" href="#footcite-maquinas-soporte-jose" id="id53">11</a>.</p>
+<p>¡Muy bien! El hiperplano se encarga de realizar la separación. Pero en verdad, ¿cómo lo hace? Debemos recurrir nuevamente a <span id="id54">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21" title="Jose Martinez Heras. Máquinas de Vectores de Soporte (SVM). 2019. URL: https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/.">Her19</a>]</span>, en concreto, “<em>En el caso de que las clases sean linealmente separables, para hallar el hiperplano que las separa se toman un conjunto de casos, llamados vectores de soporte, y se elige el hiperplano que proporcione los mayores márgenes de distancia desde el hiperplano a los vectores de soporte más próximos. En el ejemplo, tanto el plano <span class="math notranslate nohighlight">\(Z_{1}\)</span> como <span class="math notranslate nohighlight">\(Z_{2}\)</span> podrían servir para distinguir las clases, pero <span class="math notranslate nohighlight">\(Z_{2}\)</span> es mejor porque el margen es más amplio</em>” <a class="footnote-reference brackets" href="#footcite-maquinas-soporte-jose" id="id55">11</a>.</p>
 <div class="figure align-default" id="id56">
 <img alt="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" src="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" />
 <p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Ilustración extraída desde <strong><a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a></strong>.</span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
 </div>
-<p>Entre tanto, “<em>En el caso de que las clases no sean linealmente separables lo que se intenta hacer es proyectar los casos a un espacio de dimensión superior donde sí sean linealmente separables</em>” <a class="footnote-reference brackets" href="#maquinas-soporte-jose" id="id57">11</a>.</p>
+<p>Entre tanto, “<em>En el caso de que las clases no sean linealmente separables lo que se intenta hacer es proyectar los casos a un espacio de dimensión superior donde sí sean linealmente separables</em>” <a class="footnote-reference brackets" href="#footcite-maquinas-soporte-jose" id="id57">11</a>.</p>
 <div class="figure align-default" id="id58">
 <img alt="https://lapastillaroja.net/wp-content/uploads/2015/02/InputAndfeatureSpaceSVM.png" src="https://lapastillaroja.net/wp-content/uploads/2015/02/InputAndfeatureSpaceSVM.png" />
 <p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Ilustración extraída desde <strong><a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a></strong>.</span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
@@ -1811,7 +1810,7 @@
 <p>Retomaremos algunos conceptos, además de introducir otros nuevos.</p>
 <div class="section" id="costos-y-otras-cosas">
 <h3>Costos y otras cosas<a class="headerlink" href="#costos-y-otras-cosas" title="Permalink to this headline">¶</a></h3>
-<p>En todo modelo computacional, es relevante la eficiencia. Por ello, siempre debemos ser minuciosos al elegir las variables con las que el modelo estimará los cálculos. En esta línea, nos basaramos en la fuente de <a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">machinelearningmastery</a> para explicar, a mayor detalle, el por qué de la selección de variables <a class="footnote-reference brackets" href="#machine-learning-mastery" id="id59">12</a>.</p>
+<p>En todo modelo computacional, es relevante la eficiencia. Por ello, siempre debemos ser minuciosos al elegir las variables con las que el modelo estimará los cálculos. En esta línea, nos basaramos en la fuente de <a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">machinelearningmastery</a> para explicar, a mayor detalle, el por qué de la selección de variables <a class="footnote-reference brackets" href="#footcite-machine-learning-mastery" id="id59">12</a>.</p>
 <p>Según la fuente, “<em>la selección de características es el proceso mediante el cual se reduce el número de variables de entrada cuando se desarrolla un modelo predictivo</em>”. De hecho, aclara que es recomendable reducir el número de variables en orden para:</p>
 <ul class="simple">
 <li><p><em>Reducir el costo computacional</em></p></li>
@@ -1824,7 +1823,7 @@
 </div>
 <div class="section" id="lo-estadisticamente-correcto-y-una-analogia">
 <h3>Lo estadísticamente correcto y una analogía<a class="headerlink" href="#lo-estadisticamente-correcto-y-una-analogia" title="Permalink to this headline">¶</a></h3>
-<p>Prosiguiendo con <a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">machinelearningmastery</a>, “<em>los métodos de selección de variables están destinados a reducir el número de variables de entrada (X), de forma de mantener aquellas más útiles para predecir la variable objetivo (Y)</em>” <a class="footnote-reference brackets" href="#machine-learning-mastery" id="id60">12</a>.</p>
+<p>Prosiguiendo con <a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">machinelearningmastery</a>, “<em>los métodos de selección de variables están destinados a reducir el número de variables de entrada (X), de forma de mantener aquellas más útiles para predecir la variable objetivo (Y)</em>” <a class="footnote-reference brackets" href="#footcite-machine-learning-mastery" id="id60">12</a>.</p>
 <p>Bien. El método de selección de variables que se establece en la fuente es en base a los métodos estadísticos, a partir de los cuales es posible estimar la dependencia o independencia de las variables, sus relaciones, etc. A partir de ciertos estimadores, como Pearson, chi cuadrado, entre otros. Si bien, es lo <strong>estadísticamente correcto</strong>, nosotros tomaremos un breve atajo, dado que ya sabemos aquellas variables que nos serán relevantes, ¿o no? ¡Comprobémoslo!</p>
 </div>
 <div class="section" id="datos-comunales">
@@ -2027,27 +2026,6 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-02-17</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.00</td>
-      <td>1.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>682.00</td>
-      <td>644.00</td>
-      <td>76.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>288.19</td>
-    </tr>
-    <tr>
       <th>2022-02-18</th>
       <td>NaN</td>
       <td>51,979.00</td>
@@ -2131,9 +2109,30 @@
       <td>NaN</td>
       <td>NaN</td>
     </tr>
+    <tr>
+      <th>2022-02-22</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
   </tbody>
 </table>
-<p>721 rows × 18 columns</p>
+<p>722 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2208,8 +2207,8 @@ Sus colores:
 <p>Respecto a la segunda pregunta, pues, sí. Es verdad, pero, en la práctica, existe una constante contradicción entre lo que establece el Paso a Paso y la realidad de las decisiones del Minsal (<i>lo digo por experiencia, pero vamos, que lo comprobaremos</i>).</p>
 <p>Por ejemplo, se establece que, la ocupación UCI regional, debería (y recalco, <b>debería</b>):</p>
 <ul class="simple">
-<li><p>Ser menor o igual al 85% para encontrarse en Transición o Preparación. <a class="footnote-reference brackets" href="#estrategiagradual-pasopaso" id="id61">3</a></p></li>
-<li><p>Menor o igual al 80% para encontrarse en Apertura Inicial. <a class="footnote-reference brackets" href="#estrategiagradual-pasopaso" id="id62">3</a></p></li>
+<li><p>Ser menor o igual al 85% para encontrarse en Transición o Preparación. <a class="footnote-reference brackets" href="#footcite-estrategiagradual-pasopaso" id="id61">3</a></p></li>
+<li><p>Menor o igual al 80% para encontrarse en Apertura Inicial. <a class="footnote-reference brackets" href="#footcite-estrategiagradual-pasopaso" id="id62">3</a></p></li>
 </ul>
 <p>Comprobemos ésto con todas las comunas con gráficos de dispersión.</p>
 </div>
@@ -2268,9 +2267,9 @@ Sus colores:
 </div>
 <div class="section" id="eleccion">
 <h3>Elección<a class="headerlink" href="#eleccion" title="Permalink to this headline">¶</a></h3>
-<p>No utilizamos la regresión logística u otro algoritmo basándonos en la recomendación de <strong>Axum Labs</strong>, donde, de acuerdo a nuestro número de observaciones y variables <span id="id64">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id22">Bas19</a>]</span>:</p>
+<p>No utilizamos la regresión logística u otro algoritmo basándonos en la recomendación de <strong>Axum Labs</strong>, donde, de acuerdo a nuestro número de observaciones y variables <span id="id64">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id22" title="Patricia Bassey. Logistic Regression Vs Support Vector Machines (SVM). 2019. URL: https://medium.com/axum-labs/logistic-regression-vs-support-vector-machines-svm-c335610a3d16.">Bas19</a>]</span>:</p>
 <blockquote>
-<div><p>“<em>If n is small (1–10 00) and m is intermediate (10–10,000) : use SVM with (Gaussian, polynomial etc) kernel</em>”. <a class="footnote-reference brackets" href="#axum-labs" id="id65">13</a></p>
+<div><p>“<em>If n is small (1–10 00) and m is intermediate (10–10,000) : use SVM with (Gaussian, polynomial etc) kernel</em>”. <a class="footnote-reference brackets" href="#footcite-axum-labs" id="id65">13</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="codigo">
@@ -2533,8 +2532,8 @@ Apertura Inicial       1.00      1.00      1.00        28
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>97.89473684210527%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       1.00      1.00      1.00        61
-     Preparación       0.96      0.96      0.96        23
+Apertura Inicial       1.00      1.00      1.00        60
+     Preparación       0.96      0.96      0.96        24
       Transición       0.91      0.91      0.91        11
 
         accuracy                           0.98        95
@@ -2543,24 +2542,24 @@ Apertura Inicial       1.00      1.00      1.00        61
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_12.png" src="../../_images/2_thisistheway_50_12.png" />
-<h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>75.78947368421053%</strong>.</p>
+<h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>80.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.68      0.98      0.80        42
-     Preparación       0.91      0.31      0.47        32
-      Transición       0.88      1.00      0.93        21
+Apertura Inicial       0.69      0.98      0.81        42
+     Preparación       0.93      0.44      0.60        32
+      Transición       1.00      1.00      1.00        21
 
-        accuracy                           0.76        95
-       macro avg       0.82      0.76      0.73        95
-    weighted avg       0.80      0.76      0.72        95
+        accuracy                           0.80        95
+       macro avg       0.88      0.80      0.80        95
+    weighted avg       0.84      0.80      0.78        95
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_18.png" src="../../_images/2_thisistheway_50_18.png" />
 <h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>94.73684210526315%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       1.00      1.00      1.00        61
-     Preparación       0.76      1.00      0.86        16
+Apertura Inicial       1.00      1.00      1.00        60
+     Preparación       0.77      1.00      0.87        17
       Transición       1.00      0.72      0.84        18
 
         accuracy                           0.95        95
@@ -2582,28 +2581,28 @@ Apertura Inicial       1.00      0.46      0.63        28
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
-<h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>70.52631578947368%</strong>.</p>
+<h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>72.63157894736842%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.62      1.00      0.77        35
-     Preparación       1.00      0.12      0.22        32
-      Transición       0.80      1.00      0.89        28
+Apertura Inicial       0.64      1.00      0.78        35
+     Preparación       1.00      0.19      0.32        32
+      Transición       0.82      1.00      0.90        28
 
-        accuracy                           0.71        95
-       macro avg       0.81      0.71      0.63        95
-    weighted avg       0.80      0.71      0.62        95
+        accuracy                           0.73        95
+       macro avg       0.82      0.73      0.67        95
+    weighted avg       0.81      0.73      0.66        95
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
 <h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>85.26315789473684%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.72      1.00      0.84        36
-     Preparación       1.00      0.55      0.71        31
+Apertura Inicial       0.71      1.00      0.83        35
+     Preparación       1.00      0.56      0.72        32
       Transición       1.00      1.00      1.00        28
 
         accuracy                           0.85        95
-       macro avg       0.91      0.85      0.85        95
+       macro avg       0.90      0.85      0.85        95
     weighted avg       0.89      0.85      0.84        95
 </pre></div>
 </div>
@@ -2949,51 +2948,51 @@ Apertura Inicial       0.72      1.00      0.84        36
             Linux-5.11.0-1028-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-02-21 23:53
+            Session information updated at 2022-02-22 15:56
             </pre>
             </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
 <h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">¶</a></h2>
-<p><dl class="footnote brackets">
-<dt class="label" id="sergio-montoro"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<p id="id66"><dl class="footnote brackets">
+<dt class="label" id="footcite-sergio-montoro"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Sergio Montoro. Repaso didáctico sobre machine learning. 2015. URL: <a class="reference external" href="https://lapastillaroja.net/2015/02/ml-algols/">https://lapastillaroja.net/2015/02/ml-algols/</a>.</p>
 </dd>
-<dt class="label" id="learning-to-segment-facebook"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dt class="label" id="footcite-learning-to-segment-facebook"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
 <dd><p>Piotr Dollár. Learning to Segment. 2016. URL: <a class="reference external" href="https://research.fb.com/blog/2016/08/learning-to-segment/">https://research.fb.com/blog/2016/08/learning-to-segment/</a>.</p>
 </dd>
-<dt class="label" id="estrategiagradual-pasopaso"><span class="brackets">3</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id61">2</a>,<a href="#id62">3</a>)</span></dt>
+<dt class="label" id="footcite-estrategiagradual-pasopaso"><span class="brackets">3</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id61">2</a>,<a href="#id62">3</a>)</span></dt>
 <dd><p>Ministerio de Salud de Chile. Estrategia Gradual “Paso a Paso nos cuidamos”. 2021. URL: <a class="reference external" href="https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf">https://s3.amazonaws.com/gobcl-prod/public_files/Campa%C3%B1as/Corona-Virus/documentos/paso-a-paso/210429_Plan_Paso_a_Paso.pdf</a>.</p>
 </dd>
-<dt class="label" id="economipedia-inferenciaestadistica"><span class="brackets"><a class="fn-backref" href="#id15">4</a></span></dt>
+<dt class="label" id="footcite-economipedia-inferenciaestadistica"><span class="brackets"><a class="fn-backref" href="#id15">4</a></span></dt>
 <dd><p>José Francisco López. Choosing the right estimator. URL: <a class="reference external" href="https://economipedia.com/definiciones/inferencia-estadistica.html">https://economipedia.com/definiciones/inferencia-estadistica.html</a>.</p>
 </dd>
-<dt class="label" id="blogminitab-pruebaestadistica"><span class="brackets"><a class="fn-backref" href="#id17">5</a></span></dt>
+<dt class="label" id="footcite-blogminitab-pruebaestadistica"><span class="brackets"><a class="fn-backref" href="#id17">5</a></span></dt>
 <dd><p>Minitab Blog Editor. ¿Cómo Elegir entre una Prueba no Paramétrica y una Prueba Paramétrica? 2019. URL: <a class="reference external" href="https://blog.minitab.com/es/como-elegir-entre-una-prueba-no-parametrica-y-una-prueba-parametrica">https://blog.minitab.com/es/como-elegir-entre-una-prueba-no-parametrica-y-una-prueba-parametrica</a>.</p>
 </dd>
-<dt class="label" id="kernel-vaerenbergh"><span class="brackets"><a class="fn-backref" href="#id19">6</a></span></dt>
+<dt class="label" id="footcite-kernel-vaerenbergh"><span class="brackets"><a class="fn-backref" href="#id19">6</a></span></dt>
 <dd><p>I. Santamaría S. Van Vaerenbergh. Métodos kernel para clasificación. 2018. URL: <a class="reference external" href="https://gtas.unican.es/files/docencia/APS/apuntes/07_svm_kernel.pdf">https://gtas.unican.es/files/docencia/APS/apuntes/07_svm_kernel.pdf</a>.</p>
 </dd>
-<dt class="label" id="dotcsv"><span class="brackets"><a class="fn-backref" href="#id26">7</a></span></dt>
+<dt class="label" id="footcite-dotcsv"><span class="brackets"><a class="fn-backref" href="#id26">7</a></span></dt>
 <dd><p>Carlos Santana Vega. Las Redes Neuronales… ¿Aprenden o Memorizan? - Overfitting y Underfitting - Parte 1. 2019. URL: <a class="reference external" href="https://www.youtube.com/watch?v=7-6X3DTt3R8">https://www.youtube.com/watch?v=7-6X3DTt3R8</a>.</p>
 </dd>
-<dt class="label" id="mlandrewng"><span class="brackets"><a class="fn-backref" href="#id30">8</a></span></dt>
+<dt class="label" id="footcite-mlandrewng"><span class="brackets"><a class="fn-backref" href="#id30">8</a></span></dt>
 <dd><p>Andrew NG. Machine Learning. 2011. URL: <a class="reference external" href="https://www.coursera.org/learn/machine-learning">https://www.coursera.org/learn/machine-learning</a>.</p>
 </dd>
-<dt class="label" id="kernel-amat"><span class="brackets">9</span><span class="fn-backref">(<a href="#id32">1</a>,<a href="#id35">2</a>,<a href="#id37">3</a>,<a href="#id38">4</a>,<a href="#id39">5</a>)</span></dt>
+<dt class="label" id="footcite-kernel-amat"><span class="brackets">9</span><span class="fn-backref">(<a href="#id32">1</a>,<a href="#id35">2</a>,<a href="#id37">3</a>,<a href="#id38">4</a>,<a href="#id39">5</a>)</span></dt>
 <dd><p>Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: <a class="reference external" href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html">https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html</a>.</p>
 </dd>
-<dt class="label" id="dennis-wittich"><span class="brackets"><a class="fn-backref" href="#id48">10</a></span></dt>
+<dt class="label" id="footcite-dennis-wittich"><span class="brackets"><a class="fn-backref" href="#id48">10</a></span></dt>
 <dd><p>Dennis Wittich. Jupyter magic to handle notebook exceptions. 2019. URL: <a class="reference external" href="https://icaml.org/canon/algo/bayesian-classification/KDE_KNN/KNN.html">https://icaml.org/canon/algo/bayesian-classification/KDE_KNN/KNN.html</a>.</p>
 </dd>
-<dt class="label" id="maquinas-soporte-jose"><span class="brackets">11</span><span class="fn-backref">(<a href="#id53">1</a>,<a href="#id55">2</a>,<a href="#id57">3</a>)</span></dt>
+<dt class="label" id="footcite-maquinas-soporte-jose"><span class="brackets">11</span><span class="fn-backref">(<a href="#id53">1</a>,<a href="#id55">2</a>,<a href="#id57">3</a>)</span></dt>
 <dd><p>Jose Martinez Heras. Máquinas de Vectores de Soporte (SVM). 2019. URL: <a class="reference external" href="https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/">https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/</a>.</p>
 </dd>
-<dt class="label" id="machine-learning-mastery"><span class="brackets">12</span><span class="fn-backref">(<a href="#id59">1</a>,<a href="#id60">2</a>)</span></dt>
+<dt class="label" id="footcite-machine-learning-mastery"><span class="brackets">12</span><span class="fn-backref">(<a href="#id59">1</a>,<a href="#id60">2</a>)</span></dt>
 <dd><p>Jason Brownlee. How to Choose a Feature Selection Method For Machine Learning. 2019. URL: <a class="reference external" href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/</a>.</p>
 </dd>
-<dt class="label" id="axum-labs"><span class="brackets"><a class="fn-backref" href="#id65">13</a></span></dt>
+<dt class="label" id="footcite-axum-labs"><span class="brackets"><a class="fn-backref" href="#id65">13</a></span></dt>
 <dd><p>Patricia Bassey. Logistic Regression Vs Support Vector Machines (SVM). 2019. URL: <a class="reference external" href="https://medium.com/axum-labs/logistic-regression-vs-support-vector-machines-svm-c335610a3d16">https://medium.com/axum-labs/logistic-regression-vs-support-vector-machines-svm-c335610a3d16</a>.</p>
 </dd>
 </dl>

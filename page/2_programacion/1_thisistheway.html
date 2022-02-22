@@ -45,15 +45,14 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/1_thisistheway.html" />
     <link rel="shortcut icon" href="../../_static/0_favicon.ico"/>
@@ -624,17 +623,17 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
+    <a class="reference internal nav-link" href="#id9">
      Reporte diario
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
+    <a class="reference internal nav-link" href="#id10">
      Balance de vacunas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
+    <a class="reference internal nav-link" href="#id11">
      Indicador de fase
     </a>
    </li>
@@ -646,17 +645,17 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id14">
      Reporte diario
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id15">
      Balance de vacunas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id16">
      Indicador de fase
     </a>
    </li>
@@ -673,7 +672,7 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
+    <a class="reference internal nav-link" href="#id17">
      Reporte diario
     </a>
    </li>
@@ -683,12 +682,12 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
+    <a class="reference internal nav-link" href="#id18">
      Indicador de fase
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
+    <a class="reference internal nav-link" href="#id19">
      Toque de queda
     </a>
    </li>
@@ -969,17 +968,17 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
+    <a class="reference internal nav-link" href="#id9">
      Reporte diario
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
+    <a class="reference internal nav-link" href="#id10">
      Balance de vacunas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
+    <a class="reference internal nav-link" href="#id11">
      Indicador de fase
     </a>
    </li>
@@ -991,17 +990,17 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id14">
      Reporte diario
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id15">
      Balance de vacunas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id16">
      Indicador de fase
     </a>
    </li>
@@ -1018,7 +1017,7 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
+    <a class="reference internal nav-link" href="#id17">
      Reporte diario
     </a>
    </li>
@@ -1028,12 +1027,12 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
+    <a class="reference internal nav-link" href="#id18">
      Indicador de fase
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
+    <a class="reference internal nav-link" href="#id19">
      Toque de queda
     </a>
    </li>
@@ -1213,7 +1212,7 @@
 <hr class="docutils" />
 <div class="section" id="micitec">
 <h3>MICITEC<a class="headerlink" href="#micitec" title="Permalink to this headline">¶</a></h3>
-<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span id="id3">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id3">MinisteriodCienciaTeInnovacion21</a>]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a class="footnote-reference brackets" href="#id5" id="id4">1</a></p>
+<p>En función de que, los datos están ampliamente organizados y trabajados por el <a href="https://github.com/MinCiencia/Datos-COVID19">Ministerio de Ciencia, Tecnología, Conocimiento e Innovación (<strong>MICITEC</strong>) en su GitHub</a> <span id="id3">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id3" title="Ministerio de Ciencia, Tecnología e Innovación. Base de datos COVID-19. 2020, 2021. URL: https://github.com/MinCiencia/Datos-COVID19.">MinisteriodCienciaTeInnovacion21</a>]</span>, procedemos a leer los archivos .CSV en el siguiente bloque de código. <a class="footnote-reference brackets" href="#footcite-micitec" id="id4">1</a></p>
 <ul class="simple">
 <li><p>Los archivos .CSV refieren a “comma separated values”, que en español significa “archivos separados por coma”, y si bien, parecieran tener una estructura desorganizada, en verdad tienen un orden por columna y fila, delimitando cada elemento por una coma. En Data Science son ampliamente utilizados, aunque, en secuencias de datos más amplias (y con mayor peso) se suele utilizar el lenguaje de consulta SQL, dado que la librería Pandas, en un archivo .CSV, debe leer uno y cada uno de los datos, por lo que a medida escala el número de datos, el proceso de lectura de un .CSV se torna ineficiente.</p></li>
 <li><p>Para ejemplo práctico, leer bloque de código (<a class="reference external" href="#ejemplo1">Ejemplo 1</a>).</p></li>
@@ -1493,7 +1492,7 @@
 <div class="section" id="tasa-de-activos">
 <h4>Tasa de activos<a class="headerlink" href="#tasa-de-activos" title="Permalink to this headline">¶</a></h4>
 <p>La tasa de activos, también denominada incidencia (activos), cuantifica la <strong>velocidad de ocurriencia de infectados</strong>. En este caso, se basa en el lapso temporal de los activos, a partir de los infectados en los últimos 11 días.</p>
-<p>Por otro lado, según <em>Principales medidas en epidemiología</em> <span id="id6">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id53">AMA00</a>]</span>, “<em>En los estudios epidemiológicos en los que el propósito es la investigación causal o la evaluación de medidas preventivas, el interés está dirigido a la medición del flujo que se establece entre la salud y la enfermedad, es decir, a la aparición de casos nuevos. Como ya se mencionó anteriormente, la medida epidemiológica que mejor expresa este cambio de estado es la incidencia, la cual indica la frecuencia con que ocurren nuevos eventos</em>” <a class="footnote-reference brackets" href="#medidas-epidemiologia" id="id7">2</a>.</p>
+<p>Por otro lado, según <em>Principales medidas en epidemiología</em> <span id="id5">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id53" title="Alexánder Corcho-Berdugo Alejandra Moreno-Altamirano, Sergio López-Moreno. Principales medidas en epidemiología. 2000. URL: https://www.scielosp.org/pdf/spm/v42n4/2882.pdf.">AMA00</a>]</span>, “<em>En los estudios epidemiológicos en los que el propósito es la investigación causal o la evaluación de medidas preventivas, el interés está dirigido a la medición del flujo que se establece entre la salud y la enfermedad, es decir, a la aparición de casos nuevos. Como ya se mencionó anteriormente, la medida epidemiológica que mejor expresa este cambio de estado es la incidencia, la cual indica la frecuencia con que ocurren nuevos eventos</em>” <a class="footnote-reference brackets" href="#footcite-medidas-epidemiologia" id="id6">2</a>.</p>
 <div class="math notranslate nohighlight" id="equation-incidencia">
 <span class="eqno">(10)<a class="headerlink" href="#equation-incidencia" title="Permalink to this equation">¶</a></span>\[
 \begin{align}
@@ -2363,60 +2362,6 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-02-17</th>
-      <td>75,086.00</td>
-      <td>73,172.00</td>
-      <td>918.00</td>
-      <td>898.00</td>
-      <td>2.00</td>
-      <td>220.00</td>
-      <td>90.00</td>
-      <td>51.00</td>
-      <td>79.00</td>
-      <td>54.00</td>
-      <td>267.00</td>
-      <td>275.00</td>
-      <td>6.00</td>
-      <td>673.00</td>
-      <td>111,911.00</td>
-      <td>1,957.00</td>
-      <td>831,655.00</td>
-      <td>455.00</td>
-      <td>117.00</td>
-      <td>7.00</td>
-      <td>NaN</td>
-      <td>24.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>13.59</td>
-      <td>239.83</td>
-      <td>0.59</td>
-      <td>1.33</td>
-      <td>85.37</td>
-      <td>NaN</td>
-      <td>56.50</td>
-      <td>8.02</td>
-      <td>11.11</td>
-      <td>157.69</td>
-      <td>290.91</td>
-      <td>189.51</td>
-      <td>233.33</td>
-      <td>288.19</td>
-      <td>268.55</td>
-      <td>189.71</td>
-      <td>234.60</td>
-    </tr>
-    <tr>
       <th>2022-02-18</th>
       <td>75,315.00</td>
       <td>73,413.00</td>
@@ -2632,9 +2577,63 @@
       <td>NaN</td>
       <td>217.88</td>
     </tr>
+    <tr>
+      <th>2022-02-22</th>
+      <td>75,896.00</td>
+      <td>74,095.00</td>
+      <td>932.00</td>
+      <td>767.00</td>
+      <td>0.00</td>
+      <td>115.00</td>
+      <td>63.00</td>
+      <td>33.00</td>
+      <td>19.00</td>
+      <td>19.00</td>
+      <td>271.00</td>
+      <td>201.00</td>
+      <td>0.00</td>
+      <td>264.00</td>
+      <td>114,056.00</td>
+      <td>1,082.00</td>
+      <td>838,350.00</td>
+      <td>367.00</td>
+      <td>125.00</td>
+      <td>6.00</td>
+      <td>NaN</td>
+      <td>23.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.71</td>
+      <td>243.49</td>
+      <td>0.65</td>
+      <td>1.14</td>
+      <td>86.73</td>
+      <td>NaN</td>
+      <td>43.11</td>
+      <td>7.20</td>
+      <td>9.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>200.38</td>
+    </tr>
   </tbody>
 </table>
-<p>721 rows × 156 columns</p>
+<p>722 rows × 156 columns</p>
 </div></div></div>
 </div>
 </div>
@@ -2673,7 +2672,7 @@
 <li><p><b>Indicador de fase</b></p></li>
 </ul>
 <p>El plan Paso a Paso y la capacidad de poder “predecirlo”. El indicador de fase surgió como una idea de saber, qué tan cerca o qué tan distantes se estaba de los avances o retrocesos de fase, en términos de confinamiento o desconfinamiento. La idea original la desarrollé un día por la noche, e hizo boom en redes sociales. El miembro del comité científico COVID-19 de la Universidad Arturo Prat, el Dr. Cristóbal Corral, fue capaz de explicarlo brevemente a los medios: Un termómetro del Paso a Paso.</p>
-<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id8">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id5">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#numeralab-indicadorfase" id="id9">3</a></p>
+<p>La primera versión de este reporte fue subida por última vez el 12/05/2021, que fue la 36° edición <span id="id7">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id5" title="Alejandro Dinamarca. Indicador de fase, ed. 36°. 2021. URL: https://www.instagram.com/p/COyZiUcLUqu/.">Din21</a>]</span>. Consistía en una aproximación provincial, es decir, una generalización en torno a las comunas de Iquique o del Tamarugal. ¿Cómo se realizaba el cálculo? Pues, no había cálculo (más que obtener o trabajar los datos disponibles), sino que, se basaba en condicionales (o restricciones): Si se cumplen todos los indicadores, se puede estar en tal fase del plan Paso a Paso por provincia. Evidentemente, no era del todo certero, particularmente, porque no consideraba variables temporales. <a class="footnote-reference brackets" href="#footcite-numeralab-indicadorfase" id="id8">3</a></p>
 <p>La segunda versión de este reporte fue subida, inicialmente, el 02/05/2021, que fue la 37° edición. Fue procesada en el siguiente script (This is the way 2), y se basa en un problema de clasificación. Para mayor información del cómo funciona y  sus fundamentos, recomiendo ver el siguiente notebook.</p>
 <ul class="simple">
 <li><p><b>Indicador EPI</b></p></li>
@@ -3118,27 +3117,27 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 21 de febrero de 2022 🕑. 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 22 de febrero de 2022 🕑. 
 
-• Infectados 101 casos nuevos de los cuales 46 con síntomas, 31 sin síntomas y 24 sin notificar, dando un total de 75.761 casos confirmados. Adicionalmente, 26 casos nuevos confirmados por antígeno y 271 casos totales con sospecha de reinfección. 🦠
-• Recuperadas 110 personas, sumando 73.894 recuperados totales. 💪
-• Perdieron la vida 3 persona(s), sumando 932 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
-• Informados 1.188 exámenes PCR dando un total de 837.268 exámenes PCR totales en la región. En antígenos, 621 informados y 113.792 acumulados. 🌡️
-• Respecto a residencias sanitarias, 6 recintos de hospedaje con 367 cupos, de los cuales 139 están utilizados. 🏨
-• Se reportaron 834 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 217. 🧪
-• La tasa de crecimiento es del 0,73: curva de contagios a la baja.
-• Hasta ayer, 23 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 87,1% ± 1,4%. 🆘
-• La positividad PCR fue del 6,31%, con una positividad media móvil semanal del 10,99%. En antígeno, un 4,19% de positividad. 😷
+• Infectados 115 casos nuevos de los cuales 63 con síntomas, 33 sin síntomas y 19 sin notificar, dando un total de 75.896 casos confirmados. Adicionalmente, 19 casos nuevos confirmados por antígeno y 271 casos totales con sospecha de reinfección. 🦠
+• Recuperadas 201 personas, sumando 74.095 recuperados totales. 💪
+• Perdieron la vida 0 persona(s), sumando 932 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
+• Informados 1.082 exámenes PCR dando un total de 838.350 exámenes PCR totales en la región. En antígenos, 264 informados y 114.056 acumulados. 🌡️
+• Respecto a residencias sanitarias, 6 recintos de hospedaje con 367 cupos, de los cuales 125 están utilizados. 🏨
+• Se reportaron 767 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 200. 🧪
+• La tasa de crecimiento es del 1,14: curva de contagios al alza.
+• Hasta ayer, 23 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 86,7% ± 1,4%. 🆘
+• La positividad PCR fue del 8,87%, con una positividad media móvil semanal del 8,71%. En antígeno, un 7,2% de positividad. 😷
 • De cada cien mil habitantes en la región, 243 fallecen por COVID-19. 😵
 • El Re Regional corresponde a 0,69. 💊
-• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 44,4. 💦
+• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 43,1. 💦
 • En el proceso de vacunación, 82,0% vacunados de la población total (al menos, 313.973 personas con 2° dosis o única). Con cuarta dosis se encuentran vacunados un 2.4% de la población objetivo. 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
 *Datos actualizados hasta las 21 hrs. del día anterior.
 
-[ CAMBIOS EN LA 604° EDICION ⚙️ ]
+[ CAMBIOS EN LA 605° EDICION ⚙️ ]
 • Ninguno.
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
@@ -3283,8 +3282,8 @@ print(desc2)
 <center><a href="https://matplotlib.org/"><img src="https://matplotlib.org/_static/logo2_compressed.svg"></img></a></center>
 <p>Existen otras librerías, como Seaborn (sns), que nos permite realizar gráficos más avanzados que Matplotlib con una sintaxis más simple. Sin embargo, Matplotlib tiene mayor versatilidad, y por ello, lo utilizaremos sobre Seaborn (sns viene con una sintaxis más simple pero menos manejable).</p>
 <center><a href="https://seaborn.pydata.org/"><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg"></img></a></center>
-<div class="section" id="id10">
-<h3>Reporte diario<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Reporte diario<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para reporte diario ###</span>
@@ -3444,8 +3443,8 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </div>
 </div>
 </div>
-<div class="section" id="id11">
-<h3>Balance de vacunas<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Balance de vacunas<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Graficando para balance vacunas ###</span>
 
 <span class="c1">### Últimas cifras de vacunación a población total/objetivo</span>
@@ -3569,8 +3568,8 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </pre></div>
 </div>
 </div>
-<div class="section" id="id12">
-<h3>Indicador de fase<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Indicador de fase<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-### notranslate"><div class="highlight"><pre><span></span>
 ### Primer gráfico: Días por fase por comuna
 graph1 = graphBar([df.loc[:, df.columns.str.contains(&#39;Paso a Paso (dias)&#39;, regex=False)].columns.str[19:]],\
@@ -3658,17 +3657,17 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 <div class="section" id="generando-reportes">
 <h2>Generando reportes<a class="headerlink" href="#generando-reportes" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a class="footnote-reference brackets" href="#alsweigart" id="id13">4</a> para generar las infografías.</p>
+<p>Teniendo la información recopilada, nos basaremos en el <a href="https://automatetheboringstuff.com/chapter17/">capítulo 17 de manipular imágenes con Python, de &#64;AlSweigart</a> <a class="footnote-reference brackets" href="#footcite-alsweigart" id="id12">4</a> para generar las infografías.</p>
 <p>El procedimiento manual implicaba exportar archivos .JSON, y a partir de ellos, rellenar manualmente los datos y gráficos en Photoshop, lo que es un proceso tedioso, y altamente susceptible a equivocaciones.</p>
-<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id14">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id23">AlS15</a>]</span>.</p>
+<p>Debido al párrafo anterior, se intentará automatizar el mismo procedimiento, pero a través de Python, dado que son pasos mecánicos gracias a <span id="id13">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id23" title="AlSweigart. Automate The Boring Stuff With Python. 2015. URL: https://automatetheboringstuff.com/chapter17/.">AlS15</a>]</span>.</p>
 <p>Lo que tenemos que realizar consistirá en los siguientes pasos:</p>
 <ul class="simple">
 <li><p>Rellenar con datos las infografías prediseñadas en Photoshop.</p></li>
 <li><p>Colocar imágenes de gráficos según corresponda en las mismas infografías.</p></li>
 <li><p>Exportar.</p></li>
 </ul>
-<div class="section" id="id15">
-<h3>Reporte diario<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Reporte diario<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Generando reporte diario ###</span>
@@ -3848,8 +3847,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 </div>
-<div class="section" id="id16">
-<h3>Balance de vacunas<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Balance de vacunas<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Generando balance de vacunas ###</span>
 
 <span class="c1">### Abriendo gráficos guardados</span>
@@ -3908,8 +3907,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </pre></div>
 </div>
 </div>
-<div class="section" id="id17">
-<h3>Indicador de fase<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Indicador de fase<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Indicador de fase ###</span>
 
 <span class="c1">### Abriendo gráficos guardados</span>
@@ -4023,8 +4022,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 <div class="section" id="resultado">
 <h2>Resultado<a class="headerlink" href="#resultado" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<div class="section" id="id18">
-<h3>Reporte diario<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Reporte diario<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Mostramos las imágenes del reporte diario</span>
@@ -4059,8 +4058,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </pre></div>
 </div>
 </div>
-<div class="section" id="id19">
-<h3>Indicador de fase<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Indicador de fase<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Mostramos las imágenes del indicador de fase</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
@@ -4069,8 +4068,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </pre></div>
 </div>
 </div>
-<div class="section" id="id20">
-<h3>Toque de queda<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Toque de queda<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Mostramos las imágenes del indicador de fase</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
@@ -4184,18 +4183,18 @@ La media general del error es de:  0.55 %
 <span id="aclaracion"></span><h4>Casos activos confirmados<a class="headerlink" href="#casos-activos-confirmados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos activos confirmados del reporte diario del Minsal no calzan con los del reporte epidemiológico?</strong> Ésto se debe a que, el reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No contempla en la suma de activos confirmados, a los activos probables <a class="footnote-reference brackets" href="#b51-536" id="id21">5</a>, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No contempla en la suma de activos confirmados, a los activos probables <a class="footnote-reference brackets" href="#footcite-b51-536" id="id20">5</a>, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 </div>
 <div class="section" id="casos-confirmados-acumulados">
-<span id="id22"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
+<span id="id21"></span><h4>Casos confirmados acumulados<a class="headerlink" href="#casos-confirmados-acumulados" title="Permalink to this headline">¶</a></h4>
 <p><strong>¿Por qué los casos confirmados acumulados del reporte diario del Minsal no calzan con el total del reporte epidemiológico?</strong> Ésto se debe a dos situaciones con respecto al reporte diario del Minsal:</p>
 <ul class="simple">
-<li><p>No se contemplan casos probables <a class="footnote-reference brackets" href="#b51-536" id="id23">5</a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos probables <a class="footnote-reference brackets" href="#footcite-b51-536" id="id22">5</a>, en la suma de casos totales, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>No se contemplan casos notificados por laboratorio <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id24">6</a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
+<li><p>No se contemplan casos notificados por laboratorio <a class="footnote-reference brackets" href="#footcite-epi-04-06-2021" id="id23">6</a>, en la suma total, en el reporte diario del Ministerio de Salud.</p></li>
 </ul>
 <p>Ésto implica que:</p>
 <div class="math notranslate nohighlight" id="equation-casos-epidemiologico">
@@ -4209,11 +4208,11 @@ La media general del error es de:  0.55 %
 <h4>Definiciones<a class="headerlink" href="#definiciones" title="Permalink to this headline">¶</a></h4>
 <p>Respecto a las definiciones de la nomenclatura:</p>
 <ul class="simple">
-<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#b51-536" id="id25">5</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id26">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id8">dSP21</a>]</span>.</p></li>
+<li><p>Los casos probables, por definición <a class="footnote-reference brackets" href="#footcite-b51-536" id="id24">5</a>, “<i>Persona que cumple con la definición de caso sospechoso y tiene un resultado indeterminado o no concluyente de la RT-PCR, o persona asintomática o con un síntoma no cardinal, que tiene un resultado positivo para una prueba de detección rápida de antígenos para SARS-CoV-2, o bien, persona que cumple con la definición de caso sospechoso en el cual el resultado de la RT-PCR es negativo o indeterminado o no concluyente, pero que tiene una tomografía computarizada de tórax con imágenes sugerentes de COVID-19</i>” según <span id="id25">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id8" title="Subsecretaria de Salud Pública. Ordinario B51-536. 2021. URL: https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf.">dSP21</a>]</span>.</p></li>
 </ul>
 <br>
 <ul class="simple">
-<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#epi-04-06-2021" id="id27">6</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id28">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id9">dE21</a>]</span>.</p></li>
+<li><p>Los casos notificados por laboratorio, por definición <a class="footnote-reference brackets" href="#footcite-epi-04-06-2021" id="id26">6</a>, “<i>Persona que tiene un resultado de RT-PCR positivo para SARS-CoV-2 pero que no está registrada en la plataforma EPIVIGILA</i>” según <span id="id27">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id9" title="Departamento de Epidemiología. Informe epidemiológico N° 126. Enfermedad por SARS-CoV-2 (COVID-19). Chile 04-06-2021. 2021. URL: https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf.">dE21</a>]</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -4533,30 +4532,30 @@ La media general del error es de:  0.55 %
             Linux-5.11.0-1028-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-02-21 23:52
+            Session information updated at 2022-02-22 15:56
             </pre>
             </details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
 <h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">¶</a></h2>
-<p><dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<p id="id28"><dl class="footnote brackets">
+<dt class="label" id="footcite-micitec"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
 <dd><p>Ministerio de Ciencia, Tecnología e Innovación. Base de datos COVID-19. 2020, 2021. URL: <a class="reference external" href="https://github.com/MinCiencia/Datos-COVID19">https://github.com/MinCiencia/Datos-COVID19</a>.</p>
 </dd>
-<dt class="label" id="medidas-epidemiologia"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dt class="label" id="footcite-medidas-epidemiologia"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
 <dd><p>Alexánder Corcho-Berdugo Alejandra Moreno-Altamirano, Sergio López-Moreno. Principales medidas en epidemiología. 2000. URL: <a class="reference external" href="https://www.scielosp.org/pdf/spm/v42n4/2882.pdf">https://www.scielosp.org/pdf/spm/v42n4/2882.pdf</a>.</p>
 </dd>
-<dt class="label" id="numeralab-indicadorfase"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dt class="label" id="footcite-numeralab-indicadorfase"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
 <dd><p>Alejandro Dinamarca. Indicador de fase, ed. 36°. 2021. URL: <a class="reference external" href="https://www.instagram.com/p/COyZiUcLUqu/">https://www.instagram.com/p/COyZiUcLUqu/</a>.</p>
 </dd>
-<dt class="label" id="alsweigart"><span class="brackets"><a class="fn-backref" href="#id13">4</a></span></dt>
+<dt class="label" id="footcite-alsweigart"><span class="brackets"><a class="fn-backref" href="#id12">4</a></span></dt>
 <dd><p>AlSweigart. Automate The Boring Stuff With Python. 2015. URL: <a class="reference external" href="https://automatetheboringstuff.com/chapter17/">https://automatetheboringstuff.com/chapter17/</a>.</p>
 </dd>
-<dt class="label" id="b51-536"><span class="brackets">5</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id23">2</a>,<a href="#id25">3</a>)</span></dt>
+<dt class="label" id="footcite-b51-536"><span class="brackets">5</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id22">2</a>,<a href="#id24">3</a>)</span></dt>
 <dd><p>Subsecretaria de Salud Pública. Ordinario B51-536. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf">https://www.minsal.cl/wp-content/uploads/2021/02/ORD-536-04-02-2021.pdf</a>.</p>
 </dd>
-<dt class="label" id="epi-04-06-2021"><span class="brackets">6</span><span class="fn-backref">(<a href="#id24">1</a>,<a href="#id27">2</a>)</span></dt>
+<dt class="label" id="footcite-epi-04-06-2021"><span class="brackets">6</span><span class="fn-backref">(<a href="#id23">1</a>,<a href="#id26">2</a>)</span></dt>
 <dd><p>Departamento de Epidemiología. Informe epidemiológico N° 126. Enfermedad por SARS-CoV-2 (COVID-19). Chile 04-06-2021. 2021. URL: <a class="reference external" href="https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf">https://www.minsal.cl/wp-content/uploads/2021/06/Informe-Epidemiolo%CC%81gico-126.pdf</a>.</p>
 </dd>
 </dl>
