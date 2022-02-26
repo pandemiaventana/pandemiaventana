@@ -1373,14 +1373,26 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
- <h3> Para la columna Fallecidos Alto Hospicio </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.04512575135657315</strong></p>
+ <h3> Para la columna Casos acumulados en Pozo Almonte </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>-0.02248799427134514</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
- <h3> Para la columna Fallecidos probables DEIS Alto Hospicio </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.00767661452333709</strong></p>
+ <h3> Para la columna Fallecidos confirmados DEIS Pozo Almonte </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>0.008504986834650825</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
+ <h3> Para la columna Fallecidos probables DEIS Alto Hospicio </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>-0.013319278445090892</strong></p>
+</div></blockquote>
+<img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
+ <h3> Para la columna Incidencia acumulada Pozo Almonte </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>-0.022486859401950773</strong></p>
+</div></blockquote>
+<img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
+ <h3> Para la columna Mortalidad especifica comunal Pozo Almonte * </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>0.008508404984125185</strong></p>
+</div></blockquote>
+<img alt="../../_images/2_thisistheway_19_14.png" src="../../_images/2_thisistheway_19_14.png" />
 </div>
 </div>
 <p>Prácticamente, no existe normalidad, y las pocas columnas que son, <em>aproximadamente normales</em>, se deben a datos de comunas con baja población, o que contienen bajo número de observaciones (a raíz de ser añadidas hace poco tiempo al <a href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Min. Ciencia</a>). <strong>Estas columnas las descartamos al asignar que la curtosis sea distinta de cero</strong>.</p>
@@ -2038,13 +2050,13 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>700.00</td>
+      <td>656.00</td>
+      <td>76.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>293.56</td>
     </tr>
     <tr>
       <th>2022-02-23</th>
@@ -2059,13 +2071,13 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>700.00</td>
+      <td>656.00</td>
+      <td>76.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>293.56</td>
     </tr>
     <tr>
       <th>2022-02-24</th>
@@ -2080,17 +2092,19 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>700.00</td>
+      <td>656.00</td>
+      <td>76.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>293.56</td>
     </tr>
     <tr>
       <th>2022-02-25</th>
       <td>NaN</td>
+      <td>52,610.00</td>
+      <td>407.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2099,15 +2113,13 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>706.00</td>
+      <td>661.00</td>
+      <td>76.00</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>23,543.00</td>
+      <td>295.80</td>
     </tr>
     <tr>
       <th>2022-02-26</th>
@@ -2581,29 +2593,29 @@ Apertura Inicial       1.00      0.46      0.63        28
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
-<h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>77.08333333333334%</strong>.</p>
+<h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>78.125%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
 Apertura Inicial       0.67      1.00      0.80        35
-     Preparación       0.87      0.39      0.54        33
-      Transición       0.90      0.93      0.91        28
+     Preparación       0.93      0.39      0.55        33
+      Transición       0.90      0.96      0.93        28
 
-        accuracy                           0.77        96
-       macro avg       0.81      0.77      0.75        96
-    weighted avg       0.80      0.77      0.75        96
+        accuracy                           0.78        96
+       macro avg       0.83      0.79      0.76        96
+    weighted avg       0.83      0.78      0.76        96
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_36.png" src="../../_images/2_thisistheway_50_36.png" />
-<h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>85.41666666666666%</strong>.</p>
+<h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>84.375%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       0.70      1.00      0.82        32
-     Preparación       1.00      0.61      0.76        36
+Apertura Inicial       0.68      1.00      0.81        32
+     Preparación       1.00      0.58      0.74        36
       Transición       1.00      1.00      1.00        28
 
-        accuracy                           0.85        96
-       macro avg       0.90      0.87      0.86        96
-    weighted avg       0.90      0.85      0.85        96
+        accuracy                           0.84        96
+       macro avg       0.89      0.86      0.85        96
+    weighted avg       0.89      0.84      0.84        96
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
@@ -2948,7 +2960,7 @@ Apertura Inicial       0.70      1.00      0.82        32
             Linux-5.11.0-1028-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-02-26 15:54
+            Session information updated at 2022-02-26 17:07
             </pre>
             </details></div></div>
 </div>
