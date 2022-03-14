@@ -16,4 +16,4 @@ time
 IPython==7.32.0
 jupyter_client==7.1.2
 jupyter_core==4.9.2
-notebook==6.4.8
+notebook==6.4.9
