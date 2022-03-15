@@ -3838,12 +3838,118 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<blockquote>
-<div><p>Todas las imágenes del reporte diario han sido correctamente exportadas.</p>
-</div></blockquote>
-<blockquote>
-<div><p>El PDF del reporte diario ha sido exportado.</p>
-</div></blockquote>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3733</span><span class="o">/</span><span class="mf">360825322.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1">### Cargando texto (gracias a Google Fonts y shoes)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">roboto</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://github.com/googlefonts/roboto/raw/main/src/hinted/Roboto-Regular.ttf&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="n">coolvetica</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://github.com/jameshadfield/phandango/blob/master/font/roboto/Roboto-Bold.ttf?raw=true&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">roboto_ed</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">roboto</span><span class="o">.</span><span class="n">content</span><span class="p">),</span> <span class="mi">50</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">roboto_data0</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">roboto</span><span class="o">.</span><span class="n">content</span><span class="p">),</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">75</span><span class="s2">     return request(&#39;get&#39;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span><span class="s2">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="s2">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="s2">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">542</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="s2">         return resp</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span><span class="s2">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">655</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">656</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">657</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">                     decode_content=False,</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                     retries=self.max_retries,</span>
+<span class="ne">--&gt; </span><span class="mi">449</span><span class="s2">                     timeout=timeout</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span><span class="s2">                 )</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span><span class="s2">                 body=body,</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span><span class="s2">                 headers=headers,</span>
+<span class="ne">--&gt; </span><span class="mi">710</span><span class="s2">                 chunked=chunked,</span>
+<span class="g g-Whitespace">    </span><span class="mi">711</span><span class="s2">             )</span>
+<span class="g g-Whitespace">    </span><span class="mi">712</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">                     # Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                     # Otherwise it looks like a bug in the code.</span>
+<span class="ne">--&gt; </span><span class="mi">449</span><span class="s2">                     six.raise_from(e, None)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span><span class="s2">         except (SocketTimeout, BaseSSLError, SocketError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="s2">             self._raise_timeout(err=e, url=url, timeout_value=read_timeout)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span><span class="s2">                 # Python 3</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">                 try:</span>
+<span class="ne">--&gt; </span><span class="mi">444</span><span class="s2">                     httplib_response = conn.getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">                 except BaseException as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">                     # Remove the TypeError from the exception chain in</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1371</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1372</span><span class="s2">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">1373</span><span class="s2">                 response.begin()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1374</span><span class="s2">             except ConnectionError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1375</span><span class="s2">                 self.close()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">         # read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">         while True:</span>
+<span class="ne">--&gt; </span><span class="mi">319</span><span class="s2">             version, status, reason = self._read_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">             if status != CONTINUE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2">                 break</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span><span class="s2">     def _read_status(self):</span>
+<span class="ne">--&gt; </span><span class="mi">280</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span><span class="s2">         while True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">589</span><span class="s2">                 return self._sock.recv_into(b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span><span class="s2">             except timeout:</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="s2">                 self._timeout_occurred = True</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span><span class="s2">                   self.__class__)</span>
+<span class="ne">-&gt; </span><span class="mi">1071</span><span class="s2">             return self.read(nbytes, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span><span class="s2">             if buffer is not None:</span>
+<span class="ne">--&gt; </span><span class="mi">929</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span><span class="s2">                 return self._sslobj.read(len)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -4166,8 +4272,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  2.04 %
-La media general del error es de:  0.53 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  5.99 %
+La media general del error es de:  0.58 %
 </pre></div>
 </div>
 <img alt="../../_images/1_thisistheway_52_1.png" src="../../_images/1_thisistheway_52_1.png" />
@@ -4285,257 +4391,281 @@ La media general del error es de:  0.53 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">            <details>
-            <summary>Click to view session information</summary>
-            <pre>
-            -----
-            PIL                 8.4.0
-            bs4                 4.10.0
-            datetime            NA
-            json                2.0.9
-            locale              NA
-            markdownify         NA
-            math                NA
-            matplotlib          3.4.3
-            natsort             8.1.0
-            numpy               1.20.3
-            os                  NA
-            pandas              1.3.4
-            pkg_resources       NA
-            plotly              5.5.0
-            pybtex              0.24.0
-            requests            2.26.0
-            scipy               1.7.1
-            seaborn             0.11.2
-            session_info        1.0.0
-            sklearn             0.24.2
-            time                NA
-            types               NA
-            -----
-            </pre>
-            <details>
-            <summary>Click to view modules imported as dependencies</summary>
-            <pre>
-            abc                         NA
-            argparse                    1.1
-            array                       NA
-            ast                         NA
-            asyncio                     NA
-            atexit                      NA
-            attr                        21.4.0
-            backcall                    0.2.0
-            base64                      NA
-            bdb                         NA
-            beta_ufunc                  NA
-            binascii                    NA
-            binom_ufunc                 NA
-            bisect                      NA
-            bz2                         NA
-            cProfile                    NA
-            calendar                    NA
-            certifi                     2021.10.08
-            cffi                        1.15.0
-            charset_normalizer          2.0.12
-            cmath                       NA
-            cmd                         NA
-            code                        NA
-            codecs                      NA
-            codeop                      NA
-            collections                 NA
-            colorama                    0.4.4
-            colorsys                    NA
-            concurrent                  NA
-            configparser                NA
-            contextlib                  NA
-            contextvars                 NA
-            copy                        NA
-            copyreg                     NA
-            csv                         1.0
-            ctypes                      1.1.0
-            curses                      NA
-            cycler                      0.10.0
-            cython_runtime              NA
-            dataclasses                 NA
-            dateutil                    2.8.2
-            debugpy                     1.5.1
-            decimal                     1.70
-            decorator                   5.1.1
-            defusedxml                  0.7.1
-            difflib                     NA
-            dis                         NA
-            distutils                   3.7.12
-            email                       NA
-            encodings                   NA
-            entrypoints                 0.4
-            enum                        NA
-            errno                       NA
-            faulthandler                NA
-            fcntl                       NA
-            filecmp                     NA
-            fnmatch                     NA
-            fractions                   NA
-            functools                   NA
-            gc                          NA
-            genericpath                 NA
-            getopt                      NA
-            getpass                     NA
-            gettext                     NA
-            glob                        NA
-            grp                         NA
-            gzip                        NA
-            hashlib                     NA
-            heapq                       NA
-            hmac                        NA
-            html                        NA
-            http                        NA
-            idna                        3.3
-            imp                         NA
-            importlib                   NA
-            importlib_metadata          NA
-            inspect                     NA
-            io                          NA
-            ipaddress                   1.0
-            ipykernel                   6.9.2
-            ipython_genutils            0.2.0
-            ipywidgets                  7.6.5
-            itertools                   NA
-            jedi                        0.18.1
-            joblib                      1.1.0
-            jsonschema                  3.2.0
-            keyword                     NA
-            kiwisolver                  1.4.0
-            linecache                   NA
-            logging                     0.5.1.2
-            lzma                        NA
-            marshal                     4
-            matplotlib_inline           NA
-            mimetypes                   NA
-            mmap                        NA
-            mpl_toolkits                NA
-            multiprocessing             NA
-            nbformat                    5.2.0
-            nbinom_ufunc                NA
-            netrc                       NA
-            ntpath                      NA
-            numbers                     NA
-            opcode                      NA
-            operator                    NA
-            packaging                   21.3
-            parso                       0.8.3
-            pathlib                     NA
-            pdb                         NA
-            pexpect                     4.8.0
-            pickle                      NA
-            pickleshare                 0.7.5
-            pkgutil                     NA
-            platform                    1.0.8
-            plistlib                    NA
-            posix                       NA
-            posixpath                   NA
-            pprint                      NA
-            profile                     NA
-            prompt_toolkit              3.0.28
-            pstats                      NA
-            psutil                      5.9.0
-            pty                         NA
-            ptyprocess                  0.7.0
-            pvectorc                    NA
-            pwd                         NA
-            pydev_ipython               NA
-            pydevconsole                NA
-            pydevd                      2.6.0
-            pydevd_concurrency_analyser NA
-            pydevd_file_utils           NA
-            pydevd_plugins              NA
-            pydevd_tracing              NA
-            pydoc                       NA
-            pydoc_data                  NA
-            pyexpat                     NA
-            pygments                    2.11.2
-            pyparsing                   3.0.7
-            pyrsistent                  NA
-            pytz                        2021.3
-            queue                       NA
-            quopri                      NA
-            random                      NA
-            re                          2.2.1
-            reprlib                     NA
-            resource                    NA
-            runpy                       NA
-            secrets                     NA
-            select                      NA
-            selectors                   NA
-            shlex                       NA
-            shutil                      NA
-            signal                      NA
-            site                        NA
-            six                         1.16.0
-            socket                      NA
-            socketserver                0.4
-            soupsieve                   2.3.1
-            sphinxcontrib               NA
-            sqlite3                     2.6.0
-            sre_compile                 NA
-            sre_constants               NA
-            sre_parse                   NA
-            ssl                         NA
-            stat                        NA
-            storemagic                  NA
-            string                      NA
-            stringprep                  NA
-            struct                      NA
-            subprocess                  NA
-            sys                         3.7.12 (default, Sep  6 2021, 07:19:30) 
-[GCC 9.3.0]
-            sysconfig                   NA
-            tarfile                     0.9.0
-            tempfile                    NA
-            tenacity                    NA
-            termios                     NA
-            textwrap                    NA
-            threading                   NA
-            timeit                      NA
-            token                       NA
-            tokenize                    NA
-            tornado                     6.1
-            traceback                   NA
-            traitlets                   5.1.1
-            tty                         NA
-            typing                      NA
-            typing_extensions           NA
-            unicodedata                 NA
-            unittest                    NA
-            urllib                      NA
-            urllib3                     1.26.8
-            uu                          NA
-            uuid                        NA
-            warnings                    NA
-            wcwidth                     0.2.5
-            weakref                     NA
-            webbrowser                  NA
-            xml                         NA
-            xmlrpc                      NA
-            zipfile                     NA
-            zipimport                   NA
-            zipp                        NA
-            zlib                        1.0
-            zmq                         22.3.0
-            </pre>
-            </details> <!-- seems like this ends pre, so might as well be explicit -->
-            <pre>
-            -----
-            IPython             7.32.0
-            jupyter_client      7.1.2
-            jupyter_core        4.9.2
-            notebook            6.4.9
-            -----
-            Python 3.7.12 (default, Sep  6 2021, 07:19:30) [GCC 9.3.0]
-            Linux-5.11.0-1028-azure-x86_64-with-debian-bullseye-sid
-            2 logical CPU cores, x86_64
-            -----
-            Session information updated at 2022-03-15 15:53
-            </pre>
-            </details></div></div>
+<div class="output text_html"><details>
+<summary>Click to view session information</summary>
+<pre>
+-----
+PIL                 8.4.0
+bs4                 4.10.0
+datetime            NA
+json                2.0.9
+locale              NA
+markdownify         NA
+math                NA
+matplotlib          3.4.3
+natsort             8.0.2
+numpy               1.20.3
+os                  NA
+pandas              1.3.4
+pkg_resources       NA
+plotly              5.5.0
+pybtex              0.24.0
+requests            2.26.0
+scipy               1.7.1
+seaborn             0.11.2
+session_info        1.0.0
+sklearn             0.24.2
+time                NA
+types               NA
+-----
+</pre>
+<details>
+<summary>Click to view modules imported as dependencies</summary>
+<pre>
+abc                         NA
+anyio                       NA
+argparse                    1.1
+array                       NA
+ast                         NA
+asyncio                     NA
+atexit                      NA
+attr                        21.2.0
+babel                       2.9.1
+backcall                    0.2.0
+base64                      NA
+bdb                         NA
+beta_ufunc                  NA
+binascii                    NA
+binom_ufunc                 NA
+bisect                      NA
+bottleneck                  1.3.2
+brotli                      NA
+bz2                         NA
+cProfile                    NA
+calendar                    NA
+certifi                     2021.10.08
+cffi                        1.14.6
+chardet                     4.0.0
+charset_normalizer          2.0.4
+cmath                       NA
+cmd                         NA
+code                        NA
+codecs                      NA
+codeop                      NA
+collections                 NA
+colorama                    0.4.4
+colorsys                    NA
+concurrent                  NA
+configparser                NA
+contextlib                  NA
+contextvars                 NA
+copy                        NA
+copyreg                     NA
+csv                         1.0
+ctypes                      1.1.0
+cycler                      0.10.0
+cython_runtime              NA
+dataclasses                 NA
+dateutil                    2.8.2
+debugpy                     1.4.1
+decimal                     1.70
+decorator                   5.1.0
+defusedxml                  0.7.1
+difflib                     NA
+dis                         NA
+distutils                   3.9.7
+email                       NA
+encodings                   NA
+entrypoints                 0.3
+enum                        NA
+errno                       NA
+faulthandler                NA
+filecmp                     NA
+fnmatch                     NA
+fractions                   NA
+functools                   NA
+gc                          NA
+genericpath                 NA
+getopt                      NA
+getpass                     NA
+gettext                     NA
+glob                        NA
+gzip                        NA
+hashlib                     NA
+heapq                       NA
+hmac                        NA
+html                        NA
+html5lib                    1.1
+http                        NA
+idna                        3.2
+imp                         NA
+importlib                   NA
+inspect                     NA
+io                          NA
+ipaddress                   1.0
+ipykernel                   6.4.1
+ipython_genutils            0.2.0
+ipywidgets                  7.6.5
+itertools                   NA
+jedi                        0.18.0
+jinja2                      2.11.3
+joblib                      1.1.0
+json5                       NA
+jsonschema                  3.2.0
+jupyter_server              1.4.1
+jupyterlab_server           2.8.2
+keyword                     NA
+kiwisolver                  1.3.1
+linecache                   NA
+logging                     0.5.1.2
+lxml                        4.6.3
+lzma                        NA
+markupsafe                  1.1.1
+marshal                     4
+matplotlib_inline           NA
+mimetypes                   NA
+mkl                         2.4.0
+mmap                        NA
+mpl_toolkits                NA
+msvcrt                      NA
+multiprocessing             NA
+nbclassic                   NA
+nbformat                    5.1.3
+nbinom_ufunc                NA
+netrc                       NA
+nt                          NA
+ntpath                      NA
+ntsecuritycon               NA
+nturl2path                  NA
+numbers                     NA
+numexpr                     2.7.3
+olefile                     0.46
+opcode                      NA
+operator                    NA
+packaging                   21.0
+parso                       0.8.2
+pathlib                     NA
+pdb                         NA
+pickle                      NA
+pickleshare                 0.7.5
+pkgutil                     NA
+platform                    1.0.8
+plistlib                    NA
+posixpath                   NA
+pprint                      NA
+profile                     NA
+prometheus_client           NA
+prompt_toolkit              3.0.20
+pstats                      NA
+psutil                      5.8.0
+pvectorc                    NA
+pydev_ipython               NA
+pydevconsole                NA
+pydevd                      2.4.1
+pydevd_concurrency_analyser NA
+pydevd_file_utils           NA
+pydevd_plugins              NA
+pydevd_tracing              NA
+pydoc                       NA
+pydoc_data                  NA
+pyexpat                     NA
+pygments                    2.10.0
+pyparsing                   3.0.4
+pyrsistent                  NA
+pythoncom                   NA
+pytz                        2021.3
+pywintypes                  NA
+queue                       NA
+quopri                      NA
+random                      NA
+re                          2.2.1
+reprlib                     NA
+runpy                       NA
+secrets                     NA
+select                      NA
+selectors                   NA
+send2trash                  NA
+shlex                       NA
+shutil                      NA
+signal                      NA
+site                        NA
+six                         1.16.0
+sniffio                     1.2.0
+socket                      NA
+socketserver                0.4
+socks                       1.7.1
+soupsieve                   2.2.1
+sphinxcontrib               NA
+sqlite3                     2.6.0
+sre_compile                 NA
+sre_constants               NA
+sre_parse                   NA
+ssl                         NA
+stat                        NA
+statsmodels                 0.12.2
+storemagic                  NA
+string                      NA
+stringprep                  NA
+struct                      NA
+subprocess                  NA
+sys                         3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
+sysconfig                   NA
+tarfile                     0.9.0
+tempfile                    NA
+tenacity                    NA
+textwrap                    NA
+threading                   NA
+timeit                      NA
+token                       NA
+tokenize                    NA
+tornado                     6.1
+traceback                   NA
+traitlets                   5.1.0
+typing                      NA
+typing_extensions           NA
+unicodedata                 NA
+unittest                    NA
+urllib                      NA
+urllib3                     1.26.7
+uu                          NA
+uuid                        NA
+warnings                    NA
+wcwidth                     0.2.5
+weakref                     NA
+webbrowser                  NA
+webencodings                0.5.1
+win32api                    NA
+win32com                    NA
+win32con                    NA
+win32security               NA
+win32trace                  NA
+winerror                    NA
+winreg                      NA
+wsgiref                     NA
+xml                         NA
+xmlrpc                      NA
+zipfile                     NA
+zipimport                   NA
+zlib                        1.0
+zmq                         22.2.1
+zope                        NA
+</pre>
+</details> <!-- seems like this ends pre, so might as well be explicit -->
+<pre>
+-----
+IPython             7.29.0
+jupyter_client      6.1.12
+jupyter_core        4.8.1
+jupyterlab          3.2.1
+notebook            6.4.5
+-----
+Python 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
+Windows-10-10.0.22000-SP0
+12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+-----
+Session information updated at 2022-01-19 15:39
+</pre>
+</details></div></div>
 </div>
 </div>
 <div class="section" id="bibliografia-de-esta-pagina">
