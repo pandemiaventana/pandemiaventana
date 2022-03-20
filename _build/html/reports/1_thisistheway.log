@@ -32,8 +32,15 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['### Generando reporte diario ###', '', '### Abriendo gráficos guardados', 'x = range(1, 7)', 'for i in x:']
-...
-['### Última actualización', "diario1.convert('RGB').save('../../out/diario/pdf/ult/ult.pdf', save_all=True, append_images=[pdf.convert('RGB') for pdf in pdfs])", '', '### ¿Todo ok?', "display(Markdown('> El PDF del reporte diario ha sido exportado.'))"]
+%%capture
+
+### Ejecutamos notebook 2
+%run 2_thisistheway.ipynb
+
+### Ejecutamos notebook 3
+%run 3_thisistheway.ipynb
+
+### Ejecutamos notebook 4
+%run ./../4_legado/1_legado.ipynb
 -------------------
 
