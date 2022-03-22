@@ -1309,7 +1309,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Contamos con <strong>749</strong> filas de observaciones o datos.</p>
+<p>Contamos con <strong>750</strong> filas de observaciones o datos.</p>
 </div>
 </div>
 <blockquote>
@@ -1377,14 +1377,18 @@ const thebe_selector_output = ".output, .cell_output"
 <div><p>El valor de la curtosis es de <strong>0.00681389496830375</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
+ <h3> Para la columna Paso a Paso Colchane </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>0.04864038243498181</strong></p>
+</div></blockquote>
+<img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
  <h3> Para la columna Fallecidos probables DEIS Alto Hospicio </h3><blockquote>
 <div><p>El valor de la curtosis es de <strong>-0.049748076334599</strong></p>
 </div></blockquote>
-<img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
+<img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
  <h3> Para la columna Incidencia acumulada Huara </h3><blockquote>
 <div><p>El valor de la curtosis es de <strong>0.006814822041008864</strong></p>
 </div></blockquote>
-<img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
+<img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
 </div>
 </div>
 <p>Prácticamente, no existe normalidad, y las pocas columnas que son, <em>aproximadamente normales</em>, se deben a datos de comunas con baja población, o que contienen bajo número de observaciones (a raíz de ser añadidas hace poco tiempo al <a href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Min. Ciencia</a>). <strong>Estas columnas las descartamos al asignar que la curtosis sea distinta de cero</strong>.</p>
@@ -2030,33 +2034,12 @@ const thebe_selector_output = ".output, .cell_output"
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-03-17</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>722.00</td>
-      <td>670.00</td>
-      <td>76.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>299.83</td>
-    </tr>
-    <tr>
       <th>2022-03-18</th>
       <td>NaN</td>
       <td>53,823.00</td>
       <td>211.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>4.00</td>
+      <td>20.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2076,8 +2059,8 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>4.00</td>
+      <td>21.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2097,8 +2080,8 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>4.00</td>
+      <td>22.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2115,6 +2098,27 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>2022-03-21</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.00</td>
+      <td>23.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-03-22</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2136,7 +2140,7 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
   </tbody>
 </table>
-<p>749 rows × 18 columns</p>
+<p>750 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2572,16 +2576,16 @@ Apertura Inicial       1.00      1.00      1.00        62
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_24.png" src="../../_images/2_thisistheway_50_24.png" />
-<h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>89.0%</strong>.</p>
+<h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>90.0%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  precision    recall  f1-score   support
 
-Apertura Inicial       1.00      0.77      0.87        48
-     Preparación       0.65      1.00      0.78        20
+Apertura Inicial       1.00      0.79      0.88        48
+     Preparación       0.67      1.00      0.80        20
       Transición       1.00      1.00      1.00        32
 
-        accuracy                           0.89       100
-       macro avg       0.88      0.92      0.88       100
-    weighted avg       0.93      0.89      0.89       100
+        accuracy                           0.90       100
+       macro avg       0.89      0.93      0.89       100
+    weighted avg       0.93      0.90      0.90       100
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_30.png" src="../../_images/2_thisistheway_50_30.png" />
@@ -2953,7 +2957,7 @@ Apertura Inicial       1.00      1.00      1.00        51
             Linux-5.11.0-1028-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-03-22 00:00
+            Session information updated at 2022-03-22 17:16
             </pre>
             </details></div></div>
 </div>
