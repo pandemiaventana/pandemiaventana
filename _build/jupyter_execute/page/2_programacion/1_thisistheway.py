@@ -525,12 +525,14 @@ antigenos_acumulativos = antigenos.cumsum()
 
 ### Obteniendo datos comunales
 casoscomuna_acumulativos = csv1[csv1.columns[csv1.columns.str.contains('^Tarapac', na=False)]][4:]
-casoscomuna_acumulativos.columns = 'Casos acumulados en ' + csv1[csv1.columns[csv1.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
+casoscomuna_acumulativos.columns = 'Casos acumulados en ' + csv1[csv1.columns[csv1.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).\
+replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
 casoscomuna_acumulativos.index = csv1['Region'][4:]
 casoscomuna_acumulativos = casoscomuna_acumulativos.drop('Tasa')
 
 casoscomuna_activos = csv19[csv19.columns[csv19.columns.str.contains('^Tarapac', na=False)]][4:]
-casoscomuna_activos.columns = 'Casos activos en ' + csv19[csv19.columns[csv19.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
+casoscomuna_activos.columns = 'Casos activos en ' + csv19[csv19.columns[csv19.columns.str.contains('^Tarapac', na=False)]].iloc[1].astype(str).\
+replace('Camina', 'Camiña').replace('Desconocido Tarapaca', 'Comuna desconocida')
 casoscomuna_activos.index = csv19['Region'][4:]
 casoscomuna_activos = casoscomuna_activos[casoscomuna_activos.columns[:-1]]
 incidencia_activos = (((casos_activos)/poblacion)*100000)
@@ -558,11 +560,13 @@ movilidad_comuna = (
 
 movilidad_comuna.index = (movilidad_comuna['Fecha'])
 ### ¿Por qué no ocupar el Paso a Paso histórico de este archivo? Por la frecuencia de actualización ###
-movilidad_comuna = movilidad_comuna.drop(['region', 'semana','paso', 'region', 'comuna', 'var_salidas_cota_inferior',                                          'var_salidas_cota_superior', 'Fecha'], axis=1)
+movilidad_comuna = movilidad_comuna.drop(['region', 'semana','paso', 'region', 'comuna', 'var_salidas_cota_inferior', \
+                                         'var_salidas_cota_superior', 'Fecha'], axis=1)
 ### Finalmente, código que nos segrega por comuna los valores de la movilidad ###
 movilidad = pd.DataFrame([])
 for comuna in pd.unique(movilidad_comuna.transpose().loc['nom_comuna', :]):
-    exec('movilidad["{}"] = movilidad_comuna[movilidad_comuna["nom_comuna"] == "{}"]["var_salidas"]'         .format(str('Movilidad ' + comuna.capitalize()), comuna))
+    exec('movilidad["{}"] = movilidad_comuna[movilidad_comuna["nom_comuna"] == "{}"]["var_salidas"]'\
+         .format(str('Movilidad ' + comuna.capitalize()), comuna))
 movilidad.index = movilidad.index.astype(str)
 movilidad = movilidad.loc['2020-03-03':, :]
 
@@ -575,13 +579,19 @@ csv61['Region'] = csv61['Region'].replace('Tarapacá', 'Tarapaca')
 ### Exceptuando días antes del primer caso y últimos días sin información ###
 csvs = ['csv63', 'csv64', 'csv65', 'csv66', 'csv67', 'csv38', "csv61[csv61['CIE 10'] == 'U07.1']", "csv61[csv61['CIE 10'] == 'U07.2']"]
 var = ['notificacion', 'bac', 'positividad', 'cobertura', 'oportunidad', 'fallecidos', 'fallecidosdeis_conf', 'fallecidosdeis_prob']
-nom = ['Notificacion PCR', 'BAC' , 'Positividad', 'Cobertura de testeo', 'Oportunidad en notificacion', 'Fallecidos',       'Fallecidos confirmados DEIS', 'Fallecidos probables DEIS']
+nom = ['Notificacion PCR', 'BAC' , 'Positividad', 'Cobertura de testeo', 'Oportunidad en notificacion', 'Fallecidos', \
+      'Fallecidos confirmados DEIS', 'Fallecidos probables DEIS']
 i = 0
 for csv in csvs:
     exec('{}_comuna = pd.DataFrame([], index=casos_cumulativos.index)'.format(var[i]))
     exec('{}_comuna = {}_comuna.join({}[{}["Region"] == "Tarapaca"].transpose())'.format(var[i], var[i], csv, csv))
     exec('{}_comuna.columns = "{} " + {}[{}["Region"] == "Tarapaca"].transpose().loc["Comuna", :].replace("Camina", "Camiña")'.format(var[i], nom[i], csv, csv))
-    exec('for col in {}_comuna:         {}_comuna[col]        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()] =         {}_comuna[col]        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()]        .fillna(method="ffill", inplace=False)'.format(var[i], var[i], var[i], var[i], var[i], var[i], var[i]))
+    exec('for col in {}_comuna: \
+        {}_comuna[col]\
+        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()] = \
+        {}_comuna[col]\
+        [{}_comuna[col].first_valid_index():{}_comuna[col].last_valid_index()]\
+        .fillna(method="ffill", inplace=False)'.format(var[i], var[i], var[i], var[i], var[i], var[i], var[i]))
     i += 1
 
 ### Vacunados con cuadro completo menores de 18 años
@@ -594,7 +604,10 @@ incidencia_acumulada.columns = 'Incidencia acumulada ' + csv18[
     csv18.Region == 'Tarapaca'].transpose().loc['Comuna', :].replace('Total', 'regional')
     
 ### Otras cifras
-uciocupacion_nacional = round(((int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas no COVID-19')].                         transpose().iloc[-1]) + int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas COVID-19')]                         .transpose().iloc[-1]))/csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI habilitadas')]                         .transpose().iloc[-1])[16] * 100, 0)
+uciocupacion_nacional = round(((int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas no COVID-19')].\
+                         transpose().iloc[-1]) + int(csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI ocupadas COVID-19')]\
+                         .transpose().iloc[-1]))/csv58[(csv58['Region'] == 'Total') & (csv58['Serie'] == 'Camas UCI habilitadas')]\
+                         .transpose().iloc[-1])[16] * 100, 0)
 
 ### Tasa de incidencia (tasa de casos nuevos pero sin media móvil sem., i. e. casos nuevos por cien mil hab.)
 ### Regional
@@ -1096,7 +1109,16 @@ ed_hoy = (d2 - d1).days + (d3 - d2).days
 ed_hoy = (d2 - d1).days + (d3 - d2).days
 
 ### Valores de hoy a integer
-casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, activos_hoy, activosprobables_hoy, ucidiaria_hoy, me_hoy, procesovacunaciontotales_hoy,ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy = [ format(int(i), ',d') for i in [
+casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
+recuperados_hoy, recuperadosacumulados_hoy, \
+fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
+pcrnuevos_hoy, pcracumulados_hoy, \
+residenciasnumero_hoy, residenciasusuarios_hoy, residenciascupos_hoy, \
+activos_hoy, activosprobables_hoy, \
+ucidiaria_hoy, \
+me_hoy, procesovacunaciontotales_hoy,\
+ed_hoy, tasa_activos, antigenonuevos_hoy, antigenoacumulados_hoy = \
+[ format(int(i), ',d') for i in [
 casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
 recuperados_hoy, recuperadosacumulados_hoy, \
 fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
@@ -1143,7 +1165,17 @@ procesovacunacion_ayer = (procesovacunacion_ayer_2 + procesovacunacion_ayer_unic
 
 
 ### Valores de ayer a integer
-casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, recuperados_ayer, fallecidosnuevos_ayer, pcrnuevos_ayer, residenciasusuarios_ayer, activos_ayer, activosprobables_ayer, ucidiaria_ayer, positividad_ayer, me_ayer= [ format(int(i), ',d') for i in [
+casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, \
+recuperados_ayer, \
+fallecidosnuevos_ayer, \
+pcrnuevos_ayer, \
+residenciasusuarios_ayer, \
+activos_ayer, activosprobables_ayer, \
+ucidiaria_ayer, \
+positividad_ayer, \
+me_ayer\
+= \
+[ format(int(i), ',d') for i in [
 casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, \
 recuperados_ayer, \
 fallecidosnuevos_ayer, \
@@ -1158,7 +1190,27 @@ me_ayer]]
 procesovacunacion_hoy = procesovacunacion_hoy.round(2)
 procesovacunacion_hoy_4 = procesovacunacion_hoy_4.round(2)
 
-casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, recuperados_hoy, recuperadosacumulados_hoy, fallecidosnuevos_hoy, fallecidosacumulados_hoy, pcrnuevos_hoy, pcracumulados_hoy, antigenonuevos_hoy, antigenoacumulados_hoy, residenciasnumero_hoy, residenciascupos_hoy, residenciasusuarios_hoy, activos_hoy, activosprobables_hoy, tasa_activos, crecimientodiario_hoy, situacioncurva_hoy, ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, positividad_hoy, positividadmovil_hoy, positividad_antigeno, me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy, positividad_hoy, positividadmovil_hoy, antigeno_hoy, casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, recuperados_ayer, fallecidosnuevos_ayer, pcrnuevos_ayer, residenciasusuarios_ayer, activos_ayer, activosprobables_ayer, ucidiaria_ayer, positividad_ayer, me_ayer, procesovacunacion_ayer, positividad_ayer = [ (str(i).replace('.', ',') if ',' not in str(i) else str(i).replace(',', '.')) for i in 
+casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
+recuperados_hoy, recuperadosacumulados_hoy, \
+fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
+pcrnuevos_hoy, pcracumulados_hoy, \
+antigenonuevos_hoy, antigenoacumulados_hoy, \
+residenciasnumero_hoy, residenciascupos_hoy, residenciasusuarios_hoy, \
+activos_hoy, activosprobables_hoy, tasa_activos, \
+crecimientodiario_hoy, situacioncurva_hoy, \
+ucidiaria_hoy, uciaprox_hoy, errorabs_hoy, \
+positividad_hoy, positividadmovil_hoy, positividad_antigeno, \
+me_hoy, reregional_hoy, tasanuevos_hoy, procesovacunacion_hoy, procesovacunaciontotales_hoy, \
+positividad_hoy, positividadmovil_hoy, antigeno_hoy, \
+casos_ayer, consintomas_ayer, sinsintomas_ayer, porlaboratorio_ayer, \
+recuperados_ayer, \
+fallecidosnuevos_ayer, \
+pcrnuevos_ayer, \
+residenciasusuarios_ayer, \
+activos_ayer, activosprobables_ayer, \
+ucidiaria_ayer, \
+positividad_ayer, \
+me_ayer, procesovacunacion_ayer, positividad_ayer = [ (str(i).replace('.', ',') if ',' not in str(i) else str(i).replace(',', '.')) for i in 
 [casos_hoy, consintomas_hoy, sinsintomas_hoy, porlaboratorio_hoy, casosacumulados_hoy, antigeno_hoy, reinfeccion_hoy, \
 recuperados_hoy, recuperadosacumulados_hoy, \
 fallecidosnuevos_hoy, fallecidosacumulados_hoy, \
@@ -1182,7 +1234,8 @@ me_ayer, procesovacunacion_ayer,
 positividad_ayer]]
 
 ### Descripción
-desc1 = """Reporte DIARIO, {} 🕑. \n
+desc1 = \
+"""Reporte DIARIO, {} 🕑. \n
 • Infectados {} casos nuevos de los cuales {} con síntomas, {} sin síntomas y {} sin notificar, dando un total de {} casos confirmados. Adicionalmente, {} casos nuevos confirmados por antígeno y {} casos totales con sospecha de reinfección. 🦠
 • Recuperadas {} personas, sumando {} recuperados totales. 💪
 • Perdieron la vida {} persona(s), sumando {} fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
@@ -1264,7 +1317,7 @@ print(desc1)
 # In[7]:
 
 
-get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb')
+get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb\n')
 
 
 # ```### Cambios
@@ -2139,8 +2192,10 @@ print('La media móvil del error de la última semana es de: ', df['UCI error ab
 print('La media general del error es de: ', round(df['UCI error abs *'].mean(), 2), '%')
 
 ### ¿En qué se traduce el error? En las distancias entre ambas curvas
-plt.plot(df.index[df['UCI ocupacion media movil aprox *'] != 0],          df['UCI ocupacion media movil aprox *'][df['UCI ocupacion media movil aprox *'] != 0], label='aproximación')
-plt.plot(df.index[df['UCI ocupacion media movil real'] != 0],          df['UCI ocupacion media movil real'][df['UCI ocupacion media movil real'] != 0], color='r', label='real')
+plt.plot(df.index[df['UCI ocupacion media movil aprox *'] != 0], \
+         df['UCI ocupacion media movil aprox *'][df['UCI ocupacion media movil aprox *'] != 0], label='aproximación')
+plt.plot(df.index[df['UCI ocupacion media movil real'] != 0], \
+         df['UCI ocupacion media movil real'][df['UCI ocupacion media movil real'] != 0], color='r', label='real')
 plt.legend()
 plt.show()
 
