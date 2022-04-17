@@ -1309,7 +1309,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Contamos con <strong>775</strong> filas de observaciones o datos.</p>
+<p>Contamos con <strong>776</strong> filas de observaciones o datos.</p>
 </div>
 </div>
 <blockquote>
@@ -1373,18 +1373,22 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
+ <h3> Para la columna Vacunados acumulados unica dosis </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>0.047814976993635495</strong></p>
+</div></blockquote>
+<img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
  <h3> Para la columna Casos acumulados en Huara </h3><blockquote>
 <div><p>El valor de la curtosis es de <strong>0.04367420296874597</strong></p>
 </div></blockquote>
-<img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
- <h3> Para la columna Paso a Paso Camiña </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>0.02564244946761542</strong></p>
-</div></blockquote>
 <img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
+ <h3> Para la columna Paso a Paso Camiña </h3><blockquote>
+<div><p>El valor de la curtosis es de <strong>0.025642449467615486</strong></p>
+</div></blockquote>
+<img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
  <h3> Para la columna Incidencia acumulada Huara </h3><blockquote>
 <div><p>El valor de la curtosis es de <strong>0.0436752412946014</strong></p>
 </div></blockquote>
-<img alt="../../_images/2_thisistheway_19_8.png" src="../../_images/2_thisistheway_19_8.png" />
+<img alt="../../_images/2_thisistheway_19_11.png" src="../../_images/2_thisistheway_19_11.png" />
 </div>
 </div>
 <p>Prácticamente, no existe normalidad, y las pocas columnas que son, <em>aproximadamente normales</em>, se deben a datos de comunas con baja población, o que contienen bajo número de observaciones (a raíz de ser añadidas hace poco tiempo al <a href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Min. Ciencia</a>). <strong>Estas columnas las descartamos al asignar que la curtosis sea distinta de cero</strong>.</p>
@@ -2030,27 +2034,6 @@ const thebe_selector_output = ".output, .cell_output"
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-04-12</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>5.00</td>
-      <td>12.00</td>
-      <td>NaN</td>
-      <td>1,350.00</td>
-      <td>99.20</td>
-      <td>0.00</td>
-      <td>100.00</td>
-      <td>100.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
       <th>2022-04-13</th>
       <td>NaN</td>
       <td>NaN</td>
@@ -2134,9 +2117,30 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
     </tr>
+    <tr>
+      <th>2022-04-17</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
   </tbody>
 </table>
-<p>775 rows × 18 columns</p>
+<p>776 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2523,8 +2527,8 @@ Sus colores:
 <h3>Resultado para Alto Hospicio</h3><p>El algoritmo entrenado para la comuna de Alto Hospicio tiene una precisión del <strong>97.11538461538461%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      1.00      1.00        17
- Apertura Inicial       1.00      0.91      0.96        35
+Apertura Avanzada       1.00      1.00      1.00        18
+ Apertura Inicial       1.00      0.91      0.95        34
       Preparación       0.89      1.00      0.94        24
        Transición       1.00      1.00      1.00        28
 
@@ -2537,8 +2541,8 @@ Apertura Avanzada       1.00      1.00      1.00        17
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>95.1923076923077%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       0.89      1.00      0.94        17
- Apertura Inicial       0.98      0.96      0.97        49
+Apertura Avanzada       0.90      1.00      0.95        18
+ Apertura Inicial       0.98      0.96      0.97        48
       Preparación       0.96      0.93      0.94        27
        Transición       0.91      0.91      0.91        11
 
@@ -2551,8 +2555,8 @@ Apertura Avanzada       0.89      1.00      0.94        17
 <h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>93.26923076923077%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       0.89      1.00      0.94        17
- Apertura Inicial       0.98      0.91      0.94        45
+Apertura Avanzada       0.90      1.00      0.95        18
+ Apertura Inicial       0.98      0.91      0.94        44
       Preparación       0.90      0.86      0.88        21
        Transición       0.91      1.00      0.95        21
 
@@ -2565,8 +2569,8 @@ Apertura Avanzada       0.89      1.00      0.94        17
 <h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>93.26923076923077%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       0.89      1.00      0.94        17
- Apertura Inicial       0.92      0.96      0.94        49
+Apertura Avanzada       0.90      1.00      0.95        18
+ Apertura Inicial       0.92      0.96      0.94        48
       Preparación       0.94      0.80      0.86        20
        Transición       1.00      0.94      0.97        18
 
@@ -2579,8 +2583,8 @@ Apertura Avanzada       0.89      1.00      0.94        17
 <h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>97.11538461538461%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      1.00      1.00        17
- Apertura Inicial       1.00      0.91      0.96        35
+Apertura Avanzada       1.00      1.00      1.00        18
+ Apertura Inicial       1.00      0.91      0.95        34
       Preparación       0.87      1.00      0.93        20
        Transición       1.00      1.00      1.00        32
 
@@ -2593,8 +2597,8 @@ Apertura Avanzada       1.00      1.00      1.00        17
 <h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>96.15384615384616%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      1.00      1.00        17
- Apertura Inicial       0.93      1.00      0.96        38
+Apertura Avanzada       1.00      1.00      1.00        18
+ Apertura Inicial       0.93      1.00      0.96        37
       Preparación       0.95      0.86      0.90        21
        Transición       1.00      0.96      0.98        28
 
@@ -2607,8 +2611,8 @@ Apertura Avanzada       1.00      1.00      1.00        17
 <h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>98.07692307692307%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      1.00      1.00        17
- Apertura Inicial       1.00      0.97      0.99        38
+Apertura Avanzada       1.00      1.00      1.00        18
+ Apertura Inicial       1.00      0.97      0.99        37
       Preparación       0.91      1.00      0.95        21
        Transición       1.00      0.96      0.98        28
 
@@ -2961,7 +2965,7 @@ Apertura Avanzada       1.00      1.00      1.00        17
             Linux-5.13.0-1021-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-04-16 23:55
+            Session information updated at 2022-04-17 15:58
             </pre>
             </details></div></div>
 </div>
