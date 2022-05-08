@@ -10,6 +10,6 @@ plotly==5.5.0
 session_info==1.0.0
 time
 IPython==7.33.0
-jupyter_client==7.3.0
+jupyter_client==7.3.1
 jupyter_core==4.10.0
 notebook==6.4.11
