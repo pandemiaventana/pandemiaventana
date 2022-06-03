@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Salida &#8212; La pandemia por la ventana</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -39,12 +37,14 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -53,7 +53,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/3_thisistheway.html" />
     <link rel="shortcut icon" href="../../_static/0_favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -77,7 +76,21 @@ const thebe_selector_output = ".output, .cell_output"
                     </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -86,9 +99,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -106,14 +120,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0_intro/0_introduccion.html">
-   Bienvenido 📉
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../0_intro/0_introduccion.html">
+                    Bienvenido 📉
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="https://www.instagram.com/numeral.lab/">
    Instagram 📷
@@ -326,109 +341,226 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Realizado con <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/page/2_programacion/3_thisistheway.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/pandemiaventana/pandemiaventana"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/pandemiaventana/pandemiaventana/issues/new?title=Issue%20on%20page%20%2Fpage/2_programacion/3_thisistheway.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pandemiaventana/pandemiaventana/edit/main/page/2_programacion/3_thisistheway.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pandemiaventana/pandemiaventana/main?urlpath=tree/page/2_programacion/3_thisistheway.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Realizado con <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pandemiaventana/pandemiaventana/main?urlpath=tree/page/2_programacion/3_thisistheway.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/pandemiaventana/pandemiaventana"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pandemiaventana/pandemiaventana/issues/new?title=Issue%20on%20page%20%2Fpage/2_programacion/3_thisistheway.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pandemiaventana/pandemiaventana/edit/main/page/2_programacion/3_thisistheway.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/page/2_programacion/3_thisistheway.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importando-paquetes">
    Importando paquetes
@@ -512,12 +644,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Salida</h1>
@@ -617,19 +748,22 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="salida">
-<h1>Salida<a class="headerlink" href="#salida" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="salida">
+<h1>Salida<a class="headerlink" href="#salida" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
-<div class="figure align-default" id="markdown-fig">
+<figure class="align-default" id="markdown-fig">
 <img alt="../../_images/2_cover.png" src="../../_images/2_cover.png" />
-<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text"><strong>Ilustración realizada por Bernardo Dinamarca</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text"><strong>Ilustración realizada por Bernardo Dinamarca</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>¡Hola! Este notebook estará basado en recopilar, a través de la Visualización de Datos, las cifras históricas y actuales de la pandemia en Tarapacá. Aún no he indagado cómo hacer que se actualice de forma automática, pero eventualmente, ¡lo lograremos!</p>
-<div class="section" id="importando-paquetes">
-<h2>Importando paquetes<a class="headerlink" href="#importando-paquetes" title="Permalink to this headline">¶</a></h2>
+<section id="importando-paquetes">
+<h2>Importando paquetes<a class="headerlink" href="#importando-paquetes" title="Permalink to this headline">#</a></h2>
 <p>Trabajaremos con las librerías del primer notebook y otras. Respecto a las librerías para visualización, no utilizaremos Matplotlib o Seaborn, dado que deseo realizar gráficas interactivas que sean visualmente limpias y atractivas. Además, incorporaremos al equipo Beautiful Soup, que es una librería para manipular lenguaje HTML.</p>
 <p>Todo ésto, será en fin de generar dos salidas:</p>
 <ul class="simple">
@@ -642,17 +776,21 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p><a class="reference external" href="http://Plot.ly">Plot.ly</a> (librería de visualización dinámica e interactiva a partir de JavaScript).</p></li>
 </ul>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Plotly-logo-01-square.png/1200px-Plotly-logo-01-square.png" />
-<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text"><strong>Logo de la librería <a href="https://plotly.com/python/">Plot.ly</a></strong>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text"><strong>Logo de la librería <a href="https://plotly.com/python/">Plot.ly</a></strong>.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Beautiful Soup (librería de Python para extraer datos de archivos HTML y XML).</p></li>
 </ul>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <img alt="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024" src="https://funthon.files.wordpress.com/2017/05/bs.png?w=1024" />
-<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text"><strong>Logo de la librería <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup">Beautiful Soup</a></strong>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text"><strong>Logo de la librería <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-beautiful-soup">Beautiful Soup</a></strong>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importando paquetes</span>
@@ -736,9 +874,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="importando-datos">
-<h2>Importando datos<a class="headerlink" href="#importando-datos" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="importando-datos">
+<h2>Importando datos<a class="headerlink" href="#importando-datos" title="Permalink to this headline">#</a></h2>
 <p>Hacemos el mismo proceso habitual, con la diferencia que importaremos datos ya procesados.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -756,22 +894,22 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="tendencia">
-<h2>Tendencia<a class="headerlink" href="#tendencia" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="tendencia">
+<h2>Tendencia<a class="headerlink" href="#tendencia" title="Permalink to this headline">#</a></h2>
 <p>La diferencia de nuestras publicaciones (en contraste a la forma en que se entregaba información en otras páginas informativas en Instagram) se basaban en la visualización de datos, y en particular, en las tendencias semanales. También, se agregaban cálculos o datos que, en los reportes del Minsal, no se encontraban procesados.</p>
 <p>Imaginemos que, lo único que hiciéramos fuese entregar cifras aisladas. ¿Qué retratan? ¿De dónde venimos? No es correcto que, por un día, debamos ser positivistas o negativistas. De hecho, esos pensamientos deparan en sesgos, y lo peor, en sesgos que no contemplan la integralidad de la pandemia. Por eso es relevante formar una mirada holística en la visualización de los datos. Las cifras de un día <span class="math notranslate nohighlight">\(X\)</span> pueden ser sumamente variables al día <span class="math notranslate nohighlight">\(X+1\)</span> en función de depender de la muestra (cantidad de exámenes PCR informados en el día <span class="math notranslate nohighlight">\(X\)</span> o <span class="math notranslate nohighlight">\(X+1\)</span>). Por ello, es importante regirse por las tendencias, o por los estadísticos.</p>
 <p>El problema es que, al ser Instagram, una plataforma homogénea, el storytelling debe ser accesible para todo público (con estudios matemáticos o no). De esa forma, los reportes tenían una alta presencia de tendencias a través de gráficas, y no así de estadísticos (a excepción de medias móviles semanales).</p>
 <p>La comprensión de la pandemia debía partir desde el mejor storytelling (el contar una historia detrás de los datos). El tomar una idea, o un incidente, y contarla como una historia: Cada día particular de la pandemia es una hoja de esa historia (<i>una hoja del “libro” COVID-19 en Tarapacá</i>). Por esa razón, desarrollamos el reporte diario no solo con datos duros, sino también con gráficas de tendencia semanal.</p>
-<div class="section" id="cifras-significativas">
-<h3>Cifras significativas<a class="headerlink" href="#cifras-significativas" title="Permalink to this headline">¶</a></h3>
+<section id="cifras-significativas">
+<h3>Cifras significativas<a class="headerlink" href="#cifras-significativas" title="Permalink to this headline">#</a></h3>
 <p>Las tablas y gráficos visualizados en la presente sección <strong>tienen una a dos cifras significativas</strong>. Cualquier sugerencia es bienvenida.</p>
 <blockquote>
 <div><p><strong>Para los datos, descargar los archivos .CSV procesados</strong>. Éstos están disponibles en el propio libro (sección <strong>Legado</strong> 🔀), o bien, en el <a class="reference external" href="https://github.com/pandemiaventana/pandemiaventana">repositorio</a>.</p>
 </div></blockquote>
-</div>
-<div class="section" id="cuantos-graficos-se-exportaran">
-<h3>¿Cuántos gráficos se exportarán?<a class="headerlink" href="#cuantos-graficos-se-exportaran" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cuantos-graficos-se-exportaran">
+<h3>¿Cuántos gráficos se exportarán?<a class="headerlink" href="#cuantos-graficos-se-exportaran" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;&gt; Se exportarán un total de **</span><span class="si">{}</span><span class="s1"> gráficos**.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sum_</span><span class="p">)))</span>
@@ -784,9 +922,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div></blockquote>
 </div>
 </div>
-</div>
-<div class="section" id="automatizando-salida-de-graficos">
-<h3>Automatizando salida de gráficos<a class="headerlink" href="#automatizando-salida-de-graficos" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="automatizando-salida-de-graficos">
+<h3>Automatizando salida de gráficos<a class="headerlink" href="#automatizando-salida-de-graficos" title="Permalink to this headline">#</a></h3>
 <p>A continuación, se desarrolla un código que recorre cada uno de los archivos .CSV que generamos en el primer notebook, del cual, realiza una “especie” de resumen de los estadísticos, visualiza los datos en un gráfico en <a class="reference external" href="http://Plot.ly">Plot.ly</a> y culmina con información adicional sobre:</p>
 <ul class="simple">
 <li><p>Descarga de los datos (solo funciona al presionar desde el libro publicado, no desde el notebook).</p></li>
@@ -882,19 +1020,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="automatizando-salida-para-asistenciacovid19">
-<h2>Automatizando salida para asistenciacovid19<a class="headerlink" href="#automatizando-salida-para-asistenciacovid19" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="automatizando-salida-para-asistenciacovid19">
+<h2>Automatizando salida para asistenciacovid19<a class="headerlink" href="#automatizando-salida-para-asistenciacovid19" title="Permalink to this headline">#</a></h2>
 <p>En razón de brindar una página web que se pueda incrustar en el sitio de la Universidad Arturo Prat, como también en el presente sitio, generamos las siguientes líneas de codigo.</p>
-<div class="section" id="donde-estara-la-salida">
-<h3>¿Dónde estará la salida?<a class="headerlink" href="#donde-estara-la-salida" title="Permalink to this headline">¶</a></h3>
+<section id="donde-estara-la-salida">
+<h3>¿Dónde estará la salida?<a class="headerlink" href="#donde-estara-la-salida" title="Permalink to this headline">#</a></h3>
 <blockquote>
 <div><p>La salida estará disponible en <a class="reference external" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/balance.html">“<strong>Balance histórico</strong> 📊”</a>.</p>
 </div></blockquote>
-</div>
-<div class="section" id="como-funciona">
-<h3>¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="como-funciona">
+<h3>¿Cómo funciona?<a class="headerlink" href="#como-funciona" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>La salida completa de la celda anterior es capturada como lenguaje HTML, pero solo el cuerpo de la página <span id="id3">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id16" title="BenVida. Jupyter magic to handle notebook exceptions. 2020. URL: https://stackoverflow.com/a/64495269/13746427.">Ben20</a>]</span>.</p></li>
 </ul>
@@ -916,16 +1054,16 @@ const thebe_selector_output = ".output, .cell_output"
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="inconveniente">
-<h3>Inconveniente<a class="headerlink" href="#inconveniente" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="inconveniente">
+<h3>Inconveniente<a class="headerlink" href="#inconveniente" title="Permalink to this headline">#</a></h3>
 <p>En primer lugar, el lenguaje de marcado (HTML) solo brinda la estructura básica del sitio, que se compone de texto, imágenes y scripts. Para que funcionen los scripts, en este caso, <a class="reference external" href="http://Plot.ly">Plot.ly</a>, se tienen múltiples dependencias de otras librerías de JavaScript.</p>
 <p>JavaScript es un lenguaje de programación de alto nivel, el cual, tal como Python, tiene múltiples librerías que se especializan en distintas tareas y funciones. <a class="reference external" href="http://Plot.ly">Plot.ly</a> depende de otras librerías para funcionar, por lo que, para que el script de JavaScript, realizado por los creadores de <a class="reference external" href="http://Plot.ly">Plot.ly</a>, funcione, debemos no solo incorporar el código de los gráficos, sino también sus <strong>dependencias</strong>.</p>
 <p>Para ello, incorporamos en el <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> las CDN. Estos son servidores, a partir de los cuales descargamos los archivos que tienen las dependencias.</p>
 <p>Cabe recalcar que, además de código JavaScript, también incorporamos lenguaje de hojas de estilo en cascada (CSS), el cual le da formato y estilo al solitario HTML.</p>
 <p>En analogía, y para simple comprensión, <strong>HTML es el esqueleto (estructura), JS es la musculación (animaciones y movimiento) y CSS es la apariencia externa (piel y atributos físicos)</strong>.</p>
-<div class="section" id="algunos-arreglos">
-<h4>Algunos arreglos<a class="headerlink" href="#algunos-arreglos" title="Permalink to this headline">¶</a></h4>
+<section id="algunos-arreglos">
+<h4>Algunos arreglos<a class="headerlink" href="#algunos-arreglos" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>La función por BenVida es ejecutada una vez se terminó de ejecutar todas las celdas, y por ende, los outputs no son recopilados hasta que el Kernel culmina su ejecución.</p></li>
 </ul>
@@ -938,9 +1076,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Aquí se nos genera el siguiente problema: La variable <code class="docutils literal notranslate"><span class="pre">cell_outputs</span></code> no es asignada hasta que el Kernel termina su ejecución, por lo que si deséaramos actualizar el archivo HTML, en base a la celda anterior de código (donde están los gráficos <a class="reference external" href="http://Plot.ly">Plot.ly</a>), no podríamos, porque la variable <code class="docutils literal notranslate"><span class="pre">cell_outputs</span></code> todavía no está asignada. ¿La solución? Ejecutar el código Python tras la ejecución del código JavaScript, y de esta forma, no tenemos inconvenientes. Para ello, utilizaremos la misma función que utilizó BenVida, <code class="docutils literal notranslate"><span class="pre">IPython.notebook.kernel.execute(&quot;&quot;)</span></code> donde en <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> debe ir el código Python.</p>
 <p>Por otro lado, al ser código JavaScript con Python, ¡se debe tener cuidado al utilizar comillas sobre doble comillas o viceversa! De otra forma, tendremos un error. Por esta razón, utilizamos la función <code class="docutils literal notranslate"><span class="pre">format()</span></code> de Python (ya que las URL deben ir entre comillas, le decimos a Python que se encargue de esa situación, sin que el input de JavaScript nos resulte en error).</p>
-</div>
-<div class="section" id="detalles">
-<h4>Detalles<a class="headerlink" href="#detalles" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="detalles">
+<h4>Detalles<a class="headerlink" href="#detalles" title="Permalink to this headline">#</a></h4>
 <p>El sitio se encuentra en el directorio <code class="docutils literal notranslate"><span class="pre">./out/site</span></code>. Respecto al funcionamiento del código para procesarlo:</p>
 <ul class="simple">
 <li><p>Modificamos al función para no solamente obtener el texto, sino que todo el HTML.</p></li>
@@ -953,9 +1091,9 @@ const thebe_selector_output = ".output, .cell_output"
     IPython.notebook.kernel.execute(&quot;soup = str(soup)&quot;)
 </pre></div>
 </div>
-</div>
-<div class="section" id="nuevo-inconveniente">
-<h4>Nuevo inconveniente<a class="headerlink" href="#nuevo-inconveniente" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="nuevo-inconveniente">
+<h4>Nuevo inconveniente<a class="headerlink" href="#nuevo-inconveniente" title="Permalink to this headline">#</a></h4>
 <p>Al automatizar el código en GitHub, logré apreciar que el código Python a través de JavaScript no es ejecutado. Ésto produce que los archivos no se actualicen.</p>
 <p>Por ello, tuve que aproximar otra solución.</p>
 <blockquote>
@@ -1053,11 +1191,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="informacion-de-sesion">
-<h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="informacion-de-sesion">
+<h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">req_file_name</span><span class="o">=</span><span class="s1">&#39;3_requeriments.txt&#39;</span><span class="p">)</span>
@@ -1289,13 +1427,13 @@ const thebe_selector_output = ".output, .cell_output"
             Linux-5.13.0-1025-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-06-03 00:27
+            Session information updated at 2022-06-03 15:59
             </pre>
             </details></div></div>
 </div>
-</div>
-<div class="section" id="bibliografia-de-esta-pagina">
-<h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bibliografia-de-esta-pagina">
+<h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id7">
 <dl class="footnote brackets">
 <dt class="label" id="footcite-benvida"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
@@ -1307,8 +1445,8 @@ const thebe_selector_output = ".output, .cell_output"
 </dl>
 </div>
 <hr class="footnotes docutils" />
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1332,9 +1470,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="2_thisistheway.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1350,27 +1490,31 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Alejandro Dinamarca Cáceres<br/>
+  
+      &copy; Copyright 2021. Numeral.lab.<br/>
+    <div class="extra_footer">
+      Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+    </div>
+</p>
+        </footer>
+    </div>
     
-      By Alejandro Dinamarca Cáceres<br/>
-    
-        &copy; Copyright 2021. Numeral.lab.<br/>
-      <div class="extra_footer">
-        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-      </div>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

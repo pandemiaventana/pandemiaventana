@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Aprendizaje &#8212; La pandemia por la ventana</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -39,12 +37,14 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -53,7 +53,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://pandemiaventana.github.io/pandemiaventana/page/2_programacion/2_thisistheway.html" />
     <link rel="shortcut icon" href="../../_static/0_favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -77,7 +76,21 @@ const thebe_selector_output = ".output, .cell_output"
                     </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -86,9 +99,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -106,14 +120,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../0_intro/0_introduccion.html">
-   Bienvenido 📉
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../0_intro/0_introduccion.html">
+                    Bienvenido 📉
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="https://www.instagram.com/numeral.lab/">
    Instagram 📷
@@ -326,109 +341,226 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Realizado con <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/page/2_programacion/2_thisistheway.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/pandemiaventana/pandemiaventana"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/pandemiaventana/pandemiaventana/issues/new?title=Issue%20on%20page%20%2Fpage/2_programacion/2_thisistheway.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/pandemiaventana/pandemiaventana/edit/main/page/2_programacion/2_thisistheway.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/pandemiaventana/pandemiaventana/main?urlpath=tree/page/2_programacion/2_thisistheway.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Realizado con <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/pandemiaventana/pandemiaventana/main?urlpath=tree/page/2_programacion/2_thisistheway.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/pandemiaventana/pandemiaventana"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pandemiaventana/pandemiaventana/issues/new?title=Issue%20on%20page%20%2Fpage/2_programacion/2_thisistheway.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pandemiaventana/pandemiaventana/edit/main/page/2_programacion/2_thisistheway.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/page/2_programacion/2_thisistheway.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conceptos-previos">
    Conceptos previos
@@ -729,12 +861,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Aprendizaje</h1>
@@ -1051,54 +1182,63 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="aprendizaje">
-<h1>Aprendizaje<a class="headerlink" href="#aprendizaje" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje">
+<h1>Aprendizaje<a class="headerlink" href="#aprendizaje" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
-<div class="figure align-default" id="markdown-fig">
+<figure class="align-default" id="markdown-fig">
 <img alt="../../_images/2_cover.png" src="../../_images/2_cover.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text"><strong>Ilustración realizada por Bernardo Dinamarca</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text"><strong>Ilustración realizada por Bernardo Dinamarca</strong>.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>¡Hola de nuevo! Este notebook estará basado en la aplicación de un modelo de Machine Learning a intentar predecir el plan Paso a Paso por las comunas de la Región de Tarapacá.</p>
-<div class="section" id="conceptos-previos">
-<h2>Conceptos previos<a class="headerlink" href="#conceptos-previos" title="Permalink to this headline">¶</a></h2>
+<section id="conceptos-previos">
+<h2>Conceptos previos<a class="headerlink" href="#conceptos-previos" title="Permalink to this headline">#</a></h2>
 <p>Para este inciso, nos basaremos en el trabajo de <em>Sergio Montoro</em> <a class="footnote-reference brackets" href="#footcite-sergio-montoro" id="id1">1</a>.</p>
-<div class="section" id="percepcion">
-<h3>Percepción<a class="headerlink" href="#percepcion" title="Permalink to this headline">¶</a></h3>
+<section id="percepcion">
+<h3>Percepción<a class="headerlink" href="#percepcion" title="Permalink to this headline">#</a></h3>
 <p>Según <span id="id2">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19" title="Sergio Montoro. Repaso didáctico sobre machine learning. 2015. URL: https://lapastillaroja.net/2015/02/ml-algols/.">Mon15</a>]</span>, “<em>La percepción es la organización, identificación e interpretación de información sensorial con el propósito de representar y entender el entorno</em>”.</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <img alt="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" src="https://research.fb.com/wp-content/uploads/2016/11/post00013_image0005.jpg" />
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text"><strong>Fuente: Facebook. <a href="https://research.fb.com/blog/2016/08/learning-to-segment/">Learning to Segment</a></strong>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text"><strong>Fuente: Facebook. <a href="https://research.fb.com/blog/2016/08/learning-to-segment/">Learning to Segment</a></strong>.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>En Facebook Research <a class="footnote-reference brackets" href="#footcite-learning-to-segment-facebook" id="id4">2</a>, se realizan la pregunta: “<em>Can a computer distinguish between the many objects in a photograph as effortlessly as the human eye?</em>” <span id="id5">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id20" title="Piotr Dollár. Learning to Segment. 2016. URL: https://research.fb.com/blog/2016/08/learning-to-segment/.">Dol16</a>]</span>, que en Español, significa “<strong>¿Puede un computador distinguir, entre los muchos objetos de una fotografía, sin esfuerzo, tal como el ojo humano?</strong>”. Esa pregunta es capaz de responderla el <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a> (Aprendizaje Automático), en concreto, desde el <a href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a> (Visión por Computador).</p>
 <p>Tal como en la figura, el reconocimiento de imágenes, y visto de forma muy general, es que, a partir de un conjunto de píxeles, se clasifica en tipos de objetos (lo que se determina como una <strong>clase</strong>). Ésto es, lo básico que debe realizar un <a href="https://aprendeia.com/diferencia-entre-algoritmos-de-clasificacion-y-regresion/#:~:text=Los%20algoritmos%20de%20clasificaci%C3%B3n%20se,conjunto%20finito%20de%20resultados%20posibles."><strong>Algoritmo de Clasificación</strong></a>. Éste tipo de algoritmos son parte del <a href="https://es.wikipedia.org/wiki/Aprendizaje_supervisado">Aprendizaje Supervisado</a>.</p>
 <p>Así entonces, tenemos algoritmos que, a partir de un conjunto de datos de entrada, como los píxeles de una imagen, es capaz de reconocer los distintos tipos de objetos (<strong>clases</strong>). Por ejemplo, reconocer el cielo, personas, vehículos, animales, etc. Pero, ¿cómo lo hace? Pues, a través del <strong>aprendizaje</strong>.</p>
-</div>
-<div class="section" id="id6">
-<h3>Aprendizaje<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3>Aprendizaje<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>Imagina lo siguiente. Cuando estudias, ¿qué haces?</p>
-<div class="figure align-default" id="id7">
+<figure class="align-default" id="id7">
 <img alt="https://images.pexels.com/photos/3059691/pexels-photo-3059691.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/3059691/pexels-photo-3059691.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text"><strong>Fotografía de Pexels. <a href="https://www.pexels.com/es-es/foto/foto-de-mujer-escribiendo-en-el-portatil-3059691/">Enlace aquí</a></strong>.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text"><strong>Fotografía de Pexels. <a href="https://www.pexels.com/es-es/foto/foto-de-mujer-escribiendo-en-el-portatil-3059691/">Enlace aquí</a></strong>.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Pues, te aprendes la teoría, y una vez te sientes preparado, practicas esa teoría en ejercicios a partir de problemas (para cualquier tipo de asignatura). ¿Te equivocas al principio? ¡Sí! ¡Muchas veces! Es necesario equivocarse, dado de esa forma aprendes. <strong>¡Ese mismo proceso realizan los algoritmos!</strong> Solo que, de una forma más lógica y menos abstracta en cómo lo realiza el cerebro humano, al menos, desde el conocimiento que tenemos sobre nuestro cerebro hasta ahora… Existe la teoría de que nuestro cerebro tiene un algoritmo perfecto (<a href="https://www.simonsfoundation.org/2020/04/09/deciphering-the-brains-algorithms/"><strong>no es broma</strong></a>).</p>
 <p>A partir de allí, se contemplan distintos conceptos, como por ejemplo, el cómo medimos el error en los algoritmos, siendo nuestro objetivo minimizarlo. Y así, surgen y surgen los conceptos en el Machine Learning. Sin embargo, esa es la teoría básica.</p>
-<div class="figure align-default" id="id8">
+<figure class="align-default" id="id8">
 <img alt="https://raw.githubusercontent.com/arvention/linear-regression/master/animation.gif" src="https://raw.githubusercontent.com/arvention/linear-regression/master/animation.gif" />
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text"><strong>GIF de arvention. El enlace en<a href="https://github.com/arvention/linear-regression"> GitHub</a></strong>.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text"><strong>GIF de arvention. El enlace en<a href="https://github.com/arvention/linear-regression"> GitHub</a></strong>.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>En el GIF que adjunté (créditos a <a href="https://github.com/arvention">Arren Matthew C. Antioquia</a>), se puede apreciar cómo la recta, por cada iteración, se ajusta al conjunto de datos. De esa forma, será capaz de predecir datos futuros. Por ejemplo, puede servir para predecir una relación lineal: Dado una entrada de años de experiencia laboral, ¿cuál es el sueldo que debería corresponder? Entonces, sabemos que, <strong>a más experiencia laboral, mayor sueldo</strong>, por lo que generamos un algoritmo de regresión lineal con un buen conjunto de datos, los procesamos, hacemos el análisis, entrenamos el modelo, y finalmente, con el modelo ya entrenado, seremos capaces de predecir la respuesta. ¿Genial, no?</p>
 <p>Procedimientos similares, pero con mayores dimensiones, se pueden extrapolar para preguntas más complejas, como lo que mencionábamos en torno al cáncer en secciones anteriores: ¿Cómo dado un conjunto de entrada de píxeles (una imagen) somos capaces de predecir que una persona tiene riesgo de tener cáncer? Evidentemente, allí ya no tratamos con datos continuos, sino discretos. La salida deberá ser si el paciente tiene o no tiene cáncer, por lo que bajo cierto umbral de la predicción, se podrá tener certeza del resultado. Asimismo, se trataría de un problema de clasificación.</p>
 <p>¡Son múltiples las opciones! De esta forma, ¡creamos <strong>Inteligencia Artificial</strong>! Imitamos el funcionamiento de nuestro cerebro… Pero, ¿cómo lo imitamos? Con funciones matemáticas (<em>sí, esas que viste en el colegio, pero con mayor complejidad</em>). Además, nos apoyamos en el Cálculo, Estadística y Ciencias de la Computación.</p>
 <p>Dicho ésto, ¡proseguimos a la siguiente sección! Por cierto, <em>si quieres arrancar, es el momento</em>.</p>
-<div class="section" id="imitacion-aprendizaje">
-<h4>Imitación (aprendizaje)<a class="headerlink" href="#imitacion-aprendizaje" title="Permalink to this headline">¶</a></h4>
+<section id="imitacion-aprendizaje">
+<h4>Imitación (aprendizaje)<a class="headerlink" href="#imitacion-aprendizaje" title="Permalink to this headline">#</a></h4>
 <p>Entonces, ya lo sabemos. La imitación surge a partir de una función matemática. Esta función, se explicará desde el punto de vista del <strong>aprendizaje</strong> (según el contexto que nos ocupa). En este sentido, <span id="id9">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id19" title="Sergio Montoro. Repaso didáctico sobre machine learning. 2015. URL: https://lapastillaroja.net/2015/02/ml-algols/.">Mon15</a>]</span> declara “<em>El aprendizaje es el hallazgo de una función <span class="math notranslate nohighlight">\(h(x)\)</span> —llamada frecuentemente hipótesis— que dado un vector de entrada <span class="math notranslate nohighlight">\(x\)</span> proporcione una estimación lo bastante buena de otra cantidad relacionada con <span class="math notranslate nohighlight">\(x\)</span></em>”.</p>
 <p>Para comprender el punto anterior, <strong>¿recuerdas nuestra relación lineal en torno a los años de experiencia laboral y el salario?</strong> Definamos:</p>
 <div class="math notranslate nohighlight" id="equation-experiencia-laboral">
-<span class="eqno">(12)<a class="headerlink" href="#equation-experiencia-laboral" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(12)<a class="headerlink" href="#equation-experiencia-laboral" title="Permalink to this equation">#</a></span>\[
 \begin{align}
 \Large h_{(X)} = Y
 \end{align}
@@ -1112,21 +1252,23 @@ const thebe_selector_output = ".output, .cell_output"
 <p>El proceso anterior, ¿te lo imaginas realizado de forma manual? Digamos, ¿realizar mil o millones de iteraciones? Imposible. <strong>Sería ineficiente</strong>. Incluso, <strong>¡repetir el mismo proceso cien, doscientas o trescientas veces de por sí es tedioso!</strong> Aquí es donde entran las <strong>Ciencias de la Computación</strong> y su alta capacidad de realizar múltiples cálculos por segundo. Con ella, podremos iterar, hasta llegar a la <strong>minimización del error</strong>.</p>
 <p>¿Ves el por qué del uso de los tres grandes campos de la Ciencia de Datos? Ahora bien, el proceso anterior es una forma. ¡Sin embargo! El mismo problema, <strong>¡se puede resolver igualando la derivada a cero!</strong> Aunque, si la dimensionalidad del problema es alta, será un cálculo complejo, y que por ende, puede llevar un alto costo de procesamiento computacional.</p>
 <p>A partir de ese resumen, nacen muchos de los conceptos del Machine Learning.</p>
-</div>
-</div>
-</div>
-<div class="section" id="importando-paquetes">
-<h2>Importando paquetes<a class="headerlink" href="#importando-paquetes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="importando-paquetes">
+<h2>Importando paquetes<a class="headerlink" href="#importando-paquetes" title="Permalink to this headline">#</a></h2>
 <p>Introducidos los conceptos previos, llega el momento de trabajar con un poco de código y algoritmos. No quise entrar en detalle matemático con respecto a los conceptos previos, puesto que se alargaría mucho el Notebook.</p>
 <p>Por cierto, además de las librerías del notebook anterior, deberemos trabajar con otras, de las que, hasta el momento, no tengo experiencia. Sin embargo, sí conozco los conceptos fundamentales detrás de la regresión lineal, logística, la estimación del error (función de costos), descenso del gradiente, entre otros.</p>
 <p>La librería que me interesa destacar es Scikit-learn:</p>
 <ul class="simple">
 <li><p>Scikit-learn. Librería de Machine Learning que nos permitirá implementar algoritmos de Machine Learning sin necesidad de escribirlos desde cero (lo que es un ahorro de dolor de cabeza, a ser sincero).</p></li>
 </ul>
-<div class="figure align-default" id="id10">
+<figure class="align-default" id="id10">
 <img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/1200px-Scikit_learn_logo_small.svg.png" />
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text"><strong>Logo de la librería <a href="https://scikit-learn.org/stable/">Scikit-learn</a></strong>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text"><strong>Logo de la librería <a href="https://scikit-learn.org/stable/">Scikit-learn</a></strong>.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importando paquetes</span>
@@ -1232,9 +1374,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="importando-datos">
-<h2>Importando datos<a class="headerlink" href="#importando-datos" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="importando-datos">
+<h2>Importando datos<a class="headerlink" href="#importando-datos" title="Permalink to this headline">#</a></h2>
 <p>Del notebook anterior, logramos procesar la información recopilada a partir del Ministerio de Ciencia, Tecnología, Conocimiento e Innovación.</p>
 <p>A continuación, lo que haremos será cargar esa información en el ambiente local del notebook con Pandas.</p>
 <div class="cell docutils container">
@@ -1245,9 +1387,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problema-y-machine-learning">
-<h2>Problema y Machine Learning<a class="headerlink" href="#problema-y-machine-learning" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="problema-y-machine-learning">
+<h2>Problema y Machine Learning<a class="headerlink" href="#problema-y-machine-learning" title="Permalink to this headline">#</a></h2>
 <p>El Machine Learning (abreviado ML, o Aprendizaje Automático en español) es la vía mediante la cual las computadoras aprenden de forma automática a través de observaciones (datos) dado un número de características (variables).</p>
 <p>En este sentido, la computadora aprende de los datos y eventualmente, construye un sistema o algoritmo capaz de predecir, con un cierto error, un determinado suceso, siendo el error el valor a minimizar, de forma constante, en el desarrollo del algoritmo. Éste fin se debe conseguir a partir de la secuencia lógica de actores:</p>
 <ul class="simple">
@@ -1256,8 +1398,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>Respecto a la persona detrás (yo), podré jugar con estas herramientas. Si bien no soy un experto en ML,  tengo cierto conocimiento - <i>que creo apropiado</i> - para desarrollar el presente notebook. Nada se consigue sin equivocar, el error es natural.</p>
 <p>Con la introducción anterior, podemos ahondar con detalle en otros aspectos.</p>
-<div class="section" id="el-problema">
-<h3>El problema<a class="headerlink" href="#el-problema" title="Permalink to this headline">¶</a></h3>
+<section id="el-problema">
+<h3>El problema<a class="headerlink" href="#el-problema" title="Permalink to this headline">#</a></h3>
 <p>En el ML existen diversas formas de predecir distintas salidas, las que pueden ser continuas, discretas o categóricas (<a href="https://support.minitab.com/es-mx/minitab/18/help-and-how-to/modeling-statistics/regression/supporting-topics/basics/what-are-categorical-discrete-and-continuous-variables/">aquí un enlace de minitab acerca del tipo de variables en Estadística</a>).</p>
 <p>En este caso particular, estamos tratando de predecir variables categóricas, por lo que <b>se trata de un problema de clasificación</b>. Respecto al plan Paso a Paso, se definen distintas etapas de confinamiento (en orden de menor a mayor libertades):</p>
 <ul class="simple">
@@ -1283,21 +1425,23 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Éstos anunciados son, propiamente tal, <strong>restricciones</strong>, las cuales deberíamos considerar en el modelo a desarrollar. El inconveniente es que, como tal, Scikit-learn no permite añadir restricciones, y en cierta manera, es innecesario de hacer. De por sí, el algoritmo debería aprender de los datos.</p>
 <p>Por otro lado, el Ministerio de Salud se ha mostrado flexible en torno a estas medidas en razón de las condiciones epidemiológicas, las que en caso de ser críticas, y suponiendo, una comuna en cuarentena, no implicará, en definitiva, un avance a transición por el único hecho de cumplir un mes en confinamiento. Situación similar fue lo que sucedió en las comunas de Iquique y Alto Hospicio, donde ambas, estuvieron 58 días en confinamiento (<em>desde el 20 de marzo de 2021 al 16 de marzo del mismo año</em>). Ésto se puede apreciar en las columnas de la base de datos, <code class="docutils literal notranslate"><span class="pre">Paso</span> <span class="pre">a</span> <span class="pre">Paso</span> <span class="pre">Iquique</span></code> y <code class="docutils literal notranslate"><span class="pre">Paso</span> <span class="pre">a</span> <span class="pre">Paso</span> <span class="pre">Alto</span> <span class="pre">Hospicio</span></code>.</p>
 <p>En este caso, el algoritmo debería contemplar estas restricciones en la función objetivo, a partir de los pesos de los parámetros.</p>
-</div>
-</div>
-<div class="section" id="seleccionando-el-modelo">
-<h2>Seleccionando el modelo<a class="headerlink" href="#seleccionando-el-modelo" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="seleccionando-el-modelo">
+<h2>Seleccionando el modelo<a class="headerlink" href="#seleccionando-el-modelo" title="Permalink to this headline">#</a></h2>
 <p>Visto lo que es la regresión logística, y en concreto, lo que son los problemas de clasificación, ya sabemos con lo que estamos lidiando. El inconveniente es el siguiente: Sé mucho sobre la teoría y poco de la práctica. Por ello, deberemos utilizar una planilla de Scikit-learn. ¡Sin embargo! Recordemos que tratamos con un <strong>problema de clasificación</strong>.</p>
-<div class="figure align-default" id="id14">
+<figure class="align-default" id="id14">
 <img alt="https://scikit-learn.org/stable/_static/ml_map.png" src="https://scikit-learn.org/stable/_static/ml_map.png" />
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text"><strong>Guía para seleccionar un algoritmo</strong>. Imagen de Scikit-learn <span id="id13">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id12" title="Scikit-learn. Choosing the right estimator. URL: https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html.">Sl</a>]</span>.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="metodologia">
-<h3>Metodología<a class="headerlink" href="#metodologia" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text"><strong>Guía para seleccionar un algoritmo</strong>. Imagen de Scikit-learn <span id="id13">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id12" title="Scikit-learn. Choosing the right estimator. URL: https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html.">Sl</a>]</span>.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="metodologia">
+<h3>Metodología<a class="headerlink" href="#metodologia" title="Permalink to this headline">#</a></h3>
 <p>Con la imagen, seguiremos el trayecto, realizando la pregunta y la corrobaremos.</p>
-</div>
-<div class="section" id="el-camino">
-<h3>El camino<a class="headerlink" href="#el-camino" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="el-camino">
+<h3>El camino<a class="headerlink" href="#el-camino" title="Permalink to this headline">#</a></h3>
 <p>Tenemos los algoritmos de clasificación en la sección superior izquierda. Sin embargo, comencemos desde el “<strong>START</strong>” o inicio.</p>
 <blockquote>
 <div><p>¿Tenemos menos de 50 observaciones o datos?</p>
@@ -1309,7 +1453,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>Contamos con <strong>822</strong> filas de observaciones o datos.</p>
+<p>Contamos con <strong>823</strong> filas de observaciones o datos.</p>
 </div>
 </div>
 <blockquote>
@@ -1331,22 +1475,22 @@ const thebe_selector_output = ".output, .cell_output"
 <blockquote>
 <div><p>Utiliza el clasificador por vecindad (<em>supongo el nombre es similar</em>). Si no funciona, utiliza SVC o clasificador de ensamblaje.</p>
 </div></blockquote>
-</div>
-<div class="section" id="no-tan-pronto-statistics-intensifies">
-<h3>No tan pronto (statistics intensifies)<a class="headerlink" href="#no-tan-pronto-statistics-intensifies" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="no-tan-pronto-statistics-intensifies">
+<h3>No tan pronto (statistics intensifies)<a class="headerlink" href="#no-tan-pronto-statistics-intensifies" title="Permalink to this headline">#</a></h3>
 <p>La planilla que obtuvimos de Scikit-learn (crédito a <a href="https://peekaboo-vision.blogspot.com/2013/01/machine-learning-cheat-sheet-for-scikit.html">Andreas Müller</a> y el equipo de Scikit-learn) nos indica que deberíamos utilizar un modelo lineal SVC.</p>
 <p>Vale. ¡Tenemos una idea! Pero… <strong>¿Cómo llegamos a este resultado? ¿Qué es lo que se oculta?</strong></p>
 <p><strong>Todo tiene que tener un sentido</strong>, y no podemos realizar las cosas sin saber el fundamento teórico. Es algo mínimo que toda persona apasionada debería hacer. Por ello, profundizaremos.</p>
 <blockquote>
 <div><p>El fundamento teórico estará basado en distintos autores que recopilaron o aplicaron modelos basados en <strong>KDE y SVC</strong>.</p>
 </div></blockquote>
-<div class="section" id="por-que-partir-por-el-kde">
-<h4>¿Por qué partir por el KDE?<a class="headerlink" href="#por-que-partir-por-el-kde" title="Permalink to this headline">¶</a></h4>
+<section id="por-que-partir-por-el-kde">
+<h4>¿Por qué partir por el KDE?<a class="headerlink" href="#por-que-partir-por-el-kde" title="Permalink to this headline">#</a></h4>
 <p>Encontré que, la aproximación por Kernel, <em>es un algoritmo denso</em>. De esta forma, consideré que, si era capaz de dar a entender, a partir de la bibliografía, cómo funciona el algoritmo <strong>KDE</strong> (<em>al menos, visto de una forma macro</em>), lograría entonces explicar el <strong>SVC</strong>.</p>
 <p>Dicho ésto, ¡comenzamos!</p>
-</div>
-<div class="section" id="inferencia-estadistica">
-<h4>Inferencia estadística<a class="headerlink" href="#inferencia-estadistica" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="inferencia-estadistica">
+<h4>Inferencia estadística<a class="headerlink" href="#inferencia-estadistica" title="Permalink to this headline">#</a></h4>
 <p>Según Economipedia, la inferencia estadística <a class="footnote-reference brackets" href="#footcite-economipedia-inferenciaestadistica" id="id15">4</a>, <em>es el conjunto de métodos que permiten inducir, a través de una muestra estadística, el comportamiento de una determinada población. La inferencia estadística, estudia entonces cómo, a través de la aplicación de dichos métodos sobre los datos de una muestra, se pueden extraer conclusiones sobre los parámetros de la población de datos. De la misma manera estudia también el grado de fiabilidad de los resultados extraídos del estudio</em> <span id="id16">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id13" title="José Francisco López. Choosing the right estimator. URL: https://economipedia.com/definiciones/inferencia-estadistica.html.">Lop</a>]</span>.</p>
 <p>Con respecto a la definición, la inferencia estadística utiliza dos métodos posibles de acuerdo a ciertos criterios que tienen relación con la certeza, cantidad de datos, etc. que son la <strong>estadística paramétrica y la no paramétrica</strong>.</p>
 <p>En palabras simples, la estadística paramétrica asume que la distribución de los datos es conocida, lo que refiere a que, los estadísticos (media, mediana, etc.) describen correctamente los datos.</p>
@@ -1354,9 +1498,9 @@ const thebe_selector_output = ".output, .cell_output"
 <blockquote>
 <div><p>Cabe recalcar que, tanto la estadística paramétrica como no paramétrica son complementarias. De hecho, la utilización de la no paramétrica depara, eventualmente, en métodos de la estadística paramétrica.</p>
 </div></blockquote>
-</div>
-<div class="section" id="hipotesis-no-estadistica">
-<h4>Hipótesis no estadística<a class="headerlink" href="#hipotesis-no-estadistica" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="hipotesis-no-estadistica">
+<h4>Hipótesis no estadística<a class="headerlink" href="#hipotesis-no-estadistica" title="Permalink to this headline">#</a></h4>
 <p>La pregunta es, <strong>¿conocemos la distribución de los datos?</strong> <em>La respuesta es, posiblemente, no</em>. La pandemia se caracteriza por cifras que, lejos de ser regulares, dependen de múltiples factores y tienden a la variabilidad. Por dicha razón, la distribución se ve afectada, constantemente, por los confinamientos, por la movilidad, por el muestreo, entre otros.</p>
 <p>Ahora bien, lo anterior es, netamente, una hipótesis. Debemos corroborarla, y para ello, simplificaremos un poco nuestro trabajo. Nos basaremos en “<em>El blog de Minitab</em>” <a class="footnote-reference brackets" href="#footcite-blogminitab-pruebaestadistica" id="id17">5</a>, en específico, “<em>¿Cómo elegir entre una prueba no paramétrica y una prueba paramétrica?</em>”. En estricto rigor, la elección del tipo de prueba estadística (metodología para evaluar la evidencia que proporcionan los datos, probando una hipótesis), nos brindará si <strong>deberemos utilizar un método paramétrico o no paramétrico</strong>. Notar que, justamente, los clasificadores <strong>SGD y KDE</strong>, tal como la <strong>regresión logística</strong> y el estimador <strong>SVC</strong> son clasificadores no paramétricos.</p>
 <p>En <span id="id18">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id14" title="Minitab Blog Editor. ¿Cómo Elegir entre una Prueba no Paramétrica y una Prueba Paramétrica? 2019. URL: https://blog.minitab.com/es/como-elegir-entre-una-prueba-no-parametrica-y-una-prueba-parametrica.">Edi19</a>]</span>, se expone que, una de las razones para utilizar las pruebas no paramétricas refiere a “<em>el área de estudio se representa mejor con la mediana</em>”. Según el editor del blog, aclara “<em>Por ejemplo, el centro de una distribución asimétrica, como los ingresos, puede medirse mejor con la mediana, donde el 50% está por encima de la mediana y el 50% está por debajo. Si usted agrega varios multimillonarios a una muestra, la media matemática aumenta enormemente aunque el ingreso de la persona típica no cambia. Cuando la distribución es lo suficientemente asimétrica, la media se ve afectada fuertemente por cambios que ocurren lejos, en la cola de la distribución, mientras que la mediana sigue reflejando con mayor precisión el centro de la distribución. Para estas dos distribuciones, una muestra aleatoria de 100 proveniente de cada distribución produce medias que son significativamente diferentes, pero medianas que no son significativamente diferentes</em>”.</p>
@@ -1374,11 +1518,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
  <h3> Para la columna Antigenos informados nuevos </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>-0.023386101271725288</strong></p>
+<div><p>El valor de la curtosis es de <strong>-0.028768620230340308</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_2.png" src="../../_images/2_thisistheway_19_2.png" />
  <h3> Para la columna Numero de residencias </h3><blockquote>
-<div><p>El valor de la curtosis es de <strong>0.037105218698213246</strong></p>
+<div><p>El valor de la curtosis es de <strong>0.03685425026242401</strong></p>
 </div></blockquote>
 <img alt="../../_images/2_thisistheway_19_5.png" src="../../_images/2_thisistheway_19_5.png" />
  <h3> Para la columna Casos acumulados en Huara </h3><blockquote>
@@ -1401,42 +1545,48 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Prácticamente, no existe normalidad, y las pocas columnas que son, <em>aproximadamente normales</em>, se deben a datos de comunas con baja población, o que contienen bajo número de observaciones (a raíz de ser añadidas hace poco tiempo al <a href="https://github.com/MinCiencia/Datos-COVID19">repositorio del Min. Ciencia</a>). <strong>Estas columnas las descartamos al asignar que la curtosis sea distinta de cero</strong>.</p>
 <p>Antes de introducir el funcionamiento de la Aproximación por Kernel, indagaremos, de forma breve, el funcionamento de los modelos de Machine Learning (<strong>basándonos en la bibliografía recopilada para el funcionamiento del clasificador KDE</strong>).</p>
-</div>
-</div>
-</div>
-<div class="section" id="maquinas">
-<h2>Máquinas<a class="headerlink" href="#maquinas" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="maquinas">
+<h2>Máquinas<a class="headerlink" href="#maquinas" title="Permalink to this headline">#</a></h2>
 <p>Para estas dos próximas secciones, nos basaramos en dos fuentes, en la primera parte de S. Van Vaerenbergh, I. Santamaría <a class="footnote-reference brackets" href="#footcite-kernel-vaerenbergh" id="id19">6</a>, “<i>Métodos Kernel para clasificación</i>” y en la de Joaquín Amat Rodrigo, “<i>Ajuste de distribuciones con kernel density estimation y Python</i>”. Sin embargo, complementaremos ambas fuentes con algunas analogías y ejemplos explicativos realizados al mejor de mis posibilidades.</p>
 <p>Cabe recalcar que, referente a la estadística paramétrica y no paramétrica, el <strong>clasificador KDE se sustenta en la estadística no paramétrica</strong> (considerando las suposiciones que ello implica).</p>
-<div class="section" id="la-academia">
-<h3>La academia<a class="headerlink" href="#la-academia" title="Permalink to this headline">¶</a></h3>
+<section id="la-academia">
+<h3>La academia<a class="headerlink" href="#la-academia" title="Permalink to this headline">#</a></h3>
 <p>Recuerdo, cuando estudiaba Teoría de Sistemas, revisaba la Antigua Grecia, y en concreto, el cómo se fundó la Academia, y el cómo el conocimiento de los filósofos se limitó a unos pocos, conllevando a que, personas que escuchaban los diálogos en público, perdieran esa oportunidad de acceder, levemente, al conocimiento. En ese sentido, siempre me ha gustado rebajar los tecnicismos para que sea comprendido por todos y todas. El no rebajar el contenido es una gran falencia en el mundo de las exposiciones modernas.</p>
 <p>Por lo anterior, son enormes las contribuciones de S. Van Vaerenbergh, I. Santamaría y Joaquín Amat Rodrigo. Les agradezco, ya que sin Uds. me sería imposible lograr comprensión en estos campos profundos.</p>
-</div>
-<div class="section" id="que-son-los-clasificadores-como-se-entrenan">
-<h3>¿Qué son los clasificadores? ¿Cómo se entrenan?<a class="headerlink" href="#que-son-los-clasificadores-como-se-entrenan" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="que-son-los-clasificadores-como-se-entrenan">
+<h3>¿Qué son los clasificadores? ¿Cómo se entrenan?<a class="headerlink" href="#que-son-los-clasificadores-como-se-entrenan" title="Permalink to this headline">#</a></h3>
 <p>Un clasificador es, básicamente, un algoritmo capaz de, a partir de un conjunto de entrada, generar una salida etiquetada o clasificada (que ya es conocida).</p>
 <p>En nuestro caso, sabemos que las comunas deben estar en Cuarentena, Transición, …, etc. por lo que, lo que realizaremos, será, desarrollar un clasificador o algoritmo capaz de, a partir de las variables de entrada (que por ejemplo, pueden ser los casos acumulados o activos por comuna), clasificar en variables discretas categóricas. ¿Por qué variables discretas?  Porque nuestro conjunto de salida debe ser finito, ya que tenemos solo cinco posibles salidas que son las fases del Paso a Paso.</p>
-<div class="figure align-default" id="id20">
+<figure class="align-default" id="id20">
 <img alt="https://images.pexels.com/photos/5063561/pexels-photo-5063561.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/5063561/pexels-photo-5063561.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text"><strong>Aprender</strong>. Fotografía de Monstera en Pexels.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text"><strong>Aprender</strong>. Fotografía de Monstera en Pexels.</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Respecto al entrenamiento, y visto de una forma muy básica, ¿cómo aprendes cosas? Estudiando, practicando, escuchando, etc. dependiendo de la forma en que te sea cómoda aprender, ¿no es así? Elegida la forma cómoda, repites hasta eventualmente aprender. Si te equivocas, <strong>vuelves a repetir la forma cómoda</strong>, ¡hasta que luego no te equivocas! <strong>A partir del error, y la iteración (repetición) de tu forma cómoda, aprendes</strong>.</p>
 <p>Nuevamente, obviamos todo el proceso complejo que realiza el cerebro, y <strong>solo nos centramos en esa forma básica de aprendizaje. Ese aprendizaje es el que realizan los algoritmos al simular una lógica a través de la matemática</strong>.</p>
 <p>Explicados brevemente los conceptos anteriores, seguimos con la siguiente sección.</p>
-</div>
-<div class="section" id="que-es-el-aprendizaje-estadistico">
-<h3>¿Qué es el aprendizaje estadístico?<a class="headerlink" href="#que-es-el-aprendizaje-estadistico" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="que-es-el-aprendizaje-estadistico">
+<h3>¿Qué es el aprendizaje estadístico?<a class="headerlink" href="#que-es-el-aprendizaje-estadistico" title="Permalink to this headline">#</a></h3>
 <p>Supongamos tres clasificadores entrenados sobre el conjunto de entrenamiento de la figura.</p>
-<div class="figure align-default" id="id21">
+<figure class="align-default" id="id21">
 <img alt="../../_images/3_boundary.png" src="../../_images/3_boundary.png" />
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text"><strong>Límite de decisión</strong>. Elaboración propia (perdón lo cutre).</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text"><strong>Límite de decisión</strong>. Elaboración propia (perdón lo cutre).</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>¿Qué clasificador funcionará mejor sobre el conjunto de prueba? ¡Espera! Algo se me olvidaba. En la imagen, puedes apreciar dos figuras, ¿no es así? <strong>Pues, en el caso de las circunferencias azules pueden significar, supongamos, fotografías de perros, y en el caso de las cruces rojas, pueden referirse a fotografías de gatos</strong>.</p>
-<div class="figure align-default" id="id22">
+<figure class="align-default" id="id22">
 <img alt="https://images.pexels.com/photos/1909802/pexels-photo-1909802.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/1909802/pexels-photo-1909802.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text"><strong>Un perro y un gato</strong>. Fotografía de Sharon McCutcheon en Pexels.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text"><strong>Un perro y un gato</strong>. Fotografía de Sharon McCutcheon en Pexels.</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Supongamos nosotros deseamos entrenar un algoritmo capaz de diferenciar entre imágenes de perros y gatos. En este caso, el límite de decisión verde, lo que realiza es separar ambos conjuntos de perros y gatos, y dependiendo de qué variable de entrada le brindes, te la clasificará de acuerdo al clasificador.</p>
 <p>Si le pasas una imagen borrosa de un gato, a un algoritmo entrenado con un <strong>conjunto mediano de imágenes nítidas y borrosas de perros y gatos</strong>:</p>
 <ul class="simple">
@@ -1455,17 +1605,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>En la segunda situación, el under-fitting se caracteriza por un límite de decisión, o un clasificador, que no se ajusta a los datos, o dicho de otra forma, <strong>tiene un amplio sesgo</strong>.</p></li>
 <li><p>En la tercera situación, el over-fitting se caracteriza por un clasificador que se sobreajusta a los datos, o dicho de otro modo, intenta, de sobremanera, ajustarse a la entrada que le brindes. Ésto implica que, al pasarle una imagen borrosa de un gato, puede pensar que es un perro, ya que, al ser borrosa, el algoritmo no estará entrenado para clasificar imágenes borrosas. ¿Por qué? <strong>El clasificador se especializó en aprender a partir de imágenes nítidas, y el único hecho que le brindes una imagen borrosa implicará que no sabrá cómo actuar ante esa entrada</strong>.</p></li>
 </ul>
-<div class="figure align-default" id="id23">
+<figure class="align-default" id="id23">
 <img alt="https://miro.medium.com/proxy/1*oB3S5yHHhvougJkPXuc8og.gif" src="https://miro.medium.com/proxy/1*oB3S5yHHhvougJkPXuc8og.gif" />
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text"><strong>Clasificación a través de una red neuronal</strong>. GIF de <a href="https://purnasaigudikandula.medium.com/recurrent-neural-networks-and-lstm-explained-7f51c7f6bbb9">purnasai gudikandula en Medium</a>.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text"><strong>Clasificación a través de una red neuronal</strong>. GIF de <a href="https://purnasaigudikandula.medium.com/recurrent-neural-networks-and-lstm-explained-7f51c7f6bbb9">purnasai gudikandula en Medium</a>.</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Recomiendo el siguiente vídeo del divulgador de Inteligencia Artificial, <a href="https://www.youtube.com/channel/UCy5znSnfMsDwaLlROnZ7Qbg">DOT.CSV</a>:</p>
 <center><iframe src="https://www.youtube.com/embed/7-6X3DTt3R8?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></center>
 <p>A modo de resumen del vídeo <span id="id24">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id18" title="Carlos Santana Vega. Las Redes Neuronales... ¿Aprenden o Memorizan? - Overfitting y Underfitting - Parte 1. 2019. URL: https://www.youtube.com/watch?v=7-6X3DTt3R8.">Veg19</a>]</span>, se entiende que:</p>
-<div class="figure align-default" id="id25">
+<figure class="align-default" id="id25">
 <img alt="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/7092609/pexels-photo-7092609.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text"><strong>Un estudiante copiando</strong>. Fotografía de <a href="https://www.pexels.com/es-es/foto/hombre-escritura-colegio-libro-7092609/">RODNAE Productions en Pexels</a>.</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text"><strong>Un estudiante copiando</strong>. Fotografía de <a href="https://www.pexels.com/es-es/foto/hombre-escritura-colegio-libro-7092609/">RODNAE Productions en Pexels</a>.</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>El <strong>under-fitting</strong> (ajuste bajo, o <strong>un algoritmo que no explica los datos</strong>) es áquel estudiante que no estudia, y no logra buenas calificaciones. ¿Por qué? Posiblemente, por <strong>falta de entrenamiento</strong>, <strong>falta de material de estudio</strong>, etc.</p></li>
 <li><p>El <strong>appropiate-fitting</strong> (buen ajuste, o <strong>un algoritmo que explica los datos</strong>) es áquel estudiante que estudia, y que logra buenas calificaciones sin, necesariamente, lograr la nota máxima. ¿Por qué? <strong>No memorizó el material de estudio</strong>, <strong>tampoco le faltó material de estudio</strong>. Sencillamente, estudio para aprender, <strong>no para la evaluación</strong>.</p></li>
@@ -1481,9 +1635,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>¿Qué hace el aprendizaje estadístico? Según <span id="id27">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id10" title="I. Santamaría S. Van Vaerenbergh. Métodos kernel para clasificación. 2018. URL: https://gtas.unican.es/files/docencia/APS/apuntes/07_svm_kernel.pdf.">SVV18</a>]</span>, el aprendizaje estadístico formaliza estas ideas, caracterizando propiedades matemáticas de las máquinas de aprendizaje.</p>
 <p>En relación a una “máquina de aprendizaje”, hace referencia a modelos de predicción, que nuevamente, son algoritmos o clasificadores.</p>
 <p>Antes de avanzar hacia la comprensión del modelo KDE, introduciremos, brevemente, la regresión logística.</p>
-</div>
-<div class="section" id="regresion-logistica">
-<h3>Regresión logística<a class="headerlink" href="#regresion-logistica" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="regresion-logistica">
+<h3>Regresión logística<a class="headerlink" href="#regresion-logistica" title="Permalink to this headline">#</a></h3>
 <p>Introduciré, brevemente, el concepto de regresión logística. Te recomiendo los notebooks que he recopilado sobre:</p>
 <ul class="simple">
 <li><p><a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/1_regresion_lineal/notebook.ipynb">Regresión lineal</a>.</p></li>
@@ -1491,10 +1645,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb">Regresión logística</a>.</p></li>
 </ul>
 <p>O bien, puedes encontrar otros en el <a href="https://github.com/adinamarca/notebooks/tree/main/PY/ML">siguiente enlace</a>. Es sumamente relevante tener ese conocimiento previo para comprender lo que realizaremos a continuación.</p>
-<div class="figure align-default" id="id28">
+<figure class="align-default" id="id28">
 <img alt="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/1.png" src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/1.png" />
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text"><strong>Para la fuente, visitar el notebook que realicé. <a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb">Enlace aquí</a></strong>.</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text"><strong>Para la fuente, visitar el notebook que realicé. <a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb">Enlace aquí</a></strong>.</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <center><a href=""><img src="" style="width:400px; margin:20px"></img></a></center>
 <p>Lo que sucede aquí es lo siguiente. ¡Debemos clasificar! Para ello, introduciré una idea de un algoritmo de clasificación.</p>
 <p>¿Son valores discretos? Sí. ¿Por qué? No tenemos una infinidad de valores como predecir, por ejemplo, el precio de una casa, que puede ser un valor desde <span class="math notranslate nohighlight">\(\$ 10.000 \)</span>, <span class="math notranslate nohighlight">\(\$ 10.500 \)</span>, <span class="math notranslate nohighlight">\(\$ 14.403 \)</span> o <span class="math notranslate nohighlight">\(\$ 15.600,50 \)</span> si calculamos en dólares. ¡Tenemos infinitas posibilidades! En cambio, aquí solo tenemos las etapas del plan Paso a Paso, las que definiremos:</p>
@@ -1515,8 +1671,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Ahora, ¿cómo representamos al regresión logística? La definimos:</p>
 <p><span class="math notranslate nohighlight">\( \Large h_ \theta (X) = g(Z) \)</span>, donde <span class="math notranslate nohighlight">\( \Large g(Z) = \frac{1}{1+e^{-z}} \)</span> y <span class="math notranslate nohighlight">\( \Large Z = \theta ^{T}X \)</span>, por tanto,</p>
 <p><span class="math notranslate nohighlight">\( \Large g( \theta ^{T}X) = \frac{1}{1+e^{- \theta ^{T}X}} \)</span></p>
-<div class="section" id="grafica">
-<h4>Gráfica<a class="headerlink" href="#grafica" title="Permalink to this headline">¶</a></h4>
+<section id="grafica">
+<h4>Gráfica<a class="headerlink" href="#grafica" title="Permalink to this headline">#</a></h4>
 <p>La gráfica de la sigmoide y su derivada:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1551,9 +1707,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>La interpretación de la salida de la hipótesis se entiende a partir de <span class="math notranslate nohighlight">\( h_ \theta (X) = probabilidad \)</span>, donde la <span class="math notranslate nohighlight">\( probabilidad \)</span> es la prob. estimada que <span class="math notranslate nohighlight">\( y = 1 \)</span> en el ejemplo de entrada de <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
 </ul>
 <p>Hay varias cosas que se nos quedan en el tintero, como el límite de decisión, el descenso del gradiente, entre otros. Nuevamente, recomiendo recurrir a los notebooks adjuntos (los que no están exentos de errores). Aunque, nuevamente, explicaremos brevemente estos conceptos en referencia a la regresión logística.</p>
-</div>
-<div class="section" id="el-limite-de-decision-resumido">
-<h4>El límite de decisión resumido<a class="headerlink" href="#el-limite-de-decision-resumido" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="el-limite-de-decision-resumido">
+<h4>El límite de decisión resumido<a class="headerlink" href="#el-limite-de-decision-resumido" title="Permalink to this headline">#</a></h4>
 <p>El límite de decisión es el límite que nos explicará lo que hacen las regresiones logística, y en particular, de lo que son capaces de computar. En resumen, Suponemos <span class="math notranslate nohighlight">\( Y = 1 \)</span> cuando <span class="math notranslate nohighlight">\( 0.5 \leq g(Z) \)</span>. Suponemos <span class="math notranslate nohighlight">\( Y = 0 \)</span> cuando <span class="math notranslate nohighlight">\( 0.5 &gt; g(Z) \)</span>. El eje aquí es considerar el cómo está contemplado <span class="math notranslate nohighlight">\( \theta_{T}X \)</span>, donde está como exponente negativo de una exponencial, por lo que:</p>
 <ul class="simple">
 <li><p>Si <span class="math notranslate nohighlight">\( \theta_{T}X \)</span> es negativo, implicará un valor positivo del exponencial, y dado <span class="math notranslate nohighlight">\( \theta_{T}X = Z \)</span>, entonces, siempre que <span class="math notranslate nohighlight">\(0 &gt; Z\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> tenderá a 0.</p></li>
@@ -1561,49 +1717,53 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>En consideración con lo anterior, y de acuerdo a los valores que asignemos a los parámetros <span class="math notranslate nohighlight">\(\theta\)</span>, podremos obtener los límites de decisión a partir de la inecuación entre <span class="math notranslate nohighlight">\(0 \leq Z\)</span> para el área positiva o <span class="math notranslate nohighlight">\(0 &gt; Z\)</span> para el área negativa <span id="id29">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id4" title="Andrew NG. Machine Learning. 2011. URL: https://www.coursera.org/learn/machine-learning.">NG11</a>]</span>. Ésto se puede apreciar en una imagen que capturé del curso de Andrew NG en Coursera, de la Universidad de Stanford. <a class="footnote-reference brackets" href="#footcite-mlandrewng" id="id30">8</a></p>
 <center><a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/3_regresion_logistica/notebook.ipynb"><img src="https://github.com/adinamarca/notebooks/raw/33bccc581718dcabf5ab1fb1dcdcad8820c105fd/PY/ML/3_regresion_logistica/12.png" style="margin-bottom:20px"></img></a></center>
-</div>
-<div class="section" id="descenso-del-gradiente-resumido">
-<h4>Descenso del gradiente resumido<a class="headerlink" href="#descenso-del-gradiente-resumido" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="descenso-del-gradiente-resumido">
+<h4>Descenso del gradiente resumido<a class="headerlink" href="#descenso-del-gradiente-resumido" title="Permalink to this headline">#</a></h4>
 <p>Respecto al descenso del gradiente, es el algoritmo mediante el cual se minimiza el error del modelo. Nos cuantificará el error a partir del valor hipotético, que deberá ser contrastado con el valor real. Este error se minimiza a partir del proceso iterativo de reducir, a partir de la <strong>convergencia</strong>. En otras palabras, que tiende a un límite, que en este caso, es al mínimo error (<strong>0</strong>), a través de la aplicación del gradiente (concepto de cálculo III).</p>
 <p>Por tiempo, los conceptos matemáticos, como también, de programación, quedan fuera del alcance del Notebook. Pero como analogía, es similar al estar en una pendiente o en un cerro, ¿hacia dónde se desciende más prontamente sin caernos estrepitosamente o sin demorarnos demasiado en el transcurso? En esa pregunta formulada, está el gradiente y el parámetro de aprendizaje involucrado, que son conceptos que se pueden revisar en el notebook que dejaré en <a href="https://github.com/adinamarca/notebooks/blob/main/PY/ML/2_descenso_gradiente/notebook.ipynb">este enlace</a>.</p>
 <p>Lo que quiero que comprendas es la finalidad del descenso del gradiente, <strong>que es minimizar el error de nuestro modelo de Machine Learning</strong>.</p>
-<div class="figure align-default" id="id31">
+<figure class="align-default" id="id31">
 <img alt="https://ichi.pro/assets/images/max/724/1*laN3aseisIU3T9QTIlob4Q.gif" src="https://ichi.pro/assets/images/max/724/1*laN3aseisIU3T9QTIlob4Q.gif" />
-<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text"><strong>Algoritmo del descenso del gradiente. Ilustración de <a href="https://ichi.pro/es/gradient-descent-parte-2-las-matematicas-213513035934227">ICHIPRO</a></strong>.</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="la-deuda-de-kernel">
-<h3>La deuda de Kernel<a class="headerlink" href="#la-deuda-de-kernel" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text"><strong>Algoritmo del descenso del gradiente. Ilustración de <a href="https://ichi.pro/es/gradient-descent-parte-2-las-matematicas-213513035934227">ICHIPRO</a></strong>.</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="la-deuda-de-kernel">
+<h3>La deuda de Kernel<a class="headerlink" href="#la-deuda-de-kernel" title="Permalink to this headline">#</a></h3>
 <p>Definido entonces, lo que es el aprendizaje, la regresión logística, y otros conceptos, <strong>tenemos un dominio relativo</strong>. Sin embargo, <strong>la deuda sigue siendo vigente en torno a qué son las aproximaciones por Kernel</strong>, de lo cual, y a ser sincero, no manejo.</p>
 <p>Me dediqué a buscar, sin éxito, <strong>algún texto explicativo</strong>, <strong>fácil de comprender</strong>, <strong>acerca de lo que es la aproximación por Kernel</strong>, hasta que encontré uno que me pareció muy bueno, <strong>y el cual aborda desde la Estadística su introducción</strong>. Este texto, fue realizado por <strong>Joaquín Amat Rodrigo</strong> <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id32">9</a>.</p>
 <p>Sin más preámbulo, seguiremos en la siguiente sección con Joaquín Amat Rodrigo <span id="id33">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
-<div class="section" id="cimientos">
-<h4>Cimientos<a class="headerlink" href="#cimientos" title="Permalink to this headline">¶</a></h4>
+<section id="cimientos">
+<h4>Cimientos<a class="headerlink" href="#cimientos" title="Permalink to this headline">#</a></h4>
 <p>De acuerdo con <span id="id34">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>, “<em>el identificar el tipo de distribución que tiene una variable es un paso fundamental en prácticamente todos los estudios que implican datos, desde los contrastes de hipótesis hasta la creación de modelos por aprendizaje estadístico y machine learning</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id35">9</a>.</p>
-<div class="figure align-default" id="id36">
+<figure class="align-default" id="id36">
 <img alt="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" src="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
-<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Fotografía de Burak Kepapci en Pexels.</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Fotografía de Burak Kepapci en Pexels.</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>“<em>Son muchas las ventajas que tiene disponer de una función que describa aproximadamente los datos. Por ejemplo, se puede calcular la probabilidad (o densidad en el caso de variables aleatorias continuas) de que una observación tome un determinado valor. También es posible simular nuevos valores</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id37">9</a>.</p>
 <p>Lo anterior, nos afirma una solución a nuestra problemática. <strong>Si deseamos predecir el Paso a Paso</strong>, podemos utilizar la ya definida estadística no paramétrica.</p>
 <p>“<em>En términos generales, ajustar una distribución consiste en encontrar una función matemática capaz de describir un conjunto de datos. De entre todas las posibles funciones candidatas, lo interesante es encontrar aquella que, con mayor probabilidad, puede haber generado los datos observados</em>.</p>
 <p><em>Una de las aproximaciones más prácticas es utilizar como candidatas distribuciones parámetras, estas son distribuciones conocidas cuyo comportamiento está determinado usando un número finito de parámetros. Por ejemplo, la distribución normal está parametrizada por la media y la desviación típica</em>.</p>
 <p><em>Cuando ninguna de las distribuciones paramétricas disponibles describe correctamente los datos, es necesario recurrir a lo que se conoce como métodos de ajuste no parámetricos, cuyo objetivo es encontrar funciones que describan distribuciones cualesquiera, entendiendo a que no se limitan a distribuciones paramétricas conocidas. Uno de los métodos más empleados es kernel density estimation (KDE)</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id38">9</a>.</p>
 <p>Así entonces, están sentadas las bases. Debo declarar que <strong>Joaquín Amat Rodrigo</strong> resumió y explicó en gloria y majestad lo que intenté exponer en las secciones anteriores.</p>
-</div>
-<div class="section" id="kde-kernel-density-estimation">
-<h4>KDE (kernel density estimation)<a class="headerlink" href="#kde-kernel-density-estimation" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="kde-kernel-density-estimation">
+<h4>KDE (kernel density estimation)<a class="headerlink" href="#kde-kernel-density-estimation" title="Permalink to this headline">#</a></h4>
 <p>“<em>En estadística, kernel density estimation (KDE), es un método no paramétrico que permite estimar la función de densidad de probabilidad de una variable aleatoria a partir de un número finito de observaciones (muestra). Fue propuesto por Fix y Hodges (1951) y Rosenblatt (1956)</em>.</p>
 <p><em>Dado un valor  <span class="math notranslate nohighlight">\(x_{i}\)</span>  la función aprendida por el kernel density estimator devuelve la densidad de la distribución en el punto  <span class="math notranslate nohighlight">\(x_{i}\)</span>. Esta densidad, cuyo valor está acotado al rango <span class="math notranslate nohighlight">\([0, + \infty]\)</span>, es una medida relativa de verosimilitud (likelihood). Si la densidad para el punto A es mayor que la de B, significa que la probabilidad de que A pertenezca a la distribución es mayor que la de B. Con frecuencia, para facilitar los cálculos, en lugar de utilizar el valor de densidad se utiliza el su logaritmo, aun así, la interpretación es la misma, cuanto mayor su valor, mayor la evidencia de que la observación pertenece a la distribución</em>” <a class="footnote-reference brackets" href="#footcite-kernel-amat" id="id39">9</a>.</p>
 <p>Es decir, lo que realizaremos con el KDE será estimar la densidad de la distribución (el Paso a Paso por comuna), a partir de los datos de entrada que deberemos seleccionar en la próxima sección. <em>O al menos, esa es la idea parcial hasta el momento</em>.</p>
-<div class="section" id="a-fondo">
-<h5>A fondo<a class="headerlink" href="#a-fondo" title="Permalink to this headline">¶</a></h5>
+<section id="a-fondo">
+<h5>A fondo<a class="headerlink" href="#a-fondo" title="Permalink to this headline">#</a></h5>
 <p>Joaquín utiliza los histogramas para entender el cómo funciona un kernel density estimation (KDE), y a partir de su trabajo, explicaremos el cómo funciona el KDE.</p>
 <p>Antes, un pequeño repaso en torno a los histogramas.</p>
-</div>
-<div class="section" id="los-histogramas">
-<h5>Los histogramas<a class="headerlink" href="#los-histogramas" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="los-histogramas">
+<h5>Los histogramas<a class="headerlink" href="#los-histogramas" title="Permalink to this headline">#</a></h5>
 <p>Los histogramas son una representación gráfica capaz de cuantificar la frecuencia con que se presentan, determinados valores, en una población (conjunto de datos). A fin de comprensión, graficaremos el histograma de los casos nuevos:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1623,9 +1783,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Podemos apreciar una distribución asimétrica hacia la izquierda (se presenta mayor frecuencia de datos en el sector derecho que en el izquierdo).</p></li>
 </ul>
 <p>Como se observa, no existe una línea temporal, puesto que, lo que se registra es, <strong>en un determinado intervalo de casos nuevos, la frecuencia de dicho intervalo</strong> en torno al resto de la población. <strong>La superficie de la barra es proporcional a la frecuencia</strong>, y por eso, a simple vista, podemos apreciar que la barra más alta es aquella en la que se registra la mayor frecuencia.</p>
-</div>
-<div class="section" id="grafico-de-densidad-de-kernel">
-<h5>Gráfico de densidad de Kernel<a class="headerlink" href="#grafico-de-densidad-de-kernel" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="grafico-de-densidad-de-kernel">
+<h5>Gráfico de densidad de Kernel<a class="headerlink" href="#grafico-de-densidad-de-kernel" title="Permalink to this headline">#</a></h5>
 <blockquote>
 <div><p>¡Vamos hallando cada vez más referencias!</p>
 </div></blockquote>
@@ -1644,10 +1804,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>Así entonces, tenemos definidos los conceptos para proseguir con la explicación de <span id="id41">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
-</div>
-</div>
-<div class="section" id="idea-intuitiva">
-<h4>Idea intuitiva<a class="headerlink" href="#idea-intuitiva" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="idea-intuitiva">
+<h4>Idea intuitiva<a class="headerlink" href="#idea-intuitiva" title="Permalink to this headline">#</a></h4>
 <p>Según <span id="id42">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>, “<em>kernel density estimation (KDE) expande la idea del histograma</em>”, donde, “*cada observación aumenta la densidad de probabilidad en la zona donde se encuentra, pero lo hace de forma que las contribuciones se agrupen creando una curva continua y suave (smooth)”.</p>
 <blockquote>
 <div><p>Nos basaremos en el código que adjunta <span id="id43">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span> en su <a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html">notebook</a>. Se basa en la sección de “<em>Idea intuitiva</em>”: <strong><a href="https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html#Idea-intuitiva">Para el enlace de referencia, click aquí</a></strong>.</p>
@@ -1751,9 +1911,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>“<em>Esta idea tan sencilla pero a la vez tan potente es en la que se fundamenta el método kernel density estimation (KDE): aproximar una función de densidad como la suma de funciones (kernel) de cada observación.</em>” según <span id="id46">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id11" title="Joaquín Amat Rodrigo. Ajuste de distribuciones con kernel density estimation y Python. 2021. URL: https://www.cienciadedatos.net/documentos/pystats02-kernel-density-estimation-kde-python.html.">Rod21</a>]</span>.</p>
-</div>
-<div class="section" id="la-clasificacion-kde">
-<h4>La clasificación KDE<a class="headerlink" href="#la-clasificacion-kde" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="la-clasificacion-kde">
+<h4>La clasificación KDE<a class="headerlink" href="#la-clasificacion-kde" title="Permalink to this headline">#</a></h4>
 <p>Bien. Hemos explicado el funcionamiento de KDE, pero, el acercamiento de Joaquín Amat, según lo que aprecio, es para la predicción de una variable continua.</p>
 <p>Para entender la clasificación del estimador KDE, nos basaremos en el trabajo de <em>Dennis Wittich</em>.</p>
 <p>Según <span id="id47">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id17" title="Dennis Wittich. Jupyter magic to handle notebook exceptions. 2019. URL: https://icaml.org/canon/algo/bayesian-classification/KDE_KNN/KNN.html.">Wit19</a>]</span> el clasificador estima un determinado volumen <span class="math notranslate nohighlight">\(V\)</span> <a class="footnote-reference brackets" href="#footcite-dennis-wittich" id="id48">10</a> (<strong>el volumen</strong>, <em>lo entiendo como la distribución de probabilidad</em>). Así entonces, se considera <span class="math notranslate nohighlight">\(V\)</span> es la distribución de una clase <span class="math notranslate nohighlight">\(X\)</span>. <em>En nuestro caso, y a modo de ejemplo, puede ser la distribución para cada una de las etapas del Paso a Paso (<span class="math notranslate nohighlight">\(V_{0}\)</span>: Cuarentena, <span class="math notranslate nohighlight">\(V_{1}\)</span>: Transición, etc.)</em>; entonces, según el número de muestras que “caigan” en ese volumen, se determinará la distribución de la clase <span class="math notranslate nohighlight">\(X\)</span>:</p>
@@ -1763,69 +1923,79 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Finalmente, <strong>de acuerdo a la cercanía, se estimará una probabilidad</strong> de que la muestra <span class="math notranslate nohighlight">\(X_{i}\)</span> pertenece a la distribución <span class="math notranslate nohighlight">\(V_{i}\)</span> de la clase <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Así entonces, tenemos las bases para saber cómo funciona el método a través de la aproximación por Kernel.</p>
 <p>Para mayor detalle matemático, el cual se obvia, visitar el trabajo de <em>Joaquín Amat</em>, <em>Dennis Wittich</em> o de <em>S. Van Vaerenbergh, I. Santamaría</em>. <strong>Los enlaces se pueden encontrar en la bibliografía</strong>.</p>
-</div>
-</div>
-<div class="section" id="svc">
-<h3>SVC<a class="headerlink" href="#svc" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="svc">
+<h3>SVC<a class="headerlink" href="#svc" title="Permalink to this headline">#</a></h3>
 <p>SVC hace referencia a <strong>Support Vector Classification</strong>, lo que en español significa <strong>Clasificación por Vectores de Soporte</strong>. Este tipo de algoritmo se basa en <strong>solucionar problemas de clasificación</strong>, lo que es separar entre dos o más clases (<strong>tal como vimos en los conceptos previos</strong>).</p>
-<div class="figure align-default" id="id49">
+<figure class="align-default" id="id49">
 <img alt="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" src="https://www.mdpi.com/sustainability/sustainability-11-01919/article_deploy/html/images/sustainability-11-01919-g004.png" />
-<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text"><strong>Ilustración extraída del artículo “<em>Support Vector Machine Algorithm for Automatically Identifying Depositional Microfacies Using Well Logs</em>”. El enlace en<a href="https://www.mdpi.com/2071-1050/11/7/1919"> MDPI</a></strong>.</span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text"><strong>Ilustración extraída del artículo “<em>Support Vector Machine Algorithm for Automatically Identifying Depositional Microfacies Using Well Logs</em>”. El enlace en<a href="https://www.mdpi.com/2071-1050/11/7/1919"> MDPI</a></strong>.</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>La piedra angular del <strong>SVC</strong>, son los <strong>SVM</strong>, que es el acrónimo de <strong>Support Vector Machine</strong>, lo que significa “<strong>Máquinas de Vectores de Soporte</strong>”. En concreto, esta familia de algoritmos, y según <span id="id50">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21" title="Jose Martinez Heras. Máquinas de Vectores de Soporte (SVM). 2019. URL: https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/.">Her19</a>]</span>, se llaman “<strong>máquina</strong>” por parte del nombre del Aprendizaje de “<strong>Máquinas</strong>”, que es otro sinónimo de <strong>Aprendizaje Automático</strong> (en inglés, “<strong>Machine” Learning</strong>).</p>
-<div class="section" id="funcionamiento">
-<h4>Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permalink to this headline">¶</a></h4>
+<section id="funcionamiento">
+<h4>Funcionamiento<a class="headerlink" href="#funcionamiento" title="Permalink to this headline">#</a></h4>
 <p>Antes, al realizar la clasificación (en la regresión logística), intentábamos dar con una función que explicase la distribución de los datos, la cual denominamos <strong>hipótesis</strong>. Esta función se encargaba de separar, según las <strong>fronteras de decisión</strong>, dos o más clases de datos.</p>
 <p>La definición anterior, es similar para las Máquinas de Vectores de Soporte, con la diferencia que hace uso de hiperplanos para separar dos o más clases.</p>
 <p>Un hiperplano se define como la extensión del plano. Es una definición geométrica que no puede ser graficada en su totalidad, dado que, su dimensión, se encuentra en la cuarta o en alguna mayor. Ésto no es graficable en el espacio (o al menos, no por completo), y dado nuestra limitada comprensión de dimensiones superiores a la tercera, solo nos podemos imaginar, levemente, cómo se pueden visualizar los hiperplanos en dimensiones inferiores.</p>
-<div class="section" id="la-analogia-de-la-esfera">
-<h5>La analogía de la esfera<a class="headerlink" href="#la-analogia-de-la-esfera" title="Permalink to this headline">¶</a></h5>
+<section id="la-analogia-de-la-esfera">
+<h5>La analogía de la esfera<a class="headerlink" href="#la-analogia-de-la-esfera" title="Permalink to this headline">#</a></h5>
 <p>Recuerdo haber leído, en algún artículo, una analogía para comprender cómo funcionan las dimensiones (en los tiempos en los que estudiaba <strong>Cálculo III</strong>). Para introducirte a este mundo de las matemáticas, del hallar sentido lógico a todas las cosas, intentaré rebajar los tecnicismos, tal como ya lo hemos hecho.</p>
 <p>Supone, <strong>dos seres vivos, Alejandro y María</strong>. <strong>Alejandro y María son dos esferas que viven en la tercera dimensión</strong>, y son amantes. Por esas casualidades de la vida, <strong>Alejandro es vílmente hechizado por una entidad, y se convierte en un ser vivo del plano XY</strong> (cartesiano), en la segunda dimensión. Alejandro, desesperado, llama a su enamorada, la cual se encuentra a una distancia mayor que la del diámetro de la esfera. María, lo escucha, y recurre a su llamado, por lo que, se acerca al plano XY en el que vive Alejandro. <strong>María, puede observar, sin inconvenientes, a Alejandro, convertido en un plano, y comprende plenamente qué es, dado que ella vive en la tercera dimensión</strong>.</p>
-<div class="figure align-default" id="id51">
+<figure class="align-default" id="id51">
 <a class="reference internal image-reference" href="../../_images/4_alejandromaria.png"><img alt="../../_images/4_alejandromaria.png" src="../../_images/4_alejandromaria.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">Ilustración realizada en <strong><a href="https://www.geogebra.com">Geogebra</a></strong>.</span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Ilustración realizada en <strong><a href="https://www.geogebra.com">Geogebra</a></strong>.</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Por otro lado, Alejandro no puede ver a María en su totalidad, dado es una esfera, y solo puede observar las <strong>intersecciones</strong> de la esfera con el plano, las que a su vez, dividen su hogar, por lo que solo aprecia las circunferencias de María, y no comprende cómo puede observar una parte de María, sin ver a María en su totalidad.</p>
-<div class="figure align-default" id="id52">
+<figure class="align-default" id="id52">
 <img alt="../../_images/5_alejandromaria.png" src="../../_images/5_alejandromaria.png" />
-<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">Ilustración realizada en <strong><a href="https://www.geogebra.com">Geogebra</a></strong>.</span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Ilustración realizada en <strong><a href="https://www.geogebra.com">Geogebra</a></strong>.</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>¿Qué aprendimos? Pues, nosotros, somos seres tridimensionales. Como tal, jamás podremos comprender figuras de la cuarta dimensión, o de mayores dimensiones, puesto que, estamos acostumbrados a las leyes que rigen la tercera dimensión. La única idea, que nos podemos hacer de dimensiones mayores, es a partir de la intuición, o bien, <strong>¡reducir la complejidad!</strong> Tal es el caso de un hiperplano. <strong>Un hiperplano es la extensión del plano en dimensiones mayores a la tercera, y por ende, una forma de entenderlo, es a partir del cuento de María y Alejandro. Justamente, nosotros jamás podríamos visualizar, en totalidad, un hiperplano, pero sí partes de él. Por ello, es común encontrar la definición de que, un hiperplano, en la primera dimensión es un punto que divide la recta 1D, en la segunda dimensión es una recta que divide el plano 2D, en la tercera dimensión es un plano que divide al espacio, ¿y en la cuarta? Pues, hasta ahí llegamos. ¡Tenemos el mismo inconveniente de Alejandro! Aunque quisiéramos comprender qué existe en dimensiones mayores, no podríamos</strong>.</p>
 <p>Demos cuenta de cómo, análogamente, y al observar figuras de dimensiones mayores en inferiores, se disminuye el nivel de complejidad de la figura al “acomodarse” en la dimensión inferior en la que se está observando. Propiamente tal, Alejandro es una figura de la segunda dimensión, y aprecia a María, una figura de la tercera dimensión, convertida (según él) en una figura de la segunda dimensión, siendo “rebajada” la dimensión de la figura de María (desde el punto de vista de Juan), desde una esfera a una familia de circunferencias según se movilice en el eje Z. De forma similar, sucede con la dimensionalidad de los hiperplanos.</p>
-</div>
-<div class="section" id="definicion-de-svm">
-<h5>Definición de SVM<a class="headerlink" href="#definicion-de-svm" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="definicion-de-svm">
+<h5>Definición de SVM<a class="headerlink" href="#definicion-de-svm" title="Permalink to this headline">#</a></h5>
 <p>Bien, nuevamente, contamos con un <strong>dominio relativo</strong> de lo que sería un hiperplano. Ésto nos facilitará mucho el comprender cómo funcionan las Máquinas de Vectores de Soporte.</p>
 <p>“<em>Los vectores de soporte son los puntos que definen el margen máximo de separación del hiperplano que separa las clases. Se llaman vectores, en lugar de puntos, porque estos «puntos» tienen tantos elementos como dimensiones tenga nuestro espacio de entrada. Es decir, estos puntos multi-dimensionales se representan con un vector de n dimensiones</em>” <a class="footnote-reference brackets" href="#footcite-maquinas-soporte-jose" id="id53">11</a>.</p>
 <p>¡Muy bien! El hiperplano se encarga de realizar la separación. Pero en verdad, ¿cómo lo hace? Debemos recurrir nuevamente a <span id="id54">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id21" title="Jose Martinez Heras. Máquinas de Vectores de Soporte (SVM). 2019. URL: https://www.iartificial.net/maquinas-de-vectores-de-soporte-svm/.">Her19</a>]</span>, en concreto, “<em>En el caso de que las clases sean linealmente separables, para hallar el hiperplano que las separa se toman un conjunto de casos, llamados vectores de soporte, y se elige el hiperplano que proporcione los mayores márgenes de distancia desde el hiperplano a los vectores de soporte más próximos. En el ejemplo, tanto el plano <span class="math notranslate nohighlight">\(Z_{1}\)</span> como <span class="math notranslate nohighlight">\(Z_{2}\)</span> podrían servir para distinguir las clases, pero <span class="math notranslate nohighlight">\(Z_{2}\)</span> es mejor porque el margen es más amplio</em>” <a class="footnote-reference brackets" href="#footcite-maquinas-soporte-jose" id="id55">11</a>.</p>
-<div class="figure align-default" id="id56">
+<figure class="align-default" id="id56">
 <img alt="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" src="https://lapastillaroja.net/wp-content/uploads/2015/02/SVMMargins.gif" />
-<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Ilustración extraída desde <strong><a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a></strong>.</span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Ilustración extraída desde <strong><a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a></strong>.</span><a class="headerlink" href="#id56" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Entre tanto, “<em>En el caso de que las clases no sean linealmente separables lo que se intenta hacer es proyectar los casos a un espacio de dimensión superior donde sí sean linealmente separables</em>” <a class="footnote-reference brackets" href="#footcite-maquinas-soporte-jose" id="id57">11</a>.</p>
-<div class="figure align-default" id="id58">
+<figure class="align-default" id="id58">
 <img alt="https://lapastillaroja.net/wp-content/uploads/2015/02/InputAndfeatureSpaceSVM.png" src="https://lapastillaroja.net/wp-content/uploads/2015/02/InputAndfeatureSpaceSVM.png" />
-<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Ilustración extraída desde <strong><a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a></strong>.</span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Ilustración extraída desde <strong><a href="https://lapastillaroja.net/2015/02/ml-algols/">lapastillaroja</a></strong>.</span><a class="headerlink" href="#id58" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>¡Claro como el agua! ¿No es así? Bueno, al menos, visto de forma macro, dado que, si entramos en el detalle matemático, pues, las cosas se complican un poco. Sin embargo, en ese desarrollo está lo bonito de las matemáticas.</p>
 <p>Con ésto, finalizamos nuestro recorrido de algoritmos. ¡Seguimos!</p>
-</div>
-</div>
-</div>
-<div class="section" id="la-perorata">
-<h3>La perorata<a class="headerlink" href="#la-perorata" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+</section>
+<section id="la-perorata">
+<h3>La perorata<a class="headerlink" href="#la-perorata" title="Permalink to this headline">#</a></h3>
 <p>Cabe recalcar que, estos conceptos, son parte teórica del Aprendizaje Automático. Es fácil programar con librerías que nos simplifican la vida, sin embargo, <strong>es relevante saber su fundamento matemático y el cómo se respalda en la tecnología actual gracias a la enorme cantidad de cálculos que puede realizar un ordenador moderno</strong>.</p>
 <p>Nuevamente, el implementar un modelo con una librería es simple, pero implementarlo desde cero puede llegar a ser tedioso y confuso (y a la vez, bello si funciona).</p>
 <p>Si no se conoce sobre Cálculo de universidad, Estadística y Ciencias de la Computación (en concreto, <strong>saber programar</strong>), será difícil implementar un algoritmo desde cero. En lo personal, una vez intenté hacerlo, sin mucho éxito, por lo que me tuve que apoyar en bibliografía y otros tutoriales.</p>
 <p>Por las razones expuestas, se debe agradecer, a muchas otras personas que, por sus arduas horas de trabajo, lograron compilar librerías capaces de permitir, desarrollar, con poco código, y en poco tiempo, algoritmos de predicción, y tal es el caso de Scikit-learn, que es la librería que utilizaremos.</p>
-</div>
-</div>
-<div class="section" id="seleccionando-variables">
-<h2>Seleccionando variables<a class="headerlink" href="#seleccionando-variables" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="seleccionando-variables">
+<h2>Seleccionando variables<a class="headerlink" href="#seleccionando-variables" title="Permalink to this headline">#</a></h2>
 <p>Retomaremos algunos conceptos, además de introducir otros nuevos.</p>
-<div class="section" id="costos-y-otras-cosas">
-<h3>Costos y otras cosas<a class="headerlink" href="#costos-y-otras-cosas" title="Permalink to this headline">¶</a></h3>
+<section id="costos-y-otras-cosas">
+<h3>Costos y otras cosas<a class="headerlink" href="#costos-y-otras-cosas" title="Permalink to this headline">#</a></h3>
 <p>En todo modelo computacional, es relevante la eficiencia. Por ello, siempre debemos ser minuciosos al elegir las variables con las que el modelo estimará los cálculos. En esta línea, nos basaramos en la fuente de <a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">machinelearningmastery</a> para explicar, a mayor detalle, el por qué de la selección de variables <a class="footnote-reference brackets" href="#footcite-machine-learning-mastery" id="id59">12</a>.</p>
 <p>Según la fuente, “<em>la selección de características es el proceso mediante el cual se reduce el número de variables de entrada cuando se desarrolla un modelo predictivo</em>”. De hecho, aclara que es recomendable reducir el número de variables en orden para:</p>
 <ul class="simple">
@@ -1836,14 +2006,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><em>En algunos casos, mejorar el rendimiento</em></p></li>
 </ul>
 <p>El rendimiento, en contraste, sí nos interesa, dado que el algoritmo debería tener el menor error posible para brindar una predicción “buena” en base a la información con la que contamos, la que por cierto, es poca (dado que la pandemia no lleva más dos años a la fecha - <i>30/05/2021</i> - en la que escribo).</p>
-</div>
-<div class="section" id="lo-estadisticamente-correcto-y-una-analogia">
-<h3>Lo estadísticamente correcto y una analogía<a class="headerlink" href="#lo-estadisticamente-correcto-y-una-analogia" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="lo-estadisticamente-correcto-y-una-analogia">
+<h3>Lo estadísticamente correcto y una analogía<a class="headerlink" href="#lo-estadisticamente-correcto-y-una-analogia" title="Permalink to this headline">#</a></h3>
 <p>Prosiguiendo con <a href="https://machinelearningmastery.com/feature-selection-with-real-and-categorical-data/">machinelearningmastery</a>, “<em>los métodos de selección de variables están destinados a reducir el número de variables de entrada (X), de forma de mantener aquellas más útiles para predecir la variable objetivo (Y)</em>” <a class="footnote-reference brackets" href="#footcite-machine-learning-mastery" id="id60">12</a>.</p>
 <p>Bien. El método de selección de variables que se establece en la fuente es en base a los métodos estadísticos, a partir de los cuales es posible estimar la dependencia o independencia de las variables, sus relaciones, etc. A partir de ciertos estimadores, como Pearson, chi cuadrado, entre otros. Si bien, es lo <strong>estadísticamente correcto</strong>, nosotros tomaremos un breve atajo, dado que ya sabemos aquellas variables que nos serán relevantes, ¿o no? ¡Comprobémoslo!</p>
-</div>
-<div class="section" id="datos-comunales">
-<h3>Datos comunales<a class="headerlink" href="#datos-comunales" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="datos-comunales">
+<h3>Datos comunales<a class="headerlink" href="#datos-comunales" title="Permalink to this headline">#</a></h3>
 <p>La intuición y experiencia dice lo siguiente: Filtremos.</p>
 <p>Si trabajaremos con predicción de fases comunales… ¿Qué datos nos sirven? La respuesta es evidente. ¡No podemos generalizar a nivel regional! Debemos segregar por comuna, y para ello, disponemos de datos de los informes epidemiológicos del Ministerio de Salud, recopilados por el MICITEC (Ministerio de Ciencia, Tecnología, Conocimiento e Innovación).</p>
 <p>De esta forma, utilizaremos esos datos. Por ejemplo, para la comuna de Iquique, filtramos el DataFrame de la siguiente forma.</p>
@@ -2042,27 +2212,6 @@ const thebe_selector_output = ".output, .cell_output"
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-05-29</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>38.00</td>
-      <td>NaN</td>
-      <td>956.00</td>
-      <td>98.60</td>
-      <td>0.00</td>
-      <td>100.00</td>
-      <td>100.00</td>
-      <td>782.00</td>
-      <td>678.00</td>
-      <td>76.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>303.41</td>
-    </tr>
-    <tr>
       <th>2022-05-30</th>
       <td>NaN</td>
       <td>55,416.00</td>
@@ -2089,7 +2238,7 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>40.00</td>
       <td>NaN</td>
       <td>738.00</td>
       <td>98.90</td>
@@ -2110,7 +2259,7 @@ const thebe_selector_output = ".output, .cell_output"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>41.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2127,6 +2276,27 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>2022-06-02</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>42.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-06-03</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2148,7 +2318,7 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
   </tbody>
 </table>
-<p>822 rows × 18 columns</p>
+<p>823 rows × 18 columns</p>
 </div></div></div>
 </div>
 <p>Notar que:</p>
@@ -2212,9 +2382,9 @@ Sus colores:
 </div>
 </div>
 <p>Y listo. Tenemos nuestras comunas. Sin embargo, ¿y las variables regionales?</p>
-</div>
-<div class="section" id="datos-regionales">
-<h3>Datos regionales<a class="headerlink" href="#datos-regionales" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="datos-regionales">
+<h3>Datos regionales<a class="headerlink" href="#datos-regionales" title="Permalink to this headline">#</a></h3>
 <p>Un par de interrogantes pueden ser:</p>
 <ul class="simple">
 <li><p><b>¿Por qué no ocupar variables regionales?</b></p></li>
@@ -2227,9 +2397,9 @@ Sus colores:
 <li><p>Menor o igual al 80% para encontrarse en Apertura Inicial. <a class="footnote-reference brackets" href="#footcite-estrategiagradual-pasopaso" id="id62">3</a></p></li>
 </ul>
 <p>Comprobemos ésto con todas las comunas con gráficos de dispersión.</p>
-</div>
-<div class="section" id="graficos-de-dispersion-por-comuna">
-<h3>Gráficos de dispersión por comuna<a class="headerlink" href="#graficos-de-dispersion-por-comuna" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="graficos-de-dispersion-por-comuna">
+<h3>Gráficos de dispersión por comuna<a class="headerlink" href="#graficos-de-dispersion-por-comuna" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">comuna</span> <span class="ow">in</span> <span class="n">comunas</span><span class="p">:</span>
@@ -2257,10 +2427,10 @@ Sus colores:
 <p>Se puede apreciar como el indicador - <em>prácticamente</em> - no tiene incidencia. Es innecesario considerar las variables regionales (o incluso nacionales como la ocupación UCI nacional). Está zanjada la respuesta a la primera pregunta.</p>
 <p>Ojo, no estoy diciendo que no tengan relevancia, puesto sí lo tienen en materia sanitaria, pero, para la predicción del Paso a Paso, no tienen incidencia. De otra forma, veríamos otra tendencia en los gráficos anteriores, y de hecho, el stress del sistema hospitalario es una variable que sí debería incidir.</p>
 <p>Pero bueno, posiblemente es una de las cuantas falencias del Paso a Paso en torno a no considerar la situación concreta de una región.</p>
-</div>
-</div>
-<div class="section" id="entrenamiento">
-<h2>Entrenamiento<a class="headerlink" href="#entrenamiento" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="entrenamiento">
+<h2>Entrenamiento<a class="headerlink" href="#entrenamiento" title="Permalink to this headline">#</a></h2>
 <p>Con los códigos que expuse (en relación a cómo obtener los datos por comuna y los nombres), procedemos a desarrollar los modelos de predicción.</p>
 <p>Algunos detalles que me gustaría explicar:</p>
 <ul class="simple">
@@ -2268,28 +2438,28 @@ Sus colores:
 <li><p>Con el desarrollo de este modelo, me di cuenta que, conozco menos de lo que desearía conocer.</p></li>
 <li><p>¿Falencias o errores en el código? Por favor, reportálo en la sección Issues de GitHub.</p></li>
 </ul>
-<div class="section" id="id63">
-<h3>Metodología<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<section id="id63">
+<h3>Metodología<a class="headerlink" href="#id63" title="Permalink to this headline">#</a></h3>
 <p>Separé los algoritmos por comuna, dado que, entrenar, un solo modelo, introducirá excesiva inconsistencia en la decisión del algoritmo.</p>
 <p>Consideremos que, existen comunas que <strong>no han entrado en cuarentena en todo el plan Paso a Paso</strong>, por lo que, la decisión del confinamiento dependerá, en mayor o menor proporción, de las condiciones demográficas de la comuna, las que, de manera implícita, <strong>están recogidas en la decisión histórica del Paso a Paso</strong> (en otras palabras, nuestra salida <span class="math notranslate nohighlight">\(Y\)</span>).</p>
-</div>
-<div class="section" id="sesgo">
-<h3>Sesgo<a class="headerlink" href="#sesgo" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sesgo">
+<h3>Sesgo<a class="headerlink" href="#sesgo" title="Permalink to this headline">#</a></h3>
 <p>Como todo en la vida (persona u algoritmo), contamos con sesgos. Corroboré uno y tiene relación con el <strong>plan Paso a Paso histórico</strong> de la comuna:</p>
 <ul class="simple">
 <li><p>Si una comuna nunca se encontró en Cuarentena, esa comuna nunca será clasificada como comuna que <em>debiese</em> estar en Cuarentena.</p></li>
 </ul>
 <p>La anterior afirmación <strong>es equivalente para cualquier fase del plan Paso a Paso</strong>.</p>
-</div>
-<div class="section" id="eleccion">
-<h3>Elección<a class="headerlink" href="#eleccion" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="eleccion">
+<h3>Elección<a class="headerlink" href="#eleccion" title="Permalink to this headline">#</a></h3>
 <p>No utilizamos la regresión logística u otro algoritmo basándonos en la recomendación de <strong>Axum Labs</strong>, donde, de acuerdo a nuestro número de observaciones y variables <span id="id64">[<a class="reference internal" href="../7_bibliografia/0_bibliografia.html#id22" title="Patricia Bassey. Logistic Regression Vs Support Vector Machines (SVM). 2019. URL: https://medium.com/axum-labs/logistic-regression-vs-support-vector-machines-svm-c335610a3d16.">Bas19</a>]</span>:</p>
 <blockquote>
 <div><p>“<em>If n is small (1–10 00) and m is intermediate (10–10,000) : use SVM with (Gaussian, polynomial etc) kernel</em>”. <a class="footnote-reference brackets" href="#footcite-axum-labs" id="id65">13</a></p>
 </div></blockquote>
-</div>
-<div class="section" id="codigo">
-<h3>Código<a class="headerlink" href="#codigo" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="codigo">
+<h3>Código<a class="headerlink" href="#codigo" title="Permalink to this headline">#</a></h3>
 <p>¿Cómo funciona? ¡Vale! Acá vamos:</p>
 <ul class="simple">
 <li><p>Dependiendo de la comuna, toma de entrada las variables pertenecientes, además de la variable provincial (número de reproducción efectivo Re).</p></li>
@@ -2297,9 +2467,9 @@ Sus colores:
 <li><p>Separamos observaciones en conjuntos de entrenamiento y prueba, considerando que trabajamos con series de tiempo.</p></li>
 <li><p>Entrenamos el algoritmo, almacenándolo en una variable aparte, por comuna, y además, almacenamos los resultados como variables de texto, <em>str</em>, en un vector. Este vector, al ser iterable, será recorrido por cada uno de sus elementos, separando por comuna, los resultados, los cuales serán introducidos en Markdown.</p></li>
 </ul>
-</div>
-<div class="section" id="donde-estara-la-salida">
-<h3>¿Dónde estará la salida?<a class="headerlink" href="#donde-estara-la-salida" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="donde-estara-la-salida">
+<h3>¿Dónde estará la salida?<a class="headerlink" href="#donde-estara-la-salida" title="Permalink to this headline">#</a></h3>
 <blockquote>
 <div><p>La salida estará disponible en <a class="reference external" href="https://pandemiaventana.github.io/pandemiaventana/dinamic/indicadorfase.html">“<strong>Indicador de fase</strong> 📆”</a>.</p>
 </div></blockquote>
@@ -2478,10 +2648,10 @@ Sus colores:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="validacion">
-<h2>Validación<a class="headerlink" href="#validacion" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="validacion">
+<h2>Validación<a class="headerlink" href="#validacion" title="Permalink to this headline">#</a></h2>
 <p>Probaremos cada modelo, a partir de matrices de confusión, las que retratan el error de los algoritmos.</p>
 <p>Los valores que se utilizarán no los ha “<strong>visto</strong>” el modelo, por lo que utilizará el <strong>aprendizaje adquirido</strong> a partir del entrenamiento para obtener la <strong>predicción</strong> a partir de estos datos “no conocidos”.</p>
 <p>¿Cómo funcionará ante esta prueba? Por eso, estamos <strong>validando</strong> su entrenamiento.</p>
@@ -2535,10 +2705,10 @@ Sus colores:
 <h3>Resultado para Alto Hospicio</h3><p>El algoritmo entrenado para la comuna de Alto Hospicio tiene una precisión del <strong>97.32142857142857%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      1.00      1.00        64
+Apertura Avanzada       1.00      1.00      1.00        65
  Apertura Inicial       1.00      0.91      0.95        33
       Preparación       0.77      1.00      0.87        10
-       Transición       1.00      1.00      1.00         5
+       Transición       1.00      1.00      1.00         4
 
          accuracy                           0.97       112
         macro avg       0.94      0.98      0.96       112
@@ -2549,9 +2719,9 @@ Apertura Avanzada       1.00      1.00      1.00        64
 <h3>Resultado para Camiña</h3><p>El algoritmo entrenado para la comuna de Camiña tiene una precisión del <strong>97.32142857142857%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       0.97      1.00      0.98        64
+Apertura Avanzada       0.97      1.00      0.98        65
  Apertura Inicial       0.97      0.94      0.95        33
-      Preparación       1.00      0.93      0.97        15
+      Preparación       1.00      0.93      0.96        14
 
          accuracy                           0.97       112
         macro avg       0.98      0.96      0.97       112
@@ -2562,13 +2732,13 @@ Apertura Avanzada       0.97      1.00      0.98        64
 <h3>Resultado para Colchane</h3><p>El algoritmo entrenado para la comuna de Colchane tiene una precisión del <strong>87.5%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       0.88      1.00      0.93        64
+Apertura Avanzada       0.88      1.00      0.94        65
  Apertura Inicial       0.95      0.69      0.80        29
       Preparación       0.71      0.91      0.80        11
-       Transición       1.00      0.50      0.67         8
+       Transición       1.00      0.43      0.60         7
 
          accuracy                           0.88       112
-        macro avg       0.89      0.77      0.80       112
+        macro avg       0.89      0.76      0.78       112
      weighted avg       0.89      0.88      0.87       112
 </pre></div>
 </div>
@@ -2576,13 +2746,13 @@ Apertura Avanzada       0.88      1.00      0.93        64
 <h3>Resultado para Huara</h3><p>El algoritmo entrenado para la comuna de Huara tiene una precisión del <strong>91.96428571428571%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       0.97      1.00      0.98        64
+Apertura Avanzada       0.97      1.00      0.98        65
  Apertura Inicial       0.86      0.94      0.90        33
       Preparación       0.75      0.60      0.67        10
-       Transición       1.00      0.40      0.57         5
+       Transición       1.00      0.25      0.40         4
 
          accuracy                           0.92       112
-        macro avg       0.90      0.73      0.78       112
+        macro avg       0.90      0.70      0.74       112
      weighted avg       0.92      0.92      0.91       112
 </pre></div>
 </div>
@@ -2590,10 +2760,10 @@ Apertura Avanzada       0.97      1.00      0.98        64
 <h3>Resultado para Iquique</h3><p>El algoritmo entrenado para la comuna de Iquique tiene una precisión del <strong>97.32142857142857%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      1.00      1.00        64
+Apertura Avanzada       1.00      1.00      1.00        65
  Apertura Inicial       1.00      0.91      0.95        33
       Preparación       0.77      1.00      0.87        10
-       Transición       1.00      1.00      1.00         5
+       Transición       1.00      1.00      1.00         4
 
          accuracy                           0.97       112
         macro avg       0.94      0.98      0.96       112
@@ -2604,13 +2774,13 @@ Apertura Avanzada       1.00      1.00      1.00        64
 <h3>Resultado para Pica</h3><p>El algoritmo entrenado para la comuna de Pica tiene una precisión del <strong>91.07142857142857%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      0.95      0.98        64
+Apertura Avanzada       1.00      0.95      0.98        65
  Apertura Inicial       0.83      1.00      0.91        29
       Preparación       1.00      0.50      0.67        14
-       Transición       0.56      1.00      0.71         5
+       Transición       0.50      1.00      0.67         4
 
          accuracy                           0.91       112
-        macro avg       0.85      0.86      0.82       112
+        macro avg       0.83      0.86      0.80       112
      weighted avg       0.94      0.91      0.91       112
 </pre></div>
 </div>
@@ -2618,21 +2788,21 @@ Apertura Avanzada       1.00      0.95      0.98        64
 <h3>Resultado para Pozo Almonte</h3><p>El algoritmo entrenado para la comuna de Pozo Almonte tiene una precisión del <strong>95.53571428571429%</strong>.</p>
 <h3>Reporte de clasificador</h3><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   precision    recall  f1-score   support
 
-Apertura Avanzada       1.00      1.00      1.00        64
+Apertura Avanzada       1.00      1.00      1.00        65
  Apertura Inicial       0.94      0.94      0.94        33
       Preparación       0.73      0.80      0.76        10
-       Transición       1.00      0.80      0.89         5
+       Transición       1.00      0.75      0.86         4
 
          accuracy                           0.96       112
-        macro avg       0.92      0.88      0.90       112
+        macro avg       0.92      0.87      0.89       112
      weighted avg       0.96      0.96      0.96       112
 </pre></div>
 </div>
 <h3>Matriz de confusión</h3><img alt="../../_images/2_thisistheway_50_42.png" src="../../_images/2_thisistheway_50_42.png" />
 </div>
 </div>
-<div class="section" id="ruido">
-<h3>Ruido<a class="headerlink" href="#ruido" title="Permalink to this headline">¶</a></h3>
+<section id="ruido">
+<h3>Ruido<a class="headerlink" href="#ruido" title="Permalink to this headline">#</a></h3>
 <p>Algo hace ruido, y es la suposición de que, en el caso de los valores de entrada, <strong>se está suponiendo se mantienen invariables desde el último dato disponible</strong>. ¿Por qué sucede ésto? Pues, los datos que estamos trabajando son actualizados según la publicación del informe epidemiológico, que si bien tiene actualización periódica, no es una actualización diaria como con las cifras regionales.</p>
 <p>Es una falencia que siempre ha existido: <strong>No existen datos segregados por comuna que sean actualizados de forma diaria</strong>.</p>
 <p>¿Podríamos arreglarlo? ¡Por supuesto! Algunas ideas:</p>
@@ -2641,14 +2811,14 @@ Apertura Avanzada       1.00      1.00      1.00        64
 <li><p>Podría ser posible realizar una minería de datos en el Twitter del Gore de Tarapacá o del Seremi de Salud, y de esa forma, obtener los casos segregados por comuna. <i>Lamentablemente, aún no tomo un curso de minería de datos</i>.</p></li>
 <li><p>Incluso, podría ser posible desarrollar un algoritmo que pueda predecir la cantidad de casos nuevos, segregados por comuna.</p></li>
 </ul>
-</div>
-<div class="section" id="otras-cosas-por-mejorar">
-<h3>Otras cosas por mejorar<a class="headerlink" href="#otras-cosas-por-mejorar" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="otras-cosas-por-mejorar">
+<h3>Otras cosas por mejorar<a class="headerlink" href="#otras-cosas-por-mejorar" title="Permalink to this headline">#</a></h3>
 <p>Cualquier aporte o recomendación, por favor, hacerla llegar.</p>
-</div>
-</div>
-<div class="section" id="automatizando-salida-para-asistenciacovid19">
-<h2>Automatizando salida para asistenciacovid19<a class="headerlink" href="#automatizando-salida-para-asistenciacovid19" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="automatizando-salida-para-asistenciacovid19">
+<h2>Automatizando salida para asistenciacovid19<a class="headerlink" href="#automatizando-salida-para-asistenciacovid19" title="Permalink to this headline">#</a></h2>
 <p>Una sección adelantada. ¡Habrá mayor detalle en el siguiente notebook!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2723,9 +2893,9 @@ Apertura Avanzada       1.00      1.00      1.00        64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="informacion-de-sesion">
-<h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="informacion-de-sesion">
+<h2>Información de sesión<a class="headerlink" href="#informacion-de-sesion" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_info</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">std_lib</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_req_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">req_file_name</span><span class="o">=</span><span class="s1">&#39;2_requeriments.txt&#39;</span><span class="p">)</span>
@@ -2972,13 +3142,13 @@ Apertura Avanzada       1.00      1.00      1.00        64
             Linux-5.13.0-1025-azure-x86_64-with-debian-bullseye-sid
             2 logical CPU cores, x86_64
             -----
-            Session information updated at 2022-06-03 00:26
+            Session information updated at 2022-06-03 15:59
             </pre>
             </details></div></div>
 </div>
-</div>
-<div class="section" id="bibliografia-de-esta-pagina">
-<h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bibliografia-de-esta-pagina">
+<h2>Bibliografía de esta página<a class="headerlink" href="#bibliografia-de-esta-pagina" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id66">
 <dl class="footnote brackets">
 <dt class="label" id="footcite-sergio-montoro"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -3023,8 +3193,8 @@ Apertura Avanzada       1.00      1.00      1.00        64
 </dl>
 </div>
 <hr class="footnotes docutils" />
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3048,9 +3218,11 @@ Apertura Avanzada       1.00      1.00      1.00        64
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="1_thisistheway.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -3066,27 +3238,31 @@ Apertura Avanzada       1.00      1.00      1.00        64
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Alejandro Dinamarca Cáceres<br/>
+  
+      &copy; Copyright 2021. Numeral.lab.<br/>
+    <div class="extra_footer">
+      Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
+    </div>
+</p>
+        </footer>
+    </div>
     
-      By Alejandro Dinamarca Cáceres<br/>
-    
-        &copy; Copyright 2021. Numeral.lab.<br/>
-      <div class="extra_footer">
-        Por <a href="https://www.linkedin.com/in/alejandrodinamarca/">Alejandro Fabián Dinamarca Cáceres</a>. <a href="https://doi.org/10.5281/zenodo.5044609"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5044609.svg" alt="DOI"></a> <a href="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml"><img src="https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml/badge.svg" alt="actualiza_libro"></a>
-      </div>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
