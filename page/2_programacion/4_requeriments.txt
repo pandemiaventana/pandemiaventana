@@ -21,6 +21,6 @@ sklearn==0.24.2
 time
 types
 IPython==7.34.0
-jupyter_client==7.3.2
+jupyter_client==7.3.3
 jupyter_core==4.10.0
 notebook==6.4.11
