@@ -1940,82 +1940,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/ops/array_ops.py</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
-<span class="g g-Whitespace">    </span><span class="mi">165</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">166</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/computation/expressions.py</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span>             <span class="c1"># error: &quot;None&quot; not callable</span>
-<span class="ne">--&gt; </span><span class="mi">239</span>             <span class="k">return</span> <span class="n">_evaluate</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="k">return</span> <span class="n">_evaluate_standard</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/computation/expressions.py</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>         <span class="n">_store_test_result</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">69</span>     <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> 
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3616</span><span class="o">/</span><span class="mf">3557935227.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span> 
-<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="c1">### UCI diaria aproximada, real y error absoluto</span>
-<span class="ne">--&gt; </span><span class="mi">260</span> <span class="n">uci_aprox</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">uci_diaria</span> <span class="o">+</span> <span class="n">uci_ocupadas_nocovid</span><span class="p">)</span><span class="o">/</span><span class="n">uci_habilitadas</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span> <span class="c1">### Rellenamos con últimos disponibles datos las filas faltantes</span>
-<span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="n">uci_aprox</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">uci_aprox</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">():]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">uci_diaria</span> <span class="o">+</span> <span class="n">uci_ocupadas_nocovid</span><span class="p">[</span><span class="n">uci_ocupadas_nocovid</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">/</span><span class="n">uci_habilitadas</span><span class="p">[</span><span class="n">uci_habilitadas</span><span class="o">.</span><span class="n">last_valid_index</span><span class="p">()])</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/ops/common.py</span> in <span class="ni">new_method</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span>         <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span> 
-<span class="ne">---&gt; </span><span class="mi">69</span>         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> 
-<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="k">return</span> <span class="n">new_method</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/arraylike.py</span> in <span class="ni">__add__</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__add__&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">92</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arith_method</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span> 
-<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__radd__&quot;</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/series.py</span> in <span class="ni">_arith_method</span><span class="nt">(self, other, op)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5524</span> 
-<span class="g g-Whitespace">   </span><span class="mi">5525</span>         <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">5526</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">arithmetic_op</span><span class="p">(</span><span class="n">lvalues</span><span class="p">,</span> <span class="n">rvalues</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5527</span> 
-<span class="g g-Whitespace">   </span><span class="mi">5528</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_result</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">res_name</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/ops/array_ops.py</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>         <span class="n">_bool_arith_check</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span> 
-<span class="ne">--&gt; </span><span class="mi">224</span>         <span class="n">res_values</span> <span class="o">=</span> <span class="n">_na_arithmetic_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> 
-<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">return</span> <span class="n">res_values</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/ops/array_ops.py</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span>             <span class="c1"># Don&#39;t do this for comparisons, as that will handle complex numbers</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span>             <span class="c1">#  incorrectly, see GH#32047</span>
-<span class="ne">--&gt; </span><span class="mi">173</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_masked_arith_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span>             <span class="k">raise</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/ops/array_ops.py</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="c1"># See GH#5284, GH#5035, GH#19448 for historical reference</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">112</span>             <span class="n">result</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">xrav</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">yrav</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span> 
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="k">else</span><span class="p">:</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -2253,12 +2177,12 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>2020-03-03</th>
-      <td>0.00</td>
+      <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.00</td>
+      <td>0</td>
       <td>0.00</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2307,12 +2231,12 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>2020-03-04</th>
-      <td>0.00</td>
+      <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.00</td>
+      <td>0</td>
       <td>0.00</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2361,12 +2285,12 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>2020-03-05</th>
-      <td>0.00</td>
+      <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.00</td>
+      <td>0</td>
       <td>0.00</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2415,12 +2339,12 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>2020-03-06</th>
-      <td>0.00</td>
+      <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.00</td>
+      <td>0</td>
       <td>0.00</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2469,12 +2393,12 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>2020-03-07</th>
-      <td>0.00</td>
+      <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.00</td>
+      <td>0</td>
       <td>0.00</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2576,31 +2500,31 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-01-15</th>
-      <td>52,716.00</td>
-      <td>46,573.00</td>
-      <td>837.00</td>
-      <td>5,220.00</td>
+      <th>2022-06-11</th>
+      <td>81338</td>
+      <td>79,878.00</td>
+      <td>1,092.00</td>
+      <td>292.00</td>
       <td>0.00</td>
-      <td>1,136.00</td>
-      <td>603.00</td>
-      <td>98.00</td>
-      <td>435.00</td>
-      <td>273.00</td>
-      <td>116.00</td>
-      <td>563.00</td>
+      <td>74</td>
+      <td>30.00</td>
+      <td>18.00</td>
+      <td>26.00</td>
+      <td>15.00</td>
+      <td>338.00</td>
+      <td>66.00</td>
+      <td>0.00</td>
+      <td>542.00</td>
+      <td>202,112.00</td>
+      <td>1,389.00</td>
+      <td>978,216.00</td>
+      <td>143.00</td>
+      <td>87.00</td>
+      <td>2.00</td>
+      <td>24.00</td>
       <td>1.00</td>
-      <td>893.00</td>
-      <td>88,564.00</td>
-      <td>3,309.00</td>
-      <td>755,909.00</td>
-      <td>455.00</td>
-      <td>403.00</td>
-      <td>7.00</td>
-      <td>31.00</td>
-      <td>5.00</td>
-      <td>20.00</td>
-      <td>73.52</td>
+      <td>15.00</td>
+      <td>62.50</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
@@ -2611,15 +2535,15 @@ title="Print to PDF"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>16.84</td>
-      <td>218.67</td>
-      <td>2.54</td>
-      <td>1.29</td>
-      <td>73.52</td>
+      <td>2.29</td>
+      <td>285.29</td>
+      <td>1.09</td>
+      <td>1.32</td>
+      <td>62.50</td>
       <td>0.00</td>
-      <td>197.13</td>
-      <td>30.57</td>
-      <td>25.29</td>
+      <td>14.85</td>
+      <td>2.77</td>
+      <td>3.29</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2627,142 +2551,34 @@ title="Print to PDF"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1,363.73</td>
+      <td>76.29</td>
     </tr>
     <tr>
-      <th>2022-01-16</th>
-      <td>53,576.00</td>
-      <td>47,187.00</td>
-      <td>837.00</td>
-      <td>5,465.00</td>
+      <th>2022-06-12</th>
+      <td>81394</td>
+      <td>79,921.00</td>
+      <td>1,092.00</td>
+      <td>304.00</td>
       <td>0.00</td>
-      <td>877.00</td>
-      <td>376.00</td>
-      <td>146.00</td>
-      <td>355.00</td>
-      <td>259.00</td>
-      <td>122.00</td>
-      <td>614.00</td>
-      <td>0.00</td>
-      <td>694.00</td>
-      <td>89,258.00</td>
-      <td>2,872.00</td>
-      <td>758,781.00</td>
-      <td>455.00</td>
-      <td>419.00</td>
-      <td>7.00</td>
-      <td>31.00</td>
+      <td>51</td>
+      <td>15.00</td>
+      <td>30.00</td>
       <td>6.00</td>
-      <td>16.00</td>
-      <td>72.94</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>18.05</td>
-      <td>218.67</td>
-      <td>2.44</td>
-      <td>0.77</td>
-      <td>72.94</td>
+      <td>24.00</td>
+      <td>339.00</td>
+      <td>43.00</td>
       <td>0.00</td>
-      <td>210.23</td>
-      <td>37.32</td>
-      <td>28.30</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1,427.74</td>
-    </tr>
-    <tr>
-      <th>2022-01-17</th>
-      <td>54,544.00</td>
-      <td>47,814.00</td>
-      <td>840.00</td>
-      <td>5,802.00</td>
-      <td>0.00</td>
-      <td>982.00</td>
-      <td>401.00</td>
-      <td>140.00</td>
-      <td>441.00</td>
-      <td>184.00</td>
-      <td>130.00</td>
-      <td>627.00</td>
-      <td>3.00</td>
-      <td>595.00</td>
-      <td>89,853.00</td>
-      <td>3,308.00</td>
-      <td>762,089.00</td>
-      <td>455.00</td>
-      <td>373.00</td>
-      <td>7.00</td>
-      <td>31.00</td>
-      <td>8.00</td>
-      <td>21.00</td>
-      <td>76.10</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>19.61</td>
-      <td>219.45</td>
-      <td>2.10</td>
-      <td>1.12</td>
-      <td>76.10</td>
-      <td>0.00</td>
-      <td>222.51</td>
-      <td>30.92</td>
-      <td>28.95</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1,515.78</td>
-    </tr>
-    <tr>
-      <th>2022-01-18</th>
-      <td>55,489.00</td>
-      <td>48,569.00</td>
-      <td>840.00</td>
-      <td>5,992.00</td>
+      <td>782.00</td>
+      <td>202,894.00</td>
+      <td>1,879.00</td>
+      <td>980,095.00</td>
+      <td>143.00</td>
+      <td>93.00</td>
+      <td>2.00</td>
+      <td>24.00</td>
       <td>1.00</td>
-      <td>944.00</td>
-      <td>460.00</td>
-      <td>86.00</td>
-      <td>398.00</td>
-      <td>186.00</td>
-      <td>141.00</td>
-      <td>755.00</td>
-      <td>0.00</td>
-      <td>580.00</td>
-      <td>90,433.00</td>
-      <td>3,203.00</td>
-      <td>765,292.00</td>
-      <td>455.00</td>
-      <td>398.00</td>
-      <td>7.00</td>
-      <td>31.00</td>
-      <td>9.00</td>
-      <td>16.00</td>
-      <td>77.42</td>
+      <td>17.00</td>
+      <td>64.88</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
@@ -2773,15 +2589,15 @@ title="Print to PDF"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>20.42</td>
-      <td>219.45</td>
-      <td>1.85</td>
-      <td>0.96</td>
-      <td>71.43</td>
-      <td>5.99</td>
-      <td>233.63</td>
-      <td>32.07</td>
-      <td>30.46</td>
+      <td>2.20</td>
+      <td>285.29</td>
+      <td>1.10</td>
+      <td>0.69</td>
+      <td>64.88</td>
+      <td>0.00</td>
+      <td>14.97</td>
+      <td>3.07</td>
+      <td>3.45</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2789,32 +2605,140 @@ title="Print to PDF"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1,565.42</td>
+      <td>79.42</td>
     </tr>
     <tr>
-      <th>2022-01-19</th>
-      <td>56,461.00</td>
-      <td>49,340.00</td>
-      <td>840.00</td>
-      <td>6,193.00</td>
-      <td>0.00</td>
-      <td>974.00</td>
-      <td>510.00</td>
-      <td>140.00</td>
+      <th>2022-06-13</th>
+      <td>81451</td>
+      <td>79,956.00</td>
+      <td>1,092.00</td>
       <td>324.00</td>
-      <td>312.00</td>
-      <td>145.00</td>
-      <td>771.00</td>
       <td>0.00</td>
-      <td>990.00</td>
-      <td>91,423.00</td>
-      <td>2,479.00</td>
-      <td>767,771.00</td>
-      <td>455.00</td>
-      <td>438.00</td>
-      <td>7.00</td>
-      <td>NaN</td>
+      <td>55</td>
+      <td>22.00</td>
+      <td>25.00</td>
       <td>8.00</td>
+      <td>23.00</td>
+      <td>341.00</td>
+      <td>35.00</td>
+      <td>0.00</td>
+      <td>396.00</td>
+      <td>203,290.00</td>
+      <td>1,816.00</td>
+      <td>981,911.00</td>
+      <td>143.00</td>
+      <td>81.00</td>
+      <td>2.00</td>
+      <td>24.00</td>
+      <td>1.00</td>
+      <td>18.00</td>
+      <td>67.86</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.19</td>
+      <td>285.29</td>
+      <td>1.07</td>
+      <td>1.08</td>
+      <td>67.86</td>
+      <td>0.00</td>
+      <td>15.26</td>
+      <td>5.81</td>
+      <td>3.57</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>84.65</td>
+    </tr>
+    <tr>
+      <th>2022-06-14</th>
+      <td>81518</td>
+      <td>80,049.00</td>
+      <td>1,092.00</td>
+      <td>298.00</td>
+      <td>0.00</td>
+      <td>62</td>
+      <td>29.00</td>
+      <td>21.00</td>
+      <td>12.00</td>
+      <td>17.00</td>
+      <td>344.00</td>
+      <td>93.00</td>
+      <td>0.00</td>
+      <td>521.00</td>
+      <td>203,811.00</td>
+      <td>1,370.00</td>
+      <td>983,281.00</td>
+      <td>143.00</td>
+      <td>87.00</td>
+      <td>2.00</td>
+      <td>24.00</td>
+      <td>1.00</td>
+      <td>17.00</td>
+      <td>69.64</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.50</td>
+      <td>285.29</td>
+      <td>1.15</td>
+      <td>1.13</td>
+      <td>75.00</td>
+      <td>5.36</td>
+      <td>16.46</td>
+      <td>3.26</td>
+      <td>3.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>77.85</td>
+    </tr>
+    <tr>
+      <th>2022-06-15</th>
+      <td>81604</td>
+      <td>80,108.00</td>
+      <td>1,092.00</td>
+      <td>325.00</td>
+      <td>0.00</td>
+      <td>85</td>
+      <td>45.00</td>
+      <td>17.00</td>
+      <td>23.00</td>
+      <td>49.00</td>
+      <td>345.00</td>
+      <td>59.00</td>
+      <td>0.00</td>
+      <td>836.00</td>
+      <td>204,647.00</td>
+      <td>1,703.00</td>
+      <td>984,984.00</td>
+      <td>143.00</td>
+      <td>99.00</td>
+      <td>2.00</td>
+      <td>NaN</td>
+      <td>1.00</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2827,27 +2751,27 @@ title="Print to PDF"
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>22.07</td>
-      <td>219.45</td>
-      <td>1.75</td>
-      <td>1.03</td>
-      <td>72.81</td>
+      <td>2.48</td>
+      <td>285.29</td>
+      <td>1.16</td>
+      <td>1.37</td>
+      <td>75.00</td>
       <td>NaN</td>
-      <td>247.03</td>
-      <td>31.52</td>
-      <td>30.91</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>17.17</td>
+      <td>5.86</td>
+      <td>3.99</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1,617.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>84.91</td>
     </tr>
   </tbody>
 </table>
-<p>688 rows × 156 columns</p>
+<p>835 rows × 156 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -3331,27 +3255,27 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 19 de enero de 2022 🕑. 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte DIARIO, 15 de junio de 2022 🕑. 
 
-• Infectados 974 casos nuevos de los cuales 510 con síntomas, 140 sin síntomas y 324 sin notificar, dando un total de 56.461 casos confirmados. Adicionalmente, 312 casos nuevos confirmados por antígeno y 145 casos totales con sospecha de reinfección. 🦠
-• Recuperadas 771 personas, sumando 49.340 recuperados totales. 💪
-• Perdieron la vida 0 persona(s), sumando 840 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
-• Informados 2.479 exámenes PCR dando un total de 767.771 exámenes PCR totales en la región. En antígenos, 990 informados y 91.423 acumulados. 🌡️
-• Respecto a residencias sanitarias, 7 recintos de hospedaje con 455 cupos, de los cuales 438 están utilizados. 🏨
-• Se reportaron 6.193 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 1.617. 🧪
-• La tasa de crecimiento es del 1,03: curva de contagios al alza.
-• Hasta ayer, 8 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 72,8% ± 6,0%. 🆘
-• La positividad PCR fue del 26,7%, con una positividad media móvil semanal del 22,07%. En antígeno, un 31,52% de positividad. 😷
-• De cada cien mil habitantes en la región, 219 fallecen por COVID-19. 😵
-• El Re Regional corresponde a 1,89. 💊
-• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 247,0. 💦
-• En el proceso de vacunación, 80,6% vacunados de la población total (al menos, 308.585 personas con 2° dosis o única). Con cuarta dosis se encuentran vacunados un 0.1% de la población objetivo. 💦
+• Infectados 85 casos nuevos de los cuales 45 con síntomas, 17 sin síntomas y 23 sin notificar, dando un total de 81.604 casos confirmados. Adicionalmente, 49 casos nuevos confirmados por antígeno y 345 casos totales con sospecha de reinfección. 🦠
+• Recuperadas 59 personas, sumando 80.108 recuperados totales. 💪
+• Perdieron la vida 0 persona(s), sumando 1.092 fallecidos totales. Nuestro profundo pésame a las familias. 🕊️
+• Informados 1.703 exámenes PCR dando un total de 984.984 exámenes PCR totales en la región. En antígenos, 836 informados y 204.647 acumulados. 🌡️
+• Respecto a residencias sanitarias, 2 recintos de hospedaje con 143 cupos, de los cuales 99 están utilizados. 🏨
+• Se reportaron 325 casos activos y 0 activos probables. La tasa de activos (incidencia) es de 84. 🧪
+• La tasa de crecimiento es del 1,37: curva de contagios al alza.
+• Hasta ayer, 1 pacientes en unidad de cuidados intensivos con COVID-19 confirmado. Esto nos da una ocupación UCI media móvil semanal aproximada del 75,0% ± 5,4%. 🆘
+• La positividad PCR fue del 2,11%, con una positividad media móvil semanal del 2,48%. En antígeno, un 5,86% de positividad. 😷
+• De cada cien mil habitantes en la región, 285 fallecen por COVID-19. 😵
+• El Re Regional corresponde a 1,42. 💊
+• La tasa de casos nuevos (media móvil semanal por cien mil habitantes) corresponde a 17,2. 💦
+• En el proceso de vacunación, 84,7% vacunados de la población total (al menos, 324.276 personas con 2° dosis o única). Con cuarta dosis se encuentran vacunados un 33.3% de la población objetivo. 💦
 
 *Fuente desde Min. de Ciencia y Tecnología, ICOVIDCHILE y @juancriolivares
 *La ocupación UCI es una aproximación de la situación de camas críticas regionales.
 *Datos actualizados hasta las 21 hrs. del día anterior.
 
-[ CAMBIOS EN LA 571° EDICION ⚙️ ]
+[ CAMBIOS EN LA 718° EDICION ⚙️ ]
 • Ninguno.
 
 [ INFORMACIÓN ADICIONAL Y FE DE ERRATAS 🌌 ]
@@ -3621,7 +3545,7 @@ print(desc2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\dinam\AppData\Local\Temp/ipykernel_6060/1562497236.py:19: DeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:19: DeprecationWarning:
 
 `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -4380,8 +4304,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  5.99 %
-La media general del error es de:  0.58 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  5.36 %
+La media general del error es de:  0.47 %
 </pre></div>
 </div>
 <img alt="../../_images/1_thisistheway_52_1.png" src="../../_images/1_thisistheway_52_1.png" />
@@ -4499,281 +4423,256 @@ La media general del error es de:  0.58 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><details>
-<summary>Click to view session information</summary>
-<pre>
------
-PIL                 8.4.0
-bs4                 4.10.0
-datetime            NA
-json                2.0.9
-locale              NA
-markdownify         NA
-math                NA
-matplotlib          3.4.3
-natsort             8.0.2
-numpy               1.20.3
-os                  NA
-pandas              1.3.4
-pkg_resources       NA
-plotly              5.5.0
-pybtex              0.24.0
-requests            2.26.0
-scipy               1.7.1
-seaborn             0.11.2
-session_info        1.0.0
-sklearn             0.24.2
-time                NA
-types               NA
------
-</pre>
-<details>
-<summary>Click to view modules imported as dependencies</summary>
-<pre>
-abc                         NA
-anyio                       NA
-argparse                    1.1
-array                       NA
-ast                         NA
-asyncio                     NA
-atexit                      NA
-attr                        21.2.0
-babel                       2.9.1
-backcall                    0.2.0
-base64                      NA
-bdb                         NA
-beta_ufunc                  NA
-binascii                    NA
-binom_ufunc                 NA
-bisect                      NA
-bottleneck                  1.3.2
-brotli                      NA
-bz2                         NA
-cProfile                    NA
-calendar                    NA
-certifi                     2021.10.08
-cffi                        1.14.6
-chardet                     4.0.0
-charset_normalizer          2.0.4
-cmath                       NA
-cmd                         NA
-code                        NA
-codecs                      NA
-codeop                      NA
-collections                 NA
-colorama                    0.4.4
-colorsys                    NA
-concurrent                  NA
-configparser                NA
-contextlib                  NA
-contextvars                 NA
-copy                        NA
-copyreg                     NA
-csv                         1.0
-ctypes                      1.1.0
-cycler                      0.10.0
-cython_runtime              NA
-dataclasses                 NA
-dateutil                    2.8.2
-debugpy                     1.4.1
-decimal                     1.70
-decorator                   5.1.0
-defusedxml                  0.7.1
-difflib                     NA
-dis                         NA
-distutils                   3.9.7
-email                       NA
-encodings                   NA
-entrypoints                 0.3
-enum                        NA
-errno                       NA
-faulthandler                NA
-filecmp                     NA
-fnmatch                     NA
-fractions                   NA
-functools                   NA
-gc                          NA
-genericpath                 NA
-getopt                      NA
-getpass                     NA
-gettext                     NA
-glob                        NA
-gzip                        NA
-hashlib                     NA
-heapq                       NA
-hmac                        NA
-html                        NA
-html5lib                    1.1
-http                        NA
-idna                        3.2
-imp                         NA
-importlib                   NA
-inspect                     NA
-io                          NA
-ipaddress                   1.0
-ipykernel                   6.4.1
-ipython_genutils            0.2.0
-ipywidgets                  7.6.5
-itertools                   NA
-jedi                        0.18.0
-jinja2                      2.11.3
-joblib                      1.1.0
-json5                       NA
-jsonschema                  3.2.0
-jupyter_server              1.4.1
-jupyterlab_server           2.8.2
-keyword                     NA
-kiwisolver                  1.3.1
-linecache                   NA
-logging                     0.5.1.2
-lxml                        4.6.3
-lzma                        NA
-markupsafe                  1.1.1
-marshal                     4
-matplotlib_inline           NA
-mimetypes                   NA
-mkl                         2.4.0
-mmap                        NA
-mpl_toolkits                NA
-msvcrt                      NA
-multiprocessing             NA
-nbclassic                   NA
-nbformat                    5.1.3
-nbinom_ufunc                NA
-netrc                       NA
-nt                          NA
-ntpath                      NA
-ntsecuritycon               NA
-nturl2path                  NA
-numbers                     NA
-numexpr                     2.7.3
-olefile                     0.46
-opcode                      NA
-operator                    NA
-packaging                   21.0
-parso                       0.8.2
-pathlib                     NA
-pdb                         NA
-pickle                      NA
-pickleshare                 0.7.5
-pkgutil                     NA
-platform                    1.0.8
-plistlib                    NA
-posixpath                   NA
-pprint                      NA
-profile                     NA
-prometheus_client           NA
-prompt_toolkit              3.0.20
-pstats                      NA
-psutil                      5.8.0
-pvectorc                    NA
-pydev_ipython               NA
-pydevconsole                NA
-pydevd                      2.4.1
-pydevd_concurrency_analyser NA
-pydevd_file_utils           NA
-pydevd_plugins              NA
-pydevd_tracing              NA
-pydoc                       NA
-pydoc_data                  NA
-pyexpat                     NA
-pygments                    2.10.0
-pyparsing                   3.0.4
-pyrsistent                  NA
-pythoncom                   NA
-pytz                        2021.3
-pywintypes                  NA
-queue                       NA
-quopri                      NA
-random                      NA
-re                          2.2.1
-reprlib                     NA
-runpy                       NA
-secrets                     NA
-select                      NA
-selectors                   NA
-send2trash                  NA
-shlex                       NA
-shutil                      NA
-signal                      NA
-site                        NA
-six                         1.16.0
-sniffio                     1.2.0
-socket                      NA
-socketserver                0.4
-socks                       1.7.1
-soupsieve                   2.2.1
-sphinxcontrib               NA
-sqlite3                     2.6.0
-sre_compile                 NA
-sre_constants               NA
-sre_parse                   NA
-ssl                         NA
-stat                        NA
-statsmodels                 0.12.2
-storemagic                  NA
-string                      NA
-stringprep                  NA
-struct                      NA
-subprocess                  NA
-sys                         3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-sysconfig                   NA
-tarfile                     0.9.0
-tempfile                    NA
-tenacity                    NA
-textwrap                    NA
-threading                   NA
-timeit                      NA
-token                       NA
-tokenize                    NA
-tornado                     6.1
-traceback                   NA
-traitlets                   5.1.0
-typing                      NA
-typing_extensions           NA
-unicodedata                 NA
-unittest                    NA
-urllib                      NA
-urllib3                     1.26.7
-uu                          NA
-uuid                        NA
-warnings                    NA
-wcwidth                     0.2.5
-weakref                     NA
-webbrowser                  NA
-webencodings                0.5.1
-win32api                    NA
-win32com                    NA
-win32con                    NA
-win32security               NA
-win32trace                  NA
-winerror                    NA
-winreg                      NA
-wsgiref                     NA
-xml                         NA
-xmlrpc                      NA
-zipfile                     NA
-zipimport                   NA
-zlib                        1.0
-zmq                         22.2.1
-zope                        NA
-</pre>
-</details> <!-- seems like this ends pre, so might as well be explicit -->
-<pre>
------
-IPython             7.29.0
-jupyter_client      6.1.12
-jupyter_core        4.8.1
-jupyterlab          3.2.1
-notebook            6.4.5
------
-Python 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-Windows-10-10.0.22000-SP0
-12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
------
-Session information updated at 2022-01-19 15:39
-</pre>
-</details></div></div>
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            PIL                 8.4.0
+            bs4                 4.11.1
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            markdownify         NA
+            math                NA
+            matplotlib          3.4.3
+            natsort             8.1.0
+            numpy               1.20.3
+            os                  NA
+            pandas              1.3.4
+            pkg_resources       NA
+            plotly              5.5.0
+            pybtex              0.24.0
+            requests            2.26.0
+            scipy               1.7.1
+            seaborn             0.11.2
+            session_info        1.0.0
+            sklearn             0.24.2
+            time                NA
+            types               NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                 NA
+            argparse            1.1
+            array               NA
+            ast                 NA
+            asyncio             NA
+            atexit              NA
+            attr                21.4.0
+            backcall            0.2.0
+            base64              NA
+            bdb                 NA
+            beta_ufunc          NA
+            binascii            NA
+            binom_ufunc         NA
+            bisect              NA
+            bz2                 NA
+            cProfile            NA
+            calendar            NA
+            certifi             2022.05.18.1
+            cffi                1.15.0
+            charset_normalizer  2.0.12
+            cmath               NA
+            cmd                 NA
+            code                NA
+            codecs              NA
+            codeop              NA
+            collections         NA
+            colorama            0.4.4
+            colorsys            NA
+            concurrent          NA
+            configparser        NA
+            contextlib          NA
+            contextvars         NA
+            copy                NA
+            copyreg             NA
+            csv                 1.0
+            ctypes              1.1.0
+            curses              NA
+            cycler              0.10.0
+            cython_runtime      NA
+            dataclasses         NA
+            dateutil            2.8.2
+            debugpy             1.6.0
+            decimal             1.70
+            decorator           5.1.1
+            defusedxml          0.7.1
+            difflib             NA
+            dis                 NA
+            distutils           3.7.13
+            email               NA
+            encodings           NA
+            entrypoints         0.4
+            enum                NA
+            errno               NA
+            fastjsonschema      NA
+            faulthandler        NA
+            fcntl               NA
+            filecmp             NA
+            fnmatch             NA
+            fractions           NA
+            functools           NA
+            gc                  NA
+            genericpath         NA
+            getopt              NA
+            getpass             NA
+            gettext             NA
+            glob                NA
+            grp                 NA
+            gzip                NA
+            hashlib             NA
+            heapq               NA
+            hmac                NA
+            html                NA
+            http                NA
+            idna                3.3
+            importlib           NA
+            importlib_metadata  NA
+            inspect             NA
+            io                  NA
+            ipaddress           1.0
+            ipykernel           6.14.0
+            ipython_genutils    0.2.0
+            ipywidgets          7.7.0
+            itertools           NA
+            jedi                0.18.1
+            joblib              1.1.0
+            jsonschema          3.2.0
+            keyword             NA
+            kiwisolver          1.4.3
+            linecache           NA
+            logging             0.5.1.2
+            lzma                NA
+            marshal             4
+            matplotlib_inline   NA
+            mimetypes           NA
+            mmap                NA
+            mpl_toolkits        NA
+            multiprocessing     NA
+            nbformat            5.4.0
+            nbinom_ufunc        NA
+            netrc               NA
+            ntpath              NA
+            numbers             NA
+            opcode              NA
+            operator            NA
+            packaging           21.3
+            parso               0.8.3
+            pathlib             NA
+            pdb                 NA
+            pexpect             4.8.0
+            pickle              NA
+            pickleshare         0.7.5
+            pkgutil             NA
+            platform            1.0.8
+            plistlib            NA
+            posix               NA
+            posixpath           NA
+            pprint              NA
+            profile             NA
+            prompt_toolkit      3.0.29
+            pstats              NA
+            psutil              5.9.1
+            pty                 NA
+            ptyprocess          0.7.0
+            pvectorc            NA
+            pwd                 NA
+            pydev_ipython       NA
+            pydevconsole        NA
+            pydevd              2.8.0
+            pydevd_file_utils   NA
+            pydevd_plugins      NA
+            pydevd_tracing      NA
+            pydoc               NA
+            pydoc_data          NA
+            pyexpat             NA
+            pygments            2.12.0
+            pyparsing           3.0.9
+            pyrsistent          NA
+            pytz                2022.1
+            queue               NA
+            quopri              NA
+            random              NA
+            re                  2.2.1
+            reprlib             NA
+            resource            NA
+            runpy               NA
+            secrets             NA
+            select              NA
+            selectors           NA
+            shlex               NA
+            shutil              NA
+            signal              NA
+            site                NA
+            six                 1.16.0
+            socket              NA
+            socketserver        0.4
+            soupsieve           2.3.2.post1
+            sphinxcontrib       NA
+            sqlite3             2.6.0
+            sre_compile         NA
+            sre_constants       NA
+            sre_parse           NA
+            ssl                 NA
+            stat                NA
+            storemagic          NA
+            string              NA
+            stringprep          NA
+            struct              NA
+            subprocess          NA
+            sys                 3.7.13 (default, May  4 2022, 08:45:32) 
+[GCC 9.4.0]
+            sysconfig           NA
+            tarfile             0.9.0
+            tempfile            NA
+            tenacity            NA
+            termios             NA
+            textwrap            NA
+            threading           NA
+            timeit              NA
+            token               NA
+            tokenize            NA
+            tornado             6.1
+            traceback           NA
+            traitlets           5.2.2
+            tty                 NA
+            typing              NA
+            typing_extensions   NA
+            unicodedata         NA
+            unittest            NA
+            urllib              NA
+            urllib3             1.26.9
+            uu                  NA
+            uuid                NA
+            warnings            NA
+            wcwidth             0.2.5
+            weakref             NA
+            webbrowser          NA
+            xml                 NA
+            xmlrpc              NA
+            zipfile             NA
+            zipimport           NA
+            zipp                NA
+            zlib                1.0
+            zmq                 23.1.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.34.0
+            jupyter_client      7.3.4
+            jupyter_core        4.10.0
+            notebook            6.4.12
+            -----
+            Python 3.7.13 (default, May  4 2022, 08:45:32) [GCC 9.4.0]
+            Linux-5.13.0-1025-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2022-06-15 16:13
+            </pre>
+            </details></div></div>
 </div>
 </section>
 <section id="bibliografia-de-esta-pagina">
