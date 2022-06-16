@@ -3338,6 +3338,57 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">4</span><span class="n">_legado</span><span class="o">/</span><span class="mi">1</span><span class="n">_legado</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> += [string]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>             <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;sum_</span><span class="si">{}</span><span class="s1"> = natsorted(sum_</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">,</span> <span class="n">reporte</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">exec</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;for ipdf in sum_</span><span class="si">{}</span><span class="s1">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="s1">         display(Markdown(&quot; &lt;a href=&#39;https://docs.google.com/gview?url=https://github.com/pandemiaventana/pandemiaventana/raw/main/out/&quot; + reporte + &quot;/pdf/&quot; + ipdf + &quot;&amp;embedded=true&#39;&gt;&quot; + ipdf + &quot;&lt;/a&gt;&quot;))&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reporte</span><span class="p">))</span>
+
+<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">4</span><span class="n">_legado</span><span class="o">/</span><span class="mi">1</span><span class="n">_legado</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/natsort/natsort.py</span> in <span class="ni">natsorted</span><span class="nt">(seq, key, reverse, alg)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span> 
+<span class="g g-Whitespace">    </span><span class="mi">318</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">319</span><span class="s2">     return sorted(seq, reverse=reverse, key=natsort_keygen(key, alg))</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/natsort/utils.py</span> in <span class="ni">natsort_key</span><span class="nt">(val, key, string_func, bytes_func, num_func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span><span class="s2">     # Assume the input are strings, which is the most common case</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="s2">     try:</span>
+<span class="ne">--&gt; </span><span class="mi">334</span><span class="s2">         return string_func(cast(str, val))</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="s2">     except (TypeError, AttributeError):</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/natsort/utils.py</span> in <span class="ni">func</span><span class="nt">(x)</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span><span class="s2">         f = map(component_transform, e)  # Apply transform on components.</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span><span class="s2">         g = sep_inserter(f, sep)  # Insert &#39;&#39; between numbers.</span>
+<span class="ne">--&gt; </span><span class="mi">507</span><span class="s2">         return final_transform(g, original)  # Apply the final transform.</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span><span class="s2">     return func</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/natsort/utils.py</span> in <span class="ni">func</span><span class="nt">(split_val, val, _transform, _sep, _pre_sep)</span>
+<span class="g g-Whitespace">    </span><span class="mi">758</span><span class="s2">             _pre_sep: str = pre_sep,</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span><span class="s2">         ) -&gt; FinalTransform:</span>
+<span class="ne">--&gt; </span><span class="mi">760</span><span class="s2">             return tuple(split_val)</span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">762</span><span class="s2">     return func</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/natsort/utils.py</span> in <span class="ni">sep_inserter</span><span class="nt">(iterator, sep)</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span><span class="s2">         if type(first) in types and type(second) in types:</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span><span class="s2">             yield sep</span>
+<span class="ne">--&gt; </span><span class="mi">570</span><span class="s2">         yield second</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span><span class="s2">         # Now repeat in a loop.</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="highlight-### notranslate"><div class="highlight"><pre><span></span>cambios = &quot;&quot;&quot;• Ninguno&quot;&quot;&quot;
 
@@ -3545,7 +3596,7 @@ print(desc2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:19: DeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\dinam\AppData\Local\Temp/ipykernel_6060/1562497236.py:19: DeprecationWarning:
 
 `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -4304,8 +4355,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  5.36 %
-La media general del error es de:  0.47 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  5.99 %
+La media general del error es de:  0.58 %
 </pre></div>
 </div>
 <img alt="../../_images/1_thisistheway_52_1.png" src="../../_images/1_thisistheway_52_1.png" />
@@ -4423,256 +4474,281 @@ La media general del error es de:  0.47 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">            <details>
-            <summary>Click to view session information</summary>
-            <pre>
-            -----
-            PIL                 8.4.0
-            bs4                 4.11.1
-            datetime            NA
-            json                2.0.9
-            locale              NA
-            markdownify         NA
-            math                NA
-            matplotlib          3.4.3
-            natsort             8.1.0
-            numpy               1.20.3
-            os                  NA
-            pandas              1.3.4
-            pkg_resources       NA
-            plotly              5.5.0
-            pybtex              0.24.0
-            requests            2.26.0
-            scipy               1.7.1
-            seaborn             0.11.2
-            session_info        1.0.0
-            sklearn             0.24.2
-            time                NA
-            types               NA
-            -----
-            </pre>
-            <details>
-            <summary>Click to view modules imported as dependencies</summary>
-            <pre>
-            abc                 NA
-            argparse            1.1
-            array               NA
-            ast                 NA
-            asyncio             NA
-            atexit              NA
-            attr                21.4.0
-            backcall            0.2.0
-            base64              NA
-            bdb                 NA
-            beta_ufunc          NA
-            binascii            NA
-            binom_ufunc         NA
-            bisect              NA
-            bz2                 NA
-            cProfile            NA
-            calendar            NA
-            certifi             2022.06.15
-            cffi                1.15.0
-            charset_normalizer  2.0.12
-            cmath               NA
-            cmd                 NA
-            code                NA
-            codecs              NA
-            codeop              NA
-            collections         NA
-            colorama            0.4.5
-            colorsys            NA
-            concurrent          NA
-            configparser        NA
-            contextlib          NA
-            contextvars         NA
-            copy                NA
-            copyreg             NA
-            csv                 1.0
-            ctypes              1.1.0
-            curses              NA
-            cycler              0.10.0
-            cython_runtime      NA
-            dataclasses         NA
-            dateutil            2.8.2
-            debugpy             1.6.0
-            decimal             1.70
-            decorator           5.1.1
-            defusedxml          0.7.1
-            difflib             NA
-            dis                 NA
-            distutils           3.7.13
-            email               NA
-            encodings           NA
-            entrypoints         0.4
-            enum                NA
-            errno               NA
-            fastjsonschema      NA
-            faulthandler        NA
-            fcntl               NA
-            filecmp             NA
-            fnmatch             NA
-            fractions           NA
-            functools           NA
-            gc                  NA
-            genericpath         NA
-            getopt              NA
-            getpass             NA
-            gettext             NA
-            glob                NA
-            grp                 NA
-            gzip                NA
-            hashlib             NA
-            heapq               NA
-            hmac                NA
-            html                NA
-            http                NA
-            idna                3.3
-            importlib           NA
-            importlib_metadata  NA
-            inspect             NA
-            io                  NA
-            ipaddress           1.0
-            ipykernel           6.15.0
-            ipython_genutils    0.2.0
-            ipywidgets          7.7.0
-            itertools           NA
-            jedi                0.18.1
-            joblib              1.1.0
-            jsonschema          3.2.0
-            keyword             NA
-            kiwisolver          1.4.3
-            linecache           NA
-            logging             0.5.1.2
-            lzma                NA
-            marshal             4
-            matplotlib_inline   NA
-            mimetypes           NA
-            mmap                NA
-            mpl_toolkits        NA
-            multiprocessing     NA
-            nbformat            5.4.0
-            nbinom_ufunc        NA
-            netrc               NA
-            ntpath              NA
-            numbers             NA
-            opcode              NA
-            operator            NA
-            packaging           21.3
-            parso               0.8.3
-            pathlib             NA
-            pdb                 NA
-            pexpect             4.8.0
-            pickle              NA
-            pickleshare         0.7.5
-            pkgutil             NA
-            platform            1.0.8
-            plistlib            NA
-            posix               NA
-            posixpath           NA
-            pprint              NA
-            profile             NA
-            prompt_toolkit      3.0.29
-            pstats              NA
-            psutil              5.9.1
-            pty                 NA
-            ptyprocess          0.7.0
-            pvectorc            NA
-            pwd                 NA
-            pydev_ipython       NA
-            pydevconsole        NA
-            pydevd              2.8.0
-            pydevd_file_utils   NA
-            pydevd_plugins      NA
-            pydevd_tracing      NA
-            pydoc               NA
-            pydoc_data          NA
-            pyexpat             NA
-            pygments            2.12.0
-            pyparsing           3.0.9
-            pyrsistent          NA
-            pytz                2022.1
-            queue               NA
-            quopri              NA
-            random              NA
-            re                  2.2.1
-            reprlib             NA
-            resource            NA
-            runpy               NA
-            secrets             NA
-            select              NA
-            selectors           NA
-            shlex               NA
-            shutil              NA
-            signal              NA
-            site                NA
-            six                 1.16.0
-            socket              NA
-            socketserver        0.4
-            soupsieve           2.3.2.post1
-            sphinxcontrib       NA
-            sqlite3             2.6.0
-            sre_compile         NA
-            sre_constants       NA
-            sre_parse           NA
-            ssl                 NA
-            stat                NA
-            storemagic          NA
-            string              NA
-            stringprep          NA
-            struct              NA
-            subprocess          NA
-            sys                 3.7.13 (default, May  4 2022, 08:45:32) 
-[GCC 9.4.0]
-            sysconfig           NA
-            tarfile             0.9.0
-            tempfile            NA
-            tenacity            NA
-            termios             NA
-            textwrap            NA
-            threading           NA
-            timeit              NA
-            token               NA
-            tokenize            NA
-            tornado             6.1
-            traceback           NA
-            traitlets           5.3.0
-            tty                 NA
-            typing              NA
-            typing_extensions   NA
-            unicodedata         NA
-            unittest            NA
-            urllib              NA
-            urllib3             1.26.9
-            uu                  NA
-            uuid                NA
-            warnings            NA
-            wcwidth             0.2.5
-            weakref             NA
-            webbrowser          NA
-            xml                 NA
-            xmlrpc              NA
-            zipfile             NA
-            zipimport           NA
-            zipp                NA
-            zlib                1.0
-            zmq                 23.1.0
-            </pre>
-            </details> <!-- seems like this ends pre, so might as well be explicit -->
-            <pre>
-            -----
-            IPython             7.34.0
-            jupyter_client      7.3.4
-            jupyter_core        4.10.0
-            notebook            6.4.12
-            -----
-            Python 3.7.13 (default, May  4 2022, 08:45:32) [GCC 9.4.0]
-            Linux-5.13.0-1029-azure-x86_64-with-debian-bullseye-sid
-            2 logical CPU cores, x86_64
-            -----
-            Session information updated at 2022-06-16 20:58
-            </pre>
-            </details></div></div>
+<div class="output text_html"><details>
+<summary>Click to view session information</summary>
+<pre>
+-----
+PIL                 8.4.0
+bs4                 4.10.0
+datetime            NA
+json                2.0.9
+locale              NA
+markdownify         NA
+math                NA
+matplotlib          3.4.3
+natsort             8.0.2
+numpy               1.20.3
+os                  NA
+pandas              1.3.4
+pkg_resources       NA
+plotly              5.5.0
+pybtex              0.24.0
+requests            2.26.0
+scipy               1.7.1
+seaborn             0.11.2
+session_info        1.0.0
+sklearn             0.24.2
+time                NA
+types               NA
+-----
+</pre>
+<details>
+<summary>Click to view modules imported as dependencies</summary>
+<pre>
+abc                         NA
+anyio                       NA
+argparse                    1.1
+array                       NA
+ast                         NA
+asyncio                     NA
+atexit                      NA
+attr                        21.2.0
+babel                       2.9.1
+backcall                    0.2.0
+base64                      NA
+bdb                         NA
+beta_ufunc                  NA
+binascii                    NA
+binom_ufunc                 NA
+bisect                      NA
+bottleneck                  1.3.2
+brotli                      NA
+bz2                         NA
+cProfile                    NA
+calendar                    NA
+certifi                     2021.10.08
+cffi                        1.14.6
+chardet                     4.0.0
+charset_normalizer          2.0.4
+cmath                       NA
+cmd                         NA
+code                        NA
+codecs                      NA
+codeop                      NA
+collections                 NA
+colorama                    0.4.4
+colorsys                    NA
+concurrent                  NA
+configparser                NA
+contextlib                  NA
+contextvars                 NA
+copy                        NA
+copyreg                     NA
+csv                         1.0
+ctypes                      1.1.0
+cycler                      0.10.0
+cython_runtime              NA
+dataclasses                 NA
+dateutil                    2.8.2
+debugpy                     1.4.1
+decimal                     1.70
+decorator                   5.1.0
+defusedxml                  0.7.1
+difflib                     NA
+dis                         NA
+distutils                   3.9.7
+email                       NA
+encodings                   NA
+entrypoints                 0.3
+enum                        NA
+errno                       NA
+faulthandler                NA
+filecmp                     NA
+fnmatch                     NA
+fractions                   NA
+functools                   NA
+gc                          NA
+genericpath                 NA
+getopt                      NA
+getpass                     NA
+gettext                     NA
+glob                        NA
+gzip                        NA
+hashlib                     NA
+heapq                       NA
+hmac                        NA
+html                        NA
+html5lib                    1.1
+http                        NA
+idna                        3.2
+imp                         NA
+importlib                   NA
+inspect                     NA
+io                          NA
+ipaddress                   1.0
+ipykernel                   6.4.1
+ipython_genutils            0.2.0
+ipywidgets                  7.6.5
+itertools                   NA
+jedi                        0.18.0
+jinja2                      2.11.3
+joblib                      1.1.0
+json5                       NA
+jsonschema                  3.2.0
+jupyter_server              1.4.1
+jupyterlab_server           2.8.2
+keyword                     NA
+kiwisolver                  1.3.1
+linecache                   NA
+logging                     0.5.1.2
+lxml                        4.6.3
+lzma                        NA
+markupsafe                  1.1.1
+marshal                     4
+matplotlib_inline           NA
+mimetypes                   NA
+mkl                         2.4.0
+mmap                        NA
+mpl_toolkits                NA
+msvcrt                      NA
+multiprocessing             NA
+nbclassic                   NA
+nbformat                    5.1.3
+nbinom_ufunc                NA
+netrc                       NA
+nt                          NA
+ntpath                      NA
+ntsecuritycon               NA
+nturl2path                  NA
+numbers                     NA
+numexpr                     2.7.3
+olefile                     0.46
+opcode                      NA
+operator                    NA
+packaging                   21.0
+parso                       0.8.2
+pathlib                     NA
+pdb                         NA
+pickle                      NA
+pickleshare                 0.7.5
+pkgutil                     NA
+platform                    1.0.8
+plistlib                    NA
+posixpath                   NA
+pprint                      NA
+profile                     NA
+prometheus_client           NA
+prompt_toolkit              3.0.20
+pstats                      NA
+psutil                      5.8.0
+pvectorc                    NA
+pydev_ipython               NA
+pydevconsole                NA
+pydevd                      2.4.1
+pydevd_concurrency_analyser NA
+pydevd_file_utils           NA
+pydevd_plugins              NA
+pydevd_tracing              NA
+pydoc                       NA
+pydoc_data                  NA
+pyexpat                     NA
+pygments                    2.10.0
+pyparsing                   3.0.4
+pyrsistent                  NA
+pythoncom                   NA
+pytz                        2021.3
+pywintypes                  NA
+queue                       NA
+quopri                      NA
+random                      NA
+re                          2.2.1
+reprlib                     NA
+runpy                       NA
+secrets                     NA
+select                      NA
+selectors                   NA
+send2trash                  NA
+shlex                       NA
+shutil                      NA
+signal                      NA
+site                        NA
+six                         1.16.0
+sniffio                     1.2.0
+socket                      NA
+socketserver                0.4
+socks                       1.7.1
+soupsieve                   2.2.1
+sphinxcontrib               NA
+sqlite3                     2.6.0
+sre_compile                 NA
+sre_constants               NA
+sre_parse                   NA
+ssl                         NA
+stat                        NA
+statsmodels                 0.12.2
+storemagic                  NA
+string                      NA
+stringprep                  NA
+struct                      NA
+subprocess                  NA
+sys                         3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
+sysconfig                   NA
+tarfile                     0.9.0
+tempfile                    NA
+tenacity                    NA
+textwrap                    NA
+threading                   NA
+timeit                      NA
+token                       NA
+tokenize                    NA
+tornado                     6.1
+traceback                   NA
+traitlets                   5.1.0
+typing                      NA
+typing_extensions           NA
+unicodedata                 NA
+unittest                    NA
+urllib                      NA
+urllib3                     1.26.7
+uu                          NA
+uuid                        NA
+warnings                    NA
+wcwidth                     0.2.5
+weakref                     NA
+webbrowser                  NA
+webencodings                0.5.1
+win32api                    NA
+win32com                    NA
+win32con                    NA
+win32security               NA
+win32trace                  NA
+winerror                    NA
+winreg                      NA
+wsgiref                     NA
+xml                         NA
+xmlrpc                      NA
+zipfile                     NA
+zipimport                   NA
+zlib                        1.0
+zmq                         22.2.1
+zope                        NA
+</pre>
+</details> <!-- seems like this ends pre, so might as well be explicit -->
+<pre>
+-----
+IPython             7.29.0
+jupyter_client      6.1.12
+jupyter_core        4.8.1
+jupyterlab          3.2.1
+notebook            6.4.5
+-----
+Python 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
+Windows-10-10.0.22000-SP0
+12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+-----
+Session information updated at 2022-01-19 15:39
+</pre>
+</details></div></div>
 </div>
 </section>
 <section id="bibliografia-de-esta-pagina">
