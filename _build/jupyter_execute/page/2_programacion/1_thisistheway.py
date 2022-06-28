@@ -404,7 +404,7 @@ csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/
 # 
 # ### Manipulando (*ahora sí*)
 
-# In[38]:
+# In[3]:
 
 
 # Manipulando datos
@@ -696,7 +696,7 @@ poblacion_yomevacuno = 286597
 # 
 # Los cambios siempre son para mejor.
 
-# In[39]:
+# In[4]:
 
 
 # Uniendo datos
@@ -861,7 +861,7 @@ df
 
 # ### CSV
 
-# In[40]:
+# In[5]:
 
 
 # Exportando información
@@ -1039,7 +1039,7 @@ pd.DataFrame([df['Vacunados acumulados 1° dosis'], df['Vacunados acumulados 2°
 
 # ### Reporte diario
 
-# In[41]:
+# In[6]:
 
 
 ### Infografías generadas
@@ -1314,7 +1314,7 @@ print(desc1)
 
 # ### Indicador de fase
 
-# In[42]:
+# In[7]:
 
 
 get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2_thisistheway.ipynb\n\n### Ejecutamos notebook 3\n%run 3_thisistheway.ipynb\n\n### Ejecutamos notebook 4\n%run ./../4_legado/1_legado.ipynb\n')
@@ -1410,7 +1410,7 @@ get_ipython().run_cell_magic('capture', '', '\n### Ejecutamos notebook 2\n%run 2
 
 # ### Reporte diario
 
-# In[43]:
+# In[8]:
 
 
 ### Graficando para reporte diario ###
@@ -1765,7 +1765,7 @@ print('\n \n Gráficos del reporte diario guardados de forma exitosa.')
 
 # ### Reporte diario
 
-# In[73]:
+# In[9]:
 
 
 ### Generando reporte diario ###
@@ -2111,7 +2111,7 @@ display(Markdown('> El PDF del reporte diario ha sido exportado.'))
 
 # ### Reporte diario
 
-# In[74]:
+# In[10]:
 
 
 ### Mostramos las imágenes del reporte diario
@@ -2160,7 +2160,7 @@ for i in x:
 # 
 # ¿Cómo se ve un archivo .CSV?
 
-# In[46]:
+# In[11]:
 
 
 ### Ejemplo 1 ###
@@ -2182,7 +2182,7 @@ pd.read_csv(StringIO(csv))
 # 
 # ¿Cuál es la media de error de la aproximación UCI?
 
-# In[47]:
+# In[12]:
 
 
 ### Ejemplo 2 ###
@@ -2244,7 +2244,7 @@ plt.show()
 
 # Obviar esta celda. Está hecha para que el action [actualiza_libro](https://github.com/pandemiaventana/pandemiaventana/actions/workflows/book.yml) funcione correctamente según librerías utilizadas en el Notebook.
 
-# In[48]:
+# In[13]:
 
 
 ### Gracias a Alex P. Miller (https://stackoverflow.com/a/49199019/13746427) ###
@@ -2300,7 +2300,7 @@ with open('../../requirements.txt', 'w') as f:
 
 # ## Información de sesión
 
-# In[49]:
+# In[14]:
 
 
 session_info.show(cpu=True, jupyter=True, std_lib=True, write_req_file=True, dependencies=True, req_file_name='1_requeriments.txt')
