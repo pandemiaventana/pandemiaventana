@@ -32,8 +32,15 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# Obteniendo datos desde Min. de Ciencia y Tecnología', '', '### csv13 (casos acumulativos), producto 13', "csv13 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto13/CasosNuevosCumulativo_T.csv')", '']
-...
-['### csv69 (tasa de incidencia regional, por cada cien mil habitantes, de casos confirmados, calculada por ICOVID Chile)', "csv69_regional = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto69/carga.regional.ajustada.csv')", '', '### csv18 (tasa de incidencia histórica acumulada)', "csv18 = pd.read_csv('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto18/TasaDeIncidencia.csv')"]
+%%capture
+
+### Ejecutamos notebook 2
+%run 2_thisistheway.ipynb
+
+### Ejecutamos notebook 3
+%run 3_thisistheway.ipynb
+
+### Ejecutamos notebook 4
+%run ./../4_legado/1_legado.ipynb
 -------------------
 
