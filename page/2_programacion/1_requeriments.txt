@@ -22,5 +22,5 @@ time
 types
 IPython==7.34.0
 jupyter_client==7.3.4
-jupyter_core==4.11.0
+jupyter_core==4.11.1
 notebook==6.4.12
