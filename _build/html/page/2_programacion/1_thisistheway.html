@@ -3338,311 +3338,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/ImageFile.py</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">504</span>         <span class="n">fh</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">505</span>         <span class="n">fp</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-
-<span class="ne">AttributeError</span>: &#39;_idat&#39; object has no attribute &#39;fileno&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">pandemiaventana</span><span class="o">/</span><span class="n">page</span><span class="o">/</span><span class="mi">2</span><span class="n">_programacion</span><span class="o">/</span><span class="mi">2</span><span class="n">_thisistheway</span><span class="o">.</span><span class="n">ipynb</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicho&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriz de confusión para </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comuna</span><span class="p">))</span>
-<span class="ne">---&gt; </span><span class="mi">36</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/pyplot.py</span> in <span class="ni">show</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="sd">     _warn_if_gui_out_of_main_thread()</span>
-<span class="ne">--&gt; </span><span class="mi">378</span><span class="sd">     return _backend_mod.show(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">379</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="sd"> </span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib_inline/backend_inline.py</span> in <span class="ni">show</span><span class="nt">(close, block)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="sd">             display(</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="sd">                 figure_manager.canvas.figure,</span>
-<span class="ne">---&gt; </span><span class="mi">43</span><span class="sd">                 metadata=_fetch_figure_metadata(figure_manager.canvas.figure)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="sd">             )</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span><span class="sd">     finally:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/display.py</span> in <span class="ni">display</span><span class="nt">(include, exclude, metadata, transient, display_id, *objs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="sd">             publish_display_data(data=obj, metadata=metadata, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="sd">         else:</span>
-<span class="ne">--&gt; </span><span class="mi">320</span><span class="sd">             format_dict, md_dict = format(obj, include=include, exclude=exclude)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="sd">             if not format_dict:</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span><span class="sd">                 # nothing to display (e.g. _ipython_display_ took over)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/formatters.py</span> in <span class="ni">format</span><span class="nt">(self, obj, include, exclude)</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span><span class="sd">             md = None</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span><span class="sd">             try:</span>
-<span class="ne">--&gt; </span><span class="mi">180</span><span class="sd">                 data = formatter(obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span><span class="sd">             except:</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="sd">                 # FIXME: log the exception</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span><span class="sd">             if not kwsyntax:</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span><span class="sd">                 args, kw = fix(args, kw, sig)</span>
-<span class="ne">--&gt; </span><span class="mi">232</span><span class="sd">             return caller(func, *(extras + args), **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd">     fun.__name__ = func.__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd">     fun.__doc__ = func.__doc__</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/formatters.py</span> in <span class="ni">catch_format_error</span><span class="nt">(method, self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="sd">     &quot;&quot;&quot;</span><span class="n">show</span> <span class="n">traceback</span> <span class="n">on</span> <span class="n">failed</span> <span class="nb">format</span> <span class="n">call</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span><span class="s2">     try:</span>
-<span class="ne">--&gt; </span><span class="mi">224</span><span class="s2">         r = method(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="s2">     except NotImplementedError:</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span><span class="s2">         # don&#39;t warn on NotImplementedErrors</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/formatters.py</span> in <span class="ni">__call__</span><span class="nt">(self, obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span><span class="s2">                 pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span><span class="s2">             else:</span>
-<span class="ne">--&gt; </span><span class="mi">341</span><span class="s2">                 return printer(obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span><span class="s2">             # Finally look for special method names</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span><span class="s2">             method = get_real_method(obj, self.print_method)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/pylabtools.py</span> in <span class="ni">print_figure</span><span class="nt">(fig, fmt, bbox_inches, base64, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span><span class="s2">         FigureCanvasBase(fig)</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">151</span><span class="s2">     fig.canvas.print_figure(bytes_io, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span><span class="s2">     data = bytes_io.getvalue()</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span><span class="s2">     if fmt == &#39;svg&#39;:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2259</span><span class="s2">                         orientation=orientation,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2260</span><span class="s2">                         bbox_inches_restore=_bbox_inches_restore,</span>
-<span class="ne">-&gt; </span><span class="mi">2261</span><span class="s2">                         **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2262</span><span class="s2">             finally:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2263</span><span class="s2">                 if bbox_inches and restore_bbox:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span><span class="s2">             kwargs.pop(arg)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1668</span><span class="s2"> </span>
-<span class="ne">-&gt; </span><span class="mi">1669</span><span class="s2">         return func(*args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1670</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1671</span><span class="s2">     return wrapper</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/backends/backend_agg.py</span> in <span class="ni">print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">509</span><span class="s2">         mpl.image.imsave(</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span><span class="s2">             filename_or_obj, self.buffer_rgba(), format=&quot;png&quot;, origin=&quot;upper&quot;,</span>
-<span class="ne">--&gt; </span><span class="mi">511</span><span class="s2">             dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span><span class="s2">     def print_to_buffer(self):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1614</span><span class="s2">         pil_kwargs.setdefault(&quot;format&quot;, format)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1615</span><span class="s2">         pil_kwargs.setdefault(&quot;dpi&quot;, (dpi, dpi))</span>
-<span class="ne">-&gt; </span><span class="mi">1616</span><span class="s2">         image.save(fname, **pil_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1618</span><span class="s2"> </span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/Image.py</span> in <span class="ni">save</span><span class="nt">(self, fp, format, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2238</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">2239</span><span class="s2">         try:</span>
-<span class="ne">-&gt; </span><span class="mi">2240</span><span class="s2">             save_handler(self, fp, filename)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2241</span><span class="s2">         finally:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2242</span><span class="s2">             # do what we can to clean up</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/PngImagePlugin.py</span> in <span class="ni">_save</span><span class="nt">(im, fp, filename, chunk, save_all)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span><span class="s2">         _write_multiple_frames(im, fp, chunk, rawmode)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1347</span><span class="s2">     else:</span>
-<span class="ne">-&gt; </span><span class="mi">1348</span><span class="s2">         ImageFile._save(im, _idat(fp, chunk), [(&quot;zip&quot;, (0, 0) + im.size, 0, rawmode)])</span>
-<span class="g g-Whitespace">   </span><span class="mi">1349</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1350</span><span class="s2">     if info:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/ImageFile.py</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span><span class="s2">             else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span><span class="s2">                 while True:</span>
-<span class="ne">--&gt; </span><span class="mi">518</span><span class="s2">                     l, s, d = e.encode(bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span><span class="s2">                     fp.write(d)</span>
-<span class="g g-Whitespace">    </span><span class="mi">520</span><span class="s2">                     if s:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/ImageFile.py</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">504</span>         <span class="n">fh</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">505</span>         <span class="n">fp</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-
-<span class="ne">AttributeError</span>: &#39;_idat&#39; object has no attribute &#39;fileno&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3482</span><span class="o">/</span><span class="mf">1584369300.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">### Ejecutamos notebook 2</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;2_thisistheway.ipynb&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">### Ejecutamos notebook 3</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;3_thisistheway.ipynb&#39;</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2416</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2417</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2418</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2419</span>             <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2420</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">232</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> 
-<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/magics/execution.py</span> in <span class="ni">run</span><span class="nt">(self, parameter_s, runner, file_finder)</span>
-<span class="g g-Whitespace">    </span><span class="mi">733</span>             <span class="k">with</span> <span class="n">preserve_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">734</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">user_ns</span><span class="p">[</span><span class="s1">&#39;__file__&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
-<span class="ne">--&gt; </span><span class="mi">735</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">safe_execfile_ipy</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">raise_exceptions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">736</span>             <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">737</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">safe_execfile_ipy</span><span class="nt">(self, fname, shell_futures, raise_exceptions)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2903</span>                     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_cell</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shell_futures</span><span class="o">=</span><span class="n">shell_futures</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2904</span>                     <span class="k">if</span> <span class="n">raise_exceptions</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2905</span>                         <span class="n">result</span><span class="o">.</span><span class="n">raise_error</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">2906</span>                     <span class="k">elif</span> <span class="ow">not</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2907</span>                         <span class="k">break</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">raise_error</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span>             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_before_exec</span>
-<span class="g g-Whitespace">    </span><span class="mi">348</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_in_exec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">349</span>             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_in_exec</span>
-<span class="g g-Whitespace">    </span><span class="mi">350</span> 
-<span class="g g-Whitespace">    </span><span class="mi">351</span>     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">1</span> <span class="n">frame</span><span class="p">]</span>
-
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3482</span><span class="o">/</span><span class="mf">1533704879.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicho&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriz de confusión para </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comuna</span><span class="p">))</span>
-<span class="ne">---&gt; </span><span class="mi">36</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/pyplot.py</span> in <span class="ni">show</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="sd">     _warn_if_gui_out_of_main_thread()</span>
-<span class="ne">--&gt; </span><span class="mi">378</span><span class="sd">     return _backend_mod.show(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">379</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="sd"> </span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib_inline/backend_inline.py</span> in <span class="ni">show</span><span class="nt">(close, block)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="sd">             display(</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="sd">                 figure_manager.canvas.figure,</span>
-<span class="ne">---&gt; </span><span class="mi">43</span><span class="sd">                 metadata=_fetch_figure_metadata(figure_manager.canvas.figure)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="sd">             )</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span><span class="sd">     finally:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/display.py</span> in <span class="ni">display</span><span class="nt">(include, exclude, metadata, transient, display_id, *objs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="sd">             publish_display_data(data=obj, metadata=metadata, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="sd">         else:</span>
-<span class="ne">--&gt; </span><span class="mi">320</span><span class="sd">             format_dict, md_dict = format(obj, include=include, exclude=exclude)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="sd">             if not format_dict:</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span><span class="sd">                 # nothing to display (e.g. _ipython_display_ took over)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/formatters.py</span> in <span class="ni">format</span><span class="nt">(self, obj, include, exclude)</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span><span class="sd">             md = None</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span><span class="sd">             try:</span>
-<span class="ne">--&gt; </span><span class="mi">180</span><span class="sd">                 data = formatter(obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span><span class="sd">             except:</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="sd">                 # FIXME: log the exception</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span><span class="sd">             if not kwsyntax:</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span><span class="sd">                 args, kw = fix(args, kw, sig)</span>
-<span class="ne">--&gt; </span><span class="mi">232</span><span class="sd">             return caller(func, *(extras + args), **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd">     fun.__name__ = func.__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd">     fun.__doc__ = func.__doc__</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/formatters.py</span> in <span class="ni">catch_format_error</span><span class="nt">(method, self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="sd">     &quot;&quot;&quot;</span><span class="n">show</span> <span class="n">traceback</span> <span class="n">on</span> <span class="n">failed</span> <span class="nb">format</span> <span class="n">call</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span><span class="s2">     try:</span>
-<span class="ne">--&gt; </span><span class="mi">224</span><span class="s2">         r = method(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="s2">     except NotImplementedError:</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span><span class="s2">         # don&#39;t warn on NotImplementedErrors</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/formatters.py</span> in <span class="ni">__call__</span><span class="nt">(self, obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span><span class="s2">                 pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span><span class="s2">             else:</span>
-<span class="ne">--&gt; </span><span class="mi">341</span><span class="s2">                 return printer(obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span><span class="s2">             # Finally look for special method names</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span><span class="s2">             method = get_real_method(obj, self.print_method)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/IPython/core/pylabtools.py</span> in <span class="ni">print_figure</span><span class="nt">(fig, fmt, bbox_inches, base64, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span><span class="s2">         FigureCanvasBase(fig)</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">151</span><span class="s2">     fig.canvas.print_figure(bytes_io, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span><span class="s2">     data = bytes_io.getvalue()</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span><span class="s2">     if fmt == &#39;svg&#39;:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2259</span><span class="s2">                         orientation=orientation,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2260</span><span class="s2">                         bbox_inches_restore=_bbox_inches_restore,</span>
-<span class="ne">-&gt; </span><span class="mi">2261</span><span class="s2">                         **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2262</span><span class="s2">             finally:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2263</span><span class="s2">                 if bbox_inches and restore_bbox:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span><span class="s2">             kwargs.pop(arg)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1668</span><span class="s2"> </span>
-<span class="ne">-&gt; </span><span class="mi">1669</span><span class="s2">         return func(*args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1670</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1671</span><span class="s2">     return wrapper</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/backends/backend_agg.py</span> in <span class="ni">print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">509</span><span class="s2">         mpl.image.imsave(</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span><span class="s2">             filename_or_obj, self.buffer_rgba(), format=&quot;png&quot;, origin=&quot;upper&quot;,</span>
-<span class="ne">--&gt; </span><span class="mi">511</span><span class="s2">             dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span><span class="s2">     def print_to_buffer(self):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1614</span><span class="s2">         pil_kwargs.setdefault(&quot;format&quot;, format)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1615</span><span class="s2">         pil_kwargs.setdefault(&quot;dpi&quot;, (dpi, dpi))</span>
-<span class="ne">-&gt; </span><span class="mi">1616</span><span class="s2">         image.save(fname, **pil_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1618</span><span class="s2"> </span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/Image.py</span> in <span class="ni">save</span><span class="nt">(self, fp, format, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2238</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">2239</span><span class="s2">         try:</span>
-<span class="ne">-&gt; </span><span class="mi">2240</span><span class="s2">             save_handler(self, fp, filename)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2241</span><span class="s2">         finally:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2242</span><span class="s2">             # do what we can to clean up</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/PngImagePlugin.py</span> in <span class="ni">_save</span><span class="nt">(im, fp, filename, chunk, save_all)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span><span class="s2">         _write_multiple_frames(im, fp, chunk, rawmode)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1347</span><span class="s2">     else:</span>
-<span class="ne">-&gt; </span><span class="mi">1348</span><span class="s2">         ImageFile._save(im, _idat(fp, chunk), [(&quot;zip&quot;, (0, 0) + im.size, 0, rawmode)])</span>
-<span class="g g-Whitespace">   </span><span class="mi">1349</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1350</span><span class="s2">     if info:</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/PIL/ImageFile.py</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span><span class="s2">             else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span><span class="s2">                 while True:</span>
-<span class="ne">--&gt; </span><span class="mi">518</span><span class="s2">                     l, s, d = e.encode(bufsize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span><span class="s2">                     fp.write(d)</span>
-<span class="g g-Whitespace">    </span><span class="mi">520</span><span class="s2">                     if s:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="highlight-### notranslate"><div class="highlight"><pre><span></span>cambios = &quot;&quot;&quot;• Ninguno&quot;&quot;&quot;
 
@@ -3850,7 +3545,7 @@ print(desc2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\dinam\AppData\Local\Temp/ipykernel_6060/1562497236.py:19: DeprecationWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:19: DeprecationWarning:
 
 `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
@@ -4609,8 +4304,8 @@ print(&#39;\n \n Gráficos del indicador de fase guardados de forma exitosa.&#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  5.99 %
-La media general del error es de:  0.58 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La media móvil del error de la última semana es de:  3.23 %
+La media general del error es de:  0.45 %
 </pre></div>
 </div>
 <img alt="../../_images/1_thisistheway_52_1.png" src="../../_images/1_thisistheway_52_1.png" />
@@ -4728,281 +4423,256 @@ La media general del error es de:  0.58 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><details>
-<summary>Click to view session information</summary>
-<pre>
------
-PIL                 8.4.0
-bs4                 4.10.0
-datetime            NA
-json                2.0.9
-locale              NA
-markdownify         NA
-math                NA
-matplotlib          3.4.3
-natsort             8.0.2
-numpy               1.20.3
-os                  NA
-pandas              1.3.4
-pkg_resources       NA
-plotly              5.5.0
-pybtex              0.24.0
-requests            2.26.0
-scipy               1.7.1
-seaborn             0.11.2
-session_info        1.0.0
-sklearn             0.24.2
-time                NA
-types               NA
------
-</pre>
-<details>
-<summary>Click to view modules imported as dependencies</summary>
-<pre>
-abc                         NA
-anyio                       NA
-argparse                    1.1
-array                       NA
-ast                         NA
-asyncio                     NA
-atexit                      NA
-attr                        21.2.0
-babel                       2.9.1
-backcall                    0.2.0
-base64                      NA
-bdb                         NA
-beta_ufunc                  NA
-binascii                    NA
-binom_ufunc                 NA
-bisect                      NA
-bottleneck                  1.3.2
-brotli                      NA
-bz2                         NA
-cProfile                    NA
-calendar                    NA
-certifi                     2021.10.08
-cffi                        1.14.6
-chardet                     4.0.0
-charset_normalizer          2.0.4
-cmath                       NA
-cmd                         NA
-code                        NA
-codecs                      NA
-codeop                      NA
-collections                 NA
-colorama                    0.4.4
-colorsys                    NA
-concurrent                  NA
-configparser                NA
-contextlib                  NA
-contextvars                 NA
-copy                        NA
-copyreg                     NA
-csv                         1.0
-ctypes                      1.1.0
-cycler                      0.10.0
-cython_runtime              NA
-dataclasses                 NA
-dateutil                    2.8.2
-debugpy                     1.4.1
-decimal                     1.70
-decorator                   5.1.0
-defusedxml                  0.7.1
-difflib                     NA
-dis                         NA
-distutils                   3.9.7
-email                       NA
-encodings                   NA
-entrypoints                 0.3
-enum                        NA
-errno                       NA
-faulthandler                NA
-filecmp                     NA
-fnmatch                     NA
-fractions                   NA
-functools                   NA
-gc                          NA
-genericpath                 NA
-getopt                      NA
-getpass                     NA
-gettext                     NA
-glob                        NA
-gzip                        NA
-hashlib                     NA
-heapq                       NA
-hmac                        NA
-html                        NA
-html5lib                    1.1
-http                        NA
-idna                        3.2
-imp                         NA
-importlib                   NA
-inspect                     NA
-io                          NA
-ipaddress                   1.0
-ipykernel                   6.4.1
-ipython_genutils            0.2.0
-ipywidgets                  7.6.5
-itertools                   NA
-jedi                        0.18.0
-jinja2                      2.11.3
-joblib                      1.1.0
-json5                       NA
-jsonschema                  3.2.0
-jupyter_server              1.4.1
-jupyterlab_server           2.8.2
-keyword                     NA
-kiwisolver                  1.3.1
-linecache                   NA
-logging                     0.5.1.2
-lxml                        4.6.3
-lzma                        NA
-markupsafe                  1.1.1
-marshal                     4
-matplotlib_inline           NA
-mimetypes                   NA
-mkl                         2.4.0
-mmap                        NA
-mpl_toolkits                NA
-msvcrt                      NA
-multiprocessing             NA
-nbclassic                   NA
-nbformat                    5.1.3
-nbinom_ufunc                NA
-netrc                       NA
-nt                          NA
-ntpath                      NA
-ntsecuritycon               NA
-nturl2path                  NA
-numbers                     NA
-numexpr                     2.7.3
-olefile                     0.46
-opcode                      NA
-operator                    NA
-packaging                   21.0
-parso                       0.8.2
-pathlib                     NA
-pdb                         NA
-pickle                      NA
-pickleshare                 0.7.5
-pkgutil                     NA
-platform                    1.0.8
-plistlib                    NA
-posixpath                   NA
-pprint                      NA
-profile                     NA
-prometheus_client           NA
-prompt_toolkit              3.0.20
-pstats                      NA
-psutil                      5.8.0
-pvectorc                    NA
-pydev_ipython               NA
-pydevconsole                NA
-pydevd                      2.4.1
-pydevd_concurrency_analyser NA
-pydevd_file_utils           NA
-pydevd_plugins              NA
-pydevd_tracing              NA
-pydoc                       NA
-pydoc_data                  NA
-pyexpat                     NA
-pygments                    2.10.0
-pyparsing                   3.0.4
-pyrsistent                  NA
-pythoncom                   NA
-pytz                        2021.3
-pywintypes                  NA
-queue                       NA
-quopri                      NA
-random                      NA
-re                          2.2.1
-reprlib                     NA
-runpy                       NA
-secrets                     NA
-select                      NA
-selectors                   NA
-send2trash                  NA
-shlex                       NA
-shutil                      NA
-signal                      NA
-site                        NA
-six                         1.16.0
-sniffio                     1.2.0
-socket                      NA
-socketserver                0.4
-socks                       1.7.1
-soupsieve                   2.2.1
-sphinxcontrib               NA
-sqlite3                     2.6.0
-sre_compile                 NA
-sre_constants               NA
-sre_parse                   NA
-ssl                         NA
-stat                        NA
-statsmodels                 0.12.2
-storemagic                  NA
-string                      NA
-stringprep                  NA
-struct                      NA
-subprocess                  NA
-sys                         3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-sysconfig                   NA
-tarfile                     0.9.0
-tempfile                    NA
-tenacity                    NA
-textwrap                    NA
-threading                   NA
-timeit                      NA
-token                       NA
-tokenize                    NA
-tornado                     6.1
-traceback                   NA
-traitlets                   5.1.0
-typing                      NA
-typing_extensions           NA
-unicodedata                 NA
-unittest                    NA
-urllib                      NA
-urllib3                     1.26.7
-uu                          NA
-uuid                        NA
-warnings                    NA
-wcwidth                     0.2.5
-weakref                     NA
-webbrowser                  NA
-webencodings                0.5.1
-win32api                    NA
-win32com                    NA
-win32con                    NA
-win32security               NA
-win32trace                  NA
-winerror                    NA
-winreg                      NA
-wsgiref                     NA
-xml                         NA
-xmlrpc                      NA
-zipfile                     NA
-zipimport                   NA
-zlib                        1.0
-zmq                         22.2.1
-zope                        NA
-</pre>
-</details> <!-- seems like this ends pre, so might as well be explicit -->
-<pre>
------
-IPython             7.29.0
-jupyter_client      6.1.12
-jupyter_core        4.8.1
-jupyterlab          3.2.1
-notebook            6.4.5
------
-Python 3.9.7 (default, Sep 16 2021, 16:59:28) [MSC v.1916 64 bit (AMD64)]
-Windows-10-10.0.22000-SP0
-12 logical CPU cores, Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
------
-Session information updated at 2022-01-19 15:39
-</pre>
-</details></div></div>
+<div class="output text_html">            <details>
+            <summary>Click to view session information</summary>
+            <pre>
+            -----
+            PIL                 8.4.0
+            bs4                 4.11.1
+            datetime            NA
+            json                2.0.9
+            locale              NA
+            markdownify         NA
+            math                NA
+            matplotlib          3.4.3
+            natsort             8.1.0
+            numpy               1.20.3
+            os                  NA
+            pandas              1.3.4
+            pkg_resources       NA
+            plotly              5.5.0
+            pybtex              0.24.0
+            requests            2.26.0
+            scipy               1.7.1
+            seaborn             0.11.2
+            session_info        1.0.0
+            sklearn             0.24.2
+            time                NA
+            types               NA
+            -----
+            </pre>
+            <details>
+            <summary>Click to view modules imported as dependencies</summary>
+            <pre>
+            abc                 NA
+            argparse            1.1
+            array               NA
+            ast                 NA
+            asyncio             NA
+            atexit              NA
+            attr                21.4.0
+            backcall            0.2.0
+            base64              NA
+            bdb                 NA
+            beta_ufunc          NA
+            binascii            NA
+            binom_ufunc         NA
+            bisect              NA
+            bz2                 NA
+            cProfile            NA
+            calendar            NA
+            certifi             2022.06.15
+            cffi                1.15.1
+            charset_normalizer  2.0.12
+            cmath               NA
+            cmd                 NA
+            code                NA
+            codecs              NA
+            codeop              NA
+            collections         NA
+            colorama            0.4.5
+            colorsys            NA
+            concurrent          NA
+            configparser        NA
+            contextlib          NA
+            contextvars         NA
+            copy                NA
+            copyreg             NA
+            csv                 1.0
+            ctypes              1.1.0
+            curses              NA
+            cycler              0.10.0
+            cython_runtime      NA
+            dataclasses         NA
+            dateutil            2.8.2
+            debugpy             1.6.2
+            decimal             1.70
+            decorator           5.1.1
+            defusedxml          0.7.1
+            difflib             NA
+            dis                 NA
+            distutils           3.7.13
+            email               NA
+            encodings           NA
+            entrypoints         0.4
+            enum                NA
+            errno               NA
+            fastjsonschema      NA
+            faulthandler        NA
+            fcntl               NA
+            filecmp             NA
+            fnmatch             NA
+            fractions           NA
+            functools           NA
+            gc                  NA
+            genericpath         NA
+            getopt              NA
+            getpass             NA
+            gettext             NA
+            glob                NA
+            grp                 NA
+            gzip                NA
+            hashlib             NA
+            heapq               NA
+            hmac                NA
+            html                NA
+            http                NA
+            idna                3.3
+            importlib           NA
+            importlib_metadata  NA
+            inspect             NA
+            io                  NA
+            ipaddress           1.0
+            ipykernel           6.15.1
+            ipython_genutils    0.2.0
+            ipywidgets          7.7.1
+            itertools           NA
+            jedi                0.18.1
+            joblib              1.1.0
+            jsonschema          3.2.0
+            keyword             NA
+            kiwisolver          1.4.3
+            linecache           NA
+            logging             0.5.1.2
+            lzma                NA
+            marshal             4
+            matplotlib_inline   NA
+            mimetypes           NA
+            mmap                NA
+            mpl_toolkits        NA
+            multiprocessing     NA
+            nbformat            5.4.0
+            nbinom_ufunc        NA
+            netrc               NA
+            ntpath              NA
+            numbers             NA
+            opcode              NA
+            operator            NA
+            packaging           21.3
+            parso               0.8.3
+            pathlib             NA
+            pdb                 NA
+            pexpect             4.8.0
+            pickle              NA
+            pickleshare         0.7.5
+            pkgutil             NA
+            platform            1.0.8
+            plistlib            NA
+            posix               NA
+            posixpath           NA
+            pprint              NA
+            profile             NA
+            prompt_toolkit      3.0.30
+            pstats              NA
+            psutil              5.9.1
+            pty                 NA
+            ptyprocess          0.7.0
+            pvectorc            NA
+            pwd                 NA
+            pydev_ipython       NA
+            pydevconsole        NA
+            pydevd              2.8.0
+            pydevd_file_utils   NA
+            pydevd_plugins      NA
+            pydevd_tracing      NA
+            pydoc               NA
+            pydoc_data          NA
+            pyexpat             NA
+            pygments            2.12.0
+            pyparsing           3.0.9
+            pyrsistent          NA
+            pytz                2022.1
+            queue               NA
+            quopri              NA
+            random              NA
+            re                  2.2.1
+            reprlib             NA
+            resource            NA
+            runpy               NA
+            secrets             NA
+            select              NA
+            selectors           NA
+            shlex               NA
+            shutil              NA
+            signal              NA
+            site                NA
+            six                 1.16.0
+            socket              NA
+            socketserver        0.4
+            soupsieve           2.3.2.post1
+            sphinxcontrib       NA
+            sqlite3             2.6.0
+            sre_compile         NA
+            sre_constants       NA
+            sre_parse           NA
+            ssl                 NA
+            stat                NA
+            storemagic          NA
+            string              NA
+            stringprep          NA
+            struct              NA
+            subprocess          NA
+            sys                 3.7.13 (default, May  4 2022, 08:45:32) 
+[GCC 9.4.0]
+            sysconfig           NA
+            tarfile             0.9.0
+            tempfile            NA
+            tenacity            NA
+            termios             NA
+            textwrap            NA
+            threading           NA
+            timeit              NA
+            token               NA
+            tokenize            NA
+            tornado             6.2
+            traceback           NA
+            traitlets           5.3.0
+            tty                 NA
+            typing              NA
+            typing_extensions   NA
+            unicodedata         NA
+            unittest            NA
+            urllib              NA
+            urllib3             1.26.10
+            uu                  NA
+            uuid                NA
+            warnings            NA
+            wcwidth             0.2.5
+            weakref             NA
+            webbrowser          NA
+            xml                 NA
+            xmlrpc              NA
+            zipfile             NA
+            zipimport           NA
+            zipp                NA
+            zlib                1.0
+            zmq                 23.2.0
+            </pre>
+            </details> <!-- seems like this ends pre, so might as well be explicit -->
+            <pre>
+            -----
+            IPython             7.34.0
+            jupyter_client      7.3.4
+            jupyter_core        4.11.1
+            notebook            6.4.12
+            -----
+            Python 3.7.13 (default, May  4 2022, 08:45:32) [GCC 9.4.0]
+            Linux-5.13.0-1031-azure-x86_64-with-debian-bullseye-sid
+            2 logical CPU cores, x86_64
+            -----
+            Session information updated at 2022-07-13 17:21
+            </pre>
+            </details></div></div>
 </div>
 </section>
 <section id="bibliografia-de-esta-pagina">
